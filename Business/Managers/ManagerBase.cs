@@ -5,10 +5,11 @@ using System.Text;
 using ELearning.Business.Repositories;
 using ELearning.Business.Storages;
 using ELearning.Data;
+using System.Linq.Expressions;
 
 namespace ELearning.Business.Managers
 {
-    public abstract class ManagerBase<T> : Repository<T> where T : class
+    public abstract class ManagerBase<T> : IRepository<T> where T : class
     {
         private IPersistentStorage _persistentStorage;
 
@@ -29,5 +30,21 @@ namespace ELearning.Business.Managers
         {
             _persistentStorage = persistentStorage;
         }
+
+
+
+        #region IRepository<T> Members
+
+        public virtual IQueryable<T> GetAll()
+        {
+            return Context.CreateObjectSet<T>();
+        }
+
+        public T GetSingle(Expression<Func<T, bool>> predicate)
+        {
+            return GetAll().SingleOrDefault<T>(predicate);
+        }
+
+        #endregion
     }
 }

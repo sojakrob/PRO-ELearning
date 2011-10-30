@@ -1,0 +1,47 @@
+@model ELearning.Data.Question
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Text)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Text)
+    @Html.ValidationMessageFor(model => model.Text)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.HelpText)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.HelpText)
+    @Html.ValidationMessageFor(model => model.HelpText)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ImageUrl)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ImageUrl)
+    @Html.ValidationMessageFor(model => model.ImageUrl)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Explanation)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Explanation)
+    @Html.ValidationMessageFor(model => model.Explanation)
+</div>
+
+<div class="editor-label">
+    QuestionGroup
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.QuestionGroupID, ((IEnumerable<ELearning.Data.QuestionGroup>)ViewBag.PossibleQuestionGroups).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.ID.ToString(),
+        Selected = (Model != null) && (option.ID == Model.QuestionGroupID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.QuestionGroupID)
+</div>

@@ -20,5 +20,11 @@
             Gets current data context
             </summary>
         </member>
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+            <summary>
+            Initializes a new instance of the QuestionManager class.
+            </summary>
+            <param name="persistentStorage"></param>
+        </member>
     </members>
 </doc>
