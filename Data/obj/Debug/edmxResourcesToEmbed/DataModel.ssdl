@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Question" EntityType="DataModel.Store.Question" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuestionGroup" EntityType="DataModel.Store.QuestionGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuestionGroupType" EntityType="DataModel.Store.QuestionGroupType" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.Store.QuestionGroupQuestion">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionGroupQuestionGroupType" Association="DataModel.Store.QuestionGroupQuestionGroupType">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="QuestionGroupType" EntitySet="QuestionGroupType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HelpText" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Explanation" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="QuestionGroupID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="IsRequired" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="QuestionGroupTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionGroupType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="QuestionGroupQuestion">
+    <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="1" />
+    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuestionGroupQuestionGroupType">
+    <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="*" />
+    <End Role="QuestionGroupType" Type="DataModel.Store.QuestionGroupType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroupType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionGroup">
+        <PropertyRef Name="QuestionGroupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

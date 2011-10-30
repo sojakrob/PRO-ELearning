@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ELearning.Data</name>
+    </assembly>
+    <members>
+        <member name="T:ELearning.Data.DataModelContainer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.#ctor">
+            <summary>
+            Initializes a new DataModelContainer object using the connection string found in the 'DataModelContainer' section of the application configuration file.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.#ctor(System.String)">
+            <summary>
+            Initialize a new DataModelContainer object.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.#ctor(System.Data.EntityClient.EntityConnection)">
+            <summary>
+            Initialize a new DataModelContainer object.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestion(ELearning.Data.Question)">
+            <summary>
+            Deprecated Method for adding a new object to the Question EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionGroup(ELearning.Data.QuestionGroup)">
+            <summary>
+            Deprecated Method for adding a new object to the QuestionGroup EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionGroupType(ELearning.Data.QuestionGroupType)">
+            <summary>
+            Deprecated Method for adding a new object to the QuestionGroupType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Question">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.QuestionGroupType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.Question">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Question.CreateQuestion(System.Int32,System.String,System.Int32)">
+            <summary>
+            Create a new Question object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+        </member>
+        <member name="P:ELearning.Data.Question.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.HelpText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.ImageUrl">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.Explanation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.QuestionGroupID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.QuestionGroupReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create a new QuestionGroup object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.IsRequired">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.Question">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.QuestionGroupType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.QuestionGroupType.CreateQuestionGroupType(System.Int32,System.String)">
+            <summary>
+            Create a new QuestionGroupType object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroupType.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroupType.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+    </members>
+</doc>

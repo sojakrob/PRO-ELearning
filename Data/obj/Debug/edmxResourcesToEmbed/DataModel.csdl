@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Question" EntityType="DataModel.Question" />
+    <EntitySet Name="QuestionGroup" EntityType="DataModel.QuestionGroup" />
+    <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.QuestionGroupQuestion">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <EntitySet Name="QuestionGroupType" EntityType="DataModel.QuestionGroupType" />
+    <AssociationSet Name="QuestionGroupQuestionGroupType" Association="DataModel.QuestionGroupQuestionGroupType">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="QuestionGroupType" EntitySet="QuestionGroupType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="String" Name="HelpText" Nullable="true" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" />
+    <Property Type="String" Name="Explanation" Nullable="true" />
+    <NavigationProperty Name="QuestionGroup" Relationship="DataModel.QuestionGroupQuestion" FromRole="Question" ToRole="QuestionGroup" />
+    <Property Type="Int32" Name="QuestionGroupID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Index" Nullable="false" />
+    <Property Type="Boolean" Name="IsRequired" Nullable="false" DefaultValue="False" />
+    <NavigationProperty Name="Question" Relationship="DataModel.QuestionGroupQuestion" FromRole="QuestionGroup" ToRole="Question" />
+    <NavigationProperty Name="QuestionGroupType" Relationship="DataModel.QuestionGroupQuestionGroupType" FromRole="QuestionGroup" ToRole="QuestionGroupType" />
+    <Property Type="Int32" Name="QuestionGroupTypeID" Nullable="false" />
+  </EntityType>
+  <Association Name="QuestionGroupQuestion">
+    <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="1" />
+    <End Type="DataModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QuestionGroupType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </EntityType>
+  <Association Name="QuestionGroupQuestionGroupType">
+    <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="*" />
+    <End Type="DataModel.QuestionGroupType" Role="QuestionGroupType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroupType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionGroup">
+        <PropertyRef Name="QuestionGroupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

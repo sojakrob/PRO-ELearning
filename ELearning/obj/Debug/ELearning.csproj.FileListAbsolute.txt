@@ -1,0 +1,17 @@
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\EntityFramework.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\EntityFramework.xml
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ResolveAssemblyReference.cache
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Business.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Data.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Shared.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Business.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Business.xml
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Data.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Data.xml
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Shared.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Shared.xml
