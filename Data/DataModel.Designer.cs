@@ -20,6 +20,17 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionGroupQuestion", "QuestionGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionGroup), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Question), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionGroupQuestionGroupType", "QuestionGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionGroup), "QuestionGroupType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionGroupType), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "Supervisor", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Group), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "GroupMembers", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Group), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.User))]
+[assembly: EdmRelationshipAttribute("DataModel", "UserUserType", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.User), "UserType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.UserType), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormTemplateFormType", "FormTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Form), "FormType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormType), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormTemplateAuthor", "FormTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Form), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "QuestionGroupFormTemplate", "QuestionGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionGroup), "FormTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.Form), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceUser", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.FormInstance), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormTemplate", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.FormInstance), "FormTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.Form), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceQuestionTemplate", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionInstance), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.Question), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceQuestionInstance", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionInstance), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstanceEvaluation))]
 
 #endregion
 
@@ -118,6 +129,134 @@ namespace ELearning.Data
             }
         }
         private ObjectSet<QuestionGroupType> _QuestionGroupType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<User> User
+        {
+            get
+            {
+                if ((_User == null))
+                {
+                    _User = base.CreateObjectSet<User>("User");
+                }
+                return _User;
+            }
+        }
+        private ObjectSet<User> _User;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Group> Group
+        {
+            get
+            {
+                if ((_Group == null))
+                {
+                    _Group = base.CreateObjectSet<Group>("Group");
+                }
+                return _Group;
+            }
+        }
+        private ObjectSet<Group> _Group;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UserType> UserType
+        {
+            get
+            {
+                if ((_UserType == null))
+                {
+                    _UserType = base.CreateObjectSet<UserType>("UserType");
+                }
+                return _UserType;
+            }
+        }
+        private ObjectSet<UserType> _UserType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Form> Form
+        {
+            get
+            {
+                if ((_Form == null))
+                {
+                    _Form = base.CreateObjectSet<Form>("Form");
+                }
+                return _Form;
+            }
+        }
+        private ObjectSet<Form> _Form;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FormType> FormType
+        {
+            get
+            {
+                if ((_FormType == null))
+                {
+                    _FormType = base.CreateObjectSet<FormType>("FormType");
+                }
+                return _FormType;
+            }
+        }
+        private ObjectSet<FormType> _FormType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FormInstance> FormInstance
+        {
+            get
+            {
+                if ((_FormInstance == null))
+                {
+                    _FormInstance = base.CreateObjectSet<FormInstance>("FormInstance");
+                }
+                return _FormInstance;
+            }
+        }
+        private ObjectSet<FormInstance> _FormInstance;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<QuestionInstance> QuestionInstance
+        {
+            get
+            {
+                if ((_QuestionInstance == null))
+                {
+                    _QuestionInstance = base.CreateObjectSet<QuestionInstance>("QuestionInstance");
+                }
+                return _QuestionInstance;
+            }
+        }
+        private ObjectSet<QuestionInstance> _QuestionInstance;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FormInstanceEvaluation> FormInstanceEvaluation
+        {
+            get
+            {
+                if ((_FormInstanceEvaluation == null))
+                {
+                    _FormInstanceEvaluation = base.CreateObjectSet<FormInstanceEvaluation>("FormInstanceEvaluation");
+                }
+                return _FormInstanceEvaluation;
+            }
+        }
+        private ObjectSet<FormInstanceEvaluation> _FormInstanceEvaluation;
 
         #endregion
         #region AddTo Methods
@@ -145,6 +284,70 @@ namespace ELearning.Data
         {
             base.AddObject("QuestionGroupType", questionGroupType);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the User EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUser(User user)
+        {
+            base.AddObject("User", user);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Group EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGroup(Group group)
+        {
+            base.AddObject("Group", group);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UserType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUserType(UserType userType)
+        {
+            base.AddObject("UserType", userType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Form EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToForm(Form form)
+        {
+            base.AddObject("Form", form);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FormType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFormType(FormType formType)
+        {
+            base.AddObject("FormType", formType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FormInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFormInstance(FormInstance formInstance)
+        {
+            base.AddObject("FormInstance", formInstance);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the QuestionInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToQuestionInstance(QuestionInstance questionInstance)
+        {
+            base.AddObject("QuestionInstance", questionInstance);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FormInstanceEvaluation EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFormInstanceEvaluation(FormInstanceEvaluation formInstanceEvaluation)
+        {
+            base.AddObject("FormInstanceEvaluation", formInstanceEvaluation);
+        }
 
         #endregion
     }
@@ -153,6 +356,1037 @@ namespace ELearning.Data
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Form")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Form : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Form object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="created">Initial value of the Created property.</param>
+        /// <param name="formTypeID">Initial value of the FormTypeID property.</param>
+        /// <param name="authorID">Initial value of the AuthorID property.</param>
+        public static Form CreateForm(global::System.Int32 id, global::System.String name, global::System.String text, global::System.DateTime created, global::System.Int32 formTypeID, global::System.Int32 authorID)
+        {
+            Form form = new Form();
+            form.ID = id;
+            form.Name = name;
+            form.Text = text;
+            form.Created = created;
+            form.FormTypeID = formTypeID;
+            form.AuthorID = authorID;
+            return form;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.TimeSpan> TimeToFill
+        {
+            get
+            {
+                return _TimeToFill;
+            }
+            set
+            {
+                OnTimeToFillChanging(value);
+                ReportPropertyChanging("TimeToFill");
+                _TimeToFill = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TimeToFill");
+                OnTimeToFillChanged();
+            }
+        }
+        private Nullable<global::System.TimeSpan> _TimeToFill;
+        partial void OnTimeToFillChanging(Nullable<global::System.TimeSpan> value);
+        partial void OnTimeToFillChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Shuffle
+        {
+            get
+            {
+                return _Shuffle;
+            }
+            set
+            {
+                OnShuffleChanging(value);
+                ReportPropertyChanging("Shuffle");
+                _Shuffle = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Shuffle");
+                OnShuffleChanged();
+            }
+        }
+        private global::System.Boolean _Shuffle = false;
+        partial void OnShuffleChanging(global::System.Boolean value);
+        partial void OnShuffleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Created
+        {
+            get
+            {
+                return _Created;
+            }
+            set
+            {
+                OnCreatedChanging(value);
+                ReportPropertyChanging("Created");
+                _Created = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Created");
+                OnCreatedChanged();
+            }
+        }
+        private global::System.DateTime _Created;
+        partial void OnCreatedChanging(global::System.DateTime value);
+        partial void OnCreatedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FormTypeID
+        {
+            get
+            {
+                return _FormTypeID;
+            }
+            set
+            {
+                OnFormTypeIDChanging(value);
+                ReportPropertyChanging("FormTypeID");
+                _FormTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormTypeID");
+                OnFormTypeIDChanged();
+            }
+        }
+        private global::System.Int32 _FormTypeID;
+        partial void OnFormTypeIDChanging(global::System.Int32 value);
+        partial void OnFormTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AuthorID
+        {
+            get
+            {
+                return _AuthorID;
+            }
+            set
+            {
+                OnAuthorIDChanging(value);
+                ReportPropertyChanging("AuthorID");
+                _AuthorID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AuthorID");
+                OnAuthorIDChanged();
+            }
+        }
+        private global::System.Int32 _AuthorID;
+        partial void OnAuthorIDChanging(global::System.Int32 value);
+        partial void OnAuthorIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormTemplateFormType", "FormType")]
+        public FormType Type
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormType>("DataModel.FormTemplateFormType", "FormType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormType>("DataModel.FormTemplateFormType", "FormType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FormType> TypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormType>("DataModel.FormTemplateFormType", "FormType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FormType>("DataModel.FormTemplateFormType", "FormType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormTemplateAuthor", "User")]
+        public User Author
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.FormTemplateAuthor", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.FormTemplateAuthor", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> AuthorReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.FormTemplateAuthor", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DataModel.FormTemplateAuthor", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "QuestionGroupFormTemplate", "QuestionGroup")]
+        public EntityCollection<QuestionGroup> QuestionGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<QuestionGroup>("DataModel.QuestionGroupFormTemplate", "QuestionGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<QuestionGroup>("DataModel.QuestionGroupFormTemplate", "QuestionGroup", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="FormInstance")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FormInstance : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FormInstance object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="created">Initial value of the Created property.</param>
+        /// <param name="submited">Initial value of the Submited property.</param>
+        /// <param name="solverID">Initial value of the SolverID property.</param>
+        /// <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
+        public static FormInstance CreateFormInstance(global::System.Int32 id, global::System.DateTime created, global::System.DateTime submited, global::System.Int32 solverID, global::System.Int32 formTemplateID)
+        {
+            FormInstance formInstance = new FormInstance();
+            formInstance.ID = id;
+            formInstance.Created = created;
+            formInstance.Submited = submited;
+            formInstance.SolverID = solverID;
+            formInstance.FormTemplateID = formTemplateID;
+            return formInstance;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Created
+        {
+            get
+            {
+                return _Created;
+            }
+            set
+            {
+                OnCreatedChanging(value);
+                ReportPropertyChanging("Created");
+                _Created = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Created");
+                OnCreatedChanged();
+            }
+        }
+        private global::System.DateTime _Created;
+        partial void OnCreatedChanging(global::System.DateTime value);
+        partial void OnCreatedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Submited
+        {
+            get
+            {
+                return _Submited;
+            }
+            set
+            {
+                OnSubmitedChanging(value);
+                ReportPropertyChanging("Submited");
+                _Submited = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Submited");
+                OnSubmitedChanged();
+            }
+        }
+        private global::System.DateTime _Submited;
+        partial void OnSubmitedChanging(global::System.DateTime value);
+        partial void OnSubmitedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SolverID
+        {
+            get
+            {
+                return _SolverID;
+            }
+            set
+            {
+                OnSolverIDChanging(value);
+                ReportPropertyChanging("SolverID");
+                _SolverID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SolverID");
+                OnSolverIDChanged();
+            }
+        }
+        private global::System.Int32 _SolverID;
+        partial void OnSolverIDChanging(global::System.Int32 value);
+        partial void OnSolverIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FormTemplateID
+        {
+            get
+            {
+                return _FormTemplateID;
+            }
+            set
+            {
+                OnFormTemplateIDChanging(value);
+                ReportPropertyChanging("FormTemplateID");
+                _FormTemplateID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormTemplateID");
+                OnFormTemplateIDChanged();
+            }
+        }
+        private global::System.Int32 _FormTemplateID;
+        partial void OnFormTemplateIDChanging(global::System.Int32 value);
+        partial void OnFormTemplateIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceUser", "User")]
+        public User Solver
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.FormInstanceUser", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.FormInstanceUser", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> SolverReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.FormInstanceUser", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DataModel.FormInstanceUser", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceFormTemplate", "FormTemplate")]
+        public Form FormTemplate
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Form>("DataModel.FormInstanceFormTemplate", "FormTemplate").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Form>("DataModel.FormInstanceFormTemplate", "FormTemplate").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Form> FormTemplateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Form>("DataModel.FormInstanceFormTemplate", "FormTemplate");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Form>("DataModel.FormInstanceFormTemplate", "FormTemplate", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceQuestionInstance", "QuestionInstance")]
+        public EntityCollection<QuestionInstance> Questions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<QuestionInstance>("DataModel.FormInstanceQuestionInstance", "QuestionInstance");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<QuestionInstance>("DataModel.FormInstanceQuestionInstance", "QuestionInstance", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstanceEvaluation")]
+        public FormInstanceEvaluation Evaluation
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstanceEvaluation>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstanceEvaluation").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstanceEvaluation>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstanceEvaluation").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FormInstanceEvaluation> EvaluationReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstanceEvaluation>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstanceEvaluation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FormInstanceEvaluation>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstanceEvaluation", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="FormInstanceEvaluation")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FormInstanceEvaluation : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FormInstanceEvaluation object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="mark">Initial value of the Mark property.</param>
+        /// <param name="note">Initial value of the Note property.</param>
+        public static FormInstanceEvaluation CreateFormInstanceEvaluation(global::System.Int32 id, global::System.String mark, global::System.String note)
+        {
+            FormInstanceEvaluation formInstanceEvaluation = new FormInstanceEvaluation();
+            formInstanceEvaluation.ID = id;
+            formInstanceEvaluation.Mark = mark;
+            formInstanceEvaluation.Note = note;
+            return formInstanceEvaluation;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Mark
+        {
+            get
+            {
+                return _Mark;
+            }
+            set
+            {
+                OnMarkChanging(value);
+                ReportPropertyChanging("Mark");
+                _Mark = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Mark");
+                OnMarkChanged();
+            }
+        }
+        private global::System.String _Mark;
+        partial void OnMarkChanging(global::System.String value);
+        partial void OnMarkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Note
+        {
+            get
+            {
+                return _Note;
+            }
+            set
+            {
+                OnNoteChanging(value);
+                ReportPropertyChanging("Note");
+                _Note = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Note");
+                OnNoteChanged();
+            }
+        }
+        private global::System.String _Note;
+        partial void OnNoteChanging(global::System.String value);
+        partial void OnNoteChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstance")]
+        public FormInstance FormInstance
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstance>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstance").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstance>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstance").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FormInstance> FormInstanceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstance>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstance");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FormInstance>("DataModel.FormInstanceFormInstanceEvaluation", "FormInstance", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="FormType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FormType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FormType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static FormType CreateFormType(global::System.Int32 id, global::System.String name)
+        {
+            FormType formType = new FormType();
+            formType.ID = id;
+            formType.Name = name;
+            return formType;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Group")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Group : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Group object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="supervisorID">Initial value of the SupervisorID property.</param>
+        public static Group CreateGroup(global::System.Int32 id, global::System.String name, global::System.Int32 supervisorID)
+        {
+            Group group = new Group();
+            group.ID = id;
+            group.Name = name;
+            group.SupervisorID = supervisorID;
+            return group;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SupervisorID
+        {
+            get
+            {
+                return _SupervisorID;
+            }
+            set
+            {
+                OnSupervisorIDChanging(value);
+                ReportPropertyChanging("SupervisorID");
+                _SupervisorID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SupervisorID");
+                OnSupervisorIDChanged();
+            }
+        }
+        private global::System.Int32 _SupervisorID;
+        partial void OnSupervisorIDChanging(global::System.Int32 value);
+        partial void OnSupervisorIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "Supervisor", "User")]
+        public User Supervisor
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.Supervisor", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.Supervisor", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> SupervisorReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.Supervisor", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DataModel.Supervisor", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "GroupMembers", "User")]
+        public EntityCollection<User> Members
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("DataModel.GroupMembers", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("DataModel.GroupMembers", "User", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -390,12 +1624,14 @@ namespace ELearning.Data
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="index">Initial value of the Index property.</param>
         /// <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
-        public static QuestionGroup CreateQuestionGroup(global::System.Int32 id, global::System.Int32 index, global::System.Int32 questionGroupTypeID)
+        /// <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
+        public static QuestionGroup CreateQuestionGroup(global::System.Int32 id, global::System.Int32 index, global::System.Int32 questionGroupTypeID, global::System.Int32 formTemplateID)
         {
             QuestionGroup questionGroup = new QuestionGroup();
             questionGroup.ID = id;
             questionGroup.Index = index;
             questionGroup.QuestionGroupTypeID = questionGroupTypeID;
+            questionGroup.FormTemplateID = formTemplateID;
             return questionGroup;
         }
 
@@ -500,6 +1736,30 @@ namespace ELearning.Data
         private global::System.Int32 _QuestionGroupTypeID;
         partial void OnQuestionGroupTypeIDChanging(global::System.Int32 value);
         partial void OnQuestionGroupTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FormTemplateID
+        {
+            get
+            {
+                return _FormTemplateID;
+            }
+            set
+            {
+                OnFormTemplateIDChanging(value);
+                ReportPropertyChanging("FormTemplateID");
+                _FormTemplateID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormTemplateID");
+                OnFormTemplateIDChanged();
+            }
+        }
+        private global::System.Int32 _FormTemplateID;
+        partial void OnFormTemplateIDChanging(global::System.Int32 value);
+        partial void OnFormTemplateIDChanged();
 
         #endregion
     
@@ -512,7 +1772,7 @@ namespace ELearning.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "QuestionGroupQuestion", "Question")]
-        public EntityCollection<Question> Question
+        public EntityCollection<Question> Questions
         {
             get
             {
@@ -534,7 +1794,7 @@ namespace ELearning.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "QuestionGroupQuestionGroupType", "QuestionGroupType")]
-        public QuestionGroupType QuestionGroupType
+        public QuestionGroupType Type
         {
             get
             {
@@ -550,7 +1810,7 @@ namespace ELearning.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<QuestionGroupType> QuestionGroupTypeReference
+        public EntityReference<QuestionGroupType> TypeReference
         {
             get
             {
@@ -561,6 +1821,44 @@ namespace ELearning.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<QuestionGroupType>("DataModel.QuestionGroupQuestionGroupType", "QuestionGroupType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "QuestionGroupFormTemplate", "FormTemplate")]
+        public Form ParentForm
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Form>("DataModel.QuestionGroupFormTemplate", "FormTemplate").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Form>("DataModel.QuestionGroupFormTemplate", "FormTemplate").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Form> ParentFormReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Form>("DataModel.QuestionGroupFormTemplate", "FormTemplate");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Form>("DataModel.QuestionGroupFormTemplate", "FormTemplate", value);
                 }
             }
         }
@@ -589,6 +1887,491 @@ namespace ELearning.Data
             questionGroupType.ID = id;
             questionGroupType.Name = name;
             return questionGroupType;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="QuestionInstance")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class QuestionInstance : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new QuestionInstance object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="index">Initial value of the Index property.</param>
+        /// <param name="questionID">Initial value of the QuestionID property.</param>
+        /// <param name="formInstanceID">Initial value of the FormInstanceID property.</param>
+        public static QuestionInstance CreateQuestionInstance(global::System.Int32 id, global::System.Int32 index, global::System.Int32 questionID, global::System.Int32 formInstanceID)
+        {
+            QuestionInstance questionInstance = new QuestionInstance();
+            questionInstance.ID = id;
+            questionInstance.Index = index;
+            questionInstance.QuestionID = questionID;
+            questionInstance.FormInstanceID = formInstanceID;
+            return questionInstance;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Index
+        {
+            get
+            {
+                return _Index;
+            }
+            set
+            {
+                OnIndexChanging(value);
+                ReportPropertyChanging("Index");
+                _Index = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Index");
+                OnIndexChanged();
+            }
+        }
+        private global::System.Int32 _Index;
+        partial void OnIndexChanging(global::System.Int32 value);
+        partial void OnIndexChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QuestionID
+        {
+            get
+            {
+                return _QuestionID;
+            }
+            set
+            {
+                OnQuestionIDChanging(value);
+                ReportPropertyChanging("QuestionID");
+                _QuestionID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QuestionID");
+                OnQuestionIDChanged();
+            }
+        }
+        private global::System.Int32 _QuestionID;
+        partial void OnQuestionIDChanging(global::System.Int32 value);
+        partial void OnQuestionIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FormInstanceID
+        {
+            get
+            {
+                return _FormInstanceID;
+            }
+            set
+            {
+                OnFormInstanceIDChanging(value);
+                ReportPropertyChanging("FormInstanceID");
+                _FormInstanceID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormInstanceID");
+                OnFormInstanceIDChanged();
+            }
+        }
+        private global::System.Int32 _FormInstanceID;
+        partial void OnFormInstanceIDChanging(global::System.Int32 value);
+        partial void OnFormInstanceIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "QuestionInstanceQuestionTemplate", "Question")]
+        public Question QuestionTemplate
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Question>("DataModel.QuestionInstanceQuestionTemplate", "Question").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Question>("DataModel.QuestionInstanceQuestionTemplate", "Question").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Question> QuestionTemplateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Question>("DataModel.QuestionInstanceQuestionTemplate", "Question");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Question>("DataModel.QuestionInstanceQuestionTemplate", "Question", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceQuestionInstance", "FormInstance")]
+        public FormInstance ParentForm
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstance>("DataModel.FormInstanceQuestionInstance", "FormInstance").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstance>("DataModel.FormInstanceQuestionInstance", "FormInstance").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FormInstance> ParentFormReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormInstance>("DataModel.FormInstanceQuestionInstance", "FormInstance");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FormInstance>("DataModel.FormInstanceQuestionInstance", "FormInstance", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="User")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class User : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new User object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        /// <param name="userTypeID">Initial value of the UserTypeID property.</param>
+        public static User CreateUser(global::System.Int32 id, global::System.String email, global::System.Int32 userTypeID)
+        {
+            User user = new User();
+            user.ID = id;
+            user.Email = email;
+            user.UserTypeID = userTypeID;
+            return user;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserTypeID
+        {
+            get
+            {
+                return _UserTypeID;
+            }
+            set
+            {
+                OnUserTypeIDChanging(value);
+                ReportPropertyChanging("UserTypeID");
+                _UserTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserTypeID");
+                OnUserTypeIDChanged();
+            }
+        }
+        private global::System.Int32 _UserTypeID;
+        partial void OnUserTypeIDChanging(global::System.Int32 value);
+        partial void OnUserTypeIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "GroupMembers", "Group")]
+        public EntityCollection<Group> Groups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Group>("DataModel.GroupMembers", "Group");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("DataModel.GroupMembers", "Group", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "UserUserType", "UserType")]
+        public UserType Type
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserType>("DataModel.UserUserType", "UserType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserType>("DataModel.UserUserType", "UserType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<UserType> TypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserType>("DataModel.UserUserType", "UserType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserType>("DataModel.UserUserType", "UserType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceUser", "FormInstance")]
+        public EntityCollection<FormInstance> SolvedForms
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FormInstance>("DataModel.FormInstanceUser", "FormInstance");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FormInstance>("DataModel.FormInstanceUser", "FormInstance", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="UserType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class UserType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new UserType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static UserType CreateUserType(global::System.Int32 id, global::System.String name)
+        {
+            UserType userType = new UserType();
+            userType.ID = id;
+            userType.Name = name;
+            return userType;
         }
 
         #endregion
