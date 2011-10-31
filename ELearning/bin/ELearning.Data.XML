@@ -39,6 +39,56 @@
             Deprecated Method for adding a new object to the QuestionGroupType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToUser(ELearning.Data.User)">
+            <summary>
+            Deprecated Method for adding a new object to the User EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToGroup(ELearning.Data.Group)">
+            <summary>
+            Deprecated Method for adding a new object to the Group EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToUserType(ELearning.Data.UserType)">
+            <summary>
+            Deprecated Method for adding a new object to the UserType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToForm(ELearning.Data.Form)">
+            <summary>
+            Deprecated Method for adding a new object to the Form EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormType(ELearning.Data.FormType)">
+            <summary>
+            Deprecated Method for adding a new object to the FormType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormInstance(ELearning.Data.FormInstance)">
+            <summary>
+            Deprecated Method for adding a new object to the FormInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionInstance(ELearning.Data.QuestionInstance)">
+            <summary>
+            Deprecated Method for adding a new object to the QuestionInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormInstanceEvaluation(ELearning.Data.FormInstanceEvaluation)">
+            <summary>
+            Deprecated Method for adding a new object to the FormInstanceEvaluation EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToAnswer(ELearning.Data.Answer)">
+            <summary>
+            Deprecated Method for adding a new object to the Answer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToChoiceItem(ELearning.Data.ChoiceItem)">
+            <summary>
+            Deprecated Method for adding a new object to the ChoiceItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
         <member name="P:ELearning.Data.DataModelContainer.Question">
             <summary>
             No Metadata Documentation available.
@@ -50,6 +100,404 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.DataModelContainer.QuestionGroupType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Group">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.UserType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Form">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.QuestionInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormInstanceEvaluation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Answer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.ChoiceItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.Answer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Answer.CreateAnswer(System.Int32)">
+            <summary>
+            Create a new Answer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+        </member>
+        <member name="P:ELearning.Data.Answer.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.Form">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Form.CreateForm(System.Int32,System.String,System.String,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Create a new Form object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="created">Initial value of the Created property.</param>
+            <param name="formTypeID">Initial value of the FormTypeID property.</param>
+            <param name="authorID">Initial value of the AuthorID property.</param>
+        </member>
+        <member name="P:ELearning.Data.Form.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.TimeToFill">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.Shuffle">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.Created">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.FormTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.AuthorID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.Type">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.TypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.Author">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.AuthorReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.QuestionGroups">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.FormInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.FormInstance.CreateFormInstance(System.Int32,System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Create a new FormInstance object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="created">Initial value of the Created property.</param>
+            <param name="submited">Initial value of the Submited property.</param>
+            <param name="solverID">Initial value of the SolverID property.</param>
+            <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.Created">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.Submited">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.SolverID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.FormTemplateID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.Solver">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.SolverReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.FormTemplate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.FormTemplateReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.Questions">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.Evaluation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstance.EvaluationReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.FormInstanceEvaluation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.FormInstanceEvaluation.CreateFormInstanceEvaluation(System.Int32,System.String,System.String)">
+            <summary>
+            Create a new FormInstanceEvaluation object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="mark">Initial value of the Mark property.</param>
+            <param name="note">Initial value of the Note property.</param>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.Mark">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.Note">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.FormInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.FormInstanceReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.FormType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.FormType.CreateFormType(System.Int32,System.String)">
+            <summary>
+            Create a new FormType object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+        </member>
+        <member name="P:ELearning.Data.FormType.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormType.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.Group">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Group.CreateGroup(System.Int32,System.String,System.Int32)">
+            <summary>
+            Create a new Group object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+            <param name="supervisorID">Initial value of the SupervisorID property.</param>
+        </member>
+        <member name="P:ELearning.Data.Group.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Group.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Group.SupervisorID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Group.Supervisor">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Group.SupervisorReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Group.Members">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceAnswer.CreateChoiceAnswer(System.Int32,System.Int32)">
+            <summary>
+            Create a new ChoiceAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="index">Initial value of the Index property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceItem.CreateChoiceItem(System.Int32,System.Int32,System.String,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Create a new ChoiceItem object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="choiceQuestionID">Initial value of the ChoiceQuestionID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="isCorrect">Initial value of the IsCorrect property.</param>
+            <param name="explanation">Initial value of the Explanation property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ChoiceQuestionID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.IsCorrect">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Explanation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ImageUrl">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceQuestion">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -107,18 +555,38 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="M:ELearning.Data.ChoiceQuestion.CreateChoiceQuestion(System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            Create a new ChoiceQuestion object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+            <param name="shuffle">Initial value of the Shuffle property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceQuestion.Shuffle">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceQuestion.ChoiceItems">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:ELearning.Data.QuestionGroup">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32)">
+        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Create a new QuestionGroup object.
             </summary>
             <param name="id">Initial value of the ID property.</param>
             <param name="index">Initial value of the Index property.</param>
             <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
+            <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
         </member>
         <member name="P:ELearning.Data.QuestionGroup.ID">
             <summary>
@@ -140,17 +608,32 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.QuestionGroup.Question">
+        <member name="P:ELearning.Data.QuestionGroup.FormTemplateID">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupType">
+        <member name="P:ELearning.Data.QuestionGroup.Questions">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeReference">
+        <member name="P:ELearning.Data.QuestionGroup.Type">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.TypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ParentForm">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ParentFormReference">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -173,6 +656,217 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.QuestionGroupType.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.QuestionInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.QuestionInstance.CreateQuestionInstance(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create a new QuestionInstance object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="questionID">Initial value of the QuestionID property.</param>
+            <param name="formInstanceID">Initial value of the FormInstanceID property.</param>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.QuestionID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.FormInstanceID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.QuestionTemplate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.QuestionTemplateReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.ParentForm">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.ParentFormReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.Answer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionInstance.AnswerReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ScaleAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ScaleAnswer.CreateScaleAnswer(System.Int32,System.Int32)">
+            <summary>
+            Create a new ScaleAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="value">Initial value of the Value property.</param>
+        </member>
+        <member name="P:ELearning.Data.ScaleAnswer.Value">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ScaleQuestion">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ScaleQuestion.CreateScaleQuestion(System.Int32,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+            Create a new ScaleQuestion object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+            <param name="minValue">Initial value of the MinValue property.</param>
+            <param name="minValueText">Initial value of the MinValueText property.</param>
+            <param name="maxValue">Initial value of the MaxValue property.</param>
+            <param name="maxValueText">Initial value of the MaxValueText property.</param>
+            <param name="increment">Initial value of the Increment property.</param>
+        </member>
+        <member name="P:ELearning.Data.ScaleQuestion.MinValue">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ScaleQuestion.MinValueText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ScaleQuestion.MaxValue">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ScaleQuestion.MaxValueText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ScaleQuestion.Increment">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.TextAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.TextAnswer.CreateTextAnswer(System.Int32,System.String)">
+            <summary>
+            Create a new TextAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+        </member>
+        <member name="P:ELearning.Data.TextAnswer.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32)">
+            <summary>
+            Create a new User object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="email">Initial value of the Email property.</param>
+            <param name="userTypeID">Initial value of the UserTypeID property.</param>
+        </member>
+        <member name="P:ELearning.Data.User.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Email">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.UserTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Groups">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Type">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.TypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.SolvedForms">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.UserType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.UserType.CreateUserType(System.Int32,System.String)">
+            <summary>
+            Create a new UserType object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+        </member>
+        <member name="P:ELearning.Data.UserType.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.UserType.Name">
             <summary>
             No Metadata Documentation available.
             </summary>

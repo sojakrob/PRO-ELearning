@@ -26,5 +26,11 @@
             </summary>
             <param name="persistentStorage"></param>
         </member>
+        <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+            <summary>
+            Initializes a new instance of the FormManager class.
+            </summary>
+            <param name="persistentStorage"></param>
+        </member>
     </members>
 </doc>

@@ -31,6 +31,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceQuestionTemplate", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionInstance), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.Question), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FormInstanceQuestionInstance", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionInstance), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstanceEvaluation))]
+[assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceAnswer", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionInstance), "Answer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.Answer))]
+[assembly: EdmRelationshipAttribute("DataModel", "ChoiceQuestionChoiceItem", "ChoiceQuestion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceQuestion), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceItem), true)]
 
 #endregion
 
@@ -257,6 +259,38 @@ namespace ELearning.Data
             }
         }
         private ObjectSet<FormInstanceEvaluation> _FormInstanceEvaluation;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Answer> Answer
+        {
+            get
+            {
+                if ((_Answer == null))
+                {
+                    _Answer = base.CreateObjectSet<Answer>("Answer");
+                }
+                return _Answer;
+            }
+        }
+        private ObjectSet<Answer> _Answer;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ChoiceItem> ChoiceItem
+        {
+            get
+            {
+                if ((_ChoiceItem == null))
+                {
+                    _ChoiceItem = base.CreateObjectSet<ChoiceItem>("ChoiceItem");
+                }
+                return _ChoiceItem;
+            }
+        }
+        private ObjectSet<ChoiceItem> _ChoiceItem;
 
         #endregion
         #region AddTo Methods
@@ -348,6 +382,22 @@ namespace ELearning.Data
         {
             base.AddObject("FormInstanceEvaluation", formInstanceEvaluation);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Answer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAnswer(Answer answer)
+        {
+            base.AddObject("Answer", answer);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ChoiceItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToChoiceItem(ChoiceItem choiceItem)
+        {
+            base.AddObject("ChoiceItem", choiceItem);
+        }
 
         #endregion
     }
@@ -356,6 +406,64 @@ namespace ELearning.Data
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Answer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    [KnownTypeAttribute(typeof(TextAnswer))]
+    [KnownTypeAttribute(typeof(ChoiceAnswer))]
+    [KnownTypeAttribute(typeof(ScaleAnswer))]
+    public partial class Answer : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Answer object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static Answer CreateAnswer(global::System.Int32 id)
+        {
+            Answer answer = new Answer();
+            answer.ID = id;
+            return answer;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+
+        #endregion
+    
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -471,7 +579,7 @@ namespace ELearning.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.TimeSpan> TimeToFill
+        public Nullable<global::System.DateTime> TimeToFill
         {
             get
             {
@@ -486,8 +594,8 @@ namespace ELearning.Data
                 OnTimeToFillChanged();
             }
         }
-        private Nullable<global::System.TimeSpan> _TimeToFill;
-        partial void OnTimeToFillChanging(Nullable<global::System.TimeSpan> value);
+        private Nullable<global::System.DateTime> _TimeToFill;
+        partial void OnTimeToFillChanging(Nullable<global::System.DateTime> value);
         partial void OnTimeToFillChanged();
     
         /// <summary>
@@ -1391,9 +1499,357 @@ namespace ELearning.Data
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ChoiceAnswer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ChoiceAnswer : Answer
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ChoiceAnswer object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="index">Initial value of the Index property.</param>
+        public static ChoiceAnswer CreateChoiceAnswer(global::System.Int32 id, global::System.Int32 index)
+        {
+            ChoiceAnswer choiceAnswer = new ChoiceAnswer();
+            choiceAnswer.ID = id;
+            choiceAnswer.Index = index;
+            return choiceAnswer;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Index
+        {
+            get
+            {
+                return _Index;
+            }
+            set
+            {
+                OnIndexChanging(value);
+                ReportPropertyChanging("Index");
+                _Index = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Index");
+                OnIndexChanged();
+            }
+        }
+        private global::System.Int32 _Index;
+        partial void OnIndexChanging(global::System.Int32 value);
+        partial void OnIndexChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ChoiceItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ChoiceItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ChoiceItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="choiceQuestionID">Initial value of the ChoiceQuestionID property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="index">Initial value of the Index property.</param>
+        /// <param name="isCorrect">Initial value of the IsCorrect property.</param>
+        /// <param name="explanation">Initial value of the Explanation property.</param>
+        public static ChoiceItem CreateChoiceItem(global::System.Int32 id, global::System.Int32 choiceQuestionID, global::System.String text, global::System.Int32 index, global::System.Boolean isCorrect, global::System.String explanation)
+        {
+            ChoiceItem choiceItem = new ChoiceItem();
+            choiceItem.ID = id;
+            choiceItem.ChoiceQuestionID = choiceQuestionID;
+            choiceItem.Text = text;
+            choiceItem.Index = index;
+            choiceItem.IsCorrect = isCorrect;
+            choiceItem.Explanation = explanation;
+            return choiceItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ChoiceQuestionID
+        {
+            get
+            {
+                return _ChoiceQuestionID;
+            }
+            set
+            {
+                OnChoiceQuestionIDChanging(value);
+                ReportPropertyChanging("ChoiceQuestionID");
+                _ChoiceQuestionID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ChoiceQuestionID");
+                OnChoiceQuestionIDChanged();
+            }
+        }
+        private global::System.Int32 _ChoiceQuestionID;
+        partial void OnChoiceQuestionIDChanging(global::System.Int32 value);
+        partial void OnChoiceQuestionIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Index
+        {
+            get
+            {
+                return _Index;
+            }
+            set
+            {
+                OnIndexChanging(value);
+                ReportPropertyChanging("Index");
+                _Index = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Index");
+                OnIndexChanged();
+            }
+        }
+        private global::System.Int32 _Index;
+        partial void OnIndexChanging(global::System.Int32 value);
+        partial void OnIndexChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsCorrect
+        {
+            get
+            {
+                return _IsCorrect;
+            }
+            set
+            {
+                OnIsCorrectChanging(value);
+                ReportPropertyChanging("IsCorrect");
+                _IsCorrect = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsCorrect");
+                OnIsCorrectChanged();
+            }
+        }
+        private global::System.Boolean _IsCorrect;
+        partial void OnIsCorrectChanging(global::System.Boolean value);
+        partial void OnIsCorrectChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Explanation
+        {
+            get
+            {
+                return _Explanation;
+            }
+            set
+            {
+                OnExplanationChanging(value);
+                ReportPropertyChanging("Explanation");
+                _Explanation = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Explanation");
+                OnExplanationChanged();
+            }
+        }
+        private global::System.String _Explanation;
+        partial void OnExplanationChanging(global::System.String value);
+        partial void OnExplanationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageUrl
+        {
+            get
+            {
+                return _ImageUrl;
+            }
+            set
+            {
+                OnImageUrlChanging(value);
+                ReportPropertyChanging("ImageUrl");
+                _ImageUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageUrl");
+                OnImageUrlChanged();
+            }
+        }
+        private global::System.String _ImageUrl;
+        partial void OnImageUrlChanging(global::System.String value);
+        partial void OnImageUrlChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ChoiceQuestion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ChoiceQuestion : Question
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ChoiceQuestion object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+        /// <param name="shuffle">Initial value of the Shuffle property.</param>
+        public static ChoiceQuestion CreateChoiceQuestion(global::System.Int32 id, global::System.String text, global::System.Int32 questionGroupID, global::System.String shuffle)
+        {
+            ChoiceQuestion choiceQuestion = new ChoiceQuestion();
+            choiceQuestion.ID = id;
+            choiceQuestion.Text = text;
+            choiceQuestion.QuestionGroupID = questionGroupID;
+            choiceQuestion.Shuffle = shuffle;
+            return choiceQuestion;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Shuffle
+        {
+            get
+            {
+                return _Shuffle;
+            }
+            set
+            {
+                OnShuffleChanging(value);
+                ReportPropertyChanging("Shuffle");
+                _Shuffle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Shuffle");
+                OnShuffleChanged();
+            }
+        }
+        private global::System.String _Shuffle;
+        partial void OnShuffleChanging(global::System.String value);
+        partial void OnShuffleChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "ChoiceQuestionChoiceItem", "ChoiceItem")]
+        public EntityCollection<ChoiceItem> ChoiceItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ChoiceItem>("DataModel.ChoiceQuestionChoiceItem", "ChoiceItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ChoiceItem>("DataModel.ChoiceQuestionChoiceItem", "ChoiceItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Question")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
+    [KnownTypeAttribute(typeof(ChoiceQuestion))]
+    [KnownTypeAttribute(typeof(ScaleQuestion))]
     public partial class Question : EntityObject
     {
         #region Factory Method
@@ -2155,8 +2611,316 @@ namespace ELearning.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "QuestionInstanceAnswer", "Answer")]
+        public Answer Answer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Answer>("DataModel.QuestionInstanceAnswer", "Answer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Answer>("DataModel.QuestionInstanceAnswer", "Answer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Answer> AnswerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Answer>("DataModel.QuestionInstanceAnswer", "Answer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Answer>("DataModel.QuestionInstanceAnswer", "Answer", value);
+                }
+            }
+        }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ScaleAnswer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ScaleAnswer : Answer
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ScaleAnswer object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="value">Initial value of the Value property.</param>
+        public static ScaleAnswer CreateScaleAnswer(global::System.Int32 id, global::System.Int32 value)
+        {
+            ScaleAnswer scaleAnswer = new ScaleAnswer();
+            scaleAnswer.ID = id;
+            scaleAnswer.Value = value;
+            return scaleAnswer;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private global::System.Int32 _Value;
+        partial void OnValueChanging(global::System.Int32 value);
+        partial void OnValueChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ScaleQuestion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ScaleQuestion : Question
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ScaleQuestion object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+        /// <param name="minValue">Initial value of the MinValue property.</param>
+        /// <param name="minValueText">Initial value of the MinValueText property.</param>
+        /// <param name="maxValue">Initial value of the MaxValue property.</param>
+        /// <param name="maxValueText">Initial value of the MaxValueText property.</param>
+        /// <param name="increment">Initial value of the Increment property.</param>
+        public static ScaleQuestion CreateScaleQuestion(global::System.Int32 id, global::System.String text, global::System.Int32 questionGroupID, global::System.Int32 minValue, global::System.String minValueText, global::System.Int32 maxValue, global::System.String maxValueText, global::System.Int32 increment)
+        {
+            ScaleQuestion scaleQuestion = new ScaleQuestion();
+            scaleQuestion.ID = id;
+            scaleQuestion.Text = text;
+            scaleQuestion.QuestionGroupID = questionGroupID;
+            scaleQuestion.MinValue = minValue;
+            scaleQuestion.MinValueText = minValueText;
+            scaleQuestion.MaxValue = maxValue;
+            scaleQuestion.MaxValueText = maxValueText;
+            scaleQuestion.Increment = increment;
+            return scaleQuestion;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MinValue
+        {
+            get
+            {
+                return _MinValue;
+            }
+            set
+            {
+                OnMinValueChanging(value);
+                ReportPropertyChanging("MinValue");
+                _MinValue = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MinValue");
+                OnMinValueChanged();
+            }
+        }
+        private global::System.Int32 _MinValue;
+        partial void OnMinValueChanging(global::System.Int32 value);
+        partial void OnMinValueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MinValueText
+        {
+            get
+            {
+                return _MinValueText;
+            }
+            set
+            {
+                OnMinValueTextChanging(value);
+                ReportPropertyChanging("MinValueText");
+                _MinValueText = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("MinValueText");
+                OnMinValueTextChanged();
+            }
+        }
+        private global::System.String _MinValueText;
+        partial void OnMinValueTextChanging(global::System.String value);
+        partial void OnMinValueTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MaxValue
+        {
+            get
+            {
+                return _MaxValue;
+            }
+            set
+            {
+                OnMaxValueChanging(value);
+                ReportPropertyChanging("MaxValue");
+                _MaxValue = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MaxValue");
+                OnMaxValueChanged();
+            }
+        }
+        private global::System.Int32 _MaxValue;
+        partial void OnMaxValueChanging(global::System.Int32 value);
+        partial void OnMaxValueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MaxValueText
+        {
+            get
+            {
+                return _MaxValueText;
+            }
+            set
+            {
+                OnMaxValueTextChanging(value);
+                ReportPropertyChanging("MaxValueText");
+                _MaxValueText = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("MaxValueText");
+                OnMaxValueTextChanged();
+            }
+        }
+        private global::System.String _MaxValueText;
+        partial void OnMaxValueTextChanging(global::System.String value);
+        partial void OnMaxValueTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Increment
+        {
+            get
+            {
+                return _Increment;
+            }
+            set
+            {
+                OnIncrementChanging(value);
+                ReportPropertyChanging("Increment");
+                _Increment = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Increment");
+                OnIncrementChanged();
+            }
+        }
+        private global::System.Int32 _Increment;
+        partial void OnIncrementChanging(global::System.Int32 value);
+        partial void OnIncrementChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="TextAnswer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TextAnswer : Answer
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TextAnswer object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        public static TextAnswer CreateTextAnswer(global::System.Int32 id, global::System.String text)
+        {
+            TextAnswer textAnswer = new TextAnswer();
+            textAnswer.ID = id;
+            textAnswer.Text = text;
+            return textAnswer;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

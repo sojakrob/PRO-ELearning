@@ -1,0 +1,39 @@
+@model ELearning.Data.QuestionGroup
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Index)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Index)
+    @Html.ValidationMessageFor(model => model.Index)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IsRequired)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IsRequired)
+    @Html.ValidationMessageFor(model => model.IsRequired)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FormTemplateID)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FormTemplateID)
+    @Html.ValidationMessageFor(model => model.FormTemplateID)
+</div>
+
+<div class="editor-label">
+    QuestionGroupType
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.QuestionGroupTypeID, ((IEnumerable<ELearning.Data.QuestionGroupType>)ViewBag.PossibleQuestionGroupTypes).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.ID.ToString(),
+        Selected = (Model != null) && (option.ID == Model.QuestionGroupTypeID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.QuestionGroupTypeID)
+</div>

@@ -1,0 +1,47 @@
+@model ELearning.Data.QuestionGroup
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>QuestionGroup</legend>
+
+    <div class="display-label">Index</div>
+    <div class="display-field">@Model.Index</div>
+
+    <div class="display-label">IsRequired</div>
+    <div class="display-field">@Model.IsRequired</div>
+
+    <div class="display-label">FormTemplateID</div>
+    <div class="display-field">@Model.FormTemplateID</div>
+
+    <div class="display-label">Questions</div>
+    <div class="display-field">@(Model.Questions == null ? "None" : Model.Questions.Count.ToString())</div>
+
+    <div class="display-label">Type</div>
+    <div class="display-field">@(Model.Type == null ? "None" : Model.Type.Name)</div>
+
+    <div class="display-label">TypeReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeReference).ToString()</div>
+
+    <div class="display-label">ParentForm</div>
+    <div class="display-field">@(Model.ParentForm == null ? "None" : Model.ParentForm.Name)</div>
+
+    <div class="display-label">ParentFormReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ParentFormReference).ToString()</div>
+
+    <div class="display-label">TypeEnum</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeEnum).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

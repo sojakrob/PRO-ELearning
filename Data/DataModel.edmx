@@ -9,6 +9,22 @@
     <EntitySet Name="Question" EntityType="DataModel.Store.Question" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuestionGroup" EntityType="DataModel.Store.QuestionGroup" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuestionGroupType" EntityType="DataModel.Store.QuestionGroupType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="DataModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Group" EntityType="DataModel.Store.Group" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserType" EntityType="DataModel.Store.UserType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Form" EntityType="DataModel.Store.Form" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormType" EntityType="DataModel.Store.FormType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormInstance" EntityType="DataModel.Store.FormInstance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuestionInstance" EntityType="DataModel.Store.QuestionInstance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormInstanceEvaluation" EntityType="DataModel.Store.FormInstanceEvaluation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answer" EntityType="DataModel.Store.Answer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChoiceItem" EntityType="DataModel.Store.ChoiceItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answer_TextAnswer" EntityType="DataModel.Store.Answer_TextAnswer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answer_ScaleAnswer" EntityType="DataModel.Store.Answer_ScaleAnswer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.Store.QuestionGroupQuestion">
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
       <End Role="Question" EntitySet="Question" />
@@ -16,6 +32,82 @@
     <AssociationSet Name="QuestionGroupQuestionGroupType" Association="DataModel.Store.QuestionGroupQuestionGroupType">
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
       <End Role="QuestionGroupType" EntitySet="QuestionGroupType" />
+    </AssociationSet>
+    <AssociationSet Name="Supervisor" Association="DataModel.Store.Supervisor">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupMembers_Group" Association="DataModel.Store.FK_GroupMembers_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="GroupMembers" EntitySet="GroupMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupMembers_User" Association="DataModel.Store.FK_GroupMembers_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="GroupMembers" EntitySet="GroupMembers" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserType" Association="DataModel.Store.UserUserType">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserType" EntitySet="UserType" />
+    </AssociationSet>
+    <AssociationSet Name="FormTemplateFormType" Association="DataModel.Store.FormTemplateFormType">
+      <End Role="FormTemplate" EntitySet="Form" />
+      <End Role="FormType" EntitySet="FormType" />
+    </AssociationSet>
+    <AssociationSet Name="FormTemplateAuthor" Association="DataModel.Store.FormTemplateAuthor">
+      <End Role="FormTemplate" EntitySet="Form" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionGroupFormTemplate" Association="DataModel.Store.QuestionGroupFormTemplate">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="FormTemplate" EntitySet="Form" />
+    </AssociationSet>
+    <AssociationSet Name="FormInstanceUser" Association="DataModel.Store.FormInstanceUser">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FormInstanceFormTemplate" Association="DataModel.Store.FormInstanceFormTemplate">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="FormTemplate" EntitySet="Form" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionInstanceQuestionTemplate" Association="DataModel.Store.QuestionInstanceQuestionTemplate">
+      <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FormInstanceQuestionInstance" Association="DataModel.Store.FormInstanceQuestionInstance">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FormInstanceFormInstanceEvaluation" Association="DataModel.Store.FormInstanceFormInstanceEvaluation">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="FormInstanceEvaluation" EntitySet="FormInstanceEvaluation" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionInstanceAnswer" Association="DataModel.Store.QuestionInstanceAnswer">
+      <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="ChoiceQuestionChoiceItem" Association="DataModel.Store.ChoiceQuestionChoiceItem">
+      <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
+      <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextAnswer_inherits_Answer" Association="DataModel.Store.FK_TextAnswer_inherits_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="TextAnswer" EntitySet="Answer_TextAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChoiceAnswer_inherits_Answer" Association="DataModel.Store.FK_ChoiceAnswer_inherits_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScaleAnswer_inherits_Answer" Association="DataModel.Store.FK_ScaleAnswer_inherits_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="ScaleAnswer" EntitySet="Answer_ScaleAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScaleQuestion_inherits_Question" Association="DataModel.Store.FK_ScaleQuestion_inherits_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="ScaleQuestion" EntitySet="Question_ScaleQuestion" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
@@ -37,6 +129,7 @@
     <Property Name="Index" Type="int" Nullable="false" />
     <Property Name="IsRequired" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="QuestionGroupTypeID" Type="int" Nullable="false" />
+    <Property Name="FormTemplateID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="QuestionGroupType">
     <Key>
@@ -44,6 +137,143 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SupervisorID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TimeToFill" Type="datetime" Nullable="true" />
+    <Property Name="Shuffle" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="FormTypeID" Type="int" Nullable="false" />
+    <Property Name="AuthorID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormInstance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Submited" Type="datetime" Nullable="false" />
+    <Property Name="SolverID" Type="int" Nullable="false" />
+    <Property Name="FormTemplateID" Type="int" Nullable="false" />
+    <Property Name="Evaluation_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionInstance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="FormInstanceID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormInstanceEvaluation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionInstanceAnswer_Answer_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChoiceItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChoiceQuestionID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="IsCorrect" Type="bit" Nullable="false" />
+    <Property Name="Explanation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Question_ChoiceQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Shuffle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer_TextAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer_ChoiceAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Index" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer_ScaleAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Value" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question_ScaleQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="MinValue" Type="int" Nullable="false" />
+    <Property Name="MinValueText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MaxValue" Type="int" Nullable="false" />
+    <Property Name="MaxValueText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Increment" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupMembers">
+    <Key>
+      <PropertyRef Name="Groups_ID" />
+      <PropertyRef Name="Members_ID" />
+    </Key>
+    <Property Name="Groups_ID" Type="int" Nullable="false" />
+    <Property Name="Members_ID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="QuestionGroupQuestion">
     <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="1" />
@@ -66,6 +296,234 @@
       </Principal>
       <Dependent Role="QuestionGroup">
         <PropertyRef Name="QuestionGroupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Supervisor">
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="SupervisorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserUserType">
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="*" />
+    <End Role="UserType" Type="DataModel.Store.UserType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormTemplateFormType">
+    <End Role="FormTemplate" Type="DataModel.Store.Form" Multiplicity="*" />
+    <End Role="FormType" Type="DataModel.Store.FormType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormTemplate">
+        <PropertyRef Name="FormTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormTemplateAuthor">
+    <End Role="FormTemplate" Type="DataModel.Store.Form" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormTemplate">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuestionGroupFormTemplate">
+    <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="*" />
+    <End Role="FormTemplate" Type="DataModel.Store.Form" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormTemplate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionGroup">
+        <PropertyRef Name="FormTemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormInstanceUser">
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="SolverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormInstanceFormTemplate">
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
+    <End Role="FormTemplate" Type="DataModel.Store.Form" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormTemplate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="FormTemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuestionInstanceQuestionTemplate">
+    <End Role="QuestionInstance" Type="DataModel.Store.QuestionInstance" Multiplicity="*" />
+    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionInstance">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormInstanceQuestionInstance">
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="1" />
+    <End Role="QuestionInstance" Type="DataModel.Store.QuestionInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormInstance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionInstance">
+        <PropertyRef Name="FormInstanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormInstanceFormInstanceEvaluation">
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
+    <End Role="FormInstanceEvaluation" Type="DataModel.Store.FormInstanceEvaluation" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormInstanceEvaluation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="Evaluation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuestionInstanceAnswer">
+    <End Role="QuestionInstance" Type="DataModel.Store.QuestionInstance" Multiplicity="1" />
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionInstance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionInstanceAnswer_Answer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChoiceQuestionChoiceItem">
+    <End Role="ChoiceQuestion" Type="DataModel.Store.Question_ChoiceQuestion" Multiplicity="1" />
+    <End Role="ChoiceItem" Type="DataModel.Store.ChoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceItem">
+        <PropertyRef Name="ChoiceQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupMembers_Group">
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
+    <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupMembers">
+        <PropertyRef Name="Groups_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupMembers_User">
+    <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupMembers">
+        <PropertyRef Name="Members_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChoiceQuestion_inherits_Question">
+    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1" />
+    <End Role="ChoiceQuestion" Type="DataModel.Store.Question_ChoiceQuestion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceQuestion">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextAnswer_inherits_Answer">
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="TextAnswer" Type="DataModel.Store.Answer_TextAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextAnswer">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChoiceAnswer_inherits_Answer">
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="ChoiceAnswer" Type="DataModel.Store.Answer_ChoiceAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceAnswer">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScaleAnswer_inherits_Answer">
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="ScaleAnswer" Type="DataModel.Store.Answer_ScaleAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ScaleAnswer">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScaleQuestion_inherits_Question">
+    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1" />
+    <End Role="ScaleQuestion" Type="DataModel.Store.Question_ScaleQuestion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ScaleQuestion">
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -136,6 +594,16 @@
           <AssociationSet Name="FormInstanceFormInstanceEvaluation" Association="DataModel.FormInstanceFormInstanceEvaluation">
             <End Role="FormInstance" EntitySet="FormInstance" />
             <End Role="FormInstanceEvaluation" EntitySet="FormInstanceEvaluation" />
+          </AssociationSet>
+          <EntitySet Name="Answer" EntityType="DataModel.Answer" />
+          <AssociationSet Name="QuestionInstanceAnswer" Association="DataModel.QuestionInstanceAnswer">
+            <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <EntitySet Name="ChoiceItem" EntityType="DataModel.ChoiceItem" />
+          <AssociationSet Name="ChoiceQuestionChoiceItem" Association="DataModel.ChoiceQuestionChoiceItem">
+            <End Role="ChoiceQuestion" EntitySet="Question" />
+            <End Role="ChoiceItem" EntitySet="ChoiceItem" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Question">
@@ -257,7 +725,7 @@
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
-          <Property Type="Time" Name="TimeToFill" Nullable="true" />
+          <Property Type="DateTime" Name="TimeToFill" Nullable="true" />
           <Property Type="Boolean" Name="Shuffle" Nullable="false" DefaultValue="False" />
           <Property Type="DateTime" Name="Created" Nullable="false" />
           <NavigationProperty Name="Type" Relationship="DataModel.FormTemplateFormType" FromRole="FormTemplate" ToRole="FormType" />
@@ -357,6 +825,7 @@
           <Property Type="Int32" Name="QuestionID" Nullable="false" />
           <NavigationProperty Name="ParentForm" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="QuestionInstance" ToRole="FormInstance" />
           <Property Type="Int32" Name="FormInstanceID" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="DataModel.QuestionInstanceAnswer" FromRole="QuestionInstance" ToRole="Answer" />
         </EntityType>
         <Association Name="QuestionInstanceQuestionTemplate">
           <End Type="DataModel.QuestionInstance" Role="QuestionInstance" Multiplicity="*" />
@@ -395,6 +864,60 @@
           <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
           <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="1" />
         </Association>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="QuestionInstanceAnswer">
+          <End Type="DataModel.QuestionInstance" Role="QuestionInstance" Multiplicity="1" />
+          <End Type="DataModel.Answer" Role="Answer" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="TextAnswer" BaseType="DataModel.Answer" >
+          <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChoiceAnswer" BaseType="DataModel.Answer" >
+          <Property Type="Int32" Name="Index" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScaleAnswer" BaseType="DataModel.Answer" >
+          <Property Type="Int32" Name="Value" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScaleQuestion" BaseType="DataModel.Question" >
+          <Property Type="Int32" Name="MinValue" Nullable="false" />
+          <Property Type="String" Name="MinValueText" Nullable="false" />
+          <Property Type="Int32" Name="MaxValue" Nullable="false" />
+          <Property Type="String" Name="MaxValueText" Nullable="false" />
+          <Property Type="Int32" Name="Increment" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChoiceQuestion" BaseType="DataModel.Question" >
+          <Property Type="String" Name="Shuffle" Nullable="false" />
+          <NavigationProperty Name="ChoiceItems" Relationship="DataModel.ChoiceQuestionChoiceItem" FromRole="ChoiceQuestion" ToRole="ChoiceItem" />
+        </EntityType>
+        <EntityType Name="ChoiceItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ChoiceQuestionID" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="Int32" Name="Index" Nullable="false" />
+          <Property Type="Boolean" Name="IsCorrect" Nullable="false" />
+          <Property Type="String" Name="Explanation" Nullable="false" />
+          <Property Type="String" Name="ImageUrl" Nullable="true" />
+        </EntityType>
+        <Association Name="ChoiceQuestionChoiceItem">
+          <End Type="DataModel.ChoiceQuestion" Role="ChoiceQuestion" Multiplicity="1" />
+          <End Type="DataModel.ChoiceItem" Role="ChoiceItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChoiceQuestion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChoiceItem">
+              <PropertyRef Name="ChoiceQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -412,6 +935,22 @@
           <ScalarProperty Name="QuestionGroupID" ColumnName="QuestionGroupID" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.ChoiceQuestion)">
+        <MappingFragment StoreEntitySet="Question_ChoiceQuestion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Shuffle" ColumnName="Shuffle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.ScaleQuestion)">
+        <MappingFragment StoreEntitySet="Question_ScaleQuestion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MinValueText" ColumnName="MinValueText" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MaxValueText" ColumnName="MaxValueText" />
+          <ScalarProperty Name="Increment" ColumnName="Increment" />
+        </MappingFragment>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="QuestionGroup">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.QuestionGroup)">
@@ -420,6 +959,7 @@
           <ScalarProperty Name="Index" ColumnName="Index" />
           <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
           <ScalarProperty Name="QuestionGroupTypeID" ColumnName="QuestionGroupTypeID" />
+          <ScalarProperty Name="FormTemplateID" ColumnName="FormTemplateID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -431,6 +971,146 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.User)">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Group)">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.UserType)">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Form">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Form)">
+        <MappingFragment StoreEntitySet="Form">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TimeToFill" ColumnName="TimeToFill" />
+          <ScalarProperty Name="Shuffle" ColumnName="Shuffle" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormType">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.FormType)">
+        <MappingFragment StoreEntitySet="FormType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormInstance">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.FormInstance)">
+        <MappingFragment StoreEntitySet="FormInstance">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Submited" ColumnName="Submited" />
+          <ScalarProperty Name="SolverID" ColumnName="SolverID" />
+          <ScalarProperty Name="FormTemplateID" ColumnName="FormTemplateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionInstance">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.QuestionInstance)">
+        <MappingFragment StoreEntitySet="QuestionInstance">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="FormInstanceID" ColumnName="FormInstanceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormInstanceEvaluation">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.FormInstanceEvaluation)">
+        <MappingFragment StoreEntitySet="FormInstanceEvaluation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Answer)">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextAnswer)">
+        <MappingFragment StoreEntitySet="Answer_TextAnswer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.ChoiceAnswer)">
+        <MappingFragment StoreEntitySet="Answer_ChoiceAnswer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.ScaleAnswer)">
+        <MappingFragment StoreEntitySet="Answer_ScaleAnswer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChoiceItem">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.ChoiceItem)">
+        <MappingFragment StoreEntitySet="ChoiceItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ChoiceQuestionID" ColumnName="ChoiceQuestionID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+          <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="Members_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FormInstanceFormInstanceEvaluation" TypeName="DataModel.FormInstanceFormInstanceEvaluation" StoreEntitySet="FormInstance">
+      <EndProperty Name="FormInstanceEvaluation">
+        <ScalarProperty Name="ID" ColumnName="Evaluation_ID" />
+      </EndProperty>
+      <EndProperty Name="FormInstance">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="QuestionInstanceAnswer" TypeName="DataModel.QuestionInstanceAnswer" StoreEntitySet="Answer">
+      <EndProperty Name="QuestionInstance">
+        <ScalarProperty Name="ID" ColumnName="QuestionInstanceAnswer_Answer_ID" />
+      </EndProperty>
+      <EndProperty Name="Answer">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -515,6 +1195,47 @@
         <AssociationConnector Association="DataModel.FormInstanceFormInstanceEvaluation">
           <ConnectorPoint PointX="3" PointY="7.3939925130208328" />
           <ConnectorPoint PointX="2" PointY="7.3939925130208328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.Answer" Width="1.5" PointX="6.125" PointY="11" Height="1.2110807291666657" />
+        <AssociationConnector Association="DataModel.QuestionInstanceAnswer">
+          <ConnectorPoint PointX="6.875" PointY="9.8648893229166656" />
+          <ConnectorPoint PointX="6.875" PointY="11" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.TextAnswer" Width="1.5" PointX="4.375" PointY="13.25" Height="1.2110807291666657" />
+        <InheritanceConnector EntityType="DataModel.TextAnswer" >
+          <ConnectorPoint PointX="6.875" PointY="12.211080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="12.875" />
+          <ConnectorPoint PointX="5.125" PointY="12.875" />
+          <ConnectorPoint PointX="5.125" PointY="13.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.ChoiceAnswer" Width="1.5" PointX="6.125" PointY="13.25" Height="1.2110807291666657" />
+        <InheritanceConnector EntityType="DataModel.ChoiceAnswer" >
+          <ConnectorPoint PointX="6.875" PointY="12.211080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="13.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.ScaleAnswer" Width="1.5" PointX="7.875" PointY="13.25" Height="1.2110807291666657" />
+        <InheritanceConnector EntityType="DataModel.ScaleAnswer" >
+          <ConnectorPoint PointX="6.875" PointY="12.211080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="12.875" />
+          <ConnectorPoint PointX="8.625" PointY="12.875" />
+          <ConnectorPoint PointX="8.625" PointY="13.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.ScaleQuestion" Width="1.5" PointX="9.125" PointY="9.75" Height="1.9802864583333335" />
+        <InheritanceConnector EntityType="DataModel.ScaleQuestion" >
+          <ConnectorPoint PointX="9.875" PointY="8.7398893229166674" />
+          <ConnectorPoint PointX="9.875" PointY="9.75" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.ChoiceQuestion" Width="1.5" PointX="11.125" PointY="9.75" Height="1.2110807291666657" />
+        <InheritanceConnector EntityType="DataModel.ChoiceQuestion" >
+          <ConnectorPoint PointX="9.875" PointY="8.7398893229166674" />
+          <ConnectorPoint PointX="9.875" PointY="9.375" />
+          <ConnectorPoint PointX="11.875" PointY="9.375" />
+          <ConnectorPoint PointX="11.875" PointY="9.75" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.ChoiceItem" Width="1.5" PointX="11.125" PointY="12" Height="2.3648893229166656" />
+        <AssociationConnector Association="DataModel.ChoiceQuestionChoiceItem">
+          <ConnectorPoint PointX="11.875" PointY="11.153382161458332" />
+          <ConnectorPoint PointX="11.875" PointY="12" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

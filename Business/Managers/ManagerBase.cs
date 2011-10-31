@@ -38,6 +38,7 @@ namespace ELearning.Business.Managers
         public virtual IQueryable<T> GetAll()
         {
             return Context.CreateObjectSet<T>();
+            // TODO Apply rights based on current user type
         }
 
         public T GetSingle(Expression<Func<T, bool>> predicate)

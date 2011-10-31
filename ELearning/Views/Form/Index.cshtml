@@ -1,0 +1,89 @@
+@model IEnumerable<ELearning.Data.Form>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Text
+        </th>
+        <th>
+            TimeToFill
+        </th>
+        <th>
+            Shuffle
+        </th>
+        <th>
+            Created
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            TypeReference
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            AuthorReference
+        </th>
+        <th>
+            QuestionGroups
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@item.Text
+        </td>
+        <td>
+			@String.Format("{0:g}", item.TimeToFill)
+        </td>
+        <td>
+			@item.Shuffle
+        </td>
+        <td>
+			@String.Format("{0:g}", item.Created)
+        </td>
+        <td>
+			@(item.Type == null ? "None" : item.Type.Name)
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.TypeReference).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Author).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.AuthorReference).ToString()
+        </td>
+        <td>
+			@(item.QuestionGroups == null ? "None" : item.QuestionGroups.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

@@ -9,6 +9,16 @@
 <body>
     <h1>E-Learning</h1>
 
+    <ul>
+        <li>
+            @Html.ActionLink("Testy", "Index", "Form")
+            <ul>
+                <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
+                <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
+            </ul>
+        </li>
+    </ul>
+
     @RenderBody()
 </body>
 </html>

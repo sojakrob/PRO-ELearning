@@ -6,12 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ELearning.Data;
+using ELearning.Business.Managers;
+using ELearning.Business.Storages;
 
 namespace ELearning.Controllers
 {   
     public class QuestionController : Controller
     {
-        private ELearning.Business.Managers.QuestionManager _questionManager = new Business.Managers.QuestionManager(ELearning.Business.Storages.WebStorage.Instance);
+        private QuestionManager _questionManager = new QuestionManager(WebStorage.Instance);
         // TODO Use Unity to inject the dependency
 
         //

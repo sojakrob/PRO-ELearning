@@ -1,0 +1,44 @@
+@model ELearning.Data.QuestionGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>QuestionGroup</legend>
+
+    <div class="display-label">Index</div>
+    <div class="display-field">@Model.Index</div>
+
+    <div class="display-label">IsRequired</div>
+    <div class="display-field">@Model.IsRequired</div>
+
+    <div class="display-label">FormTemplateID</div>
+    <div class="display-field">@Model.FormTemplateID</div>
+
+    <div class="display-label">Questions</div>
+    <div class="display-field">@(Model.Questions == null ? "None" : Model.Questions.Count.ToString())</div>
+
+    <div class="display-label">Type</div>
+    <div class="display-field">@(Model.Type == null ? "None" : Model.Type.Name)</div>
+
+    <div class="display-label">TypeReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeReference).ToString()</div>
+
+    <div class="display-label">ParentForm</div>
+    <div class="display-field">@(Model.ParentForm == null ? "None" : Model.ParentForm.Name)</div>
+
+    <div class="display-label">ParentFormReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ParentFormReference).ToString()</div>
+
+    <div class="display-label">TypeEnum</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeEnum).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
