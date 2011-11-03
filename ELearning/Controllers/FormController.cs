@@ -9,6 +9,7 @@ using ELearning.Data;
 using ELearning.Models;
 using ELearning.Business.Managers;
 using ELearning.Business.Storages;
+using ELearning.Models.Data;
 
 namespace ELearning.Controllers
 {   
@@ -47,7 +48,7 @@ namespace ELearning.Controllers
         // POST: /Form/Create
 
         [HttpPost]
-        public ActionResult Create(Form form)
+        public ActionResult Create(FormModel form)
         {
             if (ModelState.IsValid)
             {
