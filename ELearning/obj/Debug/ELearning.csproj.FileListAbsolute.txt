@@ -14,4 +14,3 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\EntityFramework.xml
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ResolveAssemblyReference.cache
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.pdb
-d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML

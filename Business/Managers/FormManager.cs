@@ -9,6 +9,16 @@ namespace ELearning.Business.Managers
 {
     public class FormManager : ManagerBase<Form>
     {
+        public int DefaultFormType
+        {
+            get
+            {
+                return 2;
+                // TODO Load from global settings
+            }
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the FormManager class.
         /// </summary>
@@ -35,7 +45,35 @@ namespace ELearning.Business.Managers
                 Context.Form.AddObject(form);
                 Context.SaveChanges();
             }
-            catch (Exception ex)
+            catch (System.Data.OptimisticConcurrencyException ex)
+            {
+                // TODO Log exception
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool EditForm(Form form)
+        {
+            Form trueForm = GetForm(form.ID);
+
+            if (!trueForm.Name.Equals(form.Name))
+                trueForm.Name = form.Name;
+            if (!trueForm.Text.Equals(form.Text))
+                trueForm.Text = form.Text;
+            if (!trueForm.FormTypeID.Equals(form.FormTypeID))
+                trueForm.FormTypeID = form.FormTypeID;
+            if (!trueForm.Shuffle.Equals(form.Shuffle))
+                trueForm.Shuffle = form.Shuffle;
+            if (!trueForm.TimeToFill.Equals(form.TimeToFill))
+                trueForm.TimeToFill = form.TimeToFill;
+
+            try
+            {
+                Context.SaveChanges();
+            }
+            catch (System.Data.OptimisticConcurrencyException ex)
             {
                 // TODO Log exception
                 return false;
@@ -48,10 +86,6 @@ namespace ELearning.Business.Managers
         {
             return Context.FormType;
         }
-        public int GetDefaultFormType()
-        {
-            return 2;
-            // TODO Load from global settings
-        }
+        
     }
 }

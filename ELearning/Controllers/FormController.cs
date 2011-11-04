@@ -13,16 +13,17 @@ using ELearning.Models.Data;
 
 namespace ELearning.Controllers
 {   
-    public class FormController : Controller
+    public class FormController : BaseController
     {
-        private FormManager _formManager = new FormManager(WebStorage.Instance);
+        // TODO Use Unity injection
+        FormManager _formManager = new FormManager(WebStorage.Instance);
 
         //
         // GET: /Form/
 
         public ViewResult Index()
         {
-            return View(_formManager.GetAll());
+            return View(ModelsFromArray<Form, FormModel>(_formManager.GetAll()));
         }
 
         //
@@ -31,7 +32,7 @@ namespace ELearning.Controllers
         public ViewResult Details(int id)
         {
             Form form = _formManager.GetForm(id);
-            return View(form);
+            return View(new FormModel(form));
         }
 
         //
@@ -39,8 +40,9 @@ namespace ELearning.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.FormTypes = _formManager.GetFormTypes();
-            ViewBag.DefaultFormType = _formManager.GetDefaultFormType();
+            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
+            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+
             return View();
         }
 
@@ -52,43 +54,46 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(_formManager.AddForm(form))
+                if(_formManager.AddForm(form.ToData()))
                     return RedirectToAction("Index"); // TODO Redirect to adding question groups of created form
             }
 
-            ViewBag.FormTypes = _formManager.GetFormTypes();
-            //ViewBag.PossibleFormType = context.FormType;
-            //ViewBag.PossibleAuthor = context.User;
+            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
+            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+
             return View(form);
         }
-        
-        ////
-        //// GET: /Form/Edit/5
- 
-        //public ActionResult Edit(int id)
-        //{
-        //    Form form = context.Form.Single(x => x.ID == id);
-        //    ViewBag.PossibleFormType = context.FormType;
-        //    ViewBag.PossibleAuthor = context.User;
-        //    return View(form);
-        //}
 
-        ////
-        //// POST: /Form/Edit/5
+        //
+        // GET: /Form/Edit/5
 
-        //[HttpPost]
-        //public ActionResult Edit(Form form)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        context.Entry(form).State = EntityState.Modified;
-        //        context.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.PossibleFormType = context.FormType;
-        //    ViewBag.PossibleAuthor = context.User;
-        //    return View(form);
-        //}
+        public ActionResult Edit(int id)
+        {
+            Form form = _formManager.GetForm(id);
+
+            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
+            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+
+            return View(new FormModel(form));
+        }
+
+        //
+        // POST: /Form/Edit/5
+
+        [HttpPost]
+        public ActionResult Edit(FormModel form)
+        {
+            if (ModelState.IsValid)
+            {
+                _formManager.EditForm(form.ToData());
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
+            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+
+            return View(form);
+        }
 
         ////
         //// GET: /Form/Delete/5

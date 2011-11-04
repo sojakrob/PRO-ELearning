@@ -6,30 +6,35 @@ using ELearning.Data;
 
 namespace ELearning.Models.Data
 {
-    public abstract class DataModelBase<T> where T : class
+    public abstract class DataModelBase<Data> 
+        where Data : class
     {
         public DataModelBase()
         {
         }
-        public abstract DataModelBase(T data)
+        public DataModelBase(Data data)
         {
         }
 
 
-        
-        public static IEnumerable<T> CreateFromArray<U>(IEnumerable<T> array) where U : DataModelBase<T>
-        {
-            List<U> result = new List<U>();
+        public abstract Data ToData();
 
-            IEnumerator<T> e = array.GetEnumerator();
-            while(e.MoveNext())
-            {
-                System.Reflection.ConstructorInfo ci = typeof(U).GetConstructor(new [] { typeof(T) });
-                result.Add(ci.Invoke(new object[] { e.Current }) as U);
-            }
+
+        public static IList<Model> CreateFromArray<Model>(IEnumerable<Data> array) 
+            where Model : DataModelBase<Data>
+        {
+            List<Model> result = new List<Model>();
+
+            System.Reflection.ConstructorInfo ci = typeof(Model).GetConstructor(new[] { typeof(Data) });
+            if (ci == null)
+                throw new ApplicationException(String.Format("Contstructor of model class not found - {0}({1})", typeof(Model), typeof(Data)));
+
+            IEnumerator<Data> e = array.GetEnumerator();
+            while (e.MoveNext())
+                result.Add(ci.Invoke(new object[] { e.Current }) as Model);
 
             return result;
-            // TODO Write Unit test
         }
+
     }
 }

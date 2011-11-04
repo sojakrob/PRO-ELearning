@@ -7,18 +7,33 @@
 </head>
 
 <body>
-    <h1>E-Learning</h1>
+    <div id="top">
+        <div id="header">
+            <span id="logo">
+                E-Learning
+            </span>
+        </div>
 
-    <ul>
-        <li>
-            @Html.ActionLink("Testy", "Index", "Form")
-            <ul>
-                <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
-                <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
-            </ul>
-        </li>
-    </ul>
+        <h1>@ViewBag.Title</h1>
+    </div>
 
-    @RenderBody()
+    <div id="mainMenu">
+        <ul>
+            <li>
+                @Html.ActionLink("Testy", "Index", "Form")
+                <ul>
+                    <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
+                    <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="frame">
+        @RenderBody()        
+    </div>
+
+    <div id="footer">
+    </div>
 </body>
 </html>

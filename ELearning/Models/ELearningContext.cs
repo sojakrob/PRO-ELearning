@@ -6,6 +6,7 @@ using System.Web;
 
 namespace ELearning.Models
 {
+    [Obsolete("Only for inspiration", true)]
     public class ELearningContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.

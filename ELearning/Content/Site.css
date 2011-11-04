@@ -1,9 +1,11 @@
 body
 {
-    font-size: .85em;
+	font-size: 0.9em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+    color: #222222;
+    background-color: #FFFFFF;
+    padding: 0;
+	margin: 0;
 }
 
 header,
@@ -11,6 +13,65 @@ footer,
 nav,
 section {
     display: block;
+}
+
+h1
+{
+	border-top: 1px solid #E1DBFF;
+	border-bottom: 1px solid #E1DBFF;
+	padding: 10px 20px;
+	color: #8781FF;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	margin: 0;
+	font-weight: normal;
+}
+h2
+{
+	
+}
+
+a
+{
+	text-decoration: none;
+	color: #8781FF;
+}
+
+/* Main layout
+-----------------------------------------------------------*/
+div#top
+{
+}
+div#top div#header
+{
+	background-color: #FAF9FF;
+	height: 80px;
+}
+div#top div#header span#logo
+{
+	font-size: 30px;
+	margin: 20px;
+	padding: 20px 0;
+}
+
+div#mainMenu
+{
+	width: 200px;
+	float: left;
+}
+div#mainMenu ul
+{
+	list-style: none;
+	
+}
+
+div#frame
+{
+	float: left;	
+}
+div#footer
+{
+	clear: both;
 }
 
 /* Styles for basic forms
@@ -72,4 +133,43 @@ textarea
 .validation-summary-valid
 {
     display: none;
+}
+
+/* Data grid
+----------------------------------------------------------*/
+table.datagrid
+{
+	margin: 0px 10px;
+	border-collapse: collapse;
+}
+table.datagrid th
+{
+	text-transform: uppercase;
+	border-bottom: 2px solid #E1DBFF;
+	font-weight: normal;
+}
+table.datagrid tr
+{
+	border-bottom: 1px solid #E1DBFF;
+}
+table.datagrid td
+{
+	padding: 5px 20px 5px 20px;
+}
+table.datagrid a.button
+{
+	padding: 2px 6px;
+	border: 1px solid #E1DBFF;
+	background-color: #FFFFFF;
+	color: #8781FF;
+}
+
+/* Html extender
+----------------------------------------------------------*/
+a.button
+{
+	color: #FFFFFF;
+	background-color: #8781FF;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px 15px;
 }

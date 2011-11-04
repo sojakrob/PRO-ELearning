@@ -4,11 +4,6 @@
         <name>ELearning.Business</name>
     </assembly>
     <members>
-        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
-            <summary>
-            Gets singleton instance
-            </summary>
-        </member>
         <member name="M:ELearning.Business.Managers.ManagerBase`1.#ctor(ELearning.Business.Storages.IPersistentStorage)">
             <summary>
             Initializes a new instance of the ManagerBase class.
@@ -20,15 +15,20 @@
             Gets current data context
             </summary>
         </member>
-        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
-            <summary>
-            Initializes a new instance of the QuestionManager class.
-            </summary>
-            <param name="persistentStorage"></param>
-        </member>
         <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
             <summary>
             Initializes a new instance of the FormManager class.
+            </summary>
+            <param name="persistentStorage"></param>
+        </member>
+        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
+            <summary>
+            Gets singleton instance
+            </summary>
+        </member>
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+            <summary>
+            Initializes a new instance of the QuestionManager class.
             </summary>
             <param name="persistentStorage"></param>
         </member>

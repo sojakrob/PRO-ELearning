@@ -3,40 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ELearning.Data;
+using ELearning.Data.Enums;
 
 namespace ELearning.Models.Data
 {
     public class FormModel : DataModelBase<Form>
     {
-        public int ID
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-            }
-        }
-        private int _id;
-
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = value;
-            }
-        }
-        private string _name;
-        
-        public string Text
-        {
-            get { return _text; }
-            set
-            {
-                _text = value;
-            }
-        }
-        private string _text;
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Text { get; set; }
+        public DateTime Created { get; set; }
+        public FormTypeModel Type { get; set; }
+        public UserModel Author { get; set; }
 
 
         /// <summary>
@@ -46,19 +24,29 @@ namespace ELearning.Models.Data
         public FormModel()
         {
         }
-
-
-
-        public static FormModel FromForm(Form form)
+        public FormModel(Form data)
+            : base(data)
         {
-            FormModel result = new FormModel()
-            {
-                ID = form.ID,
-                Name = form.Name,
-                Text = form.Text
-            };
+            ID = data.ID;
+            Name = data.Name;
+            Text = data.Text;
+            Created = data.Created;
+            Type = new FormTypeModel(data.Type);
 
-            return result;
+            Author = new UserModel(data.Author);
+        }
+
+
+        public override Form ToData()
+        {
+            return Form.CreateForm(
+                ID,
+                Name, 
+                Text,
+                Created, 
+                Type == null ? 0 : Type.ID,
+                Author == null ? 0 : Author.ID
+                );
         }
     }
 }

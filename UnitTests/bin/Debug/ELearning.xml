@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ELearning</name>
+    </assembly>
+    <members>
+        <member name="M:ELearning.Models.Data.FormModel.#ctor">
+            <summary>
+            Initializes a new instance of the FormModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
+        <member name="M:ELearning.Models.Data.UserModel.#ctor">
+            <summary>
+            Initializes a new instance of the UserModel class.
+            </summary>
+        </member>
+    </members>
+</doc>

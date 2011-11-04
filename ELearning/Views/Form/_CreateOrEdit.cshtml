@@ -1,4 +1,4 @@
-@model ELearning.Data.Form
+@model ELearning.Models.Data.FormModel
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
@@ -18,29 +18,29 @@
     @Html.ValidationMessageFor(model => model.Text)
 </div>
 
-<div class="editor-label">
+@*<div class="editor-label">
     @Html.LabelFor(model => model.TimeToFill)
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.TimeToFill)
     @Html.ValidationMessageFor(model => model.TimeToFill)
-</div>
+</div>*@
 
-<div class="editor-label">
+@*<div class="editor-label">
     @Html.LabelFor(model => model.Shuffle)
 </div>
 <div class="editor-field">
     @Html.EditorFor(model => model.Shuffle)
     @Html.ValidationMessageFor(model => model.Shuffle)
-</div>
+</div>*@
 
 <div class="editor-label">
     FormType
 </div>
 <div class="editor-field">
     @Html.DropDownListFor(
-        model => model.FormTypeID, 
-        new SelectList(((IQueryable<ELearning.Data.FormType>)ViewBag.FormTypes), "ID", "Name", Model == null ? ViewBag.DefaultFormType : Model.FormTypeID)
+        model => model.Type.ID, 
+        new SelectList(((ICollection<ELearning.Models.Data.FormTypeModel>)ViewBag.FormTypes), "ID", "Name", Model == null ? ViewBag.DefaultFormType : Model.Type.ID)
         )
-    @Html.ValidationMessageFor(model => model.FormTypeID)
+    @Html.ValidationMessageFor(model => model.Type)
 </div>

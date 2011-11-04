@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3ec0100e-01e9-4c52-9e3a-6d65b0d2e4d3" name="Mr.Bobby@MBPC 2011-11-03 21:36:18" runUser="MBPC\Mr.Bobby" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="eee96bbc-903f-456e-99b1-02f483d57c32">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Mr.Bobby_MBPC 2011-11-03 21_36_18">
+      <DeploymentItem filename="d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Data\bin\Debug\ELearning.Data.dll" />
+      <DeploymentItem filename="d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Business\bin\Debug\ELearning.Business.dll" />
+      <DeploymentItem filename="d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\Microsoft ADO.NET Entity Framework 4.1\Binaries\EntityFramework.dll" />
+      <DeploymentItem filename="d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Shared\bin\Debug\ELearning.Shared.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-11-03T21:36:18.6434192+01:00" queuing="2011-11-03T21:36:18.8814328+01:00" start="2011-11-03T21:36:18.9094344+01:00" finish="2011-11-03T21:36:19.1894505+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="CreateFromArrayTest" storage="d:\_mb\school\fel\predmety\a7b36pro\elearning\unittests\bin\debug\unittests.dll" id="faa0f045-ceaf-750e-7d0d-d38222d601ae">
+      <Execution id="0f97256b-d464-4350-bdd4-e4cf9f2dfed6" />
+      <TestMethod codeBase="D:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/UnitTests/bin/Debug/UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="UnitTests.DataModelBaseTest, UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CreateFromArrayTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="faa0f045-ceaf-750e-7d0d-d38222d601ae" executionId="0f97256b-d464-4350-bdd4-e4cf9f2dfed6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0f97256b-d464-4350-bdd4-e4cf9f2dfed6" testId="faa0f045-ceaf-750e-7d0d-d38222d601ae" testName="CreateFromArrayTest" computerName="MBPC" duration="00:00:00.0323286" startTime="2011-11-03T21:36:18.9174349+01:00" endTime="2011-11-03T21:36:19.1504482+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0f97256b-d464-4350-bdd4-e4cf9f2dfed6">
+    </UnitTestResult>
+  </Results>
+</TestRun>
