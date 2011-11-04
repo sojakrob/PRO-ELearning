@@ -67,7 +67,7 @@ namespace UnitTests
         ///A test for NameFromEmail
         ///</summary>
         [TestMethod()]
-        
+        [DeploymentItem("ELearning.dll")]
         public void NameFromEmailTest()
         {
             string name = "MyName99";

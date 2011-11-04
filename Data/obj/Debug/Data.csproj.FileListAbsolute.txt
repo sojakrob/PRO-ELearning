@@ -8,6 +8,7 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Data\obj\Debug\ResolveAssemblyRefe
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Data\obj\Debug\ELearning.Data.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Data\obj\Debug\ELearning.Data.pdb
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.dll.config
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.XML
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.pdb
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Shared.dll

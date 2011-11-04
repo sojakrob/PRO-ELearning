@@ -1,0 +1,5 @@
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\bin\Release\ELearning.Shared.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\bin\Release\ELearning.Shared.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\obj\Release\ResolveAssemblyReference.cache
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\obj\Release\ELearning.Shared.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\obj\Release\ELearning.Shared.pdb

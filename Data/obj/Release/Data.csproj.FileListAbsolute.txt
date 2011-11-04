@@ -1,0 +1,8 @@
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Release\ELearning.Data.dll.config
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Release\ELearning.Data.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Release\ELearning.Data.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Release\ELearning.Shared.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Release\ELearning.Shared.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Release\ResolveAssemblyReference.cache
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Release\ELearning.Data.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Release\ELearning.Data.pdb
