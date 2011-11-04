@@ -15,7 +15,6 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ResolveAssembl
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.pdb
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML
-c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.XML
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.pdb
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.Business.dll
@@ -32,3 +31,11 @@ c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\E
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ResolveAssemblyReference.cache
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ELearning.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ELearning.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.XML
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.Unity.Configuration.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.Unity.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.xml
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.Unity.xml
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.Unity.Configuration.xml

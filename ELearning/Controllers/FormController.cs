@@ -15,8 +15,17 @@ namespace ELearning.Controllers
 {   
     public class FormController : BaseController
     {
-        // TODO Use Unity injection
-        FormManager _formManager = new FormManager(WebStorage.Instance);
+        FormManager _formManager;
+
+        /// <summary>
+        /// Initializes a new instance of the FormController class.
+        /// </summary>
+        /// <param name="formManager"></param>
+        public FormController(FormManager formManager)
+        {
+            _formManager = formManager;
+        }
+
 
         //
         // GET: /Form/

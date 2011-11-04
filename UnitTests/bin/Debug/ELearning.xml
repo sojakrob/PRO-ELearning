@@ -4,6 +4,22 @@
         <name>ELearning</name>
     </assembly>
     <members>
+        <member name="M:ELearning.Controllers.FormController.#ctor(ELearning.Business.Managers.FormManager)">
+            <summary>
+            Initializes a new instance of the FormController class.
+            </summary>
+            <param name="formManager"></param>
+        </member>
+        <member name="P:ELearning.MvcApplication.UnityContainer">
+            <summary>
+            Gets the Unity container of the current application
+            </summary>
+        </member>
+        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
+            <summary>
+            Gets the Unity container of the application
+            </summary>
+        </member>
         <member name="M:ELearning.Models.Data.FormModel.#ctor">
             <summary>
             Initializes a new instance of the FormModel class.
@@ -13,6 +29,11 @@
         <member name="M:ELearning.Models.Data.UserModel.#ctor">
             <summary>
             Initializes a new instance of the UserModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the UnityContainerBuilder class.
             </summary>
         </member>
     </members>
