@@ -31,9 +31,16 @@ namespace ELearning.Models.Data
             Name = data.Name;
             Text = data.Text;
             Created = data.Created;
-            Type = new FormTypeModel(data.Type);
 
-            Author = new UserModel(data.Author);
+            if (data.Type == null)
+                Type = new FormTypeModel();
+            else
+                Type = new FormTypeModel(data.Type);
+
+            if (data.Author == null)
+                Author = new UserModel();
+            else
+                Author = new UserModel(data.Author);
         }
 
 
