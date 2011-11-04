@@ -3,3 +3,8 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Shared\bin\Debug\ELearning.Shared.
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Shared\obj\Debug\ResolveAssemblyReference.cache
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Shared\obj\Debug\ELearning.Shared.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Shared\obj\Debug\ELearning.Shared.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\bin\Debug\ELearning.Shared.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\bin\Debug\ELearning.Shared.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\obj\Debug\ResolveAssemblyReference.cache
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\obj\Debug\ELearning.Shared.dll
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Shared\obj\Debug\ELearning.Shared.pdb
