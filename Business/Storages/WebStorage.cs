@@ -35,6 +35,31 @@ namespace ELearning.Business.Storages
         private static WebStorage _instance;
 
 
+        private DataModelContainer DataModelContainer
+        {
+            get
+            {
+                return HttpContext.Current.Items[HTTPCONTEXT_DATA_MODEL_CONTAINER] as DataModelContainer;
+            }
+            set
+            {
+                if (HttpContext.Current.Items[HTTPCONTEXT_DATA_MODEL_CONTAINER] == null)
+                    HttpContext.Current.Items.Add(HTTPCONTEXT_DATA_MODEL_CONTAINER, value);
+                else
+                    HttpContext.Current.Items[HTTPCONTEXT_DATA_MODEL_CONTAINER] = value;
+            }
+        }
+        private bool IsDataModelContainerAssigned
+        {
+            get
+            {
+                return DataModelContainer != null;
+            }
+        }
+
+        private string _connectionString;
+
+
         private WebStorage()
         {
             if (HttpContext.Current == null)
@@ -42,18 +67,37 @@ namespace ELearning.Business.Storages
         }
 
 
+        /// <summary>
+        /// Changes the database of DataModelContainer
+        /// </summary>
+        /// <param name="connectionString">Connection string for the connection</param>
+        public void ChangeDatabase(string connectionString)
+        {
+            if(_connectionString == connectionString)
+                return; 
+
+            _connectionString = connectionString;
+
+            if(IsDataModelContainerAssigned)
+                CreateDataModelContainer();
+        }
+
+        private void CreateDataModelContainer()
+        {
+            if (string.IsNullOrEmpty(_connectionString))
+                DataModelContainer = new DataModelContainer();
+            else
+                DataModelContainer = new DataModelContainer(_connectionString);
+        }
+
         #region IPersistentStorage Members
 
         public DataModelContainer GetDataContext()
         {
-            DataModelContainer context = HttpContext.Current.Items[HTTPCONTEXT_DATA_MODEL_CONTAINER] as DataModelContainer;
-            if (context == null)
-            {
-                context = new DataModelContainer();
-                HttpContext.Current.Items.Add(HTTPCONTEXT_DATA_MODEL_CONTAINER, context);
-            }
+            if (!IsDataModelContainerAssigned)
+                CreateDataModelContainer();
 
-            return context;
+            return DataModelContainer;
         }
 
         #endregion

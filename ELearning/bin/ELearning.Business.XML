@@ -21,16 +21,22 @@
             </summary>
             <param name="persistentStorage"></param>
         </member>
-        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
             <summary>
-            Initializes a new instance of the QuestionManager class.
+            Changes the database of DataModelContainer
             </summary>
-            <param name="persistentStorage"></param>
+            <param name="connectionString">Connection string for the connection</param>
         </member>
         <member name="P:ELearning.Business.Storages.WebStorage.Instance">
             <summary>
             Gets singleton instance
             </summary>
+        </member>
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+            <summary>
+            Initializes a new instance of the QuestionManager class.
+            </summary>
+            <param name="persistentStorage"></param>
         </member>
     </members>
 </doc>

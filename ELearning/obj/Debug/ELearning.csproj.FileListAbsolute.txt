@@ -14,7 +14,6 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\EntityFramework.xml
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ResolveAssemblyReference.cache
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\obj\Debug\ELearning.pdb
-d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.pdb
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.Business.dll
@@ -39,3 +38,11 @@ c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\M
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.xml
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.Unity.xml
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.Unity.Configuration.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.Unity.Configuration.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.Unity.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.Unity.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.Unity.Configuration.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML

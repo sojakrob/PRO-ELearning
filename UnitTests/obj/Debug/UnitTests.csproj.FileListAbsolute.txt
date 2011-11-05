@@ -47,3 +47,10 @@ c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\bin\D
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\bin\Debug\Microsoft.Practices.Unity.xml
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.Unity.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.Unity.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\Microsoft.Practices.Unity.Configuration.xml

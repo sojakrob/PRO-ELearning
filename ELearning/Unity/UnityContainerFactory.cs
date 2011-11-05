@@ -5,6 +5,8 @@ using System.Web;
 using Microsoft.Practices.Unity;
 using ELearning.Business.Storages;
 using ELearning.Business.Managers;
+using System.Configuration;
+using System.Collections;
 
 namespace ELearning.Unity
 {
@@ -13,20 +15,38 @@ namespace ELearning.Unity
         /// <summary>
         /// Initializes a new instance of the UnityContainerBuilder class.
         /// </summary>
-        private UnityContainerFactory()
+        public UnityContainerFactory()
         {
         }
 
 
-        public static IUnityContainer CreateContainer()
+        public virtual IUnityContainer CreateContainer()
         {
             UnityContainer result = new UnityContainer();
 
-            InjectionConstructor storage = new InjectionConstructor(WebStorage.Instance);
+            IPersistentStorage storage = InitStorage();
+            InjectionConstructor storageConstructor = new InjectionConstructor(storage);
 
-            result.RegisterType<FormManager>(storage);
+            result.RegisterType<FormManager>(storageConstructor);
 
             return result;
+        }
+
+
+        protected virtual IPersistentStorage InitStorage()
+        {
+            string connectionStringName = ConfigurationManager.AppSettings["ConnectionStringName"];
+            if (connectionStringName == null)
+                throw new ApplicationException("Cannot find ConnectionStringName in AppSettings");
+
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["DataModelContainer_AppHarbor"];
+            if (settings == null)
+                throw new ApplicationException("Cannot find specified connection string in ConnectionStrings");
+
+            string connectionString = settings.ConnectionString;
+            WebStorage.Instance.ChangeDatabase(connectionString);
+
+            return WebStorage.Instance;
         }
     }
 }

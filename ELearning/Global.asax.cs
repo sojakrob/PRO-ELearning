@@ -57,7 +57,9 @@ namespace ELearning
 
         private static void InitUnity()
         {
-            _unityContainer = UnityContainerFactory.CreateContainer();
+            UnityContainerFactory unityContainerFactory = new UnityContainerFactory();
+            _unityContainer = unityContainerFactory.CreateContainer();
+
             ControllerBuilder.Current.SetControllerFactory(typeof(UnityControllerFactory));
         }
 
