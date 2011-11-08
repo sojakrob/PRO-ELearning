@@ -20,3 +20,15 @@ c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\De
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\obj\Debug\ResolveAssemblyReference.cache
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\obj\Debug\ELearning.Business.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\obj\Debug\ELearning.Business.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Business.XML
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Business.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Business.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Data.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Shared.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Data.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Data.xml
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Shared.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\bin\Debug\ELearning.Shared.xml
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\obj\Debug\ResolveAssemblyReference.cache
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\obj\Debug\ELearning.Business.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Business\obj\Debug\ELearning.Business.pdb

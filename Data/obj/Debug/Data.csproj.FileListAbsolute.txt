@@ -16,3 +16,12 @@ c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Debug\ResolveAssemblyReference.cache
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Debug\ELearning.Data.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Debug\ELearning.Data.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.dll.config
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Data.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Shared.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Shared.pdb
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Debug\ELearning.Shared.xml
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Debug\ResolveAssemblyReference.cache
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Debug\ELearning.Data.dll
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Debug\ELearning.Data.pdb
