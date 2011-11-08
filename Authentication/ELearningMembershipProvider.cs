@@ -3,21 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Security;
+using System.Configuration;
+using System.Web.Configuration;
 
 
 namespace ELearning.Authentication
 {
     public class ELearningMembershipProvider : MembershipProvider
     {
+        private const string MEMBERSHIP_SECTION_NAME = "system.web/membership";
+        private const string APPLICATION_NAME_PARAMETER = "applicationName";
+
+
+        private ProviderSettings ConfigSettings
+        {
+            get
+            {
+                if (_configSettings == null)
+                {
+                    MembershipSection membershipSection = WebConfigurationManager.GetSection(MEMBERSHIP_SECTION_NAME) as MembershipSection;
+                    _configSettings = membershipSection.Providers[membershipSection.DefaultProvider];
+                }
+                return _configSettings;
+            }
+        }
+        private ProviderSettings _configSettings;
+        
+
         public override string ApplicationName
         {
             get
             {
-                throw new NotImplementedException();
+                return ConfigSettings.Parameters[APPLICATION_NAME_PARAMETER];
             }
             set
             {
-                throw new NotImplementedException();
+                
             }
         }
 

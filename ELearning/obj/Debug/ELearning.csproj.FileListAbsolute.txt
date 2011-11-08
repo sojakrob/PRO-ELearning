@@ -45,7 +45,6 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.ServiceLocation.xml
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.Unity.xml
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\Microsoft.Practices.Unity.Configuration.xml
-d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.XML
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\ELearning.pdb
@@ -70,3 +69,6 @@ S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\bin\Microsoft.Practices.U
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ELearning.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Authentication.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.Authentication.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML

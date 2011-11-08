@@ -7,6 +7,8 @@ using ELearning.Business.Storages;
 using ELearning.Business.Managers;
 using System.Configuration;
 using System.Collections;
+using ELearning.Authentication;
+using ELearning.Controllers;
 
 namespace ELearning.Unity
 {
@@ -29,6 +31,8 @@ namespace ELearning.Unity
 
             result.RegisterType<FormManager>(storageConstructor);
 
+            result.RegisterType<IAuthenticationContext, WebAuthenticationContext>();
+
             return result;
         }
 
@@ -39,7 +43,7 @@ namespace ELearning.Unity
             if (connectionStringName == null)
                 throw new ApplicationException("Cannot find ConnectionStringName in AppSettings");
 
-            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["DataModelContainer_AppHarbor"];
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings[connectionStringName];
             if (settings == null)
                 throw new ApplicationException("Cannot find specified connection string in ConnectionStrings");
 

@@ -849,6 +849,11 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:ELearning.Data.User.Name">
+            <summary>
+            Gets User name extracted from Email address
+            </summary>
+        </member>
         <member name="T:ELearning.Data.UserType">
             <summary>
             No Metadata Documentation available.

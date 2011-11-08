@@ -1,1 +1,12 @@
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\Authentication\obj\Debug\ResolveAssemblyReference.cache
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\obj\Debug\ResolveAssemblyReference.cache
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Authentication.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Authentication.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\obj\Debug\ELearning.Authentication.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\obj\Debug\ELearning.Authentication.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Data.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Shared.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Data.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Data.xml
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Shared.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\Authentication\bin\Debug\ELearning.Shared.xml

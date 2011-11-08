@@ -23,7 +23,7 @@ namespace ELearning.Models.Data
             : base(data)
         {
             ID = data.ID;
-            Name = NameFromEmail(data.Email);
+            Name = data.Name;
         }
 
 
@@ -31,11 +31,5 @@ namespace ELearning.Models.Data
         {
             throw new NotImplementedException();
         }
-
-
-        private static string NameFromEmail(string email)
-        {
-            return email.Substring(0, email.IndexOf('@'));
-        }         
     }
 }

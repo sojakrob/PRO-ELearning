@@ -4,14 +4,15 @@
         <name>ELearning</name>
     </assembly>
     <members>
-        <member name="P:ELearning.MvcApplication.UnityContainer">
+        <member name="M:ELearning.Models.Data.FormModel.#ctor">
             <summary>
-            Gets the Unity container of the current application
+            Initializes a new instance of the FormModel class.
             </summary>
+            <param name="form"></param>
         </member>
-        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
+        <member name="M:ELearning.Models.Data.UserModel.#ctor">
             <summary>
-            Gets the Unity container of the application
+            Initializes a new instance of the UserModel class.
             </summary>
         </member>
         <member name="M:ELearning.Controllers.FormController.#ctor(ELearning.Business.Managers.FormManager)">
@@ -20,20 +21,19 @@
             </summary>
             <param name="formManager"></param>
         </member>
-        <member name="M:ELearning.Models.Data.FormModel.#ctor">
-            <summary>
-            Initializes a new instance of the FormModel class.
-            </summary>
-            <param name="form"></param>
-        </member>
         <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
             <summary>
             Initializes a new instance of the UnityContainerBuilder class.
             </summary>
         </member>
-        <member name="M:ELearning.Models.Data.UserModel.#ctor">
+        <member name="P:ELearning.MvcApplication.UnityContainer">
             <summary>
-            Initializes a new instance of the UserModel class.
+            Gets the Unity container of the current application
+            </summary>
+        </member>
+        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
+            <summary>
+            Gets the Unity container of the application
             </summary>
         </member>
     </members>

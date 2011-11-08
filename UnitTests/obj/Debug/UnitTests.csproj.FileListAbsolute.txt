@@ -82,3 +82,7 @@ S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\bin\Debug\ELearning_Acces
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\obj\Debug\UnitTests.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\UnitTests\obj\Debug\UnitTests.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\ELearning.Authentication.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\ELearning.Authentication.pdb
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\ELearning.Data_Accessor.dll
+d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\UnitTests\bin\Debug\ELearning.Data_Accessor.pdb

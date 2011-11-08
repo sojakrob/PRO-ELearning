@@ -61,20 +61,5 @@ namespace UnitTests
         //}
         //
         #endregion
-
-
-        /// <summary>
-        ///A test for NameFromEmail
-        ///</summary>
-        [TestMethod()]
-        [DeploymentItem("ELearning.dll")]
-        public void NameFromEmailTest()
-        {
-            string name = "MyName99";
-            string email = name + "@mydomain.com";
-
-            string actual = UserModel_Accessor.NameFromEmail(email);
-            Assert.AreEqual(name, actual);
-        }
     }
 }
