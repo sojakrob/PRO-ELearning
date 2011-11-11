@@ -1,4 +1,5 @@
 ﻿@model ELearning.Models.Authentication.LoggedUserModel
+           
 <div id="mainMenuControl">
     <div>
         <ul>
@@ -11,14 +12,17 @@
             </li>
         </ul>
     </div>
-    @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator)
+    @if (Model.Permissions.User_List)
     {
         <div>
             <ul>
                 <li>
                     @Html.ActionLink("Uživatelé", "Index", "User")
                     <ul>
-                        <li>@Html.ActionLink("Nový uživatel", "Create", "User")</li>
+                        @if (Model.Permissions.User_List)
+                        {
+                            <li>@Html.ActionLink("Nový uživatel", "Create", "User")</li>
+                        }
                         <li>@Html.ActionLink("Zobrazit", "Index", "User")</li>
                     </ul>
                 </li>

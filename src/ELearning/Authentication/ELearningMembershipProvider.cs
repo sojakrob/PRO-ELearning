@@ -105,8 +105,7 @@ namespace ELearning.Authentication
 
         public override bool ValidateUser(string username, string password)
         {
-            return username == password;
-            // TODO Implement
+            return _userManager.ValidateUser(username, password);
         }
 
         public override bool UnlockUser(string userName)
@@ -121,7 +120,7 @@ namespace ELearning.Authentication
         }
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            return _userManager.ChangePassword(username, oldPassword, newPassword);
         }
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
@@ -143,7 +142,7 @@ namespace ELearning.Authentication
         }
         public override string GetUserNameByEmail(string email)
         {
-            throw new NotImplementedException();
+            return _userManager.GetUser(email).Name;
         }
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {

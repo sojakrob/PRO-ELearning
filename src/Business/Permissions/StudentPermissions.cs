@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ELearning.Business.Permissions
 {
-    internal class StudentPermissions : UserPermissions
+    public class StudentPermissions : UserPermissions
     {
         
     }

@@ -23,6 +23,14 @@ namespace ELearning.Business.Managers
         }
 
 
+        /// <summary>
+        /// Creates new user
+        /// </summary>
+        /// <param name="authorEmail"></param>
+        /// <param name="email">User email</param>
+        /// <param name="password">User password</param>
+        /// <param name="type">User type</param>
+        /// <returns></returns>
         public bool CreateUser(string authorEmail, string email, string password, UserTypes type)
         {
             UserPermissions perms = GetUserPermissions(authorEmail);
@@ -44,6 +52,11 @@ namespace ELearning.Business.Managers
             return true;
         }
 
+        /// <summary>
+        /// Gets user by specified email
+        /// </summary>
+        /// <param name="email">Email</param>
+        /// <returns></returns>
         public User GetUser(string email)
         {
             if (String.IsNullOrEmpty(email))
@@ -52,6 +65,21 @@ namespace ELearning.Business.Managers
             return GetSingle(u => u.Email == email);
         }
 
+        public bool ChangePassword(string email, string oldPassword, string newPassword)
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets if password fits to specified user
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool ValidateUser(string email, string password)
+        {
+            User user = GetUser(email);
+            return email == password;
+        }
 
 
         /// <summary>
