@@ -36,13 +36,10 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                // TODO LogOn
-                if (Membership.ValidateUser(user.Email, user.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(user.Email, user.KeepSignedIn);
+                bool loginResult = AuthenticationContext.LogIn(user.Email, user.Password, user.KeepSignedIn);
 
-                    return RedirectToAction("Index", "Home");
-                }
+                if (loginResult)
+                    return RedirectToHome();
             }
 
             return View(user);
@@ -55,7 +52,24 @@ namespace ELearning.Controllers
         {
             AuthenticationContext.LogOff();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToHome();
+        }
+
+
+        public ActionResult LogOnControl()
+        {
+            return PartialView();
+        }
+
+        public ActionResult LoggedUserControl()
+        {
+            LoggedUserModel user;
+            if (AuthenticationContext.IsUserLoggedIn)
+                user = new LoggedUserModel() { Email = Membership.GetUser().Email };
+            else
+                user = null;
+
+            return PartialView(user);
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿@using ELearning.Utils
+@model ELearning.Models.Authentication.LoggedUserModel
+           
+<div id="loggedUserControl">
+    @if (Model == null)
+    {
+        @Html.ButtonLink("Log On", "LogOn", "Authentication");
+    }
+    else
+    { 
+        <span>
+            @Html.Encode(Model.Email)
+        </span>
+        <span>
+            @Html.ButtonLink("Log Off", "LogOff", "Authentication")
+        </span>
+    }
+</div>

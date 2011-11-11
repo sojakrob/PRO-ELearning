@@ -8,26 +8,16 @@
 
 <body>
     <div id="top">
-        <div id="header">
-            <span id="logo">
-                E-Learning
-            </span>
-        </div>
+        @{
+            Html.RenderAction("HeaderControl", "Controls");
+        }
 
         <h1>@ViewBag.Title</h1>
     </div>
 
-    <div id="mainMenu">
-        <ul>
-            <li>
-                @Html.ActionLink("Testy", "Index", "Form")
-                <ul>
-                    <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
-                    <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    @{
+        Html.RenderAction("MainMenuControl", "Controls");
+    }
 
     <div id="frame">
         @RenderBody()        

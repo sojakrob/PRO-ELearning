@@ -1,0 +1,41 @@
+@model ELearning.Data.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">@Model.Email</div>
+
+    <div class="display-label">Groups</div>
+    <div class="display-field">@(Model.Groups == null ? "None" : Model.Groups.Count.ToString())</div>
+
+    <div class="display-label">Type</div>
+    <div class="display-field">@(Model.Type == null ? "None" : Model.Type.Name)</div>
+
+    <div class="display-label">TypeReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeReference).ToString()</div>
+
+    <div class="display-label">SolvedForms</div>
+    <div class="display-field">@(Model.SolvedForms == null ? "None" : Model.SolvedForms.Count.ToString())</div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">TypeEnum</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeEnum).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

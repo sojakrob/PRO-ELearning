@@ -1,6 +1,19 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NotLoggedLayout.cshtml";
 }
-
-
-
+<div id="frameContent">
+    <div id="welcome">
+        <h1>
+            E-Learning</h1>
+        <p>
+            Vítejte v systému E-Learning.
+        </p>
+    </div>
+    <div id="logOnWrapper">
+        @{
+            Html.RenderAction("LogOnControl", "Authentication");
+        }
+    </div>
+    <div class="clear">
+    </div>
+</div>

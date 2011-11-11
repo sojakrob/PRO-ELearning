@@ -12,7 +12,8 @@ using ELearning.Business.Storages;
 using ELearning.Models.Data;
 
 namespace ELearning.Controllers
-{   
+{
+    [Authorize]
     public class FormController : BaseController
     {
         FormManager _formManager;

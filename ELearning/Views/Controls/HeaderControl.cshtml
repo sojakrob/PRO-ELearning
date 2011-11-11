@@ -1,0 +1,12 @@
+﻿<div id="header">
+    <div id="logo">
+        @Html.ActionLink("E-Learning", "Index", "Home")
+    </div>
+    <div id="authentication">
+        @{
+            Html.RenderAction("LoggedUserControl", "Authentication");
+        }
+    </div>
+    <div class="clear">
+    </div>
+</div>

@@ -1,0 +1,34 @@
+@using ELearning.Utils
+@model IEnumerable<ELearning.Models.Data.UserModel>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<p>
+    @Html.ButtonLink("Create New", "Create")
+</p>
+<table class="datagrid">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            Type
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+			@item.Email
+        </td>
+        <td>
+			@(item.Type)
+        </td>
+    </tr>
+}
+
+</table>
+
+

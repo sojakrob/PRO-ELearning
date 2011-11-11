@@ -18,8 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "Authentication\Authentication.csproj", "{E2234E96-2DED-41E4-96DA-BC9AD4317120}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ELearning.vsmdi
@@ -49,10 +47,6 @@ Global
 		{3EC97E2C-30D0-4E42-8E76-FF7FD646B5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EC97E2C-30D0-4E42-8E76-FF7FD646B5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EC97E2C-30D0-4E42-8E76-FF7FD646B5D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2234E96-2DED-41E4-96DA-BC9AD4317120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2234E96-2DED-41E4-96DA-BC9AD4317120}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2234E96-2DED-41E4-96DA-BC9AD4317120}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2234E96-2DED-41E4-96DA-BC9AD4317120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

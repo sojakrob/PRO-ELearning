@@ -44,9 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\PermissionException.cs" />
     <Compile Include="Managers\FormManager.cs" />
     <Compile Include="Managers\ManagerBase.cs" />
     <Compile Include="Managers\QuestionManager.cs" />
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Permissions\AdministratorPermissions.cs" />
+    <Compile Include="Permissions\LectorPermissions.cs" />
+    <Compile Include="Permissions\StudentPermissions.cs" />
+    <Compile Include="Permissions\UserPermissions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Storages\IPersistentStorage.cs" />

@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Enums\FormTypes.cs" />
     <Compile Include="Enums\QuestionTypes.cs" />
+    <Compile Include="Enums\UserTypes.cs" />
     <Compile Include="ExtendedEntities\Form.cs" />
     <Compile Include="ExtendedEntities\QuestionGroup.cs" />
     <Compile Include="ExtendedEntities\User.cs" />

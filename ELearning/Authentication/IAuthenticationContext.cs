@@ -8,6 +8,10 @@ namespace ELearning.Authentication
 {
     public interface IAuthenticationContext
     {
+        UserSession LoggedUserSession { get; }
+        bool IsUserLoggedIn { get; }
+
+        bool LogIn(string email, string password, bool keepSignedIn);
         void LogOff();
     }
 }

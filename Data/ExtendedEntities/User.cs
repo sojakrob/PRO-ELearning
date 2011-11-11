@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ELearning.Data.Enums;
+using ELearning.Shared;
 
 namespace ELearning.Data
 {
@@ -13,6 +15,11 @@ namespace ELearning.Data
         public string Name
         {
             get { return NameFromEmail(Email); }
+        }
+
+        public UserTypes TypeEnum
+        {
+            get  { return EnumUtility.EnumFromName<Enums.UserTypes>(Type.Name); }
         }
 
 

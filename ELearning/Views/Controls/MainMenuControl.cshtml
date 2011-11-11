@@ -1,0 +1,28 @@
+﻿@model ELearning.Models.Authentication.LoggedUserModel
+<div id="mainMenuControl">
+    <div>
+        <ul>
+            <li>
+                @Html.ActionLink("Testy", "Index", "Form")
+                <ul>
+                    <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
+                    <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator)
+    {
+        <div>
+            <ul>
+                <li>
+                    @Html.ActionLink("Uživatelé", "Index", "User")
+                    <ul>
+                        <li>@Html.ActionLink("Nový uživatel", "Create", "User")</li>
+                        <li>@Html.ActionLink("Zobrazit", "Index", "User")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
+</div>

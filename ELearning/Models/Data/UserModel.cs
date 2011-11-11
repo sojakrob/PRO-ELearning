@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ELearning.Data;
+using ELearning.Data.Enums;
 
 namespace ELearning.Models.Data
 {
@@ -10,6 +11,8 @@ namespace ELearning.Models.Data
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
+        public UserTypes Type { get; set; }
 
 
         /// <summary>
@@ -24,6 +27,8 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             Name = data.Name;
+            Email = data.Email;
+            Type = data.TypeEnum;
         }
 
 

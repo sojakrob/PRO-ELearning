@@ -36,5 +36,21 @@
             Gets the Unity container of the application
             </summary>
         </member>
+        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
+            <summary>
+            Gets the logged user
+            </summary>
+        </member>
+        <member name="M:ELearning.Authentication.UserSession.#ctor(System.String,ELearning.Data.Enums.UserTypes)">
+            <summary>
+            Initializes a new instance of the UserSession class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.UserController.#ctor(ELearning.Business.Managers.UserManager)">
+            <summary>
+            Initializes a new instance of the UserController class.
+            </summary>
+            <param name="userManager"></param>
+        </member>
     </members>
 </doc>

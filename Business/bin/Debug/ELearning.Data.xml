@@ -85,6 +85,59 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="T:ELearning.Data.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32)">
+            <summary>
+            Create a new User object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="email">Initial value of the Email property.</param>
+            <param name="userTypeID">Initial value of the UserTypeID property.</param>
+        </member>
+        <member name="P:ELearning.Data.User.Name">
+            <summary>
+            Gets User name extracted from Email address
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Email">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.UserTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Groups">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Type">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.TypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.SolvedForms">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:ELearning.Data.DataModelContainer">
             <summary>
             No Metadata Documentation available.
@@ -799,59 +852,6 @@
         <member name="P:ELearning.Data.TextAnswer.Text">
             <summary>
             No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.User">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32)">
-            <summary>
-            Create a new User object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="email">Initial value of the Email property.</param>
-            <param name="userTypeID">Initial value of the UserTypeID property.</param>
-        </member>
-        <member name="P:ELearning.Data.User.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.Email">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.UserTypeID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.Groups">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.Type">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.TypeReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.SolvedForms">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.Name">
-            <summary>
-            Gets User name extracted from Email address
             </summary>
         </member>
         <member name="T:ELearning.Data.UserType">

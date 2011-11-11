@@ -46,11 +46,15 @@
   <ItemGroup>
     <Compile Include="WebAuthenticationContext.cs" />
     <Compile Include="ELearningMembershipProvider.cs" />
-    <Compile Include="IAuthenticationManager.cs" />
+    <Compile Include="IAuthenticationContext.cs" />
     <Compile Include="LoggedUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{97C523EF-370C-4D56-8FDC-DE16C2EF96C5}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{A577BC22-4066-4FFC-A54D-88E955FD89A8}</Project>
       <Name>Data</Name>

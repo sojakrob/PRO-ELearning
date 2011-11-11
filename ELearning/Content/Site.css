@@ -8,18 +8,10 @@ body
 	margin: 0;
 }
 
-header,
-footer,
-nav,
-section {
-    display: block;
-}
-
 h1
 {
-	border-top: 1px solid #E1DBFF;
 	border-bottom: 1px solid #E1DBFF;
-	padding: 10px 20px;
+	padding: 10px 30px;
 	color: #8781FF;
 	text-transform: uppercase;
 	font-size: 1.5em;
@@ -37,6 +29,11 @@ a
 	color: #8781FF;
 }
 
+div.clear
+{
+	clear: both;
+}
+
 /* Main layout
 -----------------------------------------------------------*/
 div#top
@@ -44,24 +41,41 @@ div#top
 }
 div#top div#header
 {
-	background-color: #FAF9FF;
+	background-color: #EDEAFE;
 	height: 80px;
+	border-bottom: 1px solid #E1DBFF;
 }
-div#top div#header span#logo
+div#top div#header div#logo
 {
 	font-size: 30px;
-	margin: 20px;
-	padding: 20px 0;
+	float: left;
+	height: 60px;
+	padding-top: 20px;
+	padding-left: 30px;
+}
+div#top div#header div#logo a
+{
+	color: Black;
+}
+div#top div#header div#authentication
+{
+	float: right;
+	height: 50px;
+	padding-top: 30px;
+	text-align: center;
 }
 
-div#mainMenu
+div#mainMenuControl
 {
 	width: 200px;
 	float: left;
 }
-div#mainMenu ul
+div#mainMenuControl ul
 {
-	list-style: none;
+	list-style: none;	
+}
+div#mainMenuControl div
+{
 	
 }
 
@@ -74,20 +88,56 @@ div#footer
 	clear: both;
 }
 
+/* Not Logged Layout
+-----------------------------------------------------------*/
+body.index h1
+{
+	border: none;
+	padding: 0;
+}
+body.index div#frameWrapper
+{
+	width: 100%;
+	margin-top: 30px;
+}
+body.index div#frame
+{
+	margin: auto;
+	float: none;
+	width: 700px;
+}
+body.index div#frameContent
+{
+}
+body.index div#logOnWrapper
+{
+	float: right;
+}
+body.index div#welcome
+{
+	float: left;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
 fieldset 
 {
-    border:1px solid #ddd;
+    border:1px solid #E1DBFF;
     padding:0 1.4em 1.4em 1.4em;
     margin:0 0 1.5em 0;
+}
+fieldset h2
+{
+	font-weight: normal;
+	font-size: 1.2em;
 }
 
 legend 
 {
     font-size:1.2em;
     font-weight: bold;
+    display: none;
 }
 
 textarea 
@@ -95,14 +145,27 @@ textarea
     min-height: 75px;
 }
 
-.editor-label 
+div.editor-group
 {
-    margin: 1em 0 0 0;
+	clear: both;
+	margin: 10px 0;
+	padding: 5px 0;
 }
 
-.editor-field 
+div.editor-label 
 {
-    margin:0.5em 0 0 0;
+    float: left;
+}
+
+div.editor-field 
+{
+    float:right;
+}
+
+p.buttons
+{
+	text-align: center;
+	margin-bottom: 0;
 }
 
 
@@ -141,6 +204,7 @@ table.datagrid
 {
 	margin: 0px 10px;
 	border-collapse: collapse;
+	min-width: 600px;
 }
 table.datagrid th
 {
@@ -172,4 +236,23 @@ a.button
 	background-color: #8781FF;
 	border-radius: 5px 5px 5px 5px;
 	padding: 5px 15px;
+}
+
+
+/* LogOn Control
+------------------------------------------------------------*/
+div#logOnControl
+{
+	width: 300px;
+}
+
+/* Logged User Control
+------------------------------------------------------------*/
+div#loggedUserControl
+{
+	padding: 0 30px;
+}
+div#loggedUserControl span
+{
+	margin: 0 10px;
 }
