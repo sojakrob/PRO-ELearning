@@ -1,0 +1,35 @@
+@model ELearning.Data.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Question</legend>
+
+    <div class="display-label">Text</div>
+    <div class="display-field">@Model.Text</div>
+
+    <div class="display-label">HelpText</div>
+    <div class="display-field">@Model.HelpText</div>
+
+    <div class="display-label">ImageUrl</div>
+    <div class="display-field">@Model.ImageUrl</div>
+
+    <div class="display-label">Explanation</div>
+    <div class="display-field">@Model.Explanation</div>
+
+    <div class="display-label">QuestionGroup</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.QuestionGroup).ToString()</div>
+
+    <div class="display-label">QuestionGroupReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.QuestionGroupReference).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
