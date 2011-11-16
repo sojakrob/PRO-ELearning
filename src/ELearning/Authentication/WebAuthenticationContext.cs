@@ -47,7 +47,7 @@ namespace ELearning.Authentication
             
             FormsAuthentication.SetAuthCookie(email, keepSignedIn);
 
-            LoggedUserSession = new UserSession(email, ((ELearningMembershipUser)Membership.GetUser()).Type);
+            LoggedUserSession = new UserSession(((ELearningMembershipUser)Membership.GetUser(email)).User);
 
             return true;
         }

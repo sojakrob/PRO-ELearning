@@ -8,6 +8,7 @@ using ELearning.Business.Storages;
 using ELearning.Authentication;
 using Microsoft.Practices.Unity;
 using ELearning.Models.Authentication;
+using System.Web.Security;
 
 namespace ELearning.Controllers
 {
@@ -20,10 +21,14 @@ namespace ELearning.Controllers
         {
             get
             {
+                if (!AuthenticationContext.IsUserLoggedIn)
+                    return null;
+
                 return new LoggedUserModel()
                             {
                                 Email = AuthenticationContext.LoggedUserSession.Email,
-                                Type = AuthenticationContext.LoggedUserSession.Type
+                                Type = AuthenticationContext.LoggedUserSession.Type,
+                                Permissions = AuthenticationContext.LoggedUserSession.Permissions
                             };
             }
         }

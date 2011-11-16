@@ -9,6 +9,7 @@ using ELearning.Business.Managers;
 using ELearning.Business.Storages;
 using Microsoft.Practices.Unity;
 using ELearning.Data.Enums;
+using ELearning.Business.Permissions;
 
 
 namespace ELearning.Authentication
@@ -134,7 +135,24 @@ namespace ELearning.Authentication
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            return new ELearningMembershipUser("ELearningMembershipProvider", username, 1, username, null, null, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, UserTypes.Administrator);
+            return new ELearningMembershipUser(
+                       "ELearningMembershipProvider", 
+                       username, 
+                       1, 
+                       username, 
+                       null, 
+                       null, 
+                       true, 
+                       false, 
+                       DateTime.Now, 
+                       DateTime.Now, 
+                       DateTime.Now, 
+                       DateTime.Now, 
+                       DateTime.Now, 
+                       _userManager.GetUser(username),
+                       UserTypes.Administrator,
+                       new AdministratorPermissions()
+                       );
         }
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
