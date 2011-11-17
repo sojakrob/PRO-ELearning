@@ -28,16 +28,10 @@ namespace ELearning.Controllers
         }
 
 
-        //
-        // GET: /User/
-        
         public ViewResult Index()
         {
             return View(ModelsFromArray<User, UserModel>(_userManager.GetAll()));
         }
-
-        //
-        // GET: /User/Details/5
 
         public ViewResult Details(int id)
         {
@@ -45,37 +39,32 @@ namespace ELearning.Controllers
             return View();
         }
 
-        //
-        // GET: /User/Create
-
         public ActionResult Create()
         {
+            FillViewBag();
+
             return View();
         } 
 
-        //
-        // POST: /User/Create
-
         [HttpPost]
-        public ActionResult Create(User user)
+        public ActionResult Create(UserModel user)
         {
             if (ModelState.IsValid)
             {
+                bool userCreated = _userManager.CreateUser(AuthenticationContext.LoggedUserSession.Email, user.Email, user.Password, user.Type.ID);
+                if(userCreated)
+                    return RedirectToAction("Index");
             }
+
+            FillViewBag();
 
             return View(user);
         }
         
-        //
-        // GET: /User/Edit/5
- 
         public ActionResult Edit(int id)
         {
             return View();
         }
-
-        //
-        // POST: /User/Edit/5
 
         [HttpPost]
         public ActionResult Edit(User user)
@@ -87,21 +76,27 @@ namespace ELearning.Controllers
             return View(user);
         }
 
-        //
-        // GET: /User/Delete/5
- 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string email)
         {
+            if (_userManager.DeleteUser(AuthenticationContext.LoggedUserSession.Email, email))
+                return RedirectToAction("Index");
+
+            // TODO Confirm deletion
+
             return View();
         }
-
-        //
-        // POST: /User/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
             return RedirectToAction("Index");
+        }
+
+
+        private void FillViewBag()
+        {
+            ViewBag.UserTypes = ModelsFromArray<UserType, UserTypeModel>(_userManager.GetUserTypes());
+            ViewBag.DefaultUserType = _userManager.DefaultUserTypeID;
         }
     }
 }

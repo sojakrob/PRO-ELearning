@@ -135,6 +135,9 @@ namespace ELearning.Authentication
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
+            if (string.IsNullOrEmpty(username))
+                return null;
+
             return new ELearningMembershipUser(
                        "ELearningMembershipProvider", 
                        username, 

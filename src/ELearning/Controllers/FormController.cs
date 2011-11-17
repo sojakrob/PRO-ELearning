@@ -18,6 +18,7 @@ namespace ELearning.Controllers
     {
         FormManager _formManager;
 
+
         /// <summary>
         /// Initializes a new instance of the FormController class.
         /// </summary>
@@ -28,16 +29,10 @@ namespace ELearning.Controllers
         }
 
 
-        //
-        // GET: /Form/
-
         public ViewResult Index()
         {
             return View(ModelsFromArray<Form, FormModel>(_formManager.GetAll()));
         }
-
-        //
-        // GET: /Form/Details/5
 
         public ViewResult Details(int id)
         {
@@ -45,50 +40,35 @@ namespace ELearning.Controllers
             return View(new FormModel(form));
         }
 
-        //
-        // GET: /Form/Create
-
         public ActionResult Create()
         {
-            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
-            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+            FillViewBag();
 
             return View();
         }
-
-        //
-        // POST: /Form/Create
 
         [HttpPost]
         public ActionResult Create(FormModel form)
         {
             if (ModelState.IsValid)
             {
-                if(_formManager.AddForm(form.ToData()))
+                if (_formManager.AddForm(form.ToData()))
                     return RedirectToAction("Index"); // TODO Redirect to adding question groups of created form
             }
 
-            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
-            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+            FillViewBag();
 
             return View(form);
         }
 
-        //
-        // GET: /Form/Edit/5
-
         public ActionResult Edit(int id)
         {
-            Form form = _formManager.GetForm(id);
+            FillViewBag();
 
-            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
-            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+            Form form = _formManager.GetForm(id);
 
             return View(new FormModel(form));
         }
-
-        //
-        // POST: /Form/Edit/5
 
         [HttpPost]
         public ActionResult Edit(FormModel form)
@@ -99,15 +79,21 @@ namespace ELearning.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
-            ViewBag.DefaultFormType = _formManager.DefaultFormType;
+            FillViewBag();
 
             return View(form);
         }
 
+
+        private void FillViewBag()
+        {
+            ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
+            ViewBag.DefaultFormType = _formManager.DefaultFormTypeID;
+        }
+
         ////
         //// GET: /Form/Delete/5
- 
+
         //public ActionResult Delete(int id)
         //{
         //    Form form = context.Form.Single(x => x.ID == id);
@@ -125,5 +111,6 @@ namespace ELearning.Controllers
         //    context.SaveChanges();
         //    return RedirectToAction("Index");
         //}
+        
     }
 }

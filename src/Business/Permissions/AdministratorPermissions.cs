@@ -14,6 +14,13 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+        public override bool User_Delete
+        {
+            get
+            {
+                return true;
+            }
+        }
         public override bool User_List
         {
             get

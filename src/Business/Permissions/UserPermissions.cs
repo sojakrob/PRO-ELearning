@@ -18,6 +18,13 @@ namespace ELearning.Business.Permissions
                 return false; 
             } 
         }
+        public virtual bool User_Delete
+        {
+            get
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Can view list of Users
         /// </summary>

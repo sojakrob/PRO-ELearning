@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ELearning.Data;
 using ELearning.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace ELearning.Models.Data
 {
@@ -11,8 +12,12 @@ namespace ELearning.Models.Data
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        [Required] // TODO Add Regex check etc.
         public string Email { get; set; }
-        public UserTypes Type { get; set; }
+        [Required]
+        public string Password { get; set; }
+        [Required]
+        public UserTypeModel Type { get; set; }
 
 
         /// <summary>
@@ -20,7 +25,8 @@ namespace ELearning.Models.Data
         /// </summary>
         public UserModel()
         {
-            
+            Name = string.Empty;
+            Password = string.Empty;
         }
         public UserModel(User data)
             : base(data)
@@ -28,13 +34,22 @@ namespace ELearning.Models.Data
             ID = data.ID;
             Name = data.Name;
             Email = data.Email;
-            Type = data.TypeEnum;
+            Password = string.Empty;
+
+            if (data.Type == null)
+                Type = new UserTypeModel();
+            else
+                Type = new UserTypeModel(data.Type);
         }
 
 
         public override User ToData()
         {
-            throw new NotImplementedException();
+            return User.CreateUser(
+                ID,
+                Email,
+                Type.ID
+                );
         }
     }
 }

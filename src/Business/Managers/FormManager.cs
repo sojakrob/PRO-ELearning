@@ -9,7 +9,7 @@ namespace ELearning.Business.Managers
 {
     public class FormManager : ManagerBase<Form>
     {
-        public int DefaultFormType
+        public int DefaultFormTypeID
         {
             get
             {

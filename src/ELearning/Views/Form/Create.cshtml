@@ -1,11 +1,12 @@
 @model ELearning.Models.Data.FormModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Testy";
 }
 
-<h2>Create</h2>
+<h2>New Test</h2>
 
+<div id="CreateOrEditUser">
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -18,6 +19,7 @@
         </p>
     </fieldset>
 }
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

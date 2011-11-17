@@ -14,7 +14,11 @@
             Email
         </th>
         <th>
-            Type
+            Role
+        </th>
+        <th>
+        </th>
+        <th>
         </th>
     </tr>
 
@@ -24,7 +28,16 @@
 			@item.Email
         </td>
         <td>
-			@(item.Type)
+			@(item.Type.Enum)
+        </td>
+        <td>
+            @Html.ButtonLink("Reset password", string.Empty)
+        </td>
+        <td>
+            @if (item.Email != Membership.GetUser().Email)
+            {
+                @Html.ButtonLink("X", "Delete", new { email = item.Email })
+            }
         </td>
     </tr>
 }

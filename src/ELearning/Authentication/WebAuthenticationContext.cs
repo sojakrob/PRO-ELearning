@@ -17,10 +17,13 @@ namespace ELearning.Authentication
         /// </summary>
         public UserSession LoggedUserSession
         {
-        	get
+            get
             {
                 if (HttpContext.Current == null)
                     return null;
+
+                if (HttpContext.Current.Session[USER_SESSION] == null && Membership.GetUser() != null)
+                    LoggedUserSession = CreateUserSession(Membership.GetUser().UserName);
 
                 return (HttpContext.Current.Session[USER_SESSION] as UserSession);
             }
@@ -44,10 +47,10 @@ namespace ELearning.Authentication
             bool loginResult = Membership.ValidateUser(email, password);
             if (!loginResult)
                 return false;
-            
+
             FormsAuthentication.SetAuthCookie(email, keepSignedIn);
 
-            LoggedUserSession = new UserSession(((ELearningMembershipUser)Membership.GetUser(email)).User);
+            LoggedUserSession = CreateUserSession(email);
 
             return true;
         }
@@ -56,6 +59,12 @@ namespace ELearning.Authentication
             FormsAuthentication.SignOut();
 
             LoggedUserSession = null;
+        }
+
+
+        private static UserSession CreateUserSession(string email)
+        {
+            return new UserSession(((ELearningMembershipUser)Membership.GetUser(email)).User);
         }
     }
 }

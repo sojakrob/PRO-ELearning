@@ -12,6 +12,16 @@ namespace ELearning.Business.Managers
 {
     public class UserManager : ManagerBase<User>
     {
+        public int DefaultUserTypeID
+        {
+            get
+            {
+                return 3;
+                // TODO Get from settings
+            }
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the UserManager class.
         /// </summary>
@@ -23,6 +33,26 @@ namespace ELearning.Business.Managers
         }
 
 
+        public bool CreateUser(string authorEmail, string email, string password, int typeID)
+        {
+            UserPermissions perms = GetUserPermissions(authorEmail);
+            if (!perms.User_Create)
+                throw new PermissionException("User_Create");
+
+            try
+            {
+                User user = User.CreateUser(0, email, typeID);
+
+                Context.User.AddObject(user);
+                Context.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
         /// <summary>
         /// Creates new user
         /// </summary>
@@ -33,19 +63,27 @@ namespace ELearning.Business.Managers
         /// <returns></returns>
         public bool CreateUser(string authorEmail, string email, string password, UserTypes type)
         {
+            return CreateUser(authorEmail, email, password, GetUserTypeID(type));
+        }
+
+        public bool DeleteUser(string authorEmail, string email)
+        {
             UserPermissions perms = GetUserPermissions(authorEmail);
-            if (!perms.User_Create)
-                throw new PermissionException("User_Create");
+            if (!perms.User_Delete)
+                throw new PermissionException("User_Delete");
+
+            User user = GetUser(email);
+            if (user == null)
+                return false;
 
             try
             {
-                User user = User.CreateUser(0, email, GetUserTypeID(type));
-
-                Context.User.AddObject(user);
+                Context.User.DeleteObject(user);
                 Context.SaveChanges();
             }
-            catch
+            catch (Exception ex)
             {
+                // TODO Log exception
                 return false;
             }
 
@@ -105,10 +143,16 @@ namespace ELearning.Business.Managers
             return UserPermissions.Get(user.TypeEnum);
         }
 
+        public IQueryable<UserType> GetUserTypes()
+        {
+            return Context.UserType;
+        }
+
 
         private int GetUserTypeID(UserTypes type)
         {
-            return Context.UserType.Single(t => t.Name == type.ToString()).ID;
+            string sType = type.ToString();
+            return Context.UserType.Single(t => t.Name == sType).ID;
         }
     }
 }

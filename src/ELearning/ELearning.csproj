@@ -95,6 +95,7 @@
     <Compile Include="Models\Data\FormModel.cs" />
     <Compile Include="Models\Data\FormTypeModel.cs" />
     <Compile Include="Models\Data\UserModel.cs" />
+    <Compile Include="Models\Data\UserTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\IUnityContainerAccessor.cs" />
     <Compile Include="Unity\UnityContainerFactory.cs" />

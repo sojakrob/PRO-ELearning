@@ -4,14 +4,18 @@ using System.Linq;
 using System.Web;
 using ELearning.Data;
 using ELearning.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace ELearning.Models.Data
 {
     public class FormModel : DataModelBase<Form>
     {
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Text { get; set; }
+        public bool Shuffle { get; set; }
+        public DateTime? TimeToFill { get; set; }
         public DateTime Created { get; set; }
         public FormTypeModel Type { get; set; }
         public UserModel Author { get; set; }
@@ -31,6 +35,8 @@ namespace ELearning.Models.Data
             Name = data.Name;
             Text = data.Text;
             Created = data.Created;
+            Shuffle = data.Shuffle;
+            TimeToFill = data.TimeToFill;
 
             if (data.Type == null)
                 Type = new FormTypeModel();
@@ -46,7 +52,7 @@ namespace ELearning.Models.Data
 
         public override Form ToData()
         {
-            return Form.CreateForm(
+            Form result = Form.CreateForm(
                 ID,
                 Name, 
                 Text,
@@ -54,6 +60,10 @@ namespace ELearning.Models.Data
                 Type == null ? 0 : Type.ID,
                 Author == null ? 0 : Author.ID
                 );
+            result.Shuffle = Shuffle;
+            result.TimeToFill = TimeToFill;
+
+            return result;
         }
     }
 }
