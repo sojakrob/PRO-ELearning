@@ -141,6 +141,8 @@
     <NavigationProperty Name="Type" Relationship="DataModel.UserUserType" FromRole="User" ToRole="UserType" />
     <Property Type="Int32" Name="UserTypeID" Nullable="false" />
     <NavigationProperty Name="SolvedForms" Relationship="DataModel.FormInstanceUser" FromRole="User" ToRole="FormInstance" />
+    <Property Type="String" Name="Password" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Type="Boolean" Name="IsActive" />
   </EntityType>
   <EntityType Name="Group">
     <Key>

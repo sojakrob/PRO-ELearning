@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ELearning.Data;
 using ELearning.Business.Storages;
+using ELearning.Business.Exceptions;
 
 namespace ELearning.Business.Managers
 {
@@ -26,7 +27,7 @@ namespace ELearning.Business.Managers
         public FormManager(IPersistentStorage persistentStorage)
             : base(persistentStorage)
         {
-            
+
         }
 
 
@@ -35,9 +36,16 @@ namespace ELearning.Business.Managers
             return GetSingle(f => f.ID == id);
         }
 
-        public bool AddForm(Form form)
+        public bool AddForm(string authorEmail, Form form)
         {
-            form.AuthorID = 1; // TODO Use current user id
+            UserManager userManager = new UserManager(_persistentStorage);
+
+            if (!userManager.GetUserPermissions(authorEmail).Form_CreateEdit)
+                throw new PermissionException("Form_CreateEdit");
+
+            User author = userManager.GetUser(authorEmail);
+
+            form.AuthorID = author.ID;
             form.Created = DateTime.Now;
 
             try
@@ -58,16 +66,11 @@ namespace ELearning.Business.Managers
         {
             Form trueForm = GetForm(form.ID);
 
-            if (!trueForm.Name.Equals(form.Name))
-                trueForm.Name = form.Name;
-            if (!trueForm.Text.Equals(form.Text))
-                trueForm.Text = form.Text;
-            if (!trueForm.FormTypeID.Equals(form.FormTypeID))
-                trueForm.FormTypeID = form.FormTypeID;
-            if (!trueForm.Shuffle.Equals(form.Shuffle))
-                trueForm.Shuffle = form.Shuffle;
-            if (!trueForm.TimeToFill.Equals(form.TimeToFill))
-                trueForm.TimeToFill = form.TimeToFill;
+            trueForm.Name = form.Name;
+            trueForm.Text = form.Text;
+            trueForm.FormTypeID = form.FormTypeID;
+            trueForm.Shuffle = form.Shuffle;
+            trueForm.TimeToFill = form.TimeToFill;
 
             try
             {
@@ -86,6 +89,6 @@ namespace ELearning.Business.Managers
         {
             return Context.FormType;
         }
-        
+
     }
 }

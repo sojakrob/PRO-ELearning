@@ -11,7 +11,7 @@ namespace ELearning.Business.Managers
 {
     public abstract class ManagerBase<T> : IRepository<T> where T : class
     {
-        private IPersistentStorage _persistentStorage;
+        protected IPersistentStorage _persistentStorage;
 
         /// <summary>
         /// Gets current data context

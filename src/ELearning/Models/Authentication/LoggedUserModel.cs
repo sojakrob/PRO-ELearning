@@ -10,6 +10,7 @@ namespace ELearning.Models.Authentication
 {
     public class LoggedUserModel
     {
+        public int ID { get; set; }
         public string Email { get; set; }
         public UserTypes Type { get; set; }
         public UserPermissions Permissions { get; set; }
@@ -27,6 +28,7 @@ namespace ELearning.Models.Authentication
         /// </summary>
         public LoggedUserModel(User data, UserPermissions permissions)
         {
+            ID = data.ID;
             Email = data.Email;
             Type = data.TypeEnum;
             Permissions = permissions;

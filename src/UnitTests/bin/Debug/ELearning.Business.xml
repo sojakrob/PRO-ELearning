@@ -21,7 +21,7 @@
             </summary>
             <param name="persistentStorage"></param>
         </member>
-        <member name="P:ELearning.Business.Permissions.UserPermissions.User_Create">
+        <member name="P:ELearning.Business.Permissions.UserPermissions.User_CreateEdit">
             <summary>
             Can create User
             </summary>
@@ -56,6 +56,14 @@
             <param name="email">User email</param>
             <param name="password">User password</param>
             <param name="type">User type</param>
+            <returns></returns>
+        </member>
+        <member name="M:ELearning.Business.Managers.UserManager.DeleteUser(System.String,System.String)">
+            <summary>
+            Deletes specified user (in fact only deactivates the user because of his created forms etc.)
+            </summary>
+            <param name="authorEmail"></param>
+            <param name="email"></param>
             <returns></returns>
         </member>
         <member name="M:ELearning.Business.Managers.UserManager.GetUser(System.String)">

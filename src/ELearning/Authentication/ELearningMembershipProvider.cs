@@ -121,7 +121,7 @@ namespace ELearning.Authentication
         }
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            return _userManager.ChangePassword(username, oldPassword, newPassword);
+            throw new NotImplementedException();
         }
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
@@ -154,7 +154,7 @@ namespace ELearning.Authentication
                        DateTime.Now, 
                        _userManager.GetUser(username),
                        UserTypes.Administrator,
-                       new AdministratorPermissions()
+                       _userManager.GetUserPermissions(username)
                        );
         }
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)

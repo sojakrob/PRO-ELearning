@@ -806,7 +806,7 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32)">
+        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32,System.String,System.Boolean)">
             <summary>
             Create a new User object.
             </summary>
@@ -825,6 +825,16 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.User.UserTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Password">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.IsActive">
             <summary>
             No Metadata Documentation available.
             </summary>

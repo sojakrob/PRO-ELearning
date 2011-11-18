@@ -57,11 +57,6 @@
             Initializes a new instance of the UnityContainerBuilder class.
             </summary>
         </member>
-        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
-            <summary>
-            Gets the logged user
-            </summary>
-        </member>
         <member name="M:ELearning.Models.Data.UserTypeModel.#ctor">
             <summary>
             Initializes a new instance of the UserTypeModel class.
@@ -70,6 +65,11 @@
         <member name="M:ELearning.Models.Data.UserTypeModel.#ctor(ELearning.Data.UserType)">
             <summary>
             Initializes a new instance of the UserTypeModel class.
+            </summary>
+        </member>
+        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
+            <summary>
+            Gets the logged user
             </summary>
         </member>
     </members>

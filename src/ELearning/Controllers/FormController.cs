@@ -10,6 +10,7 @@ using ELearning.Models;
 using ELearning.Business.Managers;
 using ELearning.Business.Storages;
 using ELearning.Models.Data;
+using System.Web.Security;
 
 namespace ELearning.Controllers
 {
@@ -31,6 +32,8 @@ namespace ELearning.Controllers
 
         public ViewResult Index()
         {
+            FillViewBag_Index();
+
             return View(ModelsFromArray<Form, FormModel>(_formManager.GetAll()));
         }
 
@@ -42,7 +45,7 @@ namespace ELearning.Controllers
 
         public ActionResult Create()
         {
-            FillViewBag();
+            FillViewBag_Create();
 
             return View();
         }
@@ -52,18 +55,18 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_formManager.AddForm(form.ToData()))
+                if (_formManager.AddForm(CurrentLoggedUserModel.Email, form.ToData()))
                     return RedirectToAction("Index"); // TODO Redirect to adding question groups of created form
             }
 
-            FillViewBag();
+            FillViewBag_Create();
 
             return View(form);
         }
 
         public ActionResult Edit(int id)
         {
-            FillViewBag();
+            FillViewBag_Create();
 
             Form form = _formManager.GetForm(id);
 
@@ -79,14 +82,20 @@ namespace ELearning.Controllers
                 return RedirectToAction("Index");
             }
 
-            FillViewBag();
+            FillViewBag_Create();
 
             return View(form);
         }
 
 
-        private void FillViewBag()
+        private void FillViewBag_Index()
         {
+            ViewBag.CurrentUserModel = CurrentLoggedUserModel;
+        }
+        private void FillViewBag_Create()
+        {
+            FillViewBag_Index();
+
             ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
             ViewBag.DefaultFormType = _formManager.DefaultFormTypeID;
         }

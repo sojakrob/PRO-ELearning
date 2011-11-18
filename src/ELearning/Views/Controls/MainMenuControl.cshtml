@@ -19,7 +19,7 @@
                 <li>
                     @Html.ActionLink("Uživatelé", "Index", "User")
                     <ul>
-                        @if (Model.Permissions.User_Create)
+                        @if (Model.Permissions.User_CreateEdit)
                         {
                             <li>@Html.ActionLink("Nový uživatel", "Create", "User")</li>
                         }

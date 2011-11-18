@@ -11,7 +11,7 @@ namespace ELearning.Business.Permissions
         /// <summary>
         /// Can create User
         /// </summary>
-        public virtual bool User_Create 
+        public virtual bool User_CreateEdit 
         { 
             get 
             { 
@@ -29,6 +29,15 @@ namespace ELearning.Business.Permissions
         /// Can view list of Users
         /// </summary>
         public virtual bool User_List { get { return false; } }
+
+        public virtual bool Form_CreateEdit
+        {
+            get { return false; }
+        }
+        public virtual bool Form_Delete
+        {
+            get { return false; }
+        }
 
 
         public static UserPermissions Get(UserTypes userType)

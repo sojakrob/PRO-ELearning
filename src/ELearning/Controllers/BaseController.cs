@@ -26,6 +26,7 @@ namespace ELearning.Controllers
 
                 return new LoggedUserModel()
                             {
+                                ID = AuthenticationContext.LoggedUserSession.User.ID,
                                 Email = AuthenticationContext.LoggedUserSession.Email,
                                 Type = AuthenticationContext.LoggedUserSession.Type,
                                 Permissions = AuthenticationContext.LoggedUserSession.Permissions

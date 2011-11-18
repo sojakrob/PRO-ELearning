@@ -2939,12 +2939,14 @@ namespace ELearning.Data
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="userTypeID">Initial value of the UserTypeID property.</param>
-        public static User CreateUser(global::System.Int32 id, global::System.String email, global::System.Int32 userTypeID)
+        public static User CreateUser(global::System.Int32 id, global::System.String email, global::System.Int32 userTypeID, global::System.String password, bool isActive)
         {
             User user = new User();
             user.ID = id;
             user.Email = email;
             user.UserTypeID = userTypeID;
+            user.Password = password;
+            user.IsActive = isActive;
             return user;
         }
 
@@ -3025,6 +3027,54 @@ namespace ELearning.Data
         private global::System.Int32 _UserTypeID;
         partial void OnUserTypeIDChanging(global::System.Int32 value);
         partial void OnUserTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsActive;
+        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsActiveChanged();
 
         #endregion
     

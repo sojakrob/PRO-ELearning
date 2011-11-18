@@ -7,7 +7,7 @@ namespace ELearning.Business.Permissions
 {
     public class AdministratorPermissions : LectorPermissions
     {
-        public override bool User_Create
+        public override bool User_CreateEdit
         {
             get
             {
@@ -22,6 +22,14 @@ namespace ELearning.Business.Permissions
             }
         }
         public override bool User_List
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool Form_Delete
         {
             get
             {

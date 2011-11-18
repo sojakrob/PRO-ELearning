@@ -7,6 +7,8 @@ using ELearning.Business.Storages;
 using ELearning.Business.Permissions;
 using ELearning.Business.Exceptions;
 using ELearning.Data.Enums;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace ELearning.Business.Managers
 {
@@ -33,15 +35,22 @@ namespace ELearning.Business.Managers
         }
 
 
+        public override IQueryable<User> GetAll()
+        {
+            return Context.User.Where(u => u.IsActive == true);
+        }
+
         public bool CreateUser(string authorEmail, string email, string password, int typeID)
         {
-            UserPermissions perms = GetUserPermissions(authorEmail);
-            if (!perms.User_Create)
-                throw new PermissionException("User_Create");
+            if (!GetUserPermissions(authorEmail).User_CreateEdit)
+                throw new PermissionException("User_CreateEdit");
+
+            if (GetUser(email) != null)
+                return false;
 
             try
             {
-                User user = User.CreateUser(0, email, typeID);
+                User user = GetNewUserInstance(0, email, typeID, password, true);
 
                 Context.User.AddObject(user);
                 Context.SaveChanges();
@@ -66,6 +75,12 @@ namespace ELearning.Business.Managers
             return CreateUser(authorEmail, email, password, GetUserTypeID(type));
         }
 
+        /// <summary>
+        /// Deletes specified user (in fact only deactivates the user because of his created forms etc.)
+        /// </summary>
+        /// <param name="authorEmail"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public bool DeleteUser(string authorEmail, string email)
         {
             UserPermissions perms = GetUserPermissions(authorEmail);
@@ -78,7 +93,8 @@ namespace ELearning.Business.Managers
 
             try
             {
-                Context.User.DeleteObject(user);
+                user.IsActive = false;
+
                 Context.SaveChanges();
             }
             catch (Exception ex)
@@ -100,12 +116,28 @@ namespace ELearning.Business.Managers
             if (String.IsNullOrEmpty(email))
                 throw new ArgumentException("Email is null or empty.", "email");
           
-            return GetSingle(u => u.Email == email);
+            return GetSingle(u => u.Email == email && u.IsActive == true);
         }
 
-        public bool ChangePassword(string email, string oldPassword, string newPassword)
+        public bool ChangePassword(string authorEmail, string email, string oldPassword, string newPassword)
         {
-            return false;
+            bool isChangingOwnEmail = (authorEmail == email);
+            if (!isChangingOwnEmail)
+                if (!GetUserPermissions(authorEmail).User_CreateEdit)
+                    throw new PermissionException("User_CreateEdit");
+
+            User user = GetUser(email);
+            if (user == null)
+                return false;
+
+            if (user.Password != GetPasswordHash(oldPassword))
+                return false;
+
+            user.Password = GetPasswordHash(newPassword);
+
+            Context.SaveChanges();
+
+            return true;
         }
         /// <summary>
         /// Gets if password fits to specified user
@@ -116,7 +148,7 @@ namespace ELearning.Business.Managers
         public bool ValidateUser(string email, string password)
         {
             User user = GetUser(email);
-            return email == password;
+            return user.Password == GetPasswordHash(password);
         }
 
 
@@ -125,7 +157,7 @@ namespace ELearning.Business.Managers
         /// </summary>
         /// <param name="email">Email of the user</param>
         /// <returns></returns>
-        private UserPermissions GetUserPermissions(string email)
+        public UserPermissions GetUserPermissions(string email)
         {
             User user = GetUser(email);
             if(user == null)
@@ -149,10 +181,35 @@ namespace ELearning.Business.Managers
         }
 
 
+        public static User GetNewUserInstance(int ID, string email, int userTypeID, string password, bool isActive)
+        {
+            return User.CreateUser(
+                ID,
+                email,
+                userTypeID,
+                GetPasswordHash(password),
+                isActive
+                );
+        }
+
+
         private int GetUserTypeID(UserTypes type)
         {
             string sType = type.ToString();
             return Context.UserType.Single(t => t.Name == sType).ID;
+        }
+
+        private static string GetPasswordHash(string password)
+        {
+            MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
+            byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(password);
+            byte[] outputBytes = provider.ComputeHash(inputBytes);
+
+            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            foreach (byte b in outputBytes)
+                builder.Append(b.ToString("x2").ToLower());
+       
+            return builder.ToString();
         }
     }
 }

@@ -44,8 +44,12 @@
             <td>
                 @item.Author.Name
             </td>
-            <td>                
-                @Html.ButtonLink("X", "Delete", new { id = item.ID })
+            <td>        
+                @if (ViewBag.CurrentUserModel.Permissions.Form_Delete
+                    || ViewBag.CurrentUserModel.ID == item.Author.ID)
+                {
+                    @Html.ButtonLink("X", "Delete", new { id = item.ID })
+                }
             </td>
         </tr>
     }

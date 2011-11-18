@@ -5,6 +5,7 @@ using System.Web;
 using ELearning.Data;
 using ELearning.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using ELearning.Business.Managers;
 
 namespace ELearning.Models.Data
 {
@@ -45,10 +46,12 @@ namespace ELearning.Models.Data
 
         public override User ToData()
         {
-            return User.CreateUser(
+            return UserManager.GetNewUserInstance(
                 ID,
                 Email,
-                Type.ID
+                Type.ID,
+                Password,
+                true
                 );
         }
     }

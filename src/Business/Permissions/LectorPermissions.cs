@@ -7,5 +7,12 @@ namespace ELearning.Business.Permissions
 {
     public class LectorPermissions : StudentPermissions
     {
+        public override bool Form_CreateEdit
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }
