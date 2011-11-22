@@ -26,6 +26,18 @@ namespace ELearning.Data
         private static string NameFromEmail(string email)
         {
             return email.Substring(0, email.IndexOf('@'));
-        }         
+        }
+
+
+        public static User CreateUser(global::System.Int32 id, global::System.String email, global::System.Int32 userTypeID, string password, global::System.Boolean isActive)
+        {
+            User user = new User();
+            user.ID = id;
+            user.Email = email;
+            user.UserTypeID = userTypeID;
+            user.Password = password;
+            user.IsActive = isActive;
+            return user;
+        }
     }
 }

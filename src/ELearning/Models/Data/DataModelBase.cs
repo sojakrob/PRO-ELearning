@@ -20,7 +20,7 @@ namespace ELearning.Models.Data
         public abstract Data ToData();
 
 
-        public static IList<Model> CreateFromArray<Model>(IEnumerable<Data> array) 
+        public static List<Model> CreateFromArray<Model>(IEnumerable<Data> array) 
             where Model : DataModelBase<Data>
         {
             List<Model> result = new List<Model>();

@@ -15,7 +15,7 @@ namespace ELearning.Models.Data
         public string Name { get; set; }
         public string Text { get; set; }
         public bool Shuffle { get; set; }
-        public DateTime? TimeToFill { get; set; }
+        public int? TimeToFill { get; set; }
         public DateTime Created { get; set; }
         public FormTypeModel Type { get; set; }
         public UserModel Author { get; set; }

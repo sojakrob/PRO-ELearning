@@ -806,13 +806,14 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32,System.String,System.Boolean)">
+        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32,System.Boolean)">
             <summary>
             Create a new User object.
             </summary>
             <param name="id">Initial value of the ID property.</param>
             <param name="email">Initial value of the Email property.</param>
             <param name="userTypeID">Initial value of the UserTypeID property.</param>
+            <param name="isActive">Initial value of the IsActive property.</param>
         </member>
         <member name="P:ELearning.Data.User.ID">
             <summary>

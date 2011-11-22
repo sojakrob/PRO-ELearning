@@ -142,7 +142,7 @@
     <Property Type="Int32" Name="UserTypeID" Nullable="false" />
     <NavigationProperty Name="SolvedForms" Relationship="DataModel.FormInstanceUser" FromRole="User" ToRole="FormInstance" />
     <Property Type="String" Name="Password" MaxLength="32" FixedLength="true" Unicode="false" />
-    <Property Type="Boolean" Name="IsActive" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
   </EntityType>
   <EntityType Name="Group">
     <Key>
@@ -196,7 +196,7 @@
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Name" Nullable="false" />
     <Property Type="String" Name="Text" Nullable="false" />
-    <Property Type="DateTime" Name="TimeToFill" Nullable="true" />
+    <Property Type="Int32" Name="TimeToFill" Nullable="true" />
     <Property Type="Boolean" Name="Shuffle" Nullable="false" DefaultValue="False" />
     <Property Type="DateTime" Name="Created" Nullable="false" />
     <NavigationProperty Name="Type" Relationship="DataModel.FormTemplateFormType" FromRole="FormTemplate" ToRole="FormType" />

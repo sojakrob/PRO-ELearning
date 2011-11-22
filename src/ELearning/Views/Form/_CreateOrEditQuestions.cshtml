@@ -1,0 +1,19 @@
+﻿@using ELearning.Models.Data;
+@model IEnumerable<QuestionGroupModel>
+           
+@foreach (QuestionGroupModel item in Model)
+{
+    <div>
+        <div class="editor-group">
+            <div class="editor-label">
+                @Html.LabelFor(item.)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+}

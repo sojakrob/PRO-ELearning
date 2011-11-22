@@ -579,7 +579,7 @@ namespace ELearning.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> TimeToFill
+        public Nullable<global::System.Int32> TimeToFill
         {
             get
             {
@@ -594,8 +594,8 @@ namespace ELearning.Data
                 OnTimeToFillChanged();
             }
         }
-        private Nullable<global::System.DateTime> _TimeToFill;
-        partial void OnTimeToFillChanging(Nullable<global::System.DateTime> value);
+        private Nullable<global::System.Int32> _TimeToFill;
+        partial void OnTimeToFillChanging(Nullable<global::System.Int32> value);
         partial void OnTimeToFillChanged();
     
         /// <summary>
@@ -2939,13 +2939,13 @@ namespace ELearning.Data
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="userTypeID">Initial value of the UserTypeID property.</param>
-        public static User CreateUser(global::System.Int32 id, global::System.String email, global::System.Int32 userTypeID, global::System.String password, bool isActive)
+        /// <param name="isActive">Initial value of the IsActive property.</param>
+        public static User CreateUser(global::System.Int32 id, global::System.String email, global::System.Int32 userTypeID, global::System.Boolean isActive)
         {
             User user = new User();
             user.ID = id;
             user.Email = email;
             user.UserTypeID = userTypeID;
-            user.Password = password;
             user.IsActive = isActive;
             return user;
         }
@@ -3055,9 +3055,9 @@ namespace ELearning.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> IsActive
+        public global::System.Boolean IsActive
         {
             get
             {
@@ -3072,8 +3072,8 @@ namespace ELearning.Data
                 OnIsActiveChanged();
             }
         }
-        private Nullable<global::System.Boolean> _IsActive;
-        partial void OnIsActiveChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _IsActive;
+        partial void OnIsActiveChanging(global::System.Boolean value);
         partial void OnIsActiveChanged();
 
         #endregion

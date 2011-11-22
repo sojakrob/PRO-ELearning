@@ -94,6 +94,9 @@
     <Compile Include="Models\Data\DataModelBase.cs" />
     <Compile Include="Models\Data\FormModel.cs" />
     <Compile Include="Models\Data\FormTypeModel.cs" />
+    <Compile Include="Models\Data\QuestionGroupModel.cs" />
+    <Compile Include="Models\Data\QuestionGroupTypeModel.cs" />
+    <Compile Include="Models\Data\QuestionModel.cs" />
     <Compile Include="Models\Data\UserModel.cs" />
     <Compile Include="Models\Data\UserTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,6 +286,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\User\_CreateOrEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Form\_CreateOrEditQuestions.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
