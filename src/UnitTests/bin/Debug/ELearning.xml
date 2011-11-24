@@ -4,35 +4,19 @@
         <name>ELearning</name>
     </assembly>
     <members>
-        <member name="M:ELearning.Models.Data.FormModel.#ctor">
+        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
             <summary>
-            Initializes a new instance of the FormModel class.
-            </summary>
-            <param name="form"></param>
-        </member>
-        <member name="M:ELearning.Models.Data.UserModel.#ctor">
-            <summary>
-            Initializes a new instance of the UserModel class.
+            Gets the logged user
             </summary>
         </member>
-        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor">
+        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor">
             <summary>
-            Initializes a new instance of the LoggedUserModel class.
+            Initializes a new instance of the UserTypeModel class.
             </summary>
         </member>
-        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor(ELearning.Data.User,ELearning.Business.Permissions.UserPermissions)">
+        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor(ELearning.Data.UserType)">
             <summary>
-            Initializes a new instance of the LoggedUserModel class.
-            </summary>
-        </member>
-        <member name="P:ELearning.MvcApplication.UnityContainer">
-            <summary>
-            Gets the Unity container of the current application
-            </summary>
-        </member>
-        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
-            <summary>
-            Gets the Unity container of the application
+            Initializes a new instance of the UserTypeModel class.
             </summary>
         </member>
         <member name="M:ELearning.Controllers.UserController.#ctor(ELearning.Business.Managers.UserManager)">
@@ -52,24 +36,40 @@
             Initializes a new instance of the UserSession class.
             </summary>
         </member>
+        <member name="M:ELearning.Models.Data.FormModel.#ctor">
+            <summary>
+            Initializes a new instance of the FormModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
         <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
             <summary>
             Initializes a new instance of the UnityContainerBuilder class.
             </summary>
         </member>
-        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor">
+        <member name="M:ELearning.Models.Data.UserModel.#ctor">
             <summary>
-            Initializes a new instance of the UserTypeModel class.
+            Initializes a new instance of the UserModel class.
             </summary>
         </member>
-        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor(ELearning.Data.UserType)">
+        <member name="P:ELearning.MvcApplication.UnityContainer">
             <summary>
-            Initializes a new instance of the UserTypeModel class.
+            Gets the Unity container of the current application
             </summary>
         </member>
-        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
+        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
             <summary>
-            Gets the logged user
+            Gets the Unity container of the application
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor">
+            <summary>
+            Initializes a new instance of the LoggedUserModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor(ELearning.Data.User,ELearning.Business.Permissions.UserPermissions)">
+            <summary>
+            Initializes a new instance of the LoggedUserModel class.
             </summary>
         </member>
     </members>

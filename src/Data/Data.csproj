@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataModel.edmx.sql" />
+    <Content Include="Sql\Creation\UserFiller.sql" />
     <Content Include="Sql\Creation\UserTypeFiller.sql" />
     <Content Include="Sql\Creation\FormTypeFiller.sql" />
     <Content Include="Sql\Creation\QuestionTypeFiller.sql" />

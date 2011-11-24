@@ -130,10 +130,10 @@ namespace ELearning.Business.Managers
             if (user == null)
                 return false;
 
-            if (user.Password != GetPasswordHash(oldPassword))
+            if (user.Password != Security.GetPasswordHash(oldPassword))
                 return false;
 
-            user.Password = GetPasswordHash(newPassword);
+            user.Password = Security.GetPasswordHash(newPassword);
 
             Context.SaveChanges();
 
@@ -148,7 +148,7 @@ namespace ELearning.Business.Managers
         public bool ValidateUser(string email, string password)
         {
             User user = GetUser(email);
-            return user.Password == GetPasswordHash(password);
+            return user.Password == Security.GetPasswordHash(password);
         }
 
 
@@ -181,35 +181,23 @@ namespace ELearning.Business.Managers
         }
 
 
-        public static User GetNewUserInstance(int ID, string email, int userTypeID, string password, bool isActive)
-        {
-            return User.CreateUser(
-                ID,
-                email,
-                userTypeID,
-                GetPasswordHash(password),
-                isActive
-                );
-        }
-
-
         private int GetUserTypeID(UserTypes type)
         {
             string sType = type.ToString();
             return Context.UserType.Single(t => t.Name == sType).ID;
         }
 
-        private static string GetPasswordHash(string password)
-        {
-            MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
-            byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(password);
-            byte[] outputBytes = provider.ComputeHash(inputBytes);
 
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
-            foreach (byte b in outputBytes)
-                builder.Append(b.ToString("x2").ToLower());
-       
-            return builder.ToString();
+        public static User GetNewUserInstance(int ID, string email, int userTypeID, string password, bool isActive)
+        {
+            return User.CreateUser(
+                ID,
+                email,
+                userTypeID,
+                Security.GetPasswordHash(password),
+                isActive
+                );
         }
+
     }
 }
