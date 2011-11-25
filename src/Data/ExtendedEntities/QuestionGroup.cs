@@ -8,9 +8,9 @@ namespace ELearning.Data
 {
     public partial class QuestionGroup
     {
-        public Enums.QuestionTypes TypeEnum
+        public Enums.QuestionGroupTypes TypeEnum
         {
-            get { return EnumUtility.EnumFromName<Enums.QuestionTypes>(Type.Name); }
+            get { return EnumUtility.EnumFromName<Enums.QuestionGroupTypes>(Type.Name); }
         }
     }
 }

@@ -14,5 +14,13 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+
+        public override bool Question_CreateEdit_Own
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }

@@ -30,7 +30,7 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "Edit", new { id = item.ID })
+                @Html.ActionLink(item.Name, "CreateEditQuestions", new { id = item.ID })
             </td>
             <td>
                 @item.Text
@@ -48,7 +48,7 @@
                 @if (ViewBag.CurrentUserModel.Permissions.Form_Delete
                     || ViewBag.CurrentUserModel.ID == item.Author.ID)
                 {
-                    @Html.ButtonLink("X", "Delete", new { id = item.ID })
+                    @Html.ButtonLink("Activate", "Activate", new { id = item.ID })
                 }
             </td>
         </tr>

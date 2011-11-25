@@ -18,6 +18,16 @@ namespace ELearning.Business.Managers
                 // TODO Load from global settings
             }
         }
+        public int DefaultQuestionGroupTypeID
+        {
+            get
+            {
+                return 1;
+                // TODO Load from global settings
+            }
+        }
+
+        private UserManager _userManager;
 
 
         /// <summary>
@@ -27,23 +37,28 @@ namespace ELearning.Business.Managers
         public FormManager(IPersistentStorage persistentStorage)
             : base(persistentStorage)
         {
-
+            _userManager = new UserManager(_persistentStorage);
         }
 
 
-        public Form GetForm(int id)
+        public Form GetForm(string userEmail, int id)
         {
-            return GetSingle(f => f.ID == id);
+            User user = _userManager.GetUser(userEmail);
+            Form result = GetSingle(f => f.ID == id);
+
+            bool isOwner = (result.AuthorID == user.ID);
+            if (!isOwner && !_userManager.GetUserPermissions(userEmail).Form_List)
+                throw new PermissionException("Form_List");
+
+            return result;
         }
 
-        public bool AddForm(string authorEmail, Form form)
+        public int AddForm(string authorEmail, Form form)
         {
-            UserManager userManager = new UserManager(_persistentStorage);
-
-            if (!userManager.GetUserPermissions(authorEmail).Form_CreateEdit)
+            if (!_userManager.GetUserPermissions(authorEmail).Form_CreateEdit)
                 throw new PermissionException("Form_CreateEdit");
 
-            User author = userManager.GetUser(authorEmail);
+            User author = _userManager.GetUser(authorEmail);
 
             form.AuthorID = author.ID;
             form.Created = DateTime.Now;
@@ -56,15 +71,17 @@ namespace ELearning.Business.Managers
             catch (System.Data.OptimisticConcurrencyException ex)
             {
                 // TODO Log exception
-                return false;
+                return -1;
             }
 
-            return true;
+            return form.ID;
         }
 
-        public bool EditForm(Form form)
+        public bool EditForm(string authorEmail, Form form)
         {
-            Form trueForm = GetForm(form.ID);
+            Form trueForm = GetForm(authorEmail, form.ID);
+            
+            // TODO Check edit permissions
 
             trueForm.Name = form.Name;
             trueForm.Text = form.Text;
@@ -85,9 +102,32 @@ namespace ELearning.Business.Managers
             return true;
         }
 
+        public bool DeactivateForm(string authorEmail, int id)
+        {
+            throw new NotImplementedException();
+
+            // TODO Implement Activate & Deactivate Form
+
+            Form form = GetForm(authorEmail, id);
+            User user = _userManager.GetUser(authorEmail);
+
+            //if (form.AuthorID != user.ID && !_userManager.GetUserPermissions(authorEmail).Form_Deactivate)
+            //    throw new PermissionException("Form_Deactivate");
+
+            //form.IsActive = false;
+
+            Context.SaveChanges();
+
+            return true;
+        }
+
         public IQueryable<FormType> GetFormTypes()
         {
             return Context.FormType;
+        }
+        public IQueryable<QuestionGroupType> GetQuestionGroupTypes()
+        {
+            return Context.QuestionGroupType;
         }
 
     }

@@ -18,15 +18,17 @@ namespace ELearning.Controllers
     public class FormController : BaseController
     {
         FormManager _formManager;
+        QuestionManager _questionManager;
 
 
         /// <summary>
         /// Initializes a new instance of the FormController class.
         /// </summary>
         /// <param name="formManager"></param>
-        public FormController(FormManager formManager)
+        public FormController(FormManager formManager, QuestionManager questionManager)
         {
             _formManager = formManager;
+            _questionManager = questionManager;
         }
 
 
@@ -39,7 +41,8 @@ namespace ELearning.Controllers
 
         public ViewResult Details(int id)
         {
-            Form form = _formManager.GetForm(id);
+            Form form = _formManager.GetForm(AuthenticationContext.LoggedUserSession.Email, id);
+
             return View(new FormModel(form));
         }
 
@@ -55,8 +58,9 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_formManager.AddForm(CurrentLoggedUserModel.Email, form.ToData()))
-                    return RedirectToAction("Index"); // TODO Redirect to adding question groups of created form
+                int formID = _formManager.AddForm(CurrentLoggedUserModel.Email, form.ToData());
+                if (formID != -1)
+                    return RedirectToCreateEditQuestions(formID);
             }
 
             FillViewBag_Create();
@@ -64,11 +68,31 @@ namespace ELearning.Controllers
             return View(form);
         }
 
+        public ActionResult CreateEditQuestions(int id)
+        {
+            FormModel form = new FormModel(_formManager.GetForm(CurrentLoggedUserModel.Email, id));
+
+            FillViewBag_CreateQuestionGroups(form);
+
+            return View(form);
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewQuestion(QuestionGroupModel questionGroup)
+        {
+            if (ModelState.IsValid)
+            {
+                _questionManager.AddQuestionGroupWithQuestion(CurrentLoggedUserModel.Email, questionGroup.FormTemplateID, questionGroup.ToData());
+            }
+
+            return RedirectToCreateEditQuestions(questionGroup.FormTemplateID);
+        }
+
         public ActionResult Edit(int id)
         {
             FillViewBag_Create();
 
-            Form form = _formManager.GetForm(id);
+            Form form = _formManager.GetForm(AuthenticationContext.LoggedUserSession.Email, id);
 
             return View(new FormModel(form));
         }
@@ -78,13 +102,28 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                _formManager.EditForm(form.ToData());
+                _formManager.EditForm(AuthenticationContext.LoggedUserSession.Email, form.ToData());
                 return RedirectToAction("Index");
             }
 
             FillViewBag_Create();
 
             return View(form);
+        }
+
+        [HttpPost]
+        public ActionResult EditQuestion(int formID, int questionGroupID, QuestionModel question)
+        {
+            _questionManager.EditQuestion(CurrentLoggedUserModel.Email, question.ToData());
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+
+        public ActionResult AddAlternativeQuestion(int formTemplateID, int questionGroupID)
+        {
+            _questionManager.AddQuestion(CurrentLoggedUserModel.Email, questionGroupID);
+
+            return RedirectToCreateEditQuestions(formTemplateID);
         }
 
 
@@ -99,27 +138,19 @@ namespace ELearning.Controllers
             ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
             ViewBag.DefaultFormType = _formManager.DefaultFormTypeID;
         }
+        private void FillViewBag_CreateQuestionGroups(FormModel form)
+        {
+            FillViewBag_Index();
 
-        ////
-        //// GET: /Form/Delete/5
+            ViewBag.Form = form;
+            ViewBag.QuestionGroupTypes = ModelsFromArray<QuestionGroupType, QuestionGroupTypeModel>(_formManager.GetQuestionGroupTypes());
+            ViewBag.DefaultQuestionGroupType = _formManager.DefaultQuestionGroupTypeID;
+        }
 
-        //public ActionResult Delete(int id)
-        //{
-        //    Form form = context.Form.Single(x => x.ID == id);
-        //    return View(form);
-        //}
 
-        ////
-        //// POST: /Form/Delete/5
-
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Form form = context.Form.Single(x => x.ID == id);
-        //    context.Form.Remove(form);
-        //    context.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-        
+        private ActionResult RedirectToCreateEditQuestions(int formID)
+        {
+            return RedirectToAction("CreateEditQuestions", new { id = formID });
+        }        
     }
 }

@@ -11,7 +11,7 @@ namespace ELearning.Models.Data
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public QuestionTypes Enum { get; set; }
+        public QuestionGroupTypes Enum { get; set; }
 
 
         public QuestionGroupTypeModel()
@@ -23,7 +23,7 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             Name = data.Name;
-            Enum = Shared.EnumUtility.EnumFromName<QuestionTypes>(Name);
+            Enum = Shared.EnumUtility.EnumFromName<QuestionGroupTypes>(Name);
         }
 
 

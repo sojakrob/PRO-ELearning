@@ -85,66 +85,66 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="T:ELearning.Data.User">
+        <member name="T:ELearning.Data.QuestionGroup">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32,System.Boolean)">
+        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Create a new User object.
+            Create a new QuestionGroup object.
             </summary>
             <param name="id">Initial value of the ID property.</param>
-            <param name="email">Initial value of the Email property.</param>
-            <param name="userTypeID">Initial value of the UserTypeID property.</param>
-            <param name="isActive">Initial value of the IsActive property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
+            <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
         </member>
-        <member name="P:ELearning.Data.User.Name">
-            <summary>
-            Gets User name extracted from Email address
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.User.ID">
+        <member name="P:ELearning.Data.QuestionGroup.ID">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.Email">
+        <member name="P:ELearning.Data.QuestionGroup.Index">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.UserTypeID">
+        <member name="P:ELearning.Data.QuestionGroup.IsRequired">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.Password">
+        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeID">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.IsActive">
+        <member name="P:ELearning.Data.QuestionGroup.FormTemplateID">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.Groups">
+        <member name="P:ELearning.Data.QuestionGroup.Questions">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.Type">
+        <member name="P:ELearning.Data.QuestionGroup.Type">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.TypeReference">
+        <member name="P:ELearning.Data.QuestionGroup.TypeReference">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.User.SolvedForms">
+        <member name="P:ELearning.Data.QuestionGroup.ParentForm">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ParentFormReference">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -638,70 +638,6 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="T:ELearning.Data.QuestionGroup">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Create a new QuestionGroup object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="index">Initial value of the Index property.</param>
-            <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
-            <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.Index">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.IsRequired">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.FormTemplateID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.Questions">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.Type">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.TypeReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.ParentForm">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.ParentFormReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
         <member name="T:ELearning.Data.QuestionGroupType">
             <summary>
             No Metadata Documentation available.
@@ -863,6 +799,70 @@
         <member name="P:ELearning.Data.TextAnswer.Text">
             <summary>
             No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.User.CreateUser(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Create a new User object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="email">Initial value of the Email property.</param>
+            <param name="userTypeID">Initial value of the UserTypeID property.</param>
+            <param name="isActive">Initial value of the IsActive property.</param>
+        </member>
+        <member name="P:ELearning.Data.User.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Email">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.UserTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Password">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.IsActive">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Groups">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Type">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.TypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.SolvedForms">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.User.Name">
+            <summary>
+            Gets User name extracted from Email address
             </summary>
         </member>
         <member name="T:ELearning.Data.UserType">

@@ -1,0 +1,23 @@
+﻿@model ELearning.Models.Data.QuestionGroupModel
+
+
+<div class="editor-group">
+    <div class="editor-label">
+        Question type
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(
+            model => model.Type.ID,
+            new SelectList(
+                ((ICollection<ELearning.Models.Data.QuestionGroupTypeModel>)ViewBag.QuestionGroupTypes),
+                "ID", 
+                "Name",
+                ViewBag.DefaultQuestionGroupType
+                )
+            )
+        @Html.ValidationMessageFor(model => model.Type)
+    </div>
+    <div class="clear"></div>
+</div>
+
+@Html.HiddenFor(model => model.FormTemplateID)

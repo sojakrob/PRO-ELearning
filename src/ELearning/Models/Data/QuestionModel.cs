@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ELearning.Data;
+using ELearning.Business.Managers;
 
 namespace ELearning.Models.Data
 {
@@ -34,7 +35,13 @@ namespace ELearning.Models.Data
 
         public override Question ToData()
         {
-            return null;
+            return QuestionManager.CreateNewQuestionInstance(
+                ID,
+                Text,
+                HelpText,
+                Explanation,
+                QuestionGroupID
+                );
         }
     }
 }

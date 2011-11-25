@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ELearning.Data.Enums
 {
-    public enum QuestionTypes
+    public enum QuestionGroupTypes
     {
         InlineText,
         MultilineText,

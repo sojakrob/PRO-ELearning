@@ -29,7 +29,22 @@ namespace ELearning.Business.Permissions
             }
         }
 
+        public override bool Form_List
+        {
+            get
+            {
+                return true;
+            }
+        }
         public override bool Form_Delete
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool Question_CreateEdit_All
         {
             get
             {

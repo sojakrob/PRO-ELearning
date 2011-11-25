@@ -41,7 +41,7 @@ namespace ELearning.Business.Managers
             // TODO Apply rights based on current user type
         }
 
-        public T GetSingle(Expression<Func<T, bool>> predicate)
+        public virtual T GetSingle(Expression<Func<T, bool>> predicate)
         {
             return GetAll().SingleOrDefault<T>(predicate);
         }

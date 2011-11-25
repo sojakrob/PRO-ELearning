@@ -31,6 +31,7 @@ namespace ELearning.Unity
 
             result.RegisterType<UserManager>(storageConstructor);
             result.RegisterType<FormManager>(storageConstructor);
+            result.RegisterType<QuestionManager>(storageConstructor);
 
             result.RegisterType<IAuthenticationContext, WebAuthenticationContext>();
 

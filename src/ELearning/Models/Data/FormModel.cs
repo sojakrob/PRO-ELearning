@@ -19,6 +19,7 @@ namespace ELearning.Models.Data
         public DateTime Created { get; set; }
         public FormTypeModel Type { get; set; }
         public UserModel Author { get; set; }
+        public List<QuestionGroupModel> QuestionGroups { get; set; }
 
 
         /// <summary>
@@ -47,6 +48,8 @@ namespace ELearning.Models.Data
                 Author = new UserModel();
             else
                 Author = new UserModel(data.Author);
+
+            QuestionGroups = DataModelBase<QuestionGroup>.CreateFromArray<QuestionGroupModel>(data.QuestionGroups);
         }
 
 

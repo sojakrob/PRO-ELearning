@@ -148,6 +148,9 @@ namespace ELearning.Business.Managers
         public bool ValidateUser(string email, string password)
         {
             User user = GetUser(email);
+            if (user == null)
+                return false;
+
             return user.Password == Security.GetPasswordHash(password);
         }
 

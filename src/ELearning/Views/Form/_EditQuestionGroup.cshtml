@@ -1,0 +1,25 @@
+﻿@using ELearning.Models.Data
+@using ELearning.Utils
+@model QuestionGroupModel
+
+
+<p>Type: @Model.Type.Name</p>
+
+@foreach (QuestionModel question in Model.Questions)
+{
+    using (Html.BeginForm("EditQuestion", "Form", new { formID = Model.FormTemplateID, questionGroupID = Model.ID } ))
+    {
+        <fieldset>
+            @Html.ValidationSummary(true)
+
+            @Html.Partial("_EditQuestion", question)
+    
+            <p>
+                <input type="submit" value="SaveChanges" />
+            </p>
+        </fieldset>
+    }
+}
+
+
+@Html.ButtonLink("Add Alternative Question", "AddAlternativeQuestion", new { formTemplateID = Model.FormTemplateID, questionGroupID = Model.ID })

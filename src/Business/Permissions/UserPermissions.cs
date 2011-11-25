@@ -30,11 +30,31 @@ namespace ELearning.Business.Permissions
         /// </summary>
         public virtual bool User_List { get { return false; } }
 
+        public virtual bool Form_List
+        {
+            get { return false; }
+        }
         public virtual bool Form_CreateEdit
         {
             get { return false; }
         }
+        public virtual bool Form_CreateEdit_All
+        {
+            get
+            {
+                return false;
+            }
+        }
         public virtual bool Form_Delete
+        {
+            get { return false; }
+        }
+
+        public virtual bool Question_CreateEdit_Own
+        {
+            get { return false; }
+        }
+        public virtual bool Question_CreateEdit_All
         {
             get { return false; }
         }

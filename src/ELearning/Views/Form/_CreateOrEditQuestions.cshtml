@@ -3,17 +3,28 @@
            
 @foreach (QuestionGroupModel item in Model)
 {
-    <div>
-        <div class="editor-group">
-            <div class="editor-label">
-                @Html.LabelFor(item.)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-            <div class="clear">
-            </div>
-        </div>
-    </div>
+    <fieldset>
+        
+        <legend>Question #@item.Index</legend>
+        <h4>Question #@item.Index</h4>
+
+        @Html.Partial("_EditQuestionGroup", item)
+
+    </fieldset>
 }
+
+<div id="CreateNewQuestion">
+    @using (Html.BeginForm("CreateNewQuestion", "Form")) {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>New Question</legend>
+            <h4>New Question</h4>
+
+		    @Html.Partial("_CreateQuestionGroup", new QuestionGroupModel() { FormTemplateID = ViewBag.Form.ID })
+
+            <p>
+                <input type="submit" value="CreateNewQuestion" />
+            </p>
+        </fieldset>
+    }
+</div>
