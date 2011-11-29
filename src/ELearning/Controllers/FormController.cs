@@ -112,9 +112,12 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditQuestion(int formID, int questionGroupID, QuestionModel question)
+        public ActionResult EditQuestion(int formID, int questionGroupID, int questionID, QuestionModel question)
         {
-            _questionManager.EditQuestion(CurrentLoggedUserModel.Email, question.ToData());
+            Question q = question.ToData();
+            q.ID = questionID;
+
+            _questionManager.EditQuestion(CurrentLoggedUserModel.Email, q);
 
             return RedirectToCreateEditQuestions(formID);
         }

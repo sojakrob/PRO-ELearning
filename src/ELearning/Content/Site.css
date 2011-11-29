@@ -263,3 +263,10 @@ div#CreateOrEditUser
 {
 	
 }
+
+/* Test templates editing
+------------------------------------------------------------*/
+div.QuestionForm legend
+{
+	display: block;
+}

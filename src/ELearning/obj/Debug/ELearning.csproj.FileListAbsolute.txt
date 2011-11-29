@@ -70,7 +70,6 @@ S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ResolveAssembly
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\ELearning\obj\Debug\ELearning.pdb
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\ELearning\bin\ELearning.XML
-c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.XML
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.pdb
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.Business.dll
@@ -140,3 +139,4 @@ S:\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Microsoft.Practices.Unity.Confi
 S:\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ELearning.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.XML

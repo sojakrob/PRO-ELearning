@@ -7,18 +7,20 @@
 
 @foreach (QuestionModel question in Model.Questions)
 {
-    using (Html.BeginForm("EditQuestion", "Form", new { formID = Model.FormTemplateID, questionGroupID = Model.ID } ))
-    {
-        <fieldset>
-            @Html.ValidationSummary(true)
+    <div class="QuestionForm">
+        @using (Html.BeginForm("EditQuestion", "Form", new { formID = Model.FormTemplateID, questionGroupID = Model.ID, questionID = question.ID } ))
+        {
+            <fieldset>
+                @Html.ValidationSummary(true)
 
-            @Html.Partial("_EditQuestion", question)
+                @Html.Partial("_EditQuestion", question)
     
-            <p>
-                <input type="submit" value="SaveChanges" />
-            </p>
-        </fieldset>
-    }
+                <p>
+                    <input type="submit" value="SaveChanges" />
+                </p>
+            </fieldset>
+        }
+    </div>
 }
 
 
