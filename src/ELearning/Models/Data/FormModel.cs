@@ -14,6 +14,7 @@ namespace ELearning.Models.Data
         [Required]
         public string Name { get; set; }
         public string Text { get; set; }
+        [Display(Name="Shuffle Questions")]
         public bool Shuffle { get; set; }
         public int? TimeToFill { get; set; }
         public DateTime Created { get; set; }

@@ -1,7 +1,7 @@
 @model ELearning.Models.Data.FormModel
 
 
-<div class="editor-group">
+<div class="editor-group" id="FormNameGroup">
     <div class="editor-label">
         @Html.LabelFor(model => model.Name)
     </div>
@@ -9,44 +9,9 @@
         @Html.EditorFor(model => model.Name)
         @Html.ValidationMessageFor(model => model.Name)
     </div>
-    <div class="clear"></div>
 </div>
 
-<div class="editor-group">
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Text)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Text)
-        @Html.ValidationMessageFor(model => model.Text)
-    </div>
-    <div class="clear"></div>
-</div>
-
-<div class="editor-group">
-    <div class="editor-label">
-        @Html.LabelFor(model => model.TimeToFill)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.TimeToFill)
-        minutes
-        @Html.ValidationMessageFor(model => model.TimeToFill)
-    </div>
-    <div class="clear"></div>
-</div>
-
-<div class="editor-group">
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Shuffle)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.Shuffle)
-        @Html.ValidationMessageFor(model => model.Shuffle)
-    </div>
-    <div class="clear"></div>
-</div>
-
-<div class="editor-group">
+<div class="editor-group" id="FormTypeGroup">
     <div class="editor-label">
         FormType
     </div>
@@ -59,3 +24,43 @@
     </div>
     <div class="clear"></div>
 </div>
+
+<div class="clear"></div>
+
+<div class="editor-group" id="TextGroup">
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Text)
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(model => model.Text)
+        @Html.ValidationMessageFor(model => model.Text)
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="editor-group" id="TimeToFillGroup">
+    <div class="editor-label">
+        @Html.LabelFor(model => model.TimeToFill)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TimeToFill)
+        minutes
+        @Html.ValidationMessageFor(model => model.TimeToFill)
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="editor-group" id="ShuffleGroup">
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Shuffle)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Shuffle)
+        @Html.ValidationMessageFor(model => model.Shuffle)
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+
+

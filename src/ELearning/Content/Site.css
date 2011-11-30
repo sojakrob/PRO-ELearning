@@ -148,7 +148,7 @@ textarea
 div.editor-group
 {
 	clear: both;
-	margin: 10px 0;
+	margin: 5px 10px 0 10px;
 	padding: 5px 0;
 }
 
@@ -259,9 +259,41 @@ div#loggedUserControl span
 
 /* Create or Edit User form
 ------------------------------------------------------------*/
-div#CreateOrEditUser
+div#CreateOrEditForm
 {
 	
+}
+div#CreateOrEditForm div.editor-group
+{
+	clear: none;
+}
+div#CreateOrEditForm div#FormNameGroup
+{
+	width: 300px;
+	float: left;
+}
+div#CreateOrEditForm div#FormNameGroup div.editor-label
+{
+	width: 60px;
+}
+div#CreateOrEditForm div#FormTypeGroup
+{
+	float: right;
+	width: 200px;
+}
+div#CreateOrEditForm div#TextGroup textarea
+{
+	width: 450px;
+}
+div#CreateOrEditForm div#TimeToFillGroup
+{
+	float: left;
+	width: 300px;
+}
+div#CreateOrEditForm div#ShuffleGroup
+{
+	float: right;
+	width: 200px;
 }
 
 /* Test templates editing
