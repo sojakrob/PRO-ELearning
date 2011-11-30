@@ -3,14 +3,19 @@
            
 @foreach (QuestionGroupModel item in Model)
 {
-    <fieldset>
-        
-        <legend>Question #@item.Index</legend>
-        <h4>Question #@item.Index</h4>
+    <div class="Question">
+        <fieldset>
+            <legend>Question #@item.Index</legend>
 
-        @Html.Partial("_EditQuestionGroup", item)
+            <div class="Header">
+                <h3>Question #@item.Index</h3>
+                <span>@item.Type.Name</span>
+            </div>
 
-    </fieldset>
+            @Html.Partial("_EditQuestionGroup", item)
+
+        </fieldset>
+    </div>
 }
 
 <div id="CreateNewQuestion">
@@ -18,13 +23,13 @@
         @Html.ValidationSummary(true)
         <fieldset>
             <legend>New Question</legend>
-            <h4>New Question</h4>
+            <h3>New Question</h3>
 
 		    @Html.Partial("_CreateQuestionGroup", new QuestionGroupModel() { FormTemplateID = ViewBag.Form.ID })
 
-            <p>
+            <span>
                 <input type="submit" value="CreateNewQuestion" />
-            </p>
+            </span>
         </fieldset>
     }
 </div>

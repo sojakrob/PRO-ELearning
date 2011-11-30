@@ -5,16 +5,17 @@
     ViewBag.Title = "Test";
 }
 
-<h2>@Model.Name</h2>
+<div id="CreateEditQuestions">
+    <div id="CreateEditQuestionsHeader">
+        <h2>@Model.Name</h2>
+        <div id="info">
+            <span>@Model.Type.Name</span>
+            <span>@Model.TimeToFill</span>
+            @Html.ButtonLink("Edit", "Edit", new { id = Model.ID})
+        </div>
+        <p>@Model.Text</p>
+    </div>
 
+    @Html.Partial("_CreateOrEditQuestions", Model.QuestionGroups)
 
-<fieldset>
-    <p>@Model.Text</p>
-    <p>Type: @Model.Type.Name</p>
-    <p>Time to fill: @Model.TimeToFill minutes</p>
-    @Html.ButtonLink("Edit", "Edit", new { id = Model.ID})
-</fieldset>
-
-<h3>Questions</h3>
-
-@Html.Partial("_CreateOrEditQuestions", Model.QuestionGroups)
+</div>

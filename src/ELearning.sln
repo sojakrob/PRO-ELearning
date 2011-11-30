@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Database", "Database\Database.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ELearning.vsmdi
@@ -47,6 +49,12 @@ Global
 		{3EC97E2C-30D0-4E42-8E76-FF7FD646B5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EC97E2C-30D0-4E42-8E76-FF7FD646B5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EC97E2C-30D0-4E42-8E76-FF7FD646B5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

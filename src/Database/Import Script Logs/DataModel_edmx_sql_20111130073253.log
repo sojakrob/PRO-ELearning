@@ -1,0 +1,13 @@
+30.11.2011 20:32:53	This log contains information about the import operation of the script 'DataModel.edmx.sql' into project 'Database' on computer 'MBPC' by user'Mr.Bobby.
+30.11.2011 20:32:54	Started importing file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx.sql 
+30.11.2011 20:32:54	File name D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx.sql (size: 22481)
+30.11.2011 20:32:54	Parsing import script
+30.11.2011 20:32:54	Total number of batches in script: 103
+30.11.2011 20:32:54	Total number of statements in script: 117
+30.11.2011 20:32:54	The script was successfully imported into the project.
+30.11.2011 20:32:54	Analyzing schema objects...
+30.11.2011 20:32:54	Scanning project for duplicate elements
+30.11.2011 20:32:54	Finished duplicate element processing
+30.11.2011 20:32:54	In the script that you provided to the import operation, one or more statements were not fully understood. These statements were moved to the D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\Scripts\ScriptsIgnoredOnImport.sql file. Review the file contents for additional information.
+30.11.2011 20:32:54	A summary of the import operation was saved to the log file D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\Import Script Logs\DataModel_edmx_sql_20111130073253.log.
+30.11.2011 20:32:54	Click Finish to continue...

@@ -1,3 +1,13 @@
+
+/* Colors
+-----------
+FeatherLight: #91C0E8
+Light: #3F8FD2
+Normal: #0B5FA5
+Dark: #043C6B
+Gray: #255547B
+ */
+
 body
 {
 	font-size: 0.9em;
@@ -10,9 +20,9 @@ body
 
 h1
 {
-	border-bottom: 1px solid #E1DBFF;
+	border-bottom: 1px solid #3F8FD2;
 	padding: 10px 30px;
-	color: #8781FF;
+	color: #0B5FA5;
 	text-transform: uppercase;
 	font-size: 1.5em;
 	margin: 0;
@@ -26,7 +36,7 @@ h2
 a
 {
 	text-decoration: none;
-	color: #8781FF;
+	color: #0B5FA5;
 }
 
 div.clear
@@ -41,9 +51,9 @@ div#top
 }
 div#top div#header
 {
-	background-color: #EDEAFE;
+	background-color: #91C0E8;
 	height: 80px;
-	border-bottom: 1px solid #E1DBFF;
+	border-bottom: 1px solid #3F8FD2;
 }
 div#top div#header div#logo
 {
@@ -123,14 +133,18 @@ body.index div#welcome
 
 fieldset 
 {
-    border:1px solid #E1DBFF;
-    padding:0 1.4em 1.4em 1.4em;
-    margin:0 0 1.5em 0;
+    border:1px solid #3F8FD2;
+    padding:0 20px 5px 20px;
+    margin:0 0 20px 0;
 }
 fieldset h2
 {
 	font-weight: normal;
 	font-size: 1.2em;
+}
+fieldset p
+{
+	margin: 0;
 }
 
 legend 
@@ -209,12 +223,12 @@ table.datagrid
 table.datagrid th
 {
 	text-transform: uppercase;
-	border-bottom: 2px solid #E1DBFF;
+	border-bottom: 2px solid #3F8FD2;
 	font-weight: normal;
 }
 table.datagrid tr
 {
-	border-bottom: 1px solid #E1DBFF;
+	border-bottom: 1px solid #3F8FD2;
 }
 table.datagrid td
 {
@@ -223,9 +237,9 @@ table.datagrid td
 table.datagrid a.button
 {
 	padding: 2px 6px;
-	border: 1px solid #E1DBFF;
+	border: 1px solid #3F8FD2;
 	background-color: #FFFFFF;
-	color: #8781FF;
+	color: #0B5FA5;
 }
 
 /* Html extender
@@ -233,7 +247,7 @@ table.datagrid a.button
 a.button
 {
 	color: #FFFFFF;
-	background-color: #8781FF;
+	background-color: #0B5FA5;
 	border-radius: 5px 5px 5px 5px;
 	padding: 5px 15px;
 }
@@ -294,6 +308,85 @@ div#CreateOrEditForm div#ShuffleGroup
 {
 	float: right;
 	width: 200px;
+}
+
+/* Create Edit Questions
+------------------------------------------------------------*/
+div#CreateEditQuestions
+{
+	border: 2px solid #3F8FD2;
+	margin: 10px 20px 10px 20px;
+}
+
+div#CreateEditQuestionsHeader
+{
+	color: White;
+	padding-left: 20px;
+	border-bottom: 1px solid #3F8FD2;
+	margin-bottom: 10px;
+	background-color: #3F8FD2;
+}
+div#CreateEditQuestionsHeader h2
+{
+	display: inline-block;
+	margin: 20px 20px 0 0;
+}
+div#CreateEditQuestionsHeader div#info
+{
+	display: inline;
+}
+div#CreateEditQuestionsHeader span
+{
+	padding: 20px;
+	margin: 10px;
+}
+div#CreateEditQuestionsHeader p
+{
+	font-size: 0.9em;
+	font-style: italic;
+	margin-left: 20px;
+	margin-top: 5px;
+}
+
+div.Question
+{
+	
+}
+div.Question > fieldset
+{
+	margin: 0 20px 0 20px;
+	padding: 0;
+}
+div.Question > fieldset fieldset
+{
+	margin: 0;
+	border: none;
+	border-bottom: 1px dashed #3F8FD2;
+}
+div.Question div.Header
+{
+	background-color: #3F8FD2;
+	color: White;
+}
+div.Question h3
+{
+	display: inline-block;
+	margin: 0;
+	padding: 0 20px 0 20px;
+}
+
+div#CreateNewQuestion
+{
+}
+div#CreateNewQuestion h3
+{
+	display: inline-block;
+	padding: 0;
+	margin:0;
+}
+div#CreateNewQuestion div
+{
+	display: inline-block;
 }
 
 /* Test templates editing
