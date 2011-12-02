@@ -7,6 +7,12 @@ namespace ELearning.Business.Permissions
 {
     public class StudentPermissions : UserPermissions
     {
-        
+        public override bool Form_List
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }

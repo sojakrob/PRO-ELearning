@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using ELearning.Data;
 using ELearning.Business.Managers;
+using System.ComponentModel.DataAnnotations;
 
 namespace ELearning.Models.Data
 {
     public class QuestionModel : DataModelBase<Question>
     {
         public int ID { get; set; }
+        [Required]
         public string Text { get; set; }
         public string HelpText { get; set; }
         public string Explanation { get; set; }
@@ -18,7 +20,7 @@ namespace ELearning.Models.Data
 
         public QuestionModel()
         {
-            
+
         }
         public QuestionModel(Question data)
             : base(data)
@@ -29,13 +31,11 @@ namespace ELearning.Models.Data
             Explanation = data.Explanation;
             QuestionGroupID = data.QuestionGroupID;
         }
-        
-
 
 
         public override Question ToData()
         {
-            return QuestionManager.CreateNewQuestionInstance(
+            return QuestionManager.CreateNewQuestion(
                 ID,
                 Text,
                 HelpText,

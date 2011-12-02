@@ -1,0 +1,15 @@
+﻿@model ELearning.Models.Data.FormInstanceModel
+           
+
+@{
+    ViewBag.Title = "Vyplňování testu";
+}
+
+<h2>@Model.FormTemplate.Name</h2>
+
+@using (Html.BeginForm("EndTest", "FormInstance", new { }))
+{
+    <p>
+        <input type="submit" class="Button" value="Submit" />
+    </p>
+}

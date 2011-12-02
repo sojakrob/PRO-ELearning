@@ -5,6 +5,7 @@ using System.Text;
 using ELearning.Data;
 using ELearning.Business.Storages;
 using ELearning.Business.Exceptions;
+using ELearning.Data.Enums;
 
 namespace ELearning.Business.Managers
 {
@@ -49,7 +50,7 @@ namespace ELearning.Business.Managers
         public bool AddQuestionGroupWithQuestion(string authorEmail, int formTemplateID, QuestionGroup questionGroup)
         {
             if(AddQuestionGroup(authorEmail, formTemplateID, questionGroup))
-                return AddQuestion(authorEmail, questionGroup.ID);
+                return AddQuestion(authorEmail, questionGroup.ID, questionGroup.Type.ID);
 
             return false;
         }
@@ -69,17 +70,34 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        public bool AddQuestion(string authorEmail, int questionGroupID)
+        public bool AddQuestion(string email, int questionGroupID, int questionTypeID)
         {
             // TODO Permissions
-            Question question = CreateNewQuestionInstance(0, string.Empty, questionGroupID);
+            Question question = CreateNewTypedQuestion(questionGroupID, questionTypeID);
 
             Context.Question.AddObject(question);
             Context.SaveChanges();
 
+            if (IsChoiceQuestionType(question.QuestionGroup.TypeEnum))
+            {
+                AddChoiceItem(email, question.ID, string.Empty);
+                AddChoiceItem(email, question.ID, string.Empty);
+            }
+
             return true;
         }
 
+        public bool AddChoiceItem(string email, int questionID, string text)
+        {
+            // TODO Permissions
+            ChoiceItem item = CreateNewChoiceItem(questionID, text);
+            item.Index = ((ChoiceQuestion)Context.Question.Single(q => q.ID == questionID)).ChoiceItems.Count;
+
+            Context.ChoiceItem.AddObject(item);
+            Context.SaveChanges();
+
+            return true;
+        }
 
         public bool EditQuestion(string authorEmail, Question question)
         {
@@ -101,8 +119,37 @@ namespace ELearning.Business.Managers
                 throw new PermissionException("Form_CreateEdit_All");
         }
 
+        public static bool IsChoiceQuestionType(QuestionGroupTypes type)
+        {
+            return type == QuestionGroupTypes.Choice || type == QuestionGroupTypes.MultipleChoice;
+        }
 
-        public static QuestionGroup CreateNewQuestionGroupInstance(int id, int index, int questionGroupTypeID, int formTemplateID)
+        private Question CreateNewTypedQuestion(int questionGroupID, int questionGroupTypeID)
+        {
+            string questionGroupName = Context.QuestionGroupType.Single(t => t.ID == questionGroupTypeID).Name;
+            QuestionGroupTypes questionType = Shared.EnumUtility.EnumFromName<QuestionGroupTypes>(questionGroupName);
+            switch (questionType)
+            {
+                case QuestionGroupTypes.InlineText:                    
+                case QuestionGroupTypes.MultilineText:
+                    return CreateNewQuestion(0, string.Empty, questionGroupID);
+
+                case QuestionGroupTypes.Choice:
+                    return CreateNewChoiceQuestion(0, string.Empty, string.Empty, string.Empty, questionGroupID, false);
+
+                case QuestionGroupTypes.MultipleChoice:
+                    return CreateNewMultipleChoiceQuestion(0, string.Empty, string.Empty, string.Empty, questionGroupID, false);
+
+                case QuestionGroupTypes.Scale:
+                    return CreateNewScaleQuestion(0, string.Empty, questionGroupID);                    
+
+                default:
+                    throw new NotImplementedException("QuestionGroupType not implemented");
+            }
+        }
+
+
+        public static QuestionGroup CreateNewQuestionGroup(int id, int index, int questionGroupTypeID, int formTemplateID)
         {
             return QuestionGroup.CreateQuestionGroup(
                 id,
@@ -111,7 +158,8 @@ namespace ELearning.Business.Managers
                 formTemplateID
                 );
         }
-        public static Question CreateNewQuestionInstance(int id, string text, int questionGroupID)
+
+        public static Question CreateNewQuestion(int id, string text, int questionGroupID)
         {
             return Question.CreateQuestion(
                 id,
@@ -119,7 +167,7 @@ namespace ELearning.Business.Managers
                 questionGroupID
                 );
         }
-        public static Question CreateNewQuestionInstance(int id, string text, string helpText, string explanation, int questionGroupID)
+        public static Question CreateNewQuestion(int id, string text, string helpText, string explanation, int questionGroupID)
         {
             Question result = Question.CreateQuestion(
                 id,
@@ -130,6 +178,68 @@ namespace ELearning.Business.Managers
             result.Explanation = explanation;
 
             return result;
+        }
+
+        public static ChoiceQuestion CreateNewChoiceQuestion(int id, string text, string helpText, string explanation, int questionGroupID, bool shuffle)
+        {
+            // HACK Show as Combo when Form type is Questionnaire
+            return CreateNewChoiceQuestion(
+                id,
+                text,
+                helpText,
+                explanation,
+                questionGroupID,
+                shuffle,
+                false
+                );
+        }
+        private Question CreateNewMultipleChoiceQuestion(int id, string text, string helpText, string explanation, int questionGroupID, bool shuffle)
+        {
+            return CreateNewChoiceQuestion(
+                id,
+                text,
+                helpText,
+                explanation,
+                questionGroupID,
+                shuffle,
+                true
+                );
+        }
+        public static ChoiceQuestion CreateNewChoiceQuestion(int id, string text, string helpText, string explanation, int questionGroupID, bool shuffle, bool multiple)
+        {
+            // TODO Add IsMultiple flag into ChoiceQuestion entity
+            ChoiceQuestion question = ChoiceQuestion.CreateChoiceQuestion(
+                            id,
+                            text,
+                            questionGroupID,
+                            shuffle
+                            );
+
+            return question;
+        }
+        private Question CreateNewScaleQuestion(int id, string text, int questionGroupID)
+        {
+            return ScaleQuestion.CreateScaleQuestion(
+                id,
+                string.Empty,
+                questionGroupID,
+                0,
+                string.Empty,
+                5,
+                string.Empty,
+                1
+                );
+        }
+        public static ChoiceItem CreateNewChoiceItem(int questionID, string text)
+        {
+            return ChoiceItem.CreateChoiceItem(
+                0,
+                questionID,
+                text,
+                0,
+                false,
+                string.Empty
+                );
         }
     }
 }

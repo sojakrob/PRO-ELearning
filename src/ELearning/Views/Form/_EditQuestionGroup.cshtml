@@ -11,15 +11,13 @@
             <fieldset>
                 @Html.ValidationSummary(true)
 
-                @Html.Partial("_EditQuestion", question)
+                @Html.Partial("Questions\\_EditQuestion", question)
+                @Html.Partial(string.Format("Questions\\_EditQuestion_{0}", Model.Type.Name), question)
     
                 <p>
-                    <input type="submit" value="SaveChanges" />
+                    <input type="submit" class="Button" value="SaveChanges" />
                 </p>
             </fieldset>
         }
     </div>
 }
-
-
-@Html.ButtonLink("Add Alternative Question", "AddAlternativeQuestion", new { formTemplateID = Model.FormTemplateID, questionGroupID = Model.ID })

@@ -30,7 +30,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormTemplate", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.FormInstance), "FormTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.Form), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceQuestionTemplate", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionInstance), "Question", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.Question), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FormInstanceQuestionInstance", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.QuestionInstance), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstanceEvaluation))]
+[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.FormInstanceEvaluation))]
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceAnswer", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionInstance), "Answer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.Answer))]
 [assembly: EdmRelationshipAttribute("DataModel", "ChoiceQuestionChoiceItem", "ChoiceQuestion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceQuestion), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceItem), true)]
 
@@ -953,6 +953,30 @@ namespace ELearning.Data
         private global::System.Int32 _FormTemplateID;
         partial void OnFormTemplateIDChanging(global::System.Int32 value);
         partial void OnFormTemplateIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> EvaluationID
+        {
+            get
+            {
+                return _EvaluationID;
+            }
+            set
+            {
+                OnEvaluationIDChanging(value);
+                ReportPropertyChanging("EvaluationID");
+                _EvaluationID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EvaluationID");
+                OnEvaluationIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _EvaluationID;
+        partial void OnEvaluationIDChanging(Nullable<global::System.Int32> value);
+        partial void OnEvaluationIDChanged();
 
         #endregion
     
@@ -1776,7 +1800,7 @@ namespace ELearning.Data
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
         /// <param name="shuffle">Initial value of the Shuffle property.</param>
-        public static ChoiceQuestion CreateChoiceQuestion(global::System.Int32 id, global::System.String text, global::System.Int32 questionGroupID, global::System.String shuffle)
+        public static ChoiceQuestion CreateChoiceQuestion(global::System.Int32 id, global::System.String text, global::System.Int32 questionGroupID, global::System.Boolean shuffle)
         {
             ChoiceQuestion choiceQuestion = new ChoiceQuestion();
             choiceQuestion.ID = id;
@@ -1794,7 +1818,7 @@ namespace ELearning.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Shuffle
+        public global::System.Boolean Shuffle
         {
             get
             {
@@ -1804,13 +1828,13 @@ namespace ELearning.Data
             {
                 OnShuffleChanging(value);
                 ReportPropertyChanging("Shuffle");
-                _Shuffle = StructuralObject.SetValidValue(value, false);
+                _Shuffle = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Shuffle");
                 OnShuffleChanged();
             }
         }
-        private global::System.String _Shuffle;
-        partial void OnShuffleChanging(global::System.String value);
+        private global::System.Boolean _Shuffle;
+        partial void OnShuffleChanging(global::System.Boolean value);
         partial void OnShuffleChanged();
 
         #endregion

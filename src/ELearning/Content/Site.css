@@ -39,6 +39,15 @@ a
 	color: #0B5FA5;
 }
 
+input[type=button].Button, input.Button, button
+{
+	color: #FFFFFF;
+	border: none;
+	background-color: #0B5FA5;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px 15px;
+}
+
 div.clear
 {
 	clear: both;
@@ -145,6 +154,11 @@ fieldset h2
 fieldset p
 {
 	margin: 0;
+}
+
+fieldset input[type=button].Button, fieldset input.Button, fieldset button
+{
+	margin: 5px;
 }
 
 legend 
@@ -315,7 +329,9 @@ div#CreateOrEditForm div#ShuffleGroup
 div#CreateEditQuestions
 {
 	border: 2px solid #3F8FD2;
+	border-radius: 5px 5px 0 0;
 	margin: 10px 20px 10px 20px;
+	min-width: 700px;
 }
 
 div#CreateEditQuestionsHeader
@@ -350,7 +366,7 @@ div#CreateEditQuestionsHeader p
 
 div.Question
 {
-	
+	margin-bottom: 20px;
 }
 div.Question > fieldset
 {
@@ -368,15 +384,30 @@ div.Question div.Header
 	background-color: #3F8FD2;
 	color: White;
 }
+div.Question div.Footer
+{
+	text-align: center;
+}
 div.Question h3
 {
 	display: inline-block;
 	margin: 0;
 	padding: 0 20px 0 20px;
 }
+div.Question a.button
+{
+	padding: 0px 8px;
+	margin: 2px;
+	font-size: 0.8em;
+	border: 1px solid #3F8FD2;
+	background-color: #FFFFFF;
+	color: #0B5FA5;
+	display: inline-block;
+}
 
 div#CreateNewQuestion
 {
+	margin: 0 20px 0 20px;
 }
 div#CreateNewQuestion h3
 {
@@ -394,4 +425,31 @@ div#CreateNewQuestion div
 div.QuestionForm legend
 {
 	display: block;
+}
+div.QuestionForm p
+{
+	text-align: right;
+}
+div.QuestionForm div.editor-label
+{
+	width: 150px;
+}
+div.QuestionForm div.editor-field
+{
+	min-width: 400px;
+}
+div.QuestionForm  div.editor-field input
+{
+	width: 100%;
+	min-width: 200px;
+}
+div.QuestionForm li div.editor-field
+{
+	display: inline-block;
+	float: none;
+}
+div.QuestionForm li div.Check input
+{
+	width: 50px;
+	min-width: 50px;
 }

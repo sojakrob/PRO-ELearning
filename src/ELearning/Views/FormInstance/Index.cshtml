@@ -1,0 +1,12 @@
+﻿@using ELearning.Utils
+@model ELearning.Models.FormInstancesModel
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>@Model.Form.Name</h2>
+
+<p>Filled: @Model.FormInstances.Count times</p>
+
+@Html.ButtonLink("Start", "Start", new { id = Model.Form.ID })

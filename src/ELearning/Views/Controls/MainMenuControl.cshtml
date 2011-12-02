@@ -6,8 +6,11 @@
             <li>
                 @Html.ActionLink("Testy", "Index", "Form")
                 <ul>
+                @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
+                {
                     <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
-                    <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
+                }
+                <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
                 </ul>
             </li>
         </ul>

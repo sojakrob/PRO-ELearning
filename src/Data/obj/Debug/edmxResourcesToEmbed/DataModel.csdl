@@ -261,6 +261,7 @@
     <Property Type="Int32" Name="FormTemplateID" Nullable="false" />
     <NavigationProperty Name="Questions" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="FormInstance" ToRole="QuestionInstance" />
     <NavigationProperty Name="Evaluation" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstance" ToRole="FormInstanceEvaluation" />
+    <Property Type="Int32" Name="EvaluationID" Nullable="true" />
   </EntityType>
   <Association Name="FormInstanceUser">
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
@@ -333,7 +334,7 @@
   </EntityType>
   <Association Name="FormInstanceFormInstanceEvaluation">
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
-    <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="1" />
+    <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="0..1" />
   </Association>
   <EntityType Name="Answer">
     <Key>
@@ -362,7 +363,7 @@
     <Property Type="Int32" Name="Increment" Nullable="false" />
   </EntityType>
   <EntityType Name="ChoiceQuestion" BaseType="DataModel.Question">
-    <Property Type="String" Name="Shuffle" Nullable="false" />
+    <Property Type="Boolean" Name="Shuffle" Nullable="false" />
     <NavigationProperty Name="ChoiceItems" Relationship="DataModel.ChoiceQuestionChoiceItem" FromRole="ChoiceQuestion" ToRole="ChoiceItem" />
   </EntityType>
   <EntityType Name="ChoiceItem">

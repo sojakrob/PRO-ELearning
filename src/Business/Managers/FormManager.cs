@@ -45,6 +45,8 @@ namespace ELearning.Business.Managers
         {
             User user = _userManager.GetUser(userEmail);
             Form result = GetSingle(f => f.ID == id);
+            if (result == null)
+                throw new ArgumentException("Specified form not found");
 
             bool isOwner = (result.AuthorID == user.ID);
             if (!isOwner && !_userManager.GetUserPermissions(userEmail).Form_List)
@@ -52,6 +54,15 @@ namespace ELearning.Business.Managers
 
             return result;
         }
+
+        public List<FormInstance> GetFormInstances(string userEmail, int id)
+        {
+            // TODO Permissions
+            int userID = _userManager.GetUser(userEmail).ID;
+
+            return Context.FormInstance.Where(i => i.FormTemplateID == id && i.SolverID == userID).ToList();
+        }
+
 
         public int AddForm(string authorEmail, Form form)
         {
@@ -121,6 +132,25 @@ namespace ELearning.Business.Managers
             return true;
         }
 
+        public FormInstance GenerateNewFormInstance(string userEmail, int formID)
+        {
+            User user = _userManager.GetUser(userEmail);
+
+            FormInstance formInstance = CreateNewFormInstance(user.ID, formID);
+
+            Context.FormInstance.AddObject(formInstance);
+            Context.SaveChanges();
+
+            GenerateQuestionsForFormInstance(formID);
+
+            return formInstance;
+        }
+        private bool GenerateQuestionsForFormInstance(int formID)
+        {
+            // TODO Generate Questions for form instance
+            return true;
+        }
+
         public IQueryable<FormType> GetFormTypes()
         {
             return Context.FormType;
@@ -130,5 +160,17 @@ namespace ELearning.Business.Managers
             return Context.QuestionGroupType;
         }
 
+
+        public static FormInstance CreateNewFormInstance(int userID, int formID)
+        {
+            DateTime currentDateTime = DateTime.Now;
+            return FormInstance.CreateFormInstance(
+                0,
+                currentDateTime,
+                currentDateTime,
+                userID,
+                formID
+                );
+        }
     }
 }

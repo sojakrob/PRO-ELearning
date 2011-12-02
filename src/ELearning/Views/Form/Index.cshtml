@@ -1,11 +1,14 @@
 @using ELearning.Utils
 @model IEnumerable<ELearning.Models.Data.FormModel>
 @{
-    ViewBag.Title = "Testy";   
+    ViewBag.Title = "Dostupné testy";   
 }
-<p>
-    @Html.ButtonLink("Create New", "Create")
-</p>
+@if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit)
+{
+    <p>
+        @Html.ButtonLink("Create New", "Create")
+    </p>
+}
 <table class="datagrid">
     <tr>
         <th>
@@ -30,7 +33,14 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "CreateEditQuestions", new { id = item.ID })
+                @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
+                {
+                    @Html.ActionLink(item.Name, "CreateEditQuestions", new { id = item.ID })
+                }
+                else
+                {
+                    @Html.ActionLink(item.Name, "Index", "FormInstance", new { id = item.ID }, null)
+                }
             </td>
             <td>
                 @item.Text

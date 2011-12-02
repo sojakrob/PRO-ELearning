@@ -1,4 +1,5 @@
 ﻿@using ELearning.Models.Data;
+@using ELearning.Utils;
 @model IEnumerable<QuestionGroupModel>
            
 @foreach (QuestionGroupModel item in Model)
@@ -14,6 +15,10 @@
 
             @Html.Partial("_EditQuestionGroup", item)
 
+            <div class="Footer">
+                @Html.ButtonLink("Add Alternative Question", "AddAlternativeQuestion", new { formTemplateID = item.FormTemplateID, questionGroupID = item.ID, questionTypeID = item.Type.ID })
+            </div>
+
         </fieldset>
     </div>
 }
@@ -28,7 +33,7 @@
 		    @Html.Partial("_CreateQuestionGroup", new QuestionGroupModel() { FormTemplateID = ViewBag.Form.ID })
 
             <span>
-                <input type="submit" value="CreateNewQuestion" />
+                <input type="submit" class="Button" value="CreateNewQuestion" />
             </span>
         </fieldset>
     }

@@ -11,7 +11,6 @@ namespace ELearning.Data.Enums
         MultilineText,
         Choice,
         MultipleChoice,
-        Combo,
         Scale
     }
 }

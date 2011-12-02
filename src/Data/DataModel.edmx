@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="DataModelStoreContainer">
     <EntitySet Name="Question" EntityType="DataModel.Store.Question" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuestionGroup" EntityType="DataModel.Store.QuestionGroup" store:Type="Tables" Schema="dbo" />
@@ -192,7 +192,7 @@
     <Property Name="Submited" Type="datetime" Nullable="false" />
     <Property Name="SolverID" Type="int" Nullable="false" />
     <Property Name="FormTemplateID" Type="int" Nullable="false" />
-    <Property Name="Evaluation_ID" Type="int" Nullable="false" />
+    <Property Name="EvaluationID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="QuestionInstance">
     <Key>
@@ -210,6 +210,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Mark" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FormInstance_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answer">
     <Key>
@@ -234,7 +235,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Shuffle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Shuffle" Type="bit" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answer_TextAnswer">
@@ -410,14 +411,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FormInstanceFormInstanceEvaluation">
-    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
-    <End Role="FormInstanceEvaluation" Type="DataModel.Store.FormInstanceEvaluation" Multiplicity="1" />
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="1" />
+    <End Role="FormInstanceEvaluation" Type="DataModel.Store.FormInstanceEvaluation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="FormInstanceEvaluation">
+      <Principal Role="FormInstance">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="FormInstance">
-        <PropertyRef Name="Evaluation_ID" />
+      <Dependent Role="FormInstanceEvaluation">
+        <PropertyRef Name="FormInstance_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -794,6 +795,7 @@
           <Property Type="Int32" Name="FormTemplateID" Nullable="false" />
           <NavigationProperty Name="Questions" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="FormInstance" ToRole="QuestionInstance" />
           <NavigationProperty Name="Evaluation" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstance" ToRole="FormInstanceEvaluation" />
+          <Property Type="Int32" Name="EvaluationID" Nullable="true" />
         </EntityType>
         <Association Name="FormInstanceUser">
           <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
@@ -866,7 +868,7 @@
         </EntityType>
         <Association Name="FormInstanceFormInstanceEvaluation">
           <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
-          <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="1" />
+          <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="0..1" />
         </Association>
         <EntityType Name="Answer">
           <Key>
@@ -895,7 +897,7 @@
           <Property Type="Int32" Name="Increment" Nullable="false" />
         </EntityType>
         <EntityType Name="ChoiceQuestion" BaseType="DataModel.Question" >
-          <Property Type="String" Name="Shuffle" Nullable="false" />
+          <Property Type="Boolean" Name="Shuffle" Nullable="false" />
           <NavigationProperty Name="ChoiceItems" Relationship="DataModel.ChoiceQuestionChoiceItem" FromRole="ChoiceQuestion" ToRole="ChoiceItem" />
         </EntityType>
         <EntityType Name="ChoiceItem">
@@ -1033,6 +1035,7 @@
           <ScalarProperty Name="Submited" ColumnName="Submited" />
           <ScalarProperty Name="SolverID" ColumnName="SolverID" />
           <ScalarProperty Name="FormTemplateID" ColumnName="FormTemplateID" />
+          <ScalarProperty Name="EvaluationID" ColumnName="EvaluationID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1101,11 +1104,11 @@
         <ScalarProperty Name="ID" ColumnName="Members_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="FormInstanceFormInstanceEvaluation" TypeName="DataModel.FormInstanceFormInstanceEvaluation" StoreEntitySet="FormInstance">
-      <EndProperty Name="FormInstanceEvaluation">
-        <ScalarProperty Name="ID" ColumnName="Evaluation_ID" />
-      </EndProperty>
+    <AssociationSetMapping Name="FormInstanceFormInstanceEvaluation" TypeName="DataModel.FormInstanceFormInstanceEvaluation" StoreEntitySet="FormInstanceEvaluation">
       <EndProperty Name="FormInstance">
+        <ScalarProperty Name="ID" ColumnName="FormInstance_ID" />
+      </EndProperty>
+      <EndProperty Name="FormInstanceEvaluation">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
@@ -1177,10 +1180,10 @@
           <ConnectorPoint PointX="9.125" PointY="3.9035953776041663" />
           <ConnectorPoint PointX="7.625" PointY="3.9035953776041663" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="6.375" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="6.375" Height="2.9417936197916656" />
         <AssociationConnector Association="DataModel.FormInstanceUser">
           <ConnectorPoint PointX="3.7187475" PointY="6.375" />
-          <ConnectorPoint PointX="3.7187475" PointY="4.797587890625" />
+          <ConnectorPoint PointX="3.7187475" PointY="5.1821907552083326" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceFormTemplate">
           <ConnectorPoint PointX="4.5" PointY="6.375" />
@@ -1195,8 +1198,8 @@
           <ConnectorPoint PointX="9.125" PointY="8.1199446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceQuestionInstance">
-          <ConnectorPoint PointX="4.5" PointY="8.2160953776041659" />
-          <ConnectorPoint PointX="6.125" PointY="8.2160953776041659" />
+          <ConnectorPoint PointX="4.5" PointY="8.4083968098958337" />
+          <ConnectorPoint PointX="6.125" PointY="8.4083968098958337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormInstanceEvaluation" Width="1.5" PointX="0.5" PointY="6.5" Height="1.5956835937499996" />
         <AssociationConnector Association="DataModel.FormInstanceFormInstanceEvaluation">

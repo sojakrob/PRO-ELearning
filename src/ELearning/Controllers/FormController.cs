@@ -122,9 +122,9 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
 
-        public ActionResult AddAlternativeQuestion(int formTemplateID, int questionGroupID)
+        public ActionResult AddAlternativeQuestion(int formTemplateID, int questionGroupID, int questionTypeID)
         {
-            _questionManager.AddQuestion(CurrentLoggedUserModel.Email, questionGroupID);
+            _questionManager.AddQuestion(CurrentLoggedUserModel.Email, questionGroupID, questionTypeID);
 
             return RedirectToCreateEditQuestions(formTemplateID);
         }

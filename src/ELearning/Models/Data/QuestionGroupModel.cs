@@ -29,13 +29,13 @@ namespace ELearning.Models.Data
             FormTemplateID = data.FormTemplateID;
             Index = data.Index;
             Type = new QuestionGroupTypeModel(data.Type);
-            Questions = DataModelBase<Question>.CreateFromArray<QuestionModel>(data.Questions);
+            Questions = QuestionModelsConvertor.CreateFromArray(data.Questions);
         }
 
 
         public override QuestionGroup ToData()
         {
-            return QuestionManager.CreateNewQuestionGroupInstance(
+            return QuestionManager.CreateNewQuestionGroup(
                 ID,
                 Index,
                 Type.ID,

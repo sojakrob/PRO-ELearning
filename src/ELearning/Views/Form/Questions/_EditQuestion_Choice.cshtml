@@ -1,0 +1,36 @@
+﻿@model ELearning.Models.Data.ChoiceQuestionModel
+
+
+
+@if (Model.Shuffle)
+{
+    @Html.Raw("<ul>");
+}
+else
+{
+    @Html.Raw("<ol>");
+}
+
+
+@foreach (var item in Model.ChoiceItems)
+{
+    <li>
+        <div class="editor-field">
+            @Html.EditorFor(i => item.Text)
+            @Html.ValidationMessageFor(i => item.Text)
+        </div>
+        <div class="editor-field Check">
+            @Html.RadioButtonFor(i => item.IsCorrect, item.ID)
+            @Html.ValidationMessageFor(i => item.IsCorrect)
+        </div>
+    </li>
+}
+
+@if (Model.Shuffle)
+{
+    @Html.Raw("</ul>");
+}
+else
+{
+    @Html.Raw("</ol>");
+}

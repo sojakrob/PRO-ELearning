@@ -13,6 +13,7 @@ namespace ELearning.Models.Data
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         public string Text { get; set; }
         [Display(Name="Shuffle Questions")]
         public bool Shuffle { get; set; }
