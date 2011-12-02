@@ -28,6 +28,7 @@ namespace ELearning.Business.Managers
         }
 
         private UserManager _userManager;
+        private QuestionManager _questionManager;
 
 
         /// <summary>
@@ -38,6 +39,7 @@ namespace ELearning.Business.Managers
             : base(persistentStorage)
         {
             _userManager = new UserManager(_persistentStorage);
+            _questionManager = new QuestionManager(_persistentStorage);
         }
 
 
@@ -141,13 +143,19 @@ namespace ELearning.Business.Managers
             Context.FormInstance.AddObject(formInstance);
             Context.SaveChanges();
 
-            GenerateQuestionsForFormInstance(formID);
+            GenerateQuestionsForFormInstance(formInstance);
 
             return formInstance;
         }
-        private bool GenerateQuestionsForFormInstance(int formID)
+        private bool GenerateQuestionsForFormInstance(FormInstance formInstance)
         {
-            // TODO Generate Questions for form instance
+            ICollection<QuestionGroup> questionGroups = formInstance.FormTemplate.QuestionGroups;
+
+            if (formInstance.FormTemplate.Shuffle)
+                questionGroups = Shared.CollectionUtility.Shuffle<QuestionGroup>(questionGroups);
+
+            // TODO Continue here
+
             return true;
         }
 

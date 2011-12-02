@@ -139,3 +139,4 @@ S:\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Microsoft.Practices.Unity.Confi
 S:\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ELearning.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.XML

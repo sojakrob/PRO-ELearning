@@ -6,3 +6,11 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_S
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Database.sqlsettings
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Database.sqldeployment
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Database.sqlcmdvars
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Script.PreDeployment.sql
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Script.PostDeployment.sql
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Database.sqlsettings
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Database.sqldeployment
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_Database.sqlcmdvars
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\Database.deploymanifest
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\Database.dbschema
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\obj\Debug\Database.dbschema

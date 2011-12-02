@@ -28,3 +28,4 @@ S:\Predmety\A7B36PRO\ELearning\src\Shared\bin\Debug\ELearning.Shared.pdb
 S:\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ELearning.Shared.dll
 S:\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ELearning.Shared.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\bin\Debug\ELearning.Shared.XML

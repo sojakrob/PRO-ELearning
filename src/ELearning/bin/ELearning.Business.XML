@@ -4,23 +4,6 @@
         <name>ELearning.Business</name>
     </assembly>
     <members>
-        <member name="M:ELearning.Business.Managers.ManagerBase`1.#ctor(ELearning.Business.Storages.IPersistentStorage)">
-            <summary>
-            Initializes a new instance of the ManagerBase class.
-            </summary>
-            <param name="persistentStorage"></param>
-        </member>
-        <member name="P:ELearning.Business.Managers.ManagerBase`1.Context">
-            <summary>
-            Gets current data context
-            </summary>
-        </member>
-        <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
-            <summary>
-            Initializes a new instance of the FormManager class.
-            </summary>
-            <param name="persistentStorage"></param>
-        </member>
         <member name="P:ELearning.Business.Permissions.UserPermissions.User_CreateEdit">
             <summary>
             Can create User
@@ -31,15 +14,15 @@
             Can view list of Users
             </summary>
         </member>
-        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
+        <member name="M:ELearning.Business.Managers.ManagerBase`1.#ctor(ELearning.Business.Storages.IPersistentStorage)">
             <summary>
-            Changes the database of DataModelContainer
+            Initializes a new instance of the ManagerBase class.
             </summary>
-            <param name="connectionString">Connection string for the connection</param>
+            <param name="persistentStorage"></param>
         </member>
-        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
+        <member name="P:ELearning.Business.Managers.ManagerBase`1.Context">
             <summary>
-            Gets singleton instance
+            Gets current data context
             </summary>
         </member>
         <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
@@ -100,6 +83,23 @@
             Initializes a new instance of the QuestionManager class.
             </summary>
             <param name="persistentStorage"></param>
+        </member>
+        <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+            <summary>
+            Initializes a new instance of the FormManager class.
+            </summary>
+            <param name="persistentStorage"></param>
+        </member>
+        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
+            <summary>
+            Changes the database of DataModelContainer
+            </summary>
+            <param name="connectionString">Connection string for the connection</param>
+        </member>
+        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
+            <summary>
+            Gets singleton instance
+            </summary>
         </member>
     </members>
 </doc>

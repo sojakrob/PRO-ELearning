@@ -52,3 +52,4 @@ S:\Predmety\A7B36PRO\ELearning\src\Data\bin\Debug\ELearning.Shared.xml
 S:\Predmety\A7B36PRO\ELearning\src\Data\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\src\Data\obj\Debug\ELearning.Data.dll
 S:\Predmety\A7B36PRO\ELearning\src\Data\obj\Debug\ELearning.Data.pdb
+c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\bin\Debug\ELearning.Data.XML
