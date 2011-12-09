@@ -7,6 +7,18 @@
 
 <h2>@Model.Form.Name</h2>
 
+<p>@Model.Form.Text</p>
+
+<p>Time to fill: @Model.Form.TimeToFill</p>
+
+<p>Questions: @Model.Form.QuestionGroups.Count</p>
+
 <p>Filled: @Model.FormInstances.Count times</p>
 
-@Html.ButtonLink("Start", "Start", new { id = Model.Form.ID })
+<input 
+    class="Button" 
+    type="button"
+    title="Start"
+    value="Start"
+    onclick="@string.Format("window.open('../FillForm/{0}', '_blank', 'width=800, toolbar=0, resizable=1, scrollbars=1, menubar=0')", Model.Form.ID)"
+    />

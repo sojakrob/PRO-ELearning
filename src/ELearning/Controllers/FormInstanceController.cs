@@ -35,13 +35,13 @@ namespace ELearning.Controllers
             return View(model);
         }
 
-        public ActionResult Start(int id)
+        public ActionResult FillForm(int id)
         {
             FormInstanceModel formInstance = new FormInstanceModel(_formManager.GenerateNewFormInstance(CurrentLoggedUserModel.Email, id));
             return View(formInstance);
         }
 
-        public ActionResult EndTest()
+        public ActionResult EndForm()
         {
             return View();
         }

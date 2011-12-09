@@ -10,6 +10,9 @@ namespace ELearning.Business.Managers
 {
     public class FormManager : ManagerBase<Form>
     {
+        private Random _random;
+
+
         public int DefaultFormTypeID
         {
             get
@@ -39,7 +42,9 @@ namespace ELearning.Business.Managers
             : base(persistentStorage)
         {
             _userManager = new UserManager(_persistentStorage);
-            _questionManager = new QuestionManager(_persistentStorage);
+            _questionManager = new QuestionManager(_persistentStorage, this);
+
+            _random = new Random(Environment.TickCount);
         }
 
 
@@ -154,10 +159,37 @@ namespace ELearning.Business.Managers
             if (formInstance.FormTemplate.Shuffle)
                 questionGroups = Shared.CollectionUtility.Shuffle<QuestionGroup>(questionGroups);
 
-            // TODO Continue here
+            int index = 0;
+            foreach (QuestionGroup group in questionGroups)
+            {
+                var question = GenerateQuestionFromGroup(group, index, formInstance);
+
+                Context.QuestionInstance.AddObject(question);
+                formInstance.Questions.Add(question);
+
+                index++;
+            }
+
+            Context.SaveChanges();
 
             return true;
         }
+        private QuestionInstance GenerateQuestionFromGroup(QuestionGroup group, int index, FormInstance form)
+        {
+            if (group.Questions.Count == 0)
+                throw new ApplicationException("QuestionGroup is empty");
+
+            if (group.Questions.Count > 1)
+                return GenerateQuestionFromTemplate(group.Questions.ElementAt(_random.Next(group.Questions.Count)), index, form);
+            else
+                return GenerateQuestionFromTemplate(group.Questions.First(), index, form);
+        }
+        private QuestionInstance GenerateQuestionFromTemplate(Question template, int index, FormInstance form)
+        {
+            return QuestionManager.CreateNewQuestionInstance(index, template.ID, form.ID);
+                
+        }
+
 
         public IQueryable<FormType> GetFormTypes()
         {

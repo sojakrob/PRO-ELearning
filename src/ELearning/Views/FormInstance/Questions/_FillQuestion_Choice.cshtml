@@ -1,0 +1,13 @@
+﻿@model ELearning.Models.Data.ChoiceQuestionInstanceModel
+
+<ol>
+
+    @foreach (var item in Model.ChoiceItems)
+    {
+        <li>
+            <input id="@string.Format("Choice{0}", Model.ID)" type="radio" name="@string.Format("Choice{0}", Model.ID)" value="@item.ID" />
+            <label for="@string.Format("Choice{0}", Model.ID)" title="@item.Text">@item.Text</label>
+        </li>
+    }
+
+</ol>

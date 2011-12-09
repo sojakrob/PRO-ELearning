@@ -16,6 +16,7 @@ namespace ELearning.Models.Data
         public string HelpText { get; set; }
         public string Explanation { get; set; }
         public int QuestionGroupID { get; set; }
+        public int FormID { get; private set; }
 
 
         public QuestionModel()
@@ -30,6 +31,9 @@ namespace ELearning.Models.Data
             HelpText = data.HelpText;
             Explanation = data.Explanation;
             QuestionGroupID = data.QuestionGroupID;
+
+            if(data.QuestionGroup != null)
+                FormID = data.QuestionGroup.FormTemplateID;
         }
 
 

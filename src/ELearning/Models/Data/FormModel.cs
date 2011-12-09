@@ -10,11 +10,25 @@ namespace ELearning.Models.Data
 {
     public class FormModel : DataModelBase<Form>
     {
+        private const int TEXT_MAX_LENGTH = 20;
+        
+
+
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Text { get; set; }
+        public string TextCropped
+        {
+            get
+            {
+                if (Text.Length > TEXT_MAX_LENGTH)
+                    return String.Format("{0}...", Text.Substring(0, TEXT_MAX_LENGTH));
+                else
+                    return Text;
+            }
+        }
         [Display(Name="Shuffle Questions")]
         public bool Shuffle { get; set; }
         public int? TimeToFill { get; set; }

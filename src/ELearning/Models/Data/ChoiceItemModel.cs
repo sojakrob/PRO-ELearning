@@ -11,7 +11,10 @@ namespace ELearning.Models.Data
     {
         public int ID { get; set; }
         public string Text { get; set; }
+        public int Index { get; set; }
         public bool IsCorrect { get; set; }
+        public string Explanation { get; set; }
+        public int QuestionID { get; private set; }
 
 
         public ChoiceItemModel()
@@ -24,12 +27,20 @@ namespace ELearning.Models.Data
             ID = data.ID;
             Text = data.Text;
             IsCorrect = data.IsCorrect;
+            QuestionID = data.ChoiceQuestionID;
+            Explanation = data.Explanation;
         }
 
 
         public override ChoiceItem ToData()
         {
-            throw new NotImplementedException();
+            return QuestionManager.CreateNewChoiceItem(
+                ID,
+                QuestionID,
+                Text,
+                Index,
+                IsCorrect
+                );
         }
     }
 }

@@ -228,7 +228,7 @@
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Index" Type="int" Nullable="false" />
     <Property Name="IsCorrect" Type="bit" Nullable="false" />
-    <Property Name="Explanation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Explanation" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
@@ -909,7 +909,7 @@
           <Property Type="String" Name="Text" Nullable="false" />
           <Property Type="Int32" Name="Index" Nullable="false" />
           <Property Type="Boolean" Name="IsCorrect" Nullable="false" />
-          <Property Type="String" Name="Explanation" Nullable="false" />
+          <Property Type="String" Name="Explanation" Nullable="true" />
           <Property Type="String" Name="ImageUrl" Nullable="true" />
         </EntityType>
         <Association Name="ChoiceQuestionChoiceItem">

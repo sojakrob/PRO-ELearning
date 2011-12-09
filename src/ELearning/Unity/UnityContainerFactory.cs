@@ -28,10 +28,11 @@ namespace ELearning.Unity
 
             IPersistentStorage storage = InitStorage();
             InjectionConstructor storageConstructor = new InjectionConstructor(storage);
+            InjectionConstructor questionManagerConstructor = new InjectionConstructor(storage, new FormManager(storage));
 
             result.RegisterType<UserManager>(storageConstructor);
             result.RegisterType<FormManager>(storageConstructor);
-            result.RegisterType<QuestionManager>(storageConstructor);
+            result.RegisterType<QuestionManager>(questionManagerConstructor);
 
             result.RegisterType<IAuthenticationContext, WebAuthenticationContext>();
 

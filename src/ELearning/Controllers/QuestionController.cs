@@ -13,8 +13,18 @@ namespace ELearning.Controllers
 {   
     public class QuestionController : Controller
     {
-        private QuestionManager _questionManager = new QuestionManager(WebStorage.Instance);
-        // TODO Use Unity to inject the dependency
+        private QuestionManager _questionManager;
+
+
+        /// <summary>
+        /// Initializes a new instance of the QuestionController class.
+        /// </summary>
+        /// <param name="questionManager"></param>
+        public QuestionController(QuestionManager questionManager)
+        {
+            _questionManager = questionManager;
+        }
+
 
         //
         // GET: /Question/

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 12/02/2011 03:21:51
--- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
+-- Date Created: 12/09/2011 02:09:07
+-- Generated from EDMX file: d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -57,7 +57,7 @@ IF OBJECT_ID(N'[dbo].[FK_FormInstanceQuestionInstance]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[QuestionInstance] DROP CONSTRAINT [FK_FormInstanceQuestionInstance];
 GO
 IF OBJECT_ID(N'[dbo].[FK_FormInstanceFormInstanceEvaluation]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[FormInstance] DROP CONSTRAINT [FK_FormInstanceFormInstanceEvaluation];
+    ALTER TABLE [dbo].[FormInstanceEvaluation] DROP CONSTRAINT [FK_FormInstanceFormInstanceEvaluation];
 GO
 IF OBJECT_ID(N'[dbo].[FK_QuestionInstanceAnswer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answer] DROP CONSTRAINT [FK_QuestionInstanceAnswer];
@@ -263,7 +263,7 @@ CREATE TABLE [dbo].[ChoiceItem] (
     [Text] nvarchar(max)  NOT NULL,
     [Index] int  NOT NULL,
     [IsCorrect] bit  NOT NULL,
-    [Explanation] nvarchar(max)  NOT NULL,
+    [Explanation] nvarchar(max)  NULL,
     [ImageUrl] nvarchar(max)  NULL
 );
 GO

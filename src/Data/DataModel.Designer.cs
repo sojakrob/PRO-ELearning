@@ -1592,8 +1592,7 @@ namespace ELearning.Data
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="index">Initial value of the Index property.</param>
         /// <param name="isCorrect">Initial value of the IsCorrect property.</param>
-        /// <param name="explanation">Initial value of the Explanation property.</param>
-        public static ChoiceItem CreateChoiceItem(global::System.Int32 id, global::System.Int32 choiceQuestionID, global::System.String text, global::System.Int32 index, global::System.Boolean isCorrect, global::System.String explanation)
+        public static ChoiceItem CreateChoiceItem(global::System.Int32 id, global::System.Int32 choiceQuestionID, global::System.String text, global::System.Int32 index, global::System.Boolean isCorrect)
         {
             ChoiceItem choiceItem = new ChoiceItem();
             choiceItem.ID = id;
@@ -1601,7 +1600,6 @@ namespace ELearning.Data
             choiceItem.Text = text;
             choiceItem.Index = index;
             choiceItem.IsCorrect = isCorrect;
-            choiceItem.Explanation = explanation;
             return choiceItem;
         }
 
@@ -1734,7 +1732,7 @@ namespace ELearning.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Explanation
         {
@@ -1746,7 +1744,7 @@ namespace ELearning.Data
             {
                 OnExplanationChanging(value);
                 ReportPropertyChanging("Explanation");
-                _Explanation = StructuralObject.SetValidValue(value, false);
+                _Explanation = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Explanation");
                 OnExplanationChanged();
             }

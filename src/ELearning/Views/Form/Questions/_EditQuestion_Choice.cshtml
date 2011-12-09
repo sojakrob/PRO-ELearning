@@ -1,5 +1,5 @@
 ﻿@model ELearning.Models.Data.ChoiceQuestionModel
-
+@using ELearning.Utils
 
 
 @if (Model.Shuffle)
@@ -11,17 +11,20 @@ else
     @Html.Raw("<ol>");
 }
 
-
-@foreach (var item in Model.ChoiceItems)
+@for(int i = 0; i < Model.ChoiceItems.Count; i++)
 {
     <li>
+        <input type="hidden" name="ChoiceItems[@i].ID" value="@Model.ChoiceItems[i].ID" />
         <div class="editor-field">
-            @Html.EditorFor(i => item.Text)
-            @Html.ValidationMessageFor(i => item.Text)
+            <input type="text" value="@Model.ChoiceItems[i].Text" name="ChoiceItems[@i].Text" />
         </div>
         <div class="editor-field Check">
-            @Html.RadioButtonFor(i => item.IsCorrect, item.ID)
-            @Html.ValidationMessageFor(i => item.IsCorrect)
+            <input type="radio" name="correctChoice" value="@i"
+             @if(Model.ChoiceItems[i].IsCorrect)
+             {
+                @Html.Raw("checked=\"checked\"");
+             }
+             />
         </div>
     </li>
 }
@@ -34,3 +37,6 @@ else
 {
     @Html.Raw("</ol>");
 }
+
+
+@Html.ButtonLink("Add Choice Item", "AddChoiceItem", new { formID = Model.FormID, questionInstanceID = Model.ID })

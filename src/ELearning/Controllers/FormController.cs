@@ -112,12 +112,25 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditQuestion(int formID, int questionGroupID, int questionID, QuestionModel question)
+        public ActionResult EditQuestion_InlineText(int formID, int questionGroupID, int questionID, QuestionModel question)
         {
             Question q = question.ToData();
             q.ID = questionID;
 
             _questionManager.EditQuestion(CurrentLoggedUserModel.Email, q);
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+        [HttpPost]
+        public ActionResult EditQuestion_Choice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int? correctChoice)
+        {
+            if (correctChoice.HasValue)
+                question.ChoiceItems[correctChoice.Value].IsCorrect = true;
+
+            ChoiceQuestion q = question.ToData() as ChoiceQuestion;
+            q.ID = questionID;
+
+            _questionManager.EditChoiceQuestion(CurrentLoggedUserModel.Email, q);
 
             return RedirectToCreateEditQuestions(formID);
         }
@@ -127,6 +140,13 @@ namespace ELearning.Controllers
             _questionManager.AddQuestion(CurrentLoggedUserModel.Email, questionGroupID, questionTypeID);
 
             return RedirectToCreateEditQuestions(formTemplateID);
+        }
+
+        public ActionResult AddChoiceItem(int formID, int questionInstanceID)
+        {
+            _questionManager.AddChoiceItem(CurrentLoggedUserModel.Email, questionInstanceID, string.Empty);
+
+            return RedirectToCreateEditQuestions(formID);
         }
 
 

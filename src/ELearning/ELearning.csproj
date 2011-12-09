@@ -94,9 +94,12 @@
     <Compile Include="Models\Authentication\LoggedUserModel.cs" />
     <Compile Include="Models\Authentication\UserLogOnModel.cs" />
     <Compile Include="Models\Data\ChoiceItemModel.cs" />
+    <Compile Include="Models\Data\ChoiceQuestionInstanceModel.cs" />
     <Compile Include="Models\Data\ChoiceQuestionModel.cs" />
     <Compile Include="Models\Data\DataModelBase.cs" />
     <Compile Include="Models\Data\FormInstanceModel.cs" />
+    <Compile Include="Models\Data\QuestionInstanceModel.cs" />
+    <Compile Include="Models\Data\QuestionInstanceModelsConverter.cs" />
     <Compile Include="Models\FormInstancesModel.cs" />
     <Compile Include="Models\Data\FormModel.cs" />
     <Compile Include="Models\Data\FormTypeModel.cs" />
@@ -330,13 +333,16 @@
     <Content Include="Views\Form\Questions\_EditQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\FormInstance\Start.cshtml" />
+    <None Include="Views\FormInstance\FillForm.cshtml" />
+    <Content Include="Views\FormInstance\Questions\_QuestionHeader.cshtml" />
+    <Content Include="Views\FormInstance\Questions\_FillQuestion_InlineText.cshtml" />
+    <Content Include="Views\FormInstance\Questions\_FillQuestion_Choice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FormInstance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\FormInstance\EndTest.cshtml" />
+    <Content Include="Views\FormInstance\EndForm.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

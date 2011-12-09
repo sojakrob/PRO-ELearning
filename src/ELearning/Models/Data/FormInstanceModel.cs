@@ -9,7 +9,8 @@ namespace ELearning.Models.Data
     public class FormInstanceModel : DataModelBase<FormInstance>
     {
         public int ID { get; set; }
-        public FormModel FormTemplate { get; set; }
+        public FormModel FormTemplate { get; private set; }
+        public List<QuestionInstanceModel> Questions { get; set; }
 
 
         public FormInstanceModel()
@@ -21,6 +22,7 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             FormTemplate = new FormModel(data.FormTemplate);
+            Questions = QuestionInstanceModelsConverter.CreateFromArray(data.Questions);
         }
 
 

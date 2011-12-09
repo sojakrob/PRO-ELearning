@@ -32,15 +32,20 @@ namespace ELearning.Models.Data
 
         public override Question ToData()
         {
-            return QuestionManager.CreateNewChoiceQuestion(
-                ID,
-                Text,
-                HelpText,
-                Explanation,
-                QuestionGroupID,
-                Shuffle
-                );
+            var result = QuestionManager.CreateNewChoiceQuestion(
+                            ID,
+                            Text,
+                            HelpText,
+                            Explanation,
+                            QuestionGroupID,
+                            Shuffle
+                            );
 
+            result.ChoiceItems = new System.Data.Objects.DataClasses.EntityCollection<ChoiceItem>();
+            foreach (ChoiceItemModel choiceItem in ChoiceItems)
+                result.ChoiceItems.Add(choiceItem.ToData());	
+
+            return result;
         }
     }
 }

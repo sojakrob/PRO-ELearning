@@ -1,0 +1,27 @@
+﻿@model ELearning.Models.Data.FormInstanceModel
+           
+
+@{
+    Layout = "";
+    ViewBag.Title = "Vyplňování testu";
+}
+
+<h2>@Model.FormTemplate.Name</h2>
+
+@using (Html.BeginForm("EndForm", "FormInstance", new { }))
+{
+    int i = 1;
+    foreach (var question in Model.Questions)
+    {
+        <fieldset>
+        <h3>Question #@i</h3>
+            @Html.Partial("Questions\\_QuestionHeader", question)
+            @Html.Partial(string.Format("Questions\\_FillQuestion_{0}", question.TemplateGroup.Type.Name), question)
+        </fieldset>
+        i++;
+    }
+    <p>
+        <input type="submit" class="Button" value="Submit" />
+    </p>
+    
+}

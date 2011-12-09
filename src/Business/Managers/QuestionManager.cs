@@ -19,11 +19,11 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the QuestionManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public QuestionManager(IPersistentStorage persistentStorage)
+        public QuestionManager(IPersistentStorage persistentStorage, FormManager formManager)
             : base(persistentStorage)
         {
             _userManager = new UserManager(_persistentStorage);
-            _formManager = new FormManager(_persistentStorage);
+            _formManager = formManager;
         }
 
 
@@ -35,7 +35,7 @@ namespace ELearning.Business.Managers
         public QuestionGroup GetQuestionGroup(string authorEmail, int questionGroupID)
         {
             QuestionGroup group = Context.QuestionGroup.Single(q => q.ID == questionGroupID);
-            if(group == null)
+            if (group == null)
                 throw new ArgumentException("Question Group not found");
 
             User user = _userManager.GetUser(authorEmail);
@@ -49,7 +49,7 @@ namespace ELearning.Business.Managers
 
         public bool AddQuestionGroupWithQuestion(string authorEmail, int formTemplateID, QuestionGroup questionGroup)
         {
-            if(AddQuestionGroup(authorEmail, formTemplateID, questionGroup))
+            if (AddQuestionGroup(authorEmail, formTemplateID, questionGroup))
                 return AddQuestion(authorEmail, questionGroup.ID, questionGroup.Type.ID);
 
             return false;
@@ -107,11 +107,44 @@ namespace ELearning.Business.Managers
             trueQuestion.Text = question.Text;
             trueQuestion.HelpText = question.HelpText;
             trueQuestion.Explanation = question.Explanation;
+            // TODO Refactor to Question
 
             Context.SaveChanges();
 
             return true;
         }
+        public bool EditChoiceQuestion(string authorEmail, ChoiceQuestion question)
+        {
+            if (!EditQuestion(authorEmail, question))
+                return false;
+
+            ChoiceQuestion trueQuestion = Context.Question.Single(q => q.ID == question.ID) as ChoiceQuestion;
+
+            foreach(var choiceItem in question.ChoiceItems)
+            {
+                var trueChoiceItem = trueQuestion.ChoiceItems.SingleOrDefault(i => i.ID == choiceItem.ID);
+                if (trueChoiceItem == null)
+                {
+                    trueQuestion.ChoiceItems.Add(choiceItem);
+                }
+                else
+                {
+                    trueChoiceItem.Text = choiceItem.Text;
+                    trueChoiceItem.Index = choiceItem.Index;
+                    trueChoiceItem.IsCorrect = choiceItem.IsCorrect;
+                    trueChoiceItem.Explanation = choiceItem.Explanation;
+                    trueChoiceItem.ImageUrl = choiceItem.ImageUrl;
+                    // TODO Refactor to ChoiceItem
+                }
+            }
+
+            // TODO Delete not present choice items
+
+            Context.SaveChanges();
+
+            return true;
+        }
+
         private void CheckCreateEditPermission(Form form, User author)
         {
             bool isOwner = (form.AuthorID == author.ID);
@@ -130,7 +163,7 @@ namespace ELearning.Business.Managers
             QuestionGroupTypes questionType = Shared.EnumUtility.EnumFromName<QuestionGroupTypes>(questionGroupName);
             switch (questionType)
             {
-                case QuestionGroupTypes.InlineText:                    
+                case QuestionGroupTypes.InlineText:
                 case QuestionGroupTypes.MultilineText:
                     return CreateNewQuestion(0, string.Empty, questionGroupID);
 
@@ -141,7 +174,7 @@ namespace ELearning.Business.Managers
                     return CreateNewMultipleChoiceQuestion(0, string.Empty, string.Empty, string.Empty, questionGroupID, false);
 
                 case QuestionGroupTypes.Scale:
-                    return CreateNewScaleQuestion(0, string.Empty, questionGroupID);                    
+                    return CreateNewScaleQuestion(0, string.Empty, questionGroupID);
 
                 default:
                     throw new NotImplementedException("QuestionGroupType not implemented");
@@ -214,6 +247,7 @@ namespace ELearning.Business.Managers
                             questionGroupID,
                             shuffle
                             );
+            question.HelpText = helpText;
 
             return question;
         }
@@ -237,8 +271,27 @@ namespace ELearning.Business.Managers
                 questionID,
                 text,
                 0,
-                false,
-                string.Empty
+                false
+                );
+        }
+        public static ChoiceItem CreateNewChoiceItem(int ID, int questionID, string text, int index, bool isCorrect)
+        {
+            return ChoiceItem.CreateChoiceItem(
+                ID,
+                questionID,
+                text,
+                index,
+                isCorrect
+                );
+        }
+
+        public static QuestionInstance CreateNewQuestionInstance(int index, int questionID, int formInstanceID)
+        {
+            return QuestionInstance.CreateQuestionInstance(
+                0,
+                index,
+                questionID,
+                formInstanceID
                 );
         }
     }

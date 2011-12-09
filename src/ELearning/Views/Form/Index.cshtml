@@ -42,8 +42,8 @@
                     @Html.ActionLink(item.Name, "Index", "FormInstance", new { id = item.ID }, null)
                 }
             </td>
-            <td>
-                @item.Text
+            <td title="@item.Text">
+                @item.TextCropped
             </td>
             <td>
                 @ELearning.Utils.Formatting.FormatAsDate(item.Created)
