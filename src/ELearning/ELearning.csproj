@@ -337,6 +337,7 @@
     <Content Include="Views\FormInstance\Questions\_QuestionHeader.cshtml" />
     <Content Include="Views\FormInstance\Questions\_FillQuestion_InlineText.cshtml" />
     <Content Include="Views\FormInstance\Questions\_FillQuestion_Choice.cshtml" />
+    <Content Include="Views\FormInstance\Questions\_FillQuestion_MultilineText.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FormInstance\Index.cshtml" />

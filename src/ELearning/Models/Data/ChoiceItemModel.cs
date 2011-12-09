@@ -26,6 +26,7 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             Text = data.Text;
+            Index = data.Index;
             IsCorrect = data.IsCorrect;
             QuestionID = data.ChoiceQuestionID;
             Explanation = data.Explanation;

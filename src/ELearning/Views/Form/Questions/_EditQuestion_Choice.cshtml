@@ -2,6 +2,14 @@
 @using ELearning.Utils
 
 
+<div>
+    <span>Choices</span>
+    <span>
+        <label for="@string.Format("{0}Shuffle", Model.ID)">Shuffle</label>
+        <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" disabled="disabled" />
+    </span>
+</div>
+
 @if (Model.Shuffle)
 {
     @Html.Raw("<ul>");
@@ -15,6 +23,8 @@ else
 {
     <li>
         <input type="hidden" name="ChoiceItems[@i].ID" value="@Model.ChoiceItems[i].ID" />
+        <input type="hidden" name="ChoiceItems[@i].Index" value="@Model.ChoiceItems[i].Index" />
+
         <div class="editor-field">
             <input type="text" value="@Model.ChoiceItems[i].Text" name="ChoiceItems[@i].Text" />
         </div>

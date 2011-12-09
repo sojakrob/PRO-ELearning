@@ -122,10 +122,35 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
         [HttpPost]
+        public ActionResult EditQuestion_MultilineText(int formID, int questionGroupID, int questionID, QuestionModel question)
+        {
+            // TODO Rid out of redundancy in EditQuestion_{0}
+            Question q = question.ToData();
+            q.ID = questionID;
+
+            _questionManager.EditQuestion(CurrentLoggedUserModel.Email, q);
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+        [HttpPost]
         public ActionResult EditQuestion_Choice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int? correctChoice)
         {
             if (correctChoice.HasValue)
                 question.ChoiceItems[correctChoice.Value].IsCorrect = true;
+
+            ChoiceQuestion q = question.ToData() as ChoiceQuestion;
+            q.ID = questionID;
+
+            _questionManager.EditChoiceQuestion(CurrentLoggedUserModel.Email, q);
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+        [HttpPost]
+        public ActionResult EditQuestion_MultipleChoice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int[] correctChoices)
+        {
+            if (correctChoices != null)
+                for (int i = 0; i < correctChoices.Length; i++)
+                    question.ChoiceItems[i].IsCorrect = true;
 
             ChoiceQuestion q = question.ToData() as ChoiceQuestion;
             q.ID = questionID;
