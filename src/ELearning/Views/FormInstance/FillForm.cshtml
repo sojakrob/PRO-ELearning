@@ -8,7 +8,7 @@
 
 <h2>@Model.FormTemplate.Name</h2>
 
-@using (Html.BeginForm("EndForm", "FormInstance", new { }))
+@using (Html.BeginForm("EndForm", "FormInstance", new { id = Model.ID }))
 {
     int i = 1;
     foreach (var question in Model.Questions)

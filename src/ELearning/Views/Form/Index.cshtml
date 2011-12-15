@@ -27,6 +27,9 @@
             Author
         </th>
         <th>
+            Filled
+        </th>
+        <th>
         </th>
     </tr>
     @foreach (var item in Model)
@@ -54,6 +57,20 @@
             <td>
                 @item.Author.Name
             </td>
+            @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
+            {
+                <td title="Users / Total">
+                    @Html.ActionLink(
+                        string.Format("{0} / {1}", @item.TimesFilled_Users, @item.TimesFilled_Total),
+                        "FormFills",
+                        new { id = item.ID }
+                        )
+                </td>
+            }
+            else
+            {
+                <td></td>
+            }
             <td>        
                 @if (ViewBag.CurrentUserModel.Permissions.Form_Delete
                     || ViewBag.CurrentUserModel.ID == item.Author.ID)

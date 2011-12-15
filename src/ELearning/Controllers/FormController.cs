@@ -41,7 +41,7 @@ namespace ELearning.Controllers
 
         public ViewResult Details(int id)
         {
-            Form form = _formManager.GetForm(AuthenticationContext.LoggedUserSession.Email, id);
+            Form form = _formManager.GetForm(CurrentLoggedUserModel.Email, id);
 
             return View(new FormModel(form));
         }
@@ -172,6 +172,13 @@ namespace ELearning.Controllers
             _questionManager.AddChoiceItem(CurrentLoggedUserModel.Email, questionInstanceID, string.Empty);
 
             return RedirectToCreateEditQuestions(formID);
+        }
+
+        public ActionResult FormFills(int id)
+        {
+            var form = _formManager.GetForm(CurrentLoggedUserModel.Email, id);
+
+            return View(new FormFillsModel(form));
         }
 
 

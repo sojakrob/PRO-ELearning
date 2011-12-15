@@ -15,8 +15,10 @@ namespace ELearning.Models.Data
 
 
         public int ID { get; set; }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
         public string Text { get; set; }
         public string TextCropped
@@ -29,13 +31,28 @@ namespace ELearning.Models.Data
                     return Text;
             }
         }
+
         [Display(Name="Shuffle Questions")]
         public bool Shuffle { get; set; }
+
         public int? TimeToFill { get; set; }
+
         public DateTime Created { get; set; }
+
         public FormTypeModel Type { get; set; }
+
         public UserModel Author { get; set; }
+
         public List<QuestionGroupModel> QuestionGroups { get; set; }
+
+        /// <summary>
+        /// Gets number of times the form was filled
+        /// </summary>
+        public int TimesFilled_Total { get; private set; }
+        /// <summary>
+        /// Gets number of users that filled the form
+        /// </summary>
+        public int TimesFilled_Users { get; private set; }
 
 
         /// <summary>
@@ -48,6 +65,9 @@ namespace ELearning.Models.Data
         public FormModel(Form data)
             : base(data)
         {
+            if (data == null)
+                throw new ArgumentNullException();
+
             ID = data.ID;
             Name = data.Name;
             Text = data.Text;
@@ -66,6 +86,15 @@ namespace ELearning.Models.Data
                 Author = new UserModel(data.Author);
 
             QuestionGroups = DataModelBase<QuestionGroup>.CreateFromArray<QuestionGroupModel>(data.QuestionGroups);
+            
+            CountTimesFilled(data);
+        }
+
+
+        private void CountTimesFilled(Form data)
+        {
+            TimesFilled_Total = data.FormInstances.Count;
+            TimesFilled_Users = data.FormInstances.GroupBy(f => f.SolverID).Count();
         }
 
 

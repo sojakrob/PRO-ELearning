@@ -738,6 +738,7 @@
           <NavigationProperty Name="Author" Relationship="DataModel.FormTemplateAuthor" FromRole="FormTemplate" ToRole="User" />
           <Property Type="Int32" Name="AuthorID" Nullable="false" />
           <NavigationProperty Name="QuestionGroups" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="FormTemplate" ToRole="QuestionGroup" />
+          <NavigationProperty Name="FormInstances" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormTemplate" ToRole="FormInstance" cg:SetterAccess="Private" />
         </EntityType>
         <EntityType Name="FormType">
           <Key>
@@ -1166,15 +1167,15 @@
           <ConnectorPoint PointX="3.75" PointY="2.625" />
           <ConnectorPoint PointX="3.75" PointY="1.9033821614583333" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="3.3263964843749996" />
         <EntityTypeShape EntityType="DataModel.FormType" Width="1.5" PointX="6.125" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.FormTemplateFormType">
           <ConnectorPoint PointX="6.875" PointY="2.625" />
           <ConnectorPoint PointX="6.875" PointY="1.9033821614583333" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormTemplateAuthor">
-          <ConnectorPoint PointX="6.125" PointY="3.7112939453125" />
-          <ConnectorPoint PointX="4.5" PointY="3.7112939453125" />
+          <ConnectorPoint PointX="6.125" PointY="3.9035953776041663" />
+          <ConnectorPoint PointX="4.5" PointY="3.9035953776041663" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.QuestionGroupFormTemplate">
           <ConnectorPoint PointX="9.125" PointY="3.9035953776041663" />
@@ -1188,9 +1189,9 @@
         <AssociationConnector Association="DataModel.FormInstanceFormTemplate">
           <ConnectorPoint PointX="4.5" PointY="6.375" />
           <ConnectorPoint PointX="4.875" PointY="6" />
-          <ConnectorPoint PointX="4.875" PointY="6.1340950520833317" />
-          <ConnectorPoint PointX="5.75" PointY="6.1340950520833317" />
-          <ConnectorPoint PointX="6.1249999999999991" PointY="5.7590950520833326" />
+          <ConnectorPoint PointX="4.875" PointY="6.326396484375" />
+          <ConnectorPoint PointX="5.75" PointY="6.326396484375" />
+          <ConnectorPoint PointX="6.125" PointY="5.951396484375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.QuestionInstance" Width="1.5" PointX="6.125" PointY="7.5" Height="1.4033821614583335" />
         <AssociationConnector Association="DataModel.QuestionInstanceQuestionTemplate">

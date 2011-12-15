@@ -10,6 +10,9 @@ namespace ELearning.Business.Managers
 {
     public class FormManager : ManagerBase<Form>
     {
+        private const int DEFAULT_ID = 0;
+
+
         private Random _random;
 
 
@@ -62,6 +65,13 @@ namespace ELearning.Business.Managers
             return result;
         }
 
+        public FormInstance GetFormInstance(string userEmail, int id)
+        {
+            // TODO Permissions
+            int userID = _userManager.GetUser(userEmail).ID;
+
+            return Context.FormInstance.SingleOrDefault(f => f.ID == id);
+        }
         public List<FormInstance> GetFormInstances(string userEmail, int id)
         {
             // TODO Permissions
@@ -159,7 +169,7 @@ namespace ELearning.Business.Managers
             if (formInstance.FormTemplate.Shuffle)
                 questionGroups = Shared.CollectionUtility.Shuffle<QuestionGroup>(questionGroups);
 
-            int index = 0;
+            int index = DEFAULT_ID;
             foreach (QuestionGroup group in questionGroups)
             {
                 var question = GenerateQuestionFromGroup(group, index, formInstance);
@@ -190,6 +200,48 @@ namespace ELearning.Business.Managers
                 
         }
 
+        public bool AddAnswer(string userEmail, int formInstanceID, int questionID, Answer answer)
+        {
+            // TODO Refactor to own class
+            // TODO Permissions
+            User user = _userManager.GetUser(userEmail);
+
+            // TODO If IsRequired check it is filled in
+
+            var form = Context.FormInstance.SingleOrDefault(f => f.ID == formInstanceID);
+            if (form == null)
+                throw new ArgumentException("Specified form not exists");
+
+            var question = Context.QuestionInstance.SingleOrDefault(q => q.ID == questionID);
+            if (question == null)
+                throw new ArgumentException("Specified question not exists");
+
+            if (question.Answer != null)
+                throw new ApplicationException("Question already has answer");
+
+            // TODO Choice Question: Check if entered index exists in the questions etc.
+
+            Context.Answer.AddObject(answer);
+            question.Answer = answer;
+            
+            Context.SaveChanges();
+
+            return true;
+        }
+        public Answer CreateNewAnswer()
+        {
+            // TODO Refactor to own class
+            return Answer.CreateAnswer(DEFAULT_ID);
+        }
+        public TextAnswer CreateNewTextAnswer(string text)
+        {
+            return TextAnswer.CreateTextAnswer(DEFAULT_ID, text);
+        }
+        public ChoiceAnswer CreateNewChoiceAnswer(int index)
+        {
+            return ChoiceAnswer.CreateChoiceAnswer(DEFAULT_ID, index);
+        }
+
 
         public IQueryable<FormType> GetFormTypes()
         {
@@ -205,7 +257,7 @@ namespace ELearning.Business.Managers
         {
             DateTime currentDateTime = DateTime.Now;
             return FormInstance.CreateFormInstance(
-                0,
+                DEFAULT_ID,
                 currentDateTime,
                 currentDateTime,
                 userID,

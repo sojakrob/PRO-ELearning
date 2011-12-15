@@ -5,8 +5,8 @@
     @foreach (var item in Model.ChoiceItems)
     {
         <li>
-            <input id="@string.Format("Choice{0}", Model.ID)" type="radio" name="@string.Format("Choice{0}", Model.ID)" value="@item.ID" />
-            <label for="@string.Format("Choice{0}", Model.ID)" title="@item.Text">@item.Text</label>
+            <input id="@string.Format("Q{0}CH{1}", Model.ID, item.ID)" type="radio" name="@string.Format("Q{0}", Model.ID)" value="@item.ID" />
+            <label for="@string.Format("Q{0}CH{1}", Model.ID, item.ID)" title="@item.Text">@item.Text</label>
         </li>
     }
 

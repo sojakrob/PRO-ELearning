@@ -795,6 +795,28 @@ namespace ELearning.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceFormTemplate", "FormInstance")]
+        public EntityCollection<FormInstance> FormInstances
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FormInstance>("DataModel.FormInstanceFormTemplate", "FormInstance");
+            }
+            private set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FormInstance>("DataModel.FormInstanceFormTemplate", "FormInstance", value);
+                }
+            }
+        }
 
         #endregion
     }
