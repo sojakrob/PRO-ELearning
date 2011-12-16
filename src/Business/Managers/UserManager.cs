@@ -202,5 +202,22 @@ namespace ELearning.Business.Managers
                 );
         }
 
+        public IQueryable<User> GetStudents(string userEmail)
+        {
+            // TODO Check permissions
+
+            string studentTypeName = UserTypes.Student.ToString();
+
+            return Context.User.Where(u => u.IsActive == true && u.Type.Name == studentTypeName);
+        }
+        public User GetStudent(string userEmail, int studentID)
+        {
+            // TODO Check permissions
+
+            string studentTypeName = UserTypes.Student.ToString();
+
+            return Context.User.SingleOrDefault(u => u.IsActive == true && u.ID == studentID && u.Type.Name == studentTypeName);
+        }
+
     }
 }

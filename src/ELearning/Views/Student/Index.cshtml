@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ELearning.Models.StudentModel>
+
+@{
+    ViewBag.Title = "Students";
+}
+
+<table class="datagrid">
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(student.Name, "Detail", new { id = student.ID })</td>
+        </tr>
+    }
+
+</table>

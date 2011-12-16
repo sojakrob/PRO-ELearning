@@ -18,7 +18,7 @@
     @foreach (var forms in Model.FormInstances.GroupBy(i => i.Solver.ID).ToList())
     {
         <tr>
-            <td>@forms.First().Solver.Name</td>
+            <td>@Html.ActionLink(forms.First().Solver.Name, "Detail", "Student", new { id = forms.First().Solver.ID }, null)</td>
             <td>@forms.Count()</td>
         </tr>
     }

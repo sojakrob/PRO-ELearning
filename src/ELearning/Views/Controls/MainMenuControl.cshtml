@@ -15,6 +15,19 @@
             </li>
         </ul>
     </div>
+    @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
+    {
+        <div>
+            <ul>
+                <li>
+                    @Html.ActionLink("Studenti", "Index", "Student")
+                    <ul>
+                        <li>@Html.ActionLink("Zobrazit", "Index", "Student")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
     @if (Model.Permissions.User_List)
     {
         <div>
