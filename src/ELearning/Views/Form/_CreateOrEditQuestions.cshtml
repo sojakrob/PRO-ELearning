@@ -9,14 +9,17 @@
             <legend>Question #@item.Index</legend>
 
             <div class="Header">
-                <h3>Question #@item.Index</h3>
-                <span>@item.Type.Name</span>
+                <h3>#@item.Index</h3>
+                <div class="clmnQuestionType">@item.Type.Name</div>
+                <div class="clmnQuestionText">@item.Questions[0].TextCropped</div>
             </div>
 
-            @Html.Partial("_EditQuestionGroup", item)
+            <div class="Content">
+                @Html.Partial("_EditQuestionGroup", item)
 
-            <div class="Footer">
-                @Html.ButtonLink("Add Alternative Question", "AddAlternativeQuestion", new { formTemplateID = item.FormTemplateID, questionGroupID = item.ID, questionTypeID = item.Type.ID })
+                <div class="Footer">
+                    @Html.ButtonLink("Add Alternative Question", "AddAlternativeQuestion", new { formTemplateID = item.FormTemplateID, questionGroupID = item.ID, questionTypeID = item.Type.ID })
+                </div>
             </div>
 
         </fieldset>

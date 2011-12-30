@@ -43,6 +43,13 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+        public override bool Form_CreateEdit_All
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public override bool Question_CreateEdit_All
         {

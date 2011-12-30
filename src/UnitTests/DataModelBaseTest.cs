@@ -71,9 +71,9 @@ namespace UnitTests
         public void CreateFromArrayTest()
         {
             List<Form> forms = new List<Form>();
-            forms.Add(Form.CreateForm(0, "Form 0", "Text 0", DateTime.Now, 0, 0));
-            forms.Add(Form.CreateForm(1, "Form 1", "Text 1", DateTime.Now, 0, 0));
-            forms.Add(Form.CreateForm(2, "Form 2", "Text 2", DateTime.Now, 0, 0));
+            forms.Add(Form.CreateForm(0, "Form 0", DateTime.Now, 0, 0));
+            forms.Add(Form.CreateForm(1, "Form 1", DateTime.Now, 0, 0));
+            forms.Add(Form.CreateForm(2, "Form 2", DateTime.Now, 0, 0));
 
             IList<FormModel> formModels = DataModelBase<Form>.CreateFromArray<FormModel>(forms);
 

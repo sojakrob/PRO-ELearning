@@ -5,13 +5,20 @@
     ViewBag.Title = "Test";
 }
 
+<script src="@Url.Content("~/Scripts/Form/CreateEditQuestions.js")" type="text/javascript"></script>
+
 <div id="CreateEditQuestions">
     <div id="CreateEditQuestionsHeader">
         <h2>@Model.Name</h2>
         <div id="info">
-            <span>@Model.Type.Name</span>
-            <span>@Model.TimeToFill</span>
-            @Html.ButtonLink("Edit", "Edit", new { id = Model.ID})
+            <div class="column">@Model.Type.Name</div>
+            <div class="column" id="clmnQuestionCount">@Model.QuestionGroups.Count</div>
+            @if (Model.TimeToFill != null)
+            {
+                <div class="column" id="clmnTimeToFill">@Model.TimeToFill</div>
+            }
+            <div class="column">@Html.ButtonLink("Edit", "Edit", new { id = Model.ID})</div>
+            <div class="clear"></div>
         </div>
         <p>@Model.Text</p>
     </div>

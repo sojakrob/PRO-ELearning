@@ -4,13 +4,17 @@ using System.Linq;
 using System.Web;
 using ELearning.Data;
 using ELearning.Business.Managers;
+using System.ComponentModel.DataAnnotations;
 
 namespace ELearning.Models.Data
 {
     public class ChoiceItemModel : DataModelBase<ChoiceItem>
     {
         public int ID { get; set; }
+
+        [Required]
         public string Text { get; set; }
+
         public int Index { get; set; }
         public bool IsCorrect { get; set; }
         public string Explanation { get; set; }

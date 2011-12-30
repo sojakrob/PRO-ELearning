@@ -1,13 +1,12 @@
 @using ELearning.Utils
+@using ELearning.Models.GeneralView
 @model IEnumerable<ELearning.Models.Data.UserModel>
 
 @{
     ViewBag.Title = "Users";
+    ViewBag.TopButtons = new[] { new TopButtonModel("Create New", "Create", "User") };
 }
 
-<p>
-    @Html.ButtonLink("Create New", "Create")
-</p>
 <table class="datagrid">
     <tr>
         <th>

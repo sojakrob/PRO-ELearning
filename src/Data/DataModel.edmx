@@ -169,7 +169,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="true" />
     <Property Name="TimeToFill" Type="int" Nullable="true" />
     <Property Name="Shuffle" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="Created" Type="datetime" Nullable="false" />
@@ -729,7 +729,7 @@
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="true" />
           <Property Type="Int32" Name="TimeToFill" Nullable="true" />
           <Property Type="Boolean" Name="Shuffle" Nullable="false" DefaultValue="False" />
           <Property Type="DateTime" Name="Created" Nullable="false" />

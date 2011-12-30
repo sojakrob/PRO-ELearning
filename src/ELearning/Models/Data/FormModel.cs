@@ -19,17 +19,10 @@ namespace ELearning.Models.Data
         [Required]
         public string Name { get; set; }
 
-        [Required]
         public string Text { get; set; }
         public string TextCropped
         {
-            get
-            {
-                if (Text.Length > TEXT_MAX_LENGTH)
-                    return String.Format("{0}...", Text.Substring(0, TEXT_MAX_LENGTH));
-                else
-                    return Text;
-            }
+            get { return Utils.Formatting.CropText(Text, TEXT_MAX_LENGTH); }
         }
 
         [Display(Name="Shuffle Questions")]
@@ -103,11 +96,11 @@ namespace ELearning.Models.Data
             Form result = Form.CreateForm(
                 ID,
                 Name, 
-                Text,
                 Created, 
                 Type == null ? 0 : Type.ID,
                 Author == null ? 0 : Author.ID
                 );
+            result.Text = Text;
             result.Shuffle = Shuffle;
             result.TimeToFill = TimeToFill;
 

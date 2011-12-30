@@ -16,5 +16,14 @@ namespace ELearning.Utils
         {
             return time.ToString("T", CultureInfo.CurrentUICulture);
         }
+
+
+        public static string CropText(string text, int maxLength)
+        {
+            if (text != null && text.Length > maxLength)
+                return String.Format("{0}...", text.Substring(0, maxLength));
+            else
+                return text;
+        }
     }
 }

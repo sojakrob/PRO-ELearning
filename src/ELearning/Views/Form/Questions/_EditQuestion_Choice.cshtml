@@ -2,51 +2,54 @@
 @using ELearning.Utils
 
 
-<div>
-    <span>Choices</span>
-    <span>
-        <label for="@string.Format("{0}Shuffle", Model.ID)">Shuffle</label>
-        <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" disabled="disabled" />
-    </span>
+<div id="Choices">
+    <div id="ChoicesHeader">
+        <h4>Choices</h4>
+        <div class="column">
+            <label for="@string.Format("{0}Shuffle", Model.ID)">Shuffle</label>
+            <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" disabled="disabled" />
+        </div>
+        <div class="column" id="clmnAddChoiceItem">
+            @Html.ButtonLink("Add Choice Item", "AddChoiceItem", new { formID = Model.FormID, questionInstanceID = Model.ID })
+        </div>
+    </div>
+
+    @if (Model.Shuffle)
+    {
+        @Html.Raw("<ul>");
+    }
+    else
+    {
+        @Html.Raw("<ol>");
+    }
+
+    @for(int i = 0; i < Model.ChoiceItems.Count; i++)
+    {
+        <li>
+            <input type="hidden" name="ChoiceItems[@i].ID" value="@Model.ChoiceItems[i].ID" />
+            <input type="hidden" name="ChoiceItems[@i].Index" value="@Model.ChoiceItems[i].Index" />
+
+            <div class="editor-field">
+                <input type="text" value="@Model.ChoiceItems[i].Text" name="ChoiceItems[@i].Text" />
+            </div>
+            <div class="editor-field Check">
+                <input type="radio" name="correctChoice" value="@i"
+                 @if(Model.ChoiceItems[i].IsCorrect)
+                 {
+                    @Html.Raw("checked=\"checked\"");
+                 }
+                 />
+            </div>
+        </li>
+    }
+
+    @if (Model.Shuffle)
+    {
+        @Html.Raw("</ul>");
+    }
+    else
+    {
+        @Html.Raw("</ol>");
+    }
+    
 </div>
-
-@if (Model.Shuffle)
-{
-    @Html.Raw("<ul>");
-}
-else
-{
-    @Html.Raw("<ol>");
-}
-
-@for(int i = 0; i < Model.ChoiceItems.Count; i++)
-{
-    <li>
-        <input type="hidden" name="ChoiceItems[@i].ID" value="@Model.ChoiceItems[i].ID" />
-        <input type="hidden" name="ChoiceItems[@i].Index" value="@Model.ChoiceItems[i].Index" />
-
-        <div class="editor-field">
-            <input type="text" value="@Model.ChoiceItems[i].Text" name="ChoiceItems[@i].Text" />
-        </div>
-        <div class="editor-field Check">
-            <input type="radio" name="correctChoice" value="@i"
-             @if(Model.ChoiceItems[i].IsCorrect)
-             {
-                @Html.Raw("checked=\"checked\"");
-             }
-             />
-        </div>
-    </li>
-}
-
-@if (Model.Shuffle)
-{
-    @Html.Raw("</ul>");
-}
-else
-{
-    @Html.Raw("</ol>");
-}
-
-
-@Html.ButtonLink("Add Choice Item", "AddChoiceItem", new { formID = Model.FormID, questionInstanceID = Model.ID })

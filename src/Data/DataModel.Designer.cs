@@ -480,16 +480,14 @@ namespace ELearning.Data
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="text">Initial value of the Text property.</param>
         /// <param name="created">Initial value of the Created property.</param>
         /// <param name="formTypeID">Initial value of the FormTypeID property.</param>
         /// <param name="authorID">Initial value of the AuthorID property.</param>
-        public static Form CreateForm(global::System.Int32 id, global::System.String name, global::System.String text, global::System.DateTime created, global::System.Int32 formTypeID, global::System.Int32 authorID)
+        public static Form CreateForm(global::System.Int32 id, global::System.String name, global::System.DateTime created, global::System.Int32 formTypeID, global::System.Int32 authorID)
         {
             Form form = new Form();
             form.ID = id;
             form.Name = name;
-            form.Text = text;
             form.Created = created;
             form.FormTypeID = formTypeID;
             form.AuthorID = authorID;
@@ -553,7 +551,7 @@ namespace ELearning.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Text
         {
@@ -565,7 +563,7 @@ namespace ELearning.Data
             {
                 OnTextChanging(value);
                 ReportPropertyChanging("Text");
-                _Text = StructuralObject.SetValidValue(value, false);
+                _Text = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Text");
                 OnTextChanged();
             }

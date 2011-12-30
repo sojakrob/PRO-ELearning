@@ -20,13 +20,16 @@ body
 
 h1
 {
-	border-bottom: 1px solid #3F8FD2;
 	padding: 10px 30px;
 	color: #0B5FA5;
 	text-transform: uppercase;
 	font-size: 1.5em;
 	margin: 0;
+	margin-right: 50px;
 	font-weight: normal;
+	display: inline-block;
+	float: left;
+	min-width: 170px;
 }
 h2
 {
@@ -82,6 +85,15 @@ div#top div#header div#authentication
 	height: 50px;
 	padding-top: 30px;
 	text-align: center;
+}
+div#top div#titleBar
+{
+	border-bottom: 1px solid #3F8FD2;
+}
+div#top div#titleBar div.column
+{
+	float: left;
+	padding-top: 15px;
 }
 
 div#mainMenuControl
@@ -230,7 +242,7 @@ p.buttons
 ----------------------------------------------------------*/
 table.datagrid
 {
-	margin: 0px 10px;
+	margin: 10px 10px;
 	border-collapse: collapse;
 	min-width: 600px;
 }
@@ -349,7 +361,28 @@ div#CreateEditQuestionsHeader h2
 }
 div#CreateEditQuestionsHeader div#info
 {
-	display: inline;
+	display: inline-block;
+	height: 32px;
+	vertical-align: middle;
+}
+div#CreateEditQuestionsHeader div#info div.column
+{
+	text-align: right;
+	margin: 0 20px;
+	display: inline-block;
+	height: inherit;
+	vertical-align: middle;
+	padding-top: 5px;
+}
+div#CreateEditQuestionsHeader div#info div#clmnQuestionCount
+{
+	background: url('icons/questionCount.png') no-repeat;
+	width: 60px;
+}
+div#CreateEditQuestionsHeader div#info div#clmnTimeToFill
+{
+	background: url('icons/clock.png') no-repeat;
+	width: 60px;
 }
 div#CreateEditQuestionsHeader span
 {
@@ -366,7 +399,7 @@ div#CreateEditQuestionsHeader p
 
 div.Question
 {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 div.Question > fieldset
 {
@@ -383,6 +416,23 @@ div.Question div.Header
 {
 	background-color: #3F8FD2;
 	color: White;
+	cursor: pointer;
+}
+div.Question div.Header div.clmnQuestionType
+{
+	width: 80px;
+	margin: 0 20px;
+	display: inline-block;
+}
+div.Question div.Header div.clmnQuestionText
+{
+	margin: 0 20px;
+	display: inline-block;
+	max-width: 700px;
+	max-height: 1.2em;
+	overflow: hidden;
+	vertical-align: middle;
+	padding: 0;
 }
 div.Question div.Footer
 {
@@ -422,6 +472,10 @@ div#CreateNewQuestion div
 
 /* Test templates editing
 ------------------------------------------------------------*/
+div#CreateEditQuestions div.Question
+{
+	width: 1000px;
+}
 div.QuestionForm legend
 {
 	display: block;
@@ -436,20 +490,71 @@ div.QuestionForm div.editor-label
 }
 div.QuestionForm div.editor-field
 {
-	min-width: 400px;
+	
 }
-div.QuestionForm  div.editor-field input
+div.QuestionForm  div.editor-field input, div.QuestionForm  div.editor-field textarea
 {
-	width: 100%;
-	min-width: 200px;
+	width: 700px !important;
+	height: 1.2em;
+	min-height: 1.2px;
 }
 div.QuestionForm li div.editor-field
 {
 	display: inline-block;
 	float: none;
 }
-div.QuestionForm li div.Check input
+div.QuestionForm div.editor-group
 {
-	width: 50px;
-	min-width: 50px;
+	padding: 0px;
+}
+/*		 Choice question
+------------------------------------------------------------*/
+div.QuestionForm div#Choices
+{
+	border: 1px solid #91C0E8;
+	margin-top: 10px;
+}
+div.QuestionForm div#Choices div#ChoicesHeader
+{
+	border-bottom: 1px solid #91C0E8;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 1px 25px;	
+}
+div.QuestionForm div#Choices div#ChoicesHeader h4
+{
+	display: inline-block;
+	width: 100px;
+	margin: 0;
+	font-size: 1.05em;
+	font-weight: normal;
+}
+div.QuestionForm div#Choices div#ChoicesHeader div.column
+{
+	display: inline-block;
+	width: 80px;
+	margin: 0 20px;
+}
+div.QuestionForm div#Choices div#ChoicesHeader div#clmnAddChoiceItem
+{
+	width: 150px;
+	float: right;
+	text-align: right;
+	margin-right: 0;
+}
+div.QuestionForm div#Choices div#ChoicesHeader div#clmnAddChoiceItem > a
+{
+	margin: 0;
+}
+div.QuestionForm div#Choices ol
+{
+	margin: 10px 0;
+}
+div.QuestionForm div#Choices ol > li input
+{
+	width: 800px !important;
+}
+div.QuestionForm div#Choices ol > li div.Check input
+{
+	width: 40px !important;
 }

@@ -59,7 +59,7 @@ namespace ELearning.Business.Managers
             Form form = _formManager.GetForm(authorEmail, formTemplateID);
             User author = _userManager.GetUser(authorEmail);
 
-            CheckCreateEditPermission(form, author);
+            CheckQuestionCreateEditPermission(form, author);
 
             questionGroup.FormTemplateID = form.ID;
             questionGroup.Index = form.QuestionGroups == null ? 1 : form.QuestionGroups.Count + 1;
@@ -145,11 +145,17 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        private void CheckCreateEditPermission(Form form, User author)
+        private void CheckFormCreateEditPermission(Form form, User author)
         {
             bool isOwner = (form.AuthorID == author.ID);
             if (!isOwner && !_userManager.GetUserPermissions(author.Email).Form_CreateEdit_All)
                 throw new PermissionException("Form_CreateEdit_All");
+        }
+        private void CheckQuestionCreateEditPermission(Form form, User author)
+        {
+            bool isOwner = (form.AuthorID == author.ID);
+            if (!isOwner && !_userManager.GetUserPermissions(author.Email).Question_CreateEdit_All)
+                throw new PermissionException("Question_CreateEdit_All");
         }
 
         public static bool IsChoiceQuestionType(QuestionGroupTypes type)
@@ -248,6 +254,7 @@ namespace ELearning.Business.Managers
                             shuffle
                             );
             question.HelpText = helpText;
+            question.Explanation = explanation;
 
             return question;
         }

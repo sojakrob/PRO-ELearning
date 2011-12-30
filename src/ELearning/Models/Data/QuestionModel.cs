@@ -10,11 +10,25 @@ namespace ELearning.Models.Data
 {
     public class QuestionModel : DataModelBase<Question>
     {
+        private const int TEXT_MAX_LENGTH = 80;
+
+
         public int ID { get; set; }
+
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
+        public string TextCropped
+        {
+            get { return Utils.Formatting.CropText(Text, TEXT_MAX_LENGTH); }
+        }
+
+        [DataType(DataType.MultilineText)]
         public string HelpText { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string Explanation { get; set; }
+
         public int QuestionGroupID { get; set; }
         public int FormID { get; private set; }
 
@@ -32,7 +46,7 @@ namespace ELearning.Models.Data
             Explanation = data.Explanation;
             QuestionGroupID = data.QuestionGroupID;
 
-            if(data.QuestionGroup != null)
+            if (data.QuestionGroup != null)
                 FormID = data.QuestionGroup.FormTemplateID;
         }
 

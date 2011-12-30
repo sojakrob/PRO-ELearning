@@ -1,14 +1,15 @@
 @using ELearning.Utils
+@using ELearning.Models.GeneralView
 @model IEnumerable<ELearning.Models.Data.FormModel>
 @{
-    ViewBag.Title = "Dostupné testy";   
+    ViewBag.Title = "Dostupné testy";
+    
+    if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit)
+    {
+        ViewBag.TopButtons = new[] { new TopButtonModel("Create New", "Create", "Form") };
+    }
 }
-@if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit)
-{
-    <p>
-        @Html.ButtonLink("Create New", "Create")
-    </p>
-}
+
 <table class="datagrid">
     <tr>
         <th>
