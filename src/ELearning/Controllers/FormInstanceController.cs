@@ -36,9 +36,16 @@ namespace ELearning.Controllers
             return View(model);
         }
 
+        public ActionResult FillingInProgress(int id)
+        {
+
+            return View();
+        }
+
         public ActionResult FillForm(int id)
         {
-            FormInstanceModel formInstance = new FormInstanceModel(_formManager.GenerateNewFormInstance(CurrentLoggedUserModel.Email, id));
+            var formManagerGenerateNewFormInstance = _formManager.GenerateNewFormInstance(CurrentLoggedUserModel.Email, id);
+            var formInstance = new FormInstanceModel(formManagerGenerateNewFormInstance);
             return View(formInstance);
         }
 

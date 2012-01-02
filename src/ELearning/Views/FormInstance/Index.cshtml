@@ -15,10 +15,12 @@
 
 <p>Filled: @Model.FormInstances.Count times</p>
 
-<input 
+@Html.ButtonLink("Start", "FillingInProgress", new { id = Model.Form.ID });
+
+@*<input 
     class="Button" 
     type="button"
     title="Start"
     value="Start"
     onclick="@string.Format("window.open('../FillForm/{0}', '_blank', 'width=800, toolbar=0, resizable=1, scrollbars=1, menubar=0')", Model.Form.ID)"
-    />
+    />*@

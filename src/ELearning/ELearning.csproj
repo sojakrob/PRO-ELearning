@@ -157,6 +157,7 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\FormInstance\FillForm.js" />
     <Content Include="Scripts\Form\CreateEditQuestions.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -352,6 +353,7 @@
     <Content Include="Views\Form\FormFills.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Detail.cshtml" />
+    <Content Include="Views\FormInstance\FillingInProgress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FormInstance\Index.cshtml" />
