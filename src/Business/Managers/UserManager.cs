@@ -115,7 +115,8 @@ namespace ELearning.Business.Managers
         {
             if (String.IsNullOrEmpty(email))
                 throw new ArgumentException("Email is null or empty.", "email");
-          
+
+            // TODO Implement caching
             return GetSingle(u => u.Email == email && u.IsActive == true);
         }
 

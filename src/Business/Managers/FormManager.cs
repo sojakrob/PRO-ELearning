@@ -149,10 +149,39 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        public FormInstance GenerateNewFormInstance(string userEmail, int formID)
+        public FormInstance GenerateNewFormInstanceAndStartFilling(string userEmail, int formID)
         {
             User user = _userManager.GetUser(userEmail);
 
+            var formInstance = GenerateNewFormInstance(user, formID);
+
+            user.FillingForm = formInstance.ID;
+            Context.SaveChanges();
+
+            return formInstance;
+        }
+
+        public void EndFormInstanceFilling(string userEmail, int formID)
+        {
+            var user = _userManager.GetUser(userEmail);
+            if (user.FillingForm == null || user.FillingForm.Value != formID)
+                throw new ApplicationException("Cannot end filling of form which has not been filling");
+
+            user.FillingForm = null;
+            Context.SaveChanges();
+        }
+
+        public FormInstance GetUserFillingFormInstance(string userEmail)
+        {
+            var user = _userManager.GetUser(userEmail);
+            if (user.FillingForm == null)
+                return null;
+
+            return GetFormInstance(userEmail, user.FillingForm.Value);
+        }
+
+        public FormInstance GenerateNewFormInstance(User user, int formID)
+        {
             FormInstance formInstance = CreateNewFormInstance(user.ID, formID);
 
             Context.FormInstance.AddObject(formInstance);

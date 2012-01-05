@@ -558,3 +558,44 @@ div.QuestionForm div#Choices ol > li div.Check input
 {
 	width: 40px !important;
 }
+
+/* Form filling
+------------------------------------------------------------*/
+div#FormFill
+{
+	border: 2px solid #3F8FD2;
+	border-radius: 5px 5px 0 0;
+	margin: 10px 20px 10px 20px;
+	min-width: 700px;
+}
+div#FormFill div#FormFillHeader
+{
+	color: White;
+	padding-left: 20px;
+	border-bottom: 1px solid #3F8FD2;
+	margin-bottom: 10px;
+	background-color: #3F8FD2;
+}
+div#FormFill div#FormFillHeader h2
+{
+	display: inline-block;
+	margin: 20px 20px 0 0;
+}
+
+div#FormFill div.Question div.Content div.QuestionText
+{
+	margin: 5px 20px;
+}
+div#FormFill div.Question div.Content div.QuestionAnswer
+{
+	margin: 5px 20px;
+}
+div#FormFill div.Question div.Content div.QuestionAnswer input[type=text]
+{
+	min-width: 700px;
+}
+
+div#FormFill div#FormFillFooter
+{
+	text-align: center;
+}

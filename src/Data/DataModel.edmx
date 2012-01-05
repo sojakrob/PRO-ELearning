@@ -89,6 +89,10 @@
       <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <AssociationSet Name="UserFillingFormInstance" Association="DataModel.Store.UserFillingFormInstance">
+      <End Role="User" EntitySet="User" />
+      <End Role="FormInstance" EntitySet="FormInstance" />
+    </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
       <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
@@ -147,6 +151,7 @@
     <Property Name="UserTypeID" Type="int" Nullable="false" />
     <Property Name="Password" Type="char" Nullable="true" MaxLength="32" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="FillingForm" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Group">
     <Key>
@@ -193,6 +198,7 @@
     <Property Name="SolverID" Type="int" Nullable="false" />
     <Property Name="FormTemplateID" Type="int" Nullable="false" />
     <Property Name="EvaluationID" Type="int" Nullable="true" />
+    <Property Name="UserFillingFormInstance_FormInstance_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="QuestionInstance">
     <Key>
@@ -446,6 +452,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="UserFillingFormInstance">
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="0..1" />
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="UserFillingFormInstance_FormInstance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -608,6 +626,10 @@
             <End Role="ChoiceQuestion" EntitySet="Question" />
             <End Role="ChoiceItem" EntitySet="ChoiceItem" />
           </AssociationSet>
+          <AssociationSet Name="UserFillingFormInstance" Association="DataModel.UserFillingFormInstance">
+            <End Role="User" EntitySet="User" />
+            <End Role="FormInstance" EntitySet="FormInstance" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Question">
           <Key>
@@ -677,6 +699,7 @@
           <NavigationProperty Name="SolvedForms" Relationship="DataModel.FormInstanceUser" FromRole="User" ToRole="FormInstance" />
           <Property Type="String" Name="Password" MaxLength="32" FixedLength="true" Unicode="false" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="FillingForm" Nullable="true" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -925,6 +948,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="UserFillingFormInstance">
+          <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -986,6 +1013,7 @@
           <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FillingForm" ColumnName="FillingForm" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1121,6 +1149,15 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="UserFillingFormInstance" TypeName="DataModel.UserFillingFormInstance" StoreEntitySet="FormInstance">
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="UserFillingFormInstance_FormInstance_ID" />
+      </EndProperty>
+      <EndProperty Name="FormInstance">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition ColumnName="UserFillingFormInstance_FormInstance_ID" IsNull="false" />
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1152,15 +1189,15 @@
           <ConnectorPoint PointX="10.625" PointY="3.3266910807291667" />
           <ConnectorPoint PointX="11.5" PointY="3.3266910807291667" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="3" PointY="2.625" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="3" PointY="2.625" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.Group" Width="1.5" PointX="0.5" PointY="2.625" Height="1.9802864583333326" IsExpanded="true" />
         <AssociationConnector Association="DataModel.Supervisor">
-          <ConnectorPoint PointX="2" PointY="3.6963932291666666" />
-          <ConnectorPoint PointX="3" PointY="3.6963932291666666" />
+          <ConnectorPoint PointX="2" PointY="3.9867867247263584" />
+          <ConnectorPoint PointX="3" PointY="3.9867867247263584" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.GroupMembers">
-          <ConnectorPoint PointX="2" PointY="3.0981966145833333" />
-          <ConnectorPoint PointX="3" PointY="3.0981966145833333" />
+          <ConnectorPoint PointX="2" PointY="3.2433933623631792" />
+          <ConnectorPoint PointX="3" PointY="3.2433933623631792" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.UserType" Width="1.5" PointX="3" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.UserUserType">
@@ -1174,8 +1211,8 @@
           <ConnectorPoint PointX="6.875" PointY="1.9033821614583333" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormTemplateAuthor">
-          <ConnectorPoint PointX="6.125" PointY="3.9035953776041663" />
-          <ConnectorPoint PointX="4.5" PointY="3.9035953776041663" />
+          <ConnectorPoint PointX="6.125" PointY="3.99974609375" />
+          <ConnectorPoint PointX="4.5" PointY="3.99974609375" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.QuestionGroupFormTemplate">
           <ConnectorPoint PointX="9.125" PointY="3.9035953776041663" />
@@ -1183,8 +1220,8 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="6.375" Height="2.9417936197916656" />
         <AssociationConnector Association="DataModel.FormInstanceUser">
-          <ConnectorPoint PointX="3.7187475" PointY="6.375" />
-          <ConnectorPoint PointX="3.7187475" PointY="5.1821907552083326" />
+          <ConnectorPoint PointX="4.037109375" PointY="6.375" />
+          <ConnectorPoint PointX="4.037109375" PointY="5.3744921875" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceFormTemplate">
           <ConnectorPoint PointX="4.5" PointY="6.375" />
@@ -1247,6 +1284,10 @@
         <AssociationConnector Association="DataModel.ChoiceQuestionChoiceItem">
           <ConnectorPoint PointX="11.875" PointY="11.153382161458332" />
           <ConnectorPoint PointX="11.875" PointY="12" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.UserFillingFormInstance">
+          <ConnectorPoint PointX="3.4560546875" PointY="5.3744921875" />
+          <ConnectorPoint PointX="3.4560546875" PointY="6.375" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 12/28/2011 13:43:26
--- Generated from EDMX file: d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
+-- Date Created: 01/02/2012 17:07:48
+-- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [ELearning];
+USE [db8414991a6d244d96b85a9f91000af42b];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -181,7 +181,8 @@ CREATE TABLE [dbo].[User] (
     [Email] nvarchar(max)  NOT NULL,
     [UserTypeID] int  NOT NULL,
     [Password] char(32)  NULL,
-    [IsActive] bit  NOT NULL
+    [IsActive] bit  NOT NULL,
+    [FillingForm] int  NULL
 );
 GO
 
@@ -227,7 +228,8 @@ CREATE TABLE [dbo].[FormInstance] (
     [Submited] datetime  NOT NULL,
     [SolverID] int  NOT NULL,
     [FormTemplateID] int  NOT NULL,
-    [EvaluationID] int  NULL
+    [EvaluationID] int  NULL,
+    [UserFillingFormInstance_FormInstance_ID] int  NULL
 );
 GO
 
@@ -653,6 +655,20 @@ ADD CONSTRAINT [FK_ChoiceQuestionChoiceItem]
 CREATE INDEX [IX_FK_ChoiceQuestionChoiceItem]
 ON [dbo].[ChoiceItem]
     ([ChoiceQuestionID]);
+GO
+
+-- Creating foreign key on [UserFillingFormInstance_FormInstance_ID] in table 'FormInstance'
+ALTER TABLE [dbo].[FormInstance]
+ADD CONSTRAINT [FK_UserFillingFormInstance]
+    FOREIGN KEY ([UserFillingFormInstance_FormInstance_ID])
+    REFERENCES [dbo].[User]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserFillingFormInstance'
+CREATE INDEX [IX_FK_UserFillingFormInstance]
+ON [dbo].[FormInstance]
+    ([UserFillingFormInstance_FormInstance_ID]);
 GO
 
 -- Creating foreign key on [ID] in table 'Question_ChoiceQuestion'

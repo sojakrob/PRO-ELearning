@@ -29,56 +29,91 @@ namespace ELearning.Controllers
         public ActionResult Index(int id)
         {
             ELearning.Models.FormInstancesModel model = new ELearning.Models.FormInstancesModel(
-                new FormModel(_formManager.GetForm(CurrentLoggedUserModel.Email, id)), 
+                new FormModel(_formManager.GetForm(CurrentLoggedUserModel.Email, id)),
                 ModelsFromArray<FormInstance, FormInstanceModel>(_formManager.GetFormInstances(CurrentLoggedUserModel.Email, id))
                 );
 
             return View(model);
         }
 
-        public ActionResult FillingInProgress(int id)
+        public ActionResult StartForm(int id)
         {
+            var fillingForm = _formManager.GetUserFillingFormInstance(CurrentLoggedUserModel.Email);
+            if (fillingForm == null)
+                _formManager.GenerateNewFormInstanceAndStartFilling(CurrentLoggedUserModel.Email, id);
 
-            return View();
+            return RedirectToAction("FillingInProgress", new { openWindow = true });
+        }
+
+        public ActionResult FillingInProgress(bool? openWindow)
+        {
+            var fillingForm = _formManager.GetUserFillingFormInstance(CurrentLoggedUserModel.Email);
+            if (fillingForm == null)
+                return RedirectToHome();
+
+            if(openWindow != null && openWindow.Value)
+                ViewBag.OpenWindow = true;
+
+            FormInstanceModel formModel = new FormInstanceModel(fillingForm);
+
+            return View(formModel);
         }
 
         public ActionResult FillForm(int id)
         {
-            var formManagerGenerateNewFormInstance = _formManager.GenerateNewFormInstance(CurrentLoggedUserModel.Email, id);
-            var formInstance = new FormInstanceModel(formManagerGenerateNewFormInstance);
-            return View(formInstance);
+            var fillingForm = _formManager.GetUserFillingFormInstance(CurrentLoggedUserModel.Email);
+
+            FormInstanceModel formModel = null;
+            if (fillingForm != null)
+                formModel = new FormInstanceModel(fillingForm);
+
+            return View(formModel);
         }
 
         public ActionResult EndForm(int id)
         {
-            SaveFilledAnswers(id);
+            bool success = SaveFilledAnswers(id);
 
-            return View();
+            return View(success);
         }
-        private void SaveFilledAnswers(int formInstanceID)
+        private bool SaveFilledAnswers(int formInstanceID)
         {
+            bool result = true;
+
             var form = _formManager.GetFormInstance(CurrentLoggedUserModel.Email, formInstanceID);
+
             foreach (QuestionInstance question in form.Questions)
             {
-                if (IsQuestionAnswerInRequest(question))
+                try
                 {
-                    Answer answer = null;
-                    switch (question.QuestionTemplate.QuestionGroup.TypeEnum)
+                    if (IsQuestionAnswerInRequest(question))
                     {
-                        case QuestionGroupTypes.InlineText:
-                            answer = _formManager.CreateNewTextAnswer(GetTextQuestionAnswer(question));
-                            break;
+                        Answer answer = null;
+                        switch (question.QuestionTemplate.QuestionGroup.TypeEnum)
+                        {
+                            case QuestionGroupTypes.InlineText:
+                                answer = _formManager.CreateNewTextAnswer(GetTextQuestionAnswer(question));
+                                break;
 
-                        case QuestionGroupTypes.Choice:
-                            answer = _formManager.CreateNewChoiceAnswer(GetChoiceQuestionAnswer(question));
-                            break;
+                            case QuestionGroupTypes.Choice:
+                                answer = _formManager.CreateNewChoiceAnswer(GetChoiceQuestionAnswer(question));
+                                break;
 
-                        default:
-                            throw new NotImplementedException();
+                            default:
+                                throw new NotImplementedException();
+                        }
+                        _formManager.AddAnswer(CurrentLoggedUserModel.Email, formInstanceID, question.ID, answer);
                     }
-                    _formManager.AddAnswer(CurrentLoggedUserModel.Email, formInstanceID, question.ID, answer);
+                }
+                catch (Exception ex)
+                {
+                    // TODO Log exception
+                    result = false;
                 }
             }
+            _formManager.EndFormInstanceFilling(CurrentLoggedUserModel.Email, form.ID);
+
+            return result;
         }
         private bool IsQuestionAnswerInRequest(QuestionInstance question)
         {

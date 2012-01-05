@@ -50,5 +50,19 @@ namespace ELearning.Utils
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.Normal));
             
         }
+
+        public static IHtmlString ButtonJSClick(this HtmlHelper helper, string title, string text, string jsCode)
+        {
+            UrlHelper url = new UrlHelper(helper.ViewContext.RequestContext);
+
+            TagBuilder builder = new TagBuilder("input");
+            builder.AddCssClass("Button");
+            builder.MergeAttribute("type", "button");
+            builder.MergeAttribute("title", title);
+            builder.MergeAttribute("value", text);
+            builder.MergeAttribute("onclick", jsCode);
+
+            return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
+        }
     }
 }

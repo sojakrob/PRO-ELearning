@@ -5,17 +5,22 @@
     ViewBag.Title = "Test";
 }
 
+<p>@Model.Form.Type.Name</p>
+
 <h2>@Model.Form.Name</h2>
 
 <p>@Model.Form.Text</p>
 
-<p>Time to fill: @Model.Form.TimeToFill</p>
+@if (Model.Form.TimeToFill != null)
+{
+    <p>Time to fill: @Model.Form.TimeToFill</p>
+}
 
 <p>Questions: @Model.Form.QuestionGroups.Count</p>
 
 <p>Filled: @Model.FormInstances.Count times</p>
 
-@Html.ButtonLink("Start", "FillingInProgress", new { id = Model.Form.ID });
+@Html.ButtonLink("Start", "StartForm", new { id = Model.Form.ID })
 
 @*<input 
     class="Button" 

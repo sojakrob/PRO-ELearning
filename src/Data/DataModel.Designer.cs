@@ -33,6 +33,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "FormInstanceFormInstanceEvaluation", "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormInstance), "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.FormInstanceEvaluation))]
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceAnswer", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionInstance), "Answer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.Answer))]
 [assembly: EdmRelationshipAttribute("DataModel", "ChoiceQuestionChoiceItem", "ChoiceQuestion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceQuestion), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceItem), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "UserFillingFormInstance", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.User), "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.FormInstance))]
 
 #endregion
 
@@ -3117,6 +3118,30 @@ namespace ELearning.Data
         private global::System.Boolean _IsActive;
         partial void OnIsActiveChanging(global::System.Boolean value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FillingForm
+        {
+            get
+            {
+                return _FillingForm;
+            }
+            set
+            {
+                OnFillingFormChanging(value);
+                ReportPropertyChanging("FillingForm");
+                _FillingForm = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FillingForm");
+                OnFillingFormChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FillingForm;
+        partial void OnFillingFormChanging(Nullable<global::System.Int32> value);
+        partial void OnFillingFormChanged();
 
         #endregion
     

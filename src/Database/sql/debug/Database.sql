@@ -14,10 +14,9 @@ GO
 :setvar DefaultLogPath ""
 
 GO
-USE [master]
-
-GO
 :on error exit
+GO
+USE [master]
 GO
 IF (DB_ID(N'$(DatabaseName)') IS NOT NULL
     AND DATABASEPROPERTYEX(N'$(DatabaseName)','Status') <> N'ONLINE')
@@ -145,7 +144,6 @@ ELSE
 
 GO
 USE [$(DatabaseName)]
-
 GO
 IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
     EXECUTE sp_fulltext_database 'enable';

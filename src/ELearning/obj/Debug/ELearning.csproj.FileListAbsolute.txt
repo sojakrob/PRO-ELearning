@@ -117,4 +117,3 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Microsoft.Practi
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ResolveAssemblyReference.cache
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ELearning.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\obj\Debug\ELearning.pdb
-d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.XML
