@@ -6,14 +6,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.0</ProjectVersion>
     <ProjectGuid>{67cbc824-a49e-4e9b-a947-360f3dfe65c3}</ProjectGuid>
-    <DSP>Microsoft.Data.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Schema.Sql.Sql90DatabaseSchemaProvider</DSP>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <ShowWizard>False</ShowWizard>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
     <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1029,CS</ModelCollation>
     <DefaultFileStructure>BySchema</DefaultFileStructure>
     <DeployToDatabaseAddToServerExplorer>True</DeployToDatabaseAddToServerExplorer>
     <DeployToScript>True</DeployToScript>
@@ -26,22 +26,19 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\sql\release\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>
-    </TargetConnectionString>
-    <TargetDatabase>
-    </TargetDatabase>
+    <TargetConnectionString>Data Source=MBPC\SQLEXPRESS;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetDatabase>ELearning</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>False</DeployToDatabase>
+    <DeployToDatabase>True</DeployToDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>
-    </TargetConnectionString>
+    <TargetConnectionString>Data Source=MBPC\SQLEXPRESS;Integrated Security=True;Pooling=False</TargetConnectionString>
     <TargetDatabase>ELearning</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
@@ -76,11 +73,6 @@
     <Folder Include="Schema Objects\Schemas\dbo\Service Broker\Queues\" />
     <Folder Include="Schema Objects\Schemas\dbo\Synonyms\" />
     <Folder Include="Schema Objects\Schemas\dbo\Tables\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Tables\Constraints\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Tables\Indexes\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Tables\Keys\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Tables\Triggers\" />
-    <Folder Include="Schema Objects\Schemas\dbo\Tables\Statistics\" />
     <Folder Include="Schema Objects\Schemas\dbo\Views\" />
     <Folder Include="Schema Objects\Schemas\dbo\Views\Indexes\" />
     <Folder Include="Schema Objects\Schemas\dbo\Views\Triggers\" />
@@ -138,169 +130,180 @@
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ScaleQuestion_inherits_Question.fkey.sql">
+    <NotInBuild Include="Scripts\ScriptsIgnoredOnImport.sql">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schema Objects\Schemas\dbo\FK_ScaleQuestion_inherits_Question.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ScaleAnswer_inherits_Answer.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_ScaleAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ChoiceAnswer_inherits_Answer.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_ChoiceAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_TextAnswer_inherits_Answer.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_TextAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ChoiceQuestion_inherits_Question.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_ChoiceQuestion_inherits_Question.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_ChoiceQuestionChoiceItem.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_UserFillingFormInstance.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_QuestionInstanceAnswer.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_ChoiceQuestionChoiceItem.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_FormInstanceFormInstanceEvaluation.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_QuestionInstanceAnswer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_FormInstanceQuestionInstance.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_FormInstanceFormInstanceEvaluation.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_QuestionInstanceQuestionTemplate.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_FormInstanceQuestionInstance.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_FormInstanceFormTemplate.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_QuestionInstanceQuestionTemplate.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_FormInstanceUser.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_FormInstanceFormTemplate.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_QuestionGroupFormTemplate.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_FormInstanceUser.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_FormTemplateAuthor.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_QuestionGroupFormTemplate.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_FormTemplateFormType.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_FormTemplateAuthor.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_UserUserType.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_FormTemplateFormType.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_GroupMembers_User.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_UserUserType.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_GroupMembers_Group.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_GroupMembers_User.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_Supervisor.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_GroupMembers_Group.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_QuestionGroupQuestionGroupType.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_Supervisor.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_QuestionGroupQuestion.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_QuestionGroupQuestionGroupType.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_ChoiceQuestionChoiceItem.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\FK_QuestionGroupQuestion.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_QuestionInstanceAnswer.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_UserFillingFormInstance.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_FormInstanceFormInstanceEvaluation.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_ChoiceQuestionChoiceItem.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_FormInstanceQuestionInstance.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_QuestionInstanceAnswer.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_QuestionInstanceQuestionTemplate.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_FormInstanceFormInstanceEvaluation.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_FormInstanceFormTemplate.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_FormInstanceQuestionInstance.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_FormInstanceUser.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_QuestionInstanceQuestionTemplate.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_QuestionGroupFormTemplate.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_FormInstanceFormTemplate.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_FormTemplateAuthor.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_FormInstanceUser.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_FormTemplateFormType.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_QuestionGroupFormTemplate.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_UserUserType.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_FormTemplateAuthor.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_GroupMembers_User.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_FormTemplateFormType.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_Supervisor.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_UserUserType.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_QuestionGroupQuestionGroupType.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_GroupMembers_User.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_FK_QuestionGroupQuestion.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_Supervisor.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_GroupMembers.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_QuestionGroupQuestionGroupType.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Question_ScaleQuestion.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\IX_FK_QuestionGroupQuestion.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Answer_ScaleAnswer.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_GroupMembers.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Answer_ChoiceAnswer.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Question_ScaleQuestion.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Answer_TextAnswer.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Answer_ScaleAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Question_ChoiceQuestion.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Answer_ChoiceAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_ChoiceItem.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Answer_TextAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Answer.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Question_ChoiceQuestion.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_FormInstanceEvaluation.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_ChoiceItem.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_QuestionInstance.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Answer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_FormInstance.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_FormInstanceEvaluation.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_FormType.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_QuestionInstance.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Form.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_FormInstance.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_UserType.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_FormType.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Group.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Form.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_User.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_UserType.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_QuestionGroupType.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_Group.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_QuestionGroup.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_User.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_Question.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\PK_QuestionGroupType.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\PK_QuestionGroup.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\PK_Question.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\GroupMembers.table.sql">
@@ -360,10 +363,5 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Question.table.sql">
       <SubType>Code</SubType>
     </Build>
-  </ItemGroup>
-  <ItemGroup>
-    <NotInBuild Include="Scripts\ScriptsIgnoredOnImport.sql">
-      <SubType>NotInBuild</SubType>
-    </NotInBuild>
   </ItemGroup>
 </Project>

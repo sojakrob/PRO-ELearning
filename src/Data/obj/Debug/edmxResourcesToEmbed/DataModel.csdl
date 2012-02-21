@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Question" EntityType="DataModel.Question" />
+    <EntitySet Name="QuestionGroup" EntityType="DataModel.QuestionGroup" />
+    <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.QuestionGroupQuestion">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <EntitySet Name="QuestionGroupType" EntityType="DataModel.QuestionGroupType" />
+    <AssociationSet Name="QuestionGroupQuestionGroupType" Association="DataModel.QuestionGroupQuestionGroupType">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="QuestionGroupType" EntitySet="QuestionGroupType" />
+    </AssociationSet>
+    <EntitySet Name="User" EntityType="DataModel.User" />
+    <EntitySet Name="Group" EntityType="DataModel.Group" />
+    <AssociationSet Name="Supervisor" Association="DataModel.Supervisor">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="GroupMembers" Association="DataModel.GroupMembers">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <EntitySet Name="UserType" EntityType="DataModel.UserType" />
+    <AssociationSet Name="UserUserType" Association="DataModel.UserUserType">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserType" EntitySet="UserType" />
+    </AssociationSet>
+    <EntitySet Name="Form" EntityType="DataModel.Form" />
+    <EntitySet Name="FormType" EntityType="DataModel.FormType" />
+    <AssociationSet Name="FormTemplateFormType" Association="DataModel.FormTemplateFormType">
+      <End Role="FormTemplate" EntitySet="Form" />
+      <End Role="FormType" EntitySet="FormType" />
+    </AssociationSet>
+    <AssociationSet Name="FormTemplateAuthor" Association="DataModel.FormTemplateAuthor">
+      <End Role="FormTemplate" EntitySet="Form" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="QuestionGroupFormTemplate" Association="DataModel.QuestionGroupFormTemplate">
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+      <End Role="FormTemplate" EntitySet="Form" />
+    </AssociationSet>
+    <EntitySet Name="FormInstance" EntityType="DataModel.FormInstance" />
+    <AssociationSet Name="FormInstanceUser" Association="DataModel.FormInstanceUser">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FormInstanceFormTemplate" Association="DataModel.FormInstanceFormTemplate">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="FormTemplate" EntitySet="Form" />
+    </AssociationSet>
+    <EntitySet Name="QuestionInstance" EntityType="DataModel.QuestionInstance" />
+    <AssociationSet Name="QuestionInstanceQuestionTemplate" Association="DataModel.QuestionInstanceQuestionTemplate">
+      <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FormInstanceQuestionInstance" Association="DataModel.FormInstanceQuestionInstance">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+    </AssociationSet>
+    <EntitySet Name="FormInstanceEvaluation" EntityType="DataModel.FormInstanceEvaluation" />
+    <AssociationSet Name="FormInstanceFormInstanceEvaluation" Association="DataModel.FormInstanceFormInstanceEvaluation">
+      <End Role="FormInstance" EntitySet="FormInstance" />
+      <End Role="FormInstanceEvaluation" EntitySet="FormInstanceEvaluation" />
+    </AssociationSet>
+    <EntitySet Name="Answer" EntityType="DataModel.Answer" />
+    <AssociationSet Name="QuestionInstanceAnswer" Association="DataModel.QuestionInstanceAnswer">
+      <End Role="QuestionInstance" EntitySet="QuestionInstance" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <EntitySet Name="ChoiceItem" EntityType="DataModel.ChoiceItem" />
+    <AssociationSet Name="ChoiceQuestionChoiceItem" Association="DataModel.ChoiceQuestionChoiceItem">
+      <End Role="ChoiceQuestion" EntitySet="Question" />
+      <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
+    <AssociationSet Name="UserFillingFormInstance" Association="DataModel.UserFillingFormInstance">
+      <End Role="User" EntitySet="User" />
+      <End Role="FormInstance" EntitySet="FormInstance" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="String" Name="HelpText" Nullable="true" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" />
+    <Property Type="String" Name="Explanation" Nullable="true" />
+    <NavigationProperty Name="QuestionGroup" Relationship="DataModel.QuestionGroupQuestion" FromRole="Question" ToRole="QuestionGroup" />
+    <Property Type="Int32" Name="QuestionGroupID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Index" Nullable="false" />
+    <Property Type="Boolean" Name="IsRequired" Nullable="false" DefaultValue="False" />
+    <NavigationProperty Name="Questions" Relationship="DataModel.QuestionGroupQuestion" FromRole="QuestionGroup" ToRole="Question" />
+    <NavigationProperty Name="Type" Relationship="DataModel.QuestionGroupQuestionGroupType" FromRole="QuestionGroup" ToRole="QuestionGroupType" />
+    <Property Type="Int32" Name="QuestionGroupTypeID" Nullable="false" />
+    <NavigationProperty Name="ParentForm" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="QuestionGroup" ToRole="FormTemplate" />
+    <Property Type="Int32" Name="FormTemplateID" Nullable="false" />
+  </EntityType>
+  <Association Name="QuestionGroupQuestion">
+    <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="1" />
+    <End Type="DataModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QuestionGroupType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </EntityType>
+  <Association Name="QuestionGroupQuestionGroupType">
+    <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="*" />
+    <End Type="DataModel.QuestionGroupType" Role="QuestionGroupType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroupType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionGroup">
+        <PropertyRef Name="QuestionGroupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Email" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="DataModel.GroupMembers" FromRole="User" ToRole="Group" />
+    <NavigationProperty Name="Type" Relationship="DataModel.UserUserType" FromRole="User" ToRole="UserType" />
+    <Property Type="Int32" Name="UserTypeID" Nullable="false" />
+    <NavigationProperty Name="SolvedForms" Relationship="DataModel.FormInstanceUser" FromRole="User" ToRole="FormInstance" />
+    <Property Type="String" Name="Password" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="Int32" Name="FillingForm" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="Supervisor" Relationship="DataModel.Supervisor" FromRole="Group" ToRole="User" />
+    <Property Type="Int32" Name="SupervisorID" Nullable="false" />
+    <NavigationProperty Name="Members" Relationship="DataModel.GroupMembers" FromRole="Group" ToRole="User" />
+  </EntityType>
+  <Association Name="Supervisor">
+    <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+    <End Type="DataModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="SupervisorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupMembers">
+    <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+    <End Type="DataModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </EntityType>
+  <Association Name="UserUserType">
+    <End Type="DataModel.User" Role="User" Multiplicity="*" />
+    <End Type="DataModel.UserType" Role="UserType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="true" />
+    <Property Type="Int32" Name="TimeToFill" Nullable="true" />
+    <Property Type="Boolean" Name="Shuffle" Nullable="false" DefaultValue="False" />
+    <Property Type="DateTime" Name="Created" Nullable="false" />
+    <NavigationProperty Name="Type" Relationship="DataModel.FormTemplateFormType" FromRole="FormTemplate" ToRole="FormType" />
+    <Property Type="Int32" Name="FormTypeID" Nullable="false" />
+    <NavigationProperty Name="Author" Relationship="DataModel.FormTemplateAuthor" FromRole="FormTemplate" ToRole="User" />
+    <Property Type="Int32" Name="AuthorID" Nullable="false" />
+    <NavigationProperty Name="QuestionGroups" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="FormTemplate" ToRole="QuestionGroup" />
+    <NavigationProperty Name="FormInstances" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormTemplate" ToRole="FormInstance" cg:SetterAccess="Private" />
+  </EntityType>
+  <EntityType Name="FormType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </EntityType>
+  <Association Name="FormTemplateFormType">
+    <End Type="DataModel.Form" Role="FormTemplate" Multiplicity="*" />
+    <End Type="DataModel.FormType" Role="FormType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormTemplate">
+        <PropertyRef Name="FormTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormTemplateAuthor">
+    <End Type="DataModel.Form" Role="FormTemplate" Multiplicity="*" />
+    <End Type="DataModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormTemplate">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuestionGroupFormTemplate">
+    <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="*" />
+    <End Type="DataModel.Form" Role="FormTemplate" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormTemplate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionGroup">
+        <PropertyRef Name="FormTemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="FormInstance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Created" Nullable="false" />
+    <Property Type="DateTime" Name="Submited" Nullable="false" />
+    <NavigationProperty Name="Solver" Relationship="DataModel.FormInstanceUser" FromRole="FormInstance" ToRole="User" />
+    <Property Type="Int32" Name="SolverID" Nullable="false" />
+    <NavigationProperty Name="FormTemplate" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormInstance" ToRole="FormTemplate" />
+    <Property Type="Int32" Name="FormTemplateID" Nullable="false" />
+    <NavigationProperty Name="Questions" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="FormInstance" ToRole="QuestionInstance" />
+    <NavigationProperty Name="Evaluation" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstance" ToRole="FormInstanceEvaluation" />
+    <Property Type="Int32" Name="EvaluationID" Nullable="true" />
+  </EntityType>
+  <Association Name="FormInstanceUser">
+    <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
+    <End Type="DataModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="SolverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormInstanceFormTemplate">
+    <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
+    <End Type="DataModel.Form" Role="FormTemplate" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormTemplate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="FormTemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QuestionInstance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Index" Nullable="false" />
+    <NavigationProperty Name="QuestionTemplate" Relationship="DataModel.QuestionInstanceQuestionTemplate" FromRole="QuestionInstance" ToRole="Question" />
+    <Property Type="Int32" Name="QuestionID" Nullable="false" />
+    <NavigationProperty Name="ParentForm" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="QuestionInstance" ToRole="FormInstance" />
+    <Property Type="Int32" Name="FormInstanceID" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="DataModel.QuestionInstanceAnswer" FromRole="QuestionInstance" ToRole="Answer" />
+  </EntityType>
+  <Association Name="QuestionInstanceQuestionTemplate">
+    <End Type="DataModel.QuestionInstance" Role="QuestionInstance" Multiplicity="*" />
+    <End Type="DataModel.Question" Role="Question" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionInstance">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FormInstanceQuestionInstance">
+    <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
+    <End Type="DataModel.QuestionInstance" Role="QuestionInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormInstance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionInstance">
+        <PropertyRef Name="FormInstanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="FormInstanceEvaluation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Mark" Nullable="false" />
+    <Property Type="String" Name="Note" Nullable="false" />
+    <NavigationProperty Name="FormInstance" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstanceEvaluation" ToRole="FormInstance" />
+  </EntityType>
+  <Association Name="FormInstanceFormInstanceEvaluation">
+    <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
+    <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="QuestionInstanceAnswer">
+    <End Type="DataModel.QuestionInstance" Role="QuestionInstance" Multiplicity="1" />
+    <End Type="DataModel.Answer" Role="Answer" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="TextAnswer" BaseType="DataModel.Answer">
+    <Property Type="String" Name="Text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChoiceAnswer" BaseType="DataModel.Answer">
+    <Property Type="Int32" Name="ItemID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScaleAnswer" BaseType="DataModel.Answer">
+    <Property Type="Int32" Name="Value" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScaleQuestion" BaseType="DataModel.Question">
+    <Property Type="Int32" Name="MinValue" Nullable="false" />
+    <Property Type="String" Name="MinValueText" Nullable="false" />
+    <Property Type="Int32" Name="MaxValue" Nullable="false" />
+    <Property Type="String" Name="MaxValueText" Nullable="false" />
+    <Property Type="Int32" Name="Increment" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChoiceQuestion" BaseType="DataModel.Question">
+    <Property Type="Boolean" Name="Shuffle" Nullable="false" />
+    <NavigationProperty Name="ChoiceItems" Relationship="DataModel.ChoiceQuestionChoiceItem" FromRole="ChoiceQuestion" ToRole="ChoiceItem" />
+  </EntityType>
+  <EntityType Name="ChoiceItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ChoiceQuestionID" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="Int32" Name="Index" Nullable="false" />
+    <Property Type="Boolean" Name="IsCorrect" Nullable="false" />
+    <Property Type="String" Name="Explanation" Nullable="true" />
+    <Property Type="String" Name="ImageUrl" Nullable="true" />
+  </EntityType>
+  <Association Name="ChoiceQuestionChoiceItem">
+    <End Type="DataModel.ChoiceQuestion" Role="ChoiceQuestion" Multiplicity="1" />
+    <End Type="DataModel.ChoiceItem" Role="ChoiceItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceItem">
+        <PropertyRef Name="ChoiceQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFillingFormInstance">
+    <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="0..1" />
+  </Association>
+</Schema>

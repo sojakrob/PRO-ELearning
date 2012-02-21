@@ -54,6 +54,9 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FillingForm" ColumnName="FillingForm" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -104,6 +107,7 @@
           <ScalarProperty Name="Submited" ColumnName="Submited" />
           <ScalarProperty Name="SolverID" ColumnName="SolverID" />
           <ScalarProperty Name="FormTemplateID" ColumnName="FormTemplateID" />
+          <ScalarProperty Name="EvaluationID" ColumnName="EvaluationID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -172,11 +176,11 @@
         <ScalarProperty Name="ID" ColumnName="Members_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="FormInstanceFormInstanceEvaluation" TypeName="DataModel.FormInstanceFormInstanceEvaluation" StoreEntitySet="FormInstance">
-      <EndProperty Name="FormInstanceEvaluation">
-        <ScalarProperty Name="ID" ColumnName="Evaluation_ID" />
-      </EndProperty>
+    <AssociationSetMapping Name="FormInstanceFormInstanceEvaluation" TypeName="DataModel.FormInstanceFormInstanceEvaluation" StoreEntitySet="FormInstanceEvaluation">
       <EndProperty Name="FormInstance">
+        <ScalarProperty Name="ID" ColumnName="FormInstance_ID" />
+      </EndProperty>
+      <EndProperty Name="FormInstanceEvaluation">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
@@ -187,6 +191,15 @@
       <EndProperty Name="Answer">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserFillingFormInstance" TypeName="DataModel.UserFillingFormInstance" StoreEntitySet="FormInstance">
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="UserFillingFormInstance_FormInstance_ID" />
+      </EndProperty>
+      <EndProperty Name="FormInstance">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+      <Condition ColumnName="UserFillingFormInstance_FormInstance_ID" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

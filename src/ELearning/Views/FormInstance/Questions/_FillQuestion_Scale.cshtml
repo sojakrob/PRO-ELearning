@@ -1,0 +1,21 @@
+﻿@model ELearning.Models.Data.ScaleQuestionAnswerInstanceModel
+@using ELearning.Utils
+
+@for (int i = Model.MinValue; i <= Model.MaxValue; i += Model.Increment)
+{
+    
+    IDictionary<string, object> htmlValues = new Dictionary<string, object>();
+    
+    if (Model.Answer != null || (ViewData["Readonly"] != null && ((Nullable<bool>)ViewData["Readonly"]).Value))
+    {
+        htmlValues.Add("disabled", "disabled");
+    }
+    if(Model.Answer != null && Model.Answer == i)
+    {
+        htmlValues.Add("checked", "checked");
+    }
+    
+    @Html.Radio(string.Format("Q{0}CH{1}", Model.ID, i), string.Format("Q{0}", Model.ID), i.ToString(), htmlValues);
+     
+    <label for="@string.Format("Q{0}CH{1}", Model.ID, i)" title="@i">@i</label>
+}

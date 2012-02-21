@@ -1555,12 +1555,12 @@ namespace ELearning.Data
         /// Create a new ChoiceAnswer object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="index">Initial value of the Index property.</param>
-        public static ChoiceAnswer CreateChoiceAnswer(global::System.Int32 id, global::System.Int32 index)
+        /// <param name="itemID">Initial value of the ItemID property.</param>
+        public static ChoiceAnswer CreateChoiceAnswer(global::System.Int32 id, global::System.Int32 itemID)
         {
             ChoiceAnswer choiceAnswer = new ChoiceAnswer();
             choiceAnswer.ID = id;
-            choiceAnswer.Index = index;
+            choiceAnswer.ItemID = itemID;
             return choiceAnswer;
         }
 
@@ -1572,24 +1572,24 @@ namespace ELearning.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Index
+        public global::System.Int32 ItemID
         {
             get
             {
-                return _Index;
+                return _ItemID;
             }
             set
             {
-                OnIndexChanging(value);
-                ReportPropertyChanging("Index");
-                _Index = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Index");
-                OnIndexChanged();
+                OnItemIDChanging(value);
+                ReportPropertyChanging("ItemID");
+                _ItemID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ItemID");
+                OnItemIDChanged();
             }
         }
-        private global::System.Int32 _Index;
-        partial void OnIndexChanging(global::System.Int32 value);
-        partial void OnIndexChanged();
+        private global::System.Int32 _ItemID;
+        partial void OnItemIDChanging(global::System.Int32 value);
+        partial void OnItemIDChanged();
 
         #endregion
     

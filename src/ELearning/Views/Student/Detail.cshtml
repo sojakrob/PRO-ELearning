@@ -1,7 +1,12 @@
-﻿@model ELearning.Models.StudentModel
+﻿@model ELearning.Models.Data.StudentFormsModel
 
 @{
     ViewBag.Title = "Student view";
 }
 
-<h2>@Model.Name</h2>
+@if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
+{ 
+    <h2>@Model.Name</h2>
+}
+
+@Html.Partial("_FilledForms", Model.FilledForms)

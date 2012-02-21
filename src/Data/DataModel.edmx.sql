@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 01/02/2012 17:07:48
+-- Date Created: 02/21/2012 11:57:56
 -- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [db8414991a6d244d96b85a9f91000af42b];
+USE [ELearning];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -64,6 +64,9 @@ IF OBJECT_ID(N'[dbo].[FK_QuestionInstanceAnswer]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceQuestionChoiceItem]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ChoiceItem] DROP CONSTRAINT [FK_ChoiceQuestionChoiceItem];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserFillingFormInstance]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FormInstance] DROP CONSTRAINT [FK_UserFillingFormInstance];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceQuestion_inherits_Question]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Question_ChoiceQuestion] DROP CONSTRAINT [FK_ChoiceQuestion_inherits_Question];
@@ -286,7 +289,7 @@ GO
 
 -- Creating table 'Answer_ChoiceAnswer'
 CREATE TABLE [dbo].[Answer_ChoiceAnswer] (
-    [Index] int  NOT NULL,
+    [ItemID] int  NOT NULL,
     [ID] int  NOT NULL
 );
 GO

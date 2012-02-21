@@ -74,6 +74,10 @@
       <End Role="ChoiceQuestion" EntitySet="Question" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <AssociationSet Name="UserFillingFormInstance" Association="DataModel.UserFillingFormInstance">
+      <End Role="User" EntitySet="User" />
+      <End Role="FormInstance" EntitySet="FormInstance" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
     <Key>
@@ -141,6 +145,9 @@
     <NavigationProperty Name="Type" Relationship="DataModel.UserUserType" FromRole="User" ToRole="UserType" />
     <Property Type="Int32" Name="UserTypeID" Nullable="false" />
     <NavigationProperty Name="SolvedForms" Relationship="DataModel.FormInstanceUser" FromRole="User" ToRole="FormInstance" />
+    <Property Type="String" Name="Password" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="Int32" Name="FillingForm" Nullable="true" />
   </EntityType>
   <EntityType Name="Group">
     <Key>
@@ -193,8 +200,8 @@
     </Key>
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Name" Nullable="false" />
-    <Property Type="String" Name="Text" Nullable="false" />
-    <Property Type="DateTime" Name="TimeToFill" Nullable="true" />
+    <Property Type="String" Name="Text" Nullable="true" />
+    <Property Type="Int32" Name="TimeToFill" Nullable="true" />
     <Property Type="Boolean" Name="Shuffle" Nullable="false" DefaultValue="False" />
     <Property Type="DateTime" Name="Created" Nullable="false" />
     <NavigationProperty Name="Type" Relationship="DataModel.FormTemplateFormType" FromRole="FormTemplate" ToRole="FormType" />
@@ -202,6 +209,7 @@
     <NavigationProperty Name="Author" Relationship="DataModel.FormTemplateAuthor" FromRole="FormTemplate" ToRole="User" />
     <Property Type="Int32" Name="AuthorID" Nullable="false" />
     <NavigationProperty Name="QuestionGroups" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="FormTemplate" ToRole="QuestionGroup" />
+    <NavigationProperty Name="FormInstances" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormTemplate" ToRole="FormInstance" cg:SetterAccess="Private" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -259,6 +267,7 @@
     <Property Type="Int32" Name="FormTemplateID" Nullable="false" />
     <NavigationProperty Name="Questions" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="FormInstance" ToRole="QuestionInstance" />
     <NavigationProperty Name="Evaluation" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstance" ToRole="FormInstanceEvaluation" />
+    <Property Type="Int32" Name="EvaluationID" Nullable="true" />
   </EntityType>
   <Association Name="FormInstanceUser">
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
@@ -331,7 +340,7 @@
   </EntityType>
   <Association Name="FormInstanceFormInstanceEvaluation">
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
-    <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="1" />
+    <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="0..1" />
   </Association>
   <EntityType Name="Answer">
     <Key>
@@ -360,7 +369,7 @@
     <Property Type="Int32" Name="Increment" Nullable="false" />
   </EntityType>
   <EntityType Name="ChoiceQuestion" BaseType="DataModel.Question">
-    <Property Type="String" Name="Shuffle" Nullable="false" />
+    <Property Type="Boolean" Name="Shuffle" Nullable="false" />
     <NavigationProperty Name="ChoiceItems" Relationship="DataModel.ChoiceQuestionChoiceItem" FromRole="ChoiceQuestion" ToRole="ChoiceItem" />
   </EntityType>
   <EntityType Name="ChoiceItem">
@@ -372,7 +381,7 @@
     <Property Type="String" Name="Text" Nullable="false" />
     <Property Type="Int32" Name="Index" Nullable="false" />
     <Property Type="Boolean" Name="IsCorrect" Nullable="false" />
-    <Property Type="String" Name="Explanation" Nullable="false" />
+    <Property Type="String" Name="Explanation" Nullable="true" />
     <Property Type="String" Name="ImageUrl" Nullable="true" />
   </EntityType>
   <Association Name="ChoiceQuestionChoiceItem">
@@ -386,5 +395,9 @@
         <PropertyRef Name="ChoiceQuestionID" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFillingFormInstance">
+    <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="0..1" />
   </Association>
 </Schema>

@@ -99,6 +99,10 @@ namespace ELearning.Controllers
                                 answer = _formManager.CreateNewChoiceAnswer(GetChoiceQuestionAnswer(question));
                                 break;
 
+                            case QuestionGroupTypes.Scale:
+                                answer = _formManager.CreateNewScaleAnswer(GetScaleQuestionAnswer(question));
+                                break;
+
                             default:
                                 throw new NotImplementedException();
                         }
@@ -126,6 +130,23 @@ namespace ELearning.Controllers
         private int GetChoiceQuestionAnswer(QuestionInstance question)
         {
             return int.Parse(Request.Params[string.Format("Q{0}", question.ID)]);
+        }
+        private int GetScaleQuestionAnswer(QuestionInstance question)
+        {
+            return int.Parse(Request.Params[string.Format("Q{0}", question.ID)]);
+        }
+
+        public ActionResult ViewForm(int id)
+        {
+            FillDefaultViewBag();
+
+            var form = _formManager.GetFormInstance(CurrentLoggedUserModel.Email, id);
+
+            FormInstanceModel formModel = null;
+            if (form != null)
+                formModel = new FormInstanceModel(form);
+
+            return View(formModel);
         }
     }
 }

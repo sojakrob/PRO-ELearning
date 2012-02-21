@@ -84,6 +84,10 @@
       <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <AssociationSet Name="UserFillingFormInstance" Association="DataModel.Store.UserFillingFormInstance">
+      <End Role="User" EntitySet="User" />
+      <End Role="FormInstance" EntitySet="FormInstance" />
+    </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
       <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
@@ -140,6 +144,9 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="char" Nullable="true" MaxLength="32" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="FillingForm" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Group">
     <Key>
@@ -162,8 +169,8 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TimeToFill" Type="datetime" Nullable="true" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TimeToFill" Type="int" Nullable="true" />
     <Property Name="Shuffle" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="Created" Type="datetime" Nullable="false" />
     <Property Name="FormTypeID" Type="int" Nullable="false" />
@@ -185,7 +192,8 @@
     <Property Name="Submited" Type="datetime" Nullable="false" />
     <Property Name="SolverID" Type="int" Nullable="false" />
     <Property Name="FormTemplateID" Type="int" Nullable="false" />
-    <Property Name="Evaluation_ID" Type="int" Nullable="false" />
+    <Property Name="EvaluationID" Type="int" Nullable="true" />
+    <Property Name="UserFillingFormInstance_FormInstance_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="QuestionInstance">
     <Key>
@@ -203,6 +211,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Mark" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FormInstance_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answer">
     <Key>
@@ -220,14 +229,14 @@
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Index" Type="int" Nullable="false" />
     <Property Name="IsCorrect" Type="bit" Nullable="false" />
-    <Property Name="Explanation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Explanation" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Shuffle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Shuffle" Type="bit" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answer_TextAnswer">
@@ -403,14 +412,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FormInstanceFormInstanceEvaluation">
-    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
-    <End Role="FormInstanceEvaluation" Type="DataModel.Store.FormInstanceEvaluation" Multiplicity="1" />
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="1" />
+    <End Role="FormInstanceEvaluation" Type="DataModel.Store.FormInstanceEvaluation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="FormInstanceEvaluation">
+      <Principal Role="FormInstance">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="FormInstance">
-        <PropertyRef Name="Evaluation_ID" />
+      <Dependent Role="FormInstanceEvaluation">
+        <PropertyRef Name="FormInstance_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -435,6 +444,18 @@
       </Principal>
       <Dependent Role="ChoiceItem">
         <PropertyRef Name="ChoiceQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFillingFormInstance">
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="0..1" />
+    <End Role="FormInstance" Type="DataModel.Store.FormInstance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstance">
+        <PropertyRef Name="UserFillingFormInstance_FormInstance_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

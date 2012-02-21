@@ -8,17 +8,22 @@ namespace ELearning.Models.Data
 {
     public class StudentFormsModel : StudentModel
     {
-        public IEnumerable<FormInstancesModel> FormsFilled { get; private set; }
+        public List<FormInstanceModel> FilledForms { get; private set; }
 
 
         public StudentFormsModel()
         {
             
         }
-        public StudentFormsModel(User data)
+        public StudentFormsModel(User data, List<FormInstance> filledForms)
             : base(data)
         {
-            
+            if (filledForms != null)
+            {
+                FilledForms = new List<FormInstanceModel>();
+                foreach (var filledForm in filledForms)
+                    FilledForms.Add(new FormInstanceModel(filledForm));
+            }
         }
 
     }

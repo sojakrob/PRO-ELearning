@@ -18,7 +18,7 @@ namespace ELearning.Models
 
         public StudentModel()
         {
-            
+
         }
         public StudentModel(User data)
             : base(data)
@@ -26,6 +26,8 @@ namespace ELearning.Models
             ID = data.ID;
             Name = data.Name;
             Email = data.Email;
+
+            
         }
 
 

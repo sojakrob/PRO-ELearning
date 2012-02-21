@@ -1,1 +1,15 @@
-﻿
+﻿@model ELearning.Models.Data.ScaleQuestionModel
+@using ELearning.Utils
+
+<div class="scaleQuestionUpDowns">
+    <div>
+        @Html.Partial("../Controls/UpDownControl", @Model.MinValue)
+    </div>
+    <div>
+        @Html.Partial("../Controls/UpDownControl", @Model.MaxValue)
+    </div>
+    <div>
+        @Html.Partial("../Controls/UpDownControl", @Model.Increment)
+    </div>
+    <div class="clear" />
+</div>

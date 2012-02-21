@@ -80,6 +80,14 @@ namespace ELearning.Business.Managers
             return Context.FormInstance.Where(i => i.FormTemplateID == id && i.SolverID == userID).ToList();
         }
 
+        public List<FormInstance> GetFormInstances(string userEmail)
+        {
+            // TODO Permissions
+            int userID = _userManager.GetUser(userEmail).ID;
+
+            return Context.FormInstance.Where(i => i.SolverID == userID).ToList();
+        }
+
 
         public int AddForm(string authorEmail, Form form)
         {
@@ -235,6 +243,10 @@ namespace ELearning.Business.Managers
             // TODO Permissions
             User user = _userManager.GetUser(userEmail);
 
+            var userFillingFormInstance = GetUserFillingFormInstance(userEmail);
+            if (userFillingFormInstance == null || userFillingFormInstance.ID != formInstanceID)
+                return false;
+
             // TODO If IsRequired check it is filled in
 
             var form = Context.FormInstance.SingleOrDefault(f => f.ID == formInstanceID);
@@ -269,6 +281,10 @@ namespace ELearning.Business.Managers
         public ChoiceAnswer CreateNewChoiceAnswer(int index)
         {
             return ChoiceAnswer.CreateChoiceAnswer(DEFAULT_ID, index);
+        }
+        public Answer CreateNewScaleAnswer(int value)
+        {
+            return ScaleAnswer.CreateScaleAnswer(DEFAULT_ID, value);   
         }
 
 

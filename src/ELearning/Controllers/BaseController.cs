@@ -51,5 +51,10 @@ namespace ELearning.Controllers
         {
             return RedirectToAction("LogOn", "Authentication");
         }
+
+        protected void FillDefaultViewBag()
+        {
+            ViewBag.CurrentUserModel = CurrentLoggedUserModel;
+        }
     }
 }

@@ -17,11 +17,17 @@ namespace ELearning.Models.Data
                 Type questionType = question.QuestionTemplate.GetType();
 
                 if (questionType == typeof(ChoiceQuestion))
-                    result.Add(new ChoiceQuestionInstanceModel(question));
+                {
+                    result.Add(new ChoiceQuestionAnswerInstanceModel(question));
+                }
                 else if (questionType == typeof(ScaleQuestion))
-                    throw new NotImplementedException();//result.Add(new ScaleQuestionModel(question as ScaleQuestion));
+                {
+                    result.Add(new ScaleQuestionAnswerInstanceModel(question));
+                }
                 else
-                    result.Add(new QuestionInstanceModel(question));
+                {
+                    result.Add(new TextQuestionAnswerInstanceModel(question));
+                }
             }
 
             return result;

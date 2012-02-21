@@ -51,6 +51,14 @@ input[type=button].Button, input.Button, Button
 	padding: 5px 15px;
 }
 
+div.leftFloat
+{
+	float: left;
+}
+div.rightFloat
+{
+	float: right;
+}
 div.clear
 {
 	clear: both;
@@ -559,6 +567,16 @@ div.QuestionForm div#Choices ol > li div.Check input
 	width: 40px !important;
 }
 
+
+/* Scale quesition
+------------------------------------------------------------*/
+div.scaleQuestionUpDowns > div
+{
+	float:left;
+	width: 30%;
+}
+
+
 /* Form filling
 ------------------------------------------------------------*/
 div#FormFill
@@ -598,4 +616,36 @@ div#FormFill div.Question div.Content div.QuestionAnswer input[type=text]
 div#FormFill div#FormFillFooter
 {
 	text-align: center;
+}
+
+
+/* Controls
+------------------------------------------------------------*/
+div.upDownControl
+{
+}
+div.upDownControl div.label
+{
+	float: left;
+	margin-right: 20px;
+}
+div.upDownControl div.textbox
+{
+	float: left;
+	
+}
+div.upDownControl div.textbox input
+{
+	width: 50px !important;
+	text-align: right;
+}
+div.upDownControl div.buttons
+{
+	float: left;
+}
+div.upDownControl div.buttons a
+{
+	display: block;
+	height: 0.8em;
+	padding-top: 0px;
 }

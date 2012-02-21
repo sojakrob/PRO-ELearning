@@ -1,7 +1,11 @@
 ﻿-- Creating table 'Question_ChoiceQuestion'
+-- Creating table 'Question_ChoiceQuestion'
 CREATE TABLE [dbo].[Question_ChoiceQuestion] (
-    [Shuffle] nvarchar(max)  NOT NULL,
+    [Shuffle] bit  NOT NULL,
     [ID] int  NOT NULL
 );
+
+
+
 
 

@@ -1,13 +1,23 @@
-﻿@model ELearning.Models.Data.ChoiceQuestionInstanceModel
+﻿@model ELearning.Models.Data.ChoiceQuestionAnswerInstanceModel
+@using ELearning.Utils           
 
 <ol>
-
     @foreach (var item in Model.ChoiceItems)
     {
+        IDictionary<string, object> htmlValues = new Dictionary<string, object>();
+
+        if (Model.Answer != null || (ViewData["Readonly"] != null && ((Nullable<bool>)ViewData["Readonly"]).Value))
+        {
+            htmlValues.Add("disabled", "disabled");
+        }
+        if (Model.Answer != null && Model.Answer == item.ID)
+        {
+            htmlValues.Add("checked", "checked");
+        }
+        
         <li>
-            <input id="@string.Format("Q{0}CH{1}", Model.ID, item.ID)" type="radio" name="@string.Format("Q{0}", Model.ID)" value="@item.ID" />
+            @Html.Radio(string.Format("Q{0}CH{1}", Model.ID, item.ID), string.Format("Q{0}", Model.ID), item.ID.ToString(), htmlValues)
             <label for="@string.Format("Q{0}CH{1}", Model.ID, item.ID)" title="@item.Text">@item.Text</label>
         </li>
     }
-
 </ol>

@@ -34,7 +34,7 @@ namespace ELearning.Controllers
 
         public ViewResult Index()
         {
-            FillViewBag_Index();
+            FillDefaultViewBag();
 
             return View(ModelsFromArray<Form, FormModel>(_formManager.GetAll()));
         }
@@ -114,6 +114,9 @@ namespace ELearning.Controllers
         [HttpPost]
         public ActionResult EditQuestion_InlineText(int formID, int questionGroupID, int questionID, QuestionModel question)
         {
+            if (!ModelState.IsValid)
+                return RedirectToCreateEditQuestions(formID);
+
             Question q = question.ToData();
             q.ID = questionID;
 
@@ -124,6 +127,9 @@ namespace ELearning.Controllers
         [HttpPost]
         public ActionResult EditQuestion_MultilineText(int formID, int questionGroupID, int questionID, QuestionModel question)
         {
+            if (!ModelState.IsValid)
+                return RedirectToCreateEditQuestions(formID);
+
             // TODO Rid out of redundancy in EditQuestion_{0}
             Question q = question.ToData();
             q.ID = questionID;
@@ -135,6 +141,9 @@ namespace ELearning.Controllers
         [HttpPost]
         public ActionResult EditQuestion_Choice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int? correctChoice)
         {
+            if (!ModelState.IsValid)
+                return RedirectToCreateEditQuestions(formID);
+
             if (correctChoice.HasValue)
                 question.ChoiceItems[correctChoice.Value].IsCorrect = true;
 
@@ -148,6 +157,9 @@ namespace ELearning.Controllers
         [HttpPost]
         public ActionResult EditQuestion_MultipleChoice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int[] correctChoices)
         {
+            if (!ModelState.IsValid)
+                return RedirectToCreateEditQuestions(formID);
+
             if (correctChoices != null)
                 for (int i = 0; i < correctChoices.Length; i++)
                     question.ChoiceItems[i].IsCorrect = true;
@@ -156,6 +168,19 @@ namespace ELearning.Controllers
             q.ID = questionID;
 
             _questionManager.EditChoiceQuestion(CurrentLoggedUserModel.Email, q);
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+        [HttpPost]
+        public ActionResult EditQuestion_Scale(int formID, int questionGroupID, int questionID, ScaleQuestionModel question)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToCreateEditQuestions(formID);
+
+            ScaleQuestion q = question.ToData() as ScaleQuestion;
+            q.ID = questionID;
+
+            _questionManager.EditScaleQuestion(CurrentLoggedUserModel.Email, q);
 
             return RedirectToCreateEditQuestions(formID);
         }
@@ -181,21 +206,16 @@ namespace ELearning.Controllers
             return View(new FormFillsModel(form));
         }
 
-
-        private void FillViewBag_Index()
-        {
-            ViewBag.CurrentUserModel = CurrentLoggedUserModel;
-        }
         private void FillViewBag_Create()
         {
-            FillViewBag_Index();
+            FillDefaultViewBag();
 
             ViewBag.FormTypes = ModelsFromArray<FormType, FormTypeModel>(_formManager.GetFormTypes());
             ViewBag.DefaultFormType = _formManager.DefaultFormTypeID;
         }
         private void FillViewBag_CreateQuestionGroups(FormModel form)
         {
-            FillViewBag_Index();
+            FillDefaultViewBag();
 
             ViewBag.Form = form;
             ViewBag.QuestionGroupTypes = ModelsFromArray<QuestionGroupType, QuestionGroupTypeModel>(_formManager.GetQuestionGroupTypes());

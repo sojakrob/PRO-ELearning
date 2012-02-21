@@ -3,16 +3,25 @@
 <div id="mainMenuControl">
     <div>
         <ul>
-            <li>
-                @Html.ActionLink("Testy", "Index", "Form")
-                <ul>
-                @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
-                {
-                    <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
-                }
-                <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
-                </ul>
-            </li>
+            @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
+            {
+                <li>
+                    @Html.ActionLink("Testy", "Index", "Form")
+                    <ul>
+                        <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
+                        <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>
+                    @Html.ActionLink("Dostupné testy", "Index", "Form")
+                </li>
+                <li>
+                    @Html.ActionLink("Vyplněné testy", "Detail", "Student", new { id = Model.ID }, null)
+                </li>
+            }
         </ul>
     </div>
     @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)

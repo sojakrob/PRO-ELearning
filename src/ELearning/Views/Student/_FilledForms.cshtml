@@ -1,0 +1,55 @@
+﻿@using ELearning.Utils
+@using ELearning.Models.GeneralView
+@model IEnumerable<ELearning.Models.Data.FormInstanceModel>
+
+<script type="text/javascript">
+    function openFormInstanceWindow(url) {
+        window.open(url, '_blank', 'width=800, toolbar=0, resizable=1, scrollbars=1, menubar=0');
+    }
+</script>
+
+<table class="datagrid">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Text
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Filled
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    UrlHelper url = new UrlHelper(ViewContext.RequestContext);
+                    string action = url.Action("ViewForm", "FormInstance", new { id = item.ID });
+                }
+                <a href="#" onclick="@string.Format("openFormInstanceWindow('{0}')", action)">@item.FormTemplate.Name</a>
+            </td>
+            <td title="@item.FormTemplate.Text">
+                @item.FormTemplate.TextCropped
+            </td>
+            <td>
+                @item.FormTemplate.Type.Name
+            </td>
+            <td>
+                @item.FormTemplate.Author.Name
+            </td>
+            <td>
+                @item.Submited
+            </td>
+        </tr>
+    }
+</table>

@@ -120,7 +120,7 @@ namespace ELearning.Business.Managers
 
             ChoiceQuestion trueQuestion = Context.Question.Single(q => q.ID == question.ID) as ChoiceQuestion;
 
-            foreach(var choiceItem in question.ChoiceItems)
+            foreach (var choiceItem in question.ChoiceItems)
             {
                 var trueChoiceItem = trueQuestion.ChoiceItems.SingleOrDefault(i => i.ID == choiceItem.ID);
                 if (trueChoiceItem == null)
@@ -145,6 +145,19 @@ namespace ELearning.Business.Managers
             return true;
         }
 
+        public bool EditScaleQuestion(string authorEmail, ScaleQuestion question)
+        {
+            if (!EditQuestion(authorEmail, question))
+                return false;
+
+            var trueScaleQuestion = Context.Question.Single(q => q.ID == question.ID) as ScaleQuestion;
+            trueScaleQuestion.MinValue = question.MinValue;
+            trueScaleQuestion.MaxValue = question.MaxValue;
+            trueScaleQuestion.Increment = question.Increment;
+
+            Context.SaveChanges();
+            return true;
+        }
         private void CheckFormCreateEditPermission(Form form, User author)
         {
             bool isOwner = (form.AuthorID == author.ID);
@@ -258,7 +271,7 @@ namespace ELearning.Business.Managers
 
             return question;
         }
-        private Question CreateNewScaleQuestion(int id, string text, int questionGroupID)
+        public static Question CreateNewScaleQuestion(int id, string text, int questionGroupID)
         {
             return ScaleQuestion.CreateScaleQuestion(
                 id,
@@ -270,6 +283,19 @@ namespace ELearning.Business.Managers
                 string.Empty,
                 1
                 );
+        }
+        public static ScaleQuestion CreateNewScaleQuestion(int id, string text, string helpText, string explanation, int questionGroupID, int minValue, int maxValue, int increment)
+        {
+            return ScaleQuestion.CreateScaleQuestion(
+                id,
+                text,
+                questionGroupID,
+                minValue,
+                string.Empty,
+                maxValue,
+                string.Empty,
+                increment
+               );
         }
         public static ChoiceItem CreateNewChoiceItem(int questionID, string text)
         {
