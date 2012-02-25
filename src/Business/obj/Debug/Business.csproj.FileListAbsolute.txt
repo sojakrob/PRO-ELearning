@@ -21,3 +21,4 @@ d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\ELearning.S
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\obj\Debug\ResolveAssemblyReference.cache
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\obj\Debug\ELearning.Business.dll
 d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\obj\Debug\ELearning.Business.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\ELearning.Business.XML

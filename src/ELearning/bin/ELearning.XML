@@ -106,6 +106,16 @@
             </summary>
             <param name="formManager"></param>
         </member>
+        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the UpDownControlModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the UpDownControlModel class.
+            </summary>
+        </member>
         <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
             <summary>
             Initializes a new instance of the UnityContainerBuilder class.
@@ -124,16 +134,6 @@
         <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
             <summary>
             Gets the logged user
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
-            <summary>
-            Initializes a new instance of the UpDownControlModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32,System.String)">
-            <summary>
-            Initializes a new instance of the UpDownControlModel class.
             </summary>
         </member>
     </members>

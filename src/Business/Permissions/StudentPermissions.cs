@@ -14,5 +14,11 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+
+
+        internal StudentPermissions()
+            : base()
+        {
+        }
     }
 }

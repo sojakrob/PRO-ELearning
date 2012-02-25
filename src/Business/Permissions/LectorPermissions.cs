@@ -22,5 +22,11 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+
+
+        internal LectorPermissions()
+            : base()
+        {
+        }
     }
 }

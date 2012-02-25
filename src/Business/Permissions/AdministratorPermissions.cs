@@ -58,5 +58,11 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+
+
+        internal AdministratorPermissions()
+            : base()
+        {
+        }
     }
 }

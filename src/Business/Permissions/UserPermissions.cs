@@ -60,7 +60,12 @@ namespace ELearning.Business.Permissions
         }
 
 
-        public static UserPermissions Get(UserTypes userType)
+        internal UserPermissions()
+        {
+        }
+
+
+        internal static UserPermissions Get(UserTypes userType)
         {
             switch (userType)
             {
