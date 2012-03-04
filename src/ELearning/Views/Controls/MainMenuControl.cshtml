@@ -54,4 +54,21 @@
             </ul>
         </div>
     }
+    @if (Model.Permissions.Group_List)
+    {
+        <div>
+            <ul>
+                <li>
+                    @Html.ActionLink("Uživatelské skupiny", "Index", "Group")
+                    <ul>
+                        @if (Model.Permissions.Group_CreateEdit)
+                        {
+                            <li>@Html.ActionLink("Nová skupina", "Create", "Group")</li>
+                        }
+                        <li>@Html.ActionLink("Zobrazit", "Index", "Group")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }
 </div>

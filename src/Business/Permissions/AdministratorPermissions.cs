@@ -29,6 +29,21 @@ namespace ELearning.Business.Permissions
             }
         }
 
+        public override bool Group_List
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool Group_CreateEdit
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override bool Form_List
         {
             get

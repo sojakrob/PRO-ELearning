@@ -45,9 +45,8 @@ namespace ELearning.Controllers
 
             return View();
         } 
-
         [HttpPost]
-        public ActionResult Create(UserModel user)
+        public ActionResult Create(NewUserModel user)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +64,6 @@ namespace ELearning.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Edit(User user)
         {
@@ -85,7 +83,6 @@ namespace ELearning.Controllers
 
             return View();
         }
-
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

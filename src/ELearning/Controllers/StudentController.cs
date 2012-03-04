@@ -31,7 +31,7 @@ namespace ELearning.Controllers
         public ActionResult Index()
         {
             var students = _userManager.GetStudents(CurrentLoggedUserModel.Email);
-            var studentModels = ModelsFromArray<User, StudentModel>(students);
+            var studentModels = ModelsFromArray<User, UserModel>(students);
 
             return View(studentModels);
         }

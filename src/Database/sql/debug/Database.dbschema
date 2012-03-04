@@ -14,7 +14,7 @@
 			<Metadata Name="CompatibilityMode" Value="90" />
 		</CustomData>
 		<CustomData Category="Permissions" Type="XmlPermissions">
-			<Metadata Name="FileName" Value="D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PROPERTIES\DATABASE.SQLPERMISSIONS" />
+			<Metadata Name="FileName" Value="S:\PREDMETY\A7B36PRO\ELEARNING\PRO-ELEARNING\SRC\DATABASE\PROPERTIES\DATABASE.SQLPERMISSIONS" />
 		</CustomData>
 	</Header>
 	<Model>

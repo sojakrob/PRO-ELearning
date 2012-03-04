@@ -1,0 +1,38 @@
+﻿@using ELearning.Utils
+@using ELearning.Models.GeneralView
+@model IEnumerable<ELearning.Models.Data.GroupModel>
+
+@{
+    ViewBag.Title = "Groups";
+    ViewBag.TopButtons = new[] { new TopButtonModel("Create New", "Create", "Group") };
+}
+
+<table class="datagrid">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Supervisor
+        </th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Edit", new { id = item.ID })
+        </td>
+        <td>
+			@(item.Supervisor.Name)
+        </td>
+        <td>
+            @Html.ButtonLink("X", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+

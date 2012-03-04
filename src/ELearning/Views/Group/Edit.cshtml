@@ -1,0 +1,52 @@
+﻿@model ELearning.Models.Data.EditGroupModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@Model.Name</h2>
+
+<table class="datagrid">
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var member in Model.Members)
+    {
+        <tr>
+        @if (member.Type.Enum == ELearning.Data.Enums.UserTypes.Student)
+        {
+            <td>@Html.ActionLink(member.Name, "Detail", "Student", new { id = member.ID }, null)</td>
+        }
+        else
+        {
+            <td>@member.Name</td>
+        }
+        </tr>
+    }
+
+</table>
+
+<div>
+    @using (Html.BeginForm("AssignMember", "Group"))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Assign Member</legend>
+            <h3>Assign Member</h3>
+
+            <input type="hidden" name="groupID" value="@Model.ID" />
+
+		    <select name="memberID">
+                @foreach (var member in Model.PossibleMembers)
+                {
+                    <option value="@member.ID">@member.Name</option>
+                }
+            </select>
+
+            <span>
+                <input type="submit" class="Button" value="Assign Member" />
+            </span>
+        </fieldset>
+    }
+</div>

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\PermissionException.cs" />
     <Compile Include="Managers\FormManager.cs" />
+    <Compile Include="Managers\GroupManager.cs" />
     <Compile Include="Managers\ManagerBase.cs" />
     <Compile Include="Managers\QuestionManager.cs" />
     <Compile Include="Managers\UserManager.cs" />

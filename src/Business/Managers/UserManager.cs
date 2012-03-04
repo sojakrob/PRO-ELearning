@@ -119,6 +119,10 @@ namespace ELearning.Business.Managers
             // TODO Implement caching
             return GetSingle(u => u.Email == email && u.IsActive == true);
         }
+        public User GetUser(int userID)
+        {
+            return Context.User.Where(u => u.ID == userID).FirstOrDefault();
+        }
 
         public bool ChangePassword(string authorEmail, string email, string oldPassword, string newPassword)
         {
@@ -218,6 +222,13 @@ namespace ELearning.Business.Managers
             string studentTypeName = UserTypes.Student.ToString();
 
             return Context.User.SingleOrDefault(u => u.IsActive == true && u.ID == studentID && u.Type.Name == studentTypeName);
+        }
+
+        public IQueryable<User> GetLectors()
+        {
+            string studentTypeName = UserTypes.Student.ToString();
+
+            return Context.User.Where(u => u.IsActive == true && u.Type.Name != studentTypeName);
         }
 
     }

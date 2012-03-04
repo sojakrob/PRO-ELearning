@@ -15,10 +15,17 @@ namespace ELearning.Models.Data
         public string Name { get; set; }
         [Required] // TODO Add Regex check etc.
         public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
+        
         [Required]
         public UserTypeModel Type { get; set; }
+
+        public IEnumerable<GroupModel> AssignedGroups 
+        {
+            get { }
+            set { }
+        }
+        private IEnumerable<GroupModel> _assignedGroups = null;
+        private IEnumerable<Group> _assignedGroupsData;
 
 
         /// <summary>
@@ -27,7 +34,7 @@ namespace ELearning.Models.Data
         public UserModel()
         {
             Name = string.Empty;
-            Password = string.Empty;
+            AssignedGroups = new List<GroupModel>();
         }
         public UserModel(User data)
             : base(data)
@@ -35,12 +42,13 @@ namespace ELearning.Models.Data
             ID = data.ID;
             Name = data.Name;
             Email = data.Email;
-            Password = string.Empty;
 
             if (data.Type == null)
                 Type = new UserTypeModel();
             else
                 Type = new UserTypeModel(data.Type);
+
+            _assignedGroupsData = data.Groups;
         }
 
 
@@ -50,7 +58,7 @@ namespace ELearning.Models.Data
                 ID,
                 Email,
                 Type.ID,
-                Password,
+                string.Empty,
                 true
                 );
         }

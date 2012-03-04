@@ -14,3 +14,11 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\ELearning_D
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\Database.deploymanifest
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\debug\Database.dbschema
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\obj\Debug\Database.dbschema
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\ELearning_Script.PreDeployment.sql
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\ELearning_Script.PostDeployment.sql
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\ELearning_Database.sqlsettings
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\ELearning_Database.sqldeployment
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\ELearning_Database.sqlcmdvars
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\Database.deploymanifest
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\sql\debug\Database.dbschema
+S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Database\obj\Debug\Database.dbschema

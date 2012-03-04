@@ -6,7 +6,7 @@ using ELearning.Data;
 
 namespace ELearning.Models.Data
 {
-    public class StudentFormsModel : StudentModel
+    public class StudentFormsModel : UserModel
     {
         public List<FormInstanceModel> FilledForms { get; private set; }
 

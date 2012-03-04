@@ -15,11 +15,28 @@
             Gets current data context
             </summary>
         </member>
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.FormManager)">
+            <summary>
+            Initializes a new instance of the QuestionManager class.
+            </summary>
+            <param name="persistentStorage"></param>
+        </member>
         <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
             <summary>
             Initializes a new instance of the FormManager class.
             </summary>
             <param name="persistentStorage"></param>
+        </member>
+        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
+            <summary>
+            Changes the database of DataModelContainer
+            </summary>
+            <param name="connectionString">Connection string for the connection</param>
+        </member>
+        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
+            <summary>
+            Gets singleton instance
+            </summary>
         </member>
         <member name="P:ELearning.Business.Permissions.UserPermissions.User_CreateEdit">
             <summary>
@@ -31,15 +48,9 @@
             Can view list of Users
             </summary>
         </member>
-        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
+        <member name="P:ELearning.Business.Permissions.UserPermissions.Group_List">
             <summary>
-            Changes the database of DataModelContainer
-            </summary>
-            <param name="connectionString">Connection string for the connection</param>
-        </member>
-        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
-            <summary>
-            Gets singleton instance
+            Can view list of Groups
             </summary>
         </member>
         <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
@@ -95,9 +106,9 @@
             <param name="user"></param>
             <returns></returns>
         </member>
-        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.FormManager)">
+        <member name="M:ELearning.Business.Managers.GroupManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
             <summary>
-            Initializes a new instance of the QuestionManager class.
+            Initializes a new instance of the GroupManager class.
             </summary>
             <param name="persistentStorage"></param>
         </member>
