@@ -10,14 +10,13 @@ SET NUMERIC_ROUNDABORT OFF;
 
 GO
 :setvar DatabaseName "ELearning"
-:setvar DefaultDataPath "c:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\"
-:setvar DefaultLogPath "c:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\"
-
-GO
-USE [master]
+:setvar DefaultDataPath "C:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\"
+:setvar DefaultLogPath "C:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\"
 
 GO
 :on error exit
+GO
+USE [master]
 GO
 IF (DB_ID(N'$(DatabaseName)') IS NOT NULL
     AND DATABASEPROPERTYEX(N'$(DatabaseName)','Status') <> N'ONLINE')
@@ -129,26 +128,7 @@ ELSE
 
 
 GO
-IF IS_SRVROLEMEMBER(N'sysadmin') = 1
-    BEGIN
-        IF EXISTS (SELECT 1
-                   FROM   [master].[dbo].[sysdatabases]
-                   WHERE  [name] = N'$(DatabaseName)')
-            BEGIN
-                EXECUTE sp_executesql N'ALTER DATABASE [$(DatabaseName)]
-    SET HONOR_BROKER_PRIORITY OFF 
-    WITH ROLLBACK IMMEDIATE';
-            END
-    END
-ELSE
-    BEGIN
-        PRINT N'The database settings cannot be modified. You must be a SysAdmin to apply these settings.';
-    END
-
-
-GO
 USE [$(DatabaseName)]
-
 GO
 IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
     EXECUTE sp_fulltext_database 'enable';
@@ -269,7 +249,9 @@ CREATE TABLE [dbo].[Form] (
     [Shuffle]    BIT            NOT NULL,
     [Created]    DATETIME       NOT NULL,
     [FormTypeID] INT            NOT NULL,
-    [AuthorID]   INT            NOT NULL
+    [AuthorID]   INT            NOT NULL,
+    [IsActive]   BIT            NOT NULL,
+    [IsArchived] BIT            NOT NULL
 );
 
 
@@ -298,6 +280,35 @@ PRINT N'Creating [dbo].[Form].[IX_FK_FormTemplateFormType]...';
 GO
 CREATE NONCLUSTERED INDEX [IX_FK_FormTemplateFormType]
     ON [dbo].[Form]([FormTypeID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
+PRINT N'Creating [dbo].[FormGroup]...';
+
+
+GO
+CREATE TABLE [dbo].[FormGroup] (
+    [Forms_ID]  INT NOT NULL,
+    [Groups_ID] INT NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_FormGroup...';
+
+
+GO
+ALTER TABLE [dbo].[FormGroup]
+    ADD CONSTRAINT [PK_FormGroup] PRIMARY KEY NONCLUSTERED ([Forms_ID] ASC, [Groups_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
+PRINT N'Creating [dbo].[FormGroup].[IX_FK_FormGroup_Group]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_FormGroup_Group]
+    ON [dbo].[FormGroup]([Groups_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
 
 
 GO
@@ -782,6 +793,24 @@ ALTER TABLE [dbo].[Form] WITH NOCHECK
 
 
 GO
+PRINT N'Creating FK_FormGroup_Form...';
+
+
+GO
+ALTER TABLE [dbo].[FormGroup] WITH NOCHECK
+    ADD CONSTRAINT [FK_FormGroup_Form] FOREIGN KEY ([Forms_ID]) REFERENCES [dbo].[Form] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_FormGroup_Group...';
+
+
+GO
+ALTER TABLE [dbo].[FormGroup] WITH NOCHECK
+    ADD CONSTRAINT [FK_FormGroup_Group] FOREIGN KEY ([Groups_ID]) REFERENCES [dbo].[Group] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
 PRINT N'Creating FK_FormInstanceFormTemplate...';
 
 
@@ -983,6 +1012,10 @@ ALTER TABLE [dbo].[Answer_TextAnswer] WITH CHECK CHECK CONSTRAINT [FK_TextAnswer
 ALTER TABLE [dbo].[Form] WITH CHECK CHECK CONSTRAINT [FK_FormTemplateAuthor];
 
 ALTER TABLE [dbo].[Form] WITH CHECK CHECK CONSTRAINT [FK_FormTemplateFormType];
+
+ALTER TABLE [dbo].[FormGroup] WITH CHECK CHECK CONSTRAINT [FK_FormGroup_Form];
+
+ALTER TABLE [dbo].[FormGroup] WITH CHECK CHECK CONSTRAINT [FK_FormGroup_Group];
 
 ALTER TABLE [dbo].[FormInstance] WITH CHECK CHECK CONSTRAINT [FK_FormInstanceFormTemplate];
 

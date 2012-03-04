@@ -36,6 +36,16 @@
                 </li>
             </ul>
         </div>
+        <div>
+            <ul>
+                <li>
+                    @Html.ActionLink("Skupiny", "Index", "Group")
+                    <ul>
+                        <li>@Html.ActionLink("Zobrazit", "Index", "Group")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     }
     @if (Model.Permissions.User_List)
     {
@@ -54,7 +64,7 @@
             </ul>
         </div>
     }
-    @if (Model.Permissions.Group_List)
+    @if (Model.Permissions.Group_List_All)
     {
         <div>
             <ul>

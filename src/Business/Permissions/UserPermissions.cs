@@ -32,8 +32,9 @@ namespace ELearning.Business.Permissions
         /// <summary>
         /// Can view list of Groups
         /// </summary>
-        public virtual bool Group_List { get { return false; } }
+        public virtual bool Group_List_All { get { return false; } }
         public virtual bool Group_CreateEdit { get { return false; } }
+        public virtual bool Group_Delete { get { return false; } }
 
         public virtual bool Form_List
         {

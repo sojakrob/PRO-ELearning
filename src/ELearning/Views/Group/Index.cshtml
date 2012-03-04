@@ -28,7 +28,10 @@
 			@(item.Supervisor.Name)
         </td>
         <td>
-            @Html.ButtonLink("X", "Delete", new { id = item.ID })
+            @if (ViewBag.CurrentUserModel.Permissions.Group_Delete)
+            {
+                @Html.ButtonLink("X", "Delete", new { id = item.ID })
+            }
         </td>
     </tr>
 }

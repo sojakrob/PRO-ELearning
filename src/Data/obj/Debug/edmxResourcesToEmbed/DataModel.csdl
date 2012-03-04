@@ -78,6 +78,10 @@
       <End Role="User" EntitySet="User" />
       <End Role="FormInstance" EntitySet="FormInstance" />
     </AssociationSet>
+    <AssociationSet Name="FormGroup" Association="DataModel.FormGroup">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
     <Key>
@@ -158,6 +162,7 @@
     <NavigationProperty Name="Supervisor" Relationship="DataModel.Supervisor" FromRole="Group" ToRole="User" />
     <Property Type="Int32" Name="SupervisorID" Nullable="false" />
     <NavigationProperty Name="Members" Relationship="DataModel.GroupMembers" FromRole="Group" ToRole="User" />
+    <NavigationProperty Name="Forms" Relationship="DataModel.FormGroup" FromRole="Group" ToRole="Form" />
   </EntityType>
   <Association Name="Supervisor">
     <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
@@ -210,6 +215,9 @@
     <Property Type="Int32" Name="AuthorID" Nullable="false" />
     <NavigationProperty Name="QuestionGroups" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="FormTemplate" ToRole="QuestionGroup" />
     <NavigationProperty Name="FormInstances" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormTemplate" ToRole="FormInstance" cg:SetterAccess="Private" />
+    <NavigationProperty Name="Groups" Relationship="DataModel.FormGroup" FromRole="Form" ToRole="Group" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" />
+    <Property Type="Boolean" Name="IsArchived" Nullable="false" DefaultValue="False" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -399,5 +407,9 @@
   <Association Name="UserFillingFormInstance">
     <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="0..1" />
+  </Association>
+  <Association Name="FormGroup">
+    <End Type="DataModel.Form" Role="Form" Multiplicity="*" />
+    <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
   </Association>
 </Schema>

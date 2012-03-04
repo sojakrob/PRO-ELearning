@@ -4,6 +4,17 @@
         <name>ELearning</name>
     </assembly>
     <members>
+        <member name="M:ELearning.Models.Data.UserModel.#ctor">
+            <summary>
+            Initializes a new instance of the UserModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.GroupController.#ctor(ELearning.Business.Managers.GroupManager,ELearning.Business.Managers.UserManager)">
+            <summary>
+            Initializes a new instance of the GroupController class.
+            </summary>
+            <param name="groupManager"></param>
+        </member>
         <member name="M:ELearning.Models.Data.FormModel.#ctor">
             <summary>
             Initializes a new instance of the FormModel class.
@@ -20,9 +31,9 @@
             Gets number of users that filled the form
             </summary>
         </member>
-        <member name="M:ELearning.Models.Data.UserModel.#ctor">
+        <member name="M:ELearning.Models.Data.GroupModel.#ctor">
             <summary>
-            Initializes a new instance of the UserModel class.
+            Initializes a new instance of the GroupModel class.
             </summary>
         </member>
         <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor">
@@ -106,6 +117,16 @@
             </summary>
             <param name="formManager"></param>
         </member>
+        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the UpDownControlModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the UpDownControlModel class.
+            </summary>
+        </member>
         <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
             <summary>
             Initializes a new instance of the UnityContainerBuilder class.
@@ -124,16 +145,6 @@
         <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
             <summary>
             Gets the logged user
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
-            <summary>
-            Initializes a new instance of the UpDownControlModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32,System.String)">
-            <summary>
-            Initializes a new instance of the UpDownControlModel class.
             </summary>
         </member>
     </members>

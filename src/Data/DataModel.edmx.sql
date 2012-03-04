@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 02/21/2012 11:57:56
--- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
+-- Date Created: 03/04/2012 10:42:03
+-- Generated from EDMX file: d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [ELearning];
+USE [db8414991a6d244d96b85a9f91000af42b];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -213,7 +213,9 @@ CREATE TABLE [dbo].[Form] (
     [Shuffle] bit  NOT NULL,
     [Created] datetime  NOT NULL,
     [FormTypeID] int  NOT NULL,
-    [AuthorID] int  NOT NULL
+    [AuthorID] int  NOT NULL,
+    [IsActive] bit  NOT NULL,
+    [IsArchived] bit  NOT NULL
 );
 GO
 
@@ -316,6 +318,13 @@ GO
 CREATE TABLE [dbo].[GroupMembers] (
     [Groups_ID] int  NOT NULL,
     [Members_ID] int  NOT NULL
+);
+GO
+
+-- Creating table 'FormGroup'
+CREATE TABLE [dbo].[FormGroup] (
+    [Forms_ID] int  NOT NULL,
+    [Groups_ID] int  NOT NULL
 );
 GO
 
@@ -435,6 +444,12 @@ GO
 ALTER TABLE [dbo].[GroupMembers]
 ADD CONSTRAINT [PK_GroupMembers]
     PRIMARY KEY NONCLUSTERED ([Groups_ID], [Members_ID] ASC);
+GO
+
+-- Creating primary key on [Forms_ID], [Groups_ID] in table 'FormGroup'
+ALTER TABLE [dbo].[FormGroup]
+ADD CONSTRAINT [PK_FormGroup]
+    PRIMARY KEY NONCLUSTERED ([Forms_ID], [Groups_ID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -672,6 +687,29 @@ ADD CONSTRAINT [FK_UserFillingFormInstance]
 CREATE INDEX [IX_FK_UserFillingFormInstance]
 ON [dbo].[FormInstance]
     ([UserFillingFormInstance_FormInstance_ID]);
+GO
+
+-- Creating foreign key on [Forms_ID] in table 'FormGroup'
+ALTER TABLE [dbo].[FormGroup]
+ADD CONSTRAINT [FK_FormGroup_Form]
+    FOREIGN KEY ([Forms_ID])
+    REFERENCES [dbo].[Form]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Groups_ID] in table 'FormGroup'
+ALTER TABLE [dbo].[FormGroup]
+ADD CONSTRAINT [FK_FormGroup_Group]
+    FOREIGN KEY ([Groups_ID])
+    REFERENCES [dbo].[Group]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FormGroup_Group'
+CREATE INDEX [IX_FK_FormGroup_Group]
+ON [dbo].[FormGroup]
+    ([Groups_ID]);
 GO
 
 -- Creating foreign key on [ID] in table 'Question_ChoiceQuestion'

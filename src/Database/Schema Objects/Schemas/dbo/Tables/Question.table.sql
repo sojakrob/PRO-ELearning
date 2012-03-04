@@ -8,6 +8,11 @@
 -- --------------------------------------------------
 
 -- Creating table 'Question'
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Question'
 CREATE TABLE [dbo].[Question] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Text] nvarchar(max)  NOT NULL,
@@ -16,6 +21,9 @@ CREATE TABLE [dbo].[Question] (
     [Explanation] nvarchar(max)  NULL,
     [QuestionGroupID] int  NOT NULL
 );
+
+
+
 
 
 

@@ -11,6 +11,7 @@ namespace ELearning.Business.Managers
     public class GroupManager : ManagerBase<Group>
     {
         private UserManager _userManager;
+        private FormManager _formManager;
 
 
         /// <summary>
@@ -21,8 +22,15 @@ namespace ELearning.Business.Managers
             : base(persistentStorage)
         {
             _userManager = new UserManager(_persistentStorage);
+            _formManager = new FormManager(_persistentStorage);
         }
 
+
+        public override IQueryable<Group> GetAll()
+        {
+            // TODO Permissions
+            return base.GetAll();
+        }
 
         public static Group GetNewGroupInstance(int id, string name, int supervisorID)
         {
@@ -58,10 +66,23 @@ namespace ELearning.Business.Managers
         {
             var group = GetGroup(groupID);
             var result = _userManager.GetAll().ToList();
+
+            result.Remove(group.Supervisor);
             foreach (var member in group.Members)
                 result.Remove(member);
 
             return result;
+        }
+
+        public IEnumerable<Group> GetPossibleGroupsFor(int formID)
+        {
+            var form = _formManager.GetForm(formID);
+            var groups = GetAll().ToList();
+            foreach (var assignedGroup in form.Groups)
+            {
+                groups.Remove(assignedGroup);
+            }
+            return groups;
         }
 
         public bool AssignUser(int userID, int groupID)

@@ -11,7 +11,7 @@ namespace ELearning.Models.Data
     public class FormModel : DataModelBase<Form>
     {
         private const int TEXT_MAX_LENGTH = 20;
-        
+
 
 
         public int ID { get; set; }
@@ -25,7 +25,7 @@ namespace ELearning.Models.Data
             get { return Utils.Formatting.CropText(Text, TEXT_MAX_LENGTH); }
         }
 
-        [Display(Name="Shuffle Questions")]
+        [Display(Name = "Shuffle Questions")]
         public bool Shuffle { get; set; }
 
         public int? TimeToFill { get; set; }
@@ -37,6 +37,19 @@ namespace ELearning.Models.Data
         public UserModel Author { get; set; }
 
         public List<QuestionGroupModel> QuestionGroups { get; set; }
+
+        public IEnumerable<GroupModel> AssignedGroups
+        {
+            get
+            {
+                if (_assignedGroups == null)
+                    _assignedGroups = GroupModel.CreateFromArray<GroupModel>(_assignedGroupsData);
+                return _assignedGroups;
+            }
+            set { _assignedGroups = value; }
+        }
+        private IEnumerable<GroupModel> _assignedGroups = null;
+        private IEnumerable<Group> _assignedGroupsData;
 
         /// <summary>
         /// Gets number of times the form was filled
@@ -54,6 +67,7 @@ namespace ELearning.Models.Data
         /// <param name="form"></param>
         public FormModel()
         {
+            _assignedGroupsData = new List<Group>();
         }
         public FormModel(Form data)
             : base(data)
@@ -79,7 +93,9 @@ namespace ELearning.Models.Data
                 Author = new UserModel(data.Author);
 
             QuestionGroups = DataModelBase<QuestionGroup>.CreateFromArray<QuestionGroupModel>(data.QuestionGroups);
-            
+
+            _assignedGroupsData = data.Groups;
+
             CountTimesFilled(data);
         }
 
@@ -95,8 +111,8 @@ namespace ELearning.Models.Data
         {
             Form result = Form.CreateForm(
                 ID,
-                Name, 
-                Created, 
+                Name,
+                Created,
                 Type == null ? 0 : Type.ID,
                 Author == null ? 0 : Author.ID
                 );

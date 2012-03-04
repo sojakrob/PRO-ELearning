@@ -29,6 +29,8 @@ namespace ELearning.Controllers
 
         public ActionResult Index()
         {
+            FillDefaultViewBag();
+
             return View(ModelsFromArray<Group, GroupModel>(_groupManager.GetAll()));
         }
 

@@ -88,6 +88,8 @@
           <ScalarProperty Name="Created" ColumnName="Created" />
           <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
           <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -145,7 +147,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.ChoiceAnswer)">
         <MappingFragment StoreEntitySet="Answer_ChoiceAnswer">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.ScaleAnswer)">
@@ -200,6 +202,14 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
       <Condition ColumnName="UserFillingFormInstance_FormInstance_ID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FormGroup" TypeName="DataModel.FormGroup" StoreEntitySet="FormGroup">
+      <EndProperty Name="Form">
+        <ScalarProperty Name="ID" ColumnName="Forms_ID" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

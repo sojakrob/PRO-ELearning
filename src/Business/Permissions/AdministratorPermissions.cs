@@ -29,7 +29,7 @@ namespace ELearning.Business.Permissions
             }
         }
 
-        public override bool Group_List
+        public override bool Group_List_All
         {
             get
             {
@@ -37,6 +37,13 @@ namespace ELearning.Business.Permissions
             }
         }
         public override bool Group_CreateEdit
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool Group_Delete
         {
             get
             {

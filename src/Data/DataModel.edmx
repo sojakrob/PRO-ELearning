@@ -25,6 +25,7 @@
     <EntitySet Name="Answer_ScaleAnswer" EntityType="DataModel.Store.Answer_ScaleAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormGroup" EntityType="DataModel.Store.FormGroup" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.Store.QuestionGroupQuestion">
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
       <End Role="Question" EntitySet="Question" />
@@ -92,6 +93,14 @@
     <AssociationSet Name="UserFillingFormInstance" Association="DataModel.Store.UserFillingFormInstance">
       <End Role="User" EntitySet="User" />
       <End Role="FormInstance" EntitySet="FormInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormGroup_Form" Association="DataModel.Store.FK_FormGroup_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormGroup" EntitySet="FormGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormGroup_Group" Association="DataModel.Store.FK_FormGroup_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="FormGroup" EntitySet="FormGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -180,6 +189,8 @@
     <Property Name="Created" Type="datetime" Nullable="false" />
     <Property Name="FormTypeID" Type="int" Nullable="false" />
     <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="IsArchived" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -283,6 +294,14 @@
     </Key>
     <Property Name="Groups_ID" Type="int" Nullable="false" />
     <Property Name="Members_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormGroup">
+    <Key>
+      <PropertyRef Name="Forms_ID" />
+      <PropertyRef Name="Groups_ID" />
+    </Key>
+    <Property Name="Forms_ID" Type="int" Nullable="false" />
+    <Property Name="Groups_ID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="QuestionGroupQuestion">
     <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="1" />
@@ -488,6 +507,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_FormGroup_Form">
+    <End Role="Form" Type="DataModel.Store.Form" Multiplicity="1" />
+    <End Role="FormGroup" Type="DataModel.Store.FormGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormGroup">
+        <PropertyRef Name="Forms_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormGroup_Group">
+    <End Role="FormGroup" Type="DataModel.Store.FormGroup" Multiplicity="*" />
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormGroup">
+        <PropertyRef Name="Groups_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ChoiceQuestion_inherits_Question">
     <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1" />
     <End Role="ChoiceQuestion" Type="DataModel.Store.Question_ChoiceQuestion" Multiplicity="0..1" />
@@ -630,6 +673,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="FormInstance" EntitySet="FormInstance" />
           </AssociationSet>
+          <AssociationSet Name="FormGroup" Association="DataModel.FormGroup">
+            <End Role="Form" EntitySet="Form" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Question">
           <Key>
@@ -710,6 +757,7 @@
           <NavigationProperty Name="Supervisor" Relationship="DataModel.Supervisor" FromRole="Group" ToRole="User" />
           <Property Type="Int32" Name="SupervisorID" Nullable="false" />
           <NavigationProperty Name="Members" Relationship="DataModel.GroupMembers" FromRole="Group" ToRole="User" />
+          <NavigationProperty Name="Forms" Relationship="DataModel.FormGroup" FromRole="Group" ToRole="Form" />
         </EntityType>
         <Association Name="Supervisor">
           <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
@@ -762,6 +810,9 @@
           <Property Type="Int32" Name="AuthorID" Nullable="false" />
           <NavigationProperty Name="QuestionGroups" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="FormTemplate" ToRole="QuestionGroup" />
           <NavigationProperty Name="FormInstances" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormTemplate" ToRole="FormInstance" cg:SetterAccess="Private" />
+          <NavigationProperty Name="Groups" Relationship="DataModel.FormGroup" FromRole="Form" ToRole="Group" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" DefaultValue="False" />
         </EntityType>
         <EntityType Name="FormType">
           <Key>
@@ -952,6 +1003,10 @@
           <End Type="DataModel.User" Role="User" Multiplicity="0..1" />
           <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="0..1" />
         </Association>
+        <Association Name="FormGroup">
+          <End Type="DataModel.Form" Role="Form" Multiplicity="*" />
+          <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1045,6 +1100,8 @@
           <ScalarProperty Name="Created" ColumnName="Created" />
           <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
           <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1158,6 +1215,14 @@
       </EndProperty>
       <Condition ColumnName="UserFillingFormInstance_FormInstance_ID" IsNull="false" />
     </AssociationSetMapping>
+    <AssociationSetMapping Name="FormGroup" TypeName="DataModel.FormGroup" StoreEntitySet="FormGroup">
+      <EndProperty Name="Form">
+        <ScalarProperty Name="ID" ColumnName="Forms_ID" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1204,7 +1269,7 @@
           <ConnectorPoint PointX="3.75" PointY="2.625" />
           <ConnectorPoint PointX="3.75" PointY="1.9033821614583333" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="3.9033007812499987" />
         <EntityTypeShape EntityType="DataModel.FormType" Width="1.5" PointX="6.125" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.FormTemplateFormType">
           <ConnectorPoint PointX="6.875" PointY="2.625" />
@@ -1223,12 +1288,10 @@
           <ConnectorPoint PointX="4.037109375" PointY="6.375" />
           <ConnectorPoint PointX="4.037109375" PointY="5.3744921875" />
         </AssociationConnector>
-        <AssociationConnector Association="DataModel.FormInstanceFormTemplate">
-          <ConnectorPoint PointX="4.5" PointY="6.375" />
-          <ConnectorPoint PointX="4.875" PointY="6" />
-          <ConnectorPoint PointX="4.875" PointY="6.326396484375" />
-          <ConnectorPoint PointX="5.75" PointY="6.326396484375" />
-          <ConnectorPoint PointX="6.125" PointY="5.951396484375" />
+        <AssociationConnector Association="DataModel.FormInstanceFormTemplate" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.7712066855935209" />
+          <ConnectorPoint PointX="6.83002873498969" PointY="6.7712066855935209" />
+          <ConnectorPoint PointX="6.83002873498969" PointY="6.52830078125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.QuestionInstance" Width="1.5" PointX="6.125" PointY="7.5" Height="1.4033821614583335" />
         <AssociationConnector Association="DataModel.QuestionInstanceQuestionTemplate">
@@ -1288,6 +1351,14 @@
         <AssociationConnector Association="DataModel.UserFillingFormInstance">
           <ConnectorPoint PointX="3.4560546875" PointY="5.3744921875" />
           <ConnectorPoint PointX="3.4560546875" PointY="6.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FormGroup">
+          <ConnectorPoint PointX="6.125" PointY="2.625" />
+          <ConnectorPoint PointX="5.75" PointY="2.25" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="2.2499999999999996" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="2.25" />
+          <ConnectorPoint PointX="2.375" PointY="2.25" />
+          <ConnectorPoint PointX="2" PointY="2.625" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

@@ -34,6 +34,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "QuestionInstanceAnswer", "QuestionInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionInstance), "Answer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.Answer))]
 [assembly: EdmRelationshipAttribute("DataModel", "ChoiceQuestionChoiceItem", "ChoiceQuestion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceQuestion), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceItem), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "UserFillingFormInstance", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.User), "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.FormInstance))]
+[assembly: EdmRelationshipAttribute("DataModel", "FormGroup", "Form", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Form), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Group))]
 
 #endregion
 
@@ -692,6 +693,54 @@ namespace ELearning.Data
         private global::System.Int32 _AuthorID;
         partial void OnAuthorIDChanging(global::System.Int32 value);
         partial void OnAuthorIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private global::System.Boolean _IsActive = false;
+        partial void OnIsActiveChanging(global::System.Boolean value);
+        partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsArchived
+        {
+            get
+            {
+                return _IsArchived;
+            }
+            set
+            {
+                OnIsArchivedChanging(value);
+                ReportPropertyChanging("IsArchived");
+                _IsArchived = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsArchived");
+                OnIsArchivedChanged();
+            }
+        }
+        private global::System.Boolean _IsArchived = false;
+        partial void OnIsArchivedChanging(global::System.Boolean value);
+        partial void OnIsArchivedChanged();
 
         #endregion
     
@@ -813,6 +862,28 @@ namespace ELearning.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FormInstance>("DataModel.FormInstanceFormTemplate", "FormInstance", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormGroup", "Group")]
+        public EntityCollection<Group> Groups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Group>("DataModel.FormGroup", "Group");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("DataModel.FormGroup", "Group", value);
                 }
             }
         }
@@ -1534,6 +1605,28 @@ namespace ELearning.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("DataModel.GroupMembers", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormGroup", "Form")]
+        public EntityCollection<Form> Forms
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Form>("DataModel.FormGroup", "Form");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Form>("DataModel.FormGroup", "Form", value);
                 }
             }
         }

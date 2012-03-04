@@ -17,18 +17,16 @@ namespace ELearning.Controllers
     [Authorize]
     public class FormController : BaseController
     {
-        FormManager _formManager;
-        QuestionManager _questionManager;
+        private FormManager _formManager;
+        private QuestionManager _questionManager;
+        private GroupManager _groupManager;
 
 
-        /// <summary>
-        /// Initializes a new instance of the FormController class.
-        /// </summary>
-        /// <param name="formManager"></param>
-        public FormController(FormManager formManager, QuestionManager questionManager)
+        public FormController(FormManager formManager, QuestionManager questionManager, GroupManager groupManager)
         {
             _formManager = formManager;
             _questionManager = questionManager;
+            _groupManager = groupManager;
         }
 
 
@@ -50,21 +48,29 @@ namespace ELearning.Controllers
         {
             FillViewBag_Create();
 
-            return View();
+            var form = new NewFormModel();
+            form.PossibleGroups = GroupModel.CreateFromArray<GroupModel>(_groupManager.GetAll());
+
+            return View(form);
         }
 
         [HttpPost]
-        public ActionResult Create(FormModel form)
+        public ActionResult Create(NewFormModel form, int[] assignedGroupIDs)
         {
             if (ModelState.IsValid)
             {
                 int formID = _formManager.AddForm(CurrentLoggedUserModel.Email, form.ToData());
                 if (formID != -1)
+                {
+                    _formManager.SetFormAssignedGroups(formID, assignedGroupIDs);
                     return RedirectToCreateEditQuestions(formID);
+                }
             }
 
             FillViewBag_Create();
+            form.PossibleGroups = GroupModel.CreateFromArray<GroupModel>(_groupManager.GetAll());
 
+            
             return View(form);
         }
 
@@ -94,19 +100,21 @@ namespace ELearning.Controllers
 
             Form form = _formManager.GetForm(AuthenticationContext.LoggedUserSession.Email, id);
 
-            return View(new FormModel(form));
+            return View(new NewFormModel(form, _groupManager.GetPossibleGroupsFor(id)));
         }
 
         [HttpPost]
-        public ActionResult Edit(FormModel form)
+        public ActionResult Edit(NewFormModel form, int[] assignedGroupIDs)
         {
             if (ModelState.IsValid)
             {
                 _formManager.EditForm(AuthenticationContext.LoggedUserSession.Email, form.ToData());
+                _formManager.SetFormAssignedGroups(form.ID, assignedGroupIDs);
                 return RedirectToAction("Index");
             }
 
             FillViewBag_Create();
+            form.PossibleGroups = GroupModel.CreateFromArray<GroupModel>(_groupManager.GetAll());
 
             return View(form);
         }

@@ -20,6 +20,7 @@
     <EntitySet Name="Answer_ScaleAnswer" EntityType="DataModel.Store.Answer_ScaleAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FormGroup" EntityType="DataModel.Store.FormGroup" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.Store.QuestionGroupQuestion">
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
       <End Role="Question" EntitySet="Question" />
@@ -87,6 +88,14 @@
     <AssociationSet Name="UserFillingFormInstance" Association="DataModel.Store.UserFillingFormInstance">
       <End Role="User" EntitySet="User" />
       <End Role="FormInstance" EntitySet="FormInstance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormGroup_Form" Association="DataModel.Store.FK_FormGroup_Form">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormGroup" EntitySet="FormGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormGroup_Group" Association="DataModel.Store.FK_FormGroup_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="FormGroup" EntitySet="FormGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -175,6 +184,8 @@
     <Property Name="Created" Type="datetime" Nullable="false" />
     <Property Name="FormTypeID" Type="int" Nullable="false" />
     <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="IsArchived" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -278,6 +289,14 @@
     </Key>
     <Property Name="Groups_ID" Type="int" Nullable="false" />
     <Property Name="Members_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormGroup">
+    <Key>
+      <PropertyRef Name="Forms_ID" />
+      <PropertyRef Name="Groups_ID" />
+    </Key>
+    <Property Name="Forms_ID" Type="int" Nullable="false" />
+    <Property Name="Groups_ID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="QuestionGroupQuestion">
     <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="1" />
@@ -480,6 +499,30 @@
       </Principal>
       <Dependent Role="GroupMembers">
         <PropertyRef Name="Members_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormGroup_Form">
+    <End Role="Form" Type="DataModel.Store.Form" Multiplicity="1" />
+    <End Role="FormGroup" Type="DataModel.Store.FormGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormGroup">
+        <PropertyRef Name="Forms_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormGroup_Group">
+    <End Role="FormGroup" Type="DataModel.Store.FormGroup" Multiplicity="*" />
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormGroup">
+        <PropertyRef Name="Groups_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

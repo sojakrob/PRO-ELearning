@@ -101,6 +101,8 @@
     <Compile Include="Models\Data\ChoiceQuestionInstanceModel.cs" />
     <Compile Include="Models\Data\ChoiceQuestionModel.cs" />
     <Compile Include="Models\Data\DataModelBase.cs" />
+    <Compile Include="Models\Data\List.cs" />
+    <Compile Include="Models\Data\NewFormModel.cs" />
     <Compile Include="Models\Data\NewUserModel.cs" />
     <Compile Include="Models\EditGroupModel.cs" />
     <Compile Include="Models\Data\FormInstanceModel.cs" />

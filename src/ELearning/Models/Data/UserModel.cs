@@ -21,8 +21,13 @@ namespace ELearning.Models.Data
 
         public IEnumerable<GroupModel> AssignedGroups 
         {
-            get { }
-            set { }
+            get 
+            {
+                if (_assignedGroups == null)
+                    _assignedGroups = GroupModel.CreateFromArray<GroupModel>(_assignedGroupsData);
+                return _assignedGroups;
+            }
+            set { _assignedGroups = value; }
         }
         private IEnumerable<GroupModel> _assignedGroups = null;
         private IEnumerable<Group> _assignedGroupsData;

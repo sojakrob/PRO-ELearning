@@ -36,6 +36,18 @@ namespace ELearning.Business.Managers
         private UserManager _userManager;
         private QuestionManager _questionManager;
 
+        private GroupManager _groupManager
+        {
+            get
+            {
+                if (__groupManager == null)
+                    __groupManager = new GroupManager(_persistentStorage);
+                return __groupManager;
+            }
+        }
+        private GroupManager __groupManager;
+
+
 
         /// <summary>
         /// Initializes a new instance of the FormManager class.
@@ -51,10 +63,15 @@ namespace ELearning.Business.Managers
         }
 
 
+        public Form GetForm(int id)
+        {
+            // TODO Permissions
+            return GetSingle(f => f.ID == id);
+        }
         public Form GetForm(string userEmail, int id)
         {
             User user = _userManager.GetUser(userEmail);
-            Form result = GetSingle(f => f.ID == id);
+            Form result = GetForm(id);
             if (result == null)
                 throw new ArgumentException("Specified form not found");
 
@@ -155,6 +172,23 @@ namespace ELearning.Business.Managers
             Context.SaveChanges();
 
             return true;
+        }
+
+        public void SetFormAssignedGroups(int formID, int[] groupIDs)
+        {
+            var groupIDsToAdd = groupIDs.ToList();
+            var form = GetForm(formID);
+            foreach (var group in form.Groups)
+            {
+                if (groupIDsToAdd.Contains(group.ID))
+                    groupIDsToAdd.Remove(group.ID);
+                else
+                    form.Groups.Remove(group);
+            }
+            foreach (var groupID in groupIDsToAdd)
+                form.Groups.Add(_groupManager.GetGroup(groupID));
+
+            Context.SaveChanges();
         }
 
         public FormInstance GenerateNewFormInstanceAndStartFilling(string userEmail, int formID)

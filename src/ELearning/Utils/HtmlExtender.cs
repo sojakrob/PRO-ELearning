@@ -79,13 +79,25 @@ namespace ELearning.Utils
         }
         public static IHtmlString Radio(this HtmlHelper helper, string id, string name, string value, IDictionary<string, object> htmlAttributes)
         {
+            return Input(helper, "radio", id, name, value, htmlAttributes);
+        }
+        public static IHtmlString CheckBox(this HtmlHelper helper, string id, string name, string value, IDictionary<string, object> htmlAttributes)
+        {
+            return Input(helper, "checkbox", id, name, value, htmlAttributes);
+        }
+        private static IHtmlString Input(this HtmlHelper helper, string type, string id, string name, string value, IDictionary<string, object> htmlAttributes)
+        {
             TagBuilder builder = new TagBuilder("input");
-            builder.MergeAttribute("type", "radio");
+            builder.MergeAttribute("type", type);
             builder.MergeAttribute("id", id);
             builder.MergeAttribute("name", name);
             builder.MergeAttribute("value", value);
-            foreach (KeyValuePair<string, object> htmlAttribute in htmlAttributes)
-                builder.MergeAttribute(htmlAttribute.Key, htmlAttribute.Value.ToString());
+
+            if (htmlAttributes != null)
+            {
+                foreach (KeyValuePair<string, object> htmlAttribute in htmlAttributes)
+                    builder.MergeAttribute(htmlAttribute.Key, htmlAttribute.Value.ToString());
+            }
 
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }
