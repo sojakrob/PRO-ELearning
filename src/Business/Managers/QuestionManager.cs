@@ -6,24 +6,37 @@ using ELearning.Data;
 using ELearning.Business.Storages;
 using ELearning.Business.Exceptions;
 using ELearning.Data.Enums;
+using ELearning.Business.Permissions;
 
 namespace ELearning.Business.Managers
 {
     public class QuestionManager : ManagerBase<Question>
     {
         private UserManager _userManager;
-        private FormManager _formManager;
+
+        private FormManager _formManager
+        {
+            get
+            {
+                if (__formManager == null)
+                    __formManager = new FormManager(_persistentStorage, _permissionsProvider);
+                return __formManager;
+            }
+        }
+        private FormManager __formManager;
+
+        private IPermissionsProvider _permissionsProvider;
 
 
         /// <summary>
         /// Initializes a new instance of the QuestionManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public QuestionManager(IPersistentStorage persistentStorage, FormManager formManager)
-            : base(persistentStorage)
+        public QuestionManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, permissionsProvider)
         {
-            _userManager = new UserManager(_persistentStorage);
-            _formManager = formManager;
+            _permissionsProvider = permissionsProvider;
+            _userManager = new UserManager(_persistentStorage, permissionsProvider);
         }
 
 

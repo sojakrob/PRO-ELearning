@@ -15,7 +15,7 @@
             Gets current data context
             </summary>
         </member>
-        <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+        <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
             <summary>
             Initializes a new instance of the FormManager class.
             </summary>
@@ -36,7 +36,7 @@
             Can view list of Groups
             </summary>
         </member>
-        <member name="M:ELearning.Business.Managers.GroupManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+        <member name="M:ELearning.Business.Managers.GroupManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
             <summary>
             Initializes a new instance of the GroupManager class.
             </summary>
@@ -53,7 +53,7 @@
             Gets singleton instance
             </summary>
         </member>
-        <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage)">
+        <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
             <summary>
             Initializes a new instance of the UserManager class.
             </summary>
@@ -106,7 +106,7 @@
             <param name="user"></param>
             <returns></returns>
         </member>
-        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.FormManager)">
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
             <summary>
             Initializes a new instance of the QuestionManager class.
             </summary>

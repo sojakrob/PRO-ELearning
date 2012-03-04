@@ -20,7 +20,7 @@ namespace ELearning.Authentication
         private const string APPLICATION_NAME_PARAMETER = "applicationName";
 
 
-        private UserManager _userManager = MvcApplication.UnityContainer.Resolve<UserManager>() as UserManager;
+        private UserManager _userManager = MvcApplication.UnityContainer.Resolve<UserManager>("Global") as UserManager;
 
 
         private ProviderSettings ConfigSettings

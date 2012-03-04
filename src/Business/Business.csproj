@@ -51,6 +51,7 @@
     <Compile Include="Managers\QuestionManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Permissions\AdministratorPermissions.cs" />
+    <Compile Include="Permissions\IPermissionsProvider.cs" />
     <Compile Include="Permissions\LectorPermissions.cs" />
     <Compile Include="Permissions\StudentPermissions.cs" />
     <Compile Include="Permissions\UserPermissions.cs" />

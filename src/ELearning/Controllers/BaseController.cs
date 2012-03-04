@@ -17,6 +17,10 @@ namespace ELearning.Controllers
         [Dependency]
         public IAuthenticationContext AuthenticationContext { get; set; }
 
+        public BaseController()
+        {
+        }
+
         protected LoggedUserModel CurrentLoggedUserModel
         {
             get

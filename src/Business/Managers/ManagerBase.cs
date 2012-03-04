@@ -6,12 +6,15 @@ using ELearning.Business.Repositories;
 using ELearning.Business.Storages;
 using ELearning.Data;
 using System.Linq.Expressions;
+using ELearning.Business.Permissions;
 
 namespace ELearning.Business.Managers
 {
     public abstract class ManagerBase<T> : IRepository<T> where T : class
     {
         protected IPersistentStorage _persistentStorage;
+
+        protected UserPermissions Permissions { get; private set; }
 
         /// <summary>
         /// Gets current data context
@@ -26,9 +29,15 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the ManagerBase class.
         /// </summary>
         /// <param name="persistentStorage"></param>
+        [Obsolete]
         public ManagerBase(IPersistentStorage persistentStorage)
         {
             _persistentStorage = persistentStorage;
+        }
+        public ManagerBase(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
+        {
+            _persistentStorage = persistentStorage;
+            Permissions = permissionsProvider.GetPermissions();
         }
 
 

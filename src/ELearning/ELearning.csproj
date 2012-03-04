@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\AnonymousPermissionsProvider.cs" />
     <Compile Include="Authentication\ELearningMembershipProvider.cs" />
     <Compile Include="Authentication\ELearningMembershipUser.cs" />
     <Compile Include="Authentication\IAuthenticationContext.cs" />

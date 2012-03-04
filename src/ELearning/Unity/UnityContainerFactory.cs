@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Collections;
 using ELearning.Authentication;
 using ELearning.Controllers;
+using ELearning.Business.Permissions;
 
 namespace ELearning.Unity
 {
@@ -27,13 +28,16 @@ namespace ELearning.Unity
             UnityContainer result = new UnityContainer();
 
             IPersistentStorage storage = InitStorage();
-            InjectionConstructor storageConstructor = new InjectionConstructor(storage);
-            InjectionConstructor questionManagerConstructor = new InjectionConstructor(storage, new FormManager(storage));
+            IPermissionsProvider permissionProvider = new WebAuthenticationContext();
 
-            result.RegisterType<UserManager>(storageConstructor);
-            result.RegisterType<FormManager>(storageConstructor);
-            result.RegisterType<QuestionManager>(questionManagerConstructor);
-            result.RegisterType<GroupManager>(storageConstructor);
+            var globalManagerConstructor = new InjectionConstructor(storage, new AnonymousPermissionsProvider());
+            var managerConstructor = new InjectionConstructor(storage, permissionProvider);
+
+            result.RegisterType<UserManager>("Global", globalManagerConstructor);
+            result.RegisterType<UserManager>(managerConstructor);
+            result.RegisterType<FormManager>(managerConstructor);
+            result.RegisterType<QuestionManager>(managerConstructor);
+            result.RegisterType<GroupManager>(managerConstructor);
 
             result.RegisterType<IAuthenticationContext, WebAuthenticationContext>();
 

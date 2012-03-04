@@ -28,8 +28,8 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the UserManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public UserManager(IPersistentStorage persistentStorage)
-            : base(persistentStorage)
+        public UserManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, permissionsProvider)
         {
             
         }

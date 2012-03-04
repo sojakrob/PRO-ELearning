@@ -66,5 +66,17 @@ namespace ELearning.Authentication
         {
             return new UserSession(((ELearningMembershipUser)Membership.GetUser(email)).User);
         }
+
+        #region IPermissionsProvider Members
+
+        public Business.Permissions.UserPermissions GetPermissions()
+        {
+            if (LoggedUserSession == null)
+                return null;
+
+            return LoggedUserSession.Permissions;
+        }
+
+        #endregion
     }
 }

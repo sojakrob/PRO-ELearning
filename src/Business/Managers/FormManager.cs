@@ -5,6 +5,7 @@ using System.Text;
 using ELearning.Data;
 using ELearning.Business.Storages;
 using ELearning.Business.Exceptions;
+using ELearning.Business.Permissions;
 
 namespace ELearning.Business.Managers
 {
@@ -33,6 +34,8 @@ namespace ELearning.Business.Managers
             }
         }
 
+        private IPermissionsProvider _permissionsProvider;
+
         private UserManager _userManager;
         private QuestionManager _questionManager;
 
@@ -41,7 +44,7 @@ namespace ELearning.Business.Managers
             get
             {
                 if (__groupManager == null)
-                    __groupManager = new GroupManager(_persistentStorage);
+                    __groupManager = new GroupManager(_persistentStorage, _permissionsProvider);
                 return __groupManager;
             }
         }
@@ -53,11 +56,13 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the FormManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public FormManager(IPersistentStorage persistentStorage)
-            : base(persistentStorage)
+        public FormManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, permissionsProvider)
         {
-            _userManager = new UserManager(_persistentStorage);
-            _questionManager = new QuestionManager(_persistentStorage, this);
+            _permissionsProvider = permissionsProvider;
+
+            _userManager = new UserManager(_persistentStorage, permissionsProvider);
+            _questionManager = new QuestionManager(_persistentStorage, permissionsProvider);
 
             _random = new Random(Environment.TickCount);
         }

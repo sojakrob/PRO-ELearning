@@ -111,6 +111,12 @@
             </summary>
             <param name="formManager"></param>
         </member>
+        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
+            <summary>
+            Initializes a new instance of the NewFormModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
         <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
             <summary>
             Initializes a new instance of the UpDownControlModel class.
@@ -140,12 +146,6 @@
             <summary>
             Gets the logged user
             </summary>
-        </member>
-        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
-            <summary>
-            Initializes a new instance of the NewFormModel class.
-            </summary>
-            <param name="form"></param>
         </member>
     </members>
 </doc>

@@ -5,6 +5,7 @@ using System.Text;
 using ELearning.Data;
 using ELearning.Business.Storages;
 using ELearning.Business.Permissions;
+using ELearning.Business.Exceptions;
 
 namespace ELearning.Business.Managers
 {
@@ -18,11 +19,11 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the GroupManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public GroupManager(IPersistentStorage persistentStorage)
-            : base(persistentStorage)
+        public GroupManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, permissionsProvider)
         {
-            _userManager = new UserManager(_persistentStorage);
-            _formManager = new FormManager(_persistentStorage);
+            _userManager = new UserManager(_persistentStorage, permissionsProvider);
+            _formManager = new FormManager(_persistentStorage, permissionsProvider);
         }
 
 
@@ -42,7 +43,8 @@ namespace ELearning.Business.Managers
         }
         public bool CreateGroup(string name, int supervisorID)
         {
-            // TODO Permissions
+            if (!Permissions.Group_CreateEdit)
+                throw new PermissionException("Group_CreateEdit");
 
             Context.Group.AddObject(
                 GetNewGroupInstance(
