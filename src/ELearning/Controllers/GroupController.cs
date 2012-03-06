@@ -68,6 +68,23 @@ namespace ELearning.Controllers
             var members = _groupManager.GetPossibleMembersFor(id);
             var group = new EditGroupModel(_groupManager.GetGroup(id), ModelsFromArray<User, UserModel>(members));
 
+            FillDefaultViewBag();
+
+            return View(group);
+        }
+        [HttpPost]
+        public ActionResult Edit(int groupID, int[] assignedMemberIDs)
+        {
+            if (assignedMemberIDs == null)
+                assignedMemberIDs = new int[] { };
+
+            _groupManager.SetGroupMembers(groupID, assignedMemberIDs);
+
+            var possibleMembers = _groupManager.GetPossibleMembersFor(groupID);
+            var group = new EditGroupModel(_groupManager.GetGroup(groupID), ModelsFromArray<User, UserModel>(possibleMembers));
+
+            FillDefaultViewBag();
+
             return View(group);
         }
 

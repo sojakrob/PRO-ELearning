@@ -140,4 +140,3 @@ S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\bin\Microsoft.Practic
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\obj\Debug\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\obj\Debug\ELearning.pdb
-d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.XML

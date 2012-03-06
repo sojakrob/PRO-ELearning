@@ -4,22 +4,10 @@
         <name>ELearning.Business</name>
     </assembly>
     <members>
-        <member name="M:ELearning.Business.Managers.ManagerBase`1.#ctor(ELearning.Business.Storages.IPersistentStorage)">
-            <summary>
-            Initializes a new instance of the ManagerBase class.
-            </summary>
-            <param name="persistentStorage"></param>
-        </member>
         <member name="P:ELearning.Business.Managers.ManagerBase`1.Context">
             <summary>
             Gets current data context
             </summary>
-        </member>
-        <member name="M:ELearning.Business.Managers.FormManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
-            <summary>
-            Initializes a new instance of the FormManager class.
-            </summary>
-            <param name="persistentStorage"></param>
         </member>
         <member name="P:ELearning.Business.Permissions.UserPermissions.User_CreateEdit">
             <summary>
@@ -35,12 +23,6 @@
             <summary>
             Can view list of Groups
             </summary>
-        </member>
-        <member name="M:ELearning.Business.Managers.GroupManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
-            <summary>
-            Initializes a new instance of the GroupManager class.
-            </summary>
-            <param name="persistentStorage"></param>
         </member>
         <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
             <summary>

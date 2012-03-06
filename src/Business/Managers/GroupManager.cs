@@ -15,10 +15,6 @@ namespace ELearning.Business.Managers
         private FormManager _formManager;
 
 
-        /// <summary>
-        /// Initializes a new instance of the GroupManager class.
-        /// </summary>
-        /// <param name="persistentStorage"></param>
         public GroupManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
             : base(persistentStorage, permissionsProvider)
         {
@@ -27,20 +23,6 @@ namespace ELearning.Business.Managers
         }
 
 
-        public override IQueryable<Group> GetAll()
-        {
-            // TODO Permissions
-            return base.GetAll();
-        }
-
-        public static Group GetNewGroupInstance(int id, string name, int supervisorID)
-        {
-            return Group.CreateGroup(
-                id,
-                name,
-                supervisorID
-                );
-        }
         public bool CreateGroup(string name, int supervisorID)
         {
             if (!Permissions.Group_CreateEdit)
@@ -57,11 +39,38 @@ namespace ELearning.Business.Managers
 
             return true;
         }
+
+        public override IQueryable<Group> GetAll()
+        {
+            if(Permissions.Group_List_All)
+                return base.GetAll();
+
+            return GetUserGroups();
+        }
+        public IQueryable<Group> GetUserGroups()
+        {
+            return Context.Group.Where(
+                g =>
+                    g.SupervisorID == PermissionsProvider.UserID
+                    || g.Members.Count(m => m.ID == PermissionsProvider.UserID) > 0
+                );
+        }
         public Group GetGroup(int id)
         {
-            // TODO Permissions
+            Group result = Context.Group.Where(g => g.ID == id).FirstOrDefault();
+            if (result == null)
+                throw new ArgumentException("Group not found");
 
-            return Context.Group.Where(g => g.ID == id).FirstOrDefault();
+            if (Permissions.Group_List_All)
+                return result;
+
+            if (result.SupervisorID != PermissionsProvider.UserID
+                && result.Members.Count(m => m.ID == PermissionsProvider.UserID) == 0)
+            {
+                throw new PermissionException("Group_Get");
+            }
+
+            return result;
         }
 
         public IEnumerable<User> GetPossibleMembersFor(int groupID)
@@ -75,7 +84,6 @@ namespace ELearning.Business.Managers
 
             return result;
         }
-
         public IEnumerable<Group> GetPossibleGroupsFor(int formID)
         {
             var form = _formManager.GetForm(formID);
@@ -89,13 +97,14 @@ namespace ELearning.Business.Managers
 
         public bool AssignUser(int userID, int groupID)
         {
-            // TODO Permissions
+            if (!Permissions.Group_CreateEdit)
+                throw new PermissionException("Group_CreateEdit");
+
+            var group = GetGroup(groupID);
+            var user = _userManager.GetUser(userID);
 
             try
             {
-                var group = GetGroup(groupID);
-                var user = _userManager.GetUser(userID);
-
                 group.Members.Add(user);
                 Context.SaveChanges();
             }
@@ -107,12 +116,52 @@ namespace ELearning.Business.Managers
 
             return true;
         }
-
-        public IEnumerable<Group> GetUserGroups(int userID)
+        public void SetGroupMembers(int groupID, int[] memberIDs)
         {
-            var user = _userManager.GetUser(userID);
-            var groups = GetAll().Where(g => g.Members.Contains(user));
+            if (!Permissions.Group_CreateEdit)
+                throw new PermissionException("Group_CreateEdit");
+
+            var group = GetGroup(groupID);
+
+            try
+            {
+                var memberIDsToAdd = memberIDs.ToList();
+                var membersToRemove = new List<User>();
+                foreach (var member in group.Members)
+                {
+                    if (memberIDsToAdd.Contains(member.ID))
+                        memberIDsToAdd.Remove(member.ID);
+                    else
+                        membersToRemove.Add(member);
+                }
+                foreach (User member in membersToRemove)
+                    group.Members.Remove(member);
+                foreach (var memberID in memberIDsToAdd)
+                    group.Members.Add(_userManager.GetUser(memberID));
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // TODO Log exception
+            }
+        }
+
+
+        public IEnumerable<Group> GetGroupsWhereIsMember(int userID)
+        {
+            var groups = GetAll().Where(g => g.Members.Count(m => m.ID == PermissionsProvider.UserID) > 0);
             return groups;
         }
+
+        public static Group GetNewGroupInstance(int id, string name, int supervisorID)
+        {
+            return Group.CreateGroup(
+                id,
+                name,
+                supervisorID
+                );
+        }
+
     }
 }

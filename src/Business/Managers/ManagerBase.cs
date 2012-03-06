@@ -14,6 +14,7 @@ namespace ELearning.Business.Managers
     {
         protected IPersistentStorage _persistentStorage;
 
+        protected IPermissionsProvider PermissionsProvider { get; private set; }
         protected UserPermissions Permissions { get; private set; }
 
         /// <summary>
@@ -25,18 +26,10 @@ namespace ELearning.Business.Managers
         }
 
 
-        /// <summary>
-        /// Initializes a new instance of the ManagerBase class.
-        /// </summary>
-        /// <param name="persistentStorage"></param>
-        [Obsolete]
-        public ManagerBase(IPersistentStorage persistentStorage)
-        {
-            _persistentStorage = persistentStorage;
-        }
         public ManagerBase(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
         {
             _persistentStorage = persistentStorage;
+            PermissionsProvider = permissionsProvider;
             Permissions = permissionsProvider.GetPermissions();
         }
 

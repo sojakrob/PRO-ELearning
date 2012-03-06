@@ -52,10 +52,6 @@ namespace ELearning.Business.Managers
 
 
 
-        /// <summary>
-        /// Initializes a new instance of the FormManager class.
-        /// </summary>
-        /// <param name="persistentStorage"></param>
         public FormManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
             : base(persistentStorage, permissionsProvider)
         {
@@ -68,23 +64,35 @@ namespace ELearning.Business.Managers
         }
 
 
+        public override IQueryable<Form> GetAll()
+        {
+            if(Permissions.Form_List)
+                return base.GetAll();
+
+            var user = _userManager.GetUser(PermissionsProvider.UserID);
+            var groups = _groupManager.GetUserGroups();
+
+            var forms = from g in groups
+                        from f in g.Forms
+                        select f;
+
+            if (Permissions.Form_CreateEdit)
+                forms = forms.Union(GetOwnedForms());
+
+            return forms;
+        }
         public Form GetForm(int id)
         {
-            // TODO Permissions
-            return GetSingle(f => f.ID == id);
-        }
-        public Form GetForm(string userEmail, int id)
-        {
-            User user = _userManager.GetUser(userEmail);
-            Form result = GetForm(id);
-            if (result == null)
-                throw new ArgumentException("Specified form not found");
-
-            bool isOwner = (result.AuthorID == user.ID);
-            if (!isOwner && !_userManager.GetUserPermissions(userEmail).Form_List)
-                throw new PermissionException("Form_List");
+            var result = GetSingle(f => f.ID == id);
+            if (result == null && Context.Form.Count(f => f.ID == id) > 0)
+                throw new PermissionException("Form_Get");
 
             return result;
+        }
+
+        public IQueryable<Form> GetOwnedForms()
+        {
+            return Context.Form.Where(f => f.AuthorID == PermissionsProvider.UserID);
         }
 
         public FormInstance GetFormInstance(string userEmail, int id)
@@ -137,7 +145,7 @@ namespace ELearning.Business.Managers
 
         public bool EditForm(string authorEmail, Form form)
         {
-            Form trueForm = GetForm(authorEmail, form.ID);
+            Form trueForm = GetForm(form.ID);
             
             // TODO Check edit permissions
 
@@ -166,7 +174,7 @@ namespace ELearning.Business.Managers
 
             // TODO Implement Activate & Deactivate Form
 
-            Form form = GetForm(authorEmail, id);
+            Form form = GetForm(id);
             User user = _userManager.GetUser(authorEmail);
 
             //if (form.AuthorID != user.ID && !_userManager.GetUserPermissions(authorEmail).Form_Deactivate)

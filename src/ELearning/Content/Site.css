@@ -64,6 +64,11 @@ div.clear
 	clear: both;
 }
 
+.hidden
+{
+	display: none;
+}
+
 /* Main layout
 -----------------------------------------------------------*/
 div#top
@@ -616,6 +621,15 @@ div#FormFill div.Question div.Content div.QuestionAnswer input[type=text]
 div#FormFill div#FormFillFooter
 {
 	text-align: center;
+}
+
+div#FormFill li.correct
+{
+	background-color: #3FD277;
+}
+div#FormFill li.wrong
+{
+	background-color: #D77474;
 }
 
 

@@ -69,6 +69,17 @@ namespace ELearning.Authentication
 
         #region IPermissionsProvider Members
 
+        public int UserID
+        {
+            get 
+            {
+                if (LoggedUserSession == null)
+                    return -1;
+
+                return LoggedUserSession.User.ID;
+            }
+        }
+
         public Business.Permissions.UserPermissions GetPermissions()
         {
             if (LoggedUserSession == null)

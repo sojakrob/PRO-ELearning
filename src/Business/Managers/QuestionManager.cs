@@ -69,7 +69,7 @@ namespace ELearning.Business.Managers
         }
         public bool AddQuestionGroup(string authorEmail, int formTemplateID, QuestionGroup questionGroup)
         {
-            Form form = _formManager.GetForm(authorEmail, formTemplateID);
+            Form form = _formManager.GetForm( formTemplateID);
             User author = _userManager.GetUser(authorEmail);
 
             CheckQuestionCreateEditPermission(form, author);

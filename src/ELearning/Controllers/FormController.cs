@@ -39,7 +39,7 @@ namespace ELearning.Controllers
 
         public ViewResult Details(int id)
         {
-            Form form = _formManager.GetForm(CurrentLoggedUserModel.Email, id);
+            Form form = _formManager.GetForm(id);
 
             return View(new FormModel(form));
         }
@@ -62,6 +62,8 @@ namespace ELearning.Controllers
                 int formID = _formManager.AddForm(CurrentLoggedUserModel.Email, form.ToData());
                 if (formID != -1)
                 {
+                    if (assignedGroupIDs == null)
+                        assignedGroupIDs = new int[] { };
                     _formManager.SetFormAssignedGroups(formID, assignedGroupIDs);
                     return RedirectToCreateEditQuestions(formID);
                 }
@@ -76,7 +78,7 @@ namespace ELearning.Controllers
 
         public ActionResult CreateEditQuestions(int id)
         {
-            FormModel form = new FormModel(_formManager.GetForm(CurrentLoggedUserModel.Email, id));
+            FormModel form = new FormModel(_formManager.GetForm(id));
 
             FillViewBag_CreateQuestionGroups(form);
 
@@ -98,7 +100,7 @@ namespace ELearning.Controllers
         {
             FillViewBag_Create();
 
-            Form form = _formManager.GetForm(AuthenticationContext.LoggedUserSession.Email, id);
+            Form form = _formManager.GetForm(id);
 
             return View(new NewFormModel(form, _groupManager.GetPossibleGroupsFor(id)));
         }
@@ -209,7 +211,7 @@ namespace ELearning.Controllers
 
         public ActionResult FormFills(int id)
         {
-            var form = _formManager.GetForm(CurrentLoggedUserModel.Email, id);
+            var form = _formManager.GetForm(id);
 
             return View(new FormFillsModel(form));
         }

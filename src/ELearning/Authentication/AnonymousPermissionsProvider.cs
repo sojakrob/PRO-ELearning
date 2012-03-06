@@ -10,11 +10,18 @@ namespace ELearning.Authentication
     {
         #region IPermissionsProvider Members
 
+        public int UserID
+        {
+            get { return -1; }
+        }
+
         public UserPermissions GetPermissions()
         {
             return null;
         }
 
         #endregion
+
+
     }
 }

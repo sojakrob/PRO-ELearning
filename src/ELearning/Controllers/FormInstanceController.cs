@@ -29,7 +29,7 @@ namespace ELearning.Controllers
         public ActionResult Index(int id)
         {
             ELearning.Models.FormInstancesModel model = new ELearning.Models.FormInstancesModel(
-                new FormModel(_formManager.GetForm(CurrentLoggedUserModel.Email, id)),
+                new FormModel(_formManager.GetForm(id)),
                 ModelsFromArray<FormInstance, FormInstanceModel>(_formManager.GetFormInstances(CurrentLoggedUserModel.Email, id))
                 );
 

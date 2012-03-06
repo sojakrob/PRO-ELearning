@@ -11,8 +11,10 @@ namespace ELearning.Models.Data
     {
         public int ID { get; private set; }
         public int FormID { get; private set; }
+        public ELearning.Data.Enums.FormTypes FormType { get; private set; }
         public string Text { get; private set; }
         public string HelpText { get; private set; }
+        public string Explanation { get; private set; }
         public int Index { get; private set; }
         public QuestionGroupModel TemplateGroup { get; private set; }
 
@@ -26,8 +28,10 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             FormID = data.FormInstanceID;
+            FormType = data.ParentForm.FormTemplate.TypeEnum;
             Text = data.QuestionTemplate.Text;
             HelpText = data.QuestionTemplate.HelpText;
+            Explanation = data.QuestionTemplate.Explanation;
             Index = data.QuestionTemplate.QuestionGroup.Index;
             TemplateGroup = new QuestionGroupModel(data.QuestionTemplate.QuestionGroup);
         }

@@ -7,6 +7,7 @@ namespace ELearning.Business.Permissions
 {
     public interface IPermissionsProvider
     {
+        int UserID { get; }
         UserPermissions GetPermissions();
     }
 }
