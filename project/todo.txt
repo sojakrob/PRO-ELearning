@@ -1,0 +1,22 @@
+Test (Template)
+ - smazat otazku
+ - tisk
+ - stavy - Neaktivni/Aktivni/Archivovan
+ - nahled
+ - vypsat skupiny pri editaci otazek
+
+ Otazka
+  Choice
+   - Shuffle
+
+Test (Instance)
+ - cas na vyplneni - implementovat, zobrazit
+ - ohodnoceni testu rucne - lektor, pri zobrazeni testu
+
+Google
+ - export do Docs
+ - import z Groups
+
+Lokalizace
+
+Skripta
