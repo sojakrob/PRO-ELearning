@@ -30,7 +30,7 @@ namespace ELearning.Controllers
 
         public ActionResult Index()
         {
-            var students = _userManager.GetStudents(CurrentLoggedUserModel.Email);
+            var students = _userManager.GetStudents();
             var studentModels = ModelsFromArray<User, UserModel>(students);
 
             return View(studentModels);
@@ -38,7 +38,7 @@ namespace ELearning.Controllers
 
         public ActionResult Detail(int id)
         {
-            var student = _userManager.GetStudent(CurrentLoggedUserModel.Email, id);
+            var student = _userManager.GetStudent(id);
             var filledForms = _formManager.GetFormInstances(student.Email);
 
             FillDefaultViewBag();

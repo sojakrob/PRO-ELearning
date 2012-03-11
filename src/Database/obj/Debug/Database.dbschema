@@ -138,6 +138,32 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="ISql90Table" Name="[dbo].[Answer_MultipleChoiceAnswer]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[Answer_MultipleChoiceAnswer].[ID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
 		<Element Type="ISql90Table" Name="[dbo].[Answer_ScaleAnswer]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
@@ -223,6 +249,28 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="ISql90ForeignKeyConstraint" Name="[dbo].[FK_FormFormState]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Form].[FormStateID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Form]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[FormState].[ID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[FormState]" />
+				</Entry>
+			</Relationship>
+		</Element>
 		<Element Type="ISql90ForeignKeyConstraint" Name="[dbo].[FK_FormGroup_Form]">
 			<Relationship Name="Columns">
 				<Entry>
@@ -264,6 +312,28 @@
 			<Relationship Name="ForeignTable">
 				<Entry>
 					<References Name="[dbo].[Group]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint" Name="[dbo].[FK_FormInstanceEvaluationMarkValue]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[FormInstanceEvaluation].[MarkValueID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[FormInstanceEvaluation]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[MarkValue].[ID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[MarkValue]" />
 				</Entry>
 			</Relationship>
 		</Element>
@@ -506,6 +576,72 @@
 			<Relationship Name="ForeignTable">
 				<Entry>
 					<References Name="[dbo].[Question_ChoiceQuestion]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint" Name="[dbo].[FK_MultipleChoiceAnswer_inherits_Answer]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Answer_MultipleChoiceAnswer].[ID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Answer_MultipleChoiceAnswer]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Answer].[ID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Answer]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint" Name="[dbo].[FK_MultipleChoiceAnswerItemChoiceItem]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem].[ChoiceItemID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[ChoiceItem].[ID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[ChoiceItem]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint" Name="[dbo].[FK_MultipleChoiceAnswerMultipleChoiceAnswerItem]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem].[MultipleChoiceAnswerID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Answer_MultipleChoiceAnswer].[ID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Answer_MultipleChoiceAnswer]" />
 				</Entry>
 			</Relationship>
 		</Element>
@@ -884,30 +1020,14 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISqlSimpleColumn" Name="[dbo].[Form].[IsActive]">
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[Form].[FormStateID]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="ISql90TypeSpecifier">
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[bit]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="ISqlSimpleColumn" Name="[dbo].[Form].[IsArchived]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="ISql90TypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[bit]" />
+											<References ExternalSource="BuiltIns" Name="[int]" />
 										</Entry>
 									</Relationship>
 								</Element>
@@ -919,6 +1039,24 @@
 			<Relationship Name="Owner">
 				<Entry>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90Index" Name="[dbo].[Form].[IX_FK_FormFormState]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Form].[FormStateID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[Form]" />
 				</Entry>
 			</Relationship>
 		</Element>
@@ -1214,7 +1352,7 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISqlSimpleColumn" Name="[dbo].[FormInstanceEvaluation].[Mark]">
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[FormInstanceEvaluation].[Note]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
@@ -1231,15 +1369,13 @@
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISqlSimpleColumn" Name="[dbo].[FormInstanceEvaluation].[Note]">
-						<Property Name="IsNullable" Value="False" />
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[FormInstanceEvaluation].[MarkValueID]">
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="ISql90TypeSpecifier">
-									<Property Name="IsMax" Value="True" />
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+											<References ExternalSource="BuiltIns" Name="[int]" />
 										</Entry>
 									</Relationship>
 								</Element>
@@ -1270,6 +1406,24 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="ISql90Index" Name="[dbo].[FormInstanceEvaluation].[IX_FK_FormInstanceEvaluationMarkValue]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[FormInstanceEvaluation].[MarkValueID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[FormInstanceEvaluation]" />
+				</Entry>
+			</Relationship>
+		</Element>
 		<Element Type="ISql90Index" Name="[dbo].[FormInstanceEvaluation].[IX_FK_FormInstanceFormInstanceEvaluation]">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
@@ -1285,6 +1439,50 @@
 			<Relationship Name="IndexedObject">
 				<Entry>
 					<References Name="[dbo].[FormInstanceEvaluation]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90Table" Name="[dbo].[FormState]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[FormState].[ID]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[FormState].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
 		</Element>
@@ -1612,6 +1810,145 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="ISql90Table" Name="[dbo].[MarkValue]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[MarkValue].[ID]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[MarkValue].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90Table" Name="[dbo].[MultipleChoiceAnswerItem]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[MultipleChoiceAnswerItem].[ID]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[MultipleChoiceAnswerItem].[MultipleChoiceAnswerID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISqlSimpleColumn" Name="[dbo].[MultipleChoiceAnswerItem].[ChoiceItemID]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90Index" Name="[dbo].[MultipleChoiceAnswerItem].[IX_FK_MultipleChoiceAnswerItemChoiceItem]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[MultipleChoiceAnswerItem].[ChoiceItemID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90Index" Name="[dbo].[MultipleChoiceAnswerItem].[IX_FK_MultipleChoiceAnswerMultipleChoiceAnswerItem]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[MultipleChoiceAnswerItem].[MultipleChoiceAnswerID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem]" />
+				</Entry>
+			</Relationship>
+		</Element>
 		<Element Type="ISql90PrimaryKeyConstraint" Name="[dbo].[PK_Answer]">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
@@ -1645,6 +1982,24 @@
 			<Relationship Name="DefiningTable">
 				<Entry>
 					<References Name="[dbo].[Answer_ChoiceAnswer]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90PrimaryKeyConstraint" Name="[dbo].[PK_Answer_MultipleChoiceAnswer]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Answer_MultipleChoiceAnswer].[ID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Answer_MultipleChoiceAnswer]" />
 				</Entry>
 			</Relationship>
 		</Element>
@@ -1766,6 +2121,24 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="ISql90PrimaryKeyConstraint" Name="[dbo].[PK_FormState]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[FormState].[ID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[FormState]" />
+				</Entry>
+			</Relationship>
+		</Element>
 		<Element Type="ISql90PrimaryKeyConstraint" Name="[dbo].[PK_FormType]">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
@@ -1845,6 +2218,42 @@
 			<Relationship Name="DefiningTable">
 				<Entry>
 					<References Name="[dbo].[ChoiceItem]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90PrimaryKeyConstraint" Name="[dbo].[PK_MarkValue]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[MarkValue].[ID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[MarkValue]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql90PrimaryKeyConstraint" Name="[dbo].[PK_MultipleChoiceAnswerItem]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[MultipleChoiceAnswerItem].[ID]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[MultipleChoiceAnswerItem]" />
 				</Entry>
 			</Relationship>
 		</Element>

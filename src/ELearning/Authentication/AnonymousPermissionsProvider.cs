@@ -15,12 +15,20 @@ namespace ELearning.Authentication
             get { return -1; }
         }
 
+        public Data.User User
+        {
+            get { return null; }
+        }
+
         public UserPermissions GetPermissions()
         {
             return null;
         }
 
         #endregion
+
+
+
 
 
     }

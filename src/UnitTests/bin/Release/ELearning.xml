@@ -100,12 +100,6 @@
             </summary>
             <param name="questionManager"></param>
         </member>
-        <member name="M:ELearning.Controllers.FormController.#ctor(ELearning.Business.Managers.FormManager,ELearning.Business.Managers.QuestionManager)">
-            <summary>
-            Initializes a new instance of the FormController class.
-            </summary>
-            <param name="formManager"></param>
-        </member>
         <member name="M:ELearning.Authentication.UserSession.#ctor(ELearning.Data.User)">
             <summary>
             Initializes a new instance of the UserSession class.
@@ -116,6 +110,12 @@
             Initializes a new instance of the FormInstanceController class.
             </summary>
             <param name="formManager"></param>
+        </member>
+        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
+            <summary>
+            Initializes a new instance of the NewFormModel class.
+            </summary>
+            <param name="form"></param>
         </member>
         <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
             <summary>

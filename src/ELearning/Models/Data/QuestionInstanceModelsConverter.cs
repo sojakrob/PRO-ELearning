@@ -18,7 +18,10 @@ namespace ELearning.Models.Data
 
                 if (questionType == typeof(ChoiceQuestion))
                 {
-                    result.Add(new ChoiceQuestionAnswerInstanceModel(question));
+                    if(((ChoiceQuestion)question.QuestionTemplate).QuestionGroup.TypeEnum == ELearning.Data.Enums.QuestionGroupTypes.Choice)
+                        result.Add(new ChoiceQuestionAnswerInstanceModel(question));
+                    else
+                        result.Add(new MultipleChoiceQuestionAnswerInstanceModel(question));
                 }
                 else if (questionType == typeof(ScaleQuestion))
                 {

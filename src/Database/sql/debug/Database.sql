@@ -242,16 +242,15 @@ PRINT N'Creating [dbo].[Form]...';
 
 GO
 CREATE TABLE [dbo].[Form] (
-    [ID]         INT            IDENTITY (1, 1) NOT NULL,
-    [Name]       NVARCHAR (MAX) NOT NULL,
-    [Text]       NVARCHAR (MAX) NULL,
-    [TimeToFill] INT            NULL,
-    [Shuffle]    BIT            NOT NULL,
-    [Created]    DATETIME       NOT NULL,
-    [FormTypeID] INT            NOT NULL,
-    [AuthorID]   INT            NOT NULL,
-    [IsActive]   BIT            NOT NULL,
-    [IsArchived] BIT            NOT NULL
+    [ID]          INT            IDENTITY (1, 1) NOT NULL,
+    [Name]        NVARCHAR (MAX) NOT NULL,
+    [Text]        NVARCHAR (MAX) NULL,
+    [TimeToFill]  INT            NULL,
+    [Shuffle]     BIT            NOT NULL,
+    [Created]     DATETIME       NOT NULL,
+    [FormTypeID]  INT            NOT NULL,
+    [AuthorID]    INT            NOT NULL,
+    [FormStateID] INT            NOT NULL
 );
 
 
@@ -262,6 +261,15 @@ PRINT N'Creating PK_Form...';
 GO
 ALTER TABLE [dbo].[Form]
     ADD CONSTRAINT [PK_Form] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
+PRINT N'Creating [dbo].[Form].[IX_FK_FormFormState]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_FormFormState]
+    ON [dbo].[Form]([FormStateID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
 
 
 GO
@@ -370,8 +378,8 @@ PRINT N'Creating [dbo].[FormInstanceEvaluation]...';
 GO
 CREATE TABLE [dbo].[FormInstanceEvaluation] (
     [ID]              INT            IDENTITY (1, 1) NOT NULL,
-    [Mark]            NVARCHAR (MAX) NOT NULL,
     [Note]            NVARCHAR (MAX) NOT NULL,
+    [MarkValueID]     INT            NULL,
     [FormInstance_ID] INT            NOT NULL
 );
 
@@ -386,12 +394,41 @@ ALTER TABLE [dbo].[FormInstanceEvaluation]
 
 
 GO
+PRINT N'Creating [dbo].[FormInstanceEvaluation].[IX_FK_FormInstanceEvaluationMarkValue]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_FormInstanceEvaluationMarkValue]
+    ON [dbo].[FormInstanceEvaluation]([MarkValueID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
 PRINT N'Creating [dbo].[FormInstanceEvaluation].[IX_FK_FormInstanceFormInstanceEvaluation]...';
 
 
 GO
 CREATE NONCLUSTERED INDEX [IX_FK_FormInstanceFormInstanceEvaluation]
     ON [dbo].[FormInstanceEvaluation]([FormInstance_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
+PRINT N'Creating [dbo].[FormState]...';
+
+
+GO
+CREATE TABLE [dbo].[FormState] (
+    [ID]   INT            IDENTITY (1, 1) NOT NULL,
+    [Name] NVARCHAR (MAX) NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_FormState...';
+
+
+GO
+ALTER TABLE [dbo].[FormState]
+    ADD CONSTRAINT [PK_FormState] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
 
 
 GO
@@ -505,6 +542,26 @@ PRINT N'Creating [dbo].[ChoiceItem].[IX_FK_ChoiceQuestionChoiceItem]...';
 GO
 CREATE NONCLUSTERED INDEX [IX_FK_ChoiceQuestionChoiceItem]
     ON [dbo].[ChoiceItem]([ChoiceQuestionID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
+PRINT N'Creating [dbo].[MarkValue]...';
+
+
+GO
+CREATE TABLE [dbo].[MarkValue] (
+    [ID]   INT            IDENTITY (1, 1) NOT NULL,
+    [Name] NVARCHAR (MAX) NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_MarkValue...';
+
+
+GO
+ALTER TABLE [dbo].[MarkValue]
+    ADD CONSTRAINT [PK_MarkValue] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
 
 
 GO
@@ -775,6 +832,15 @@ ALTER TABLE [dbo].[Answer_TextAnswer] WITH NOCHECK
 
 
 GO
+PRINT N'Creating FK_FormFormState...';
+
+
+GO
+ALTER TABLE [dbo].[Form] WITH NOCHECK
+    ADD CONSTRAINT [FK_FormFormState] FOREIGN KEY ([FormStateID]) REFERENCES [dbo].[FormState] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
 PRINT N'Creating FK_FormTemplateAuthor...';
 
 
@@ -835,6 +901,15 @@ PRINT N'Creating FK_UserFillingFormInstance...';
 GO
 ALTER TABLE [dbo].[FormInstance] WITH NOCHECK
     ADD CONSTRAINT [FK_UserFillingFormInstance] FOREIGN KEY ([UserFillingFormInstance_FormInstance_ID]) REFERENCES [dbo].[User] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_FormInstanceEvaluationMarkValue...';
+
+
+GO
+ALTER TABLE [dbo].[FormInstanceEvaluation] WITH NOCHECK
+    ADD CONSTRAINT [FK_FormInstanceEvaluationMarkValue] FOREIGN KEY ([MarkValueID]) REFERENCES [dbo].[MarkValue] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 GO
@@ -969,6 +1044,21 @@ INSERT INTO [dbo].[FormType] ([Name]) VALUES ('Exam')
 INSERT INTO [dbo].[FormType] ([Name]) VALUES ('TrainingTest')
 GO
 
+-- Form States
+INSERT INTO [dbo].[FormState] ([Name]) VALUES ('Inactive')
+INSERT INTO [dbo].[FormState] ([Name]) VALUES ('Active')
+INSERT INTO [dbo].[FormState] ([Name]) VALUES ('Archived')
+GO
+
+-- Mark Values
+INSERT INTO [dbo].[MarkValue] ([Name]) VALUES ('A')
+INSERT INTO [dbo].[MarkValue] ([Name]) VALUES ('B')
+INSERT INTO [dbo].[MarkValue] ([Name]) VALUES ('C')
+INSERT INTO [dbo].[MarkValue] ([Name]) VALUES ('D')
+INSERT INTO [dbo].[MarkValue] ([Name]) VALUES ('E')
+INSERT INTO [dbo].[MarkValue] ([Name]) VALUES ('F')
+GO
+
 -- QuestionGroup Types
 INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('InlineText')
 INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('MultilineText')
@@ -983,14 +1073,35 @@ INSERT INTO [dbo].[UserType] ([Name]) VALUES ('Lector')
 INSERT INTO [dbo].[UserType] ([Name]) VALUES ('Student')
 GO
 
+
 -- Users
 INSERT INTO [User]([Email], [UserTypeID], [Password], [IsActive]) 
 	VALUES ('admin@admin.admin', 1, '2f23fa3579f3f75175793649115c1b25', 1)
 INSERT INTO [User]([Email], [UserTypeID], [Password], [IsActive]) 
 	VALUES ('lector@lector.lector', 2, '2f23fa3579f3f75175793649115c1b25', 1)
 INSERT INTO [User]([Email], [UserTypeID], [Password], [IsActive]) 
-	VALUES ('student@student.student', 3, '2f23fa3579f3f75175793649115c1b25', 1)
+	VALUES ('studentA@studentA.studentA', 3, '2f23fa3579f3f75175793649115c1b25', 1)
+INSERT INTO [User]([Email], [UserTypeID], [Password], [IsActive]) 
+	VALUES ('studentB@studentB.studentB', 3, '2f23fa3579f3f75175793649115c1b25', 1)
+INSERT INTO [User]([Email], [UserTypeID], [Password], [IsActive]) 
+	VALUES ('studentL@studentL.studentL', 3, '2f23fa3579f3f75175793649115c1b25', 1)
 GO
+
+-- Groups
+INSERT INTO [Group]([Name], [SupervisorID])
+	VALUES ('Group AAA', 1)
+INSERT INTO [Group]([Name], [SupervisorID])
+	VALUES ('Group LLL', 2)
+GO
+
+
+-- Users <--> Groups
+INSERT INTO [GroupMembers]([Groups_ID], [Members_ID])
+	VALUES (1, 3)
+INSERT INTO [GroupMembers]([Groups_ID], [Members_ID])
+	VALUES (1, 4)
+INSERT INTO [GroupMembers]([Groups_ID], [Members_ID])
+	VALUES (2, 5)
 
 GO
 PRINT N'Checking existing data against newly created constraints';
@@ -1009,6 +1120,8 @@ ALTER TABLE [dbo].[Answer_ScaleAnswer] WITH CHECK CHECK CONSTRAINT [FK_ScaleAnsw
 
 ALTER TABLE [dbo].[Answer_TextAnswer] WITH CHECK CHECK CONSTRAINT [FK_TextAnswer_inherits_Answer];
 
+ALTER TABLE [dbo].[Form] WITH CHECK CHECK CONSTRAINT [FK_FormFormState];
+
 ALTER TABLE [dbo].[Form] WITH CHECK CHECK CONSTRAINT [FK_FormTemplateAuthor];
 
 ALTER TABLE [dbo].[Form] WITH CHECK CHECK CONSTRAINT [FK_FormTemplateFormType];
@@ -1022,6 +1135,8 @@ ALTER TABLE [dbo].[FormInstance] WITH CHECK CHECK CONSTRAINT [FK_FormInstanceFor
 ALTER TABLE [dbo].[FormInstance] WITH CHECK CHECK CONSTRAINT [FK_FormInstanceUser];
 
 ALTER TABLE [dbo].[FormInstance] WITH CHECK CHECK CONSTRAINT [FK_UserFillingFormInstance];
+
+ALTER TABLE [dbo].[FormInstanceEvaluation] WITH CHECK CHECK CONSTRAINT [FK_FormInstanceEvaluationMarkValue];
 
 ALTER TABLE [dbo].[FormInstanceEvaluation] WITH CHECK CHECK CONSTRAINT [FK_FormInstanceFormInstanceEvaluation];
 

@@ -11,6 +11,7 @@ using ELearning.Business.Managers;
 using ELearning.Business.Storages;
 using ELearning.Models.Data;
 using System.Web.Security;
+using ELearning.Data.Enums;
 
 namespace ELearning.Controllers
 {
@@ -34,7 +35,7 @@ namespace ELearning.Controllers
         {
             FillDefaultViewBag();
 
-            return View(ModelsFromArray<Form, FormModel>(_formManager.GetAll()));
+            return View(ModelsFromArray<Form, FormModel>(_formManager.GetNotArchivedForms()));
         }
 
         public ViewResult Details(int id)
@@ -172,7 +173,7 @@ namespace ELearning.Controllers
 
             if (correctChoices != null)
                 for (int i = 0; i < correctChoices.Length; i++)
-                    question.ChoiceItems[i].IsCorrect = true;
+                    question.ChoiceItems[correctChoices[i]].IsCorrect = true;
 
             ChoiceQuestion q = question.ToData() as ChoiceQuestion;
             q.ID = questionID;
@@ -214,6 +215,13 @@ namespace ELearning.Controllers
             var form = _formManager.GetForm(id);
 
             return View(new FormFillsModel(form));
+        }
+
+        public ActionResult ChangeState(int id, FormStates state)
+        {
+            _formManager.ChangeFormState(id, state);
+
+            return RedirectToAction("Index");
         }
 
         private void FillViewBag_Create()

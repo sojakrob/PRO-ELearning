@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 03/04/2012 10:42:03
--- Generated from EDMX file: d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
+-- Date Created: 03/11/2012 14:12:07
+-- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [db8414991a6d244d96b85a9f91000af42b];
+USE [ELearning];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -68,14 +68,32 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserFillingFormInstance]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[FormInstance] DROP CONSTRAINT [FK_UserFillingFormInstance];
 GO
+IF OBJECT_ID(N'[dbo].[FK_FormGroup_Form]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FormGroup] DROP CONSTRAINT [FK_FormGroup_Form];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FormGroup_Group]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FormGroup] DROP CONSTRAINT [FK_FormGroup_Group];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FormFormState]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Form] DROP CONSTRAINT [FK_FormFormState];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FormInstanceEvaluationMarkValue]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FormInstanceEvaluation] DROP CONSTRAINT [FK_FormInstanceEvaluationMarkValue];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MultipleChoiceAnswerChoiceAnswer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Answer_ChoiceAnswer] DROP CONSTRAINT [FK_MultipleChoiceAnswerChoiceAnswer];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceQuestion_inherits_Question]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Question_ChoiceQuestion] DROP CONSTRAINT [FK_ChoiceQuestion_inherits_Question];
 GO
-IF OBJECT_ID(N'[dbo].[FK_TextAnswer_inherits_Answer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Answer_TextAnswer] DROP CONSTRAINT [FK_TextAnswer_inherits_Answer];
+IF OBJECT_ID(N'[dbo].[FK_MultipleChoiceAnswer_inherits_Answer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Answer_MultipleChoiceAnswer] DROP CONSTRAINT [FK_MultipleChoiceAnswer_inherits_Answer];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceAnswer_inherits_Answer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answer_ChoiceAnswer] DROP CONSTRAINT [FK_ChoiceAnswer_inherits_Answer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TextAnswer_inherits_Answer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Answer_TextAnswer] DROP CONSTRAINT [FK_TextAnswer_inherits_Answer];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ScaleAnswer_inherits_Answer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answer_ScaleAnswer] DROP CONSTRAINT [FK_ScaleAnswer_inherits_Answer];
@@ -127,14 +145,23 @@ GO
 IF OBJECT_ID(N'[dbo].[ChoiceItem]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ChoiceItem];
 GO
+IF OBJECT_ID(N'[dbo].[FormState]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FormState];
+GO
+IF OBJECT_ID(N'[dbo].[MarkValue]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MarkValue];
+GO
 IF OBJECT_ID(N'[dbo].[Question_ChoiceQuestion]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Question_ChoiceQuestion];
 GO
-IF OBJECT_ID(N'[dbo].[Answer_TextAnswer]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Answer_TextAnswer];
+IF OBJECT_ID(N'[dbo].[Answer_MultipleChoiceAnswer]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Answer_MultipleChoiceAnswer];
 GO
 IF OBJECT_ID(N'[dbo].[Answer_ChoiceAnswer]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Answer_ChoiceAnswer];
+GO
+IF OBJECT_ID(N'[dbo].[Answer_TextAnswer]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Answer_TextAnswer];
 GO
 IF OBJECT_ID(N'[dbo].[Answer_ScaleAnswer]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Answer_ScaleAnswer];
@@ -144,6 +171,9 @@ IF OBJECT_ID(N'[dbo].[Question_ScaleQuestion]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[GroupMembers]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GroupMembers];
+GO
+IF OBJECT_ID(N'[dbo].[FormGroup]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FormGroup];
 GO
 
 -- --------------------------------------------------
@@ -214,8 +244,7 @@ CREATE TABLE [dbo].[Form] (
     [Created] datetime  NOT NULL,
     [FormTypeID] int  NOT NULL,
     [AuthorID] int  NOT NULL,
-    [IsActive] bit  NOT NULL,
-    [IsArchived] bit  NOT NULL
+    [FormStateID] int  NOT NULL
 );
 GO
 
@@ -250,8 +279,8 @@ GO
 -- Creating table 'FormInstanceEvaluation'
 CREATE TABLE [dbo].[FormInstanceEvaluation] (
     [ID] int IDENTITY(1,1) NOT NULL,
-    [Mark] nvarchar(max)  NOT NULL,
     [Note] nvarchar(max)  NOT NULL,
+    [MarkValueID] int  NULL,
     [FormInstance_ID] int  NOT NULL
 );
 GO
@@ -275,9 +304,37 @@ CREATE TABLE [dbo].[ChoiceItem] (
 );
 GO
 
+-- Creating table 'FormState'
+CREATE TABLE [dbo].[FormState] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'MarkValue'
+CREATE TABLE [dbo].[MarkValue] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'MultipleChoiceAnswerItem'
+CREATE TABLE [dbo].[MultipleChoiceAnswerItem] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [MultipleChoiceAnswerID] int  NOT NULL,
+    [ChoiceItemID] int  NOT NULL
+);
+GO
+
 -- Creating table 'Question_ChoiceQuestion'
 CREATE TABLE [dbo].[Question_ChoiceQuestion] (
     [Shuffle] bit  NOT NULL,
+    [ID] int  NOT NULL
+);
+GO
+
+-- Creating table 'Answer_MultipleChoiceAnswer'
+CREATE TABLE [dbo].[Answer_MultipleChoiceAnswer] (
     [ID] int  NOT NULL
 );
 GO
@@ -410,9 +467,33 @@ ADD CONSTRAINT [PK_ChoiceItem]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
+-- Creating primary key on [ID] in table 'FormState'
+ALTER TABLE [dbo].[FormState]
+ADD CONSTRAINT [PK_FormState]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'MarkValue'
+ALTER TABLE [dbo].[MarkValue]
+ADD CONSTRAINT [PK_MarkValue]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'MultipleChoiceAnswerItem'
+ALTER TABLE [dbo].[MultipleChoiceAnswerItem]
+ADD CONSTRAINT [PK_MultipleChoiceAnswerItem]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
 -- Creating primary key on [ID] in table 'Question_ChoiceQuestion'
 ALTER TABLE [dbo].[Question_ChoiceQuestion]
 ADD CONSTRAINT [PK_Question_ChoiceQuestion]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'Answer_MultipleChoiceAnswer'
+ALTER TABLE [dbo].[Answer_MultipleChoiceAnswer]
+ADD CONSTRAINT [PK_Answer_MultipleChoiceAnswer]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -712,11 +793,76 @@ ON [dbo].[FormGroup]
     ([Groups_ID]);
 GO
 
+-- Creating foreign key on [FormStateID] in table 'Form'
+ALTER TABLE [dbo].[Form]
+ADD CONSTRAINT [FK_FormFormState]
+    FOREIGN KEY ([FormStateID])
+    REFERENCES [dbo].[FormState]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FormFormState'
+CREATE INDEX [IX_FK_FormFormState]
+ON [dbo].[Form]
+    ([FormStateID]);
+GO
+
+-- Creating foreign key on [MarkValueID] in table 'FormInstanceEvaluation'
+ALTER TABLE [dbo].[FormInstanceEvaluation]
+ADD CONSTRAINT [FK_FormInstanceEvaluationMarkValue]
+    FOREIGN KEY ([MarkValueID])
+    REFERENCES [dbo].[MarkValue]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FormInstanceEvaluationMarkValue'
+CREATE INDEX [IX_FK_FormInstanceEvaluationMarkValue]
+ON [dbo].[FormInstanceEvaluation]
+    ([MarkValueID]);
+GO
+
+-- Creating foreign key on [MultipleChoiceAnswerID] in table 'MultipleChoiceAnswerItem'
+ALTER TABLE [dbo].[MultipleChoiceAnswerItem]
+ADD CONSTRAINT [FK_MultipleChoiceAnswerMultipleChoiceAnswerItem]
+    FOREIGN KEY ([MultipleChoiceAnswerID])
+    REFERENCES [dbo].[Answer_MultipleChoiceAnswer]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MultipleChoiceAnswerMultipleChoiceAnswerItem'
+CREATE INDEX [IX_FK_MultipleChoiceAnswerMultipleChoiceAnswerItem]
+ON [dbo].[MultipleChoiceAnswerItem]
+    ([MultipleChoiceAnswerID]);
+GO
+
+-- Creating foreign key on [ChoiceItemID] in table 'MultipleChoiceAnswerItem'
+ALTER TABLE [dbo].[MultipleChoiceAnswerItem]
+ADD CONSTRAINT [FK_MultipleChoiceAnswerItemChoiceItem]
+    FOREIGN KEY ([ChoiceItemID])
+    REFERENCES [dbo].[ChoiceItem]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MultipleChoiceAnswerItemChoiceItem'
+CREATE INDEX [IX_FK_MultipleChoiceAnswerItemChoiceItem]
+ON [dbo].[MultipleChoiceAnswerItem]
+    ([ChoiceItemID]);
+GO
+
 -- Creating foreign key on [ID] in table 'Question_ChoiceQuestion'
 ALTER TABLE [dbo].[Question_ChoiceQuestion]
 ADD CONSTRAINT [FK_ChoiceQuestion_inherits_Question]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Question]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [ID] in table 'Answer_MultipleChoiceAnswer'
+ALTER TABLE [dbo].[Answer_MultipleChoiceAnswer]
+ADD CONSTRAINT [FK_MultipleChoiceAnswer_inherits_Answer]
+    FOREIGN KEY ([ID])
+    REFERENCES [dbo].[Answer]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO

@@ -48,6 +48,7 @@
     <Compile Include="Managers\FormManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
     <Compile Include="Managers\ManagerBase.cs" />
+    <Compile Include="Managers\ManagersContainer.cs" />
     <Compile Include="Managers\QuestionManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Permissions\AdministratorPermissions.cs" />

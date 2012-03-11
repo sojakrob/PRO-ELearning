@@ -30,8 +30,9 @@ namespace ELearning.Unity
             IPersistentStorage storage = InitStorage();
             IPermissionsProvider permissionProvider = new WebAuthenticationContext();
 
-            var globalManagerConstructor = new InjectionConstructor(storage, new AnonymousPermissionsProvider());
-            var managerConstructor = new InjectionConstructor(storage, permissionProvider);
+            ManagersContainer managersContainer = new ManagersContainer(storage, permissionProvider);
+            var globalManagerConstructor = new InjectionConstructor(storage, managersContainer, new AnonymousPermissionsProvider());
+            var managerConstructor = new InjectionConstructor(storage, managersContainer, permissionProvider);
 
             result.RegisterType<UserManager>("Global", globalManagerConstructor);
             result.RegisterType<UserManager>(managerConstructor);

@@ -33,6 +33,7 @@ namespace ELearning.Models.Data
         public DateTime Created { get; set; }
 
         public FormTypeModel Type { get; set; }
+        public FormStateModel State { get; set; }
 
         public UserModel Author { get; set; }
 
@@ -87,6 +88,11 @@ namespace ELearning.Models.Data
             else
                 Type = new FormTypeModel(data.Type);
 
+            if (data.State == null)
+                State = new FormStateModel();
+            else
+                State = new FormStateModel(data.State);
+
             if (data.Author == null)
                 Author = new UserModel();
             else
@@ -114,7 +120,8 @@ namespace ELearning.Models.Data
                 Name,
                 Created,
                 Type == null ? 0 : Type.ID,
-                Author == null ? 0 : Author.ID
+                Author == null ? 0 : Author.ID,
+                State == null ? 0 : State.ID
                 );
             result.Text = Text;
             result.Shuffle = Shuffle;

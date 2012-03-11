@@ -88,8 +88,7 @@
           <ScalarProperty Name="Created" ColumnName="Created" />
           <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
           <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="FormStateID" ColumnName="FormStateID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -127,14 +126,19 @@
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.FormInstanceEvaluation)">
         <MappingFragment StoreEntitySet="FormInstanceEvaluation">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Mark" ColumnName="Mark" />
           <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="MarkValueID" ColumnName="MarkValueID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Answer">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.Answer)">
         <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.MultipleChoiceAnswer)">
+        <MappingFragment StoreEntitySet="Answer_MultipleChoiceAnswer">
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -167,6 +171,31 @@
           <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
           <ScalarProperty Name="Explanation" ColumnName="Explanation" />
           <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormState">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.FormState)">
+        <MappingFragment StoreEntitySet="FormState">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarkValue">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.MarkValue)">
+        <MappingFragment StoreEntitySet="MarkValue">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MultipleChoiceAnswerItem">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.MultipleChoiceAnswerItem)">
+        <MappingFragment StoreEntitySet="MultipleChoiceAnswerItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MultipleChoiceAnswerID" ColumnName="MultipleChoiceAnswerID" />
+          <ScalarProperty Name="ChoiceItemID" ColumnName="ChoiceItemID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

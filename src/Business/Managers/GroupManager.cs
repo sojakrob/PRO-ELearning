@@ -15,11 +15,11 @@ namespace ELearning.Business.Managers
         private FormManager _formManager;
 
 
-        public GroupManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
-            : base(persistentStorage, permissionsProvider)
+        public GroupManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, container,  permissionsProvider)
         {
-            _userManager = new UserManager(_persistentStorage, permissionsProvider);
-            _formManager = new FormManager(_persistentStorage, permissionsProvider);
+            _userManager = new UserManager(_persistentStorage, container, permissionsProvider);
+            _formManager = new FormManager(_persistentStorage, container, permissionsProvider);
         }
 
 

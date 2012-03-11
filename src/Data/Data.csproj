@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Enums\FormStates.cs" />
     <Compile Include="Enums\FormTypes.cs" />
     <Compile Include="Enums\QuestionGroupTypes.cs" />
     <Compile Include="Enums\UserTypes.cs" />

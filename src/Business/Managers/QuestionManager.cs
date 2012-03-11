@@ -19,7 +19,7 @@ namespace ELearning.Business.Managers
             get
             {
                 if (__formManager == null)
-                    __formManager = new FormManager(_persistentStorage, _permissionsProvider);
+                    __formManager = new FormManager(_persistentStorage, _managers, _permissionsProvider);
                 return __formManager;
             }
         }
@@ -32,11 +32,11 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the QuestionManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public QuestionManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
-            : base(persistentStorage, permissionsProvider)
+        public QuestionManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, container,  permissionsProvider)
         {
             _permissionsProvider = permissionsProvider;
-            _userManager = new UserManager(_persistentStorage, permissionsProvider);
+            _userManager = new UserManager(_persistentStorage, container, permissionsProvider);
         }
 
 

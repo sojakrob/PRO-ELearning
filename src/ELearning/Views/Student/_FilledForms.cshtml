@@ -26,6 +26,7 @@
             Filled
         </th>
         <th>
+            Mark
         </th>
     </tr>
     @foreach (var item in Model)
@@ -49,6 +50,12 @@
             </td>
             <td>
                 @item.Submited
+            </td>
+            <td>
+                @if(item.Evaluation != null && item.Evaluation.Mark != null)
+                {
+                    <span title="@item.Evaluation.Note">@item.Evaluation.Mark.Name</span>
+                }
             </td>
         </tr>
     }

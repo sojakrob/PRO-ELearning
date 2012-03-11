@@ -1,9 +1,11 @@
 Test (Template)
  - smazat otazku
  - tisk
- - stavy - Neaktivni/Aktivni/Archivovan
+ @ stavy - Neaktivni/Aktivni/Archivovan
  - nahled
  - vypsat skupiny pri editaci otazek
+ - omezeni poctu vyplneni
+ - zakazat editaci testu, ze kterych jiz byly vytvoreny instance
 
  Otazka
   Choice
@@ -18,5 +20,19 @@ Google
  - import z Groups
 
 Lokalizace
+Logovani
 
 Skripta
+
+
+8.3. 2h Stavy formularu
+10.3. 7h Znamkovani, ManagersContainer + refactoring manageru, added some permissions
+11.3. MultipleChoiceAnswer saving, ChoiceItems constrains
+
+reading http://dotnetslackers.com/articles/ado_net/Managing-Entity-Framework-ObjectContext-lifespan-and-scope-in-n-layered-ASP-NET-applications.aspx
+ http://msdn.microsoft.com/en-us/library/bb896325.aspx
+ http://msdn.microsoft.com/en-us/library/bb738523.aspx - Managing transactions
+
+
+http://geekswithblogs.net/shaunxu/archive/2010/05/06/localization-in-asp.net-mvc-ndash-3-days-investigation-1-day.aspx - Localization
+http://www.codecapers.com/post/How-to-Localize-an-ASPNET-MVC-Application.aspx

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Security;
 using System.Web;
+using ELearning.Data;
 
 namespace ELearning.Authentication
 {
@@ -24,7 +25,7 @@ namespace ELearning.Authentication
 
                 if (HttpContext.Current.Session[USER_SESSION] == null && Membership.GetUser() != null)
                     LoggedUserSession = CreateUserSession(Membership.GetUser().UserName);
-
+                
                 return (HttpContext.Current.Session[USER_SESSION] as UserSession);
             }
             private set
@@ -77,6 +78,17 @@ namespace ELearning.Authentication
                     return -1;
 
                 return LoggedUserSession.User.ID;
+            }
+        }
+
+        public User User
+        {
+            get
+            {
+                if (LoggedUserSession == null)
+                    return null;
+
+                return LoggedUserSession.User;
             }
         }
 

@@ -28,8 +28,8 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the UserManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public UserManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
-            : base(persistentStorage, permissionsProvider)
+        public UserManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, container, permissionsProvider)
         {
             
         }
@@ -207,21 +207,24 @@ namespace ELearning.Business.Managers
                 );
         }
 
-        public IQueryable<User> GetStudents(string userEmail)
+        public IQueryable<User> GetStudents()
         {
-            // TODO Check permissions
-
             string studentTypeName = UserTypes.Student.ToString();
 
-            return Context.User.Where(u => u.IsActive == true && u.Type.Name == studentTypeName);
+            var result = Context.User.Where(u => u.IsActive == true && u.Type.Name == studentTypeName);
+            if (!Permissions.User_List)
+            {
+                var groups = _managers.Get<GroupManager>().GetAll();
+                result = result.Where(u => u.Groups.Any(g => groups.Contains(g)));
+            }
+
+            return result;
         }
-        public User GetStudent(string userEmail, int studentID)
+        public User GetStudent(int studentID)
         {
-            // TODO Check permissions
-
             string studentTypeName = UserTypes.Student.ToString();
 
-            return Context.User.SingleOrDefault(u => u.IsActive == true && u.ID == studentID && u.Type.Name == studentTypeName);
+            return GetStudents().Where(u => u.ID == studentID).SingleOrDefault();
         }
 
         public IQueryable<User> GetLectors()

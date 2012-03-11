@@ -35,6 +35,10 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "ChoiceQuestionChoiceItem", "ChoiceQuestion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceQuestion), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceItem), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "UserFillingFormInstance", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.User), "FormInstance", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.FormInstance))]
 [assembly: EdmRelationshipAttribute("DataModel", "FormGroup", "Form", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Form), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Group))]
+[assembly: EdmRelationshipAttribute("DataModel", "FormFormState", "Form", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Form), "FormState", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.FormState), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FormInstanceEvaluationMarkValue", "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.FormInstanceEvaluation), "MarkValue", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.MarkValue), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.MultipleChoiceAnswer), "MultipleChoiceAnswerItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.MultipleChoiceAnswerItem), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "MultipleChoiceAnswerItemChoiceItem", "MultipleChoiceAnswerItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.MultipleChoiceAnswerItem), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceItem), true)]
 
 #endregion
 
@@ -293,6 +297,54 @@ namespace ELearning.Data
             }
         }
         private ObjectSet<ChoiceItem> _ChoiceItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FormState> FormState
+        {
+            get
+            {
+                if ((_FormState == null))
+                {
+                    _FormState = base.CreateObjectSet<FormState>("FormState");
+                }
+                return _FormState;
+            }
+        }
+        private ObjectSet<FormState> _FormState;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MarkValue> MarkValue
+        {
+            get
+            {
+                if ((_MarkValue == null))
+                {
+                    _MarkValue = base.CreateObjectSet<MarkValue>("MarkValue");
+                }
+                return _MarkValue;
+            }
+        }
+        private ObjectSet<MarkValue> _MarkValue;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MultipleChoiceAnswerItem> MultipleChoiceAnswerItem
+        {
+            get
+            {
+                if ((_MultipleChoiceAnswerItem == null))
+                {
+                    _MultipleChoiceAnswerItem = base.CreateObjectSet<MultipleChoiceAnswerItem>("MultipleChoiceAnswerItem");
+                }
+                return _MultipleChoiceAnswerItem;
+            }
+        }
+        private ObjectSet<MultipleChoiceAnswerItem> _MultipleChoiceAnswerItem;
 
         #endregion
         #region AddTo Methods
@@ -400,6 +452,30 @@ namespace ELearning.Data
         {
             base.AddObject("ChoiceItem", choiceItem);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FormState EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFormState(FormState formState)
+        {
+            base.AddObject("FormState", formState);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MarkValue EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMarkValue(MarkValue markValue)
+        {
+            base.AddObject("MarkValue", markValue);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MultipleChoiceAnswerItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMultipleChoiceAnswerItem(MultipleChoiceAnswerItem multipleChoiceAnswerItem)
+        {
+            base.AddObject("MultipleChoiceAnswerItem", multipleChoiceAnswerItem);
+        }
 
         #endregion
     }
@@ -415,6 +491,7 @@ namespace ELearning.Data
     [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Answer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
+    [KnownTypeAttribute(typeof(MultipleChoiceAnswer))]
     [KnownTypeAttribute(typeof(TextAnswer))]
     [KnownTypeAttribute(typeof(ChoiceAnswer))]
     [KnownTypeAttribute(typeof(ScaleAnswer))]
@@ -485,7 +562,8 @@ namespace ELearning.Data
         /// <param name="created">Initial value of the Created property.</param>
         /// <param name="formTypeID">Initial value of the FormTypeID property.</param>
         /// <param name="authorID">Initial value of the AuthorID property.</param>
-        public static Form CreateForm(global::System.Int32 id, global::System.String name, global::System.DateTime created, global::System.Int32 formTypeID, global::System.Int32 authorID)
+        /// <param name="formStateID">Initial value of the FormStateID property.</param>
+        public static Form CreateForm(global::System.Int32 id, global::System.String name, global::System.DateTime created, global::System.Int32 formTypeID, global::System.Int32 authorID, global::System.Int32 formStateID)
         {
             Form form = new Form();
             form.ID = id;
@@ -493,6 +571,7 @@ namespace ELearning.Data
             form.Created = created;
             form.FormTypeID = formTypeID;
             form.AuthorID = authorID;
+            form.FormStateID = formStateID;
             return form;
         }
 
@@ -699,48 +778,24 @@ namespace ELearning.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean IsActive
+        public global::System.Int32 FormStateID
         {
             get
             {
-                return _IsActive;
+                return _FormStateID;
             }
             set
             {
-                OnIsActiveChanging(value);
-                ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IsActive");
-                OnIsActiveChanged();
+                OnFormStateIDChanging(value);
+                ReportPropertyChanging("FormStateID");
+                _FormStateID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FormStateID");
+                OnFormStateIDChanged();
             }
         }
-        private global::System.Boolean _IsActive = false;
-        partial void OnIsActiveChanging(global::System.Boolean value);
-        partial void OnIsActiveChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean IsArchived
-        {
-            get
-            {
-                return _IsArchived;
-            }
-            set
-            {
-                OnIsArchivedChanging(value);
-                ReportPropertyChanging("IsArchived");
-                _IsArchived = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IsArchived");
-                OnIsArchivedChanged();
-            }
-        }
-        private global::System.Boolean _IsArchived = false;
-        partial void OnIsArchivedChanging(global::System.Boolean value);
-        partial void OnIsArchivedChanged();
+        private global::System.Int32 _FormStateID;
+        partial void OnFormStateIDChanging(global::System.Int32 value);
+        partial void OnFormStateIDChanged();
 
         #endregion
     
@@ -884,6 +939,44 @@ namespace ELearning.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("DataModel.FormGroup", "Group", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormFormState", "FormState")]
+        public FormState State
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormState>("DataModel.FormFormState", "FormState").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormState>("DataModel.FormFormState", "FormState").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FormState> StateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FormState>("DataModel.FormFormState", "FormState");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FormState>("DataModel.FormFormState", "FormState", value);
                 }
             }
         }
@@ -1227,13 +1320,11 @@ namespace ELearning.Data
         /// Create a new FormInstanceEvaluation object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="mark">Initial value of the Mark property.</param>
         /// <param name="note">Initial value of the Note property.</param>
-        public static FormInstanceEvaluation CreateFormInstanceEvaluation(global::System.Int32 id, global::System.String mark, global::System.String note)
+        public static FormInstanceEvaluation CreateFormInstanceEvaluation(global::System.Int32 id, global::System.String note)
         {
             FormInstanceEvaluation formInstanceEvaluation = new FormInstanceEvaluation();
             formInstanceEvaluation.ID = id;
-            formInstanceEvaluation.Mark = mark;
             formInstanceEvaluation.Note = note;
             return formInstanceEvaluation;
         }
@@ -1273,30 +1364,6 @@ namespace ELearning.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Mark
-        {
-            get
-            {
-                return _Mark;
-            }
-            set
-            {
-                OnMarkChanging(value);
-                ReportPropertyChanging("Mark");
-                _Mark = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Mark");
-                OnMarkChanged();
-            }
-        }
-        private global::System.String _Mark;
-        partial void OnMarkChanging(global::System.String value);
-        partial void OnMarkChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String Note
         {
             get
@@ -1315,6 +1382,30 @@ namespace ELearning.Data
         private global::System.String _Note;
         partial void OnNoteChanging(global::System.String value);
         partial void OnNoteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MarkValueID
+        {
+            get
+            {
+                return _MarkValueID;
+            }
+            set
+            {
+                OnMarkValueIDChanging(value);
+                ReportPropertyChanging("MarkValueID");
+                _MarkValueID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MarkValueID");
+                OnMarkValueIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MarkValueID;
+        partial void OnMarkValueIDChanging(Nullable<global::System.Int32> value);
+        partial void OnMarkValueIDChanged();
 
         #endregion
     
@@ -1357,8 +1448,127 @@ namespace ELearning.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FormInstanceEvaluationMarkValue", "MarkValue")]
+        public MarkValue Mark
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MarkValue>("DataModel.FormInstanceEvaluationMarkValue", "MarkValue").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MarkValue>("DataModel.FormInstanceEvaluationMarkValue", "MarkValue").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<MarkValue> MarkReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MarkValue>("DataModel.FormInstanceEvaluationMarkValue", "MarkValue");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MarkValue>("DataModel.FormInstanceEvaluationMarkValue", "MarkValue", value);
+                }
+            }
+        }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="FormState")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FormState : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FormState object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static FormState CreateFormState(global::System.Int32 id, global::System.String name)
+        {
+            FormState formState = new FormState();
+            formState.ID = id;
+            formState.Name = name;
+            return formState;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -1971,6 +2181,323 @@ namespace ELearning.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ChoiceItem>("DataModel.ChoiceQuestionChoiceItem", "ChoiceItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="MarkValue")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MarkValue : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MarkValue object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static MarkValue CreateMarkValue(global::System.Int32 id, global::System.String name)
+        {
+            MarkValue markValue = new MarkValue();
+            markValue.ID = id;
+            markValue.Name = name;
+            return markValue;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="MultipleChoiceAnswer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MultipleChoiceAnswer : Answer
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MultipleChoiceAnswer object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static MultipleChoiceAnswer CreateMultipleChoiceAnswer(global::System.Int32 id)
+        {
+            MultipleChoiceAnswer multipleChoiceAnswer = new MultipleChoiceAnswer();
+            multipleChoiceAnswer.ID = id;
+            return multipleChoiceAnswer;
+        }
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswerItem")]
+        public EntityCollection<MultipleChoiceAnswerItem> Items
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MultipleChoiceAnswerItem>("DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswerItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MultipleChoiceAnswerItem>("DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswerItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="MultipleChoiceAnswerItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MultipleChoiceAnswerItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MultipleChoiceAnswerItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="multipleChoiceAnswerID">Initial value of the MultipleChoiceAnswerID property.</param>
+        /// <param name="choiceItemID">Initial value of the ChoiceItemID property.</param>
+        public static MultipleChoiceAnswerItem CreateMultipleChoiceAnswerItem(global::System.Int32 id, global::System.Int32 multipleChoiceAnswerID, global::System.Int32 choiceItemID)
+        {
+            MultipleChoiceAnswerItem multipleChoiceAnswerItem = new MultipleChoiceAnswerItem();
+            multipleChoiceAnswerItem.ID = id;
+            multipleChoiceAnswerItem.MultipleChoiceAnswerID = multipleChoiceAnswerID;
+            multipleChoiceAnswerItem.ChoiceItemID = choiceItemID;
+            return multipleChoiceAnswerItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 MultipleChoiceAnswerID
+        {
+            get
+            {
+                return _MultipleChoiceAnswerID;
+            }
+            set
+            {
+                OnMultipleChoiceAnswerIDChanging(value);
+                ReportPropertyChanging("MultipleChoiceAnswerID");
+                _MultipleChoiceAnswerID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MultipleChoiceAnswerID");
+                OnMultipleChoiceAnswerIDChanged();
+            }
+        }
+        private global::System.Int32 _MultipleChoiceAnswerID;
+        partial void OnMultipleChoiceAnswerIDChanging(global::System.Int32 value);
+        partial void OnMultipleChoiceAnswerIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ChoiceItemID
+        {
+            get
+            {
+                return _ChoiceItemID;
+            }
+            set
+            {
+                OnChoiceItemIDChanging(value);
+                ReportPropertyChanging("ChoiceItemID");
+                _ChoiceItemID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ChoiceItemID");
+                OnChoiceItemIDChanged();
+            }
+        }
+        private global::System.Int32 _ChoiceItemID;
+        partial void OnChoiceItemIDChanging(global::System.Int32 value);
+        partial void OnChoiceItemIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer")]
+        public MultipleChoiceAnswer ParentAnswer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MultipleChoiceAnswer>("DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MultipleChoiceAnswer>("DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<MultipleChoiceAnswer> ParentAnswerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MultipleChoiceAnswer>("DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MultipleChoiceAnswer>("DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "MultipleChoiceAnswerItemChoiceItem", "ChoiceItem")]
+        public ChoiceItem ChoiceItemTemplate
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ChoiceItem>("DataModel.MultipleChoiceAnswerItemChoiceItem", "ChoiceItem").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ChoiceItem>("DataModel.MultipleChoiceAnswerItemChoiceItem", "ChoiceItem").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ChoiceItem> ChoiceItemTemplateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ChoiceItem>("DataModel.MultipleChoiceAnswerItemChoiceItem", "ChoiceItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ChoiceItem>("DataModel.MultipleChoiceAnswerItemChoiceItem", "ChoiceItem", value);
                 }
             }
         }

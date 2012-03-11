@@ -35,7 +35,7 @@
             Gets singleton instance
             </summary>
         </member>
-        <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
+        <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.ManagersContainer,ELearning.Business.Permissions.IPermissionsProvider)">
             <summary>
             Initializes a new instance of the UserManager class.
             </summary>
@@ -88,7 +88,7 @@
             <param name="user"></param>
             <returns></returns>
         </member>
-        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Permissions.IPermissionsProvider)">
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.ManagersContainer,ELearning.Business.Permissions.IPermissionsProvider)">
             <summary>
             Initializes a new instance of the QuestionManager class.
             </summary>

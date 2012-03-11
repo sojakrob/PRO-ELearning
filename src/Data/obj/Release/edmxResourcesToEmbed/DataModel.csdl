@@ -82,6 +82,25 @@
       <End Role="Form" EntitySet="Form" />
       <End Role="Group" EntitySet="Group" />
     </AssociationSet>
+    <EntitySet Name="FormState" EntityType="DataModel.FormState" />
+    <AssociationSet Name="FormFormState" Association="DataModel.FormFormState">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormState" EntitySet="FormState" />
+    </AssociationSet>
+    <EntitySet Name="MarkValue" EntityType="DataModel.MarkValue" />
+    <AssociationSet Name="FormInstanceEvaluationMarkValue" Association="DataModel.FormInstanceEvaluationMarkValue">
+      <End Role="FormInstanceEvaluation" EntitySet="FormInstanceEvaluation" />
+      <End Role="MarkValue" EntitySet="MarkValue" />
+    </AssociationSet>
+    <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.MultipleChoiceAnswerItem" />
+    <AssociationSet Name="MultipleChoiceAnswerMultipleChoiceAnswerItem" Association="DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem">
+      <End Role="MultipleChoiceAnswer" EntitySet="Answer" />
+      <End Role="MultipleChoiceAnswerItem" EntitySet="MultipleChoiceAnswerItem" />
+    </AssociationSet>
+    <AssociationSet Name="MultipleChoiceAnswerItemChoiceItem" Association="DataModel.MultipleChoiceAnswerItemChoiceItem">
+      <End Role="MultipleChoiceAnswerItem" EntitySet="MultipleChoiceAnswerItem" />
+      <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
     <Key>
@@ -216,8 +235,8 @@
     <NavigationProperty Name="QuestionGroups" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="FormTemplate" ToRole="QuestionGroup" />
     <NavigationProperty Name="FormInstances" Relationship="DataModel.FormInstanceFormTemplate" FromRole="FormTemplate" ToRole="FormInstance" cg:SetterAccess="Private" />
     <NavigationProperty Name="Groups" Relationship="DataModel.FormGroup" FromRole="Form" ToRole="Group" />
-    <Property Type="Boolean" Name="IsActive" Nullable="false" DefaultValue="False" />
-    <Property Type="Boolean" Name="IsArchived" Nullable="false" DefaultValue="False" />
+    <NavigationProperty Name="State" Relationship="DataModel.FormFormState" FromRole="Form" ToRole="FormState" />
+    <Property Type="Int32" Name="FormStateID" Nullable="false" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -342,9 +361,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Mark" Nullable="false" />
     <Property Type="String" Name="Note" Nullable="false" />
     <NavigationProperty Name="FormInstance" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstanceEvaluation" ToRole="FormInstance" />
+    <NavigationProperty Name="Mark" Relationship="DataModel.FormInstanceEvaluationMarkValue" FromRole="FormInstanceEvaluation" ToRole="MarkValue" />
+    <Property Type="Int32" Name="MarkValueID" Nullable="true" />
   </EntityType>
   <Association Name="FormInstanceFormInstanceEvaluation">
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="1" />
@@ -411,5 +431,80 @@
   <Association Name="FormGroup">
     <End Type="DataModel.Form" Role="Form" Multiplicity="*" />
     <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+  </Association>
+  <EntityType Name="FormState">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </EntityType>
+  <Association Name="FormFormState">
+    <End Type="DataModel.Form" Role="Form" Multiplicity="*" />
+    <End Type="DataModel.FormState" Role="FormState" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="FormState">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Form">
+        <PropertyRef Name="FormStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MarkValue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+  </EntityType>
+  <Association Name="FormInstanceEvaluationMarkValue">
+    <End Type="DataModel.FormInstanceEvaluation" Role="FormInstanceEvaluation" Multiplicity="*" />
+    <End Type="DataModel.MarkValue" Role="MarkValue" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MarkValue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FormInstanceEvaluation">
+        <PropertyRef Name="MarkValueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MultipleChoiceAnswer" BaseType="DataModel.Answer">
+    <NavigationProperty Name="Items" Relationship="DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem" FromRole="MultipleChoiceAnswer" ToRole="MultipleChoiceAnswerItem" />
+  </EntityType>
+  <EntityType Name="MultipleChoiceAnswerItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ParentAnswer" Relationship="DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem" FromRole="MultipleChoiceAnswerItem" ToRole="MultipleChoiceAnswer" />
+    <Property Type="Int32" Name="MultipleChoiceAnswerID" Nullable="false" />
+    <NavigationProperty Name="ChoiceItemTemplate" Relationship="DataModel.MultipleChoiceAnswerItemChoiceItem" FromRole="MultipleChoiceAnswerItem" ToRole="ChoiceItem" />
+    <Property Type="Int32" Name="ChoiceItemID" Nullable="false" />
+  </EntityType>
+  <Association Name="MultipleChoiceAnswerMultipleChoiceAnswerItem">
+    <End Type="DataModel.MultipleChoiceAnswer" Role="MultipleChoiceAnswer" Multiplicity="1" />
+    <End Type="DataModel.MultipleChoiceAnswerItem" Role="MultipleChoiceAnswerItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MultipleChoiceAnswer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MultipleChoiceAnswerItem">
+        <PropertyRef Name="MultipleChoiceAnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MultipleChoiceAnswerItemChoiceItem">
+    <End Type="DataModel.MultipleChoiceAnswerItem" Role="MultipleChoiceAnswerItem" Multiplicity="*" />
+    <End Type="DataModel.ChoiceItem" Role="ChoiceItem" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MultipleChoiceAnswerItem">
+        <PropertyRef Name="ChoiceItemID" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

@@ -1,0 +1,102 @@
+11.3.2012 13:33:25	This log contains information about the import operation of the script 'DataModel.edmx.sql' into project 'Database' on computer 'MBPC' by user'Mr.Bobby.
+11.3.2012 13:33:25	Started importing file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx.sql 
+11.3.2012 13:33:25	File name D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx.sql (size: 27953)
+11.3.2012 13:33:25	Parsing import script
+11.3.2012 13:33:25	Total number of batches in script: 126
+11.3.2012 13:33:25	Total number of statements in script: 145
+11.3.2012 13:33:25	The script was successfully imported into the project.
+11.3.2012 13:33:25	Analyzing schema objects...
+11.3.2012 13:33:25	Scanning project for duplicate elements
+11.3.2012 13:33:25	Element 'FK_ScaleQuestion_inherits_Question' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_SCALEQUESTION_INHERITS_QUESTION.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_ScaleAnswer_inherits_Answer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_SCALEANSWER_INHERITS_ANSWER.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_TextAnswer_inherits_Answer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_TEXTANSWER_INHERITS_ANSWER.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_ChoiceAnswer_inherits_Answer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_CHOICEANSWER_INHERITS_ANSWER.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_ChoiceQuestion_inherits_Question' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_CHOICEQUESTION_INHERITS_QUESTION.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormInstanceEvaluationMarkValue' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMINSTANCEEVALUATIONMARKVALUE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormFormState' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMFORMSTATE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormGroup_Group' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMGROUP_GROUP.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormGroup_Form' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMGROUP_FORM.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_UserFillingFormInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_USERFILLINGFORMINSTANCE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_ChoiceQuestionChoiceItem' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_CHOICEQUESTIONCHOICEITEM.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_QuestionInstanceAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_QUESTIONINSTANCEANSWER.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormInstanceFormInstanceEvaluation' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMINSTANCEFORMINSTANCEEVALUATION.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormInstanceQuestionInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMINSTANCEQUESTIONINSTANCE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_QuestionInstanceQuestionTemplate' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_QUESTIONINSTANCEQUESTIONTEMPLATE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormInstanceFormTemplate' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMINSTANCEFORMTEMPLATE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormInstanceUser' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMINSTANCEUSER.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_QuestionGroupFormTemplate' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_QUESTIONGROUPFORMTEMPLATE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormTemplateAuthor' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMTEMPLATEAUTHOR.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_FormTemplateFormType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_FORMTEMPLATEFORMTYPE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_UserUserType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_USERUSERTYPE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_GroupMembers_User' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_GROUPMEMBERS_USER.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_GroupMembers_Group' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_GROUPMEMBERS_GROUP.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_Supervisor' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_SUPERVISOR.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_QuestionGroupQuestionGroupType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_QUESTIONGROUPQUESTIONGROUPTYPE.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'FK_QuestionGroupQuestion' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FK_QUESTIONGROUPQUESTION.FKEY.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormInstanceEvaluationMarkValue' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMINSTANCEEVALUATIONMARKVALUE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormFormState' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMFORMSTATE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormGroup_Group' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMGROUP_GROUP.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_UserFillingFormInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_USERFILLINGFORMINSTANCE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_ChoiceQuestionChoiceItem' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_CHOICEQUESTIONCHOICEITEM.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_QuestionInstanceAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_QUESTIONINSTANCEANSWER.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormInstanceFormInstanceEvaluation' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMINSTANCEFORMINSTANCEEVALUATION.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormInstanceQuestionInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMINSTANCEQUESTIONINSTANCE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_QuestionInstanceQuestionTemplate' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_QUESTIONINSTANCEQUESTIONTEMPLATE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormInstanceFormTemplate' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMINSTANCEFORMTEMPLATE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormInstanceUser' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMINSTANCEUSER.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_QuestionGroupFormTemplate' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_QUESTIONGROUPFORMTEMPLATE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormTemplateAuthor' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMTEMPLATEAUTHOR.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_FormTemplateFormType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_FORMTEMPLATEFORMTYPE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_UserUserType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_USERUSERTYPE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_GroupMembers_User' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_GROUPMEMBERS_USER.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_Supervisor' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_SUPERVISOR.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_QuestionGroupQuestionGroupType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_QUESTIONGROUPQUESTIONGROUPTYPE.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'IX_FK_QuestionGroupQuestion' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\IX_FK_QUESTIONGROUPQUESTION.INDEX.SQL'.
+11.3.2012 13:33:25	Element 'PK_FormGroup' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_FORMGROUP.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_GroupMembers' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_GROUPMEMBERS.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Question_ScaleQuestion' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_QUESTION_SCALEQUESTION.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Answer_ScaleAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_ANSWER_SCALEANSWER.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Answer_TextAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_ANSWER_TEXTANSWER.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Answer_ChoiceAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_ANSWER_CHOICEANSWER.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Question_ChoiceQuestion' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_QUESTION_CHOICEQUESTION.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_MarkValue' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_MARKVALUE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_FormState' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_FORMSTATE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_ChoiceItem' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_CHOICEITEM.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Answer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_ANSWER.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_FormInstanceEvaluation' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_FORMINSTANCEEVALUATION.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_QuestionInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_QUESTIONINSTANCE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_FormInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_FORMINSTANCE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_FormType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_FORMTYPE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Form' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_FORM.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_UserType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_USERTYPE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Group' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_GROUP.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_User' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_USER.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_QuestionGroupType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_QUESTIONGROUPTYPE.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_QuestionGroup' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_QUESTIONGROUP.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'PK_Question' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\PK_QUESTION.PKEY.SQL'.
+11.3.2012 13:33:25	Element 'FormGroup' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FORMGROUP.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'GroupMembers' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\GROUPMEMBERS.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Question_ScaleQuestion' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\QUESTION_SCALEQUESTION.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Answer_ScaleAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\ANSWER_SCALEANSWER.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Answer_TextAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\ANSWER_TEXTANSWER.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Answer_ChoiceAnswer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\ANSWER_CHOICEANSWER.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Question_ChoiceQuestion' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\QUESTION_CHOICEQUESTION.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'MarkValue' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\MARKVALUE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'FormState' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FORMSTATE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'ChoiceItem' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\CHOICEITEM.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Answer' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\ANSWER.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'FormInstanceEvaluation' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FORMINSTANCEEVALUATION.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'QuestionInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\QUESTIONINSTANCE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'FormInstance' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FORMINSTANCE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'FormType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FORMTYPE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Form' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\FORM.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'UserType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\USERTYPE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Group' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\GROUP.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'User' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\USER.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'QuestionGroupType' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\QUESTIONGROUPTYPE.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'QuestionGroup' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\QUESTIONGROUP.TABLE.SQL'.
+11.3.2012 13:33:25	Element 'Question' was merged into the existing script: 'D:\_MB\SCHOOL\FEL\PREDMETY\A7B36PRO\ELEARNING\SRC\DATABASE\QUESTION.TABLE.SQL'.
+11.3.2012 13:33:25	Finished duplicate element processing
+11.3.2012 13:33:25	In the script that you provided to the import operation, one or more statements were not fully understood. These statements were moved to the D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\Scripts\ScriptsIgnoredOnImport.sql file. Review the file contents for additional information.
+11.3.2012 13:33:25	A summary of the import operation was saved to the log file D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\Import Script Logs\DataModel_edmx_sql_20120311123325.log.
+11.3.2012 13:33:25	Click Finish to continue...

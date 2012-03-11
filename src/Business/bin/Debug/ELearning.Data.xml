@@ -9,7 +9,7 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:ELearning.Data.Form.CreateForm(System.Int32,System.String,System.DateTime,System.Int32,System.Int32)">
+        <member name="M:ELearning.Data.Form.CreateForm(System.Int32,System.String,System.DateTime,System.Int32,System.Int32,System.Int32)">
             <summary>
             Create a new Form object.
             </summary>
@@ -18,6 +18,7 @@
             <param name="created">Initial value of the Created property.</param>
             <param name="formTypeID">Initial value of the FormTypeID property.</param>
             <param name="authorID">Initial value of the AuthorID property.</param>
+            <param name="formStateID">Initial value of the FormStateID property.</param>
         </member>
         <member name="P:ELearning.Data.Form.ID">
             <summary>
@@ -59,12 +60,7 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.Form.IsActive">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Form.IsArchived">
+        <member name="P:ELearning.Data.Form.FormStateID">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -100,6 +96,16 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.Form.Groups">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.State">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.StateReference">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -253,6 +259,21 @@
             Deprecated Method for adding a new object to the ChoiceItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormState(ELearning.Data.FormState)">
+            <summary>
+            Deprecated Method for adding a new object to the FormState EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToMarkValue(ELearning.Data.MarkValue)">
+            <summary>
+            Deprecated Method for adding a new object to the MarkValue EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToMultipleChoiceAnswerItem(ELearning.Data.MultipleChoiceAnswerItem)">
+            <summary>
+            Deprecated Method for adding a new object to the MultipleChoiceAnswerItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
         <member name="P:ELearning.Data.DataModelContainer.Question">
             <summary>
             No Metadata Documentation available.
@@ -314,6 +335,21 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.DataModelContainer.ChoiceItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormState">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.MarkValue">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.MultipleChoiceAnswerItem">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -419,12 +455,11 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:ELearning.Data.FormInstanceEvaluation.CreateFormInstanceEvaluation(System.Int32,System.String,System.String)">
+        <member name="M:ELearning.Data.FormInstanceEvaluation.CreateFormInstanceEvaluation(System.Int32,System.String)">
             <summary>
             Create a new FormInstanceEvaluation object.
             </summary>
             <param name="id">Initial value of the ID property.</param>
-            <param name="mark">Initial value of the Mark property.</param>
             <param name="note">Initial value of the Note property.</param>
         </member>
         <member name="P:ELearning.Data.FormInstanceEvaluation.ID">
@@ -432,12 +467,12 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.FormInstanceEvaluation.Mark">
+        <member name="P:ELearning.Data.FormInstanceEvaluation.Note">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:ELearning.Data.FormInstanceEvaluation.Note">
+        <member name="P:ELearning.Data.FormInstanceEvaluation.MarkValueID">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -448,6 +483,38 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.FormInstanceEvaluation.FormInstanceReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.Mark">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormInstanceEvaluation.MarkReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.FormState">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.FormState.CreateFormState(System.Int32,System.String)">
+            <summary>
+            Create a new FormState object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+        </member>
+        <member name="P:ELearning.Data.FormState.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.FormState.Name">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -662,6 +729,92 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.ChoiceQuestion.ChoiceItems">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.MarkValue">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.MarkValue.CreateMarkValue(System.Int32,System.String)">
+            <summary>
+            Create a new MarkValue object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+        </member>
+        <member name="P:ELearning.Data.MarkValue.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MarkValue.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.MultipleChoiceAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.MultipleChoiceAnswer.CreateMultipleChoiceAnswer(System.Int32)">
+            <summary>
+            Create a new MultipleChoiceAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswer.Items">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.MultipleChoiceAnswerItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.MultipleChoiceAnswerItem.CreateMultipleChoiceAnswerItem(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create a new MultipleChoiceAnswerItem object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="multipleChoiceAnswerID">Initial value of the MultipleChoiceAnswerID property.</param>
+            <param name="choiceItemID">Initial value of the ChoiceItemID property.</param>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.MultipleChoiceAnswerID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ChoiceItemID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ParentAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ParentAnswerReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ChoiceItemTemplate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ChoiceItemTemplateReference">
             <summary>
             No Metadata Documentation available.
             </summary>

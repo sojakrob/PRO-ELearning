@@ -14,8 +14,11 @@ namespace ELearning.Business.Managers
     {
         protected IPersistentStorage _persistentStorage;
 
+        protected ManagersContainer _managers;
+
         protected IPermissionsProvider PermissionsProvider { get; private set; }
         protected UserPermissions Permissions { get; private set; }
+
 
         /// <summary>
         /// Gets current data context
@@ -26,9 +29,17 @@ namespace ELearning.Business.Managers
         }
 
 
-        public ManagerBase(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
+        public ManagerBase(
+            IPersistentStorage persistentStorage,
+            ManagersContainer container, 
+            IPermissionsProvider permissionsProvider
+            )
         {
             _persistentStorage = persistentStorage;
+
+            _managers = container;
+            _managers.Register(this);
+
             PermissionsProvider = permissionsProvider;
             Permissions = permissionsProvider.GetPermissions();
         }

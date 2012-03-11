@@ -32,6 +32,8 @@
         </th>
         <th>
         </th>
+        <th>
+        </th>
     </tr>
     @foreach (var item in Model)
     {
@@ -72,11 +74,26 @@
             {
                 <td></td>
             }
-            <td>        
+            <td>
+                @if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit_All
+                    || ViewBag.CurrentUserModel.ID == item.Author.ID)
+                {
+                    switch (item.State.Enum)
+                    {
+                        case ELearning.Data.Enums.FormStates.Active:
+                            @Html.ButtonLink("Deactivate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
+                            break;
+                        case ELearning.Data.Enums.FormStates.Inactive:
+                            @Html.ButtonLink("Activate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
+                            break;
+                    }
+                }
+            </td>
+            <td>       
                 @if (ViewBag.CurrentUserModel.Permissions.Form_Delete
                     || ViewBag.CurrentUserModel.ID == item.Author.ID)
                 {
-                    @Html.ButtonLink("Activate", "Activate", new { id = item.ID })
+                    @Html.ButtonLink("X", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Archived })
                 }
             </td>
         </tr>

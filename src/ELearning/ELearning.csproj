@@ -102,7 +102,11 @@
     <Compile Include="Models\Data\ChoiceQuestionInstanceModel.cs" />
     <Compile Include="Models\Data\ChoiceQuestionModel.cs" />
     <Compile Include="Models\Data\DataModelBase.cs" />
+    <Compile Include="Models\Data\FormInstanceEvaluationModel.cs" />
+    <Compile Include="Models\Data\FormStateModel.cs" />
     <Compile Include="Models\Data\List.cs" />
+    <Compile Include="Models\Data\MarkValueModel.cs" />
+    <Compile Include="Models\Data\MultipleChoiceQuestionAnswerInstanceModel.cs" />
     <Compile Include="Models\Data\NewFormModel.cs" />
     <Compile Include="Models\Data\NewUserModel.cs" />
     <Compile Include="Models\EditGroupModel.cs" />
@@ -377,6 +381,7 @@
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Group\_CreateOrEdit.cshtml" />
     <Content Include="Views\Group\Edit.cshtml" />
+    <Content Include="Views\FormInstance\Questions\_FillQuestion_MultipleChoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FormInstance\Index.cshtml" />

@@ -6,6 +6,7 @@ using ELearning.Data;
 using ELearning.Business.Storages;
 using ELearning.Business.Exceptions;
 using ELearning.Business.Permissions;
+using ELearning.Data.Enums;
 
 namespace ELearning.Business.Managers
 {
@@ -44,7 +45,7 @@ namespace ELearning.Business.Managers
             get
             {
                 if (__groupManager == null)
-                    __groupManager = new GroupManager(_persistentStorage, _permissionsProvider);
+                    __groupManager = new GroupManager(_persistentStorage, _managers, _permissionsProvider);
                 return __groupManager;
             }
         }
@@ -52,13 +53,13 @@ namespace ELearning.Business.Managers
 
 
 
-        public FormManager(IPersistentStorage persistentStorage, IPermissionsProvider permissionsProvider)
-            : base(persistentStorage, permissionsProvider)
+        public FormManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+            : base(persistentStorage, container,  permissionsProvider)
         {
             _permissionsProvider = permissionsProvider;
 
-            _userManager = new UserManager(_persistentStorage, permissionsProvider);
-            _questionManager = new QuestionManager(_persistentStorage, permissionsProvider);
+            _userManager = new UserManager(_persistentStorage, container, permissionsProvider);
+            _questionManager = new QuestionManager(_persistentStorage, container,  permissionsProvider);
 
             _random = new Random(Environment.TickCount);
         }
@@ -77,10 +78,23 @@ namespace ELearning.Business.Managers
                         select f;
 
             if (Permissions.Form_CreateEdit)
+            {
                 forms = forms.Union(GetOwnedForms());
+            }
+            else
+            {
+                string activeState = FormStates.Active.ToString();
+                forms = forms.Where(f => f.State.Name == activeState);
+            }
 
             return forms;
         }
+        public IQueryable<Form> GetNotArchivedForms()
+        {
+            string archivedState = FormStates.Archived.ToString();
+            return GetAll().Where(f => f.State.Name != archivedState);
+        }
+
         public Form GetForm(int id)
         {
             var result = GetSingle(f => f.ID == id);
@@ -95,10 +109,20 @@ namespace ELearning.Business.Managers
             return Context.Form.Where(f => f.AuthorID == PermissionsProvider.UserID);
         }
 
-        public FormInstance GetFormInstance(string userEmail, int id)
+        public FormInstance GetFormInstance(int id)
         {
-            // TODO Permissions
-            int userID = _userManager.GetUser(userEmail).ID;
+            var result = Context.FormInstance.Single(f => f.ID == id);
+            if (result == null)
+                throw new ArgumentException("FormInstance not found");
+
+            if (!Permissions.Form_List
+                && result.SolverID != PermissionsProvider.UserID
+                )
+            {
+                 var groups = _managers.Get<GroupManager>().GetAll().ToList();
+                 if (PermissionsProvider.User.TypeEnum == UserTypes.Student || !result.FormTemplate.Groups.Any(g => groups.Contains(g)))
+                    throw new PermissionException("Form_List");
+            }
 
             return Context.FormInstance.SingleOrDefault(f => f.ID == id);
         }
@@ -128,6 +152,9 @@ namespace ELearning.Business.Managers
 
             form.AuthorID = author.ID;
             form.Created = DateTime.Now;
+
+            string stateString = FormStates.Inactive.ToString();
+            form.State = GetFormStates().Where(s => s.Name == stateString).FirstOrDefault();
 
             try
             {
@@ -168,25 +195,34 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        public bool DeactivateForm(string authorEmail, int id)
+        public bool ChangeFormState(int id, FormStates state)
         {
-            throw new NotImplementedException();
+            var form = GetForm(id);
+            if(form == null)
+                throw new ArgumentException("Form not found");
 
-            // TODO Implement Activate & Deactivate Form
+            if (form.AuthorID != PermissionsProvider.UserID && !Permissions.Form_CreateEdit_All)
+                throw new PermissionException("Form_CreateEdit");
 
-            Form form = GetForm(id);
-            User user = _userManager.GetUser(authorEmail);
+            string stateString = state.ToString();
+            var stateObject = GetFormStates().Where(s => s.Name == stateString).FirstOrDefault();
+            if (stateObject == null)
+                throw new ApplicationException("FormState not found in DB");
 
-            //if (form.AuthorID != user.ID && !_userManager.GetUserPermissions(authorEmail).Form_Deactivate)
-            //    throw new PermissionException("Form_Deactivate");
+            try
+            {
+                form.State = stateObject;
 
-            //form.IsActive = false;
-
-            Context.SaveChanges();
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // TODO Log exception
+                return false;
+            }
 
             return true;
         }
-
         public void SetFormAssignedGroups(int formID, int[] groupIDs)
         {
             var groupIDsToAdd = groupIDs.ToList();
@@ -215,7 +251,14 @@ namespace ELearning.Business.Managers
 
             return formInstance;
         }
+        public FormInstance GetUserFillingFormInstance(string userEmail)
+        {
+            var user = _userManager.GetUser(userEmail);
+            if (user.FillingForm == null)
+                return null;
 
+            return GetFormInstance(user.FillingForm.Value);
+        }
         public void EndFormInstanceFilling(string userEmail, int formID)
         {
             var user = _userManager.GetUser(userEmail);
@@ -226,13 +269,37 @@ namespace ELearning.Business.Managers
             Context.SaveChanges();
         }
 
-        public FormInstance GetUserFillingFormInstance(string userEmail)
+        public bool EvaluateFormInstance(int formInstanceID, FormInstanceEvaluation newEvaluation)
         {
-            var user = _userManager.GetUser(userEmail);
-            if (user.FillingForm == null)
-                return null;
+            if (newEvaluation == null)
+                throw new ArgumentNullException("Evaluation");
 
-            return GetFormInstance(userEmail, user.FillingForm.Value);
+            var form = GetFormInstance(formInstanceID);
+
+            try
+            {
+                var evaluation = form.Evaluation;
+                if (evaluation == null)
+                {
+                    evaluation = FormInstanceEvaluation.CreateFormInstanceEvaluation(DEFAULT_ID, newEvaluation.Note);
+
+                    Context.FormInstanceEvaluation.AddObject(evaluation);
+                }
+
+                evaluation.Note = newEvaluation.Note;
+                evaluation.MarkValueID = newEvaluation.MarkValueID;
+
+                form.Evaluation = evaluation;
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // Log exception
+                return false;
+            }
+
+            return true;
         }
 
         public FormInstance GenerateNewFormInstance(User user, int formID)
@@ -307,11 +374,9 @@ namespace ELearning.Business.Managers
             if (question.Answer != null)
                 throw new ApplicationException("Question already has answer");
 
-            // TODO Choice Question: Check if entered index exists in the questions etc.
-
             Context.Answer.AddObject(answer);
             question.Answer = answer;
-            
+
             Context.SaveChanges();
 
             return true;
@@ -329,6 +394,18 @@ namespace ELearning.Business.Managers
         {
             return ChoiceAnswer.CreateChoiceAnswer(DEFAULT_ID, index);
         }
+        public MultipleChoiceAnswer CreateNewMultipleChoiceAnswer(int[] indices)
+        {
+            var result = MultipleChoiceAnswer.CreateMultipleChoiceAnswer(DEFAULT_ID);
+            for (int i = 0; i < indices.Length; i++)
+                result.Items.Add(CreateNewMultipleChoiceAnswerItem(indices[i], result.ID));	
+
+            return result;
+        }
+        private MultipleChoiceAnswerItem CreateNewMultipleChoiceAnswerItem(int index, int parentID)
+        {
+            return MultipleChoiceAnswerItem.CreateMultipleChoiceAnswerItem(DEFAULT_ID, parentID, index);
+        }
         public Answer CreateNewScaleAnswer(int value)
         {
             return ScaleAnswer.CreateScaleAnswer(DEFAULT_ID, value);   
@@ -338,6 +415,14 @@ namespace ELearning.Business.Managers
         public IQueryable<FormType> GetFormTypes()
         {
             return Context.FormType;
+        }
+        public IQueryable<FormState> GetFormStates()
+        {
+            return Context.FormState;
+        }
+        public IQueryable<MarkValue> GetMarkValues()
+        {
+            return Context.MarkValue;
         }
         public IQueryable<QuestionGroupType> GetQuestionGroupTypes()
         {
@@ -354,6 +439,13 @@ namespace ELearning.Business.Managers
                 currentDateTime,
                 userID,
                 formID
+                );
+        }
+        public static FormInstanceEvaluation CreateNewFormEvaluation()
+        {
+            return FormInstanceEvaluation.CreateFormInstanceEvaluation(
+                DEFAULT_ID,
+                string.Empty
                 );
         }
     }

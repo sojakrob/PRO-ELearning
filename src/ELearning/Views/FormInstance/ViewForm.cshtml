@@ -41,15 +41,67 @@
                 i++;
             }
             <div id="FormFillFooter">
-                <input 
-                    class="Button" 
-                    type="button"
-                    title="Close this window"
-                    value="Close"
-                    onclick="window.close()"
-                    />
+                <input class="Button" type="button" title="Close this window" value="Close" onclick="window.close()" />
             </div>
         }
     </div>
+    @{
+        bool evaluated = Model.Evaluation != null;
+    }
+    @if (evaluated || ViewBag.CurrentUserModel.Type != ELearning.Data.Enums.UserTypes.Student)
+    {
+        <div id="FormEvaluation">
+            @using (Html.BeginForm("Evaluate", "FormInstance", new { id = Model.ID }))
+            {
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Student)
+                    {
+                        <h3>
+                            @Html.Raw(Model.Evaluation.Mark.Name)
+                        </h3>
+                        <p>Note</p>
+                            
+                        @Html.Raw(Model.Evaluation.Note)
+                    }
+                    else
+                    {
+                        if (!evaluated)
+                        {
+                            Model.Evaluation = new ELearning.Models.Data.FormInstanceEvaluationModel();
+                        }
+                        bool markSpecified = Model.Evaluation.Mark != null;
+                        if (!markSpecified)
+                        {
+                            Model.Evaluation.Mark = new ELearning.Models.Data.MarkValueModel();
+                        }
+
+
+                        var markValuesAttrs = new Dictionary<string, object>();
+                        markValuesAttrs.Add("id", "markValues");
+                        <label for="markValues">
+                            Mark</label>
+                        @Html.DropDownListFor(
+                        id => Model.Evaluation.Mark.ID,
+                        new SelectList(((ICollection<ELearning.Models.Data.MarkValueModel>)ViewBag.MarkValues), "ID", "Name", markSpecified ? Model.Evaluation.Mark.ID : ViewBag.DefaultMark),
+                        markValuesAttrs
+                        )
+                    
+                        @Html.LabelFor(n => Model.Evaluation.Note)
+                        @Html.EditorFor(n => Model.Evaluation.Note)
+
+                        if (!evaluated)
+                        {
+                        <input type="submit" class="Button" value="Evaluate" />
+                        }
+                        else
+                        {
+                        <input type="submit" class="Button" value="Change evaluation" />
+                        }
+                    }
+                </fieldset>
+            }
+        </div>
+    }
 </body>
 </html>

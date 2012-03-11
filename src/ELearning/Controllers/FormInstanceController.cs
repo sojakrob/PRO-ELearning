@@ -80,7 +80,7 @@ namespace ELearning.Controllers
         {
             bool result = true;
 
-            var form = _formManager.GetFormInstance(CurrentLoggedUserModel.Email, formInstanceID);
+            var form = _formManager.GetFormInstance(formInstanceID);
 
             foreach (QuestionInstance question in form.Questions)
             {
@@ -97,6 +97,10 @@ namespace ELearning.Controllers
 
                             case QuestionGroupTypes.Choice:
                                 answer = _formManager.CreateNewChoiceAnswer(GetChoiceQuestionAnswer(question));
+                                break;
+
+                            case QuestionGroupTypes.MultipleChoice:
+                                answer = _formManager.CreateNewMultipleChoiceAnswer(GetMultipleChoiceQuestionAnswer(question));
                                 break;
 
                             case QuestionGroupTypes.Scale:
@@ -131,6 +135,15 @@ namespace ELearning.Controllers
         {
             return int.Parse(Request.Params[string.Format("Q{0}", question.ID)]);
         }
+        private int[] GetMultipleChoiceQuestionAnswer(QuestionInstance question)
+        {
+            string[] values = Request.Params.GetValues(string.Format("Q{0}", question.ID));
+            int[] result = new int[values.Length];
+            for (int i = 0; i < result.Length; i++)
+            	result[i] = int.Parse(values[i]);
+
+            return result;
+        }
         private int GetScaleQuestionAnswer(QuestionInstance question)
         {
             return int.Parse(Request.Params[string.Format("Q{0}", question.ID)]);
@@ -138,15 +151,40 @@ namespace ELearning.Controllers
 
         public ActionResult ViewForm(int id)
         {
-            FillDefaultViewBag();
+            FillViewBag_ViewForm();
 
-            var form = _formManager.GetFormInstance(CurrentLoggedUserModel.Email, id);
+            var form = _formManager.GetFormInstance(id);
 
             FormInstanceModel formModel = null;
             if (form != null)
                 formModel = new FormInstanceModel(form);
 
             return View(formModel);
+        }
+
+        [HttpPost]
+        public ActionResult Evaluate(int id, FormInstanceEvaluationModel evaluation)
+        {
+            if(ModelState.IsValid)
+            {
+                _formManager.EvaluateFormInstance(id, evaluation.ToData());
+            }
+            
+            return RedirectToAction("ViewForm", new { id = id });
+        }
+
+        private void FillViewBag_ViewForm()
+        {
+            FillDefaultViewBag();
+
+            if (CurrentLoggedUserModel.Type != UserTypes.Student)
+            {
+                var nullMark = new MarkValueModel().ToData();
+                ViewBag.DefaultMark = nullMark.ID;
+                var markValues = _formManager.GetMarkValues().ToList();
+                markValues.Insert(0, nullMark);
+                ViewBag.MarkValues = ModelsFromArray<MarkValue, MarkValueModel>(markValues);
+            }
         }
     }
 }
