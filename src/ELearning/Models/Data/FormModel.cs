@@ -108,8 +108,8 @@ namespace ELearning.Models.Data
 
         private void CountTimesFilled(Form data)
         {
-            TimesFilled_Total = data.FormInstances.Count;
-            TimesFilled_Users = data.FormInstances.GroupBy(f => f.SolverID).Count();
+            TimesFilled_Total = data.FormInstances.Count(f => !f.IsPreview);
+            TimesFilled_Users = data.FormInstances.Where(f => !f.IsPreview).GroupBy(f => f.SolverID).Count();
         }
 
 

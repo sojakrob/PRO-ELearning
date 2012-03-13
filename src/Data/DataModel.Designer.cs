@@ -39,6 +39,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "FormInstanceEvaluationMarkValue", "FormInstanceEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.FormInstanceEvaluation), "MarkValue", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ELearning.Data.MarkValue), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.MultipleChoiceAnswer), "MultipleChoiceAnswerItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.MultipleChoiceAnswerItem), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "MultipleChoiceAnswerItemChoiceItem", "MultipleChoiceAnswerItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.MultipleChoiceAnswerItem), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceItem), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "ChoiceAnswerChoiceItem", "ChoiceAnswer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceAnswer), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceItem), true)]
 
 #endregion
 
@@ -492,8 +493,8 @@ namespace ELearning.Data
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     [KnownTypeAttribute(typeof(MultipleChoiceAnswer))]
-    [KnownTypeAttribute(typeof(TextAnswer))]
     [KnownTypeAttribute(typeof(ChoiceAnswer))]
+    [KnownTypeAttribute(typeof(TextAnswer))]
     [KnownTypeAttribute(typeof(ScaleAnswer))]
     public partial class Answer : EntityObject
     {
@@ -1162,6 +1163,30 @@ namespace ELearning.Data
         private Nullable<global::System.Int32> _EvaluationID;
         partial void OnEvaluationIDChanging(Nullable<global::System.Int32> value);
         partial void OnEvaluationIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsPreview
+        {
+            get
+            {
+                return _IsPreview;
+            }
+            set
+            {
+                OnIsPreviewChanging(value);
+                ReportPropertyChanging("IsPreview");
+                _IsPreview = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsPreview");
+                OnIsPreviewChanged();
+            }
+        }
+        private global::System.Boolean _IsPreview = false;
+        partial void OnIsPreviewChanging(global::System.Boolean value);
+        partial void OnIsPreviewChanged();
 
         #endregion
     
@@ -1896,6 +1921,47 @@ namespace ELearning.Data
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "ChoiceAnswerChoiceItem", "ChoiceItem")]
+        public ChoiceItem ChoiceItemTemplate
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ChoiceItem>("DataModel.ChoiceAnswerChoiceItem", "ChoiceItem").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ChoiceItem>("DataModel.ChoiceAnswerChoiceItem", "ChoiceItem").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ChoiceItem> ChoiceItemTemplateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ChoiceItem>("DataModel.ChoiceAnswerChoiceItem", "ChoiceItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ChoiceItem>("DataModel.ChoiceAnswerChoiceItem", "ChoiceItem", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

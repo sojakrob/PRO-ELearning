@@ -415,6 +415,11 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:ELearning.Data.FormInstance.IsPreview">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="P:ELearning.Data.FormInstance.Solver">
             <summary>
             No Metadata Documentation available.
@@ -602,6 +607,16 @@
             <param name="itemID">Initial value of the ItemID property.</param>
         </member>
         <member name="P:ELearning.Data.ChoiceAnswer.ItemID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplateReference">
             <summary>
             No Metadata Documentation available.
             </summary>

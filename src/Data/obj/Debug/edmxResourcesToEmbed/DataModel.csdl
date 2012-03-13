@@ -101,6 +101,10 @@
       <End Role="MultipleChoiceAnswerItem" EntitySet="MultipleChoiceAnswerItem" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <AssociationSet Name="ChoiceAnswerChoiceItem" Association="DataModel.ChoiceAnswerChoiceItem">
+      <End Role="ChoiceAnswer" EntitySet="Answer" />
+      <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
     <Key>
@@ -295,6 +299,7 @@
     <NavigationProperty Name="Questions" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="FormInstance" ToRole="QuestionInstance" />
     <NavigationProperty Name="Evaluation" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstance" ToRole="FormInstanceEvaluation" />
     <Property Type="Int32" Name="EvaluationID" Nullable="true" />
+    <Property Type="Boolean" Name="IsPreview" Nullable="false" DefaultValue="False" />
   </EntityType>
   <Association Name="FormInstanceUser">
     <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
@@ -384,6 +389,7 @@
     <Property Type="String" Name="Text" Nullable="false" />
   </EntityType>
   <EntityType Name="ChoiceAnswer" BaseType="DataModel.Answer">
+    <NavigationProperty Name="ChoiceItemTemplate" Relationship="DataModel.ChoiceAnswerChoiceItem" FromRole="ChoiceAnswer" ToRole="ChoiceItem" />
     <Property Type="Int32" Name="ItemID" Nullable="false" />
   </EntityType>
   <EntityType Name="ScaleAnswer" BaseType="DataModel.Answer">
@@ -504,6 +510,18 @@
       </Principal>
       <Dependent Role="MultipleChoiceAnswerItem">
         <PropertyRef Name="ChoiceItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChoiceAnswerChoiceItem">
+    <End Type="DataModel.ChoiceAnswer" Role="ChoiceAnswer" Multiplicity="*" />
+    <End Type="DataModel.ChoiceItem" Role="ChoiceItem" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceAnswer">
+        <PropertyRef Name="ItemID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -632,6 +632,35 @@ div#FormFill li.wrong
 	background-color: #D77474;
 }
 
+div#FormFill div#WindowHeader
+{
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+}
+div#FormFill div#WindowHeader div#TimeCounter
+{
+	width: 150px;
+	height: 35px;
+	float:right;
+	margin-right: 50px;
+	background-color: #0B5FA5;
+	color: white;
+	border: 2px solid #91C0E8;
+	border-top: none;
+	text-align: center;
+}
+div#FormFill div#WindowHeader div#TimeCounter div#Time
+{
+	display: inline-block;
+	font-size: 25px;
+	margin: auto;
+}
+div#FormFill div#WindowHeader div#TimeCounter.warning
+{
+	background-color: #D77474;
+}
 
 /* Controls
 ------------------------------------------------------------*/

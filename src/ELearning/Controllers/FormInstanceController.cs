@@ -38,7 +38,7 @@ namespace ELearning.Controllers
 
         public ActionResult StartForm(int id)
         {
-            var fillingForm = _formManager.GetUserFillingFormInstance(CurrentLoggedUserModel.Email);
+            var fillingForm = _formManager.GetUserFillingFormInstanceWhileCheckingTime();
             if (fillingForm == null)
                 _formManager.GenerateNewFormInstanceAndStartFilling(CurrentLoggedUserModel.Email, id);
 
@@ -47,7 +47,7 @@ namespace ELearning.Controllers
 
         public ActionResult FillingInProgress(bool? openWindow)
         {
-            var fillingForm = _formManager.GetUserFillingFormInstance(CurrentLoggedUserModel.Email);
+            var fillingForm = _formManager.GetUserFillingFormInstanceWhileCheckingTime();
             if (fillingForm == null)
                 return RedirectToHome();
 
@@ -61,7 +61,7 @@ namespace ELearning.Controllers
 
         public ActionResult FillForm(int id)
         {
-            var fillingForm = _formManager.GetUserFillingFormInstance(CurrentLoggedUserModel.Email);
+            var fillingForm = _formManager.GetUserFillingFormInstanceWhileCheckingTime();
 
             FormInstanceModel formModel = null;
             if (fillingForm != null)
@@ -119,7 +119,7 @@ namespace ELearning.Controllers
                     result = false;
                 }
             }
-            _formManager.EndFormInstanceFilling(CurrentLoggedUserModel.Email, form.ID);
+            _formManager.EndFormInstanceFilling(form.ID);
 
             return result;
         }

@@ -1,4 +1,6 @@
 ﻿-- Creating table 'User'
+-- Creating table 'User'
+-- Creating table 'User'
 CREATE TABLE [dbo].[User] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Email] nvarchar(max)  NOT NULL,
@@ -7,5 +9,11 @@ CREATE TABLE [dbo].[User] (
     [IsActive] bit  NOT NULL,
     [FillingForm] int  NULL
 );
+
+
+
+
+
+
 
 

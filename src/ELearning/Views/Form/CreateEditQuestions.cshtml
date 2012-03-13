@@ -19,6 +19,9 @@
                 <div class="column" id="clmnTimeToFill">@Model.TimeToFill</div>
             }
             <div class="column">@Html.ButtonLink("Edit", "Edit", new { id = Model.ID})</div>
+            <div class="column">
+                @Html.ButtonJSClick("Show Preview", "Preview", string.Format("showPreview({0});", Model.ID))
+            </div>
             <div class="clear"></div>
         </div>
         <p>@Model.Text</p>

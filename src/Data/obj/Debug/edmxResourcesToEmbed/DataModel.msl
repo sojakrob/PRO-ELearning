@@ -109,6 +109,7 @@
           <ScalarProperty Name="SolverID" ColumnName="SolverID" />
           <ScalarProperty Name="FormTemplateID" ColumnName="FormTemplateID" />
           <ScalarProperty Name="EvaluationID" ColumnName="EvaluationID" />
+          <ScalarProperty Name="IsPreview" ColumnName="IsPreview" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -142,16 +143,16 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextAnswer)">
-        <MappingFragment StoreEntitySet="Answer_TextAnswer">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-        </MappingFragment>
-      </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.ChoiceAnswer)">
         <MappingFragment StoreEntitySet="Answer_ChoiceAnswer">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextAnswer)">
+        <MappingFragment StoreEntitySet="Answer_TextAnswer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.ScaleAnswer)">

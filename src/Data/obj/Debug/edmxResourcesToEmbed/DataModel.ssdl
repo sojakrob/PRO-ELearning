@@ -19,8 +19,8 @@
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Answer_TextAnswer" EntityType="DataModel.Store.Answer_TextAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answer_TextAnswer" EntityType="DataModel.Store.Answer_TextAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ScaleAnswer" EntityType="DataModel.Store.Answer_ScaleAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
@@ -117,6 +117,10 @@
       <End Role="MultipleChoiceAnswerItem" EntitySet="MultipleChoiceAnswerItem" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <AssociationSet Name="ChoiceAnswerChoiceItem" Association="DataModel.Store.ChoiceAnswerChoiceItem">
+      <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
+      <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
       <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
@@ -125,13 +129,13 @@
       <End Role="Answer" EntitySet="Answer" />
       <End Role="MultipleChoiceAnswer" EntitySet="Answer_MultipleChoiceAnswer" />
     </AssociationSet>
-    <AssociationSet Name="FK_TextAnswer_inherits_Answer" Association="DataModel.Store.FK_TextAnswer_inherits_Answer">
-      <End Role="Answer" EntitySet="Answer" />
-      <End Role="TextAnswer" EntitySet="Answer_TextAnswer" />
-    </AssociationSet>
     <AssociationSet Name="FK_ChoiceAnswer_inherits_Answer" Association="DataModel.Store.FK_ChoiceAnswer_inherits_Answer">
       <End Role="Answer" EntitySet="Answer" />
       <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextAnswer_inherits_Answer" Association="DataModel.Store.FK_TextAnswer_inherits_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="TextAnswer" EntitySet="Answer_TextAnswer" />
     </AssociationSet>
     <AssociationSet Name="FK_ScaleAnswer_inherits_Answer" Association="DataModel.Store.FK_ScaleAnswer_inherits_Answer">
       <End Role="Answer" EntitySet="Answer" />
@@ -227,6 +231,7 @@
     <Property Name="SolverID" Type="int" Nullable="false" />
     <Property Name="FormTemplateID" Type="int" Nullable="false" />
     <Property Name="EvaluationID" Type="int" Nullable="true" />
+    <Property Name="IsPreview" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="UserFillingFormInstance_FormInstance_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="QuestionInstance">
@@ -301,18 +306,18 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Answer_TextAnswer">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ID" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Answer_ChoiceAnswer">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ItemID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer_TextAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answer_ScaleAnswer">
@@ -577,6 +582,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ChoiceAnswerChoiceItem">
+    <End Role="ChoiceAnswer" Type="DataModel.Store.Answer_ChoiceAnswer" Multiplicity="*" />
+    <End Role="ChoiceItem" Type="DataModel.Store.ChoiceItem" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceAnswer">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -649,18 +666,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TextAnswer_inherits_Answer">
-    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
-    <End Role="TextAnswer" Type="DataModel.Store.Answer_TextAnswer" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Answer">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TextAnswer">
-        <PropertyRef Name="ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ChoiceAnswer_inherits_Answer">
     <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
     <End Role="ChoiceAnswer" Type="DataModel.Store.Answer_ChoiceAnswer" Multiplicity="0..1" />
@@ -669,6 +674,18 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="ChoiceAnswer">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextAnswer_inherits_Answer">
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="TextAnswer" Type="DataModel.Store.Answer_TextAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextAnswer">
         <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>

@@ -197,6 +197,15 @@ ALTER TABLE [dbo].[Answer_ChoiceAnswer]
 
 
 GO
+PRINT N'Creating [dbo].[Answer_ChoiceAnswer].[IX_FK_ChoiceAnswerChoiceItem]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_ChoiceAnswerChoiceItem]
+    ON [dbo].[Answer_ChoiceAnswer]([ItemID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
 PRINT N'Creating [dbo].[Answer_MultipleChoiceAnswer]...';
 
 
@@ -350,6 +359,7 @@ CREATE TABLE [dbo].[FormInstance] (
     [SolverID]                                INT      NOT NULL,
     [FormTemplateID]                          INT      NOT NULL,
     [EvaluationID]                            INT      NULL,
+    [IsPreview]                               BIT      NOT NULL,
     [UserFillingFormInstance_FormInstance_ID] INT      NULL
 );
 
@@ -872,6 +882,15 @@ ALTER TABLE [dbo].[Answer_ChoiceAnswer] WITH NOCHECK
 
 
 GO
+PRINT N'Creating FK_ChoiceAnswerChoiceItem...';
+
+
+GO
+ALTER TABLE [dbo].[Answer_ChoiceAnswer] WITH NOCHECK
+    ADD CONSTRAINT [FK_ChoiceAnswerChoiceItem] FOREIGN KEY ([ItemID]) REFERENCES [dbo].[ChoiceItem] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
 PRINT N'Creating FK_MultipleChoiceAnswer_inherits_Answer...';
 
 
@@ -1200,6 +1219,8 @@ GO
 ALTER TABLE [dbo].[Answer] WITH CHECK CHECK CONSTRAINT [FK_QuestionInstanceAnswer];
 
 ALTER TABLE [dbo].[Answer_ChoiceAnswer] WITH CHECK CHECK CONSTRAINT [FK_ChoiceAnswer_inherits_Answer];
+
+ALTER TABLE [dbo].[Answer_ChoiceAnswer] WITH CHECK CHECK CONSTRAINT [FK_ChoiceAnswerChoiceItem];
 
 ALTER TABLE [dbo].[Answer_MultipleChoiceAnswer] WITH CHECK CHECK CONSTRAINT [FK_MultipleChoiceAnswer_inherits_Answer];
 

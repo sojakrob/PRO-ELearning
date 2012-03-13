@@ -16,6 +16,12 @@ function toggleHideAllQuestionContent() {
     $('div.Question div.Content').toggle(false);
 }
 
+
+function showPreview(formID) {
+    window.open('/Form/ShowPreview/' + formID, '_blank', 'width=800, toolbar=0, resizable=1, scrollbars=1, menubar=0');
+}
+
+
 $(document).ready(function () {
     var textAreasAutoSized = $('div.autosized textarea');
     textAreasAutoSized.each(function (i, area) { autoSizeTextArea(area); });

@@ -23,7 +23,7 @@ namespace ELearning.Models
         public FormFillsModel(Form data)
             : base(data)
         {
-            FormInstances = DataModelBase<FormInstance>.CreateFromArray<FormInstanceFillModel>(data.FormInstances);
+            FormInstances = DataModelBase<FormInstance>.CreateFromArray<FormInstanceFillModel>(data.FormInstances.Where(f => !f.IsPreview));
         }
         
 

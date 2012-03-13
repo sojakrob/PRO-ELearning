@@ -219,9 +219,19 @@ namespace ELearning.Controllers
 
         public ActionResult ChangeState(int id, FormStates state)
         {
-            _formManager.ChangeFormState(id, state);
+            _formManager.ChangeFormStateAndDeletePreviews(id, state);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ShowPreview(int? id)
+        {
+            if (id == null)
+                return RedirectToHome();
+
+            var previewInstance = _formManager.GenerateAndSaveNewFormInstancePreview(id.Value);
+
+            return RedirectToAction("ViewForm", "FormInstance", new { id = previewInstance.ID });
         }
 
         private void FillViewBag_Create()

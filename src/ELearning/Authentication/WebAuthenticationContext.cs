@@ -87,8 +87,7 @@ namespace ELearning.Authentication
             {
                 if (LoggedUserSession == null)
                     return null;
-
-                return LoggedUserSession.User;
+                return ((ELearningMembershipUser)Membership.GetUser(LoggedUserSession.User.Email)).User;
             }
         }
 

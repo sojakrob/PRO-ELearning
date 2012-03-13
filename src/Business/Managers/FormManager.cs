@@ -14,6 +14,8 @@ namespace ELearning.Business.Managers
     {
         private const int DEFAULT_ID = 0;
 
+        private const int TIMEDFORM_SAFE_SECONDS = 5;
+
 
         private Random _random;
 
@@ -115,6 +117,9 @@ namespace ELearning.Business.Managers
             if (result == null)
                 throw new ArgumentException("FormInstance not found");
 
+            if (result.IsPreview && result.SolverID != PermissionsProvider.UserID)
+                throw new PermissionException("", "Form_AllPreviews");
+
             if (!Permissions.Form_List
                 && result.SolverID != PermissionsProvider.UserID
                 )
@@ -124,14 +129,14 @@ namespace ELearning.Business.Managers
                     throw new PermissionException("Form_List");
             }
 
-            return Context.FormInstance.SingleOrDefault(f => f.ID == id);
+            return result;
         }
-        public List<FormInstance> GetFormInstances(string userEmail, int id)
+        public List<FormInstance> GetFormInstances(string userEmail, int formID)
         {
             // TODO Permissions
             int userID = _userManager.GetUser(userEmail).ID;
 
-            return Context.FormInstance.Where(i => i.FormTemplateID == id && i.SolverID == userID).ToList();
+            return Context.FormInstance.Where(i => i.FormTemplateID == formID && i.SolverID == userID && !i.IsPreview).ToList();
         }
 
         public List<FormInstance> GetFormInstances(string userEmail)
@@ -139,7 +144,7 @@ namespace ELearning.Business.Managers
             // TODO Permissions
             int userID = _userManager.GetUser(userEmail).ID;
 
-            return Context.FormInstance.Where(i => i.SolverID == userID).ToList();
+            return Context.FormInstance.Where(i => i.SolverID == userID && !i.IsPreview).ToList();
         }
 
 
@@ -195,10 +200,10 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        public bool ChangeFormState(int id, FormStates state)
+        public bool ChangeFormStateAndDeletePreviews(int id, FormStates state)
         {
             var form = GetForm(id);
-            if(form == null)
+            if (form == null)
                 throw new ArgumentException("Form not found");
 
             if (form.AuthorID != PermissionsProvider.UserID && !Permissions.Form_CreateEdit_All)
@@ -209,6 +214,7 @@ namespace ELearning.Business.Managers
             if (stateObject == null)
                 throw new ApplicationException("FormState not found in DB");
 
+            bool result = true;
             try
             {
                 form.State = stateObject;
@@ -218,11 +224,33 @@ namespace ELearning.Business.Managers
             catch (Exception ex)
             {
                 // TODO Log exception
-                return false;
+                result = false;
             }
 
-            return true;
+            try
+            {
+                IEnumerable<FormInstance> previews = GetFormPreviews(id).ToArray();
+                foreach (var preview in previews)
+                {
+                    DeleteFormInstance(preview);
+                }
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // TODO Log exception
+                result = false;
+            }
+
+            return result;
         }
+
+        private IEnumerable<FormInstance> GetFormPreviews(int formID)
+        {
+            return GetForm(formID).FormInstances.Where(f => f.IsPreview);
+        }
+
         public void SetFormAssignedGroups(int formID, int[] groupIDs)
         {
             var groupIDsToAdd = groupIDs.ToList();
@@ -244,29 +272,49 @@ namespace ELearning.Business.Managers
         {
             User user = _userManager.GetUser(userEmail);
 
-            var formInstance = GenerateNewFormInstance(user, formID);
+            var formInstance = GenerateAndSaveNewFormInstance(formID);
 
             user.FillingForm = formInstance.ID;
             Context.SaveChanges();
 
             return formInstance;
         }
-        public FormInstance GetUserFillingFormInstance(string userEmail)
+        public FormInstance GetUserFillingFormInstanceWhileCheckingTime()
         {
-            var user = _userManager.GetUser(userEmail);
-            if (user.FillingForm == null)
+            if (PermissionsProvider.User.FillingForm == null)
                 return null;
 
-            return GetFormInstance(user.FillingForm.Value);
+            var formInstance = GetFormInstance(PermissionsProvider.User.FillingForm.Value);
+            if (IsFormInstanceCurrentlyOvertime(formInstance))
+            {
+                EndFormInstanceFilling(PermissionsProvider.User.FillingForm.Value);
+                return null;
+            }
+
+            return formInstance;
         }
-        public void EndFormInstanceFilling(string userEmail, int formID)
+        public void EndFormInstanceFilling(int formID)
         {
-            var user = _userManager.GetUser(userEmail);
+            var user = PermissionsProvider.User;
             if (user.FillingForm == null || user.FillingForm.Value != formID)
                 throw new ApplicationException("Cannot end filling of form which has not been filling");
 
             user.FillingForm = null;
             Context.SaveChanges();
+        }
+
+        private bool IsFormInstanceCurrentlyOvertime(FormInstance formInstance)
+        {
+            if(formInstance == null)
+                throw new ArgumentException("FormInstance is null");
+            if(formInstance.FormTemplate.TimeToFill == null)
+                return false;
+
+            var lastEndTime = formInstance.Created.AddMinutes(formInstance.FormTemplate.TimeToFill.Value).AddSeconds(TIMEDFORM_SAFE_SECONDS);
+            if (lastEndTime < DateTime.Now)
+                return true;
+
+            return false;
         }
 
         public bool EvaluateFormInstance(int formInstanceID, FormInstanceEvaluation newEvaluation)
@@ -302,18 +350,28 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        public FormInstance GenerateNewFormInstance(User user, int formID)
+        public FormInstance GenerateAndSaveNewFormInstance(int formID, bool isPreview = false)
         {
-            FormInstance formInstance = CreateNewFormInstance(user.ID, formID);
+            var form = GetForm(formID);
+            if (form == null)
+                throw new ArgumentException("Form not found");
+
+            FormInstance formInstance = CreateNewFormInstance(PermissionsProvider.UserID, formID);
+            formInstance.IsPreview = isPreview;
 
             Context.FormInstance.AddObject(formInstance);
             Context.SaveChanges();
 
-            GenerateQuestionsForFormInstance(formInstance);
+            GenerateAndSaveQuestionsForFormInstance(formInstance);
 
             return formInstance;
         }
-        private bool GenerateQuestionsForFormInstance(FormInstance formInstance)
+        public FormInstance GenerateAndSaveNewFormInstancePreview(int formID)
+        {
+            return GenerateAndSaveNewFormInstance(formID, true);
+        }
+
+        private bool GenerateAndSaveQuestionsForFormInstance(FormInstance formInstance)
         {
             ICollection<QuestionGroup> questionGroups = formInstance.FormTemplate.QuestionGroups;
 
@@ -357,13 +415,13 @@ namespace ELearning.Business.Managers
             // TODO Permissions
             User user = _userManager.GetUser(userEmail);
 
-            var userFillingFormInstance = GetUserFillingFormInstance(userEmail);
+            var userFillingFormInstance = GetUserFillingFormInstanceWhileCheckingTime();
             if (userFillingFormInstance == null || userFillingFormInstance.ID != formInstanceID)
                 return false;
 
             // TODO If IsRequired check it is filled in
 
-            var form = Context.FormInstance.SingleOrDefault(f => f.ID == formInstanceID);
+            var form = Context.FormInstance.SingleOrDefault(f => f.ID == formInstanceID && !f.IsPreview);
             if (form == null)
                 throw new ArgumentException("Specified form not exists");
 
@@ -411,6 +469,36 @@ namespace ELearning.Business.Managers
             return ScaleAnswer.CreateScaleAnswer(DEFAULT_ID, value);   
         }
 
+
+        public bool DeleteFormInstance(int id)
+        {
+            return DeleteFormInstance(Context.FormInstance.SingleOrDefault(f => f.ID == id));
+        }
+        private bool DeleteFormInstance(FormInstance form)
+        {
+            // TODO Permissions
+            if (!form.IsPreview && !Permissions.Form_Delete)
+                throw new PermissionException("Form_Delete");
+
+            try
+            {
+                foreach (var question in form.Questions)
+                {
+                    Context.QuestionInstance.DeleteObject(question);
+                }
+
+                Context.FormInstance.DeleteObject(form);
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // TODO Log exception
+                return false;
+            }
+
+            return true;
+        }
 
         public IQueryable<FormType> GetFormTypes()
         {

@@ -24,8 +24,8 @@
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Answer_TextAnswer" EntityType="DataModel.Store.Answer_TextAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answer_TextAnswer" EntityType="DataModel.Store.Answer_TextAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ScaleAnswer" EntityType="DataModel.Store.Answer_ScaleAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
@@ -122,6 +122,10 @@
       <End Role="MultipleChoiceAnswerItem" EntitySet="MultipleChoiceAnswerItem" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <AssociationSet Name="ChoiceAnswerChoiceItem" Association="DataModel.Store.ChoiceAnswerChoiceItem">
+      <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
+      <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
       <End Role="ChoiceQuestion" EntitySet="Question_ChoiceQuestion" />
@@ -130,13 +134,13 @@
       <End Role="Answer" EntitySet="Answer" />
       <End Role="MultipleChoiceAnswer" EntitySet="Answer_MultipleChoiceAnswer" />
     </AssociationSet>
-    <AssociationSet Name="FK_TextAnswer_inherits_Answer" Association="DataModel.Store.FK_TextAnswer_inherits_Answer">
-      <End Role="Answer" EntitySet="Answer" />
-      <End Role="TextAnswer" EntitySet="Answer_TextAnswer" />
-    </AssociationSet>
     <AssociationSet Name="FK_ChoiceAnswer_inherits_Answer" Association="DataModel.Store.FK_ChoiceAnswer_inherits_Answer">
       <End Role="Answer" EntitySet="Answer" />
       <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextAnswer_inherits_Answer" Association="DataModel.Store.FK_TextAnswer_inherits_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="TextAnswer" EntitySet="Answer_TextAnswer" />
     </AssociationSet>
     <AssociationSet Name="FK_ScaleAnswer_inherits_Answer" Association="DataModel.Store.FK_ScaleAnswer_inherits_Answer">
       <End Role="Answer" EntitySet="Answer" />
@@ -232,6 +236,7 @@
     <Property Name="SolverID" Type="int" Nullable="false" />
     <Property Name="FormTemplateID" Type="int" Nullable="false" />
     <Property Name="EvaluationID" Type="int" Nullable="true" />
+    <Property Name="IsPreview" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="UserFillingFormInstance_FormInstance_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="QuestionInstance">
@@ -306,18 +311,18 @@
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Answer_TextAnswer">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ID" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Answer_ChoiceAnswer">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ItemID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer_TextAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Answer_ScaleAnswer">
@@ -582,6 +587,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ChoiceAnswerChoiceItem">
+    <End Role="ChoiceAnswer" Type="DataModel.Store.Answer_ChoiceAnswer" Multiplicity="*" />
+    <End Role="ChoiceItem" Type="DataModel.Store.ChoiceItem" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChoiceAnswer">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -654,18 +671,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TextAnswer_inherits_Answer">
-    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
-    <End Role="TextAnswer" Type="DataModel.Store.Answer_TextAnswer" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Answer">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TextAnswer">
-        <PropertyRef Name="ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ChoiceAnswer_inherits_Answer">
     <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
     <End Role="ChoiceAnswer" Type="DataModel.Store.Answer_ChoiceAnswer" Multiplicity="0..1" />
@@ -674,6 +679,18 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="ChoiceAnswer">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextAnswer_inherits_Answer">
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="TextAnswer" Type="DataModel.Store.Answer_TextAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextAnswer">
         <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
@@ -805,6 +822,10 @@
           </AssociationSet>
           <AssociationSet Name="MultipleChoiceAnswerItemChoiceItem" Association="DataModel.MultipleChoiceAnswerItemChoiceItem">
             <End Role="MultipleChoiceAnswerItem" EntitySet="MultipleChoiceAnswerItem" />
+            <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+          </AssociationSet>
+          <AssociationSet Name="ChoiceAnswerChoiceItem" Association="DataModel.ChoiceAnswerChoiceItem">
+            <End Role="ChoiceAnswer" EntitySet="Answer" />
             <End Role="ChoiceItem" EntitySet="ChoiceItem" />
           </AssociationSet>
         </EntityContainer>
@@ -1001,6 +1022,7 @@
           <NavigationProperty Name="Questions" Relationship="DataModel.FormInstanceQuestionInstance" FromRole="FormInstance" ToRole="QuestionInstance" />
           <NavigationProperty Name="Evaluation" Relationship="DataModel.FormInstanceFormInstanceEvaluation" FromRole="FormInstance" ToRole="FormInstanceEvaluation" />
           <Property Type="Int32" Name="EvaluationID" Nullable="true" />
+          <Property Type="Boolean" Name="IsPreview" Nullable="false" DefaultValue="False" />
         </EntityType>
         <Association Name="FormInstanceUser">
           <End Type="DataModel.FormInstance" Role="FormInstance" Multiplicity="*" />
@@ -1090,6 +1112,7 @@
           <Property Type="String" Name="Text" Nullable="false" />
         </EntityType>
         <EntityType Name="ChoiceAnswer" BaseType="DataModel.Answer" >
+          <NavigationProperty Name="ChoiceItemTemplate" Relationship="DataModel.ChoiceAnswerChoiceItem" FromRole="ChoiceAnswer" ToRole="ChoiceItem" />
           <Property Type="Int32" Name="ItemID" Nullable="false" />
         </EntityType>
         <EntityType Name="ScaleAnswer" BaseType="DataModel.Answer" >
@@ -1213,6 +1236,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ChoiceAnswerChoiceItem">
+          <End Type="DataModel.ChoiceAnswer" Role="ChoiceAnswer" Multiplicity="*" />
+          <End Type="DataModel.ChoiceItem" Role="ChoiceItem" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ChoiceItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChoiceAnswer">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1327,6 +1362,7 @@
           <ScalarProperty Name="SolverID" ColumnName="SolverID" />
           <ScalarProperty Name="FormTemplateID" ColumnName="FormTemplateID" />
           <ScalarProperty Name="EvaluationID" ColumnName="EvaluationID" />
+          <ScalarProperty Name="IsPreview" ColumnName="IsPreview" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1360,16 +1396,16 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextAnswer)">
-        <MappingFragment StoreEntitySet="Answer_TextAnswer">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-        </MappingFragment>
-      </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.ChoiceAnswer)">
         <MappingFragment StoreEntitySet="Answer_ChoiceAnswer">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextAnswer)">
+        <MappingFragment StoreEntitySet="Answer_TextAnswer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.ScaleAnswer)">
@@ -1518,16 +1554,16 @@
           <ConnectorPoint PointX="9.125" PointY="3.9035953776041663" />
           <ConnectorPoint PointX="7.625" PointY="3.9035953776041663" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="7.25" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="7.25" Height="3.1340950520833317" />
         <AssociationConnector Association="DataModel.FormInstanceUser">
-          <ConnectorPoint PointX="3.75" PointY="7.25" />
-          <ConnectorPoint PointX="3.75" PointY="5.3744921875" />
+          <ConnectorPoint PointX="3.9374975000000005" PointY="7.25" />
+          <ConnectorPoint PointX="3.9374975000000005" PointY="5.3744921875" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceFormTemplate" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="7.25" />
           <ConnectorPoint PointX="4.875" PointY="6.875" />
-          <ConnectorPoint PointX="4.875" PointY="5.2952754375000008" />
-          <ConnectorPoint PointX="6.125" PointY="5.2952754375000008" />
+          <ConnectorPoint PointX="4.875" PointY="4.8794193229166662" />
+          <ConnectorPoint PointX="6.125" PointY="4.8794193229166662" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.QuestionInstance" Width="1.5" PointX="6.125" PointY="7.875" Height="2.3648893229166656" />
         <AssociationConnector Association="DataModel.QuestionInstanceQuestionTemplate">
@@ -1535,13 +1571,13 @@
           <ConnectorPoint PointX="9.125" PointY="8.4324446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceQuestionInstance">
-          <ConnectorPoint PointX="4.5" PointY="9.0333968098958337" />
-          <ConnectorPoint PointX="6.125" PointY="9.0333968098958337" />
+          <ConnectorPoint PointX="4.5" PointY="9.0574446614583337" />
+          <ConnectorPoint PointX="6.125" PointY="9.0574446614583337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormInstanceEvaluation" Width="1.5" PointX="0.5" PointY="7.375" Height="1.5956835937499996" IsExpanded="true" />
         <AssociationConnector Association="DataModel.FormInstanceFormInstanceEvaluation">
-          <ConnectorPoint PointX="3" PointY="8.172841796875" />
-          <ConnectorPoint PointX="2" PointY="8.172841796875" />
+          <ConnectorPoint PointX="3" PointY="8.3651432291666659" />
+          <ConnectorPoint PointX="2" PointY="8.3651432291666659" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.Answer" Width="1.5" PointX="6.125" PointY="11.375" Height="1.2110807291666657" />
         <AssociationConnector Association="DataModel.QuestionInstanceAnswer">
@@ -1555,19 +1591,19 @@
           <ConnectorPoint PointX="3.625" PointY="13.25" />
           <ConnectorPoint PointX="3.625" PointY="13.625" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ChoiceAnswer" Width="1.5" PointX="4.625" PointY="13.625" Height="1.2110807291666657" />
+        <EntityTypeShape EntityType="DataModel.ChoiceAnswer" Width="1.5" PointX="8.25" PointY="13.625" Height="1.0187792968749996" />
         <InheritanceConnector EntityType="DataModel.ChoiceAnswer" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="13.25" />
+          <ConnectorPoint PointX="9" PointY="13.25" />
+          <ConnectorPoint PointX="9" PointY="13.625" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.ScaleAnswer" Width="1.5" PointX="4.625" PointY="13.625" Height="1.2110807291666657" />
+        <InheritanceConnector EntityType="DataModel.ScaleAnswer" ManuallyRouted="false" >
           <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
           <ConnectorPoint PointX="6.875" PointY="13.25" />
           <ConnectorPoint PointX="5.375" PointY="13.25" />
           <ConnectorPoint PointX="5.375" PointY="13.625" />
-        </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ScaleAnswer" Width="1.5" PointX="8.125" PointY="13.625" Height="1.2110807291666657" />
-        <InheritanceConnector EntityType="DataModel.ScaleAnswer" ManuallyRouted="false" >
-          <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
-          <ConnectorPoint PointX="6.875" PointY="13.25" />
-          <ConnectorPoint PointX="8.875" PointY="13.25" />
-          <ConnectorPoint PointX="8.875" PointY="13.625" />
         </InheritanceConnector>
         <EntityTypeShape EntityType="DataModel.ScaleQuestion" Width="1.5" PointX="9.125" PointY="10" Height="1.9802864583333335" />
         <InheritanceConnector EntityType="DataModel.ScaleQuestion" ManuallyRouted="false" >
@@ -1587,11 +1623,13 @@
           <ConnectorPoint PointX="11.875" PointY="12.25" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.UserFillingFormInstance">
-          <ConnectorPoint PointX="3.3125" PointY="5.3744921875" />
-          <ConnectorPoint PointX="3.3125" PointY="7.25" />
+          <ConnectorPoint PointX="3.4062487500000005" PointY="5.3744921875" />
+          <ConnectorPoint PointX="3.4062487500000005" PointY="7.25" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormGroup">
           <ConnectorPoint PointX="6.125" PointY="5.7590925520833318" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="5.7590925520833309" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="5.7590925520833318" />
           <ConnectorPoint PointX="4.120442708333333" PointY="5.7590925520833309" />
           <ConnectorPoint PointX="3.9537760416666665" PointY="5.7590925520833318" />
           <ConnectorPoint PointX="3.5393880208333335" PointY="5.7590925520833309" />
@@ -1623,9 +1661,13 @@
           <ConnectorPoint PointX="7.125" PointY="15.875" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.MultipleChoiceAnswerItemChoiceItem">
-          <ConnectorPoint PointX="7.875" PointY="16.865143229166669" />
-          <ConnectorPoint PointX="11.875" PointY="16.865143229166669" />
+          <ConnectorPoint PointX="7.875" PointY="17.126933593750003" />
+          <ConnectorPoint PointX="11.875" PointY="17.126933593750003" />
           <ConnectorPoint PointX="11.875" PointY="14.614889322916666" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.ChoiceAnswerChoiceItem">
+          <ConnectorPoint PointX="9.75" PointY="14.119944661458334" />
+          <ConnectorPoint PointX="11.125" PointY="14.119944661458334" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

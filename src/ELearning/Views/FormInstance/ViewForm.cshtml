@@ -48,7 +48,7 @@
     @{
         bool evaluated = Model.Evaluation != null;
     }
-    @if (evaluated || ViewBag.CurrentUserModel.Type != ELearning.Data.Enums.UserTypes.Student)
+    @if (!Model.IsPreview && (evaluated || ViewBag.CurrentUserModel.Type != ELearning.Data.Enums.UserTypes.Student))
     {
         <div id="FormEvaluation">
             @using (Html.BeginForm("Evaluate", "FormInstance", new { id = Model.ID }))
