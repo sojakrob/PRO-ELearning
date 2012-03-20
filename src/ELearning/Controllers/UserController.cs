@@ -50,7 +50,7 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool userCreated = _userManager.CreateUser(AuthenticationContext.LoggedUserSession.Email, user.Email, user.Password, user.Type.ID);
+                bool userCreated = _userManager.CreateUser(user.Email, user.Password, user.Type.ID);
                 if(userCreated)
                     return RedirectToAction("Index");
             }

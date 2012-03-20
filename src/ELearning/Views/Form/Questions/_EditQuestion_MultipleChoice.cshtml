@@ -6,7 +6,12 @@
     <span>Choices</span>
     <span>
         <label for="@string.Format("{0}Shuffle", Model.ID)">Shuffle</label>
-        <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" disabled="disabled" />
+        <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" name="Shuffle" value="true" 
+                @if(Model.Shuffle)
+                 {
+                    @Html.Raw("checked=\"checked\"");
+                 }
+             />
     </span>
 </div>
 

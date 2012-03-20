@@ -41,7 +41,7 @@
             </summary>
             <param name="persistentStorage"></param>
         </member>
-        <member name="M:ELearning.Business.Managers.UserManager.CreateUser(System.String,System.String,System.String,ELearning.Data.Enums.UserTypes)">
+        <member name="M:ELearning.Business.Managers.UserManager.CreateUser(System.String,System.String,ELearning.Data.Enums.UserTypes)">
             <summary>
             Creates new user
             </summary>
@@ -93,6 +93,11 @@
             Initializes a new instance of the QuestionManager class.
             </summary>
             <param name="persistentStorage"></param>
+        </member>
+        <member name="M:ELearning.Business.ImportExport.Google.GoogleGroupsMembersImporter.#ctor(ELearning.Business.Managers.UserManager,ELearning.Business.Managers.GroupManager)">
+            <summary>
+            Initializes a new instance of the GoogleGroupsMembersImporter class.
+            </summary>
         </member>
     </members>
 </doc>

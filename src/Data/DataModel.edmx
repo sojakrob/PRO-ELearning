@@ -218,6 +218,7 @@
     <Property Name="FormTypeID" Type="int" Nullable="false" />
     <Property Name="AuthorID" Type="int" Nullable="false" />
     <Property Name="FormStateID" Type="int" Nullable="false" />
+    <Property Name="MaxFills" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -964,6 +965,7 @@
           <NavigationProperty Name="Groups" Relationship="DataModel.FormGroup" FromRole="Form" ToRole="Group" />
           <NavigationProperty Name="State" Relationship="DataModel.FormFormState" FromRole="Form" ToRole="FormState" />
           <Property Type="Int32" Name="FormStateID" Nullable="false" />
+          <Property Type="Int32" Name="MaxFills" Nullable="true" />
         </EntityType>
         <EntityType Name="FormType">
           <Key>
@@ -1342,6 +1344,7 @@
           <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
           <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
           <ScalarProperty Name="FormStateID" ColumnName="FormStateID" />
+          <ScalarProperty Name="MaxFills" ColumnName="MaxFills" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1540,18 +1543,20 @@
           <ConnectorPoint PointX="3.75" PointY="2.625" />
           <ConnectorPoint PointX="3.75" PointY="1.9033821614583333" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="4.0956022135416656" />
         <EntityTypeShape EntityType="DataModel.FormType" Width="1.5" PointX="6.125" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.FormTemplateFormType">
           <ConnectorPoint PointX="6.875" PointY="2.625" />
           <ConnectorPoint PointX="6.875" PointY="1.9033821614583333" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormTemplateAuthor">
-          <ConnectorPoint PointX="6.125" PointY="3.99974609375" />
-          <ConnectorPoint PointX="4.5" PointY="3.99974609375" />
+          <ConnectorPoint PointX="6.125" PointY="3.6278268033854166" />
+          <ConnectorPoint PointX="4.5" PointY="3.6278268033854166" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.QuestionGroupFormTemplate">
           <ConnectorPoint PointX="9.125" PointY="3.9035953776041663" />
+          <ConnectorPoint PointX="8.6145833333333339" PointY="3.9035953776041659" />
+          <ConnectorPoint PointX="8.4479166666666661" PointY="3.9035953776041663" />
           <ConnectorPoint PointX="7.625" PointY="3.9035953776041663" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="7.25" Height="3.1340950520833317" />
@@ -1562,8 +1567,9 @@
         <AssociationConnector Association="DataModel.FormInstanceFormTemplate" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="7.25" />
           <ConnectorPoint PointX="4.875" PointY="6.875" />
-          <ConnectorPoint PointX="4.875" PointY="4.8794193229166662" />
-          <ConnectorPoint PointX="6.125" PointY="4.8794193229166662" />
+          <ConnectorPoint PointX="4.875" PointY="7.0956022135416656" />
+          <ConnectorPoint PointX="5.75" PointY="7.0956022135416656" />
+          <ConnectorPoint PointX="6.125" PointY="6.7206022135416656" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.QuestionInstance" Width="1.5" PointX="6.125" PointY="7.875" Height="2.3648893229166656" />
         <AssociationConnector Association="DataModel.QuestionInstanceQuestionTemplate">
@@ -1627,21 +1633,19 @@
           <ConnectorPoint PointX="3.4062487500000005" PointY="7.25" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormGroup">
-          <ConnectorPoint PointX="6.125" PointY="5.7590925520833318" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="5.7590925520833309" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="5.7590925520833318" />
-          <ConnectorPoint PointX="4.120442708333333" PointY="5.7590925520833309" />
-          <ConnectorPoint PointX="3.9537760416666665" PointY="5.7590925520833318" />
-          <ConnectorPoint PointX="3.5393880208333335" PointY="5.7590925520833309" />
-          <ConnectorPoint PointX="3.3727213541666665" PointY="5.7590925520833318" />
-          <ConnectorPoint PointX="1.25" PointY="5.7590925520833318" />
+          <ConnectorPoint PointX="6.125" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="4.020830833333334" PointY="6.0475447005208309" />
+          <ConnectorPoint PointX="3.8541641666666671" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="3.489582083333334" PointY="6.0475447005208309" />
+          <ConnectorPoint PointX="3.322915416666667" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="1.25" PointY="6.0475447005208318" />
           <ConnectorPoint PointX="1.25" PointY="4.797587890625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormState" Width="1.5" PointX="8" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.FormFormState">
-          <ConnectorPoint PointX="7.625" PointY="3.4521896055982442" />
-          <ConnectorPoint PointX="8.5624995000000013" PointY="3.4521896055982442" />
-          <ConnectorPoint PointX="8.5624995000000013" PointY="1.9033821614583333" />
+          <ConnectorPoint PointX="7.625" PointY="5.9035953776041659" />
+          <ConnectorPoint PointX="8.53125" PointY="5.9035953776041659" />
+          <ConnectorPoint PointX="8.53125" PointY="1.9033821614583333" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.MarkValue" Width="1.5" PointX="0.5" PointY="10.5" Height="1.4033821614583335" />
         <AssociationConnector Association="DataModel.FormInstanceEvaluationMarkValue">

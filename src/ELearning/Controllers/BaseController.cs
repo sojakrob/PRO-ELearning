@@ -9,6 +9,7 @@ using ELearning.Authentication;
 using Microsoft.Practices.Unity;
 using ELearning.Models.Authentication;
 using System.Web.Security;
+using ELearning.Business.Exceptions;
 
 namespace ELearning.Controllers
 {
@@ -39,11 +40,18 @@ namespace ELearning.Controllers
         }
 
 
-        protected ICollection<Model> ModelsFromArray<Data, Model>(IEnumerable<Data> array)
+        protected ICollection<Model> ModelsFromArray<Data, Model>(IEnumerable<Data> array, params object[] args)
             where Data : class
             where Model : DataModelBase<Data>
         {
-            return DataModelBase<Data>.CreateFromArray<Model>(array);
+            return DataModelBase<Data>.CreateFromArray<Model>(array, args);
+        }
+
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            FillDefaultViewBag();
+            base.OnActionExecuting(filterContext);
         }
 
 

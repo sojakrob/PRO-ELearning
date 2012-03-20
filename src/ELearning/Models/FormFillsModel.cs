@@ -4,12 +4,25 @@ using System.Linq;
 using System.Web;
 using ELearning.Data;
 using ELearning.Models.Data;
+using ELearning.Business.Managers;
 
 namespace ELearning.Models
 {
     public class FormFillsModel : Data.FormModel
     {
-        public IEnumerable<FormInstanceFillModel> FormInstances { get; private set; }
+        private FormManager _formManager;
+
+        public IEnumerable<FormInstanceFillModel> FormInstances
+        {
+            get
+            {
+                if (_formInstances == null)
+                    _formInstances = DataModelBase<FormInstance>.CreateFromArray<FormInstanceFillModel>(_formManager.GetFormInstances(_formID));
+                return _formInstances;
+            }            
+        }
+        private IEnumerable<FormInstanceFillModel> _formInstances;
+        private int _formID;
 
 
         /// <summary>
@@ -20,10 +33,12 @@ namespace ELearning.Models
         {
             
         }
-        public FormFillsModel(Form data)
+        public FormFillsModel(Form data, FormManager formManager)
             : base(data)
         {
-            FormInstances = DataModelBase<FormInstance>.CreateFromArray<FormInstanceFillModel>(data.FormInstances.Where(f => !f.IsPreview));
+            //FormInstances = DataModelBase<FormInstance>.CreateFromArray<FormInstanceFillModel>(data.FormInstances.Where(f => !f.IsPreview));
+            _formManager = formManager;
+            _formID = data.ID;
         }
         
 

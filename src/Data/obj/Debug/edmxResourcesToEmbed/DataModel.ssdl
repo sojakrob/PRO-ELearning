@@ -213,6 +213,7 @@
     <Property Name="FormTypeID" Type="int" Nullable="false" />
     <Property Name="AuthorID" Type="int" Nullable="false" />
     <Property Name="FormStateID" Type="int" Nullable="false" />
+    <Property Name="MaxFills" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>

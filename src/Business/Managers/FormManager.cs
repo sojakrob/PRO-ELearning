@@ -69,6 +69,8 @@ namespace ELearning.Business.Managers
 
         public override IQueryable<Form> GetAll()
         {
+            KickAnonymous();
+
             if(Permissions.Form_List)
                 return base.GetAll();
 
@@ -131,12 +133,23 @@ namespace ELearning.Business.Managers
 
             return result;
         }
+        public List<FormInstance> GetFormInstances(int formID)
+        {
+            return GetFormInstances(PermissionsProvider.User.Email, formID);
+        }
         public List<FormInstance> GetFormInstances(string userEmail, int formID)
         {
-            // TODO Permissions
             int userID = _userManager.GetUser(userEmail).ID;
 
-            return Context.FormInstance.Where(i => i.FormTemplateID == formID && i.SolverID == userID && !i.IsPreview).ToList();
+            var form = GetForm(formID);
+            if(form == null)
+                throw new ArgumentException("Form not found");
+
+            IQueryable<FormInstance> result = Context.FormInstance.Where(i => i.FormTemplateID == formID && !i.IsPreview);
+            if (form.AuthorID != userID && !Permissions.FormInstances_View)
+                result = result.Where(i => i.SolverID == userID);
+
+            return result.ToList();
         }
 
         public List<FormInstance> GetFormInstances(string userEmail)
@@ -175,7 +188,7 @@ namespace ELearning.Business.Managers
             return form.ID;
         }
 
-        public bool EditForm(string authorEmail, Form form)
+        public bool EditForm(Form form)
         {
             Form trueForm = GetForm(form.ID);
             
@@ -186,6 +199,7 @@ namespace ELearning.Business.Managers
             trueForm.FormTypeID = form.FormTypeID;
             trueForm.Shuffle = form.Shuffle;
             trueForm.TimeToFill = form.TimeToFill;
+            trueForm.MaxFills = form.MaxFills;
 
             try
             {
@@ -253,6 +267,9 @@ namespace ELearning.Business.Managers
 
         public void SetFormAssignedGroups(int formID, int[] groupIDs)
         {
+            if (groupIDs == null)
+                return;
+
             var groupIDsToAdd = groupIDs.ToList();
             var form = GetForm(formID);
             foreach (var group in form.Groups)
@@ -268,9 +285,9 @@ namespace ELearning.Business.Managers
             Context.SaveChanges();
         }
 
-        public FormInstance GenerateNewFormInstanceAndStartFilling(string userEmail, int formID)
+        public FormInstance GenerateNewFormInstanceAndStartFilling(int formID)
         {
-            User user = _userManager.GetUser(userEmail);
+            User user = PermissionsProvider.User;
 
             var formInstance = GenerateAndSaveNewFormInstance(formID);
 
@@ -310,7 +327,7 @@ namespace ELearning.Business.Managers
             if(formInstance.FormTemplate.TimeToFill == null)
                 return false;
 
-            var lastEndTime = formInstance.Created.AddMinutes(formInstance.FormTemplate.TimeToFill.Value).AddSeconds(TIMEDFORM_SAFE_SECONDS);
+            var lastEndTime = formInstance.Created.AddSeconds(formInstance.FormTemplate.TimeToFill.Value).AddSeconds(TIMEDFORM_SAFE_SECONDS);
             if (lastEndTime < DateTime.Now)
                 return true;
 
@@ -350,11 +367,40 @@ namespace ELearning.Business.Managers
             return true;
         }
 
+        private void CheckIfCanHaveNewInstanceOf(Form form)
+        {
+            if (!CanHaveNewInstanceOf(form))
+                throw new ApplicationException("Cannot create another instance of the form");
+        }
+        public bool CanHaveNewInstanceOf(int formID)
+        {
+            var form = GetForm(formID);
+            if (form == null)
+                throw new ArgumentException("Form not found");
+
+            return CanHaveNewInstanceOf(form);
+        }
+        private bool CanHaveNewInstanceOf(Form form)
+        {
+            if (form.MaxFills == null)
+                return true;
+
+            if (Permissions.Form_InfiniteInstances)
+                return true;
+
+            var instances = GetFormInstances(PermissionsProvider.User.Email, form.ID);
+            if (instances.Count >= form.MaxFills.Value)
+                return false;
+
+            return true;
+        }
         public FormInstance GenerateAndSaveNewFormInstance(int formID, bool isPreview = false)
         {
             var form = GetForm(formID);
             if (form == null)
                 throw new ArgumentException("Form not found");
+
+            CheckIfCanHaveNewInstanceOf(form);
 
             FormInstance formInstance = CreateNewFormInstance(PermissionsProvider.UserID, formID);
             formInstance.IsPreview = isPreview;
@@ -405,7 +451,7 @@ namespace ELearning.Business.Managers
         }
         private QuestionInstance GenerateQuestionFromTemplate(Question template, int index, FormInstance form)
         {
-            return QuestionManager.CreateNewQuestionInstance(index, template.ID, form.ID);
+            return QuestionManager.CreateNewQuestionInstance(index, template.ID, form.ID); 
                 
         }
 

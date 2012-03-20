@@ -5,6 +5,7 @@ using System.Web;
 using ELearning.Data;
 using ELearning.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using ELearning.Utils;
 
 namespace ELearning.Models.Data
 {
@@ -28,12 +29,17 @@ namespace ELearning.Models.Data
         [Display(Name = "Shuffle Questions")]
         public bool Shuffle { get; set; }
 
+        /// <summary>
+        /// Time to fill in minutes
+        /// </summary>
         public int? TimeToFill { get; set; }
 
         public DateTime Created { get; set; }
 
         public FormTypeModel Type { get; set; }
         public FormStateModel State { get; set; }
+
+        public int? MaxFills { get; set; }
 
         public UserModel Author { get; set; }
 
@@ -81,7 +87,10 @@ namespace ELearning.Models.Data
             Text = data.Text;
             Created = data.Created;
             Shuffle = data.Shuffle;
-            TimeToFill = data.TimeToFill;
+            MaxFills = data.MaxFills;
+
+            if(data.TimeToFill != null)
+                TimeToFill = Conversion.SecondsToMinutes(data.TimeToFill.Value);
 
             if (data.Type == null)
                 Type = new FormTypeModel();
@@ -125,7 +134,10 @@ namespace ELearning.Models.Data
                 );
             result.Text = Text;
             result.Shuffle = Shuffle;
-            result.TimeToFill = TimeToFill;
+            result.MaxFills = MaxFills;
+
+            if(TimeToFill != null)
+                result.TimeToFill = Conversion.MinutesToSeconds(TimeToFill.Value);
 
             return result;
         }

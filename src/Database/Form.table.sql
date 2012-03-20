@@ -1,6 +1,7 @@
 ﻿-- Creating table 'Form'
 -- Creating table 'Form'
 -- Creating table 'Form'
+-- Creating table 'Form'
 CREATE TABLE [dbo].[Form] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
@@ -10,8 +11,12 @@ CREATE TABLE [dbo].[Form] (
     [Created] datetime  NOT NULL,
     [FormTypeID] int  NOT NULL,
     [AuthorID] int  NOT NULL,
-    [FormStateID] int  NOT NULL
+    [FormStateID] int  NOT NULL,
+    [MaxFills] int  NULL
 );
+
+
+
 
 
 

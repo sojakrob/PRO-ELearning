@@ -241,6 +241,7 @@
     <NavigationProperty Name="Groups" Relationship="DataModel.FormGroup" FromRole="Form" ToRole="Group" />
     <NavigationProperty Name="State" Relationship="DataModel.FormFormState" FromRole="Form" ToRole="FormState" />
     <Property Type="Int32" Name="FormStateID" Nullable="false" />
+    <Property Type="Int32" Name="MaxFills" Nullable="true" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>

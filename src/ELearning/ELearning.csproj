@@ -137,6 +137,7 @@
     <Compile Include="Unity\IUnityContainerAccessor.cs" />
     <Compile Include="Unity\UnityContainerFactory.cs" />
     <Compile Include="Unity\UnityControllerFactory.cs" />
+    <Compile Include="Utils\Conversion.cs" />
     <Compile Include="Utils\Formatting.cs" />
     <Compile Include="Utils\HtmlExtender.cs" />
   </ItemGroup>
@@ -171,6 +172,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Error.htm" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\Controls\UpDownControl.js" />
@@ -382,6 +384,7 @@
     <Content Include="Views\Group\_CreateOrEdit.cshtml" />
     <Content Include="Views\Group\Edit.cshtml" />
     <Content Include="Views\FormInstance\Questions\_FillQuestion_MultipleChoice.cshtml" />
+    <Content Include="Views\Group\ImportGoogleGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FormInstance\Index.cshtml" />

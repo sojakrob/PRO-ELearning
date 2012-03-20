@@ -40,7 +40,10 @@
     </div>
 
     @{
-        Html.RenderAction("MainMenuControl", "Controls");
+        //if (ViewBag.CurrentUserModel != null)
+        //{
+            Html.RenderAction("MainMenuControl", "Controls");
+        //}
     }
 
     <div id="frame">

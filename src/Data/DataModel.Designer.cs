@@ -797,6 +797,30 @@ namespace ELearning.Data
         private global::System.Int32 _FormStateID;
         partial void OnFormStateIDChanging(global::System.Int32 value);
         partial void OnFormStateIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MaxFills
+        {
+            get
+            {
+                return _MaxFills;
+            }
+            set
+            {
+                OnMaxFillsChanging(value);
+                ReportPropertyChanging("MaxFills");
+                _MaxFills = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MaxFills");
+                OnMaxFillsChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MaxFills;
+        partial void OnMaxFillsChanging(Nullable<global::System.Int32> value);
+        partial void OnMaxFillsChanged();
 
         #endregion
     

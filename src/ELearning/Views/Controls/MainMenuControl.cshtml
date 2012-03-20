@@ -1,5 +1,11 @@
 ﻿@model ELearning.Models.Authentication.LoggedUserModel
            
+@if (Model == null)
+{
+    return;
+    throw new ELearning.Business.Exceptions.PermissionException("Access");
+}
+           
 <div id="mainMenuControl">
     <div>
         <ul>

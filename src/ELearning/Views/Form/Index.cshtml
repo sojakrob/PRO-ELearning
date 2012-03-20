@@ -1,6 +1,6 @@
 @using ELearning.Utils
 @using ELearning.Models.GeneralView
-@model IEnumerable<ELearning.Models.Data.FormModel>
+@model IEnumerable<ELearning.Models.FormFillsModel>
 @{
     ViewBag.Title = "Dostupné testy";
     
@@ -72,7 +72,16 @@
             }
             else
             {
-                <td></td>
+                <td>
+                @{
+                    string filledTimes = item.FormInstances.Count().ToString();
+                    if (item.MaxFills != null)
+                    {
+                        filledTimes = string.Format("{0} / {1}", item.FormInstances.Count(), item.MaxFills.Value);
+                    }
+                }
+                @Html.Raw(filledTimes)
+                </td>
             }
             <td>
                 @if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit_All

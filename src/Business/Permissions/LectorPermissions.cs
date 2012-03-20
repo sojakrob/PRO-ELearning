@@ -14,6 +14,21 @@ namespace ELearning.Business.Permissions
                 return true;
             }
         }
+        public override bool Form_InfiniteInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool FormInstances_View
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public override bool Question_CreateEdit_Own
         {

@@ -51,6 +51,17 @@
     <div class="clear"></div>
 </div>
 
+<div class="editor-group" id="MaxFillsGroup">
+    <div class="editor-label">
+        @Html.LabelFor(model => model.MaxFills)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.MaxFills)
+        @Html.ValidationMessageFor(model => model.MaxFills)
+    </div>
+    <div class="clear"></div>
+</div>
+
 <div class="editor-group" id="ShuffleGroup">
     <div class="editor-label">
         @Html.LabelFor(model => model.Shuffle)

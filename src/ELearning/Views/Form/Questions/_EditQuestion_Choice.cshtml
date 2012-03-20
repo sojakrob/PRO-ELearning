@@ -7,7 +7,12 @@
         <h4>Choices</h4>
         <div class="column">
             <label for="@string.Format("{0}Shuffle", Model.ID)">Shuffle</label>
-            <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" disabled="disabled" />
+            <input id="@string.Format("{0}Shuffle", Model.ID)" type="checkbox" name="Shuffle" value="true" 
+                @if(Model.Shuffle)
+                 {
+                    @Html.Raw("checked=\"checked\"");
+                 }
+             />
         </div>
         <div class="column" id="clmnAddChoiceItem">
             @Html.ButtonLink("Add Choice Item", "AddChoiceItem", new { formID = Model.FormID, questionInstanceID = Model.ID })

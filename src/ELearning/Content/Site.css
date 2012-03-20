@@ -387,6 +387,10 @@ div#CreateEditQuestionsHeader div#info div.column
 	vertical-align: middle;
 	padding-top: 5px;
 }
+div#CreateEditQuestionsHeader div#info div.column#clmnPreview
+{
+	padding-top: 0px;
+}
 div#CreateEditQuestionsHeader div#info div#clmnQuestionCount
 {
 	background: url('icons/questionCount.png') no-repeat;
@@ -431,6 +435,12 @@ div.Question div.Header
 	color: White;
 	cursor: pointer;
 }
+div.Question div.Header a.button
+{
+	border-color: white;
+	color: white;
+	background-color: transparent;
+}
 div.Question div.Header div.clmnQuestionType
 {
 	width: 80px;
@@ -446,6 +456,11 @@ div.Question div.Header div.clmnQuestionText
 	overflow: hidden;
 	vertical-align: middle;
 	padding: 0;
+}
+div.Question div.Header div.clmnDeleteQuestion
+{
+	display: inline-block;
+	float: right;
 }
 div.Question div.Footer
 {

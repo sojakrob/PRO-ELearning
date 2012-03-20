@@ -55,6 +55,21 @@ namespace ELearning.Business.Permissions
         {
             get { return false; }
         }
+        public virtual bool Form_InfiniteInstances
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public virtual bool FormInstances_View
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         public virtual bool Question_CreateEdit_Own
         {

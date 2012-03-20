@@ -40,9 +40,18 @@ namespace ELearning.Business.Managers
             return Context.User.Where(u => u.IsActive == true);
         }
 
-        public bool CreateUser(string authorEmail, string email, string password, int typeID)
+        public bool UserExists(string email)
         {
-            if (!GetUserPermissions(authorEmail).User_CreateEdit)
+            return GetUser(email) != null;
+        }
+
+        public bool CreateUser(string email, UserTypes type)
+        {
+            return CreateUser(email, email, type);
+        }
+        public bool CreateUser(string email, string password, int typeID)
+        {
+            if (!Permissions.User_CreateEdit)
                 throw new PermissionException("User_CreateEdit");
 
             if (GetUser(email) != null)
@@ -70,9 +79,9 @@ namespace ELearning.Business.Managers
         /// <param name="password">User password</param>
         /// <param name="type">User type</param>
         /// <returns></returns>
-        public bool CreateUser(string authorEmail, string email, string password, UserTypes type)
+        public bool CreateUser(string email, string password, UserTypes type)
         {
-            return CreateUser(authorEmail, email, password, GetUserTypeID(type));
+            return CreateUser(email, password, GetUserTypeID(type));
         }
 
         /// <summary>

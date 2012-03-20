@@ -35,7 +35,7 @@ namespace ELearning.Controllers
         {
             FillDefaultViewBag();
 
-            return View(ModelsFromArray<Form, FormModel>(_formManager.GetNotArchivedForms()));
+            return View(ModelsFromArray<Form, FormFillsModel>(_formManager.GetNotArchivedForms(), _formManager));
         }
 
         public ViewResult Details(int id)
@@ -45,6 +45,7 @@ namespace ELearning.Controllers
             return View(new FormModel(form));
         }
 
+        [Authorize(Roles="
         public ActionResult Create()
         {
             FillViewBag_Create();
@@ -111,7 +112,7 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                _formManager.EditForm(AuthenticationContext.LoggedUserSession.Email, form.ToData());
+                _formManager.EditForm(form.ToData());
                 _formManager.SetFormAssignedGroups(form.ID, assignedGroupIDs);
                 return RedirectToAction("Index");
             }
@@ -160,6 +161,11 @@ namespace ELearning.Controllers
 
             ChoiceQuestion q = question.ToData() as ChoiceQuestion;
             q.ID = questionID;
+
+            if (Request.Params["Shuffle"] == null)
+                q.Shuffle = false;
+            else
+                q.Shuffle = true;
 
             _questionManager.EditChoiceQuestion(CurrentLoggedUserModel.Email, q);
 
@@ -210,11 +216,24 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
 
+        public ActionResult DeleteQuestion(int formID, int questionID)
+        {
+            _questionManager.DeleteQuestionGroup(formID, questionID);
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+        public ActionResult DeleteAlternativeQuestion(int formID, int questionID, int alternativeQuestionID)
+        {
+            _questionManager.DeleteQuestion(formID, questionID, alternativeQuestionID);
+
+            return RedirectToCreateEditQuestions(formID);
+        }
+
         public ActionResult FormFills(int id)
         {
             var form = _formManager.GetForm(id);
 
-            return View(new FormFillsModel(form));
+            return View(new FormFillsModel(form, _formManager));
         }
 
         public ActionResult ChangeState(int id, FormStates state)

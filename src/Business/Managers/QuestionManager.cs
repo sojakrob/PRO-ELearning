@@ -45,13 +45,13 @@ namespace ELearning.Business.Managers
             return GetSingle(q => q.ID == id);
         }
 
-        public QuestionGroup GetQuestionGroup(string authorEmail, int questionGroupID)
+        public QuestionGroup GetQuestionGroup(int questionGroupID)
         {
             QuestionGroup group = Context.QuestionGroup.Single(q => q.ID == questionGroupID);
             if (group == null)
                 throw new ArgumentException("Question Group not found");
 
-            User user = _userManager.GetUser(authorEmail);
+            User user = PermissionsProvider.User;
 
             //if(group.ParentForm.AuthorID != user.ID && _userManager.GetUserPermissions(authorEmail).
             // TODO Permissions
@@ -132,6 +132,7 @@ namespace ELearning.Business.Managers
                 return false;
 
             ChoiceQuestion trueQuestion = Context.Question.Single(q => q.ID == question.ID) as ChoiceQuestion;
+            trueQuestion.Shuffle = question.Shuffle;
 
             foreach (var choiceItem in question.ChoiceItems)
             {
@@ -182,6 +183,73 @@ namespace ELearning.Business.Managers
             bool isOwner = (form.AuthorID == author.ID);
             if (!isOwner && !_userManager.GetUserPermissions(author.Email).Question_CreateEdit_All)
                 throw new PermissionException("Question_CreateEdit_All");
+        }
+
+        public bool DeleteQuestionGroup(int formID, int questionGroupID)
+        {
+            var form = _formManager.GetForm(formID);
+            CheckQuestionCreateEditPermission(form, PermissionsProvider.User);
+
+            var questionGroup = GetQuestionGroup(questionGroupID);
+            if (!form.QuestionGroups.Contains(questionGroup))
+                throw new ApplicationException("QuestionGroup do not belongs to specified Form");
+
+            var questions = questionGroup.Questions.ToArray();
+            try
+            {
+                foreach (var question in questions)
+                    DeleteQuestion(question);
+
+                Context.QuestionGroup.DeleteObject(questionGroup);
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // TODO Log exception
+                return false;
+            }
+            return true;
+        }
+        public bool DeleteQuestion(int formID, int questionGroupID, int questionID)
+        {
+            var form = _formManager.GetForm(formID);
+            CheckQuestionCreateEditPermission(form, PermissionsProvider.User);
+
+            var questionGroup = GetQuestionGroup(questionGroupID);
+            if (!form.QuestionGroups.Contains(questionGroup))
+                throw new ApplicationException("QuestionGroup do not belongs to specified Form");
+
+            var question = GetQuestion(questionID);
+            if(!questionGroup.Questions.Contains(question))
+                throw new ApplicationException("Question do not belongs to specified QuestionGroup");
+
+            return DeleteQuestion(question);
+        }
+        private bool DeleteQuestion(Question question)
+        {
+            try
+            {
+                switch (question.QuestionGroup.TypeEnum)
+                {
+                    case QuestionGroupTypes.Choice:
+                    case QuestionGroupTypes.MultipleChoice:
+                        var choiceItems = ((ChoiceQuestion)question).ChoiceItems.ToArray();
+                        foreach (var item in choiceItems)
+                            Context.ChoiceItem.DeleteObject(item);
+                        break;
+                }
+
+                Context.Question.DeleteObject(question);
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // TODO Log exception
+                return false;
+            }
+            return true;
         }
 
         public static bool IsChoiceQuestionType(QuestionGroupTypes type)

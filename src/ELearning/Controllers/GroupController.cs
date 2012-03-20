@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using ELearning.Business.Managers;
 using ELearning.Data;
 using ELearning.Models.Data;
+using ELearning.Business.ImportExport.Google;
+using System.IO;
 
 namespace ELearning.Controllers
 {
@@ -93,6 +95,30 @@ namespace ELearning.Controllers
             _groupManager.AssignUser(memberID, groupID);
 
             return RedirectToAction("Edit", new { id = groupID });
+        }
+
+        public ActionResult ImportGoogleGroup(int groupID)
+        {
+            var group = new GroupModel(_groupManager.GetGroup(groupID));
+
+            return View(group);
+        }
+
+        [HttpPost]
+        public ActionResult ImportGoogleGroupUpload(int id, HttpPostedFileBase csvFile)
+        {
+            if (csvFile == null || csvFile.ContentLength == 0)
+            {
+                // TODO Show some import error page
+                throw new ArgumentException("CsvFile");
+            }
+
+            var importer = new GoogleGroupsMembersImporter(_userManager, _groupManager);
+            var reader = new StreamReader(csvFile.InputStream);
+
+            importer.ImportCsv(id, reader);
+
+            return RedirectToAction("Edit", new { id = id});
         }
     }
 }

@@ -278,7 +278,8 @@ CREATE TABLE [dbo].[Form] (
     [Created]     DATETIME       NOT NULL,
     [FormTypeID]  INT            NOT NULL,
     [AuthorID]    INT            NOT NULL,
-    [FormStateID] INT            NOT NULL
+    [FormStateID] INT            NOT NULL,
+    [MaxFills]    INT            NULL
 );
 
 

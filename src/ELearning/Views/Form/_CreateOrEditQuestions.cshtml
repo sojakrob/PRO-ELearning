@@ -12,6 +12,10 @@
                 <h3>#@item.Index</h3>
                 <div class="clmnQuestionType">@item.Type.Name</div>
                 <div class="clmnQuestionText">@item.Questions[0].TextCropped</div>
+                <div class="clmnDeleteQuestion">
+                     @Html.ButtonLink("X", "DeleteQuestion", new { formID = item.FormTemplateID, questionID = @item.ID })
+                </div>
+                <div class="clear"></div>
             </div>
 
             <div class="Content">

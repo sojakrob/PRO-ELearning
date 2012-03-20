@@ -1,0 +1,17 @@
+﻿@model ELearning.Models.Data.GroupModel
+
+@{
+    ViewBag.Title = "Import members from Google Group";
+}
+
+<h2>@Model.Name</h2>
+
+<form action="/Group/ImportGoogleGroupUpload" method="post" enctype="multipart/form-data">
+  
+  @Html.HiddenFor(id => Model.ID)
+
+  <label for="file">Google Group CSV file</label><br />
+  <input type="file" name="csvFile" id="csvFile" /><br />
+
+  <input type="submit" value="Import members" />
+</form>

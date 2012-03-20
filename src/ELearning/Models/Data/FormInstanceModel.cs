@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ELearning.Data;
+using ELearning.Utils;
 
 namespace ELearning.Models.Data
 {
@@ -13,7 +14,6 @@ namespace ELearning.Models.Data
         public FormModel FormTemplate { get; private set; }
         public bool IsPreview { get; private set; }
         public DateTime Created { get; private set; }
-        //public UserModel Solver { get; private set; }
         public List<QuestionInstanceModel> Questions { get; set; }
         public FormInstanceEvaluationModel Evaluation { get; set; }
 
@@ -24,7 +24,8 @@ namespace ELearning.Models.Data
                 if (FormTemplate.TimeToFill == null)
                     return null;
                 TimeSpan elapsed = DateTime.Now.Subtract(Created);
-                return elapsed.Hours * 60 + elapsed.Minutes + 1; // TODO Change TimeToFill from Minutes to Seconds
+                int result = Conversion.MinutesToSeconds(FormTemplate.TimeToFill.Value) - (int)elapsed.TotalSeconds;
+                return result;
             }
         }
 

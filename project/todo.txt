@@ -1,11 +1,11 @@
 Test (Template)
- - smazat otazku
- - smazat alternativni otazku
+ @ smazat otazku
+ @ smazat alternativni otazku
  - tisk
  @ stavy - Neaktivni/Aktivni/Archivovan
  @ nahled
- - vypsat skupiny pri editaci otazek
- - omezeni poctu vyplneni
+ @ vypsat skupiny pri editaci otazek
+ @ omezeni poctu vyplneni
 
 
  Otazka
@@ -13,7 +13,7 @@ Test (Template)
    - Shuffle
 
 Test (Instance)
- - cas na vyplneni - implementovat, zobrazit
+ @ cas na vyplneni - implementovat, zobrazit
  @ ohodnoceni testu rucne - lektor, pri zobrazeni testu
 
 Google
@@ -38,3 +38,6 @@ reading http://dotnetslackers.com/articles/ado_net/Managing-Entity-Framework-Obj
 
 http://geekswithblogs.net/shaunxu/archive/2010/05/06/localization-in-asp.net-mvc-ndash-3-days-investigation-1-day.aspx - Localization
 http://www.codecapers.com/post/How-to-Localize-an-ASPNET-MVC-Application.aspx
+
+
+http://stackoverflow.com/questions/9393244/restricting-access-to-a-given-google-group-members

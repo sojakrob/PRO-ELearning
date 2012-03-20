@@ -89,6 +89,7 @@
           <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
           <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
           <ScalarProperty Name="FormStateID" ColumnName="FormStateID" />
+          <ScalarProperty Name="MaxFills" ColumnName="MaxFills" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

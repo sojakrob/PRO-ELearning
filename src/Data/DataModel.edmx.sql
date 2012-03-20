@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 03/11/2012 15:40:25
+-- Date Created: 03/18/2012 14:35:51
 -- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
@@ -253,7 +253,8 @@ CREATE TABLE [dbo].[Form] (
     [Created] datetime  NOT NULL,
     [FormTypeID] int  NOT NULL,
     [AuthorID] int  NOT NULL,
-    [FormStateID] int  NOT NULL
+    [FormStateID] int  NOT NULL,
+    [MaxFills] int  NULL
 );
 GO
 

@@ -1,7 +1,13 @@
 ﻿@model ELearning.Models.Data.EditGroupModel
 @using ELearning.Utils
+@using ELearning.Models.GeneralView
 @{
     ViewBag.Title = "Edit";
+
+    if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
+    {
+        ViewBag.TopButtons = new[] { new TopButtonModel("Import members from Google Group", "ImportGoogleGroup", "Group", new { groupID = Model.ID }, null) };
+    }
 }
 @using (Html.BeginForm("Edit", "Group"))
 {

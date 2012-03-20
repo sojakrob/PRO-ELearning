@@ -7,6 +7,7 @@ using ELearning.Business.Storages;
 using ELearning.Data;
 using System.Linq.Expressions;
 using ELearning.Business.Permissions;
+using ELearning.Business.Exceptions;
 
 namespace ELearning.Business.Managers
 {
@@ -44,6 +45,12 @@ namespace ELearning.Business.Managers
             Permissions = permissionsProvider.GetPermissions();
         }
 
+
+        protected void KickAnonymous()
+        {
+            if (PermissionsProvider.User == null)
+                throw new PermissionException("Access", "Not logged users cannot access specified page");
+        }
 
 
         #region IRepository<T> Members

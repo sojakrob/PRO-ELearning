@@ -18,9 +18,19 @@
 
 <p>Questions: @Model.Form.QuestionGroups.Count</p>
 
-<p>Filled: @Model.FormInstances.Count times</p>
+@{
+    string filledTimes = Model.FormInstances.Count.ToString();
+    if (Model.Form.MaxFills != null)
+    {
+        filledTimes = string.Format("{0} / {1}", Model.FormInstances.Count, Model.Form.MaxFills.Value);
+    }
+}
+<p>Filled: @filledTimes times</p>
 
-@Html.ButtonLink("Start", "StartForm", new { id = Model.Form.ID })
+@if (Model.Form.MaxFills == null || Model.FormInstances.Count < Model.Form.MaxFills.Value)
+{ 
+    @Html.ButtonLink("Start", "StartForm", new { id = Model.Form.ID })
+}
 
 @*<input 
     class="Button" 

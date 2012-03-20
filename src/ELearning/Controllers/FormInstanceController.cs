@@ -40,7 +40,7 @@ namespace ELearning.Controllers
         {
             var fillingForm = _formManager.GetUserFillingFormInstanceWhileCheckingTime();
             if (fillingForm == null)
-                _formManager.GenerateNewFormInstanceAndStartFilling(CurrentLoggedUserModel.Email, id);
+                _formManager.GenerateNewFormInstanceAndStartFilling(id);
 
             return RedirectToAction("FillingInProgress", new { openWindow = true });
         }

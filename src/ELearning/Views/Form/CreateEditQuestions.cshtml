@@ -13,13 +13,28 @@
         <h2>@Model.Name</h2>
         <div id="info">
             <div class="column">@Model.Type.Name</div>
+            <div class="column" id="clmnFormGroups">
+                @{
+                    int i = 0;
+                }
+                @foreach (var group in Model.AssignedGroups)
+                {
+                    if (i > 0)
+                    {
+                        @Html.Raw(", ")
+                    }
+
+                    @Html.Raw(group.Name)
+                    i++;
+                }
+            </div>
             <div class="column" id="clmnQuestionCount">@Model.QuestionGroups.Count</div>
             @if (Model.TimeToFill != null)
             {
                 <div class="column" id="clmnTimeToFill">@Model.TimeToFill</div>
             }
-            <div class="column">@Html.ButtonLink("Edit", "Edit", new { id = Model.ID})</div>
-            <div class="column">
+            <div class="column">@Html.ButtonLink("Edit", "Edit", new { id = Model.ID })</div>
+            <div class="column" id="clmnPreview">
                 @Html.ButtonJSClick("Show Preview", "Preview", string.Format("showPreview({0});", Model.ID))
             </div>
             <div class="clear"></div>

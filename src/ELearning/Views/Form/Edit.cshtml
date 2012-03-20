@@ -6,6 +6,7 @@
 
 <h2>Edit</h2>
 
+<div id="CreateOrEditForm">
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -19,6 +20,7 @@
         </p>
     </fieldset>
 }
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

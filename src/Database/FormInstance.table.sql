@@ -1,6 +1,7 @@
 ﻿-- Creating table 'FormInstance'
 -- Creating table 'FormInstance'
 -- Creating table 'FormInstance'
+-- Creating table 'FormInstance'
 CREATE TABLE [dbo].[FormInstance] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Created] datetime  NOT NULL,
@@ -11,6 +12,9 @@ CREATE TABLE [dbo].[FormInstance] (
     [IsPreview] bit  NOT NULL,
     [UserFillingFormInstance_FormInstance_ID] int  NULL
 );
+
+
+
 
 
 

@@ -1,40 +1,36 @@
 ﻿var isTimed = false;
-var timeToFill = 0;
-var currentTime = new Date();
+var endTime = new Date();
 var updateIntervalID;
 
 var divTime;
 
-function setTimeToFill(minutes) {
+function setTimeToFill(seconds) {
     isTimed = true;
-    timeToFill = minutes;
+    endTime = new Date(new Date().valueOf() + (seconds * 1000));
 }
 
 function startCountdown() {
-    currentTime.setHours(timeToFill / 60, timeToFill % 60, 0, 0);
-    updateIntervalID = setInterval('decrementTimeAndUpdateView();', 1000);
-    updateTimeView();
+    updateIntervalID = setInterval('updateTime();', 200);
+    updateTime();
 }
 
-function updateTimeView() {
+function updateTime() {
+    //var currentTime = new Date(endTime.valueOf() - new Date().valueOf());
+    var now = new Date();
+    var currentTime = new Date();
+    currentTime.setHours(endTime.getHours() - now.getHours(), endTime.getMinutes() - now.getMinutes(), endTime.getSeconds() - now.getSeconds(), 0);
+
     divTime.html(getTimeString(currentTime));
-    if (currentTime.getHours() == 0
-        && currentTime.getMinutes() == 0
+
+    if (currentTime.getHours() <= 0
+        && currentTime.getMinutes() <= 0
         ) {
         divTime.parent().addClass('warning');
-    }
-}
 
-function decrementTimeAndUpdateView() {
-    currentTime = new Date(currentTime.valueOf() - 1000);
-    updateTimeView();
-
-    if (currentTime.getHours() == 0
-        && currentTime.getMinutes() == 0
-        && currentTime.getSeconds() == 0
-        ) {
-        clearInterval(updateIntervalID);
-        forceFormSubmit();
+        if (currentTime.getSeconds() <= 0) {
+            clearInterval(updateIntervalID);
+            forceFormSubmit();
+        }
     }
 }
 

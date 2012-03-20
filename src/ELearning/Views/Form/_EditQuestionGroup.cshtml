@@ -15,6 +15,10 @@
                 @Html.Partial(string.Format("Questions\\_EditQuestion_{0}", Model.Type.Name), question)
     
                 <p>
+                    @if (Model.Questions.Count > 1)
+                    {
+                        @Html.ActionLink("Delete Question", "DeleteAlternativeQuestion", new { formID = Model.FormTemplateID, questionID = Model.ID, alternativeQuestionID = question.ID })
+                    }
                     <input type="submit" class="Button" value="SaveChanges" />
                 </p>
             </fieldset>

@@ -21,6 +21,11 @@
             </summary>
             <param name="form"></param>
         </member>
+        <member name="P:ELearning.Models.Data.FormModel.TimeToFill">
+            <summary>
+            Time to fill in minutes
+            </summary>
+        </member>
         <member name="P:ELearning.Models.Data.FormModel.TimesFilled_Total">
             <summary>
             Gets number of times the form was filled

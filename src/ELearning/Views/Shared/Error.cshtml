@@ -1,15 +1,43 @@
-﻿@{
-    Layout = null;
+﻿@using ELearning.Business.Exceptions
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Error</title>
-</head>
-<body>
-    <h2>
-        Sorry, an error occurred while processing your request.
-    </h2>
-</body>
-</html>
+
+    @if (Model.Exception is PermissionException)
+    {
+        ViewBag.Title = "Permission Exception";
+        
+        <p>
+            @Model.Exception.GetType()
+        </p>
+        <p>
+            @Model.Exception.Message
+        </p>
+        <p>
+            @Model.Exception.InnerException
+        </p>
+        <p>
+            @Model.Exception.StackTrace
+        </p>
+    }
+    else
+    {
+        <p>
+            Error occured. Sorry about that.
+        </p>
+        <p>
+            @Model.Exception.GetType()
+        </p>
+        <p>
+            @Model.Exception.Message
+        </p>
+        <p>
+            @Model.Exception.InnerException
+        </p>
+        <p>
+            @Model.Exception.StackTrace
+        </p>
+    }
