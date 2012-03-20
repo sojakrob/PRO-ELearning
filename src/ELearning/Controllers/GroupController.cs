@@ -8,6 +8,8 @@ using ELearning.Data;
 using ELearning.Models.Data;
 using ELearning.Business.ImportExport.Google;
 using System.IO;
+using ELearning.Authentication;
+using ELearning.Data.Enums;
 
 namespace ELearning.Controllers
 {
@@ -29,6 +31,7 @@ namespace ELearning.Controllers
         }
 
 
+        [AuthorizeUserType(UserType=UserTypes.Lector)]
         public ActionResult Index()
         {
             FillDefaultViewBag();
@@ -36,6 +39,7 @@ namespace ELearning.Controllers
             return View(ModelsFromArray<Group, GroupModel>(_groupManager.GetAll()));
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Create()
         {
             IQueryable<User> lectors = _userManager.GetLectors();
@@ -44,6 +48,7 @@ namespace ELearning.Controllers
             return View(model);
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Create(NewGroupModel group)
         {
             if (ModelState.IsValid)
@@ -65,6 +70,7 @@ namespace ELearning.Controllers
             return View(model);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Edit(int id)
         {
             var members = _groupManager.GetPossibleMembersFor(id);
@@ -75,6 +81,7 @@ namespace ELearning.Controllers
             return View(group);
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Edit(int groupID, int[] assignedMemberIDs)
         {
             if (assignedMemberIDs == null)
@@ -90,6 +97,7 @@ namespace ELearning.Controllers
             return View(group);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult AssignMember(int memberID, int groupID)
         {
             _groupManager.AssignUser(memberID, groupID);
@@ -97,6 +105,7 @@ namespace ELearning.Controllers
             return RedirectToAction("Edit", new { id = groupID });
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult ImportGoogleGroup(int groupID)
         {
             var group = new GroupModel(_groupManager.GetGroup(groupID));
@@ -105,6 +114,7 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult ImportGoogleGroupUpload(int id, HttpPostedFileBase csvFile)
         {
             if (csvFile == null || csvFile.ContentLength == 0)

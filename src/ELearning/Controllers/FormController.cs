@@ -12,6 +12,7 @@ using ELearning.Business.Storages;
 using ELearning.Models.Data;
 using System.Web.Security;
 using ELearning.Data.Enums;
+using ELearning.Authentication;
 
 namespace ELearning.Controllers
 {
@@ -31,6 +32,7 @@ namespace ELearning.Controllers
         }
 
 
+        [AuthorizeUserType(UserType = UserTypes.Student)]
         public ViewResult Index()
         {
             FillDefaultViewBag();
@@ -38,14 +40,7 @@ namespace ELearning.Controllers
             return View(ModelsFromArray<Form, FormFillsModel>(_formManager.GetNotArchivedForms(), _formManager));
         }
 
-        public ViewResult Details(int id)
-        {
-            Form form = _formManager.GetForm(id);
-
-            return View(new FormModel(form));
-        }
-
-        [Authorize(Roles="
+        [AuthorizeUserType(UserType=UserTypes.Lector)]
         public ActionResult Create()
         {
             FillViewBag_Create();
@@ -57,6 +52,7 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult Create(NewFormModel form, int[] assignedGroupIDs)
         {
             if (ModelState.IsValid)
@@ -78,6 +74,7 @@ namespace ELearning.Controllers
             return View(form);
         }
 
+        [AuthorizeUserType(UserType=UserTypes.Lector)]
         public ActionResult CreateEditQuestions(int id)
         {
             FormModel form = new FormModel(_formManager.GetForm(id));
@@ -88,6 +85,7 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult CreateNewQuestion(QuestionGroupModel questionGroup)
         {
             if (ModelState.IsValid)
@@ -98,6 +96,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(questionGroup.FormTemplateID);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult Edit(int id)
         {
             FillViewBag_Create();
@@ -108,6 +107,7 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult Edit(NewFormModel form, int[] assignedGroupIDs)
         {
             if (ModelState.IsValid)
@@ -124,6 +124,7 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult EditQuestion_InlineText(int formID, int questionGroupID, int questionID, QuestionModel question)
         {
             if (!ModelState.IsValid)
@@ -137,6 +138,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult EditQuestion_MultilineText(int formID, int questionGroupID, int questionID, QuestionModel question)
         {
             if (!ModelState.IsValid)
@@ -151,6 +153,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult EditQuestion_Choice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int? correctChoice)
         {
             if (!ModelState.IsValid)
@@ -172,6 +175,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult EditQuestion_MultipleChoice(int formID, int questionGroupID, int questionID, ChoiceQuestionModel question, int[] correctChoices)
         {
             if (!ModelState.IsValid)
@@ -189,6 +193,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult EditQuestion_Scale(int formID, int questionGroupID, int questionID, ScaleQuestionModel question)
         {
             if (!ModelState.IsValid)
@@ -202,6 +207,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult AddAlternativeQuestion(int formTemplateID, int questionGroupID, int questionTypeID)
         {
             _questionManager.AddQuestion(CurrentLoggedUserModel.Email, questionGroupID, questionTypeID);
@@ -209,6 +215,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formTemplateID);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult AddChoiceItem(int formID, int questionInstanceID)
         {
             _questionManager.AddChoiceItem(CurrentLoggedUserModel.Email, questionInstanceID, string.Empty);
@@ -216,12 +223,14 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult DeleteQuestion(int formID, int questionID)
         {
             _questionManager.DeleteQuestionGroup(formID, questionID);
 
             return RedirectToCreateEditQuestions(formID);
         }
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult DeleteAlternativeQuestion(int formID, int questionID, int alternativeQuestionID)
         {
             _questionManager.DeleteQuestion(formID, questionID, alternativeQuestionID);
@@ -229,6 +238,7 @@ namespace ELearning.Controllers
             return RedirectToCreateEditQuestions(formID);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult FormFills(int id)
         {
             var form = _formManager.GetForm(id);
@@ -236,6 +246,7 @@ namespace ELearning.Controllers
             return View(new FormFillsModel(form, _formManager));
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult ChangeState(int id, FormStates state)
         {
             _formManager.ChangeFormStateAndDeletePreviews(id, state);
@@ -243,6 +254,7 @@ namespace ELearning.Controllers
             return RedirectToAction("Index");
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult ShowPreview(int? id)
         {
             if (id == null)

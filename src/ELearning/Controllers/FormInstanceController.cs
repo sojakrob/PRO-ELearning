@@ -7,6 +7,7 @@ using ELearning.Business.Managers;
 using ELearning.Models.Data;
 using ELearning.Data;
 using ELearning.Data.Enums;
+using ELearning.Authentication;
 
 namespace ELearning.Controllers
 {
@@ -76,6 +77,7 @@ namespace ELearning.Controllers
 
             return View(success);
         }
+
         private bool SaveFilledAnswers(int formInstanceID)
         {
             bool result = true;
@@ -163,6 +165,7 @@ namespace ELearning.Controllers
         }
 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult Evaluate(int id, FormInstanceEvaluationModel evaluation)
         {
             if(ModelState.IsValid)

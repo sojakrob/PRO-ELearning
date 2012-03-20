@@ -138,6 +138,8 @@ namespace ELearning.Authentication
             if (string.IsNullOrEmpty(username))
                 return null;
 
+            var user = _userManager.GetUser(username);
+
             return new ELearningMembershipUser(
                        "ELearningMembershipProvider", 
                        username, 
@@ -152,8 +154,8 @@ namespace ELearning.Authentication
                        DateTime.Now, 
                        DateTime.Now, 
                        DateTime.Now, 
-                       _userManager.GetUser(username),
-                       UserTypes.Administrator,
+                       user,
+                       user.TypeEnum,
                        _userManager.GetUserPermissions(username)
                        );
         }

@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AnonymousPermissionsProvider.cs" />
+    <Compile Include="Authentication\AuthorizeUserType.cs" />
     <Compile Include="Authentication\ELearningMembershipProvider.cs" />
     <Compile Include="Authentication\ELearningMembershipUser.cs" />
     <Compile Include="Authentication\IAuthenticationContext.cs" />
@@ -87,8 +88,6 @@
     <Compile Include="Controllers\FormInstanceController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\QuestionController.cs" />
-    <Compile Include="Controllers\QuestionGroupController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,9 +214,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Question\_CreateOrEdit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -233,24 +229,6 @@
       <Project>{B610B6F9-4DAE-4D6B-B43C-9201FFD9EB48}</Project>
       <Name>Shared</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Question\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Question\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Question\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Question\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Question\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\QuestionGroup\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Form\Create.cshtml" />
@@ -269,21 +247,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Form\_CreateOrEdit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\QuestionGroup\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\QuestionGroup\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\QuestionGroup\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\QuestionGroup\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\QuestionGroup\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConnectionStrings.config">

@@ -18,12 +18,14 @@ Test (Instance)
 
 Google
  - export do Docs
- - import z Groups
+ @ import z Groups
 
 Lokalizace
 Logovani
 
 Skripta
+
+Napoveda
 
 
 
@@ -41,3 +43,5 @@ http://www.codecapers.com/post/How-to-Localize-an-ASPNET-MVC-Application.aspx
 
 
 http://stackoverflow.com/questions/9393244/restricting-access-to-a-given-google-group-members
+
+http://www.diaryofaninja.com/blog/2011/07/24/writing-your-own-custom-aspnet-mvc-authorize-attributes

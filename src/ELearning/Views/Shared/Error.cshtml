@@ -8,7 +8,7 @@
 
     @if (Model.Exception is PermissionException)
     {
-        ViewBag.Title = "Permission Exception";
+        ViewBag.Title = "Unauthorized Access";
         
         <p>
             @Model.Exception.GetType()

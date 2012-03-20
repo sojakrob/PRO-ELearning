@@ -7,6 +7,8 @@ using ELearning.Business.Managers;
 using ELearning.Models;
 using ELearning.Data;
 using ELearning.Models.Data;
+using ELearning.Authentication;
+using ELearning.Data.Enums;
 
 namespace ELearning.Controllers
 {
@@ -28,6 +30,7 @@ namespace ELearning.Controllers
         }
 
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult Index()
         {
             var students = _userManager.GetStudents();

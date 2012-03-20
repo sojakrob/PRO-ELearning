@@ -9,10 +9,12 @@ using ELearning.Data;
 using ELearning.Models;
 using ELearning.Business.Managers;
 using ELearning.Models.Data;
+using ELearning.Authentication;
+using ELearning.Data.Enums;
 
 namespace ELearning.Controllers
-{   
-    [Authorize]
+{
+    [AuthorizeUserType(UserType = UserTypes.Administrator)]
     public class UserController : BaseController
     {
         UserManager _userManager;
@@ -28,17 +30,20 @@ namespace ELearning.Controllers
         }
 
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ViewResult Index()
         {
             return View(ModelsFromArray<User, UserModel>(_userManager.GetAll()));
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ViewResult Details(int id)
         {
             
             return View();
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Create()
         {
             FillViewBag();
@@ -46,6 +51,7 @@ namespace ELearning.Controllers
             return View();
         } 
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Create(NewUserModel user)
         {
             if (ModelState.IsValid)
@@ -59,12 +65,14 @@ namespace ELearning.Controllers
 
             return View(user);
         }
-        
+
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Edit(int id)
         {
             return View();
         }
         [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Edit(User user)
         {
             if (ModelState.IsValid)
@@ -74,6 +82,7 @@ namespace ELearning.Controllers
             return View(user);
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Delete(string email)
         {
             if (_userManager.DeleteUser(AuthenticationContext.LoggedUserSession.Email, email))
@@ -84,6 +93,7 @@ namespace ELearning.Controllers
             return View();
         }
         [HttpPost, ActionName("Delete")]
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult DeleteConfirmed(int id)
         {
             return RedirectToAction("Index");

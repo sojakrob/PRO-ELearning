@@ -99,12 +99,6 @@
             Initializes a new instance of the TopButtonModel class.
             </summary>
         </member>
-        <member name="M:ELearning.Controllers.QuestionController.#ctor(ELearning.Business.Managers.QuestionManager)">
-            <summary>
-            Initializes a new instance of the QuestionController class.
-            </summary>
-            <param name="questionManager"></param>
-        </member>
         <member name="M:ELearning.Authentication.UserSession.#ctor(ELearning.Data.User)">
             <summary>
             Initializes a new instance of the UserSession class.
