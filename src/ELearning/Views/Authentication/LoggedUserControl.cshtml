@@ -1,10 +1,11 @@
-﻿@using ELearning.Utils
+﻿
+@using ELearning.Utils
 @model ELearning.Models.Authentication.LoggedUserModel
            
 <div id="loggedUserControl">
     @if (Model == null)
     {
-        @Html.ButtonLink("Log On", "LogOn", "Authentication");
+        @Html.ButtonLink(ELearning.Localization.GetResourceString("LogOn"), "LogOn", "Authentication");
     }
     else
     { 
@@ -12,7 +13,7 @@
             @Html.Encode(Model.Email)
         </span>
         <span>
-            @Html.ButtonLink("Log Off", "LogOff", "Authentication")
+            @Html.ButtonLink(ELearning.Localization.GetResourceString("LogOff"), "LogOff", "Authentication")
         </span>
     }
 </div>

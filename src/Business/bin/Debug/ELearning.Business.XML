@@ -24,6 +24,11 @@
             Can view list of Groups
             </summary>
         </member>
+        <member name="M:ELearning.Business.ImportExport.Google.GoogleGroupsMembersImporter.#ctor(ELearning.Business.Managers.UserManager,ELearning.Business.Managers.GroupManager)">
+            <summary>
+            Initializes a new instance of the GoogleGroupsMembersImporter class.
+            </summary>
+        </member>
         <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
             <summary>
             Changes the database of DataModelContainer
@@ -94,9 +99,9 @@
             </summary>
             <param name="persistentStorage"></param>
         </member>
-        <member name="M:ELearning.Business.ImportExport.Google.GoogleGroupsMembersImporter.#ctor(ELearning.Business.Managers.UserManager,ELearning.Business.Managers.GroupManager)">
+        <member name="M:ELearning.Business.ImportExport.FormFillsDataExport.#ctor(ELearning.Business.Managers.FormManager)">
             <summary>
-            Initializes a new instance of the GoogleGroupsMembersImporter class.
+            Initializes a new instance of the FormFillsDataExport class.
             </summary>
         </member>
     </members>

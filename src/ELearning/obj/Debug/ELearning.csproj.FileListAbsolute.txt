@@ -140,4 +140,8 @@ S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\bin\Microsoft.Practic
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\obj\Debug\ELearning.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\ELearning\obj\Debug\ELearning.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Google.GData.Documents.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Google.GData.Client.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Google.GData.Extensions.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\Google.GData.AccessControl.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\ELearning\bin\ELearning.XML

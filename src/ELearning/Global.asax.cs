@@ -52,6 +52,11 @@ namespace ELearning
             CleanUp();
         }
 
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            Language.ChangeLanguageIfSet();
+        }
+
         private static void InitUnity()
         {
             UnityContainerFactory unityContainerFactory = new UnityContainerFactory();

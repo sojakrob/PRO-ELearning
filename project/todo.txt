@@ -10,23 +10,25 @@ Test (Template)
 
  Otazka
   Choice
-   - Shuffle
+   @ Shuffle
 
 Test (Instance)
  @ cas na vyplneni - implementovat, zobrazit
  @ ohodnoceni testu rucne - lektor, pri zobrazeni testu
 
 Google
- - export do Docs
+ @ export do Docs
  @ import z Groups
 
-Lokalizace
+@Lokalizace
 Logovani
 
 Skripta
 
 Napoveda
 
+
+Choice Question Items shuffling, 
 
 
 

@@ -21,6 +21,7 @@ namespace ELearning.Authentication
         private UserPermissions _permissions;
 
 
+
         /// <summary>
         /// Initializes a new instance of the UserSession class.
         /// </summary>

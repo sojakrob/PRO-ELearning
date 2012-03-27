@@ -13,22 +13,22 @@
 <table class="datagrid">
     <tr>
         <th>
-            Name
+            @Html.ResourceString("NameThing")
         </th>
         <th>
-            Text
+            @Html.ResourceString("Text")
         </th>
         <th>
-            Created
+            @Html.ResourceString("Created")
         </th>
         <th>
-            Type
+            @Html.ResourceString("Type")
         </th>
         <th>
-            Author
+            @Html.ResourceString("Author")
         </th>
         <th>
-            Filled
+            @Html.ResourceString("Filled")
         </th>
         <th>
         </th>
@@ -55,7 +55,7 @@
                 @ELearning.Utils.Formatting.FormatAsDate(item.Created)
             </td>
             <td>
-                @item.Type.Name
+                @Html.ResourceString(item.Type.Name)
             </td>
             <td>
                 @item.Author.Name
@@ -90,10 +90,10 @@
                     switch (item.State.Enum)
                     {
                         case ELearning.Data.Enums.FormStates.Active:
-                            @Html.ButtonLink("Deactivate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
+                            @Html.LocalizedButtonLink("Deactivate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
                             break;
                         case ELearning.Data.Enums.FormStates.Inactive:
-                            @Html.ButtonLink("Activate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
+                            @Html.LocalizedButtonLink("Activate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
                             break;
                     }
                 }

@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.GData.Client, Version=1.9.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Google\Google Data API SDK\Redist\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Documents, Version=1.9.0.0, Culture=neutral, PublicKeyToken=e4daaad656f19bb9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Google\Google Data API SDK\Redist\Google.GData.Documents.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -45,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\PermissionException.cs" />
+    <Compile Include="ImportExport\FormFillsDataExport.cs" />
+    <Compile Include="ImportExport\Google\GoogleDocsExporter.cs" />
     <Compile Include="ImportExport\Google\GoogleGroupsMembersImporter.cs" />
     <Compile Include="Managers\FormManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />

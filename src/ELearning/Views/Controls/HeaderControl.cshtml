@@ -2,10 +2,24 @@
     <div id="logo">
         @Html.ActionLink("E-Learning", "Index", "Home")
     </div>
-    <div id="authentication">
-        @{
-            Html.RenderAction("LoggedUserControl", "Authentication");
-        }
+    <div id="rightHeader">
+        <div id="language">
+            <div>
+                <a href="@Url.Action("SetLanguage", "Settings", new { language = "en", url = Request.Url })">
+                    <img src="@Url.Content("~/Content/icons/flags/en.png")" alt="EN" title="@ELearning.Localization.GetResourceString("English")" />
+                </a>
+            </div>
+            <div>
+                <a href="@Url.Action("SetLanguage", "Settings", new { language = "cs", url = Request.Url })">
+                    <img src="@Url.Content("~/Content/icons/flags/cs.png")" alt="CS" title="@ELearning.Localization.GetResourceString("Czech")" />
+                </a>
+            </div>
+        </div>
+        <div id="authentication">
+            @{
+                Html.RenderAction("LoggedUserControl", "Authentication");
+            }
+        </div>
     </div>
     <div class="clear">
     </div>

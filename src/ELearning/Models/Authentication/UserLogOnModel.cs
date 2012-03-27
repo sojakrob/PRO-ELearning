@@ -9,12 +9,13 @@ namespace ELearning.Models.Authentication
     public class UserLogOnModel
     {
         [Required]
-        [Display(Name="E-mail")]
+        [DisplayLocalized("Email")]
         [RegularExpression(@".*@.*\..*")] // TODO Add better e-mail checking regex
         public string Email { get; set; }
         [Required]
+        [DisplayLocalized("Password")]
         public string Password { get; set; }
-        [Display(Name="Keep me signed in")]
+        [DisplayLocalized("KeepMeSignedIn")]
         public bool KeepSignedIn { get; set; }
     }
 }

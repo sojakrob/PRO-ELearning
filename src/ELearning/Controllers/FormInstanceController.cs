@@ -68,6 +68,8 @@ namespace ELearning.Controllers
             if (fillingForm != null)
                 formModel = new FormInstanceModel(fillingForm);
 
+            ShuffleChoiceQuestionsItems(formModel);
+
             return View(formModel);
         }
 
@@ -161,6 +163,9 @@ namespace ELearning.Controllers
             if (form != null)
                 formModel = new FormInstanceModel(form);
 
+            if (formModel != null && formModel.IsPreview)
+                ShuffleChoiceQuestionsItems(formModel);
+
             return View(formModel);
         }
 
@@ -174,6 +179,21 @@ namespace ELearning.Controllers
             }
             
             return RedirectToAction("ViewForm", new { id = id });
+        }
+
+
+        private void ShuffleChoiceQuestionsItems(FormInstanceModel formModel)
+        {
+            foreach (var question in formModel.Questions)
+            {
+                if (question.TemplateGroup.Type.Enum == QuestionGroupTypes.Choice
+                    || question.TemplateGroup.Type.Enum == QuestionGroupTypes.MultipleChoice)
+                {
+                    var choiceQuestion = (ChoiceQuestionInstanceModel)question;
+                    if (choiceQuestion.Shuffle)
+                        choiceQuestion.ChoiceItems = (List<ChoiceItemModel>)Shared.CollectionUtility.Shuffle<ChoiceItemModel>(choiceQuestion.ChoiceItems);
+                }
+            }
         }
 
         private void FillViewBag_ViewForm()

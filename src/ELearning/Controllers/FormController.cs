@@ -13,6 +13,8 @@ using ELearning.Models.Data;
 using System.Web.Security;
 using ELearning.Data.Enums;
 using ELearning.Authentication;
+using ELearning.Business.ImportExport;
+using ELearning.Business.ImportExport.Google;
 
 namespace ELearning.Controllers
 {
@@ -264,6 +266,22 @@ namespace ELearning.Controllers
 
             return RedirectToAction("ViewForm", "FormInstance", new { id = previewInstance.ID });
         }
+
+        public ActionResult ExportToGoogleDocs(int id)
+        {
+            var formFillsDataExport = new FormFillsDataExport(_formManager);
+            const string fileName = @"C:\temp\export.csv";
+            bool success = formFillsDataExport.ExportFormFillsToCsv(id, fileName);
+
+            var googleDocsExporter = new GoogleDocsExporter();
+            success = success && googleDocsExporter.UploadCsvSpreadsheet("", "", fileName);
+
+            if(success)
+                return RedirectToHome();
+
+            return RedirectToLogOn();
+        }
+
 
         private void FillViewBag_Create()
         {

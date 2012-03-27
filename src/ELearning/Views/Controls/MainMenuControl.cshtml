@@ -1,4 +1,5 @@
 ﻿@model ELearning.Models.Authentication.LoggedUserModel
+@using ELearning.Utils
            
 @if (Model == null)
 {
@@ -12,20 +13,20 @@
             @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
             {
                 <li>
-                    @Html.ActionLink("Testy", "Index", "Form")
+                    @Html.LocalizedActionLink("Forms", "Index", "Form")
                     <ul>
-                        <li>@Html.ActionLink("Vytvořit test", "Create", "Form")</li>
-                        <li>@Html.ActionLink("Zobrazit", "Index", "Form")</li>
+                        <li>@Html.LocalizedActionLink("CreateForm", "Create", "Form")</li>
+                        <li>@Html.LocalizedActionLink("View", "Index", "Form")</li>
                     </ul>
                 </li>
             }
             else
             {
                 <li>
-                    @Html.ActionLink("Dostupné testy", "Index", "Form")
+                    @Html.LocalizedActionLink("AvailableForms", "Index", "Form")
                 </li>
                 <li>
-                    @Html.ActionLink("Vyplněné testy", "Detail", "Student", new { id = Model.ID }, null)
+                    @Html.LocalizedActionLink("FilledForms", "Detail", "Student", new { id = Model.ID }, null)
                 </li>
             }
         </ul>
@@ -35,9 +36,9 @@
         <div>
             <ul>
                 <li>
-                    @Html.ActionLink("Studenti", "Index", "Student")
+                    @Html.LocalizedActionLink("Students", "Index", "Student")
                     <ul>
-                        <li>@Html.ActionLink("Zobrazit", "Index", "Student")</li>
+                        <li>@Html.LocalizedActionLink("View", "Index", "Student")</li>
                     </ul>
                 </li>
             </ul>
@@ -45,9 +46,9 @@
         <div>
             <ul>
                 <li>
-                    @Html.ActionLink("Skupiny", "Index", "Group")
+                    @Html.LocalizedActionLink("Groups", "Index", "Group")
                     <ul>
-                        <li>@Html.ActionLink("Zobrazit", "Index", "Group")</li>
+                        <li>@Html.LocalizedActionLink("View", "Index", "Group")</li>
                     </ul>
                 </li>
             </ul>
@@ -58,13 +59,13 @@
         <div>
             <ul>
                 <li>
-                    @Html.ActionLink("Uživatelé", "Index", "User")
+                    @Html.LocalizedActionLink("Users", "Index", "User")
                     <ul>
                         @if (Model.Permissions.User_CreateEdit)
                         {
-                            <li>@Html.ActionLink("Nový uživatel", "Create", "User")</li>
+                            <li>@Html.LocalizedActionLink("NewUser", "Create", "User")</li>
                         }
-                        <li>@Html.ActionLink("Zobrazit", "Index", "User")</li>
+                        <li>@Html.LocalizedActionLink("View", "Index", "User")</li>
                     </ul>
                 </li>
             </ul>
@@ -75,13 +76,13 @@
         <div>
             <ul>
                 <li>
-                    @Html.ActionLink("Uživatelské skupiny", "Index", "Group")
+                    @Html.LocalizedActionLink("UserGroups", "Index", "Group")
                     <ul>
                         @if (Model.Permissions.Group_CreateEdit)
                         {
-                            <li>@Html.ActionLink("Nová skupina", "Create", "Group")</li>
+                            <li>@Html.LocalizedActionLink("NewGroup", "Create", "Group")</li>
                         }
-                        <li>@Html.ActionLink("Zobrazit", "Index", "Group")</li>
+                        <li>@Html.LocalizedActionLink("View", "Index", "Group")</li>
                     </ul>
                 </li>
             </ul>

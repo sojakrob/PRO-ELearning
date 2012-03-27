@@ -8,7 +8,10 @@ namespace ELearning.Shared
 {
     public class CollectionUtility
     {
-        public static ICollection<T> Shuffle<T>(ICollection<T> collection)
+        private static Random _random = new Random(Environment.TickCount);
+
+
+        public static List<T> Shuffle<T>(ICollection<T> collection)
         {
             T[] result = new T[collection.Count];
             collection.CopyTo(result, 0);
@@ -21,9 +24,12 @@ namespace ELearning.Shared
         }
         private static byte[] GetRandomArray(int length)
         {
-            Random rnd = new Random(Environment.TickCount);
             byte[] randomIndices = new byte[length];
-            rnd.NextBytes(randomIndices);
+
+            lock (_random)
+            {
+                _random.NextBytes(randomIndices);
+            }
 
             return randomIndices;
         }

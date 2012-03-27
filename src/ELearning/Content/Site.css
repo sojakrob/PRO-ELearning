@@ -92,11 +92,27 @@ div#top div#header div#logo a
 {
 	color: Black;
 }
-div#top div#header div#authentication
+div#top div#header div#rightHeader
 {
 	float: right;
 	height: 50px;
+}
+div#top div#header div#rightHeader div#language
+{
+	padding-top: 18px;
+	float:right;
+}
+div#top div#header div#rightHeader div#language img
+{
+	width: auto;
+	height: 12px;
+	margin-top: 5px;
+	margin-right: 3px;	
+}
+div#top div#header div#rightHeader div#authentication
+{
 	padding-top: 30px;
+	float: left;
 	text-align: center;
 }
 div#top div#titleBar

@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <title>Filling In Progress</title>
+    <title>@Html.ResourceString("FillingInProgress")</title>
 
     @*TODO Move to own Control*@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
@@ -30,9 +30,14 @@
 
 <body>
 
-    <h1>Filling In Progress</h1>
+    <h1>@Html.ResourceString("FillingInProgress")</h1>
    
-    @Html.ButtonJSClick("Reopen the test window", "Reopen window", string.Format("openFillingFormWindow({0})", Model.ID))
+    @Html.ButtonJSClick(
+        ELearning.Localization.GetResourceString("ReopenFormWindow"), 
+        ELearning.Localization.GetResourceString("ReopenWindow"), 
+        string.Format("openFillingFormWindow({0})", 
+        Model.ID)
+        )
 
 </body>
 </html>

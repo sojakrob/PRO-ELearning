@@ -51,6 +51,7 @@ namespace ELearning.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             FillDefaultViewBag();
+
             base.OnActionExecuting(filterContext);
         }
 
@@ -63,6 +64,7 @@ namespace ELearning.Controllers
         {
             return RedirectToAction("LogOn", "Authentication");
         }
+
 
         protected void FillDefaultViewBag()
         {

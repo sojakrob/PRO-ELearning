@@ -1,4 +1,5 @@
 ﻿@model ELearning.Models.Data.FormInstanceModel
+@using ELearning.Utils
 @{
     Layout = "";
 }
@@ -28,10 +29,10 @@
             {
             <div class="Question">
                 <fieldset>
-                    <legend>Question #@i</legend>
+                    <legend>@Html.ResourceString("Question") #@i</legend>
                     <div class="Header">
                         <h3>
-                            Question #@i</h3>
+                            @Html.ResourceString("Question") #@i</h3>
                     </div>
                     <div class="Content">
                         <div class="QuestionText">
@@ -46,7 +47,7 @@
                 i++;
             }
             <div id="FormFillFooter">
-                <input type="submit" class="Button" value="Submit" />
+                <input type="submit" class="Button" value="@Html.ResourceString("Submit")" />
             </div>
         }
         @if (Model.FormTemplate.TimeToFill != null)

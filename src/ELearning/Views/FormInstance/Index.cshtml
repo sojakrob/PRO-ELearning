@@ -2,10 +2,10 @@
 @model ELearning.Models.FormInstancesModel
 
 @{
-    ViewBag.Title = "Test";
+    ViewBag.Title = ELearning.Localization.GetResourceString("Form");
 }
 
-<p>@Model.Form.Type.Name</p>
+<p>@Html.ResourceString(Model.Form.Type.Name)</p>
 
 <h2>@Model.Form.Name</h2>
 
@@ -13,10 +13,10 @@
 
 @if (Model.Form.TimeToFill != null)
 {
-    <p>Time to fill: @Model.Form.TimeToFill</p>
+    <p>@Html.ResourceString("TimeToFill") : @Model.Form.TimeToFill</p>
 }
 
-<p>Questions: @Model.Form.QuestionGroups.Count</p>
+<p>@Html.ResourceString("Questions") : @Model.Form.QuestionGroups.Count</p>
 
 @{
     string filledTimes = Model.FormInstances.Count.ToString();
@@ -25,11 +25,11 @@
         filledTimes = string.Format("{0} / {1}", Model.FormInstances.Count, Model.Form.MaxFills.Value);
     }
 }
-<p>Filled: @filledTimes times</p>
+<p>@Html.ResourceString("Filled") : @filledTimes @Html.ResourceString("Times")</p>
 
 @if (Model.Form.MaxFills == null || Model.FormInstances.Count < Model.Form.MaxFills.Value)
 { 
-    @Html.ButtonLink("Start", "StartForm", new { id = Model.Form.ID })
+    @Html.LocalizedButtonLink("Start", "StartForm", new { id = Model.Form.ID })
 }
 
 @*<input 

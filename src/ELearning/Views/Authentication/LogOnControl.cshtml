@@ -6,9 +6,9 @@
         @Html.ValidationSummary(true)
 
         <fieldset>
-            <legend>Log On</legend>
+            <legend>@ELearning.Localization.GetResourceString("LogOn")</legend>
 
-            <h2>Log On</h2>
+            <h2>@ELearning.Localization.GetResourceString("LogOn")</h2>
 
             <div class="editor-group">
                 <div class="editor-label">
@@ -44,7 +44,7 @@
             </div>
 
             <p class="buttons">
-                <input type="submit" class="Button" value="Log On" />
+                <input type="submit" class="Button" value="@ELearning.Localization.GetResourceString("LogOn")" />
             </p>
         </fieldset>
     }

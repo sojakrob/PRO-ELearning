@@ -9,7 +9,7 @@ namespace ELearning.Models.Data
     public class ChoiceQuestionInstanceModel : QuestionInstanceModel
     {
         public bool Shuffle { get; private set; }
-        public List<ChoiceItemModel> ChoiceItems { get; private set; }
+        public List<ChoiceItemModel> ChoiceItems { get; set; }
 
 
         public ChoiceQuestionInstanceModel()
