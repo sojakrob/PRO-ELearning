@@ -15,6 +15,9 @@ using ELearning.Data.Enums;
 using ELearning.Authentication;
 using ELearning.Business.ImportExport;
 using ELearning.Business.ImportExport.Google;
+using ELearning.Models.ImportExport;
+using ELearning.Business.Reporting;
+using System.Security.Authentication;
 
 namespace ELearning.Controllers
 {
@@ -42,7 +45,7 @@ namespace ELearning.Controllers
             return View(ModelsFromArray<Form, FormFillsModel>(_formManager.GetNotArchivedForms(), _formManager));
         }
 
-        [AuthorizeUserType(UserType=UserTypes.Lector)]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult Create()
         {
             FillViewBag_Create();
@@ -59,7 +62,7 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                int formID = _formManager.AddForm(CurrentLoggedUserModel.Email, form.ToData());
+                int formID = _formManager.AddForm(form.ToData());
                 if (formID != -1)
                 {
                     if (assignedGroupIDs == null)
@@ -72,11 +75,11 @@ namespace ELearning.Controllers
             FillViewBag_Create();
             form.PossibleGroups = GroupModel.CreateFromArray<GroupModel>(_groupManager.GetAll());
 
-            
+
             return View(form);
         }
 
-        [AuthorizeUserType(UserType=UserTypes.Lector)]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult CreateEditQuestions(int id)
         {
             FormModel form = new FormModel(_formManager.GetForm(id));
@@ -105,7 +108,7 @@ namespace ELearning.Controllers
 
             Form form = _formManager.GetForm(id);
 
-            return View(new NewFormModel(form, _groupManager.GetPossibleGroupsFor(id)));
+            return View(new NewFormModel(form, _groupManager.GetPossibleGroupsForForm(id)));
         }
 
         [HttpPost]
@@ -115,7 +118,11 @@ namespace ELearning.Controllers
             if (ModelState.IsValid)
             {
                 _formManager.EditForm(form.ToData());
+
+                if (assignedGroupIDs == null)
+                    assignedGroupIDs = new int[] { };
                 _formManager.SetFormAssignedGroups(form.ID, assignedGroupIDs);
+
                 return RedirectToAction("Index");
             }
 
@@ -267,19 +274,26 @@ namespace ELearning.Controllers
             return RedirectToAction("ViewForm", "FormInstance", new { id = previewInstance.ID });
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult ExportToGoogleDocs(int id)
         {
-            var formFillsDataExport = new FormFillsDataExport(_formManager);
-            const string fileName = @"C:\temp\export.csv";
-            bool success = formFillsDataExport.ExportFormFillsToCsv(id, fileName);
+            var model = new ExportToGoogleDocsModel(id);
+            model.Name = _formManager.GetForm(id).Name;
+            model.DocumentName = string.Format("{0} {1}", model.Name, DateTime.Now.ToShortDateString());
 
-            var googleDocsExporter = new GoogleDocsExporter();
-            success = success && googleDocsExporter.UploadCsvSpreadsheet("", "", fileName);
+            return View(model);
+        }
+        [HttpPost]
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
+        public ActionResult ExportToGoogleDocs(ExportToGoogleDocsModel model)
+        {
+            var report = FormFillsDataReportCreator.CreateReport(model.FormID, _formManager);
 
-            if(success)
-                return RedirectToHome();
+            bool exported = GoogleDocsExporter.UploadReport(report, model.DocumentName, model.GEmail, model.GPassword, Server);
+            if (!exported)
+                return RedirectToAction("ExportToGoogleDocs", model);
 
-            return RedirectToLogOn();
+            return RedirectToAction("FormFills", new { id = model.FormID });
         }
 
 
@@ -303,6 +317,6 @@ namespace ELearning.Controllers
         private ActionResult RedirectToCreateEditQuestions(int formID)
         {
             return RedirectToAction("CreateEditQuestions", new { id = formID });
-        }        
+        }
     }
 }

@@ -16,3 +16,7 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Release\ELearning
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\obj\Release\ResolveAssemblyReference.cache
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\obj\Release\ELearning.Business.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\obj\Release\ELearning.Business.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Release\Google.GData.Client.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Release\Google.GData.Documents.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Release\Google.GData.Extensions.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Release\Google.GData.AccessControl.dll

@@ -1,0 +1,27 @@
+﻿@model ELearning.Models.Data.TextBookModel
+@using ELearning.Utils
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("NewTextBook");
+}
+
+<script src="@Url.Content("~/Scripts/TextBook/CreateEdit.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("Create", "TextBook", FormMethod.Post, new { id="TextBook" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@Html.ResourceString("NewTextBook")</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" class="Button" value="@Html.ResourceString("Save")" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink(ELearning.Localization.GetResourceString("Back"), "Index")
+</div>
+

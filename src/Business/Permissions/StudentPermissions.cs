@@ -7,6 +7,13 @@ namespace ELearning.Business.Permissions
 {
     public class StudentPermissions : UserPermissions
     {
+        public override bool TextBook_CreateEdit
+        {
+            get
+            {
+                return true;
+            }
+        }
 
 
         internal StudentPermissions()

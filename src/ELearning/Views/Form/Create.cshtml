@@ -1,7 +1,8 @@
 @model ELearning.Models.Data.NewFormModel
+@using ELearning.Utils
 
 @{
-    ViewBag.Title = "Testy";
+    ViewBag.Title = ELearning.Localization.GetResourceString("NewForm");
 }
 
 <h2>New Test</h2>
@@ -10,19 +11,19 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Form</legend>
+        <legend>@Html.ResourceString("Form")</legend>
 
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
-            <input type="submit" class="Button" value="Create" />
+            <input type="submit" class="Button" value="@Html.ResourceString("Create")" />
         </p>
     </fieldset>
 }
 </div>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(ELearning.Localization.GetResourceString("BackToList"), "Index")
 </div>
 
 

@@ -12,7 +12,6 @@ namespace ELearning.Business.Managers
 {
     public class FormManager : ManagerBase<Form>
     {
-        private const int DEFAULT_ID = 0;
 
         private const int TIMEDFORM_SAFE_SECONDS = 5;
 
@@ -46,20 +45,15 @@ namespace ELearning.Business.Managers
         {
             get
             {
-                if (__groupManager == null)
-                    __groupManager = new GroupManager(_persistentStorage, _managers, _permissionsProvider);
-                return __groupManager;
+                return _managers.Get<GroupManager>();
             }
         }
-        private GroupManager __groupManager;
 
 
 
         public FormManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
             : base(persistentStorage, container,  permissionsProvider)
         {
-            _permissionsProvider = permissionsProvider;
-
             _userManager = new UserManager(_persistentStorage, container, permissionsProvider);
             _questionManager = new QuestionManager(_persistentStorage, container,  permissionsProvider);
 
@@ -161,14 +155,12 @@ namespace ELearning.Business.Managers
         }
 
 
-        public int AddForm(string authorEmail, Form form)
+        public int AddForm(Form form)
         {
-            if (!_userManager.GetUserPermissions(authorEmail).Form_CreateEdit)
+            if (!Permissions.Form_CreateEdit)
                 throw new PermissionException("Form_CreateEdit");
 
-            User author = _userManager.GetUser(authorEmail);
-
-            form.AuthorID = author.ID;
+            form.AuthorID = PermissionsProvider.UserID;
             form.Created = DateTime.Now;
 
             string stateString = FormStates.Inactive.ToString();
@@ -272,7 +264,8 @@ namespace ELearning.Business.Managers
 
             var groupIDsToAdd = groupIDs.ToList();
             var form = GetForm(formID);
-            foreach (var group in form.Groups)
+            var formGroups = form.Groups.ToList();
+            foreach (var group in formGroups)
             {
                 if (groupIDsToAdd.Contains(group.ID))
                     groupIDsToAdd.Remove(group.ID);

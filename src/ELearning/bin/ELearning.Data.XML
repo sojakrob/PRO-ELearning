@@ -279,6 +279,11 @@
             Deprecated Method for adding a new object to the MultipleChoiceAnswerItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToTextBook(ELearning.Data.TextBook)">
+            <summary>
+            Deprecated Method for adding a new object to the TextBook EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
         <member name="P:ELearning.Data.DataModelContainer.Question">
             <summary>
             No Metadata Documentation available.
@@ -355,6 +360,11 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.DataModelContainer.MultipleChoiceAnswerItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.TextBook">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -595,6 +605,11 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.Group.Forms">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Group.TextBooks">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -998,6 +1013,94 @@
             <param name="text">Initial value of the Text property.</param>
         </member>
         <member name="P:ELearning.Data.TextAnswer.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.TextBook">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.TextBook.CreateTextBook(System.Int32,System.DateTime,System.DateTime,System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Create a new TextBook object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="created">Initial value of the Created property.</param>
+            <param name="changed">Initial value of the Changed property.</param>
+            <param name="title">Initial value of the Title property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="createdByID">Initial value of the CreatedByID property.</param>
+            <param name="changedByID">Initial value of the ChangedByID property.</param>
+            <param name="html">Initial value of the Html property.</param>
+        </member>
+        <member name="P:ELearning.Data.TextBook.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.Created">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.Changed">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.Title">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.CreatedByID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.ChangedByID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.VisibleToOthers">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.Html">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.CreatedBy">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.CreatedByReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.ChangedBy">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.ChangedByReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.Groups">
             <summary>
             No Metadata Documentation available.
             </summary>

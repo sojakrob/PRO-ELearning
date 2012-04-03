@@ -3,8 +3,8 @@
 @model IEnumerable<ELearning.Models.Data.GroupModel>
 
 @{
-    ViewBag.Title = "Groups";
-    ViewBag.TopButtons = new[] { new TopButtonModel("Create New", "Create", "Group") };
+    ViewBag.Title = ELearning.Localization.GetResourceString("Groups");
+    ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "Group") };
 }
 
 <table class="datagrid">

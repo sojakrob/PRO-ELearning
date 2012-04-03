@@ -89,6 +89,7 @@
           <ScalarProperty Name="FormTypeID" ColumnName="FormTypeID" />
           <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
           <ScalarProperty Name="FormStateID" ColumnName="FormStateID" />
+          <ScalarProperty Name="MaxFills" ColumnName="MaxFills" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -200,6 +201,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TextBook">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextBook)">
+        <MappingFragment StoreEntitySet="TextBook">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Changed" ColumnName="Changed" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="ChangedByID" ColumnName="ChangedByID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TextBookFolder">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextBookFolder)">
+        <MappingFragment StoreEntitySet="TextBookFolder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
@@ -239,6 +261,30 @@
       </EndProperty>
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TextBookGroup" TypeName="DataModel.TextBookGroup" StoreEntitySet="TextBookGroup">
+      <EndProperty Name="TextBook">
+        <ScalarProperty Name="ID" ColumnName="TextBooks_ID" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TextBookFolderTextBookFolder" TypeName="DataModel.TextBookFolderTextBookFolder" StoreEntitySet="TextBookFolder">
+      <EndProperty Name="TextBookFolder1">
+        <ScalarProperty Name="ID" ColumnName="ParentFolder_ID" />
+      </EndProperty>
+      <EndProperty Name="TextBookFolder">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TextBookTextBookFolder" TypeName="DataModel.TextBookTextBookFolder" StoreEntitySet="TextBook">
+      <EndProperty Name="TextBookFolder">
+        <ScalarProperty Name="ID" ColumnName="TextBookFolder_ID" />
+      </EndProperty>
+      <EndProperty Name="TextBook">
+        <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

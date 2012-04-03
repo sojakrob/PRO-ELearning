@@ -812,6 +812,80 @@ CREATE NONCLUSTERED INDEX [IX_FK_QuestionInstanceQuestionTemplate]
 
 
 GO
+PRINT N'Creating [dbo].[TextBook]...';
+
+
+GO
+CREATE TABLE [dbo].[TextBook] (
+    [ID]              INT            IDENTITY (1, 1) NOT NULL,
+    [Created]         DATETIME       NOT NULL,
+    [Changed]         DATETIME       NOT NULL,
+    [Title]           NVARCHAR (MAX) NOT NULL,
+    [Text]            NVARCHAR (MAX) NOT NULL,
+    [CreatedByID]     INT            NOT NULL,
+    [ChangedByID]     INT            NOT NULL,
+    [VisibleToOthers] BIT            NOT NULL,
+    [Html]            NVARCHAR (MAX) NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_TextBook...';
+
+
+GO
+ALTER TABLE [dbo].[TextBook]
+    ADD CONSTRAINT [PK_TextBook] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
+PRINT N'Creating [dbo].[TextBook].[IX_FK_TextBookUserCreator]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_TextBookUserCreator]
+    ON [dbo].[TextBook]([CreatedByID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
+PRINT N'Creating [dbo].[TextBook].[IX_FK_TextBookUserChanger]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_TextBookUserChanger]
+    ON [dbo].[TextBook]([ChangedByID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
+PRINT N'Creating [dbo].[TextBookGroup]...';
+
+
+GO
+CREATE TABLE [dbo].[TextBookGroup] (
+    [TextBooks_ID] INT NOT NULL,
+    [Groups_ID]    INT NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_TextBookGroup...';
+
+
+GO
+ALTER TABLE [dbo].[TextBookGroup]
+    ADD CONSTRAINT [PK_TextBookGroup] PRIMARY KEY NONCLUSTERED ([TextBooks_ID] ASC, [Groups_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
+PRINT N'Creating [dbo].[TextBookGroup].[IX_FK_TextBookGroup_Group]...';
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_TextBookGroup_Group]
+    ON [dbo].[TextBookGroup]([Groups_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, MAXDOP = 0);
+
+
+GO
 PRINT N'Creating [dbo].[User]...';
 
 
@@ -1126,6 +1200,42 @@ ALTER TABLE [dbo].[QuestionInstance] WITH NOCHECK
 
 
 GO
+PRINT N'Creating FK_TextBookUserCreator...';
+
+
+GO
+ALTER TABLE [dbo].[TextBook] WITH NOCHECK
+    ADD CONSTRAINT [FK_TextBookUserCreator] FOREIGN KEY ([CreatedByID]) REFERENCES [dbo].[User] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_TextBookUserChanger...';
+
+
+GO
+ALTER TABLE [dbo].[TextBook] WITH NOCHECK
+    ADD CONSTRAINT [FK_TextBookUserChanger] FOREIGN KEY ([ChangedByID]) REFERENCES [dbo].[User] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_TextBookGroup_Group...';
+
+
+GO
+ALTER TABLE [dbo].[TextBookGroup] WITH NOCHECK
+    ADD CONSTRAINT [FK_TextBookGroup_Group] FOREIGN KEY ([Groups_ID]) REFERENCES [dbo].[Group] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_TextBookGroup_TextBook...';
+
+
+GO
+ALTER TABLE [dbo].[TextBookGroup] WITH NOCHECK
+    ADD CONSTRAINT [FK_TextBookGroup_TextBook] FOREIGN KEY ([TextBooks_ID]) REFERENCES [dbo].[TextBook] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
 PRINT N'Creating FK_UserUserType...';
 
 
@@ -1274,6 +1384,14 @@ ALTER TABLE [dbo].[QuestionGroup] WITH CHECK CHECK CONSTRAINT [FK_QuestionGroupQ
 ALTER TABLE [dbo].[QuestionInstance] WITH CHECK CHECK CONSTRAINT [FK_FormInstanceQuestionInstance];
 
 ALTER TABLE [dbo].[QuestionInstance] WITH CHECK CHECK CONSTRAINT [FK_QuestionInstanceQuestionTemplate];
+
+ALTER TABLE [dbo].[TextBook] WITH CHECK CHECK CONSTRAINT [FK_TextBookUserCreator];
+
+ALTER TABLE [dbo].[TextBook] WITH CHECK CHECK CONSTRAINT [FK_TextBookUserChanger];
+
+ALTER TABLE [dbo].[TextBookGroup] WITH CHECK CHECK CONSTRAINT [FK_TextBookGroup_Group];
+
+ALTER TABLE [dbo].[TextBookGroup] WITH CHECK CHECK CONSTRAINT [FK_TextBookGroup_TextBook];
 
 ALTER TABLE [dbo].[User] WITH CHECK CHECK CONSTRAINT [FK_UserUserType];
 

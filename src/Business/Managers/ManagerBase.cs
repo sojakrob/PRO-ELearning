@@ -13,6 +13,9 @@ namespace ELearning.Business.Managers
 {
     public abstract class ManagerBase<T> : IRepository<T> where T : class
     {
+        protected const int DEFAULT_ID = 0;
+
+
         protected IPersistentStorage _persistentStorage;
 
         protected ManagersContainer _managers;

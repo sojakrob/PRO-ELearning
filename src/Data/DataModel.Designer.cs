@@ -40,6 +40,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "MultipleChoiceAnswerMultipleChoiceAnswerItem", "MultipleChoiceAnswer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.MultipleChoiceAnswer), "MultipleChoiceAnswerItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.MultipleChoiceAnswerItem), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "MultipleChoiceAnswerItemChoiceItem", "MultipleChoiceAnswerItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.MultipleChoiceAnswerItem), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceItem), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "ChoiceAnswerChoiceItem", "ChoiceAnswer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.ChoiceAnswer), "ChoiceItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.ChoiceItem), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "TextBookUserCreator", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBook), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "TextBookUserChanger", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBook), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "TextBookGroup", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBook), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Group))]
 
 #endregion
 
@@ -346,6 +349,22 @@ namespace ELearning.Data
             }
         }
         private ObjectSet<MultipleChoiceAnswerItem> _MultipleChoiceAnswerItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TextBook> TextBook
+        {
+            get
+            {
+                if ((_TextBook == null))
+                {
+                    _TextBook = base.CreateObjectSet<TextBook>("TextBook");
+                }
+                return _TextBook;
+            }
+        }
+        private ObjectSet<TextBook> _TextBook;
 
         #endregion
         #region AddTo Methods
@@ -476,6 +495,14 @@ namespace ELearning.Data
         public void AddToMultipleChoiceAnswerItem(MultipleChoiceAnswerItem multipleChoiceAnswerItem)
         {
             base.AddObject("MultipleChoiceAnswerItem", multipleChoiceAnswerItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TextBook EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTextBook(TextBook textBook)
+        {
+            base.AddObject("TextBook", textBook);
         }
 
         #endregion
@@ -1886,6 +1913,28 @@ namespace ELearning.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Form>("DataModel.FormGroup", "Form", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookGroup", "TextBook")]
+        public EntityCollection<TextBook> TextBooks
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TextBook>("DataModel.TextBookGroup", "TextBook");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TextBook>("DataModel.TextBookGroup", "TextBook", value);
                 }
             }
         }
@@ -3674,6 +3723,368 @@ namespace ELearning.Data
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="TextBook")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TextBook : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TextBook object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="created">Initial value of the Created property.</param>
+        /// <param name="changed">Initial value of the Changed property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="createdByID">Initial value of the CreatedByID property.</param>
+        /// <param name="changedByID">Initial value of the ChangedByID property.</param>
+        /// <param name="html">Initial value of the Html property.</param>
+        public static TextBook CreateTextBook(global::System.Int32 id, global::System.DateTime created, global::System.DateTime changed, global::System.String title, global::System.String text, global::System.Int32 createdByID, global::System.Int32 changedByID, global::System.String html)
+        {
+            TextBook textBook = new TextBook();
+            textBook.ID = id;
+            textBook.Created = created;
+            textBook.Changed = changed;
+            textBook.Title = title;
+            textBook.Text = text;
+            textBook.CreatedByID = createdByID;
+            textBook.ChangedByID = changedByID;
+            textBook.Html = html;
+            return textBook;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Created
+        {
+            get
+            {
+                return _Created;
+            }
+            set
+            {
+                OnCreatedChanging(value);
+                ReportPropertyChanging("Created");
+                _Created = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Created");
+                OnCreatedChanged();
+            }
+        }
+        private global::System.DateTime _Created;
+        partial void OnCreatedChanging(global::System.DateTime value);
+        partial void OnCreatedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Changed
+        {
+            get
+            {
+                return _Changed;
+            }
+            set
+            {
+                OnChangedChanging(value);
+                ReportPropertyChanging("Changed");
+                _Changed = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Changed");
+                OnChangedChanged();
+            }
+        }
+        private global::System.DateTime _Changed;
+        partial void OnChangedChanging(global::System.DateTime value);
+        partial void OnChangedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedByID
+        {
+            get
+            {
+                return _CreatedByID;
+            }
+            set
+            {
+                OnCreatedByIDChanging(value);
+                ReportPropertyChanging("CreatedByID");
+                _CreatedByID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedByID");
+                OnCreatedByIDChanged();
+            }
+        }
+        private global::System.Int32 _CreatedByID;
+        partial void OnCreatedByIDChanging(global::System.Int32 value);
+        partial void OnCreatedByIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ChangedByID
+        {
+            get
+            {
+                return _ChangedByID;
+            }
+            set
+            {
+                OnChangedByIDChanging(value);
+                ReportPropertyChanging("ChangedByID");
+                _ChangedByID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ChangedByID");
+                OnChangedByIDChanged();
+            }
+        }
+        private global::System.Int32 _ChangedByID;
+        partial void OnChangedByIDChanging(global::System.Int32 value);
+        partial void OnChangedByIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean VisibleToOthers
+        {
+            get
+            {
+                return _VisibleToOthers;
+            }
+            set
+            {
+                OnVisibleToOthersChanging(value);
+                ReportPropertyChanging("VisibleToOthers");
+                _VisibleToOthers = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VisibleToOthers");
+                OnVisibleToOthersChanged();
+            }
+        }
+        private global::System.Boolean _VisibleToOthers = false;
+        partial void OnVisibleToOthersChanging(global::System.Boolean value);
+        partial void OnVisibleToOthersChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Html
+        {
+            get
+            {
+                return _Html;
+            }
+            set
+            {
+                OnHtmlChanging(value);
+                ReportPropertyChanging("Html");
+                _Html = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Html");
+                OnHtmlChanged();
+            }
+        }
+        private global::System.String _Html;
+        partial void OnHtmlChanging(global::System.String value);
+        partial void OnHtmlChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookUserCreator", "User")]
+        public User CreatedBy
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.TextBookUserCreator", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.TextBookUserCreator", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.TextBookUserCreator", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DataModel.TextBookUserCreator", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookUserChanger", "User")]
+        public User ChangedBy
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.TextBookUserChanger", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.TextBookUserChanger", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> ChangedByReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DataModel.TextBookUserChanger", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DataModel.TextBookUserChanger", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookGroup", "Group")]
+        public EntityCollection<Group> Groups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Group>("DataModel.TextBookGroup", "Group");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("DataModel.TextBookGroup", "Group", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

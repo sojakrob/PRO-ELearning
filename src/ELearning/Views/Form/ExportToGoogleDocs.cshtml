@@ -1,0 +1,52 @@
+﻿@model ELearning.Models.ImportExport.ExportToGoogleDocsModel
+@using ELearning.Utils
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("ExportToGoogleDocs");
+}
+<h2>@Model.Name</h2>
+@using (Html.BeginForm("ExportToGoogleDocs", "Form", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>@Model.Name</legend>
+
+        @Html.HiddenFor(f => @Model.FormID)
+        @Html.HiddenFor(n => @Model.Name)
+
+        <div class="editor-group">
+                <div class="editor-label">
+                    @Html.LabelFor(d => Model.DocumentName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(d => Model.DocumentName)
+                    @Html.ValidationMessageFor(d => Model.DocumentName)
+                </div>
+            </div>
+
+        <div id="GoogleCredentials">
+            <div class="editor-group">
+                <div class="editor-label">
+                    @Html.LabelFor(e => Model.GEmail)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(e => Model.GEmail)
+                    @Html.ValidationMessageFor(d => Model.GEmail)
+                </div>
+            </div>
+            <div class="editor-group">
+                <div class="editor-label">
+                    @Html.LabelFor(p => Model.GPassword)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(p => Model.GPassword)
+                    @Html.ValidationMessageFor(d => Model.GPassword)
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <input type="submit" class="Button" value="@Html.ResourceString("Export")" />
+        </p>
+    </fieldset>
+}

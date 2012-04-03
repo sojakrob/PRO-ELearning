@@ -36,3 +36,7 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\Google.GDat
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\Google.GData.Documents.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\Google.GData.Extensions.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\Google.GData.AccessControl.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\Antlr3.Runtime.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\ProjectBase.Tools.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\ProjectBase.Tools.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Business\bin\Debug\ELearning.Business.XML

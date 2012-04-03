@@ -54,8 +54,12 @@
     <Compile Include="Enums\FormTypes.cs" />
     <Compile Include="Enums\QuestionGroupTypes.cs" />
     <Compile Include="Enums\UserTypes.cs" />
+    <Compile Include="ExtendedEntities\ChoiceAnswer.cs" />
     <Compile Include="ExtendedEntities\Form.cs" />
+    <Compile Include="ExtendedEntities\MultipleChoiceAnswer.cs" />
     <Compile Include="ExtendedEntities\QuestionGroup.cs" />
+    <Compile Include="ExtendedEntities\ScaleAnswer.cs" />
+    <Compile Include="ExtendedEntities\TextAnswer.cs" />
     <Compile Include="ExtendedEntities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

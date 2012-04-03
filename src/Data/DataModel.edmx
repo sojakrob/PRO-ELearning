@@ -22,6 +22,7 @@
     <EntitySet Name="FormState" EntityType="DataModel.Store.FormState" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MarkValue" EntityType="DataModel.Store.MarkValue" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TextBook" EntityType="DataModel.Store.TextBook" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
@@ -30,6 +31,7 @@
     <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FormGroup" EntityType="DataModel.Store.FormGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TextBookGroup" EntityType="DataModel.Store.TextBookGroup" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.Store.QuestionGroupQuestion">
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
       <End Role="Question" EntitySet="Question" />
@@ -125,6 +127,22 @@
     <AssociationSet Name="ChoiceAnswerChoiceItem" Association="DataModel.Store.ChoiceAnswerChoiceItem">
       <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookUserCreator" Association="DataModel.Store.TextBookUserCreator">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookUserChanger" Association="DataModel.Store.TextBookUserChanger">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextBookGroup_TextBook" Association="DataModel.Store.FK_TextBookGroup_TextBook">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="TextBookGroup" EntitySet="TextBookGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextBookGroup_Group" Association="DataModel.Store.FK_TextBookGroup_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="TextBookGroup" EntitySet="TextBookGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -299,6 +317,20 @@
     <Property Name="MultipleChoiceAnswerID" Type="int" Nullable="false" />
     <Property Name="ChoiceItemID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TextBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Changed" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedByID" Type="int" Nullable="false" />
+    <Property Name="ChangedByID" Type="int" Nullable="false" />
+    <Property Name="VisibleToOthers" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Html" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
       <PropertyRef Name="ID" />
@@ -358,6 +390,14 @@
       <PropertyRef Name="Groups_ID" />
     </Key>
     <Property Name="Forms_ID" Type="int" Nullable="false" />
+    <Property Name="Groups_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TextBookGroup">
+    <Key>
+      <PropertyRef Name="TextBooks_ID" />
+      <PropertyRef Name="Groups_ID" />
+    </Key>
+    <Property Name="TextBooks_ID" Type="int" Nullable="false" />
     <Property Name="Groups_ID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="QuestionGroupQuestion">
@@ -600,6 +640,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="TextBookUserCreator">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBook">
+        <PropertyRef Name="CreatedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TextBookUserChanger">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBook">
+        <PropertyRef Name="ChangedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -644,6 +708,30 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="FormGroup">
+        <PropertyRef Name="Groups_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextBookGroup_TextBook">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="1" />
+    <End Role="TextBookGroup" Type="DataModel.Store.TextBookGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TextBook">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBookGroup">
+        <PropertyRef Name="TextBooks_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextBookGroup_Group">
+    <End Role="TextBookGroup" Type="DataModel.Store.TextBookGroup" Multiplicity="*" />
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBookGroup">
         <PropertyRef Name="Groups_ID" />
       </Dependent>
     </ReferentialConstraint>
@@ -829,7 +917,20 @@
             <End Role="ChoiceAnswer" EntitySet="Answer" />
             <End Role="ChoiceItem" EntitySet="ChoiceItem" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="TextBook" EntityType="DataModel.TextBook" />
+          <AssociationSet Name="TextBookUserCreator" Association="DataModel.TextBookUserCreator">
+            <End Role="TextBook" EntitySet="TextBook" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="TextBookUserChanger" Association="DataModel.TextBookUserChanger">
+            <End Role="TextBook" EntitySet="TextBook" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="TextBookGroup" Association="DataModel.TextBookGroup">
+            <End Role="TextBook" EntitySet="TextBook" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="ID" />
@@ -910,6 +1011,7 @@
           <Property Type="Int32" Name="SupervisorID" Nullable="false" />
           <NavigationProperty Name="Members" Relationship="DataModel.GroupMembers" FromRole="Group" ToRole="User" />
           <NavigationProperty Name="Forms" Relationship="DataModel.FormGroup" FromRole="Group" ToRole="Form" />
+          <NavigationProperty Name="TextBooks" Relationship="DataModel.TextBookGroup" FromRole="Group" ToRole="TextBook" />
         </EntityType>
         <Association Name="Supervisor">
           <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
@@ -1250,7 +1352,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="TextBook">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Created" Nullable="false" />
+          <Property Type="DateTime" Name="Changed" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="CreatedBy" Relationship="DataModel.TextBookUserCreator" FromRole="TextBook" ToRole="User" />
+          <Property Type="Int32" Name="CreatedByID" Nullable="false" />
+          <NavigationProperty Name="ChangedBy" Relationship="DataModel.TextBookUserChanger" FromRole="TextBook" ToRole="User" />
+          <Property Type="Int32" Name="ChangedByID" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="DataModel.TextBookGroup" FromRole="TextBook" ToRole="Group" />
+          <Property Type="Boolean" Name="VisibleToOthers" Nullable="false" DefaultValue="False" />
+          <Property Type="String" Name="Html" Nullable="false" />
+        </EntityType>
+        <Association Name="TextBookUserCreator">
+          <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+          <End Type="DataModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TextBook">
+              <PropertyRef Name="CreatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TextBookUserChanger">
+          <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+          <End Type="DataModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TextBook">
+              <PropertyRef Name="ChangedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TextBookGroup">
+          <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+          <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1456,6 +1603,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TextBook">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextBook)">
+        <MappingFragment StoreEntitySet="TextBook">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Changed" ColumnName="Changed" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="ChangedByID" ColumnName="ChangedByID" />
+          <ScalarProperty Name="VisibleToOthers" ColumnName="VisibleToOthers" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
@@ -1497,6 +1659,14 @@
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="TextBookGroup" TypeName="DataModel.TextBookGroup" StoreEntitySet="TextBookGroup">
+      <EndProperty Name="TextBook">
+        <ScalarProperty Name="ID" ColumnName="TextBooks_ID" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1517,31 +1687,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="DataModel" ZoomLevel="88" >
-        <EntityTypeShape EntityType="DataModel.Question" Width="1.5" PointX="9.125" PointY="6.625" Height="2.364889322916667" />
-        <EntityTypeShape EntityType="DataModel.QuestionGroup" Width="1.5" PointX="9.125" PointY="2.625" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="DataModel.Question" Width="1.5" PointX="8.875" PointY="6.625" Height="2.364889322916667" />
+        <EntityTypeShape EntityType="DataModel.QuestionGroup" Width="1.5" PointX="8.875" PointY="2.625" Height="2.5571907552083326" />
         <AssociationConnector Association="DataModel.QuestionGroupQuestion">
-          <ConnectorPoint PointX="9.875" PointY="5.1821907552083326" />
-          <ConnectorPoint PointX="9.875" PointY="6.625" />
+          <ConnectorPoint PointX="9.625" PointY="5.1821907552083326" />
+          <ConnectorPoint PointX="9.625" PointY="6.625" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.QuestionGroupType" Width="1.5" PointX="11.5" PointY="2.625" Height="1.4033821614583331" />
+        <EntityTypeShape EntityType="DataModel.QuestionGroupType" Width="1.5" PointX="11.125" PointY="2.625" Height="1.4033821614583331" />
         <AssociationConnector Association="DataModel.QuestionGroupQuestionGroupType">
-          <ConnectorPoint PointX="10.625" PointY="3.3266910807291667" />
-          <ConnectorPoint PointX="11.5" PointY="3.3266910807291667" />
+          <ConnectorPoint PointX="10.375" PointY="3.3266910807291667" />
+          <ConnectorPoint PointX="11.125" PointY="3.3266910807291667" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="3" PointY="2.625" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Group" Width="1.5" PointX="0.5" PointY="2.625" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="3.375" PointY="2.625" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Group" Width="1.5" PointX="0.5" PointY="2.625" Height="2.1725878906249996" IsExpanded="true" />
         <AssociationConnector Association="DataModel.Supervisor">
-          <ConnectorPoint PointX="2" PointY="3.9867867247263584" />
-          <ConnectorPoint PointX="3" PointY="3.9867867247263584" />
+          <ConnectorPoint PointX="2" PointY="4.1343058268229171" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="4.1343058268229163" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="4.1343058268229171" />
+          <ConnectorPoint PointX="3.375" PointY="4.1343058268229171" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.GroupMembers">
-          <ConnectorPoint PointX="2" PointY="3.2433933623631792" />
-          <ConnectorPoint PointX="3" PointY="3.2433933623631792" />
+          <ConnectorPoint PointX="2" PointY="3.1537223307291669" />
+          <ConnectorPoint PointX="3.375" PointY="3.1537223307291669" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.UserType" Width="1.5" PointX="3" PointY="0.5" Height="1.4033821614583333" />
+        <EntityTypeShape EntityType="DataModel.UserType" Width="1.5" PointX="3.375" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.UserUserType">
-          <ConnectorPoint PointX="3.75" PointY="2.625" />
-          <ConnectorPoint PointX="3.75" PointY="1.9033821614583333" />
+          <ConnectorPoint PointX="4.125" PointY="2.625" />
+          <ConnectorPoint PointX="4.125" PointY="1.9033821614583333" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.Form" Width="1.5" PointX="6.125" PointY="2.625" Height="4.0956022135416656" />
         <EntityTypeShape EntityType="DataModel.FormType" Width="1.5" PointX="6.125" PointY="0.5" Height="1.4033821614583333" />
@@ -1550,130 +1722,156 @@
           <ConnectorPoint PointX="6.875" PointY="1.9033821614583333" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormTemplateAuthor">
-          <ConnectorPoint PointX="6.125" PointY="3.6278268033854166" />
-          <ConnectorPoint PointX="4.5" PointY="3.6278268033854166" />
+          <ConnectorPoint PointX="6.125" PointY="3.99974609375" />
+          <ConnectorPoint PointX="4.875" PointY="3.99974609375" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.QuestionGroupFormTemplate">
-          <ConnectorPoint PointX="9.125" PointY="3.9035953776041663" />
-          <ConnectorPoint PointX="8.6145833333333339" PointY="3.9035953776041659" />
-          <ConnectorPoint PointX="8.4479166666666661" PointY="3.9035953776041663" />
+          <ConnectorPoint PointX="8.875" PointY="3.9035953776041663" />
+          <ConnectorPoint PointX="8.4895833333333339" PointY="3.9035953776041659" />
+          <ConnectorPoint PointX="8.3229166666666661" PointY="3.9035953776041663" />
           <ConnectorPoint PointX="7.625" PointY="3.9035953776041663" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3" PointY="7.25" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="DataModel.FormInstance" Width="1.5" PointX="3.375" PointY="7.25" Height="3.1340950520833317" />
         <AssociationConnector Association="DataModel.FormInstanceUser">
-          <ConnectorPoint PointX="3.9374975000000005" PointY="7.25" />
-          <ConnectorPoint PointX="3.9374975000000005" PointY="5.3744921875" />
+          <ConnectorPoint PointX="4.125" PointY="7.25" />
+          <ConnectorPoint PointX="4.125" PointY="5.3744921875" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceFormTemplate" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="7.25" />
-          <ConnectorPoint PointX="4.875" PointY="6.875" />
-          <ConnectorPoint PointX="4.875" PointY="7.0956022135416656" />
+          <ConnectorPoint PointX="4.875" PointY="7.25" />
+          <ConnectorPoint PointX="5.25" PointY="6.875" />
+          <ConnectorPoint PointX="5.25" PointY="7.0956022135416656" />
           <ConnectorPoint PointX="5.75" PointY="7.0956022135416656" />
           <ConnectorPoint PointX="6.125" PointY="6.7206022135416656" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.QuestionInstance" Width="1.5" PointX="6.125" PointY="7.875" Height="2.3648893229166656" />
         <AssociationConnector Association="DataModel.QuestionInstanceQuestionTemplate">
           <ConnectorPoint PointX="7.625" PointY="8.4324446614583337" />
-          <ConnectorPoint PointX="9.125" PointY="8.4324446614583337" />
+          <ConnectorPoint PointX="8.875" PointY="8.4324446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormInstanceQuestionInstance">
-          <ConnectorPoint PointX="4.5" PointY="9.0574446614583337" />
+          <ConnectorPoint PointX="4.875" PointY="9.0574446614583337" />
           <ConnectorPoint PointX="6.125" PointY="9.0574446614583337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.FormInstanceEvaluation" Width="1.5" PointX="0.5" PointY="7.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.FormInstanceEvaluation" Width="1.5" PointX="3.375" PointY="11.375" Height="1.9802864583333335" IsExpanded="true" />
         <AssociationConnector Association="DataModel.FormInstanceFormInstanceEvaluation">
-          <ConnectorPoint PointX="3" PointY="8.3651432291666659" />
-          <ConnectorPoint PointX="2" PointY="8.3651432291666659" />
+          <ConnectorPoint PointX="4.125" PointY="10.384095052083332" />
+          <ConnectorPoint PointX="4.125" PointY="11.375" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.Answer" Width="1.5" PointX="6.125" PointY="11.375" Height="1.2110807291666657" />
+        <EntityTypeShape EntityType="DataModel.Answer" Width="1.5" PointX="6.125" PointY="13.75" Height="1.2110807291666657" />
         <AssociationConnector Association="DataModel.QuestionInstanceAnswer">
-          <ConnectorPoint PointX="6.875" PointY="10.239889322916666" />
-          <ConnectorPoint PointX="6.875" PointY="11.375" />
+          <ConnectorPoint PointX="7.21875" PointY="10.239889322916666" />
+          <ConnectorPoint PointX="7.21875" PointY="13.75" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.TextAnswer" Width="1.5" PointX="2.875" PointY="13.625" Height="1.2110807291666657" />
+        <EntityTypeShape EntityType="DataModel.TextAnswer" Width="1.5" PointX="5.5" PointY="16.5" Height="1.2110807291666657" />
         <InheritanceConnector EntityType="DataModel.TextAnswer" ManuallyRouted="false" >
-          <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
-          <ConnectorPoint PointX="6.875" PointY="13.25" />
-          <ConnectorPoint PointX="3.625" PointY="13.25" />
-          <ConnectorPoint PointX="3.625" PointY="13.625" />
+          <ConnectorPoint PointX="6.875" PointY="14.961080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="16.125" />
+          <ConnectorPoint PointX="6.25" PointY="16.125" />
+          <ConnectorPoint PointX="6.25" PointY="16.5" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ChoiceAnswer" Width="1.5" PointX="8.25" PointY="13.625" Height="1.0187792968749996" />
+        <EntityTypeShape EntityType="DataModel.ChoiceAnswer" Width="1.5" PointX="10.75" PointY="16.5" Height="1.4033821614583317" />
         <InheritanceConnector EntityType="DataModel.ChoiceAnswer" ManuallyRouted="false" >
-          <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
-          <ConnectorPoint PointX="6.875" PointY="13.25" />
-          <ConnectorPoint PointX="9" PointY="13.25" />
-          <ConnectorPoint PointX="9" PointY="13.625" />
+          <ConnectorPoint PointX="6.875" PointY="14.961080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="16.125" />
+          <ConnectorPoint PointX="9.2291666666666661" PointY="16.125" />
+          <ConnectorPoint PointX="9.3958333333333339" PointY="16.125" />
+          <ConnectorPoint PointX="11.5" PointY="16.125" />
+          <ConnectorPoint PointX="11.5" PointY="16.5" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ScaleAnswer" Width="1.5" PointX="4.625" PointY="13.625" Height="1.2110807291666657" />
+        <EntityTypeShape EntityType="DataModel.ScaleAnswer" Width="1.5" PointX="7.25" PointY="16.5" Height="1.2110807291666657" />
         <InheritanceConnector EntityType="DataModel.ScaleAnswer" ManuallyRouted="false" >
-          <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
-          <ConnectorPoint PointX="6.875" PointY="13.25" />
-          <ConnectorPoint PointX="5.375" PointY="13.25" />
-          <ConnectorPoint PointX="5.375" PointY="13.625" />
+          <ConnectorPoint PointX="6.875" PointY="14.961080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="16.125" />
+          <ConnectorPoint PointX="8" PointY="16.125" />
+          <ConnectorPoint PointX="8" PointY="16.5" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ScaleQuestion" Width="1.5" PointX="9.125" PointY="10" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="DataModel.ScaleQuestion" Width="1.5" PointX="8.875" PointY="10" Height="1.9802864583333335" />
         <InheritanceConnector EntityType="DataModel.ScaleQuestion" ManuallyRouted="false" >
-          <ConnectorPoint PointX="9.875" PointY="8.9898893229166674" />
-          <ConnectorPoint PointX="9.875" PointY="10" />
+          <ConnectorPoint PointX="9.625" PointY="8.9898893229166674" />
+          <ConnectorPoint PointX="9.625" PointY="10" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ChoiceQuestion" Width="1.5" PointX="11.125" PointY="10" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="DataModel.ChoiceQuestion" Width="1.5" PointX="10.875" PointY="10" Height="1.4033821614583317" />
         <InheritanceConnector EntityType="DataModel.ChoiceQuestion" ManuallyRouted="false" >
-          <ConnectorPoint PointX="9.875" PointY="8.9898893229166674" />
-          <ConnectorPoint PointX="9.875" PointY="9.625" />
-          <ConnectorPoint PointX="11.875" PointY="9.625" />
-          <ConnectorPoint PointX="11.875" PointY="10" />
+          <ConnectorPoint PointX="9.625" PointY="8.9898893229166674" />
+          <ConnectorPoint PointX="9.625" PointY="9.625" />
+          <ConnectorPoint PointX="11.625" PointY="9.625" />
+          <ConnectorPoint PointX="11.625" PointY="10" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.ChoiceItem" Width="1.5" PointX="11.125" PointY="12.25" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="DataModel.ChoiceItem" Width="1.5" PointX="10.875" PointY="12.375" Height="2.3648893229166656" />
         <AssociationConnector Association="DataModel.ChoiceQuestionChoiceItem">
-          <ConnectorPoint PointX="11.875" PointY="11.403382161458332" />
-          <ConnectorPoint PointX="11.875" PointY="12.25" />
+          <ConnectorPoint PointX="11.625" PointY="11.403382161458332" />
+          <ConnectorPoint PointX="11.625" PointY="12.375" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.UserFillingFormInstance">
-          <ConnectorPoint PointX="3.4062487500000005" PointY="5.3744921875" />
-          <ConnectorPoint PointX="3.4062487500000005" PointY="7.25" />
+          <ConnectorPoint PointX="3.6875" PointY="5.3744921875" />
+          <ConnectorPoint PointX="3.6875" PointY="7.25" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FormGroup">
           <ConnectorPoint PointX="6.125" PointY="6.0475447005208318" />
-          <ConnectorPoint PointX="4.020830833333334" PointY="6.0475447005208309" />
-          <ConnectorPoint PointX="3.8541641666666671" PointY="6.0475447005208318" />
-          <ConnectorPoint PointX="3.489582083333334" PointY="6.0475447005208309" />
-          <ConnectorPoint PointX="3.322915416666667" PointY="6.0475447005208318" />
-          <ConnectorPoint PointX="1.25" PointY="6.0475447005208318" />
-          <ConnectorPoint PointX="1.25" PointY="4.797587890625" />
+          <ConnectorPoint PointX="4.208333333333333" PointY="6.0475447005208309" />
+          <ConnectorPoint PointX="4.041666666666667" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="3.7708333333333335" PointY="6.0475447005208309" />
+          <ConnectorPoint PointX="3.6041666666666665" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="6.0475447005208309" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="6.0475447005208309" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="1.49414375" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="1.49414375" PointY="4.9898893229166665" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormState" Width="1.5" PointX="8" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.FormFormState">
           <ConnectorPoint PointX="7.625" PointY="5.9035953776041659" />
-          <ConnectorPoint PointX="8.53125" PointY="5.9035953776041659" />
-          <ConnectorPoint PointX="8.53125" PointY="1.9033821614583333" />
+          <ConnectorPoint PointX="8.40625" PointY="5.9035953776041659" />
+          <ConnectorPoint PointX="8.40625" PointY="1.9033821614583333" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.MarkValue" Width="1.5" PointX="0.5" PointY="10.5" Height="1.4033821614583335" />
+        <EntityTypeShape EntityType="DataModel.MarkValue" Width="1.5" PointX="3.375" PointY="14.125" Height="1.4033821614583335" />
         <AssociationConnector Association="DataModel.FormInstanceEvaluationMarkValue">
-          <ConnectorPoint PointX="1.25" PointY="9.3552864583333335" />
-          <ConnectorPoint PointX="1.25" PointY="10.5" />
+          <ConnectorPoint PointX="4.125" PointY="13.355286458333334" />
+          <ConnectorPoint PointX="4.125" PointY="14.125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.MultipleChoiceAnswer" Width="1.5" PointX="6.375" PointY="13.625" Height="1.2110807291666657" />
-        <InheritanceConnector EntityType="DataModel.MultipleChoiceAnswer" >
-          <ConnectorPoint PointX="6.875" PointY="12.586080729166666" />
-          <ConnectorPoint PointX="6.875" PointY="13.25" />
-          <ConnectorPoint PointX="7.125" PointY="13.25" />
-          <ConnectorPoint PointX="7.125" PointY="13.625" />
+        <EntityTypeShape EntityType="DataModel.MultipleChoiceAnswer" Width="1.5" PointX="9" PointY="16.5" Height="1.2110807291666657" />
+        <InheritanceConnector EntityType="DataModel.MultipleChoiceAnswer" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.875" PointY="14.961080729166666" />
+          <ConnectorPoint PointX="6.875" PointY="16.125" />
+          <ConnectorPoint PointX="9.2291666666666661" PointY="16.125" />
+          <ConnectorPoint PointX="9.3958333333333339" PointY="16.125" />
+          <ConnectorPoint PointX="9.75" PointY="16.125" />
+          <ConnectorPoint PointX="9.75" PointY="16.5" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="DataModel.MultipleChoiceAnswerItem" Width="1.5" PointX="6.375" PointY="15.875" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="DataModel.MultipleChoiceAnswerItem" Width="1.5" PointX="8.875" PointY="13.5" Height="1.9802864583333353" />
         <AssociationConnector Association="DataModel.MultipleChoiceAnswerMultipleChoiceAnswerItem">
-          <ConnectorPoint PointX="7.125" PointY="14.836080729166666" />
-          <ConnectorPoint PointX="7.125" PointY="15.875" />
+          <ConnectorPoint PointX="9.3125" PointY="16.5" />
+          <ConnectorPoint PointX="9.3125" PointY="15.480286458333335" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.MultipleChoiceAnswerItemChoiceItem">
-          <ConnectorPoint PointX="7.875" PointY="17.126933593750003" />
-          <ConnectorPoint PointX="11.875" PointY="17.126933593750003" />
-          <ConnectorPoint PointX="11.875" PointY="14.614889322916666" />
+          <ConnectorPoint PointX="10.375" PointY="14.119944661458334" />
+          <ConnectorPoint PointX="10.875" PointY="14.119944661458334" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.ChoiceAnswerChoiceItem">
-          <ConnectorPoint PointX="9.75" PointY="14.119944661458334" />
-          <ConnectorPoint PointX="11.125" PointY="14.119944661458334" />
+          <ConnectorPoint PointX="11.9375" PointY="16.5" />
+          <ConnectorPoint PointX="11.9375" PointY="14.739889322916666" />
         </AssociationConnector>
-      </Diagram>
+        <EntityTypeShape EntityType="DataModel.TextBook" Width="1.5" PointX="0.5" PointY="7.25" Height="3.3263964843749996" />
+        <AssociationConnector Association="DataModel.TextBookUserCreator">
+          <ConnectorPoint PointX="2" PointY="7.275383615384615" />
+          <ConnectorPoint PointX="2.6875" PointY="6.5878836153846159" />
+          <ConnectorPoint PointX="2.6875" PointY="3.7257293701171879" />
+          <ConnectorPoint PointX="3.375" PointY="3.7257293701171879" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.TextBookUserChanger">
+          <ConnectorPoint PointX="1.9757692307692309" PointY="7.25" />
+          <ConnectorPoint PointX="2.375" PointY="6.8507692307692309" />
+          <ConnectorPoint PointX="2.375" PointY="4.7856510071614586" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="4.7856510071614577" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="4.7856510071614586" />
+          <ConnectorPoint PointX="3.375" PointY="4.7856510071614586" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.TextBookGroup">
+          <ConnectorPoint PointX="0.934571875" PointY="7.25" />
+          <ConnectorPoint PointX="0.934571875" PointY="4.9898893229166665" />
+        </AssociationConnector>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

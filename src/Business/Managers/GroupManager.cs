@@ -84,15 +84,24 @@ namespace ELearning.Business.Managers
 
             return result;
         }
-        public IEnumerable<Group> GetPossibleGroupsFor(int formID)
+
+        public IEnumerable<Group> GetPossibleGroupsForForm(int formID)
         {
             var form = _formManager.GetForm(formID);
-            var groups = GetAll().ToList();
-            foreach (var assignedGroup in form.Groups)
-            {
-                groups.Remove(assignedGroup);
-            }
-            return groups;
+            return GetGroupsNotIn(form.Groups);
+        }
+        public IEnumerable<Group> GetPossibleGroupsForTextBook(int textBookID)
+        {
+            var textBook = _managers.Get<TextBookManager>().GetTextBook(textBookID);
+            return GetGroupsNotIn(textBook.Groups);
+        }
+        private List<Group> GetGroupsNotIn(IEnumerable<Group> groups)
+        {
+            var allGroups = GetAll().ToList();
+            foreach (var assignedGroup in groups)
+                allGroups.Remove(assignedGroup);
+
+            return allGroups;
         }
 
         public bool AssignUser(int userID, int groupID)

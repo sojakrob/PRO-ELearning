@@ -63,6 +63,21 @@ namespace ELearning.Business.Permissions
             }
         }
 
+        public virtual bool TextBook_List
+        {
+            get { return false; }
+        }
+        public virtual bool TextBook_CreateEdit
+        {
+            get
+            {
+                return false;
+            }
+        }
+        public virtual bool TextBook_CreateEdit_All { get { return false; } }
+        public virtual bool TextBook_Delete { get { return false; } }
+
+
         public virtual bool FormInstances_View
         {
             get

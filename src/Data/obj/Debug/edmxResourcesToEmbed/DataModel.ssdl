@@ -17,6 +17,7 @@
     <EntitySet Name="FormState" EntityType="DataModel.Store.FormState" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MarkValue" EntityType="DataModel.Store.MarkValue" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TextBook" EntityType="DataModel.Store.TextBook" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
@@ -25,6 +26,7 @@
     <EntitySet Name="Question_ScaleQuestion" EntityType="DataModel.Store.Question_ScaleQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GroupMembers" EntityType="DataModel.Store.GroupMembers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FormGroup" EntityType="DataModel.Store.FormGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TextBookGroup" EntityType="DataModel.Store.TextBookGroup" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="QuestionGroupQuestion" Association="DataModel.Store.QuestionGroupQuestion">
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
       <End Role="Question" EntitySet="Question" />
@@ -120,6 +122,22 @@
     <AssociationSet Name="ChoiceAnswerChoiceItem" Association="DataModel.Store.ChoiceAnswerChoiceItem">
       <End Role="ChoiceAnswer" EntitySet="Answer_ChoiceAnswer" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookUserCreator" Association="DataModel.Store.TextBookUserCreator">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookUserChanger" Association="DataModel.Store.TextBookUserChanger">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextBookGroup_TextBook" Association="DataModel.Store.FK_TextBookGroup_TextBook">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="TextBookGroup" EntitySet="TextBookGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TextBookGroup_Group" Association="DataModel.Store.FK_TextBookGroup_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="TextBookGroup" EntitySet="TextBookGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -294,6 +312,20 @@
     <Property Name="MultipleChoiceAnswerID" Type="int" Nullable="false" />
     <Property Name="ChoiceItemID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TextBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Changed" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedByID" Type="int" Nullable="false" />
+    <Property Name="ChangedByID" Type="int" Nullable="false" />
+    <Property Name="VisibleToOthers" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Html" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
       <PropertyRef Name="ID" />
@@ -353,6 +385,14 @@
       <PropertyRef Name="Groups_ID" />
     </Key>
     <Property Name="Forms_ID" Type="int" Nullable="false" />
+    <Property Name="Groups_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TextBookGroup">
+    <Key>
+      <PropertyRef Name="TextBooks_ID" />
+      <PropertyRef Name="Groups_ID" />
+    </Key>
+    <Property Name="TextBooks_ID" Type="int" Nullable="false" />
     <Property Name="Groups_ID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="QuestionGroupQuestion">
@@ -595,6 +635,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="TextBookUserCreator">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBook">
+        <PropertyRef Name="CreatedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TextBookUserChanger">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="*" />
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBook">
+        <PropertyRef Name="ChangedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -639,6 +703,30 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="FormGroup">
+        <PropertyRef Name="Groups_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextBookGroup_TextBook">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="1" />
+    <End Role="TextBookGroup" Type="DataModel.Store.TextBookGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TextBook">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBookGroup">
+        <PropertyRef Name="TextBooks_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TextBookGroup_Group">
+    <End Role="TextBookGroup" Type="DataModel.Store.TextBookGroup" Multiplicity="*" />
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBookGroup">
         <PropertyRef Name="Groups_ID" />
       </Dependent>
     </ReferentialConstraint>

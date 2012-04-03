@@ -39,6 +39,7 @@ namespace ELearning.Unity
             result.RegisterType<FormManager>(managerConstructor);
             result.RegisterType<QuestionManager>(managerConstructor);
             result.RegisterType<GroupManager>(managerConstructor);
+            result.RegisterType<TextBookManager>(managerConstructor);
 
             result.RegisterType<IAuthenticationContext, WebAuthenticationContext>();
 

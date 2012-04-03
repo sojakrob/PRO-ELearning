@@ -75,30 +75,6 @@
 
 <div class="clear"></div>
 
-<fieldset>
-    <legend>Groups</legend>
-    <h3>Groups</h3>
-    <div>
-        @{
-            IDictionary<string, object> htmlValues = new Dictionary<string, object>();
-            htmlValues.Add("checked", "checked");
-        }
-        @foreach (var group in Model.AssignedGroups)
-        {
-            @Html.CheckBox(string.Format("assignedGroupsGID{0}", group.ID), "assignedGroupIDs", group.ID.ToString(), htmlValues);
-            <label for="@string.Format("assignedGroupsGID{0}", group.ID)" title="@group.Name">@group.Name</label>
-        }
-    </div>
-    <div>
-        @foreach (var group in Model.PossibleGroups)
-        {
-            @Html.CheckBox(string.Format("assignedGroupsGID{0}", group.ID), "assignedGroupIDs", group.ID.ToString(), null);
-            <label for="@string.Format("assignedGroupsGID{0}", group.ID)" title="@group.Name">@group.Name</label>                                                     
-        }
-    </div>
-    <div class="clear"></div>
-</fieldset>
-
-<div class="clear"></div>
+@Html.Partial("../Partials/AssignedGroupsEditor")
 
 

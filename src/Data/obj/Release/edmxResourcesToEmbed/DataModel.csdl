@@ -105,6 +105,28 @@
       <End Role="ChoiceAnswer" EntitySet="Answer" />
       <End Role="ChoiceItem" EntitySet="ChoiceItem" />
     </AssociationSet>
+    <EntitySet Name="TextBook" EntityType="DataModel.TextBook" />
+    <AssociationSet Name="TextBookUserCreator" Association="DataModel.TextBookUserCreator">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookUserChanger" Association="DataModel.TextBookUserChanger">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookGroup" Association="DataModel.TextBookGroup">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <EntitySet Name="TextBookFolder" EntityType="DataModel.TextBookFolder" />
+    <AssociationSet Name="TextBookFolderTextBookFolder" Association="DataModel.TextBookFolderTextBookFolder">
+      <End Role="TextBookFolder" EntitySet="TextBookFolder" />
+      <End Role="TextBookFolder1" EntitySet="TextBookFolder" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookTextBookFolder" Association="DataModel.TextBookTextBookFolder">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="TextBookFolder" EntitySet="TextBookFolder" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
     <Key>
@@ -186,6 +208,7 @@
     <Property Type="Int32" Name="SupervisorID" Nullable="false" />
     <NavigationProperty Name="Members" Relationship="DataModel.GroupMembers" FromRole="Group" ToRole="User" />
     <NavigationProperty Name="Forms" Relationship="DataModel.FormGroup" FromRole="Group" ToRole="Form" />
+    <NavigationProperty Name="TextBooks" Relationship="DataModel.TextBookGroup" FromRole="Group" ToRole="TextBook" />
   </EntityType>
   <Association Name="Supervisor">
     <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
@@ -241,6 +264,7 @@
     <NavigationProperty Name="Groups" Relationship="DataModel.FormGroup" FromRole="Form" ToRole="Group" />
     <NavigationProperty Name="State" Relationship="DataModel.FormFormState" FromRole="Form" ToRole="FormState" />
     <Property Type="Int32" Name="FormStateID" Nullable="false" />
+    <Property Type="Int32" Name="MaxFills" Nullable="true" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -524,5 +548,67 @@
         <PropertyRef Name="ItemID" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TextBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Created" Nullable="false" />
+    <Property Type="DateTime" Name="Changed" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <NavigationProperty Name="CreatedBy" Relationship="DataModel.TextBookUserCreator" FromRole="TextBook" ToRole="User" />
+    <Property Type="Int32" Name="CreatedByID" Nullable="false" />
+    <NavigationProperty Name="ChangedBy" Relationship="DataModel.TextBookUserChanger" FromRole="TextBook" ToRole="User" />
+    <Property Type="Int32" Name="ChangedByID" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="DataModel.TextBookGroup" FromRole="TextBook" ToRole="Group" />
+    <NavigationProperty Name="TextBookFolder" Relationship="DataModel.TextBookTextBookFolder" FromRole="TextBook" ToRole="TextBookFolder" />
+  </EntityType>
+  <Association Name="TextBookUserCreator">
+    <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+    <End Type="DataModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBook">
+        <PropertyRef Name="CreatedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TextBookUserChanger">
+    <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+    <End Type="DataModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBook">
+        <PropertyRef Name="ChangedByID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TextBookGroup">
+    <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+    <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+  </Association>
+  <EntityType Name="TextBookFolder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="ParentFolder" Relationship="DataModel.TextBookFolderTextBookFolder" FromRole="TextBookFolder" ToRole="TextBookFolder1" />
+    <NavigationProperty Name="SubFolders" Relationship="DataModel.TextBookFolderTextBookFolder" FromRole="TextBookFolder1" ToRole="TextBookFolder" />
+    <NavigationProperty Name="TextBooks" Relationship="DataModel.TextBookTextBookFolder" FromRole="TextBookFolder" ToRole="TextBook" />
+  </EntityType>
+  <Association Name="TextBookFolderTextBookFolder">
+    <End Type="DataModel.TextBookFolder" Role="TextBookFolder" Multiplicity="*" />
+    <End Type="DataModel.TextBookFolder" Role="TextBookFolder1" Multiplicity="1" />
+  </Association>
+  <Association Name="TextBookTextBookFolder">
+    <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
+    <End Type="DataModel.TextBookFolder" Role="TextBookFolder" Multiplicity="1" />
   </Association>
 </Schema>

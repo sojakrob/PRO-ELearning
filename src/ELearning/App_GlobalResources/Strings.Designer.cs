@@ -133,11 +133,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created by.
+        /// </summary>
+        internal static string CreatedBy {
+            get {
+                return ResourceManager.GetString("CreatedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Form.
         /// </summary>
         internal static string CreateForm {
             get {
                 return ResourceManager.GetString("CreateForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New.
+        /// </summary>
+        internal static string CreateNew {
+            get {
+                return ResourceManager.GetString("CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create TextBook.
+        /// </summary>
+        internal static string CreateTextBook {
+            get {
+                return ResourceManager.GetString("CreateTextBook", resourceCulture);
             }
         }
         
@@ -156,6 +183,24 @@ namespace Resources {
         internal static string Deactivate {
             get {
                 return ResourceManager.GetString("Deactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document name.
+        /// </summary>
+        internal static string DocumentName {
+            get {
+                return ResourceManager.GetString("DocumentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -192,6 +237,15 @@ namespace Resources {
         internal static string Exam {
             get {
                 return ResourceManager.GetString("Exam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        internal static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
             }
         }
         
@@ -264,6 +318,24 @@ namespace Resources {
         internal static string Forms {
             get {
                 return ResourceManager.GetString("Forms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google account email.
+        /// </summary>
+        internal static string GoogleAccountEmail {
+            get {
+                return ResourceManager.GetString("GoogleAccountEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google account password.
+        /// </summary>
+        internal static string GoogleAccountPassword {
+            get {
+                return ResourceManager.GetString("GoogleAccountPassword", resourceCulture);
             }
         }
         
@@ -475,6 +547,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TextBooks.
+        /// </summary>
+        internal static string TextBooks {
+            get {
+                return ResourceManager.GetString("TextBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to times.
         /// </summary>
         internal static string Times {
@@ -489,6 +570,15 @@ namespace Resources {
         internal static string TimesFilled {
             get {
                 return ResourceManager.GetString("TimesFilled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

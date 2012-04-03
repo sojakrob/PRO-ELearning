@@ -24,6 +24,11 @@
             Can view list of Groups
             </summary>
         </member>
+        <member name="M:ELearning.Business.ImportExport.FormFillsDataExport.#ctor(ELearning.Business.Reporting.FormFillsDataReport,System.Web.HttpServerUtilityBase)">
+            <summary>
+            Initializes a new instance of the FormFillsDataExport class.
+            </summary>
+        </member>
         <member name="M:ELearning.Business.ImportExport.Google.GoogleGroupsMembersImporter.#ctor(ELearning.Business.Managers.UserManager,ELearning.Business.Managers.GroupManager)">
             <summary>
             Initializes a new instance of the GoogleGroupsMembersImporter class.
@@ -99,9 +104,9 @@
             </summary>
             <param name="persistentStorage"></param>
         </member>
-        <member name="M:ELearning.Business.ImportExport.FormFillsDataExport.#ctor(ELearning.Business.Managers.FormManager)">
+        <member name="M:ELearning.Business.Reporting.FormFillsDataReport.#ctor">
             <summary>
-            Initializes a new instance of the FormFillsDataExport class.
+            Initializes a new instance of the FormFillsDataReport class.
             </summary>
         </member>
     </members>

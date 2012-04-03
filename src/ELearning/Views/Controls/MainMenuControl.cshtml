@@ -1,17 +1,15 @@
 ﻿@model ELearning.Models.Authentication.LoggedUserModel
 @using ELearning.Utils
-           
 @if (Model == null)
 {
     return;
     throw new ELearning.Business.Exceptions.PermissionException("Access");
 }
-           
 <div id="mainMenuControl">
-    <div>
-        <ul>
-            @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
-            {
+    @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
+    {
+        <div>
+            <ul>
                 <li>
                     @Html.LocalizedActionLink("Forms", "Index", "Form")
                     <ul>
@@ -19,16 +17,46 @@
                         <li>@Html.LocalizedActionLink("View", "Index", "Form")</li>
                     </ul>
                 </li>
-            }
-            else
-            {
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div>
+            <ul>
                 <li>
                     @Html.LocalizedActionLink("AvailableForms", "Index", "Form")
+                    <ul>
+                        <li>@Html.LocalizedActionLink("View", "Index", "Form")</li>
+                    </ul>
                 </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
                 <li>
                     @Html.LocalizedActionLink("FilledForms", "Detail", "Student", new { id = Model.ID }, null)
+                    <ul>
+                        <li>@Html.LocalizedActionLink("View", "Detail", "Student", new { id = Model.ID }, null)</li>
+                    </ul>
                 </li>
-            }
+            </ul>
+        </div>
+    }
+    
+    <div>
+        <ul>
+            <li>
+                @Html.LocalizedActionLink("TextBooks", "Index", "TextBook")
+                <ul>
+                    <li>
+                        @Html.LocalizedActionLink("CreateTextBook", "Create", "TextBook")
+                    </li>
+                    <li>
+                        @Html.LocalizedActionLink("View", "Index", "TextBook")
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)

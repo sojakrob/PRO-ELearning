@@ -178,3 +178,6 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\Google.GDa
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\Google.GData.Client.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\Google.GData.Extensions.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\Google.GData.AccessControl.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\ProjectBase.Tools.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\Antlr3.Runtime.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Debug\ProjectBase.Tools.pdb

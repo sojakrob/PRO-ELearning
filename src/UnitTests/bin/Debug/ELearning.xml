@@ -84,68 +84,6 @@
             </summary>
             <param name="userManager"></param>
         </member>
-        <member name="M:ELearning.Models.FillQuestionModel.#ctor(ELearning.Data.Enums.QuestionGroupTypes,System.Int32,System.Boolean)">
-            <summary>
-            Initializes a new instance of the FillQuestionModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String)">
-            <summary>
-            Initializes a new instance of the TopButtonModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String,System.Object,System.String)">
-            <summary>
-            Initializes a new instance of the TopButtonModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Authentication.UserSession.#ctor(ELearning.Data.User)">
-            <summary>
-            Initializes a new instance of the UserSession class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Controllers.FormInstanceController.#ctor(ELearning.Business.Managers.FormManager)">
-            <summary>
-            Initializes a new instance of the FormInstanceController class.
-            </summary>
-            <param name="formManager"></param>
-        </member>
-        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
-            <summary>
-            Initializes a new instance of the NewFormModel class.
-            </summary>
-            <param name="form"></param>
-        </member>
-        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
-            <summary>
-            Initializes a new instance of the UpDownControlModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32,System.String)">
-            <summary>
-            Initializes a new instance of the UpDownControlModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
-            <summary>
-            Initializes a new instance of the UnityContainerBuilder class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor">
-            <summary>
-            Initializes a new instance of the UserTypeModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor(ELearning.Data.UserType)">
-            <summary>
-            Initializes a new instance of the UserTypeModel class.
-            </summary>
-        </member>
-        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
-            <summary>
-            Gets the logged user
-            </summary>
-        </member>
         <member name="T:Resources.Strings">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -202,9 +140,24 @@
               Looks up a localized string similar to Created.
             </summary>
         </member>
+        <member name="P:Resources.Strings.CreatedBy">
+            <summary>
+              Looks up a localized string similar to Created by.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.CreateForm">
             <summary>
               Looks up a localized string similar to Create Form.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.CreateNew">
+            <summary>
+              Looks up a localized string similar to Create New.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.CreateTextBook">
+            <summary>
+              Looks up a localized string similar to Create TextBook.
             </summary>
         </member>
         <member name="P:Resources.Strings.Czech">
@@ -215,6 +168,16 @@
         <member name="P:Resources.Strings.Deactivate">
             <summary>
               Looks up a localized string similar to Deactivate.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.DocumentName">
+            <summary>
+              Looks up a localized string similar to Document name.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Edit">
+            <summary>
+              Looks up a localized string similar to Edit.
             </summary>
         </member>
         <member name="P:Resources.Strings.Email">
@@ -235,6 +198,11 @@
         <member name="P:Resources.Strings.Exam">
             <summary>
               Looks up a localized string similar to Test.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Export">
+            <summary>
+              Looks up a localized string similar to Export.
             </summary>
         </member>
         <member name="P:Resources.Strings.ExportToGoogleDocs">
@@ -275,6 +243,16 @@
         <member name="P:Resources.Strings.Forms">
             <summary>
               Looks up a localized string similar to Forms.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.GoogleAccountEmail">
+            <summary>
+              Looks up a localized string similar to Google account email.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.GoogleAccountPassword">
+            <summary>
+              Looks up a localized string similar to Google account password.
             </summary>
         </member>
         <member name="P:Resources.Strings.Groups">
@@ -392,6 +370,11 @@
               Looks up a localized string similar to Text.
             </summary>
         </member>
+        <member name="P:Resources.Strings.TextBooks">
+            <summary>
+              Looks up a localized string similar to TextBooks.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Times">
             <summary>
               Looks up a localized string similar to times.
@@ -400,6 +383,11 @@
         <member name="P:Resources.Strings.TimesFilled">
             <summary>
               Looks up a localized string similar to Times filled.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Title">
+            <summary>
+              Looks up a localized string similar to Title.
             </summary>
         </member>
         <member name="P:Resources.Strings.TrainingTest">
@@ -425,6 +413,73 @@
         <member name="P:Resources.Strings.View">
             <summary>
               Looks up a localized string similar to View.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.FillQuestionModel.#ctor(ELearning.Data.Enums.QuestionGroupTypes,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the FillQuestionModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the TopButtonModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String,System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the TopButtonModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Authentication.UserSession.#ctor(ELearning.Data.User)">
+            <summary>
+            Initializes a new instance of the UserSession class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.FormInstanceController.#ctor(ELearning.Business.Managers.FormManager)">
+            <summary>
+            Initializes a new instance of the FormInstanceController class.
+            </summary>
+            <param name="formManager"></param>
+        </member>
+        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
+            <summary>
+            Initializes a new instance of the NewFormModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
+        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the UpDownControlModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the UpDownControlModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the UnityContainerBuilder class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor">
+            <summary>
+            Initializes a new instance of the UserTypeModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Data.UserTypeModel.#ctor(ELearning.Data.UserType)">
+            <summary>
+            Initializes a new instance of the UserTypeModel class.
+            </summary>
+        </member>
+        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
+            <summary>
+            Gets the logged user
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.ImportExport.ExportToGoogleDocsModel.#ctor">
+            <summary>
+            Initializes a new instance of the ExportToGoogleDocsModel class.
             </summary>
         </member>
     </members>

@@ -276,4 +276,34 @@
   <data name="ImportFromGoogleGroup" xml:space="preserve">
     <value>Importovat z Google Skupiny</value>
   </data>
+  <data name="DocumentName" xml:space="preserve">
+    <value>Název dokumentu</value>
+  </data>
+  <data name="GoogleAccountEmail" xml:space="preserve">
+    <value>Email Google účtu</value>
+  </data>
+  <data name="GoogleAccountPassword" xml:space="preserve">
+    <value>Heslo Google účtu</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exportovat</value>
+  </data>
+  <data name="CreateTextBook" xml:space="preserve">
+    <value>Vytvořit skripta</value>
+  </data>
+  <data name="TextBooks" xml:space="preserve">
+    <value>Skripta</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Vytvořil</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Název</value>
+  </data>
 </root>

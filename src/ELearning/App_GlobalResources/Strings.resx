@@ -276,4 +276,34 @@
   <data name="FormFills" xml:space="preserve">
     <value>Form Fills</value>
   </data>
+  <data name="DocumentName" xml:space="preserve">
+    <value>Document name</value>
+  </data>
+  <data name="GoogleAccountEmail" xml:space="preserve">
+    <value>Google account email</value>
+  </data>
+  <data name="GoogleAccountPassword" xml:space="preserve">
+    <value>Google account password</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="CreateTextBook" xml:space="preserve">
+    <value>Create TextBook</value>
+  </data>
+  <data name="TextBooks" xml:space="preserve">
+    <value>TextBooks</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Created by</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
 </root>

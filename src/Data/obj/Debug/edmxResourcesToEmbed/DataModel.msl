@@ -201,6 +201,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TextBook">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextBook)">
+        <MappingFragment StoreEntitySet="TextBook">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Changed" ColumnName="Changed" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="ChangedByID" ColumnName="ChangedByID" />
+          <ScalarProperty Name="VisibleToOthers" ColumnName="VisibleToOthers" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
@@ -237,6 +252,14 @@
     <AssociationSetMapping Name="FormGroup" TypeName="DataModel.FormGroup" StoreEntitySet="FormGroup">
       <EndProperty Name="Form">
         <ScalarProperty Name="ID" ColumnName="Forms_ID" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TextBookGroup" TypeName="DataModel.TextBookGroup" StoreEntitySet="TextBookGroup">
+      <EndProperty Name="TextBook">
+        <ScalarProperty Name="ID" ColumnName="TextBooks_ID" />
       </EndProperty>
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />

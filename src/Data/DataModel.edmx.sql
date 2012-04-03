@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 03/18/2012 14:35:51
+-- Date Created: 04/01/2012 12:20:01
 -- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [ELearning];
+USE [ELearinng];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -89,6 +89,18 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceAnswerChoiceItem]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Answer_ChoiceAnswer] DROP CONSTRAINT [FK_ChoiceAnswerChoiceItem];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TextBookUserCreator]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBook] DROP CONSTRAINT [FK_TextBookUserCreator];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TextBookUserChanger]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBook] DROP CONSTRAINT [FK_TextBookUserChanger];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TextBookGroup_TextBook]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBookGroup] DROP CONSTRAINT [FK_TextBookGroup_TextBook];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TextBookGroup_Group]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBookGroup] DROP CONSTRAINT [FK_TextBookGroup_Group];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceQuestion_inherits_Question]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Question_ChoiceQuestion] DROP CONSTRAINT [FK_ChoiceQuestion_inherits_Question];
 GO
@@ -160,6 +172,9 @@ GO
 IF OBJECT_ID(N'[dbo].[MultipleChoiceAnswerItem]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MultipleChoiceAnswerItem];
 GO
+IF OBJECT_ID(N'[dbo].[TextBook]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TextBook];
+GO
 IF OBJECT_ID(N'[dbo].[Question_ChoiceQuestion]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Question_ChoiceQuestion];
 GO
@@ -183,6 +198,9 @@ IF OBJECT_ID(N'[dbo].[GroupMembers]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FormGroup]', 'U') IS NOT NULL
     DROP TABLE [dbo].[FormGroup];
+GO
+IF OBJECT_ID(N'[dbo].[TextBookGroup]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TextBookGroup];
 GO
 
 -- --------------------------------------------------
@@ -337,6 +355,20 @@ CREATE TABLE [dbo].[MultipleChoiceAnswerItem] (
 );
 GO
 
+-- Creating table 'TextBook'
+CREATE TABLE [dbo].[TextBook] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Created] datetime  NOT NULL,
+    [Changed] datetime  NOT NULL,
+    [Title] nvarchar(max)  NOT NULL,
+    [Text] nvarchar(max)  NOT NULL,
+    [CreatedByID] int  NOT NULL,
+    [ChangedByID] int  NOT NULL,
+    [VisibleToOthers] bit  NOT NULL,
+    [Html] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'Question_ChoiceQuestion'
 CREATE TABLE [dbo].[Question_ChoiceQuestion] (
     [Shuffle] bit  NOT NULL,
@@ -392,6 +424,13 @@ GO
 -- Creating table 'FormGroup'
 CREATE TABLE [dbo].[FormGroup] (
     [Forms_ID] int  NOT NULL,
+    [Groups_ID] int  NOT NULL
+);
+GO
+
+-- Creating table 'TextBookGroup'
+CREATE TABLE [dbo].[TextBookGroup] (
+    [TextBooks_ID] int  NOT NULL,
     [Groups_ID] int  NOT NULL
 );
 GO
@@ -496,6 +535,12 @@ ADD CONSTRAINT [PK_MultipleChoiceAnswerItem]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
+-- Creating primary key on [ID] in table 'TextBook'
+ALTER TABLE [dbo].[TextBook]
+ADD CONSTRAINT [PK_TextBook]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
 -- Creating primary key on [ID] in table 'Question_ChoiceQuestion'
 ALTER TABLE [dbo].[Question_ChoiceQuestion]
 ADD CONSTRAINT [PK_Question_ChoiceQuestion]
@@ -542,6 +587,12 @@ GO
 ALTER TABLE [dbo].[FormGroup]
 ADD CONSTRAINT [PK_FormGroup]
     PRIMARY KEY NONCLUSTERED ([Forms_ID], [Groups_ID] ASC);
+GO
+
+-- Creating primary key on [TextBooks_ID], [Groups_ID] in table 'TextBookGroup'
+ALTER TABLE [dbo].[TextBookGroup]
+ADD CONSTRAINT [PK_TextBookGroup]
+    PRIMARY KEY NONCLUSTERED ([TextBooks_ID], [Groups_ID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -872,6 +923,57 @@ ADD CONSTRAINT [FK_ChoiceAnswerChoiceItem]
 CREATE INDEX [IX_FK_ChoiceAnswerChoiceItem]
 ON [dbo].[Answer_ChoiceAnswer]
     ([ItemID]);
+GO
+
+-- Creating foreign key on [CreatedByID] in table 'TextBook'
+ALTER TABLE [dbo].[TextBook]
+ADD CONSTRAINT [FK_TextBookUserCreator]
+    FOREIGN KEY ([CreatedByID])
+    REFERENCES [dbo].[User]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TextBookUserCreator'
+CREATE INDEX [IX_FK_TextBookUserCreator]
+ON [dbo].[TextBook]
+    ([CreatedByID]);
+GO
+
+-- Creating foreign key on [ChangedByID] in table 'TextBook'
+ALTER TABLE [dbo].[TextBook]
+ADD CONSTRAINT [FK_TextBookUserChanger]
+    FOREIGN KEY ([ChangedByID])
+    REFERENCES [dbo].[User]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TextBookUserChanger'
+CREATE INDEX [IX_FK_TextBookUserChanger]
+ON [dbo].[TextBook]
+    ([ChangedByID]);
+GO
+
+-- Creating foreign key on [TextBooks_ID] in table 'TextBookGroup'
+ALTER TABLE [dbo].[TextBookGroup]
+ADD CONSTRAINT [FK_TextBookGroup_TextBook]
+    FOREIGN KEY ([TextBooks_ID])
+    REFERENCES [dbo].[TextBook]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Groups_ID] in table 'TextBookGroup'
+ALTER TABLE [dbo].[TextBookGroup]
+ADD CONSTRAINT [FK_TextBookGroup_Group]
+    FOREIGN KEY ([Groups_ID])
+    REFERENCES [dbo].[Group]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TextBookGroup_Group'
+CREATE INDEX [IX_FK_TextBookGroup_Group]
+ON [dbo].[TextBookGroup]
+    ([Groups_ID]);
 GO
 
 -- Creating foreign key on [ID] in table 'Question_ChoiceQuestion'

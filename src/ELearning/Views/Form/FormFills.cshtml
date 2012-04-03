@@ -4,7 +4,16 @@
 
 @{
     ViewBag.Title = ELearning.Localization.GetResourceString("FormFills");
-    ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("ExportToGoogleDocs"), "ExportToGoogleDocs", "Form", new { id = Model.ID }, null ) };
+    ViewBag.TopButtons = new[] 
+    { 
+        new TopButtonModel(
+            ELearning.Localization.GetResourceString("ExportToGoogleDocs"), 
+            "ExportToGoogleDocs", 
+            "Form", 
+            new { id = Model.ID },
+            null
+            ) 
+    };
 }
 
 <h2>@Model.Name</h2>

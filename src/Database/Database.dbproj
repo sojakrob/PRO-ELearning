@@ -90,16 +90,31 @@
     <Build Include="FK_ScaleAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="FK_ChoiceAnswer_inherits_Answer.fkey.sql">
+    <Build Include="FK_TextAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="FK_TextAnswer_inherits_Answer.fkey.sql">
+    <Build Include="FK_ChoiceAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="FK_MultipleChoiceAnswer_inherits_Answer.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="FK_ChoiceQuestion_inherits_Question.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="FK_TextBookGroup_Group.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="FK_TextBookGroup_TextBook.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="FK_TextBookUserChanger.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="FK_TextBookUserCreator.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="FK_ChoiceAnswerChoiceItem.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="FK_MultipleChoiceAnswerItemChoiceItem.fkey.sql">
@@ -171,6 +186,18 @@
     <Build Include="FK_QuestionGroupQuestion.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="IX_FK_TextBookGroup_Group.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="IX_FK_TextBookUserChanger.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="IX_FK_TextBookUserCreator.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="IX_FK_ChoiceAnswerChoiceItem.index.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="IX_FK_MultipleChoiceAnswerItemChoiceItem.index.sql">
       <SubType>Code</SubType>
     </Build>
@@ -234,6 +261,9 @@
     <Build Include="IX_FK_QuestionGroupQuestion.index.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="PK_TextBookGroup.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="PK_FormGroup.pkey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -246,16 +276,19 @@
     <Build Include="PK_Answer_ScaleAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="PK_Answer_ChoiceAnswer.pkey.sql">
+    <Build Include="PK_Answer_TextAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="PK_Answer_TextAnswer.pkey.sql">
+    <Build Include="PK_Answer_ChoiceAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="PK_Answer_MultipleChoiceAnswer.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="PK_Question_ChoiceQuestion.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="PK_TextBook.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="PK_MultipleChoiceAnswerItem.pkey.sql">
@@ -306,6 +339,9 @@
     <Build Include="PK_Question.pkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="TextBookGroup.table.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="FormGroup.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -318,16 +354,19 @@
     <Build Include="Answer_ScaleAnswer.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Answer_ChoiceAnswer.table.sql">
+    <Build Include="Answer_TextAnswer.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Answer_TextAnswer.table.sql">
+    <Build Include="Answer_ChoiceAnswer.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Answer_MultipleChoiceAnswer.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Question_ChoiceQuestion.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="TextBook.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="MultipleChoiceAnswerItem.table.sql">
@@ -376,12 +415,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Question.table.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="FK_ChoiceAnswerChoiceItem.fkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="IX_FK_ChoiceAnswerChoiceItem.index.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

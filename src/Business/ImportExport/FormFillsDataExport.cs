@@ -5,74 +5,99 @@ using System.Text;
 using ELearning.Business.Managers;
 using System.IO;
 using ELearning.Data;
+using ELearning.Business.Reporting;
+using ELearning.Business.Storages;
 
 namespace ELearning.Business.ImportExport
 {
     public class FormFillsDataExport
     {
         private const string CSV_DELIMITER = ",";
-        private FormManager _formManager;
+        private const string TEXT_QUOTE = "\"";
+
+        private string _filename;
+        private FormFillsDataReport _report;
+        private TextWriter _writer;
+        
 
 
         /// <summary>
         /// Initializes a new instance of the FormFillsDataExport class.
         /// </summary>
-        public FormFillsDataExport(FormManager formManager)
+        private FormFillsDataExport(FormFillsDataReport report, System.Web.HttpServerUtilityBase server)
         {
-            _formManager = formManager;
+            _report = report;
+
+            string path = LocalStorage.GetExportPath(server);
+            _filename = string.Format("{0}{1}{2}.csv", path, DateTime.Now.ToFileTimeUtc(), _report.Form.Name);
         }
 
 
-        public bool ExportFormFillsToCsv(int formID, string fileName)
+        private string ExportFormFillsReportToCsv()
         {
-            TextWriter writer = new StreamWriter(fileName, false, Encoding.UTF8);
+            _writer = new StreamWriter(_filename, false, Encoding.UTF8);
 
-            var form = _formManager.GetForm(formID);
+            WriteCsvHeader();
+            WriteCsvData();
 
-            // Header
-            writer.Write(string.Format("Solver{0}DateTime{0}", CSV_DELIMITER));
+            _writer.Close();
+            return _filename;
+        }
 
-            Dictionary<int, QuestionGroup> questionGroups = new Dictionary<int,QuestionGroup>();
-            foreach(var questionGroup in form.QuestionGroups)
-                questionGroups.Add(questionGroup.Index, questionGroup);
-            int inc = 0;
-            for (int i = 0; i < questionGroups.Count; i++)
+        private void WriteCsvHeader()
+        {
+            _writer.Write(string.Format("Solver{0}DateTime{0}", CSV_DELIMITER));
+
+            foreach (FormFillQuestionGroup group in _report.Groups)
             {
-                while (!questionGroups.ContainsKey(i + inc))
-                    inc++;
-
-                writer.Write(questionGroups[i+inc].Questions.First().Text);
-                writer.Write(CSV_DELIMITER);
-            }
-            writer.WriteLine();
-            
-            // Data
-            foreach (var instance in _formManager.GetFormInstances(formID))
-            {
-                writer.Write(instance.Solver.Name);
-                writer.Write(CSV_DELIMITER);
-
-                writer.Write(instance.Submited);
-                writer.Write(CSV_DELIMITER);
-
-                Dictionary<int, QuestionInstance> questions = new Dictionary<int, QuestionInstance>();
-                foreach (var question in instance.Questions)
-                    questions.Add(question.QuestionTemplate.QuestionGroup.Index, question);
-
-                inc = 0;
-                for (int i = 0; i < questions.Count; i++)
+                foreach (Question question in group.Questions)
                 {
-                    while (!questions.ContainsKey(i + inc))
-                        inc++;
-
-                    writer.Write(questions[i+inc].Answer != null ? questions[i+inc].Answer.ID.ToString() : string.Empty);
-                    writer.Write(CSV_DELIMITER);
+                    WriteWithDelimiter(question.Text);
                 }
-                writer.WriteLine();
             }
 
-            writer.Close();
-            return true;
+            WriteWithDelimiter("Mark");
+            _writer.WriteLine();
+        }
+        private void WriteCsvData()
+        {
+            foreach (var fill in _report.Fills)
+            {
+                WriteWithDelimiter(fill.Solver.Name);
+                WriteWithDelimiter(fill.Submited);
+
+                foreach (FormFillQuestionGroup group in _report.Groups)
+                {
+                    foreach (Question question in group.Questions)
+                    {
+                        var instance = fill.Questions.Where(q => q.QuestionID == question.ID).FirstOrDefault();
+                        if (instance != null)
+                            Write(instance.Answer.ToString());
+                        _writer.Write(CSV_DELIMITER);
+                    }
+                }
+
+                WriteWithDelimiter(fill.Mark);
+
+                _writer.WriteLine();
+            }
+        }
+
+        private void Write(object value)
+        {
+            _writer.Write("{0}{1}{0}", TEXT_QUOTE, value);
+        }
+        private void WriteWithDelimiter(object value)
+        {
+            Write(value);
+            _writer.Write(CSV_DELIMITER);
+        }
+
+
+        public static string ExportFormFillsReportToCsv(FormFillsDataReport report, System.Web.HttpServerUtilityBase server)
+        {
+            var exporter = new FormFillsDataExport(report, server);
+            return exporter.ExportFormFillsReportToCsv();
         }
     }
 }

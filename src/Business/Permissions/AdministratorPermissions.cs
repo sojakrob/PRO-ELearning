@@ -73,6 +73,28 @@ namespace ELearning.Business.Permissions
             }
         }
 
+        public override bool TextBook_List
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool TextBook_CreateEdit_All
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool TextBook_Delete
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override bool Question_CreateEdit_All
         {
             get

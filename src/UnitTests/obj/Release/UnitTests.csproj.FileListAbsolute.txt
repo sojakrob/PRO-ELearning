@@ -43,3 +43,7 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Release\ELearnin
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\obj\Release\ResolveAssemblyReference.cache
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\obj\Release\UnitTests.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\obj\Release\UnitTests.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Release\Google.GData.Documents.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Release\Google.GData.Client.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Release\Google.GData.Extensions.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\UnitTests\bin\Release\Google.GData.AccessControl.dll
