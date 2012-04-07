@@ -1,0 +1,304 @@
+\documentclass[11pt,oneside,a4paper]{book}
+%\documentclass[czech, 11pt, twoside, a4paper]{book}   
+
+\usepackage[czech, english]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[cp1250]{inputenc}
+%\usepackage{fontspec} 
+
+%\usepackage[T1]{czech} %%%%[IL2] [T1] [OT1]
+
+\usepackage{graphicx}
+\usepackage{indentfirst}
+
+\usepackage{k336_thesis_macros}
+
+\newcommand\TypeOfWork{Bakaláøská práce}  \typeout{Bakalarska prace}
+\newcommand\StudProgram{Softwarové technologie a management, Bakaláøskı}
+\newcommand\StudBranch{Softwarové inenırství}
+
+\newcommand\WorkTitle{E-learningovı systém se zameøením na testování}
+\newcommand\FirstandFamilyName{Robert Soják}
+\newcommand\Supervisor{Ing. Ondøej Macek}
+
+\usepackage[
+pdftitle={\WorkTitle},
+pdfauthor={\FirstandFamilyName},
+bookmarks=true,
+colorlinks=true,
+breaklinks=true,
+urlcolor=red,
+citecolor=blue,
+linkcolor=blue,
+unicode=true,
+]{hyperref}
+
+\usepackage[square, numbers]{natbib}
+%\usepackage{url}
+%\DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>}\urlstyle{tt}}  %rm/sf/tt
+%\renewcommand{\emph}[1]{\textsl{#1}}    % melo by byt kurziva nebo sklonene,
+\let\oldUrl\url
+\renewcommand\url[1]{<\texttt{\oldUrl{#1}}>}
+
+
+\begin{document}
+\selectlanguage{czech}
+
+\iflanguage{czech}{
+	 \typeout{************************************************}
+	 \typeout{Zvoleny jazyk: cestina}
+	 \typeout{Typ prace: \TypeOfWork}
+	 \typeout{Studijni program: \StudProgram}
+	 \typeout{Obor: \StudBranch}
+	 \typeout{Jmeno: \FirstandFamilyName}
+	 \typeout{Nazev prace: \WorkTitle}
+	 \typeout{Vedouci prace: \Supervisor}
+	 \typeout{***************************************************}
+	 \newcommand\Department{Katedra poèítaèù}
+	 \newcommand\Faculty{Fakulta elektrotechnická}
+	 \newcommand\University{Èeské vysoké uèení technické v Praze}
+	 \newcommand\labelSupervisor{Vedoucí práce}
+	 \newcommand\labelStudProgram{Studijní program}
+	 \newcommand\labelStudBranch{Obor}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%    Titulni stranka / Title page 
+
+\coverpagestarts
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%    Podekovani / Acknowledgements 
+
+\acknowledgements
+\noindent
+Zde mÅ¯Å¾ete napsat svÃ© podÄ›kovÃ¡nÃ­, pokud chcete a mÃ¡te komu dÄ›kovat.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   Prohlaseni / Declaration 
+
+\declaration{V~Praze dne }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%    Abstract 
+ 
+\abstractpage
+
+Translation of Czech abstract into English.
+
+\vglue60mm
+\noindent{\Huge \textbf{Abstrakt}}
+\vskip 2.75\baselineskip
+
+\noindent
+Abstrakt prÃ¡ce by mÄ›l velmi struÄnÄ› vystihovat jejÃ­ podstatu. Tedy ÄÃ­m se prÃ¡ce zabÃ½vÃ¡ a co je jejÃ­m vÃ½sledkem/pÅ™Ã­nosem.
+
+\noindent
+OÄekÃ¡vajÃ­ se cca 1 -- 2 odstavce, maximÃ¡lnÄ› pÅ¯l strÃ¡nky.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Obsah / Table of Contents 
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Seznam obrazku / List of Figures 
+
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Seznam tabulek / List of Tables
+
+\listoftables
+
+%**************************************************************
+
+\mainbodystarts
+% horizontalnÃ­ mezera mezi dvema odstavci
+%\parskip=5pt
+%11.12.2008 parskip + tolerance
+\normalfont
+\parskip=0.2\baselineskip plus 0.2\baselineskip minus 0.1\baselineskip
+
+
+%*****************************************************************************
+\chapter{Úvod}
+
+Tento projekt e-learningového systému vznikl na základì poptávky neziskové organizace. Má slouit jako nástroj pro nauèné testování úèastníkù (dále \textit{studentù}) kurzù, které organizace poøádá.
+
+V souèasné dobì organizace vyuívá pro testování Google Formuláøù s testovımi otázkami, kde student vybírá právì jednu odpovìï z nìkolika monıch. Skrze generovanou tabulku odpovìdí jednotlivıch studentù je sice koordinátor kurzu (dále \textit{lektor}) schopen vyhodnotit správnost odpovìdí, ale to je vše, co mu aplikace Formuláøù umoòuje. Vısledky je nucen ruènì vyhodnotit a danému studentovi nastínit správné odpovìdi nebo alespoò odkázat na související kapitolu v uèebním materiálu (dálé \textit{skripta}).
+
+Pro kategorizaci studentù a pøíslušnıch lektorù je v organizaci vyuito Google Skupin.
+
+%*****************************************************************************
+\chapter{Popis problému, specifikace cíle}
+
+% TODO Mela by zde byt sekce napr. Popis problemu?
+
+Jak ji z vıše nastínìného popisu vyplıvá, organizace potøebuje aplikaci pro tvorbu, vyplnìní, okamité vyhodnocení a okomentování testù.
+
+Lektor kurzu vytvoøí šablonu testu s otázkami o nìkolika monıch odpovìdích. Ke kadé otázce by mìl mít monost napsat slovní komentáø, ve kterém mùe nastínit, proè je daná odpovìd správnì nebo špatnì a pøípadnì odkázat na studijní materiál, kterı danou problematiku vysvìtluje. Kadá otázka k sobì mùe vázat otázky alternativní, které test inovují pøi vypòování stejného testu vícekrát.
+
+Student by mìl mít vdy pøehled o dostupnıch testech, které jsou urèené pro skupiny, do nich je zaøazen. Po konkrétním vıbìru se pro nìj test vygeneruje z dostupnıch otázek a jejich alternativ. Vdy, kdy testovanı oznaèí svou odpovìï, zobrazení se vysvìtlení správné odpovìdi a dojde k jejímu viditelnému zvıraznìní. Po vyplnìní celého testu èi pouze jeho èásti má student monost odeslat svùj vısledek nadøízenému lektorovi. Ten má ve vısledku pøehled, jak na tom jeho svìøenci se znalostmi jsou.
+ 
+
+\section{Cíl projektu}
+Cílem projektu je vyvinout portál pro podporu vıuky. Hlavní funkcionalitou by mìla bıt tvorba a vyplòování nauènıch testù urèenıch skupinám studentù. Systém by mìl také podporovat tvorbu a správu elektronickıch skript.
+
+Jakoto bakaláøská práce by mìl projekt také ukázat mou schopnost samostatnì øešit danı problém. Chtìl bych pøedvést nabyté znalostí a schopnost vyuít moderní technologie pøi jeho realizaci.
+
+\section{Vyuití}
+
+Vıslednı systém by mìl bıt nasazen do zmínìné poptávající neziskové organizace.
+
+Má ale i širší vyuití, protoe dává za vznik univerzálnímu e-learningovému portálu. Systém nauènıch testù je zde svım zpùsobem originální a odlišuje portál od ostatních aplikací tohoto typu.
+
+Já osobnì bych chtìl portál vyuít jako nástroj pro podporu vıuky studentù informatiky na gymnáziu, kde pùsobím jako uèitel. Oèekávám od nìj efektivní pomoc pøi tvorbì a známkování testù a sdílení studijních materiálù.
+
+Mùe bıt pøínosem i pro další pøedmìty jako jednoduše ovladatelnı nástroj pro tvorbu tištìnıch testù èi dotazníkù, které jsou povìtšinou tìkopádnì tvoøeny v textovém procesoru. Nastavil by se tím i jednotnı vzhled, kterı bıvá test od testu odlišnı.
+
+%*****************************************************************************
+\chapter{Analıza a návrh øešení}
+
+\section{Poadavky na systém}
+
+Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zadávající organizace a rozšíøenıch poadavkù, které byly sestaveny na základì obecnıch poadavkù na systém takového typu a inspirací zmínìnıch v rešerši v následující sekci~\ref{sec:Rešerše existujících øešení}.
+
+\subsection{Poadavky zadavatele}
+
+\begin{itemize}
+\item Zobrazení komentáøe k~právì zodpovìzené otázce (cca odstavcovı)
+\item Zobrazení vısledku testu a~monost jeho odeslání koordinátorovi kurzu
+\item Náhodnı vıbìr variace otázky pøi generování testu 
+\item Neomezenı poèet moností danı test opakovat dokud nebude zodpovìzen správnì
+\end{itemize}
+
+\subsection{Rozšíøené poadavky}
+
+\section{Rešerše existujících øešení}
+\label{sec:Rešerše existujících øešení}
+
+Rešerši existujících øešení e-learningovıch a tvorbou formuláøù zabıvajících se aplikací jsem neprovádìl za úèelem nalezení kandidáta na rozšíøení o poadovanou funkcionalitu. Rešerši jsem dìlal s cílem prozkoumat dostupná øešení, zjistit co poskytují za sluby a tøeba je vyuít pro inspiraci.
+
+Tento projekt byl od zaèátku zamıšlen pro vznik od zaèátku, takøíkajíc na zelené louce. Jedním z dùvodù je funkcionalita speciálního nauèného testu. Dalším dùvodem je poadavek na jednoduché ovládaní a zkušenost uivatelù ze zadávající spoleènosti s prostøedím Google Formuláøù. Hlavním dùvodem je ale myslím moje snaha zapojit do vıvoje znalosti softwarového inenırství a touha vytvoøit si systém vlastní. Nechtìl jsem jen vybrat z pøedpøipraveného øešení s hotovou architekturou a pøibalit k ní plugin pro práci s nauènımi testy.
+
+\subsection{Google Formuláøe}
+\subsection{Moodle}
+\subsection{Studentova berlièka}
+\subsection{Edubase}
+\subsection{Závìr}
+
+
+\section{Use Case}
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=0.9\textwidth]{figures/UseCaseDiagram}
+\caption{Use Case diagram}
+\label{fig:Use Case diagram}
+\end{center}
+\end{figure}
+
+\section{Meta model}
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=0.9\textwidth]{figures/MetaModel}
+\caption{Meta model}
+\label{fig:Meta model}
+\end{center}
+\end{figure}
+
+
+\section{Datová vrstva}
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=1\textwidth]{figures/DesignModel}
+\caption{Design model datové vrstvy}
+\label{fig:Design model datové vrstvy}
+\end{center}
+\end{figure}
+
+\section{Architektura systému}
+
+%*****************************************************************************
+\chapter{Implementace}
+
+\section{Datová vrstva}
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=1\textwidth]{figures/EntityDataModel}
+\caption{Entity Data Model}
+\label{fig:Entity Data Model}
+\end{center}
+\end{figure}
+
+\section{Bezpeènost}
+
+%*****************************************************************************
+\chapter{Testování}
+\section{Unit testy}
+\section{Selenium testy}
+\section{Vıkonové testy}
+
+%*****************************************************************************
+\chapter{Pouité technologie a frameworky}
+\section{Entity Framework}
+\section{Unity Application Block}
+\section{Porovnání ASP.NET MVC a ASP.NET Web Forms}
+%*****************************************************************************
+\chapter{ZÃ¡vÄ›r}
+
+\begin{itemize}
+\item ZhodnocenÃ­ splnÄ›nÃ­ cÃ­lÅ¯ DP/BP a  vlastnÃ­ho pÅ™Ã­nosu prÃ¡ce (pÅ™i formulaci je tÅ™eba vzÃ­t v potaz zadÃ¡nÃ­ prÃ¡ce).
+\item Diskuse dalÅ¡Ã­ho moÅ¾nÃ©ho pokraÄovÃ¡nÃ­ prÃ¡ce.
+\end{itemize} 
+
+%*****************************************************************************
+
+\bibliographystyle{csplainnat}
+
+%bibliographystyle{plain}
+%\bibliographystyle{psc}
+{
+%JZ: 11.12.2008 Kdo chce mit v techto ukazkovych odkazech take odkaz na CSTeX:
+\def\CS{$\cal C\kern-0.1667em\lower.5ex\hbox{$\cal S$}\kern-0.075em $}
+\bibliography{reference}
+}
+
+%*****************************************************************************
+%*****************************************************************************
+\appendix
+
+%*****************************************************************************
+
+% JZ: 3.5.2009 \chapter z book zajistÃ­ automaticky
+%\subsection{ZaÄÃ¡tky kapitol na lichÃ© strÃ¡nky}
+%Ve vÃ½slednÃ©m textu je dobrÃ©, kdyÅ¾ kaÅ¾dÃ¡ kapitola zaÄÃ­nÃ¡ na lichÃ© strÃ¡nce. Tedy pouÅ¾ijte:
+%\begin{verbatim}
+%  \cleardoublepage\include{1_uvod}
+%  \cleardoublepage\include{2_teorie}
+%   atd.\ldots{}
+%\end{verbatim}
+
+%*****************************************************************************
+\chapter{Seznam pouitıch pojmù}
+
+\begin{description}
+\item[E-learning] Vzdìlávání za pomoci moderních elektronickıch informaèních a komunikaèních technologií
+\end{description}
+\vdots
+
+%*****************************************************************************
+\chapter{Seznam pouÅ¾itÃ½ch zkratek}
+
+\begin{description}
+\item[2D] Two-Dimensional
+\item[ABN] Abstract Boolean Networks
+\item[ASIC] Application-Specific Integrated Circuit
+\end{description}
+\vdots
+
+%*****************************************************************************
+\chapter{UML diagramy}
+
+%*****************************************************************************
+\chapter{InstalaÄnÃ­ a uÅ¾ivatelskÃ¡ pÅ™Ã­ruÄka}
+
+%*****************************************************************************
+\chapter{Obsah pÅ™iloÅ¾enÃ©ho CD}
+
+
+\end{document}
