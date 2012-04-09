@@ -11,8 +11,19 @@
 
 \usepackage{graphicx}
 \usepackage{indentfirst}
+\usepackage{enumerate}
+\usepackage{listings}
 
 \usepackage{k336_thesis_macros}
+
+\usepackage{sojakrob_macros}
+
+\lstset
+{
+language=CSharp,
+classoffset=2,
+morekeywords={ActionResult, UserTypes, AuthorizeUserType, PermissionException, UserPermissions, Form, ArgumentException, ArgumentNullException}
+}
 
 \newcommand\TypeOfWork{Bakaláøská práce}  \typeout{Bakalarska prace}
 \newcommand\StudProgram{Softwarové technologie a management, Bakaláøský}
@@ -105,6 +116,10 @@ OÄekÃ¡vajÃ­ se cca 1 -- 2 odstavce, maximÃ¡lnÄ› pÅ¯l strÃ¡nky.
 
 \listoftables
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Seznam zdrojovych kodu / List of Source Codes
+
+\lstlistoflistings
+
 %**************************************************************
 
 \mainbodystarts
@@ -120,7 +135,7 @@ OÄekÃ¡vajÃ­ se cca 1 -- 2 odstavce, maximÃ¡lnÄ› pÅ¯l strÃ¡nky.
 
 Tento projekt e-learningového systému vznikl na základì poptávky neziskové organizace. Má sloužit jako nástroj pro nauèné testování úèastníkù (dále \textit{studentù}) kurzù, které organizace poøádá.
 
-V souèasné dobì organizace využívá pro testování Google Formuláøù s testovými otázkami, kde student vybírá právì jednu odpovìï z nìkolika možných. Skrze generovanou tabulku odpovìdí jednotlivých studentù je sice koordinátor kurzu (dále \textit{lektor}) schopen vyhodnotit správnost odpovìdí, ale to je vše, co mu aplikace Formuláøù umožòuje. Výsledky je nucen ruènì vyhodnotit a danému studentovi nastínit správné odpovìdi nebo alespoò odkázat na související kapitolu v uèebním materiálu (dálé \textit{skripta}).
+V souèasné dobì organizace využívá pro testování Google Formuláøù\footnote{Názvem Google Formuláø zde znaèím formuláø textového procesoru z rodiny Google Dokumentù} s testovými otázkami, kde student vybírá právì jednu odpovìï z nìkolika možných. Skrze generovanou tabulku odpovìdí jednotlivých studentù je sice koordinátor kurzu (dále \textit{lektor}) schopen vyhodnotit správnost odpovìdí, ale to je vše, co mu aplikace Formuláøù umožòuje. Výsledky je nucen ruènì vyhodnotit a danému studentovi nastínit správné odpovìdi nebo alespoò odkázat na související kapitolu v uèebním materiálu (dálé \textit{skripta}).
 
 Pro kategorizaci studentù a pøíslušných lektorù je v organizaci využito Google Skupin.
 
@@ -156,39 +171,91 @@ Mùže být pøínosem i pro další pøedmìty jako jednoduše ovladatelný nástroj pro tv
 
 \section{Požadavky na systém}
 
-Požadavky na výsledný e-learningový systém sestávají ze základních požadavkù zadávající organizace a rozšíøených požadavkù, které byly sestaveny na základì obecných požadavkù na systém takového typu a inspirací zmínìných v rešerši v následující sekci~\ref{sec:Rešerše existujících øešení}.
+Požadavky na výsledný e-learningový systém sestávají ze základních požadavkù zadávající organizace a rozšiøujících požadavkù, které byly sestaveny na základì obecných požadavkù na systém takového typu a inspirací zmínìných v rešerši v následující sekci~\ref{sec:Rešerše existujících øešení}. Díky tìmto rozšiøujícím požadavkùm by mìl vzniknout zmínìný komplexnìjší univerzální e-learningový systém.
 
 \subsection{Požadavky zadavatele}
 
-\begin{itemize}
-\item Zobrazení komentáøe k~právì zodpovìzené otázce (cca odstavcový)
-\item Zobrazení výsledku testu a~možnost jeho odeslání koordinátorovi kurzu
-\item Náhodný výbìr variace otázky pøi generování testu 
-\item Neomezený poèet možností daný test opakovat dokud nebude zodpovìzen správnì
-\end{itemize}
+\subsubsection{Funkèní požadavky}
 
-\subsection{Rozšíøené požadavky}
+\begin{enumerate}[FP1.] \setlength\itemindent{15pt}
+\item Zobrazení komentáøe k~právì zodpovìzené otázce (cca odstavcový)
+\item Zobrazení výsledku testu a~možnost jeho odeslání lektorovi kurzu
+\item Náhodný výbìr variace otázky pøi generování testu
+\item Neomezený poèet možností daný test opakovat dokud nebude zodpovìzen správnì
+\item Možnost kategorizace studentù a pøíslušných lektorù
+\newcounter{FPEnum} \setcounter{FPEnum}{\theenumi}
+\end{enumerate}
+
+\subsubsection{Nefunkèní požadavky}
+
+\begin{enumerate}[NP1.] \setlength\itemindent{15pt}
+\item Jednoduché ovládání, pochopitelné pro bìžného uživatele i bez zaškolení
+\newcounter{NPEnum} \setcounter{NPEnum}{\theenumi}
+\end{enumerate}
+
+\subsection{Rozšiøující požadavky}
+
+\subsubsection{Funkèní požadavky}
+
+\begin{enumerate}[FP1.] \setlength\itemindent{15pt}
+\setcounter{enumi}{\theFPEnum}
+\item Rozšíøení o více typù testù (obecnì \textit{formuláøù})
+\item Možnost výbìru z více typù otázek
+\item Lektor mùže ohodnotit pøijatý formuláø
+\item Podpora exportu výsledkù formuláøù do Google Formuláøù
+\item Možnost tvorby elektronických skript
+\end{enumerate}
+
+\subsubsection{Nefunkèní požadavky}
+
+\begin{enumerate}[NP1.] \setlength\itemindent{15pt}
+\setcounter{enumi}{\theNPEnum}
+\item Výsledný systém bude webová aplikace
+\end{enumerate}
+
 
 \section{Rešerše existujících øešení}
 \label{sec:Rešerše existujících øešení}
 
-Rešerši existujících øešení e-learningových a tvorbou formuláøù zabývajících se aplikací jsem neprovádìl za úèelem nalezení kandidáta na rozšíøení o požadovanou funkcionalitu. Rešerši jsem dìlal s cílem prozkoumat dostupná øešení, zjistit co poskytují za služby a tøeba je využít pro inspiraci.
-
-Tento projekt byl od zaèátku zamýšlen pro vznik od zaèátku, takøíkajíc na zelené louce. Jedním z dùvodù je funkcionalita speciálního nauèného testu. Dalším dùvodem je požadavek na jednoduché ovládaní a zkušenost uživatelù ze zadávající spoleènosti s prostøedím Google Formuláøù. Hlavním dùvodem je ale myslím moje snaha zapojit do vývoje znalosti softwarového inženýrství a touha vytvoøit si systém vlastní. Nechtìl jsem jen vybrat z pøedpøipraveného øešení s hotovou architekturou a pøibalit k ní plugin pro práci s nauènými testy.
+Rešerši existujících øešení e-learningových a tvorbou formuláøù zabývajících se aplikací jsem neprovádìl za úèelem nalezení kandidáta na rozšíøení o požadovanou funkcionalitu. Rešerši jsem dìlal s cílem prozkoumat dostupná øešení, zjistit co poskytují za služby a tøeba je využít pro inspiraci. Projekt byl již od zaèátku zamýšlen pro vznik od zaèátku, takøíkajíc na zelené louce. Jedním z dùvodù je funkcionalita speciálního nauèného testu. Dalším dùvodem je požadavek na jednoduché ovládaní a zkušenost uživatelù ze zadávající spoleènosti s prostøedím Google Formuláøù. Hlavním dùvodem je ale myslím moje snaha zapojit do vývoje znalosti softwarového inženýrství a touha vytvoøit si systém vlastní. Nechtìl jsem jen vybrat z pøedpøipraveného øešení s hotovou architekturou a pøibalit k ní plugin pro práci s nauènými testy.
 
 \subsection{Google Formuláøe}
+
+Jako Google Formuláø v této bakaláøské práci oznaèuji formuláø textového procesoru z balíku Google Dokumenty\cite{GoogleDocuments}. Pomocí poskytovaného nástroje je uživateli umožnìno vytvoøit vlastní formuláø z nìkolika možných formuláøových prvkù. Hotový formuláø lze  poté zveøejnit (zcela nebo jen pro urèitý okruh uživatelù) a nechat uživateli vyplnit. Odpovìdi jsou automaticky zapisovány do tabulky, kde jsou spolu s dalšími informacemi (napø. datum a èas vyplnìní) pøipravené pro další analýzu.
+
+Základní myšlenka tohoto projektu vychází právì z Google Formuláøù, proto zde jejich rozebrání vìnuji více prostoru.
+
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=0.9\textwidth]{figures/GoogleDocs}
+\caption{Hlavní stránka Google Dokumentù}
+\label{fig:Hlavní stránka Google Dokumentù}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=1\textwidth]{figures/GoogleFormsSampleForm}
+\caption{Ukázka Google Formuláøe: tvorba vlevo, výsledek vpravo}
+\label{fig:Ukázka Google Formuláøe}
+\end{center}
+\end{figure}
+
 \subsection{Moodle}
 \subsection{Studentova berlièka}
 \subsection{Edubase}
 \subsection{Závìr}
 
 
-\section{Use Case}
+\section{Diagram užití}
+
+Na diagramu \ref{fig:Diagram užití} jsou zachyceny základní operace provádìné uživateli v daných rolích.
+
 \begin{figure}[h]
 \begin{center}
 %\includegraphics[width=0.9\textwidth]{figures/UseCaseDiagram}
-\caption{Use Case diagram}
-\label{fig:Use Case diagram}
+\caption{Diagram užití}
+\label{fig:Diagram užití}
 \end{center}
 \end{figure}
 
@@ -211,6 +278,14 @@ Tento projekt byl od zaèátku zamýšlen pro vznik od zaèátku, takøíkajíc na zelené
 \end{center}
 \end{figure}
 
+\begin{figure}[h]
+\begin{center}
+%\includegraphics[width=0.5\textwidth]{figures/FormStateDiagram}
+\caption{Stavový diagram formuláøe}
+\label{fig:Stavový diagram formuláøe}
+\end{center}
+\end{figure}
+
 \section{Architektura systému}
 
 %*****************************************************************************
@@ -226,6 +301,52 @@ Tento projekt byl od zaèátku zamýšlen pro vznik od zaèátku, takøíkajíc na zelené
 \end{figure}
 
 \section{Bezpeènost}
+
+Na bezpeènost této webové aplikace se dívám ze dvou smìrù, a to z hlediska bezpeènosti pøenášených dat mezi klientem a serverem a z hlediska bezpeènosti v interakci uživatele s aplikací. Jsou zde možná i další hlediska, napøíklad komunikace webového serveru s databázovým serverem, ale tu zde myslím není tøeba rozebírat. Pro jednoduchost pøedpokládám, že aplikaze i databáze bìží na totožném serveru.
+
+\subsection{Bezpeènost pøenášených dat}
+
+Jedná se o bezpeènost pøenosu veškerých dat, která se pøenášejí po síti (a už po LAN èi po internetu), když uživatel interaguje s aplikací. Nejdùležitìjší je asi moment, kdy se uživatel do aplikace pøihlašuje. Odesílá své uživatelské jméno a heslo, díky èemuž je systémem identifikován a autorizován k provádìní jednotlivých akcí.
+
+Když pøihlašovací údaje zachytí útoèník (útokem známým jako MITM), získává tím identitu pravého uživatele a pøístup ke všem jeho datùm v systému. To dìlá tento útok nejnebezpeènìjším ze všech. Když se navíc útoèníkovi podaøí získat pøihlašovací údaje administrátora systému, dostane se rázem k veškerým datùm v systému. Navíc pro export do Google Formuláøù musí uživatel zadat údaje ke svému Google úètu, takže v pøípadì odposlechnutí dojde k narušení bezpeènosti i ve zcela jiném systému než je tento.
+
+I když se ale útoèníkovi nepodaøí zachytit pøihlašovací údaje, stále má možnost se hodnì vìcí dozvìdìt. Pøi zachycení komunikace vidí všechny informace, které si uživatel v danou chvíli prohlíží èi zadává.
+
+Naštìstí se dá útokùm lehce zabránit, a to zavedením komunikace pøes HTTPS namísto HTTP, což se øeší na úrovni webového serveru. Pøi komunikaci pøes HTTPS je využito protokolu SSL, který za pomoci serverového certifikátu veškerou komunikaci šifruje.
+
+\subsection{Bezpeènost interakce}
+
+Zde se jedná o bezpeènost interakce uživatele s rozhraním aplikace, tzn. zobrazování informací, pøidávání a úprava dat, to vše podmínìné stupnìm oprávnìní uživatele a jeho pøiøazení do skupin.
+
+V aplikaci je implementováno \uv{dvoustupòové} zabezpeèení. Prvním stupnìm je kontrola oprávnìní uživatele na úrovni prezentaèní vrstvy. Pøístup na jednotlivé stránky je regulován pomocí zavedeného atributu \icode{AuthorizeUserType}, který jsem pøipojil ke všem metodám controllerù. Pøedáním parametru \icode{UserType} je urèen nejnižší stupeò oprávnìní pro pøístup na danou url zastupovanou názvem metody. Pøi neoprávnìném pokusu o pøístup na url je atributem vyhozena výjimka typu \icode{PermissionException}. Bìžnì by se uživatel na takovouto url vùbec dostat nemìl, protože stejná politika je implementována ve views, èímž adresa takové url není uživateli dostupná.
+
+\begin{lstlisting}[caption={Použití atributu \icode{AuthorizeUserType}}]
+[AuthorizeUserType(UserType = UserTypes.Lector)]
+public ActionResult Create()
+{
+	...
+}
+\end{lstlisting}
+
+% TODO Pridat screenshot pri Permission Exception (po doladeni GUI)
+
+Druhým stupnìm je kontrola oprávnìní v samotné bussiness vrstvì. Všechny operace nad daty zde obsahují ovìøují práva na vykonání pomocí \icode{UserPermissions}, testují jestli požadovanou položku uživatel vytvoøil èi patøí do jeho skupiny atd. Pokud práva nemá, vznikne opìt výjimka \icode{PermissionException}.
+
+\begin{lstlisting}[caption={Ovìøování v bussiness vrstvì}]
+public Form GetForm(int id)
+{
+	var result = GetSingle(f => f.ID == id);
+	if (result == null)
+	{
+		if (Context.F``orm.Count(f => f.ID == id) > 0)
+			throw new PermissionException("Form_Get");
+		else
+			throw new ArgumentException("Form not found");
+ 	}
+
+	return result;
+}
+\end{lstlisting}
 
 %*****************************************************************************
 \chapter{Testování}
@@ -252,11 +373,10 @@ Tento projekt byl od zaèátku zamýšlen pro vznik od zaèátku, takøíkajíc na zelené
 
 %bibliographystyle{plain}
 %\bibliographystyle{psc}
-{
-%JZ: 11.12.2008 Kdo chce mit v techto ukazkovych odkazech take odkaz na CSTeX:
-\def\CS{$\cal C\kern-0.1667em\lower.5ex\hbox{$\cal S$}\kern-0.075em $}
+
+% TODO Jak udelat sekci Odkazy? Nebo bezne odkazy na url patri take sem?
 \bibliography{reference}
-}
+
 
 %*****************************************************************************
 %*****************************************************************************
@@ -277,17 +397,19 @@ Tento projekt byl od zaèátku zamýšlen pro vznik od zaèátku, takøíkajíc na zelené
 \chapter{Seznam použitých pojmù}
 
 \begin{description}
-\item[E-learning] Vzdìlávání za pomoci moderních elektronických informaèních a komunikaèních technologií
+\item[E-learning] \hfill \\
+Vzdìlávání za pomoci moderních elektronických informaèních a komunikaèních technologií
 \end{description}
 \vdots
 
 %*****************************************************************************
-\chapter{Seznam pouÅ¾itÃ½ch zkratek}
+\chapter{Seznam použitých zkratek}
 
 \begin{description}
-\item[2D] Two-Dimensional
-\item[ABN] Abstract Boolean Networks
-\item[ASIC] Application-Specific Integrated Circuit
+\item[LAN] Local Area Network
+\item[MITM] Man In The Middle
+\item[HTTP] HyperText Transfer Protocol
+\item[HTTPS] HyperText Transfer Protocol Secure
 \end{description}
 \vdots
 

@@ -1,0 +1,50 @@
+\lstdefinelanguage{CSharp}
+{
+sensitive=true,
+morekeywords=[1]
+{
+abstract, as, base, break, case, catch, checked, class, const, continue, default, delegate, do, else, enum, event, explicit, extern, false, finally, fixed, for, foreach, goto, if, implicit, in, interface, internal, is, lock, namespace, new, null, operator, out, override, params, private, protected, public, readonly, ref, return, sealed, sizeof, stackalloc, static, struct, switch, this, throw, true, try, typeof, unchecked, unsafe, using, virtual, volatile, while, bool, byte, char, decimal, double, float, int, lock, object, sbyte, short, string, uint, ulong, ushort, void, var
+},
+morecomment=[l]{//},
+morecomment=[l]{///},
+morecomment=[s]{/*}{*/},
+morecomment=[l][keywordstyle4]{\#},
+morestring=[b]",
+morestring=[b]'
+}
+\usepackage{textcomp}
+\usepackage{color}
+\lstset
+{
+language=CSharp,
+backgroundcolor=\color[rgb]{0.97, 0.97, 0.97},
+tabsize=2,
+rulecolor=,
+basicstyle={\ttfamily\small},
+upquote=true,
+aboveskip={1.5\baselineskip},
+columns=fixed,
+showstringspaces=false,
+extendedchars=true,
+breaklines=true,
+prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+frame=none,
+showtabs=false,
+showspaces=false,
+showstringspaces=false,
+%identifierstyle=\texttt,
+keywordstyle=\color[rgb]{1.0,0,0},
+keywordstyle=[1]\color[rgb]{0,0,0.75},
+keywordstyle=[2]\color[rgb]{0.5,0.0,0.0},
+keywordstyle=[3]\color[rgb]{0.127,0.427,0.514},
+keywordstyle=[4]\color[rgb]{0.4,0.4,0.4},
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+stringstyle=\color[rgb]{0.639,0.082,0.082},
+escapechar=`,
+captionpos=b
+}
+\renewcommand\lstlistlistingname{Seznam zdrojových kódù}
+\renewcommand\lstlistingname{Zdrojový kód}
+
+\newcommand{\icode}{\lstinline[basicstyle={\ttfamily\normalsize}]}
+\typeout{CSharp formatting defined}
