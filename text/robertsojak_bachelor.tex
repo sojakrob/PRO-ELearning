@@ -1,5 +1,5 @@
 \documentclass[11pt,oneside,a4paper]{book}
-%\documentclass[czech, 11pt, twoside, a4paper]{book}   
+%\documentclass[czech, 11pt, twoside, a4paper]{book}
 
 \usepackage[czech, english]{babel}
 \usepackage[T1]{fontenc}
@@ -13,10 +13,14 @@
 \usepackage{indentfirst}
 \usepackage{enumerate}
 \usepackage{listings}
+\usepackage{pifont}
+\usepackage{array}
 
 \usepackage{k336_thesis_macros}
 
 \usepackage{sojakrob_macros}
+
+\renewcommand{\includegraphics}[2][]{}
 
 \lstset
 {
@@ -167,7 +171,7 @@ Já osobnì bych chtìl portál vyuít jako nástroj pro podporu vıuky studentù infor
 Mùe bıt pøínosem i pro další pøedmìty jako jednoduše ovladatelnı nástroj pro tvorbu tištìnıch testù èi dotazníkù, které jsou povìtšinou tìkopádnì tvoøeny v textovém procesoru. Nastavil by se tím i jednotnı vzhled, kterı bıvá test od testu odlišnı.
 
 %*****************************************************************************
-\chapter{Analıza a návrh øešení}
+\chapter{Analıza}
 
 \section{Poadavky na systém}
 
@@ -179,7 +183,10 @@ Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zad
 
 \begin{enumerate}[FP1.] \setlength\itemindent{15pt}
 \item Zobrazení komentáøe k~právì zodpovìzené otázce (cca odstavcovı)
+\label{FP:Zobrazení komentáøe k právì zodpovìzené otázce (cca odstavcovı)}
 \item Zobrazení vısledku testu a~monost jeho odeslání lektorovi kurzu
+\item Kadá otázka mùe sestávat z nìkolika variací
+\label{FP:Kadá otázka mùe sestávat z nìkolika variací}
 \item Náhodnı vıbìr variace otázky pøi generování testu
 \item Neomezenı poèet moností danı test opakovat dokud nebude zodpovìzen správnì
 \item Monost kategorizace studentù a pøíslušnıch lektorù
@@ -210,7 +217,7 @@ Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zad
 
 \begin{enumerate}[NP1.] \setlength\itemindent{15pt}
 \setcounter{enumi}{\theNPEnum}
-\item Vıslednı systém bude webová aplikace
+\item Vıslednı systém je webová aplikace
 \end{enumerate}
 
 
@@ -227,7 +234,7 @@ Základní myšlenka tohoto projektu vychází právì z Google Formuláøù, proto zde je
 
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=0.9\textwidth]{figures/GoogleDocs}
+\includegraphics[width=0.9\textwidth]{figures/GoogleDocs}
 \caption{Hlavní stránka Google Dokumentù}
 \label{fig:Hlavní stránka Google Dokumentù}
 \end{center}
@@ -235,7 +242,7 @@ Základní myšlenka tohoto projektu vychází právì z Google Formuláøù, proto zde je
 
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=1\textwidth]{figures/GoogleFormsSampleForm}
+\includegraphics[width=1\textwidth]{figures/GoogleFormsSampleForm}
 \caption{Ukázka Google Formuláøe: tvorba vlevo, vısledek vpravo}
 \label{fig:Ukázka Google Formuláøe}
 \end{center}
@@ -246,23 +253,87 @@ Základní myšlenka tohoto projektu vychází právì z Google Formuláøù, proto zde je
 \subsection{Edubase}
 \subsection{Závìr}
 
+\section{Formuláøe}
 
-\section{Diagram uití}
+Základní mnoinu formuláøù systému tvoøí tyto tøi typy:
 
-Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné uivateli v danıch rolích.
+\begin{description}
+\item[Nauènı test] Je to netradièní typ testu vycházející z poadavkù zadavatele. Ke kadé otázce je moné pøidat vysvìtlení správné odpovìdi (FP\ref{FP:Zobrazení komentáøe k právì zodpovìzené otázce (cca odstavcovı)}), které je vyplòujícímu studentovi zobrazeno po oznaèení odpovìdi, kterou povauje za správnou. Test tedy plní dvì funkce, vypovídá o souèasnıch znalostech studenta a  pøipravenost na monı zkouškovı test, a zároveò ho opravuje a smìruje správnou cestou. Test je moné vyplnit libovolnìkrát. Díky alternativním otázkám (FP\ref{FP:Kadá otázka mùe sestávat z nìkolika variací}) není pokadé stejnı.
+\item[Zkouškovı test] Toto je bìnı test pro ostré otestování studentovıch znalostí, jak ho známe ze všech vzdìlávacích institucí. Mùe mít navíc urèen napøíklad èasovı limit pro dokonèení èí monost více pokusù pro správné vyplnìní.
+\item[Dotazník] Plní funkci bìného dotazníku. Kadı ho smí vyplnit pouze jedenkrát.
+\end{description}
+
+Následující tabulka \ref{tab:Monosti chování formuláøù} ukazuje monosti nastavení chování jednotlivıch typù formuláøù.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{!{\bvline}l!{\bvline}c|c|c!{\bvline}} \bhline
+ & \textbf{Nauènı test} & \textbf{Zkušební test} & \textbf{Dotazník} \\ \bhline
+Èas na vyplnìní & \tick & \tick & \cross \\ \hline
+Zamíchaní otázek & \tick & \tick & \cross \\ \hline
+Zamíchaní nabízenıch odpovìdí & \tick & \tick & \cross \\ \hline
+Vysvìtlení správné odpovìdi & \tick & \cross & \cross \\ \hline
+Monost vyplnit libovolnìkrát & \tick & \tick & \cross \\ \bhline
+\end{tabular}
+\end{center}
+\caption{Monosti chování formuláøù}
+\label{tab:Monosti chování formuláøù}
+\end{table}
+
+\section{Otázky}
+
+Mnoina typù jednotlivıch otázek je sestavena z potøeby zadavatele, èím je otázka vıbìrová, a základních potøeb univerzálního e-learningového systému. Mnoina tedy obsahuje 5 typù otázek, z èeho 3 typy jsou základní. Moné další  otázky vhodné pro rozšíøení systému jsou nastínìny v sekci \ref{sec:Moná rozšíøení sub:Otázky}.
+
+\begin{description}
+
+\item[Vıbìrová otázka] \hfill
+\begin{description}
+\item[Jedna správná odpovìï] Právì jedna z mnoiny nabízenıch odpovìdích je správná.
+\item[Více správnıch odpovìdí] ádná nebo více z nabízenıch odpovìdí je správná.
+\end{description}
+
+\item[Textová otázka] \hfill
+\begin{description}
+\item[Krátká] Od vyplòujícího studenta se oèekává jednoslovná èi jednovìtná odpovìï.
+\item[Dlouhá] Zde se oèekává vyèerpávající odpovìï, tzn. jedna a více vìt.
+\end{description}
+
+\item[Rozsahová otázka] Odpovìï je tøeba vybrat z definovaného rozsahu, napø. známka 1--5, hodnocení 0--10. Tento typ otázky je hlavnì pro potøebu dotazníku.
+
+
+\end{description}
+
+\section{Uivatelské role}
+
+Uivatelské role potøebné v systému jasnì plynou ji ze zadání, jsou to tyto tøi role:
+
+\begin{description}
+\item[Student] Pøedstavuje úèastníka kurzu z domény zadavatele a obecnì studenta vyuívajícího e-learningového systému. Z hlediska práv je na nejniší úrovni, tzn. všechny jeho akce se vztahují pouze k nìmu samotnému. Mezi akce patøí napøíklad vyplòování testù dostupné pro jeho skupinu a prohlíení vısledkù svıch testù (více viz. sekce \ref{sec:Pøípady uití}).
+\item[Lektor] Lektorem je koordinátor kurzu z domény zadavatele, vedoucí jedné èi více skupin (neboli kurzù). Obecnì se tedy jedná o uèitele studentù, kterı má na starost tvorbu testù pro jeho skupiny a jejich následné ohodnocení.
+\item[Administrátor] Uivatelská role známá asi ze všech systémù. Je to správce celého portálu a jako takovı má práva všech lektorù a k tomu dostupnou funkcionalitu pro administraci aplikace vèetnì pøidávání uivatelù a tvorby skupin.
+\end{description}
+
+\section{Pøípady uití}
+\label{sec:Pøípady uití}
+
+Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné uivateli v danıch rolích zastoupenıch aktéry pøípadù uití.
 
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=0.9\textwidth]{figures/UseCaseDiagram}
+\includegraphics[width=0.9\textwidth]{figures/UseCaseDiagram}
 \caption{Diagram uití}
 \label{fig:Diagram uití}
 \end{center}
 \end{figure}
 
+\chapter{Návrh}
+
+\section{Architektura systému}
+
 \section{Meta model}
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=0.9\textwidth]{figures/MetaModel}
+\includegraphics[width=0.9\textwidth]{figures/MetaModel}
 \caption{Meta model}
 \label{fig:Meta model}
 \end{center}
@@ -272,21 +343,19 @@ Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 \section{Datová vrstva}
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=1\textwidth]{figures/DesignModel}
-\caption{Design model datové vrstvy}
+\includegraphics[width=1\textwidth]{figures/DesignModel}
+\caption{Návrhovı model datové vrstvy}
 \label{fig:Design model datové vrstvy}
 \end{center}
 \end{figure}
 
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=0.5\textwidth]{figures/FormStateDiagram}
+\includegraphics[width=0.5\textwidth]{figures/FormStateDiagram}
 \caption{Stavovı diagram formuláøe}
 \label{fig:Stavovı diagram formuláøe}
 \end{center}
 \end{figure}
-
-\section{Architektura systému}
 
 %*****************************************************************************
 \chapter{Implementace}
@@ -294,7 +363,7 @@ Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 \section{Datová vrstva}
 \begin{figure}[h]
 \begin{center}
-%\includegraphics[width=1\textwidth]{figures/EntityDataModel}
+\includegraphics[width=1\textwidth]{figures/EntityDataModel}
 \caption{Entity Data Model}
 \label{fig:Entity Data Model}
 \end{center}
@@ -302,7 +371,7 @@ Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 
 \section{Bezpeènost}
 
-Na bezpeènost této webové aplikace se dívám ze dvou smìrù, a to z hlediska bezpeènosti pøenášenıch dat mezi klientem a serverem a z hlediska bezpeènosti v interakci uivatele s aplikací. Jsou zde moná i další hlediska, napøíklad komunikace webového serveru s databázovım serverem, ale tu zde myslím není tøeba rozebírat. Pro jednoduchost pøedpokládám, e aplikaze i databáze bìí na totoném serveru.
+Na bezpeènost této webové aplikace se dívám ze dvou smìrù, a to z hlediska bezpeènosti pøenášenıch dat mezi klientem a serverem a z hlediska bezpeènosti pøi práci uivatele v aplikaci. Jsou zde moná i další hlediska, napøíklad komunikace webového serveru s databázovım serverem, ale tu zde myslím není tøeba rozebírat. Pro jednoduchost pøedpokládám, e aplikaze i databáze bìí na totoném serveru.
 
 \subsection{Bezpeènost pøenášenıch dat}
 
@@ -312,9 +381,9 @@ Kdy pøihlašovací údaje zachytí útoèník (útokem známım jako MITM), získává tím i
 
 I kdy se ale útoèníkovi nepodaøí zachytit pøihlašovací údaje, stále má monost se hodnì vìcí dozvìdìt. Pøi zachycení komunikace vidí všechny informace, které si uivatel v danou chvíli prohlíí èi zadává.
 
-Naštìstí se dá útokùm lehce zabránit, a to zavedením komunikace pøes HTTPS namísto HTTP, co se øeší na úrovni webového serveru. Pøi komunikaci pøes HTTPS je vyuito protokolu SSL, kterı za pomoci serverového certifikátu veškerou komunikaci šifruje.
+Naštìstí se dá útokùm lehce zabránit, a to zavedením komunikace pøes HTTPS namísto HTTP, co se øeší na úrovni webového serveru. Pøi komunikaci pøes HTTPS je vyuito protokolu SSL, kterı s vyuitím serverového certifikátu veškerou komunikaci šifruje.
 
-\subsection{Bezpeènost interakce}
+\subsection{Bezpeènost pøi práci v aplikaci}
 
 Zde se jedná o bezpeènost interakce uivatele s rozhraním aplikace, tzn. zobrazování informací, pøidávání a úprava dat, to vše podmínìné stupnìm oprávnìní uivatele a jeho pøiøazení do skupin.
 
@@ -330,9 +399,9 @@ public ActionResult Create()
 
 % TODO Pridat screenshot pri Permission Exception (po doladeni GUI)
 
-Druhım stupnìm je kontrola oprávnìní v samotné bussiness vrstvì. Všechny operace nad daty zde obsahují ovìøují práva na vykonání pomocí \icode{UserPermissions}, testují jestli poadovanou poloku uivatel vytvoøil èi patøí do jeho skupiny atd. Pokud práva nemá, vznikne opìt vıjimka \icode{PermissionException}.
+Druhım stupnìm je kontrola oprávnìní v samotné business vrstvì. Všechny operace nad daty zde obsahují ovìøují práva na vykonání pomocí \icode{UserPermissions}, testují jestli poadovanou poloku uivatel vytvoøil èi patøí do jeho skupiny atd. Pokud práva nemá, vznikne opìt vıjimka \icode{PermissionException}.
 
-\begin{lstlisting}[caption={Ovìøování v bussiness vrstvì}]
+\begin{lstlisting}[caption={Ovìøování v business vrstvì}]
 public Form GetForm(int id)
 {
 	var result = GetSingle(f => f.ID == id);
@@ -355,17 +424,21 @@ public Form GetForm(int id)
 \section{Vıkonové testy}
 
 %*****************************************************************************
+\chapter{Nasazení}
+
+%*****************************************************************************
 \chapter{Pouité technologie a frameworky}
 \section{Entity Framework}
 \section{Unity Application Block}
 \section{Porovnání ASP.NET MVC a ASP.NET Web Forms}
 %*****************************************************************************
-\chapter{ZÃ¡vÄ›r}
+\chapter{Závìr}
 
-\begin{itemize}
-\item ZhodnocenÃ­ splnÄ›nÃ­ cÃ­lÅ¯ DP/BP a  vlastnÃ­ho pÅ™Ã­nosu prÃ¡ce (pÅ™i formulaci je tÅ™eba vzÃ­t v potaz zadÃ¡nÃ­ prÃ¡ce).
-\item Diskuse dalÅ¡Ã­ho moÅ¾nÃ©ho pokraÄovÃ¡nÃ­ prÃ¡ce.
-\end{itemize} 
+\section{Moná rozšíøení}
+
+\subsection{Otázky}
+\label{sec:Moná rozšíøení sub:Otázky}
+Monost pøiøadit k textu otázky obrázek.
 
 %*****************************************************************************
 

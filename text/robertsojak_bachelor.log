@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2012.1.4)  10 APR 2012 00:49
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2012.1.4)  10 APR 2012 14:02
 entering extended mode
 **robertsojak_bachelor.tex
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.tex
@@ -129,6 +129,26 @@ File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
+("D:\Program Files\MiKTeX 2.9\tex\latex\psnfss\pifont.sty"
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+("D:\Program Files\MiKTeX 2.9\tex\latex\psnfss\upzd.fd"
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+("D:\Program Files\MiKTeX 2.9\tex\latex\psnfss\upsy.fd"
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+("D:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen110
+\extrarowheight=\dimen111
+\NC@list=\toks19
+\extratabsurround=\skip43
+\backup@length=\skip44
+)
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\k336_thesis_macros.sty
 One side layout redefined.
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\hyphen.tex))
@@ -278,7 +298,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ("D:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
 )
-\@linkdim=\dimen110
+\@linkdim=\dimen112
 \Hy@linkcounter=\count98
 \Hy@pagecounter=\count99
 
@@ -313,8 +333,8 @@ Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4644.
 \Fld@menulength=\count102
-\Field@Width=\dimen111
-\Fld@charsize=\dimen112
+\Field@Width=\dimen113
+\Fld@charsize=\dimen114
 Package hyperref Info: Hyper figures OFF on input line 5730.
 Package hyperref Info: Link nesting OFF on input line 5735.
 Package hyperref Info: Hyper index ON on input line 5738.
@@ -342,10 +362,10 @@ Package hyperref Warning: You have enabled option `breaklinks'.
 (hyperref)                But driver `hdvips.def' does not suppport this.
 (hyperref)                Expect trouble with the link areas of broken links.
 
-\pdf@docset=\toks19
+\pdf@docset=\toks20
 \pdf@box=\box28
-\pdf@toks=\toks20
-\pdf@defaulttoks=\toks21
+\pdf@toks=\toks21
+\pdf@defaulttoks=\toks22
 \Fld@listcount=\count106
 \c@bookmark@seq@number=\count107
 ("D:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
@@ -353,42 +373,42 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip43
+\Hy@SectionHShift=\skip45
 ))
 ("D:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip44
-\bibsep=\skip45
+\bibhang=\skip46
+\bibsep=\skip47
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count108
 )
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 60.
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
 \c@lstlisting=\count109
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 56.
+Package hyperref Info: Link coloring ON on input line 60.
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -398,9 +418,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count110
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
 
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.out)
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.out)
@@ -416,8 +436,7 @@ Nazev prace: E-learningov\'y syst\'em se zame\v ren\IeC {\'\i }m na testov\'an\
 IeC {\'\i }
 Vedouci prace: Ing. Ond\v rej Macek
 ***************************************************
-File: figures/LogoCVUT.eps Graphic file (type eps)
-<figures/LogoCVUT.eps> [3
+[3
 
 
 ] [4
@@ -465,9 +484,9 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ]
 Kapitola 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 138.
+(Font)              <9> on input line 142.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 138.
+(Font)              <5> on input line 142.
 [1
 
 
@@ -481,69 +500,77 @@ Kapitola 3.
 \c@NPEnum=\count112
 [4
 
-] [5]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6] [7]
+] [5] [6] [7]
 Kapitola 4.
 [8
 
 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 324.
- [9]
 Kapitola 5.
-[10
+[9
 
 ]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 393.
+ [10]
 Kapitola 6.
 [11
 
 ]
 Kapitola 7.
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.bbl
 [12
 
-]) [13
+]
+Kapitola 8.
+[13
+
+]
+Kapitola 9.
+(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.bbl
+[14
+
+]) [15
 
 ]
 P\v {r}\'{\i }loha A.
-[14
-
-]
-P\v {r}\'{\i }loha B.
-[15
-
-]
-P\v {r}\'{\i }loha C.
 [16
 
 ]
-P\v {r}\'{\i }loha D.
+P\v {r}\'{\i }loha B.
 [17
 
 ]
-P\v {r}\'{\i }loha E.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 426.
+P\v {r}\'{\i }loha C.
 [18
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 426.
+P\v {r}\'{\i }loha D.
+[19
+
+]
+P\v {r}\'{\i }loha E.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
+[20
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
 
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 426.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 426.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 499.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
 Package rerunfilecheck Info: File `robertsojak_bachelor.out' has not changed.
-(rerunfilecheck)             Checksum: A4B4546611255CC5A1D59488A77A0F87;6272.
+(rerunfilecheck)             Checksum: 0D55D1EFBFE547720366567C3B4EE572;6986.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 9024 strings out of 494046
- 125362 string characters out of 3148402
- 244332 words of memory out of 3000000
- 12207 multiletter control sequences out of 15000+200000
- 21172 words of font info for 47 fonts, out of 3000000 for 9000
+ 9120 strings out of 494046
+ 126798 string characters out of 3148402
+ 246987 words of memory out of 3000000
+ 12292 multiletter control sequences out of 15000+200000
+ 21862 words of font info for 49 fonts, out of 3000000 for 9000
  719 hyphenation exceptions out of 8191
  31i,8n,42p,861b,1348s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on robertsojak_bachelor.dvi (27 pages, 103984 bytes).
+Output written on robertsojak_bachelor.dvi (29 pages, 121052 bytes).
