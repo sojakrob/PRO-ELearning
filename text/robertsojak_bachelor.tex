@@ -26,7 +26,7 @@
 {
 language=CSharp,
 classoffset=2,
-morekeywords={ActionResult, UserTypes, AuthorizeUserType, PermissionException, UserPermissions, Form, ArgumentException, ArgumentNullException}
+morekeywords={ActionResult, UserTypes, AuthorizeUserType, PermissionException, UserPermissions, Form, ArgumentException, ArgumentNullException, UserPermissions, StudentPermissions, LectorPermissions, AdministratorPermissions}
 }
 
 \newcommand\TypeOfWork{Bakaláøská práce}  \typeout{Bakalarska prace}
@@ -86,7 +86,7 @@ unicode=true,
 
 \acknowledgements
 \noindent
-Zde mÅ¯Å¾ete napsat svÃ© podÄ›kovÃ¡nÃ­, pokud chcete a mÃ¡te komu dÄ›kovat.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%   Prohlaseni / Declaration 
 
@@ -96,17 +96,14 @@ Zde mÅ¯Å¾ete napsat svÃ© podÄ›kovÃ¡nÃ­, pokud chcete a mÃ¡te komu dÄ›kovat.
  
 \abstractpage
 
-Translation of Czech abstract into English.
+
 
 \vglue60mm
 \noindent{\Huge \textbf{Abstrakt}}
 \vskip 2.75\baselineskip
 
 \noindent
-Abstrakt prÃ¡ce by mÄ›l velmi struÄnÄ› vystihovat jejÃ­ podstatu. Tedy ÄÃ­m se prÃ¡ce zabÃ½vÃ¡ a co je jejÃ­m vÃ½sledkem/pÅ™Ã­nosem.
 
-\noindent
-OÄekÃ¡vajÃ­ se cca 1 -- 2 odstavce, maximÃ¡lnÄ› pÅ¯l strÃ¡nky.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Obsah / Table of Contents 
 
@@ -210,6 +207,7 @@ Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zad
 \item Monost vıbìru z více typù otázek
 \item Lektor mùe ohodnotit pøijatı formuláø
 \item Podpora exportu vısledkù formuláøù do Google Formuláøù
+\item Podpora tisku prázdnıch i vyplnìnıch testù
 \item Monost tvorby elektronickıch skript
 \end{enumerate}
 
@@ -253,56 +251,6 @@ Základní myšlenka tohoto projektu vychází právì z Google Formuláøù, proto zde je
 \subsection{Edubase}
 \subsection{Závìr}
 
-\section{Formuláøe}
-
-Základní mnoinu formuláøù systému tvoøí tyto tøi typy:
-
-\begin{description}
-\item[Nauènı test] Je to netradièní typ testu vycházející z poadavkù zadavatele. Ke kadé otázce je moné pøidat vysvìtlení správné odpovìdi (FP\ref{FP:Zobrazení komentáøe k právì zodpovìzené otázce (cca odstavcovı)}), které je vyplòujícímu studentovi zobrazeno po oznaèení odpovìdi, kterou povauje za správnou. Test tedy plní dvì funkce, vypovídá o souèasnıch znalostech studenta a  pøipravenost na monı zkouškovı test, a zároveò ho opravuje a smìruje správnou cestou. Test je moné vyplnit libovolnìkrát. Díky alternativním otázkám (FP\ref{FP:Kadá otázka mùe sestávat z nìkolika variací}) není pokadé stejnı.
-\item[Zkouškovı test] Toto je bìnı test pro ostré otestování studentovıch znalostí, jak ho známe ze všech vzdìlávacích institucí. Mùe mít navíc urèen napøíklad èasovı limit pro dokonèení èí monost více pokusù pro správné vyplnìní.
-\item[Dotazník] Plní funkci bìného dotazníku. Kadı ho smí vyplnit pouze jedenkrát.
-\end{description}
-
-Následující tabulka \ref{tab:Monosti chování formuláøù} ukazuje monosti nastavení chování jednotlivıch typù formuláøù.
-
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{!{\bvline}l!{\bvline}c|c|c!{\bvline}} \bhline
- & \textbf{Nauènı test} & \textbf{Zkušební test} & \textbf{Dotazník} \\ \bhline
-Èas na vyplnìní & \tick & \tick & \cross \\ \hline
-Zamíchaní otázek & \tick & \tick & \cross \\ \hline
-Zamíchaní nabízenıch odpovìdí & \tick & \tick & \cross \\ \hline
-Vysvìtlení správné odpovìdi & \tick & \cross & \cross \\ \hline
-Monost vyplnit libovolnìkrát & \tick & \tick & \cross \\ \bhline
-\end{tabular}
-\end{center}
-\caption{Monosti chování formuláøù}
-\label{tab:Monosti chování formuláøù}
-\end{table}
-
-\section{Otázky}
-
-Mnoina typù jednotlivıch otázek je sestavena z potøeby zadavatele, èím je otázka vıbìrová, a základních potøeb univerzálního e-learningového systému. Mnoina tedy obsahuje 5 typù otázek, z èeho 3 typy jsou základní. Moné další  otázky vhodné pro rozšíøení systému jsou nastínìny v sekci \ref{sec:Moná rozšíøení sub:Otázky}.
-
-\begin{description}
-
-\item[Vıbìrová otázka] \hfill
-\begin{description}
-\item[Jedna správná odpovìï] Právì jedna z mnoiny nabízenıch odpovìdích je správná.
-\item[Více správnıch odpovìdí] ádná nebo více z nabízenıch odpovìdí je správná.
-\end{description}
-
-\item[Textová otázka] \hfill
-\begin{description}
-\item[Krátká] Od vyplòujícího studenta se oèekává jednoslovná èi jednovìtná odpovìï.
-\item[Dlouhá] Zde se oèekává vyèerpávající odpovìï, tzn. jedna a více vìt.
-\end{description}
-
-\item[Rozsahová otázka] Odpovìï je tøeba vybrat z definovaného rozsahu, napø. známka 1--5, hodnocení 0--10. Tento typ otázky je hlavnì pro potøebu dotazníku.
-
-
-\end{description}
-
 \section{Uivatelské role}
 
 Uivatelské role potøebné v systému jasnì plynou ji ze zadání, jsou to tyto tøi role:
@@ -325,6 +273,86 @@ Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 \label{fig:Diagram uití}
 \end{center}
 \end{figure}
+
+\section{Formuláøe}
+
+Formuláøe pøedstavují základní nástroj tohoto e-learningového portálu. Slouí jak lektorùm pro otestování znalostí jejich ákù, tak pro studenty samotné jako nástroj pro nauku a zpìtnou vazbu.
+
+Kadı formuláø je moné pøiøadit do libovolného mnoství skupin. Vede-li lektor více skupin, má tím tedy monost urèit jako cílové skupiny formuláøe jen podmnoínu. Studenti potom mají pøístup ke všem formuláøùm z jim pøiøazenıch skupin.
+
+Mezi další monosti, které formuláøe obsahují, je napøíklad nastavit èasovı limit pro jeho vyplnìní èi zamíchání jednotlivıch otázek a odpovìdí. Více je popsáno v sekci \ref{sec:Monosti nastavení formuláøù}.
+
+ivotní cyklus formuláøe zaèíná jeho zaloením lektorem. 
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/FormStateDiagram}
+\caption{Stavovı diagram formuláøe}
+\label{fig:Stavovı diagram formuláøe}
+\end{center}
+\end{figure}
+
+\subsection{Typy formuláøù}
+
+Základní mnoinu formuláøù systému tvoøí tyto tøi typy:
+
+\begin{description}
+\item[Nauènı test] Je to netradièní typ testu vycházející z poadavkù zadavatele. Ke kadé otázce je moné pøidat vysvìtlení správné odpovìdi (FP\ref{FP:Zobrazení komentáøe k právì zodpovìzené otázce (cca odstavcovı)}), které je vyplòujícímu studentovi zobrazeno po oznaèení odpovìdi, kterou povauje za správnou. Test tedy plní dvì funkce, vypovídá o souèasnıch znalostech studenta a  pøipravenost na monı zkouškovı test, a zároveò ho opravuje a smìruje správnou cestou. Test je moné vyplnit libovolnìkrát. Díky alternativním otázkám (FP\ref{FP:Kadá otázka mùe sestávat z nìkolika variací}) není pokadé stejnı.
+\item[Zkouškovı test] Toto je bìnı test pro ostré otestování studentovıch znalostí, jak ho známe ze všech vzdìlávacích institucí. Mùe mít navíc urèen napøíklad èasovı limit pro dokonèení èí monost více pokusù pro správné vyplnìní.
+\item[Dotazník] Plní funkci bìného dotazníku. Kadı ho smí vyplnit pouze jedenkrát.
+\end{description}
+
+\subsection{Monosti nastavení formuláøù}
+\label{sec:Monosti nastavení formuláøù}
+
+Monosti nastavení chování jednotlivıch typù formuláøù shrnuje následující tabulka \ref{tab:Monosti chování formuláøù}.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{!{\bvline}l!{\bvline}c|c|c!{\bvline}} \bhline
+ & \textbf{Nauènı test} & \textbf{Zkušební test} & \textbf{Dotazník} \\ \bhline
+Èas na vyplnìní & \tick & \tick & \cross \\ \hline
+Zamíchaní otázek & \tick & \tick & \cross \\ \hline
+Zamíchaní nabízenıch odpovìdí & \tick & \tick & \cross \\ \hline
+Vysvìtlení správné odpovìdi & \tick & \cross & \cross \\ \hline
+Monost vyplnit libovolnìkrát & \tick & \tick & \cross \\ \bhline
+\end{tabular}
+\end{center}
+\caption{Monosti chování formuláøù}
+\label{tab:Monosti chování formuláøù}
+\end{table}
+
+\section{Otázky}
+
+Otázky tvoøí náplò formuláøù. Kadá z otázek mùe k sobì do skupiny vázat další, alternativní otázky. Kdy je pro studenta generován test, právì jedna otázka z této skupiny je vybrána. Jestlie tedy test obsahuje otázky i s jejich alternativami, budou jednotlivé vygenerované testy rozdílné nejen z hlediska vzhledu (z dùvodu moného promíchání otázek), ale také z hlediska obsahu.
+
+Jednotlivé otázky formuláøe mohou bıt lektorem libovolnì tvoøeny, duplikovány, upravovány a mazány. Ovšem jen do okamiku, kdy je formuláø pøeveden do stavu \textit{aktivní} a vyplnìn nìkterım ze studentù. V tom pøípadì u otázky nesmìjí bıt upravovány a mazány, aby mìli všichni stejné podmínky a nemìnily se jim otázky \uv{pod rukama}.
+
+Monost duplikace otázek je zavedena hlavnì kvùli vıbìrovım otázkám \ref{item:Vıbìrová otázka}, aby byly zadané monosti jednoduše pouitelné i pro další otázku.
+
+\subsection{Typy otázek}
+
+Mnoina typù jednotlivıch otázek je sestavena z potøeby zadavatele, èím je otázka vıbìrová, a základních potøeb univerzálního e-learningového systému. Mnoina tedy obsahuje 5 typù otázek, z èeho 3 typy jsou základní. Moné další  otázky vhodné pro rozšíøení systému jsou nastínìny v sekci \ref{sec:Moná rozšíøení sub:Otázky}.
+
+\begin{description}
+
+\item[Vıbìrová otázka] \label{item:Vıbìrová otázka} \hfill
+\begin{description}
+\item[Jedna správná odpovìï] Právì jedna z mnoiny nabízenıch odpovìdích je správná.
+\item[Více správnıch odpovìdí] ádná nebo více z nabízenıch odpovìdí je správná.
+\end{description}
+
+\item[Textová otázka] \hfill
+\begin{description}
+\item[Krátká] Od vyplòujícího studenta se oèekává jednoslovná èi jednovìtná odpovìï.
+\item[Dlouhá] Zde se oèekává vyèerpávající odpovìï, tzn. jedna a více vìt.
+\end{description}
+
+\item[Rozsahová otázka] Odpovìï je tøeba vybrat z definovaného rozsahu, napø. známka 1--5, hodnocení 0--10. Tento typ otázky je hlavnì pro potøebu dotazníku.
+
+
+\end{description}
+
 
 \chapter{Návrh}
 
@@ -349,14 +377,6 @@ Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 \end{center}
 \end{figure}
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{figures/FormStateDiagram}
-\caption{Stavovı diagram formuláøe}
-\label{fig:Stavovı diagram formuláøe}
-\end{center}
-\end{figure}
-
 %*****************************************************************************
 \chapter{Implementace}
 
@@ -368,6 +388,49 @@ Na diagramu \ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 \label{fig:Entity Data Model}
 \end{center}
 \end{figure}
+
+\clearpage
+\section{Práva uivatelù}
+
+Práva uivatelù se v tomto systému odvíjí od role, ve které se danı uivatel nachází. Není zde potøeba nastavovat kadému uivateli specifická práva, protoe role pøesnì definují jeho vztah k informacím v systému a operacím s nimi. To je rozdíl napøíklad od vnitrofiremních IS, kde je potøeba kadému uivateli mìnit práva pro pøístup k datùm a jednotlivım modulùm.
+
+Pøesto jsou ale práva implementována tak, aby v pøípadì budoucí potøeby (a zde také pro ukázkové akademické úèely) bylo velmi jednoduché pøiøadit kadému uivateli práva nezávisle na jeho systémové roli. Abych dále mohl uvést podrobnìjší detaily, uvádím zde ukázku implementace oprávnìní uivatele:
+
+\begin{lstlisting}[caption={\icode{UserPermissions} a související tøídy}]
+namespace ELearning.Business.Permissions
+{
+	public class U``serPermissions
+	{
+		// ...
+		public virtual bool Group_List_All { get { return false; } }
+		public virtual bool Group_CreateEdit { get { return false; } }
+		public virtual bool Group_Delete { get { return false; } }
+		// ...
+		internal static UserPermissions Get(UserTypes userType)
+		{
+			switch (userType)
+			{
+				// ...
+				case UserTypes.Administrator:
+					return new AdministratorPermissions();
+				// ...
+			}
+		}
+	}
+	public class S``tudentPermissions : UserPermissions { /* ... */ }
+	public class L``ectorPermissions : StudentPermissions { /* ... */ }
+	public class A``dministratorPermissions : LectorPermissions
+	{
+		// ...
+		public override bool Group_List_All { get { return true; } }
+		public override bool Group_CreateEdit { get { return true; } }
+		public override bool Group_Delete { get { return true; } }
+		// ...
+	}
+\end{lstlisting}
+
+Jak je z kódu patrné, všechny dílèí práva (v ukázce práva na operace s uivatelskımi skupinami) jsou umístìna do vlastní property. Vrácení správné hodnoty v závislosti na roli uivatele je øešené pomocí dìdiènosti. Pro úpravu práv, aby fungovala pro jednotlivé uivatele nezávisle na rolích, je potøeba jen pøidat vlastní tøídu pro vrácení hodnoty získané ne \uv{natvrdo}, ale z relevantního záznamu z databáze.
+
 
 \section{Bezpeènost}
 
@@ -393,7 +456,7 @@ V aplikaci je implementováno \uv{dvoustupòové} zabezpeèení. Prvním stupnìm je ko
 [AuthorizeUserType(UserType = UserTypes.Lector)]
 public ActionResult Create()
 {
-	...
+	// ...
 }
 \end{lstlisting}
 
@@ -430,6 +493,9 @@ public Form GetForm(int id)
 \chapter{Pouité technologie a frameworky}
 \section{Entity Framework}
 \section{Unity Application Block}
+
+
+
 \section{Porovnání ASP.NET MVC a ASP.NET Web Forms}
 %*****************************************************************************
 \chapter{Závìr}
@@ -483,6 +549,7 @@ Vzdìlávání za pomoci moderních elektronickıch informaèních a komunikaèních techn
 \item[MITM] Man In The Middle
 \item[HTTP] HyperText Transfer Protocol
 \item[HTTPS] HyperText Transfer Protocol Secure
+\item[IS] Informaèní Systém
 \end{description}
 \vdots
 

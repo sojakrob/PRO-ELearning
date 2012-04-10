@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2012.1.4)  10 APR 2012 14:02
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.5)  10 APR 2012 19:51
 entering extended mode
 **robertsojak_bachelor.tex
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.tex
@@ -89,10 +89,18 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 ("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+("D:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count90
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
@@ -105,23 +113,23 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks17
 )
 ("D:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count90
+\lst@mode=\count91
 \lst@gtempboxa=\box26
 \lst@token=\toks18
-\lst@length=\count91
+\lst@length=\count92
 \lst@currlwidth=\dimen106
-\lst@column=\count92
-\lst@pos=\count93
+\lst@column=\count93
+\lst@pos=\count94
 \lst@lostspace=\dimen107
 \lst@width=\dimen108
-\lst@newlines=\count94
-\lst@lineno=\count95
+\lst@newlines=\count95
+\lst@lineno=\count96
 \lst@maxwidth=\dimen109
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count96
-\lst@skipnumbers=\count97
+\c@lstnumber=\count97
+\lst@skipnumbers=\count98
 \lst@framebox=\box27
 )
 ("D:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
@@ -240,11 +248,8 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 ("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
 CSharp formatting defined
 )
 Bakalarska prace
@@ -257,15 +262,15 @@ Package: hobsub-hyperref 2011/04/23 v1.4 Bundle oberdiek, subset hyperref (HO)
 ("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2011/04/23 v1.4 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2011/04/23 v1.4 Subsetting bundle oberdiek (HO)
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
-Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
 Package ifvtex Info: VTeX not detected.
 Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is not detected.
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -277,7 +282,7 @@ Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package pdftexcmds Info: \pdfdraftmode found.
 Package: pdfescape 2011/04/04 v1.12 Provides string conversions (HO)
 Package: bigintcalc 2011/01/30 v1.2 Expandable big integer calculations (HO)
 Package: bitset 2011/01/30 v1.1 Data type bit set (HO)
@@ -299,13 +304,13 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
 )
 \@linkdim=\dimen112
-\Hy@linkcounter=\count98
-\Hy@pagecounter=\count99
+\Hy@linkcounter=\count99
+\Hy@pagecounter=\count100
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2011/08/19 v6.82h Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count100
+\Hy@SavedSpaceFactor=\count101
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -325,14 +330,14 @@ Package hyperref Info: Plain pages OFF on input line 4068.
 Package hyperref Info: Backreferencing OFF on input line 4073.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4291.
-\c@Hy@tempcnt=\count101
+\c@Hy@tempcnt=\count102
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4644.
-\Fld@menulength=\count102
+\Fld@menulength=\count103
 \Field@Width=\dimen113
 \Fld@charsize=\dimen114
 Package hyperref Info: Hyper figures OFF on input line 5730.
@@ -344,45 +349,33 @@ Package hyperref Info: Link coloring with OCG OFF on input line 5755.
 Package hyperref Info: PDF/A mode OFF on input line 5760.
 LaTeX Info: Redefining \ref on input line 5800.
 LaTeX Info: Redefining \pageref on input line 5804.
-\Hy@abspage=\count103
-\c@Item=\count104
-\c@Hfootnote=\count105
+\Hy@abspage=\count104
+\c@Item=\count105
+\c@Hfootnote=\count106
 )
 
-Package hyperref Message: Driver (default): hdvips.
+Package hyperref Message: Driver (autodetected): hpdftex.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hdvips.def"
-File: hdvips.def 2011/08/19 v6.82h Hyperref driver for dvips
+("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2011/08/19 v6.82h Hyperref driver for pdfTeX
+\Fld@listcount=\count107
+\c@bookmark@seq@number=\count108
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pdfmark.def"
-File: pdfmark.def 2011/08/19 v6.82h Hyperref definitions for pdfmark specials
-
-
-Package hyperref Warning: You have enabled option `breaklinks'.
-(hyperref)                But driver `hdvips.def' does not suppport this.
-(hyperref)                Expect trouble with the link areas of broken links.
-
-\pdf@docset=\toks20
-\pdf@box=\box28
-\pdf@toks=\toks21
-\pdf@defaulttoks=\toks22
-\Fld@listcount=\count106
-\c@bookmark@seq@number=\count107
 ("D:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip45
-))
+)
 ("D:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip46
 \bibsep=\skip47
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count108
+\c@NAT@ctr=\count109
 )
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
+No file robertsojak_bachelor.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
@@ -397,7 +390,6 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 60.
-
 ("D:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
@@ -406,17 +398,31 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
-\c@lstlisting=\count109
+
+("D:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count110
+\scratchdimen=\dimen115
+\scratchbox=\box28
+\nofMPsegments=\count111
+\nofMParguments=\count112
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen116
+\MPnumerator=\count114
+\makeMPintoPDFobject=\count115
+\everyMPtoPDFconversion=\toks21
+)
+\c@lstlisting=\count116
 \AtBeginShipoutBox=\box29
 Package hyperref Info: Link coloring ON on input line 60.
-
-("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+ ("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 ("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count110
+\c@section@level=\count117
 )
 LaTeX Info: Redefining \ref on input line 60.
 LaTeX Info: Redefining \pageref on input line 60.
@@ -439,7 +445,7 @@ Vedouci prace: Ing. Ond\v rej Macek
 [3
 
 
-] [4
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [4
 
 ] [5
 
@@ -447,46 +453,37 @@ Vedouci prace: Ing. Ond\v rej Macek
 
 
 ]
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 5.
-
-[7
-
-])
 \tf@toc=\write4
- [8]
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.lof)
+ [7
+
+]
 \tf@lof=\write5
 
-[9
+[8
 
 ]
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.lot)
 \tf@lot=\write6
-
-[10
+ [9
 
 ]
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.lol
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-))
+Package hyperref Warning: old lol file detected, not used; run LaTeX again.
+
 \tf@lol=\write7
- [11
+[10
 
 ]
 Kapitola 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 142.
+(Font)              <10.95> on input line 139.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 142.
+(Font)              <8> on input line 139.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 139.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 139.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 139.
 [1
 
 
@@ -496,81 +493,172 @@ Kapitola 2.
 
 ] [3]
 Kapitola 3.
-\c@FPEnum=\count111
-\c@NPEnum=\count112
+
+LaTeX Warning: Reference `sec:Re\v ser\v se existuj\IeC {\'\i }c\IeC {\'\i }ch 
+\v re\v sen\IeC {\'\i }' on page 4 undefined on input line 175.
+
+\c@FPEnum=\count118
+\c@NPEnum=\count119
 [4
 
-] [5] [6] [7]
-Kapitola 4.
-[8
-
 ]
-Kapitola 5.
+
+Package natbib Warning: Citation `GoogleDocuments' on page 5 undefined on input
+ line 229.
+
+[5]
+
+LaTeX Warning: Reference `sec:P\v r\IeC {\'\i }pady u\v zit\IeC {\'\i }' on pag
+e 6 undefined on input line 259.
+
+
+LaTeX Warning: Reference `fig:Diagram u\v zit\IeC {\'\i }' on page 6 undefined 
+on input line 267.
+
+
+LaTeX Warning: Reference `sec:Mo\v znosti nastaven\IeC {\'\i } formul\'a\v r\r 
+u' on page 6 undefined on input line 283.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6]
+
+LaTeX Warning: Reference `FP:Zobrazen\IeC {\'\i } koment\'a\v re k pr\'av\v e z
+odpov\v ezen\'e ot\'azce (cca odstavcov\'y)' on page 7 undefined on input line 
+300.
+
+
+LaTeX Warning: Reference `FP:Ka\v zd\'a ot\'azka m\r u\v ze sest\'avat z n\v ek
+olika variac\IeC {\'\i }' on page 7 undefined on input line 300.
+
+
+LaTeX Warning: Reference `tab:Mo\v znosti chov\'an\IeC {\'\i } formul\'a\v r\r 
+u' on page 7 undefined on input line 308.
+
+
+LaTeX Warning: Reference `item:V\'yb\v erov\'a ot\'azka' on page 7 undefined on
+ input line 331.
+
+[7]
+
+LaTeX Warning: Reference `sec:Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i } 
+sub:Ot\'azky' on page 8 undefined on input line 335.
+
+[8]
+Kapitola 4.
 [9
 
 ]
+Kapitola 5.
+[10
+
+]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 399.
+
+ ("D:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 393.
- [10]
+(Font)              <7> on input line 400.
+ [11
+
+] [12]
+[13]
 Kapitola 6.
-[11
+[14
 
 ]
 Kapitola 7.
-[12
+[15
 
 ]
 Kapitola 8.
-[13
+[16
 
 ]
 Kapitola 9.
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.bbl
-[14
+[17
 
-]) [15
+]) [18
 
 ]
 P\v {r}\'{\i }loha A.
-[16
-
-]
-P\v {r}\'{\i }loha B.
-[17
-
-]
-P\v {r}\'{\i }loha C.
-[18
-
-]
-P\v {r}\'{\i }loha D.
 [19
 
 ]
-P\v {r}\'{\i }loha E.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
+P\v {r}\'{\i }loha B.
 [20
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
+P\v {r}\'{\i }loha C.
+[21
 
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 499.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
+]
+P\v {r}\'{\i }loha D.
+[22
+
+]
+P\v {r}\'{\i }loha E.
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 566.
+[23
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 566.
+
+(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 566.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 566.
 Package rerunfilecheck Info: File `robertsojak_bachelor.out' has not changed.
-(rerunfilecheck)             Checksum: 0D55D1EFBFE547720366567C3B4EE572;6986.
+(rerunfilecheck)             Checksum: 4F9FF04CC2D1308317743BD129D6DE17;7622.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 9120 strings out of 494046
- 126798 string characters out of 3148402
- 246987 words of memory out of 3000000
- 12292 multiletter control sequences out of 15000+200000
- 21862 words of font info for 49 fonts, out of 3000000 for 9000
+ 9537 strings out of 494045
+ 131267 string characters out of 3148379
+ 361114 words of memory out of 3000000
+ 12549 multiletter control sequences out of 15000+200000
+ 21176 words of font info for 47 fonts, out of 3000000 for 9000
  719 hyphenation exceptions out of 8191
- 31i,8n,42p,861b,1348s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,8n,42p,861b,1453s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
+00\tcbx2488.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\ectt1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ectt1000.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Mr.Bobby\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\M
+r.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1095.pk
+> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecrm0900.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
+ppen\ec\dpi600\ecrm0800.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\Mr.Bobby\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk> <C:\Users\Mr
+.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk>
+ <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
+\ecrm1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
+pen\ec\dpi600\ecti1440.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk
+\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX
+\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk><D:/Program Files/MiKTeX 2.
+9/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on robertsojak_bachelor.pdf (31 pages, 294118 bytes).
+PDF statistics:
+ 1089 PDF objects out of 1200 (max. 8388607)
+ 165 named destinations out of 1000 (max. 500000)
+ 417 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on robertsojak_bachelor.dvi (29 pages, 121052 bytes).
