@@ -1,0 +1,17 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: robertsojak_bachelor.aux
+The style file: csplainnat.bst
+Database file #1: reference.bib
+I was expecting a `,' or a `}'---line 15 of file reference.bib
+ :  
+ :  note = "\\ \verb|http://moodle.org/|"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 22 of file reference.bib
+ :  
+ :  note = "\\ \verb|http://moodle.cz/|"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty year in HowToUseUnityContainer
+Warning--empty year in GoogleDocuments
+Warning--empty year in MoodleORG
+(There were 2 error messages)

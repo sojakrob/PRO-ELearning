@@ -1,13 +1,24 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Fink()]{HowToUseUnityContainer}
+FINK, G.
+\newblock How To Use Unity Container In ASP.NET MVC Framework.
+\newblock \\
+  \verb|http://www.codeproject.com/Articles/99361/How-To-Use-Unity-Container-In-ASP-NET-MVC-Framewor|,
+  stav z 22.4.2012.
+
 \bibitem[web:GoogleDocs()]{GoogleDocuments}
 web:GoogleDocs.
 \newblock {G}oogle {D}okumenty --- hlavní stránka.
 \newblock \\ \verb|http://docs.google.com/|.
+
+\bibitem[web:MoodleCZ()]{MoodleORG}
+web:MoodleCZ.
+\newblock Portál vìnovaný systému Moodle.
 
 \end{thebibliography}
