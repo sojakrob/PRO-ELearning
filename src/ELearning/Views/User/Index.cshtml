@@ -3,17 +3,17 @@
 @model IEnumerable<ELearning.Models.Data.UserModel>
 
 @{
-    ViewBag.Title = "Users";
-    ViewBag.TopButtons = new[] { new TopButtonModel("Create New", "Create", "User") };
+    ViewBag.Title = ELearning.Localization.GetResourceString("Users");
+    ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "User") };
 }
 
 <table class="datagrid">
     <tr>
         <th>
-            Email
+            @Html.ResourceString("Email")
         </th>
         <th>
-            Role
+            @Html.ResourceString("UserType")
         </th>
         <th>
         </th>
@@ -27,10 +27,10 @@
 			@item.Email
         </td>
         <td>
-			@(item.Type.Enum)
+			@(item.Type.DisplayName)
         </td>
         <td>
-            @Html.ButtonLink("Reset password", string.Empty)
+            @Html.LocalizedButtonLink("ResetPassword", string.Empty)
         </td>
         <td>
             @if (item.Email != Membership.GetUser().Email)

@@ -9,24 +9,25 @@
 </script>
 
 <table class="datagrid">
+    <caption>@Html.ResourceString("FilledForms")</caption>
     <tr>
         <th>
-            Name
+            @Html.ResourceString("Name")
         </th>
         <th>
-            Text
+            @Html.ResourceString("Text")
         </th>
         <th>
-            Type
+            @Html.ResourceString("Type")
         </th>
         <th>
-            Author
+            @Html.ResourceString("Author")
         </th>
         <th>
-            Filled
+            @Html.ResourceString("Filled")
         </th>
         <th>
-            Mark
+            @Html.ResourceString("Mark")
         </th>
     </tr>
     @foreach (var item in Model)

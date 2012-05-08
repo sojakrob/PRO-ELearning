@@ -2,27 +2,24 @@
 @using ELearning.Utils
 @using ELearning.Models.GeneralView
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Model.Name;
 
     if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
     {
-        ViewBag.TopButtons = new[] { new TopButtonModel("Import members from Google Group", "ImportGoogleGroup", "Group", new { groupID = Model.ID }, null) };
+        ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("ImportMembersFromGoogleGroup"), "ImportGoogleGroup", "Group", new { groupID = Model.ID }, null) };
     }
 }
 @using (Html.BeginForm("Edit", "Group"))
 {
     @Html.Hidden("groupID", Model.ID);
     
-    <h2>@Model.Name</h2>
-
     <table class="datagrid">
-        <caption>
-            Members</caption>
+        <caption>@Html.ResourceString("Members")</caption>
         <tr>
             <th>
             </th>
             <th>
-                Name
+                @Html.ResourceString("Name")
             </th>
         </tr>
         @{
@@ -56,12 +53,12 @@
     {
         <table class="datagrid">
             <caption>
-                Possible Members</caption>
+                @Html.ResourceString("PossibleMembers")</caption>
             <tr>
                 <th>
                 </th>
                 <th>
-                    Name
+                    @Html.ResourceString("Name")
                 </th>
             </tr>
             @foreach (var member in Model.PossibleMembers)
@@ -83,8 +80,8 @@
                 </tr>
             }
         </table>
-        <span>
-            <input type="submit" class="Button" value="Save Changes" />
-        </span>
+        <p class="center">
+            <input type="submit" class="Button" value="@Html.ResourceString("SaveChanges")" />
+        </p>
     }
 }

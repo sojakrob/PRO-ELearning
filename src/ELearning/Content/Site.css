@@ -49,6 +49,7 @@ input[type=button].Button, input.Button, Button
 	background-color: #0B5FA5;
 	border-radius: 5px 5px 5px 5px;
 	padding: 5px 15px;
+	height: 28px;
 }
 
 div.leftFloat
@@ -65,6 +66,20 @@ div.clear
 }
 
 .hidden
+{
+	display: none;
+}
+
+p.right
+{
+	text-align: right;
+}
+p.center
+{
+	text-align: center;
+}
+
+.printOnly
 {
 	display: none;
 }
@@ -237,6 +252,19 @@ p.buttons
 	margin-bottom: 0;
 }
 
+div.createEditForm
+{
+	margin: 25px;
+	min-width: 700px;
+}
+
+div.form
+{
+	border: 1px solid #3F8FD2;
+	margin: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
@@ -275,6 +303,22 @@ table.datagrid
 	border-collapse: collapse;
 	min-width: 600px;
 }
+table caption
+{
+	color: #0B5FA5;
+	text-transform: uppercase;
+	font-size: 1.3em;
+	text-align: left;
+	margin: 10px 0 10px 5px;
+}
+table.nocaption caption
+{
+	display: none;
+}
+div.showCaption table caption
+{
+	display: block !important;
+}
 table.datagrid th
 {
 	text-transform: uppercase;
@@ -307,6 +351,17 @@ a.button
 	padding: 5px 15px;
 }
 
+input[type=button].LinkButton, input.LinkButton, LinkButton
+{
+	color: #FFFFFF;
+	background-color: transparent;
+	border-radius: 5px 5px 5px 5px;
+	padding: 0px 15px 0px 15px;
+	display: inline;
+	border: 1px solid white;
+	height: 20px;
+	cursor: pointer;
+}
 
 /* LogOn Control
 ------------------------------------------------------------*/
@@ -338,32 +393,69 @@ div#CreateOrEditForm div.editor-group
 }
 div#CreateOrEditForm div#FormNameGroup
 {
-	width: 300px;
+	width: 450px;
 	float: left;
 }
 div#CreateOrEditForm div#FormNameGroup div.editor-label
 {
-	width: 60px;
+	width: 140px;
+}
+div#CreateOrEditForm div#FormNameGroup div.editor-field
+{
+	float: left;
+}
+div#CreateOrEditForm div#FormNameGroup div.editor-field > input
+{
+	width: 300px;
 }
 div#CreateOrEditForm div#FormTypeGroup
 {
 	float: right;
-	width: 200px;
+	width: 150px;
 }
 div#CreateOrEditForm div#TextGroup textarea
 {
-	width: 450px;
+	width: 490px;
 }
 div#CreateOrEditForm div#TimeToFillGroup
 {
 	float: left;
 	width: 300px;
 }
+div#CreateOrEditForm div#TimeToFillGroup div.editor-label
+{
+	width: 140px;
+}
+div#CreateOrEditForm div#TimeToFillGroup div.editor-field
+{
+	float: left;
+}
+div#CreateOrEditForm div#TimeToFillGroup div.editor-field > input
+{
+	width: 100px;
+}
 div#CreateOrEditForm div#ShuffleGroup
 {
 	float: right;
 	width: 200px;
 }
+div#CreateOrEditForm div#MaxFillsGroup
+{
+	width: 400px;
+}
+div#CreateOrEditForm div#MaxFillsGroup div.editor-label
+{
+	width: 140px;
+}
+div#CreateOrEditForm div#MaxFillsGroup div.editor-field
+{
+	float: left;
+}
+div#CreateOrEditForm div#MaxFillsGroup div.editor-field > input
+{
+	width: 100px;
+}
+
 
 /* Create Edit Questions
 ------------------------------------------------------------*/
@@ -388,13 +480,13 @@ div#CreateEditQuestionsHeader h2
 	display: inline-block;
 	margin: 20px 20px 0 0;
 }
-div#CreateEditQuestionsHeader div#info
+div#CreateEditQuestionsHeader div.info
 {
 	display: inline-block;
 	height: 32px;
 	vertical-align: middle;
 }
-div#CreateEditQuestionsHeader div#info div.column
+div#CreateEditQuestionsHeader div.info div.column
 {
 	text-align: right;
 	margin: 0 20px;
@@ -403,19 +495,29 @@ div#CreateEditQuestionsHeader div#info div.column
 	vertical-align: middle;
 	padding-top: 5px;
 }
-div#CreateEditQuestionsHeader div#info div.column#clmnPreview
+div#CreateEditQuestionsHeader div.info div.column#clmnPreview
 {
 	padding-top: 0px;
 }
-div#CreateEditQuestionsHeader div#info div#clmnQuestionCount
+div#CreateEditQuestionsHeader div.info div.column#clmnPrint
+{
+	padding-top: 0px;
+}
+div#CreateEditQuestionsHeader div.info div#clmnQuestionCount
 {
 	background: url('icons/questionCount.png') no-repeat;
 	width: 60px;
 }
-div#CreateEditQuestionsHeader div#info div#clmnTimeToFill
+div#CreateEditQuestionsHeader div.info div#clmnTimeToFill
 {
 	background: url('icons/clock.png') no-repeat;
 	width: 60px;
+}
+div#CreateEditQuestionsHeader div.rightButtons
+{
+	margin-right: 20px;
+	padding-top: 5px;
+	float: right;
 }
 div#CreateEditQuestionsHeader span
 {
@@ -459,7 +561,7 @@ div.Question div.Header a.button
 }
 div.Question div.Header div.clmnQuestionType
 {
-	width: 80px;
+	width: 120px;
 	margin: 0 20px;
 	display: inline-block;
 }
@@ -503,15 +605,24 @@ div#CreateNewQuestion
 {
 	margin: 0 20px 0 20px;
 }
+div#CreateNewQuestion fieldset
+{
+	padding-bottom : 0px;
+}
+div#CreateNewQuestion fieldset > *
+{
+	float: left;
+	clear: none;
+}
 div#CreateNewQuestion h3
 {
 	display: inline-block;
-	padding: 0;
+	padding: 10px;
 	margin:0;
 }
 div#CreateNewQuestion div
 {
-	display: inline-block;
+	
 }
 
 /* Test templates editing
@@ -524,9 +635,10 @@ div.QuestionForm legend
 {
 	display: block;
 }
-div.QuestionForm p
+div.QuestionForm div.BottomButtons div.leftFloat
 {
-	text-align: right;
+	padding-top: 8px;
+	padding-left: 5px;
 }
 div.QuestionForm div.editor-label
 {
@@ -576,7 +688,7 @@ div.QuestionForm div#Choices div#ChoicesHeader h4
 div.QuestionForm div#Choices div#ChoicesHeader div.column
 {
 	display: inline-block;
-	width: 80px;
+	width: 100px;
 	margin: 0 20px;
 }
 div.QuestionForm div#Choices div#ChoicesHeader div#clmnAddChoiceItem
@@ -590,15 +702,15 @@ div.QuestionForm div#Choices div#ChoicesHeader div#clmnAddChoiceItem > a
 {
 	margin: 0;
 }
-div.QuestionForm div#Choices ol
+div.QuestionForm div#Choices ol, div.QuestionForm div#Choices ul
 {
 	margin: 10px 0;
 }
-div.QuestionForm div#Choices ol > li input
+div.QuestionForm div#Choices ol > li input, div.QuestionForm div#Choices ul > li input
 {
 	width: 800px !important;
 }
-div.QuestionForm div#Choices ol > li div.Check input
+div.QuestionForm div#Choices ol > li div.Check input, div.QuestionForm div#Choices ul > li div.Check input
 {
 	width: 40px !important;
 }
@@ -606,6 +718,10 @@ div.QuestionForm div#Choices ol > li div.Check input
 
 /* Scale quesition
 ------------------------------------------------------------*/
+div.scaleQuestionUpDowns
+{
+	margin: 10px;
+}
 div.scaleQuestionUpDowns > div
 {
 	float:left;
@@ -635,6 +751,12 @@ div#FormFill div#FormFillHeader h2
 	display: inline-block;
 	margin: 20px 20px 0 0;
 }
+div#FormFill div#FormFillHeader div#print
+{
+	display: inline-block;
+	float: right;
+	margin: 10px;
+}
 
 div#FormFill div.Question div.Content div.QuestionText
 {
@@ -645,6 +767,10 @@ div#FormFill div.Question div.Content div.QuestionAnswer
 	margin: 5px 20px;
 }
 div#FormFill div.Question div.Content div.QuestionAnswer input[type=text]
+{
+	min-width: 700px;
+}
+div#FormFill div.Question div.Content div.QuestionAnswer textarea
 {
 	min-width: 700px;
 }
@@ -717,9 +843,155 @@ div.upDownControl div.buttons
 {
 	float: left;
 }
-div.upDownControl div.buttons a
+div.upDownControl div.buttons > input
 {
+	color: #3F8FD2;
+	border-color: #3F8FD2;
 	display: block;
-	height: 0.8em;
-	padding-top: 0px;
+	height: 0.9em;
+	/*height: 0.8em;*/
+	font-size: 1.1em;
+	line-height: 0.7em;
+	padding: 0px 4px;
+	margin: 0px 0px 1px 2px;
+	width: 20px;
+}
+
+/* Assigned groups editor
+------------------------------------------------------------*/
+fieldset.assignedGroupsEditor
+{
+	margin-top: 25px;
+	padding-bottom: 20px;
+}
+
+/* Create edit Group
+------------------------------------------------------------*/
+div#createEditGroup
+{
+	width: 300px;
+	min-width: 300px;
+}
+div#createEditGroup fieldset div input
+{
+	width: 146px;
+}
+div#createEditGroup fieldset div select
+{
+	width: 150px;
+}
+div#createEditGroup p
+{
+	text-align: center;
+}
+
+/* TextBook
+-------------------------------------------------------------*/
+form#TextBook fieldset.assignedGroupsEditor
+{
+	width: 660px;
+}
+form#TextBook div.editor-group
+{
+	clear: none;
+}
+form#TextBook div#TextBookTitle
+{
+	width: 450px;
+	float: left;
+}
+form#TextBook div#TextBookTitle input
+{
+	width: 370px;
+}
+form#TextBook div#TextBookVisibleToOthers
+{
+	width: 200px;
+	float: left;
+}
+form#TextBook div#Text
+{
+	padding: 0;
+	margin: 0;
+}
+form#TextBook div#Text div.editor-field
+{
+	float: none;
+}
+
+div#TextBook
+{
+	width: 800px;
+	margin: 20px;
+	padding: 25px 35px 35px 35px;
+	border: 1px solid #3F8FD2;
+	border-radius: 5px 5px 0 0;
+}
+div#TextBook h1
+{
+	float: none;
+	font-size: 2em;
+	padding: 0;
+	padding-left: 15px;
+	color: #0B5FA5;
+}
+div#TextBook h2, div#TextBook h3, div#TextBook h4, div#TextBook h5
+{
+	color: #0B5FA5;
+	padding-left: 15px;
+}
+div#TextBook p
+{
+	text-align: justify;
+}
+
+/* Form Instance
+--------------------------------------------------------------------*/
+div#FormInstanceStarter
+{
+	width: 300px;	
+	padding: 0;
+	margin: 20px;
+}
+div#FormInstanceStarter div.header
+{
+	background-color: #3F8FD2;
+	border-radius: 5px 5px 0 0;
+}
+div#FormInstanceStarter h2
+{
+	text-align: center;
+	color: White;
+	margin: 0;
+	padding: 5px;
+}
+div#FormInstanceStarter div.body
+{
+	border: 1px solid #3F8FD2;
+	padding: 0 20px 0 20px;
+}
+
+/* User
+---------------------------------------------------------------------*/
+div#createEditUser
+{
+	width: 380px;
+	min-width: 380px;
+}
+div#createEditUser div.editor-field input, div#createEditUser select
+{
+	width: 200px;
+}
+
+/* Change password
+---------------------------------------------------------------------*/
+div#changePasswordForm
+{
+	width: 400px;
+	min-width: 400px;
+}
+
+div#changePasswordForm div#oldPassword
+{
+	margin-bottom: 20px;
 }

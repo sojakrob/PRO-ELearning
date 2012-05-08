@@ -1,6 +1,4 @@
 ﻿@model ELearning.Models.Data.QuestionModel
-
-
 <div class="editor-group">
     <div class="editor-label">
         @Html.LabelFor(q => q.Text)
@@ -12,7 +10,6 @@
     <div class="clear">
     </div>
 </div>
-
 <div class="editor-group">
     <div class="editor-label">
         @Html.LabelFor(q => q.HelpText)
@@ -24,15 +21,17 @@
     <div class="clear">
     </div>
 </div>
-
-<div class="editor-group">
-    <div class="editor-label">
-        @Html.LabelFor(q => q.Explanation)
+@if (ViewBag.Form.Type.Enum == ELearning.Data.Enums.FormTypes.TrainingTest)
+{
+    <div class="editor-group">
+        <div class="editor-label">
+            @Html.LabelFor(q => q.Explanation)
+        </div>
+        <div class="editor-field autosized">
+            @Html.EditorFor(q => q.Explanation)
+            @Html.ValidationMessageFor(q => q.Explanation)
+        </div>
+        <div class="clear">
+        </div>
     </div>
-    <div class="editor-field autosized">
-        @Html.EditorFor(q => q.Explanation)
-        @Html.ValidationMessageFor(q => q.Explanation)
-    </div>
-    <div class="clear">
-    </div>
-</div>
+}

@@ -4,13 +4,13 @@
            
 @foreach (QuestionGroupModel item in Model)
 {
-    <div class="Question">
+    <div class="Question" id="@string.Format("Q{0}", item.ID)">
         <fieldset>
             <legend>Question #@item.Index</legend>
 
             <div class="Header">
                 <h3>#@item.Index</h3>
-                <div class="clmnQuestionType">@item.Type.Name</div>
+                <div class="clmnQuestionType">@item.Type.DisplayName</div>
                 <div class="clmnQuestionText">@item.Questions[0].TextCropped</div>
                 <div class="clmnDeleteQuestion">
                      @Html.ButtonLink("X", "DeleteQuestion", new { formID = item.FormTemplateID, questionID = @item.ID })
@@ -22,7 +22,7 @@
                 @Html.Partial("_EditQuestionGroup", item)
 
                 <div class="Footer">
-                    @Html.ButtonLink("Add Alternative Question", "AddAlternativeQuestion", new { formTemplateID = item.FormTemplateID, questionGroupID = item.ID, questionTypeID = item.Type.ID })
+                    @Html.LocalizedButtonLink("AddAlternativeQuestion", "AddAlternativeQuestion", new { formTemplateID = item.FormTemplateID, questionGroupID = item.ID, questionTypeID = item.Type.ID })
                 </div>
             </div>
 
@@ -34,13 +34,13 @@
     @using (Html.BeginForm("CreateNewQuestion", "Form")) {
         @Html.ValidationSummary(true)
         <fieldset>
-            <legend>New Question</legend>
-            <h3>New Question</h3>
+            <legend>@Html.ResourceString("NewQuestion")</legend>
+            <h3>@Html.ResourceString("NewQuestion")</h3>
 
 		    @Html.Partial("_CreateQuestionGroup", new QuestionGroupModel() { FormTemplateID = ViewBag.Form.ID })
 
             <span>
-                <input type="submit" class="Button" value="CreateNewQuestion" />
+                <input type="submit" class="Button" value="@Html.ResourceString("Add")" />
             </span>
         </fieldset>
     }

@@ -39,9 +39,9 @@ namespace ELearning.Models.Data
 
         private void CreateUpDownControllers(int min, int max, int inc)
         {
-            MinValue = new UpDownControlModel("MinValue", min, "Lower bound");
-            MaxValue = new UpDownControlModel("MaxValue", max, "Upper bound");
-            Increment = new UpDownControlModel("Increment", inc, "Step size");
+            MinValue = new UpDownControlModel("MinValue", min, Localization.GetResourceString("LowerBound"));
+            MaxValue = new UpDownControlModel("MaxValue", max, Localization.GetResourceString("UpperBound"));
+            Increment = new UpDownControlModel("Increment", inc, Localization.GetResourceString("StepSize"));
         }
 
 

@@ -61,16 +61,19 @@
     </div>
     @if (Model.Type == ELearning.Data.Enums.UserTypes.Administrator || Model.Type == ELearning.Data.Enums.UserTypes.Lector)
     {
-        <div>
-            <ul>
-                <li>
-                    @Html.LocalizedActionLink("Students", "Index", "Student")
-                    <ul>
-                        <li>@Html.LocalizedActionLink("View", "Index", "Student")</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        if (Model.Type == ELearning.Data.Enums.UserTypes.Lector)
+        {
+            <div>
+                <ul>
+                    <li>
+                        @Html.LocalizedActionLink("Students", "Index", "Student")
+                        <ul>
+                            <li>@Html.LocalizedActionLink("View", "Index", "Student")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        }
         <div>
             <ul>
                 <li>
@@ -116,4 +119,11 @@
             </ul>
         </div>
     }
+    <div>
+        <ul>
+            <li>
+                @Html.LocalizedActionLink("Settings", "Index", "Settings")
+            </li>
+        </ul>
+    </div>
 </div>

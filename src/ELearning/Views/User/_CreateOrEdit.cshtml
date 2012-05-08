@@ -1,3 +1,4 @@
+@using ELearning.Utils
 @model ELearning.Models.Data.UserModel
 
 
@@ -17,7 +18,7 @@
         @Html.LabelFor(model => model.Password)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password)
         @Html.ValidationMessageFor(model => model.Password)
     </div>
     <div class="clear"></div>
@@ -25,12 +26,12 @@
 
 <div class="editor-group">
     <div class="editor-label">
-        UserType
+        @Html.ResourceString("UserType")
     </div>
     <div class="editor-field">
         @Html.DropDownListFor(
             model => model.Type.ID,
-            new SelectList(((ICollection<ELearning.Models.Data.UserTypeModel>)ViewBag.UserTypes), "ID", "Name", Model == null ? ViewBag.DefaultUserType : Model.Type.ID)
+            new SelectList(((ICollection<ELearning.Models.Data.UserTypeModel>)ViewBag.UserTypes), "ID", "DisplayName", Model == null ? ViewBag.DefaultUserType : Model.Type.ID)
             )
         @Html.ValidationMessageFor(model => model.Type.ID)
     </div>

@@ -39,6 +39,16 @@ namespace ELearning.Controllers
             return View(ModelsFromArray<Group, GroupModel>(_groupManager.GetAll()));
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
+        public ActionResult Detail(int id)
+        {
+            FillDefaultViewBag();
+
+            var group = new GroupModel(_groupManager.GetGroup(id));
+
+            return View(group);
+        }
+
         [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Create()
         {

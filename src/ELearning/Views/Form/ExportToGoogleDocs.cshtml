@@ -22,6 +22,7 @@
                     @Html.EditorFor(d => Model.DocumentName)
                     @Html.ValidationMessageFor(d => Model.DocumentName)
                 </div>
+                <div class="clear"></div>
             </div>
 
         <div id="GoogleCredentials">
@@ -33,6 +34,7 @@
                     @Html.EditorFor(e => Model.GEmail)
                     @Html.ValidationMessageFor(d => Model.GEmail)
                 </div>
+                <div class="clear"></div>
             </div>
             <div class="editor-group">
                 <div class="editor-label">
@@ -42,10 +44,11 @@
                     @Html.PasswordFor(p => Model.GPassword)
                     @Html.ValidationMessageFor(d => Model.GPassword)
                 </div>
+                <div class="clear"></div>
             </div>
         </div>
 
-        <p>
+        <p class="center">
             <input type="submit" class="Button" value="@Html.ResourceString("Export")" />
         </p>
     </fieldset>

@@ -1,17 +1,16 @@
-﻿ @model ELearning.Models.Controls.UpDownControlModel
+﻿@model ELearning.Models.Controls.UpDownControlModel
 @using ELearning.Utils
-
- <div class="upDownControl" id="@Model.Guid">
+<div class="upDownControl" id="@Model.Guid">
     <div class="label">
-        @Html.LabelFor(q => q.Value, @Model.Text)
+        <label for="@string.Format("{0}_Value", Model.ParentPropertyName)">@Model.Text</label>
     </div>
     <div class="textbox">
         @Html.EditorFor(q => q.Value, null, string.Format("{0}.Value", Model.ParentPropertyName))
         @Html.ValidationMessageFor(q => q.Value)
     </div>
     <div class="buttons">
-        <a class="button" href="#" onclick="new UpDownControl('@Model.Guid').increase()">+</a>
-        <a class="button" href="#" onclick="new UpDownControl('@Model.Guid').decrease()">-</a>
+        @Html.ButtonJSClick(Html.ResourceString("IncreaseValue"), "+", string.Format("new UpDownControl('{0}').increase()", Model.Guid), new { @class = "LinkButton" })
+        @Html.ButtonJSClick(Html.ResourceString("DecreaseValue"), "-", string.Format("new UpDownControl('{0}').decrease()", Model.Guid), new { @class = "LinkButton" })
     </div>
     <div class="clear">
     </div>

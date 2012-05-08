@@ -141,6 +141,15 @@ namespace ELearning.Business.Managers
                     throw new PermissionException("User_CreateEdit");
 
             User user = GetUser(email);
+
+            return ChangePassword(oldPassword, newPassword, user);
+        }
+        public bool ChangePassword(string oldPassword, string newPassword)
+        {
+            return ChangePassword(oldPassword, newPassword, PermissionsProvider.User);
+        }
+        private bool ChangePassword(string oldPassword, string newPassword, User user)
+        {
             if (user == null)
                 return false;
 

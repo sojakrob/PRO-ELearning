@@ -1,4 +1,12 @@
-﻿@{
+﻿@model ELearning.Models.HomePageModel
+@{
     ViewBag.Title = ELearning.Localization.GetResourceString("Home");
 }
 
+<div class="showCaption">
+    @Html.Partial("~/Views/Form/_AvailableForms.cshtml", Model.FormFills)
+</div>
+
+<div class="showCaption">
+    @Html.Partial("~/Views/TextBook/_TextBooks.cshtml", Model.TextBooks)
+</div>

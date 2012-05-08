@@ -1,26 +1,18 @@
-﻿@model ELearning.Models.Data.NewGroupModel
-
+﻿@using ELearning.Utils
+@model ELearning.Models.Data.NewGroupModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = ELearning.Localization.GetResourceString("NewGroup");
 }
-
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Group</legend>
-
-		@Html.Partial("_CreateOrEdit", Model)
-
-        <p>
-            <input type="submit" class="Button" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div id="createEditGroup" class="createEditForm">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>@Html.ResourceString("NewGroup")</legend>
+            @Html.Partial("_CreateOrEdit", Model)
+            <p>
+                <input type="submit" class="Button" value="@Html.ResourceString("Create")" />
+            </p>
+        </fieldset>
+    }
 </div>
-
-

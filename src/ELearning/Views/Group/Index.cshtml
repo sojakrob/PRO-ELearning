@@ -1,41 +1,60 @@
 ﻿@using ELearning.Utils
 @using ELearning.Models.GeneralView
 @model IEnumerable<ELearning.Models.Data.GroupModel>
-
 @{
     ViewBag.Title = ELearning.Localization.GetResourceString("Groups");
-    ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "Group") };
+    if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
+    {
+        ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "Group") };
+    }
 }
-
 <table class="datagrid">
     <tr>
         <th>
-            Name
+            @Html.ResourceString("NameThing")
         </th>
-        <th>
-            Supervisor
-        </th>
-        <th>
-        </th>
+        @if (ViewBag.CurrentUserModel.Permissions.Group_List_All)
+        {
+            <th>
+                @Html.ResourceString("Supervisor")
+            </th>
+        }
+        @if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
+        {
+            <th>
+            </th>
+        }
+        @if (ViewBag.CurrentUserModel.Permissions.Group_Delete)
+        {
+            <th>
+            </th>    
+        }
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Edit", new { id = item.ID })
-        </td>
-        <td>
-			@(item.Supervisor.Name)
-        </td>
-        <td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Detail", new { id = item.ID })
+            </td>
+            @if (ViewBag.CurrentUserModel.Permissions.Group_List_All)
+            {
+                <td>
+                    @(item.Supervisor.Name)
+                </td>
+            }
+            
+            @if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
+            {
+                <td>
+                    @Html.LocalizedButtonLink("Edit", "Edit", new { id = item.ID })
+                </td>
+            }
             @if (ViewBag.CurrentUserModel.Permissions.Group_Delete)
             {
-                @Html.ButtonLink("X", "Delete", new { id = item.ID })
+                <td>
+                    @Html.ButtonLink("X", "Delete", new { id = item.ID })
+                </td>
             }
-        </td>
-    </tr>
-}
-
+        </tr>
+    }
 </table>
-
-

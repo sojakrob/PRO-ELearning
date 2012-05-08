@@ -11,11 +11,13 @@ namespace ELearning.Models.Data
     public class NewGroupModel
     {
         [Required]
+        [DisplayLocalized("NameThing")]
         public string Name { get; set; }
 
         public IEnumerable<UserModel> PossibleSupervisors { get; set; }
 
         [Required]
+        [DisplayLocalized("Supervisor")]
         public int SupervisorID { get; set; }
 
 

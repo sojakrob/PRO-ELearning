@@ -14,13 +14,18 @@
                 @Html.Partial("Questions\\_EditQuestion", question)
                 @Html.Partial(string.Format("Questions\\_EditQuestion_{0}", Model.Type.Name), question)
     
-                <p>
-                    @if (Model.Questions.Count > 1)
-                    {
-                        @Html.ActionLink("Delete Question", "DeleteAlternativeQuestion", new { formID = Model.FormTemplateID, questionID = Model.ID, alternativeQuestionID = question.ID })
-                    }
-                    <input type="submit" class="Button" value="SaveChanges" />
-                </p>
+                <div class="BottomButtons">
+                    <div class="leftFloat">
+                        @if (Model.Questions.Count > 1)
+                        {
+                            @Html.LocalizedActionLink("DeleteAlternativeQuestion", "DeleteAlternativeQuestion", new { formID = Model.FormTemplateID, questionID = Model.ID, alternativeQuestionID = question.ID }, new { @class = "button" })
+                        }
+                    </div>
+                    <div class="rightFloat">
+                        <input type="submit" class="Button" value="@Html.ResourceString("SaveChanges")" />
+                    </div>
+                </div>
+                <div class="clear"></div>
             </fieldset>
         }
     </div>

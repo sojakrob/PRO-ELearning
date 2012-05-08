@@ -70,7 +70,8 @@ namespace ELearning.Utils
             return ButtonLink(helper, Localization.GetResourceString(linkText), actionName, controllerName, routeValues, target);
         }
 
-        public static IHtmlString ButtonJSClick(this HtmlHelper helper, string title, string text, string jsCode)
+       
+        public static IHtmlString ButtonJSClick(this HtmlHelper helper, string title, string text, string jsCode, object htmlAttrs = null)
         {
             UrlHelper url = new UrlHelper(helper.ViewContext.RequestContext);
 
@@ -80,6 +81,8 @@ namespace ELearning.Utils
             builder.MergeAttribute("title", title);
             builder.MergeAttribute("value", text);
             builder.MergeAttribute("onclick", jsCode);
+            if(htmlAttrs != null)
+                builder.MergeAttributes(new RouteValueDictionary(htmlAttrs), true);
 
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }

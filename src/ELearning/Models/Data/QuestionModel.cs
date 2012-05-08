@@ -17,6 +17,7 @@ namespace ELearning.Models.Data
 
         [Required]
         [DataType(DataType.MultilineText)]
+        [DisplayLocalized("Text")]
         public string Text { get; set; }
         public string TextCropped
         {
@@ -24,9 +25,11 @@ namespace ELearning.Models.Data
         }
 
         [DataType(DataType.MultilineText)]
+        [DisplayLocalized("HelpText")]
         public string HelpText { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [DisplayLocalized("Explanation")]
         public string Explanation { get; set; }
 
         public int QuestionGroupID { get; set; }

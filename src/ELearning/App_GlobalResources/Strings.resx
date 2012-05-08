@@ -142,7 +142,7 @@
     <value>Create Form</value>
   </data>
   <data name="Czech" xml:space="preserve">
-    <value>čeština</value>
+    <value>česky</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
@@ -241,7 +241,7 @@
     <value>times</value>
   </data>
   <data name="TrainingTest" xml:space="preserve">
-    <value>Training Test</value>
+    <value>Learning Test</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
@@ -305,5 +305,179 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewForm" xml:space="preserve">
+    <value>New Form</value>
+  </data>
+  <data name="TimeToFill" xml:space="preserve">
+    <value>Time to Fill</value>
+  </data>
+  <data name="EditForm" xml:space="preserve">
+    <value>Edit Form</value>
+  </data>
+  <data name="MaxFills" xml:space="preserve">
+    <value>Max Fills</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ShuffleQuestions" xml:space="preserve">
+    <value>Shuffle Questions</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="NewQuestion" xml:space="preserve">
+    <value>New Question</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Choice</value>
+  </data>
+  <data name="InlineText" xml:space="preserve">
+    <value>Short text</value>
+  </data>
+  <data name="MultilineText" xml:space="preserve">
+    <value>Long text</value>
+  </data>
+  <data name="MultipleChoice" xml:space="preserve">
+    <value>Multiple choice</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="AddAlternativeQuestion" xml:space="preserve">
+    <value>Add Alternative Question</value>
+  </data>
+  <data name="CloseAllQuestions" xml:space="preserve">
+    <value>Close all questions</value>
+  </data>
+  <data name="OpenAllQuestions" xml:space="preserve">
+    <value>Open all questions</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Explanation</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Help Text</value>
+  </data>
+  <data name="DeleteAlternativeQuestion" xml:space="preserve">
+    <value>Delete Alt. Question</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="AddChoiceItem" xml:space="preserve">
+    <value>Add Choice Item</value>
+  </data>
+  <data name="Choices" xml:space="preserve">
+    <value>Choices</value>
+  </data>
+  <data name="Shuffle" xml:space="preserve">
+    <value>Shuffle</value>
+  </data>
+  <data name="LowerBound" xml:space="preserve">
+    <value>Lower Bound</value>
+  </data>
+  <data name="StepSize" xml:space="preserve">
+    <value>Step Size</value>
+  </data>
+  <data name="UpperBound" xml:space="preserve">
+    <value>Upper Bound</value>
+  </data>
+  <data name="EditTextBook" xml:space="preserve">
+    <value>Edit TextBook</value>
+  </data>
+  <data name="StudentDetail_format" xml:space="preserve">
+    <value>{0} - Student Detail</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Mark</value>
+  </data>
+  <data name="Supervisor" xml:space="preserve">
+    <value>Supervisor</value>
+  </data>
+  <data name="ImportMembersFromGoogleGroup" xml:space="preserve">
+    <value>Import Members from Google Group</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Členové</value>
+  </data>
+  <data name="PossibleMembers" xml:space="preserve">
+    <value>Možní členové</value>
+  </data>
+  <data name="GoogleGroupCsvFile" xml:space="preserve">
+    <value>Google Group CSV file</value>
+  </data>
+  <data name="ImportMembers" xml:space="preserve">
+    <value>Import Members</value>
+  </data>
+  <data name="VisibleToOthers" xml:space="preserve">
+    <value>Visible to Others</value>
+  </data>
+  <data name="FullWikiSyntax" xml:space="preserve">
+    <value>Full Wiki Syntax</value>
+  </data>
+  <data name="NewTextBook" xml:space="preserve">
+    <value>New TextBook</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Lector" xml:space="preserve">
+    <value>Lector</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="NewPasswordAgain" xml:space="preserve">
+    <value>Retype New Password</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Account Settings</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="DateTime" xml:space="preserve">
+    <value>Date &amp; Time</value>
+  </data>
+  <data name="AvailableTests" xml:space="preserve">
+    <value>Available Tests</value>
+  </data>
+  <data name="LastChange" xml:space="preserve">
+    <value>Last Change</value>
   </data>
 </root>

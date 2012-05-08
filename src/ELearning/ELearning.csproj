@@ -126,6 +126,7 @@
     <Compile Include="Models\EditGroupModel.cs" />
     <Compile Include="Models\Data\FormInstanceModel.cs" />
     <Compile Include="Models\Data\GroupModel.cs" />
+    <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\ImportExport\ExportToGoogleDocsModel.cs" />
     <Compile Include="Models\NewGroupModel.cs" />
     <Compile Include="Models\Data\QuestionInstanceModel.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Models\Data\UserModel.cs" />
     <Compile Include="Models\Data\UserTypeModel.cs" />
     <Compile Include="Models\GeneralView\TopButtonModel.cs" />
+    <Compile Include="Models\Settings\ChangePasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\IUnityContainerAccessor.cs" />
     <Compile Include="Unity\UnityContainerFactory.cs" />
@@ -159,6 +161,7 @@
   <ItemGroup>
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\favicon.png" />
+    <Content Include="Content\FormPrint.css" />
     <Content Include="Content\icons\clock.png" />
     <Content Include="Content\icons\flags\cs.png" />
     <Content Include="Content\icons\flags\en.png" />
@@ -175,10 +178,12 @@
     <Content Include="Content\MarkItUp\Set\images\link.png" />
     <Content Include="Content\MarkItUp\Set\images\list-bullet.png" />
     <Content Include="Content\MarkItUp\Set\images\list-numeric.png" />
+    <Content Include="Content\MarkItUp\Set\images\paragraph.png" />
     <Content Include="Content\MarkItUp\Set\images\picture.png" />
     <Content Include="Content\MarkItUp\Set\images\preview.png" />
     <Content Include="Content\MarkItUp\Set\images\quotes.png" />
     <Content Include="Content\MarkItUp\Set\images\stroke.png" />
+    <Content Include="Content\MarkItUp\Set\images\underline.png" />
     <Content Include="Content\MarkItUp\Set\images\url.png" />
     <Content Include="Content\MarkItUp\Set\style.css" />
     <Content Include="Content\MarkItUp\Skin\images\handle.png" />
@@ -219,12 +224,14 @@
     <Content Include="Scripts\FormInstance\FillForm.js" />
     <Content Include="Scripts\FormInstance\FillForm_TrainingTest.js" />
     <Content Include="Scripts\FormInstance\FillingInProgress.js" />
+    <Content Include="Scripts\FormInstance\ViewForm.js" />
     <Content Include="Scripts\Form\CreateEditQuestions.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -375,6 +382,7 @@
   <ItemGroup>
     <Content Include="Views\Controls\UpDownControl.cshtml" />
     <Compile Include="Localization\Localization.cs" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Views\FormInstance\FillForm.cshtml" />
     <Content Include="Views\FormInstance\Questions\_QuestionHeader.cshtml" />
     <Content Include="Views\FormInstance\Questions\_FillQuestion_InlineText.cshtml" />
@@ -400,6 +408,11 @@
     <Content Include="Views\TextBook\View.cshtml" />
     <Content Include="Views\TextBook\Edit.cshtml" />
     <Content Include="Views\Partials\AssignedGroupsEditor.cshtml" />
+    <Content Include="Views\Group\Detail.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Settings\ChangePassword.cshtml" />
+    <Content Include="Views\Form\_AvailableForms.cshtml" />
+    <Content Include="Views\TextBook\_TextBooks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FormInstance\Index.cshtml" />
@@ -411,6 +424,7 @@
     <Content Include="App_GlobalResources\Strings.cs-CZ.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Strings.cs-CZ.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -439,7 +453,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58138</DevelopmentServerPort>
+          <DevelopmentServerPort>63066</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

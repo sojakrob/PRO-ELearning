@@ -5,9 +5,7 @@
     ViewBag.Title = ELearning.Localization.GetResourceString("NewForm");
 }
 
-<h2>New Test</h2>
-
-<div id="CreateOrEditForm">
+<div id="CreateOrEditForm" class="createEditForm">
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -15,15 +13,11 @@
 
 		@Html.Partial("_CreateOrEdit", Model)
 
-        <p>
+        <p class="center">
             <input type="submit" class="Button" value="@Html.ResourceString("Create")" />
         </p>
     </fieldset>
 }
-</div>
-
-<div>
-    @Html.ActionLink(ELearning.Localization.GetResourceString("BackToList"), "Index")
 </div>
 
 

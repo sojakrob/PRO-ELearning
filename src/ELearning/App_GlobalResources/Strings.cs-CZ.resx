@@ -142,7 +142,7 @@
     <value>Vytvořit formulář</value>
   </data>
   <data name="Czech" xml:space="preserve">
-    <value>čeština</value>
+    <value>česky</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
@@ -241,7 +241,7 @@
     <value>krát</value>
   </data>
   <data name="TrainingTest" xml:space="preserve">
-    <value>Zkušební test</value>
+    <value>Naučný test</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Typ</value>
@@ -305,5 +305,179 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Název</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="NewForm" xml:space="preserve">
+    <value>Nový formulář</value>
+  </data>
+  <data name="TimeToFill" xml:space="preserve">
+    <value>Čas na vyplnění</value>
+  </data>
+  <data name="EditForm" xml:space="preserve">
+    <value>Úprava formuláře</value>
+  </data>
+  <data name="MaxFills" xml:space="preserve">
+    <value>Max. počet vyplnění</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minut</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="ShuffleQuestions" xml:space="preserve">
+    <value>Zamíchat otázky</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Náhled</value>
+  </data>
+  <data name="NewQuestion" xml:space="preserve">
+    <value>Nová otázka</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Volba</value>
+  </data>
+  <data name="InlineText" xml:space="preserve">
+    <value>Krátký text</value>
+  </data>
+  <data name="MultilineText" xml:space="preserve">
+    <value>Dlouhý text</value>
+  </data>
+  <data name="MultipleChoice" xml:space="preserve">
+    <value>Vícenásobná volba</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Měřítko</value>
+  </data>
+  <data name="AddAlternativeQuestion" xml:space="preserve">
+    <value>Přídat alternativní otázku</value>
+  </data>
+  <data name="CloseAllQuestions" xml:space="preserve">
+    <value>Sbalit všechny otázky</value>
+  </data>
+  <data name="OpenAllQuestions" xml:space="preserve">
+    <value>Rozbalit všechny otázky</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Vysvětlení</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="DeleteAlternativeQuestion" xml:space="preserve">
+    <value>Smazat alt. otázku</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Uložit změny</value>
+  </data>
+  <data name="AddChoiceItem" xml:space="preserve">
+    <value>Přidat položku</value>
+  </data>
+  <data name="Choices" xml:space="preserve">
+    <value>Volby</value>
+  </data>
+  <data name="Shuffle" xml:space="preserve">
+    <value>Zamíchat</value>
+  </data>
+  <data name="LowerBound" xml:space="preserve">
+    <value>Spodní hranice</value>
+  </data>
+  <data name="StepSize" xml:space="preserve">
+    <value>Velikost kroku</value>
+  </data>
+  <data name="UpperBound" xml:space="preserve">
+    <value>Horní hranice</value>
+  </data>
+  <data name="EditTextBook" xml:space="preserve">
+    <value>Úprava skript</value>
+  </data>
+  <data name="StudentDetail_format" xml:space="preserve">
+    <value>{0} - detail studenta</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Známka</value>
+  </data>
+  <data name="Supervisor" xml:space="preserve">
+    <value>Vedoucí</value>
+  </data>
+  <data name="ImportMembersFromGoogleGroup" xml:space="preserve">
+    <value>Načíst členy z Google Skupiny</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Členové</value>
+  </data>
+  <data name="PossibleMembers" xml:space="preserve">
+    <value>Možní členové</value>
+  </data>
+  <data name="GoogleGroupCsvFile" xml:space="preserve">
+    <value>CSV soubor Google Skupiny</value>
+  </data>
+  <data name="ImportMembers" xml:space="preserve">
+    <value>Načíst členy</value>
+  </data>
+  <data name="VisibleToOthers" xml:space="preserve">
+    <value>Viditelné pro ostatní</value>
+  </data>
+  <data name="FullWikiSyntax" xml:space="preserve">
+    <value>Podrobná Wiki syntaxe</value>
+  </data>
+  <data name="NewTextBook" xml:space="preserve">
+    <value>Nová skripta</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Tisk</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrátor</value>
+  </data>
+  <data name="Lector" xml:space="preserve">
+    <value>Lektor</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Resetovat heslo</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Nastavení uživatelského účtu</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Změna hesla</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nové heslo</value>
+  </data>
+  <data name="NewPasswordAgain" xml:space="preserve">
+    <value>Nové heslo znovu</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Stávající heslo</value>
+  </data>
+  <data name="DateTime" xml:space="preserve">
+    <value>Datum a čas</value>
+  </data>
+  <data name="AvailableTests" xml:space="preserve">
+    <value>Dostupné testy</value>
+  </data>
+  <data name="LastChange" xml:space="preserve">
+    <value>Poslední změna</value>
   </data>
 </root>

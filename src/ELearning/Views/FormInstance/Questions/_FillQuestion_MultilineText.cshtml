@@ -1,1 +1,13 @@
-﻿
+﻿@model ELearning.Models.Data.TextQuestionAnswerInstanceModel
+@using ELearning.Utils
+@{
+    
+    IDictionary<string, object> htmlValues = new Dictionary<string, object>();
+
+    if (Model.Answer != null || (ViewData["Readonly"] != null && ((Nullable<bool>)ViewData["Readonly"]).Value))
+    {
+        htmlValues.Add("readonly", "readonly");
+    }
+    
+    @Html.TextArea(string.Format("Q{0}", Model.ID), Model.Answer, htmlValues);
+}

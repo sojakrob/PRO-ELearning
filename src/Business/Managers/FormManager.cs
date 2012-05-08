@@ -72,7 +72,7 @@ namespace ELearning.Business.Managers
             var groups = _groupManager.GetUserGroups();
 
             var forms = from g in groups
-                        from f in g.Forms
+                        from f in g.Forms                        
                         select f;
 
             if (Permissions.Form_CreateEdit)
@@ -90,14 +90,19 @@ namespace ELearning.Business.Managers
         public IQueryable<Form> GetNotArchivedForms()
         {
             string archivedState = FormStates.Archived.ToString();
-            return GetAll().Where(f => f.State.Name != archivedState);
+            return GetAll().Where(f => f.State.Name != archivedState).OrderByDescending(f => f.Created);
         }
 
         public Form GetForm(int id)
         {
             var result = GetSingle(f => f.ID == id);
-            if (result == null && Context.Form.Count(f => f.ID == id) > 0)
-                throw new PermissionException("Form_Get");
+            if (result == null)
+            {
+                if (Context.Form.Count(f => f.ID == id) > 0)
+                    throw new PermissionException("Form_Get");
+                else
+                    throw new ArgumentException("Form not found");
+            }
 
             return result;
         }

@@ -1,0 +1,31 @@
+﻿@using ELearning.Utils
+@model ELearning.Models.Data.GroupModel
+@{
+    ViewBag.Title = Model.Name;
+    if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
+    {
+        ViewBag.TopButtons = new[] { new ELearning.Models.GeneralView.TopButtonModel(ELearning.Localization.GetResourceString("Edit"), "Edit", "Group", new { id = Model.ID }, null) };
+    }
+}
+<table class="datagrid">
+    <tr>
+        <th>
+            @Html.ResourceString("Name")
+        </th>
+    </tr>
+    @foreach (var member in Model.Members)
+    {
+        <tr>
+            @if (member.Type.Enum == ELearning.Data.Enums.UserTypes.Student)
+            {
+                <td>@Html.ActionLink(member.Name, "Detail", "Student", new { id = member.ID }, null)
+                </td>
+            }
+            else
+            {
+                <td>@member.Name
+                </td>
+            }
+        </tr>
+    }
+</table>

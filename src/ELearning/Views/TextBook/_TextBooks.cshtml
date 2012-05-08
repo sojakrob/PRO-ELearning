@@ -1,0 +1,48 @@
+﻿@using ELearning.Utils
+@model IEnumerable<ELearning.Models.Data.TextBookModel>
+
+<table class="datagrid nocaption">
+    <caption>@Html.ResourceString("TextBooks")</caption>
+    <tr>
+        <th>
+            @Html.ResourceString("Title")
+        </th>
+        <th>
+            @Html.ResourceString("LastChange")
+        </th>
+        <th>
+            @Html.ResourceString("CreatedBy")
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Title, "View", new { id = item.ID })
+        </td>
+        <td>
+			@(item.Changed)
+        </td>
+        <td>
+			@(item.CreatedBy.Name)
+        </td>
+        <td>
+            @if (item.CreatedBy.ID == ViewBag.CurrentUserModel.ID || ViewBag.CurrentUserModel.Permissions.TextBook_CreateEdit_All)
+            {
+                @Html.ButtonLink(ELearning.Localization.GetResourceString("Edit"), "Edit", new { id = item.ID })
+            }
+        </td>
+        <td>
+            @if (item.CreatedBy.ID == ViewBag.CurrentUserModel.ID || ViewBag.CurrentUserModel.Permissions.TextBook_Delete)
+            {
+                @Html.ButtonLink("X", "Delete", new { id = item.ID })
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -5,7 +5,11 @@
 
     @if (Model.Answer == null && Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
     {
-       <script type="text/javascript">@string.Format("addChoiceQuestion({0}, {1});", Model.ID, Model.ChoiceItems.Where(ch => ch.IsCorrect).Single().ID)</script>
+        var correctChoice = Model.ChoiceItems.Where(ch => ch.IsCorrect).SingleOrDefault();
+        if (correctChoice != null)
+        {
+            <script type="text/javascript">@string.Format("addChoiceQuestion({0}, {1});", Model.ID, correctChoice.ID)</script>
+        }
     }
     
     @foreach (var item in Model.ChoiceItems)

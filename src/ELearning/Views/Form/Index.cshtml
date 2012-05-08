@@ -2,109 +2,12 @@
 @using ELearning.Models.GeneralView
 @model IEnumerable<ELearning.Models.FormFillsModel>
 @{
-    ViewBag.Title = "Dostupné testy";
+    ViewBag.Title = ELearning.Localization.GetResourceString("AvailableForms");
     
     if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit)
     {
-        ViewBag.TopButtons = new[] { new TopButtonModel("Create New", "Create", "Form") };
+        ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "Form") };
     }
 }
 
-<table class="datagrid">
-    <tr>
-        <th>
-            @Html.ResourceString("NameThing")
-        </th>
-        <th>
-            @Html.ResourceString("Text")
-        </th>
-        <th>
-            @Html.ResourceString("Created")
-        </th>
-        <th>
-            @Html.ResourceString("Type")
-        </th>
-        <th>
-            @Html.ResourceString("Author")
-        </th>
-        <th>
-            @Html.ResourceString("Filled")
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
-                {
-                    @Html.ActionLink(item.Name, "CreateEditQuestions", new { id = item.ID })
-                }
-                else
-                {
-                    @Html.ActionLink(item.Name, "Index", "FormInstance", new { id = item.ID }, null)
-                }
-            </td>
-            <td title="@item.Text">
-                @item.TextCropped
-            </td>
-            <td>
-                @ELearning.Utils.Formatting.FormatAsDate(item.Created)
-            </td>
-            <td>
-                @Html.ResourceString(item.Type.Name)
-            </td>
-            <td>
-                @item.Author.Name
-            </td>
-            @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
-            {
-                <td title="Users / Total">
-                    @Html.ActionLink(
-                        string.Format("{0} / {1}", @item.TimesFilled_Users, @item.TimesFilled_Total),
-                        "FormFills",
-                        new { id = item.ID }
-                        )
-                </td>
-            }
-            else
-            {
-                <td>
-                @{
-                    string filledTimes = item.FormInstances.Count().ToString();
-                    if (item.MaxFills != null)
-                    {
-                        filledTimes = string.Format("{0} / {1}", item.FormInstances.Count(), item.MaxFills.Value);
-                    }
-                }
-                @Html.Raw(filledTimes)
-                </td>
-            }
-            <td>
-                @if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit_All
-                    || ViewBag.CurrentUserModel.ID == item.Author.ID)
-                {
-                    switch (item.State.Enum)
-                    {
-                        case ELearning.Data.Enums.FormStates.Active:
-                            @Html.LocalizedButtonLink("Deactivate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
-                            break;
-                        case ELearning.Data.Enums.FormStates.Inactive:
-                            @Html.LocalizedButtonLink("Activate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
-                            break;
-                    }
-                }
-            </td>
-            <td>       
-                @if (ViewBag.CurrentUserModel.Permissions.Form_Delete
-                    || ViewBag.CurrentUserModel.ID == item.Author.ID)
-                {
-                    @Html.ButtonLink("X", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Archived })
-                }
-            </td>
-        </tr>
-    }
-</table>
+@Html.Partial("_AvailableForms", Model)

@@ -79,7 +79,7 @@ namespace ELearning.Controllers
                     assignedGroupIDs = new int[] { };
                 _textBookManager.SetTextBookAssignedGroups(textBook.ID, assignedGroupIDs);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("View", new { id = textBook.ID });
             }
 
             textBook.PossibleGroups = GroupModel.CreateFromArray<GroupModel>(_groupManager.GetAll());
@@ -93,5 +93,6 @@ namespace ELearning.Controllers
             var textBook = _textBookManager.GetTextBook(id);
             return View(new TextBookModel(textBook));
         }
+
     }
 }

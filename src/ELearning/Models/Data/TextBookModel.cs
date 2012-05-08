@@ -13,10 +13,13 @@ namespace ELearning.Models.Data
         public int ID { get; set; }
         [Required]
         [MaxLength(50)]
+        [DisplayLocalized("Title")]
         public string Title { get; set; }
         public string Text { get; set; }
         public string Html { get; set; }
+        public DateTime Changed { get; set; }
 
+        [DisplayLocalized("VisibleToOthers")]
         public bool VisibleToOthers { get; set; }
 
         public UserModel CreatedBy { get; private set; }
@@ -47,6 +50,7 @@ namespace ELearning.Models.Data
             Text = data.Text;
             Html = data.Html;
             VisibleToOthers = data.VisibleToOthers;
+            Changed = data.Changed;
             CreatedBy = new UserModel(data.CreatedBy);
             _assignedGroupsData = data.Groups;
         }

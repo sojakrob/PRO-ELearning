@@ -62,6 +62,7 @@
     <Compile Include="ImportExport\FormFillsDataExport.cs" />
     <Compile Include="ImportExport\Google\GoogleDocsExporter.cs" />
     <Compile Include="ImportExport\Google\GoogleGroupsMembersImporter.cs" />
+    <Compile Include="Interfaces\ILocalization.cs" />
     <Compile Include="Managers\FormManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
     <Compile Include="Managers\ManagerBase.cs" />
@@ -95,7 +96,9 @@
       <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

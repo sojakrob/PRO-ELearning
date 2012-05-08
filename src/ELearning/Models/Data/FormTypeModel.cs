@@ -11,6 +11,7 @@ namespace ELearning.Models.Data
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string DisplayName { get; set; }
         public FormTypes Enum { get; set; }
 
 
@@ -23,6 +24,7 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             Name = data.Name;
+            DisplayName = Localization.GetResourceString(Name);
             Enum = Shared.EnumUtility.EnumFromName<FormTypes>(Name);
         }
 

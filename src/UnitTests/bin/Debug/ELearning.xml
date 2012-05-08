@@ -36,6 +36,11 @@
             Gets number of users that filled the form
             </summary>
         </member>
+        <member name="M:ELearning.Models.ImportExport.ExportToGoogleDocsModel.#ctor">
+            <summary>
+            Initializes a new instance of the ExportToGoogleDocsModel class.
+            </summary>
+        </member>
         <member name="M:ELearning.Models.Data.GroupModel.#ctor">
             <summary>
             Initializes a new instance of the GroupModel class.
@@ -49,6 +54,16 @@
         <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor(ELearning.Data.User,ELearning.Business.Permissions.UserPermissions)">
             <summary>
             Initializes a new instance of the LoggedUserModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.HomeController.#ctor(ELearning.Business.Managers.FormManager,ELearning.Business.Managers.TextBookManager)">
+            <summary>
+            Initializes a new instance of the HomeController class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.SettingsController.#ctor(ELearning.Business.Managers.UserManager)">
+            <summary>
+            Initializes a new instance of the SettingsController class.
             </summary>
         </member>
         <member name="M:ELearning.Models.FormInstancesModel.#ctor(ELearning.Models.Data.FormModel,System.Collections.Generic.ICollection{ELearning.Models.Data.FormInstanceModel})">
@@ -100,6 +115,11 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:Resources.Strings.AccountSettings">
+            <summary>
+              Looks up a localized string similar to Account Settings.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Activate">
             <summary>
               Looks up a localized string similar to Activate.
@@ -108,6 +128,26 @@
         <member name="P:Resources.Strings.Active">
             <summary>
               Looks up a localized string similar to Active.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Add">
+            <summary>
+              Looks up a localized string similar to Add.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.AddAlternativeQuestion">
+            <summary>
+              Looks up a localized string similar to Add Alternative Question.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.AddChoiceItem">
+            <summary>
+              Looks up a localized string similar to Add Choice Item.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Administrator">
+            <summary>
+              Looks up a localized string similar to Administrator.
             </summary>
         </member>
         <member name="P:Resources.Strings.Archived">
@@ -125,14 +165,49 @@
               Looks up a localized string similar to Available Forms.
             </summary>
         </member>
+        <member name="P:Resources.Strings.AvailableTests">
+            <summary>
+              Looks up a localized string similar to Available Tests.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Back">
+            <summary>
+              Looks up a localized string similar to Back.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.ChangePassword">
+            <summary>
+              Looks up a localized string similar to Change Password.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Choice">
+            <summary>
+              Looks up a localized string similar to Choice.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Choices">
+            <summary>
+              Looks up a localized string similar to Choices.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Close">
             <summary>
               Looks up a localized string similar to Close.
             </summary>
         </member>
+        <member name="P:Resources.Strings.CloseAllQuestions">
+            <summary>
+              Looks up a localized string similar to Close all questions.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.CloseWindow">
             <summary>
               Looks up a localized string similar to Close this window.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Create">
+            <summary>
+              Looks up a localized string similar to Create.
             </summary>
         </member>
         <member name="P:Resources.Strings.Created">
@@ -162,12 +237,22 @@
         </member>
         <member name="P:Resources.Strings.Czech">
             <summary>
-              Looks up a localized string similar to čeština.
+              Looks up a localized string similar to česky.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.DateTime">
+            <summary>
+              Looks up a localized string similar to Date &amp; Time.
             </summary>
         </member>
         <member name="P:Resources.Strings.Deactivate">
             <summary>
               Looks up a localized string similar to Deactivate.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.DeleteAlternativeQuestion">
+            <summary>
+              Looks up a localized string similar to Delete Alt. Question.
             </summary>
         </member>
         <member name="P:Resources.Strings.DocumentName">
@@ -178,6 +263,16 @@
         <member name="P:Resources.Strings.Edit">
             <summary>
               Looks up a localized string similar to Edit.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.EditForm">
+            <summary>
+              Looks up a localized string similar to Edit Form.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.EditTextBook">
+            <summary>
+              Looks up a localized string similar to Edit TextBook.
             </summary>
         </member>
         <member name="P:Resources.Strings.Email">
@@ -198,6 +293,11 @@
         <member name="P:Resources.Strings.Exam">
             <summary>
               Looks up a localized string similar to Test.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Explanation">
+            <summary>
+              Looks up a localized string similar to Explanation.
             </summary>
         </member>
         <member name="P:Resources.Strings.Export">
@@ -245,6 +345,11 @@
               Looks up a localized string similar to Forms.
             </summary>
         </member>
+        <member name="P:Resources.Strings.FullWikiSyntax">
+            <summary>
+              Looks up a localized string similar to Full Wiki Syntax.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.GoogleAccountEmail">
             <summary>
               Looks up a localized string similar to Google account email.
@@ -255,9 +360,19 @@
               Looks up a localized string similar to Google account password.
             </summary>
         </member>
+        <member name="P:Resources.Strings.GoogleGroupCsvFile">
+            <summary>
+              Looks up a localized string similar to Google Group CSV file.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Groups">
             <summary>
               Looks up a localized string similar to Groups.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.HelpText">
+            <summary>
+              Looks up a localized string similar to Help Text.
             </summary>
         </member>
         <member name="P:Resources.Strings.Home">
@@ -270,14 +385,39 @@
               Looks up a localized string similar to Import from Google Group.
             </summary>
         </member>
+        <member name="P:Resources.Strings.ImportMembers">
+            <summary>
+              Looks up a localized string similar to Import Members.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.ImportMembersFromGoogleGroup">
+            <summary>
+              Looks up a localized string similar to Import Members from Google Group.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Inactive">
             <summary>
               Looks up a localized string similar to Inactive.
             </summary>
         </member>
+        <member name="P:Resources.Strings.InlineText">
+            <summary>
+              Looks up a localized string similar to Short text.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.KeepMeSignedIn">
             <summary>
               Looks up a localized string similar to Keep me signed in.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.LastChange">
+            <summary>
+              Looks up a localized string similar to Last Change.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Lector">
+            <summary>
+              Looks up a localized string similar to Lector.
             </summary>
         </member>
         <member name="P:Resources.Strings.LogOff">
@@ -290,6 +430,46 @@
               Looks up a localized string similar to Log On.
             </summary>
         </member>
+        <member name="P:Resources.Strings.LowerBound">
+            <summary>
+              Looks up a localized string similar to Lower Bound.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Mark">
+            <summary>
+              Looks up a localized string similar to Mark.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.MaxFills">
+            <summary>
+              Looks up a localized string similar to Max Fills.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Members">
+            <summary>
+              Looks up a localized string similar to Členové.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.minutes">
+            <summary>
+              Looks up a localized string similar to minutes.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.MultilineText">
+            <summary>
+              Looks up a localized string similar to Long text.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.MultipleChoice">
+            <summary>
+              Looks up a localized string similar to Multiple choice.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Name">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.NamePerson">
             <summary>
               Looks up a localized string similar to Name.
@@ -300,9 +480,34 @@
               Looks up a localized string similar to Name.
             </summary>
         </member>
+        <member name="P:Resources.Strings.NewForm">
+            <summary>
+              Looks up a localized string similar to New Form.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.NewGroup">
             <summary>
               Looks up a localized string similar to New Group.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.NewPassword">
+            <summary>
+              Looks up a localized string similar to New Password.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.NewPasswordAgain">
+            <summary>
+              Looks up a localized string similar to Retype New Password.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.NewQuestion">
+            <summary>
+              Looks up a localized string similar to New Question.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.NewTextBook">
+            <summary>
+              Looks up a localized string similar to New TextBook.
             </summary>
         </member>
         <member name="P:Resources.Strings.NewUser">
@@ -310,9 +515,34 @@
               Looks up a localized string similar to New User.
             </summary>
         </member>
+        <member name="P:Resources.Strings.OldPassword">
+            <summary>
+              Looks up a localized string similar to Old Password.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.OpenAllQuestions">
+            <summary>
+              Looks up a localized string similar to Open all questions.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Password">
             <summary>
               Looks up a localized string similar to Password.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.PossibleMembers">
+            <summary>
+              Looks up a localized string similar to Možní členové.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Preview">
+            <summary>
+              Looks up a localized string similar to Preview.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Print">
+            <summary>
+              Looks up a localized string similar to Print.
             </summary>
         </member>
         <member name="P:Resources.Strings.Question">
@@ -340,6 +570,41 @@
               Looks up a localized string similar to Reopen Window.
             </summary>
         </member>
+        <member name="P:Resources.Strings.ResetPassword">
+            <summary>
+              Looks up a localized string similar to Reset Password.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Save">
+            <summary>
+              Looks up a localized string similar to Save.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.SaveChanges">
+            <summary>
+              Looks up a localized string similar to Save changes.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Scale">
+            <summary>
+              Looks up a localized string similar to Scale.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Settings">
+            <summary>
+              Looks up a localized string similar to Settings.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Shuffle">
+            <summary>
+              Looks up a localized string similar to Shuffle.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.ShuffleQuestions">
+            <summary>
+              Looks up a localized string similar to Shuffle Questions.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Solver">
             <summary>
               Looks up a localized string similar to Solver.
@@ -348,6 +613,21 @@
         <member name="P:Resources.Strings.Start">
             <summary>
               Looks up a localized string similar to Start.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.StepSize">
+            <summary>
+              Looks up a localized string similar to Step Size.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Student">
+            <summary>
+              Looks up a localized string similar to Student.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.StudentDetail_format">
+            <summary>
+              Looks up a localized string similar to {0} - Student Detail.
             </summary>
         </member>
         <member name="P:Resources.Strings.Students">
@@ -363,6 +643,11 @@
         <member name="P:Resources.Strings.SuccessfulySubmited">
             <summary>
               Looks up a localized string similar to Successfully Submited.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.Supervisor">
+            <summary>
+              Looks up a localized string similar to Supervisor.
             </summary>
         </member>
         <member name="P:Resources.Strings.Text">
@@ -385,6 +670,11 @@
               Looks up a localized string similar to Times filled.
             </summary>
         </member>
+        <member name="P:Resources.Strings.TimeToFill">
+            <summary>
+              Looks up a localized string similar to Time to Fill.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Title">
             <summary>
               Looks up a localized string similar to Title.
@@ -392,12 +682,17 @@
         </member>
         <member name="P:Resources.Strings.TrainingTest">
             <summary>
-              Looks up a localized string similar to Training Test.
+              Looks up a localized string similar to Learning Test.
             </summary>
         </member>
         <member name="P:Resources.Strings.Type">
             <summary>
               Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.UpperBound">
+            <summary>
+              Looks up a localized string similar to Upper Bound.
             </summary>
         </member>
         <member name="P:Resources.Strings.UserGroups">
@@ -410,9 +705,19 @@
               Looks up a localized string similar to Users.
             </summary>
         </member>
+        <member name="P:Resources.Strings.UserType">
+            <summary>
+              Looks up a localized string similar to User Type.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.View">
             <summary>
               Looks up a localized string similar to View.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.VisibleToOthers">
+            <summary>
+              Looks up a localized string similar to Visible to Others.
             </summary>
         </member>
         <member name="M:ELearning.Models.FillQuestionModel.#ctor(ELearning.Data.Enums.QuestionGroupTypes,System.Int32,System.Boolean)">
@@ -477,9 +782,9 @@
             Gets the logged user
             </summary>
         </member>
-        <member name="M:ELearning.Models.ImportExport.ExportToGoogleDocsModel.#ctor">
+        <member name="M:ELearning.Models.HomePageModel.#ctor(System.Collections.Generic.IEnumerable{ELearning.Models.FormFillsModel},System.Collections.Generic.IEnumerable{ELearning.Models.Data.TextBookModel})">
             <summary>
-            Initializes a new instance of the ExportToGoogleDocsModel class.
+            Initializes a new instance of the HomePageModel class.
             </summary>
         </member>
     </members>

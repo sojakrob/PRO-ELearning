@@ -1,19 +1,22 @@
-﻿@model ELearning.Models.Data.StudentFormsModel
-
+﻿@using ELearning.Utils
+@model ELearning.Models.Data.StudentFormsModel
 @{
-    ViewBag.Title = "Student view";
+    ViewBag.Title = string.Format(ELearning.Localization.GetResourceString("StudentDetail_format"), Model.Name);
 }
 
-@if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
-{ 
-    <h2>@Model.Name</h2>
-}
-
-<ul>
-@foreach (var group in Model.AssignedGroups)
-{
-    <li>@group.Name</li>
-}
-</ul>
+<table class="datagrid">
+    <caption>@Html.ResourceString("Groups")</caption>
+    <tr>
+        <th>
+            @Html.ResourceString("Name")
+        </th>
+    </tr>
+    @foreach (var group in Model.AssignedGroups)
+    {
+        <tr>
+            <td>@Html.ActionLink(group.Name, "Detail", "Groups", new { id = group.ID }, null)</td>
+        </tr>
+    }
+</table>
 
 @Html.Partial("_FilledForms", Model.FilledForms)

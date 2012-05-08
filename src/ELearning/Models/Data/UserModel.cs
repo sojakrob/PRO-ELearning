@@ -11,12 +11,19 @@ namespace ELearning.Models.Data
 {
     public class UserModel : DataModelBase<User>
     {
+        private const string HIDDEN_PASSWORD = "*****";
+
+
         public int ID { get; set; }
         public string Name { get; set; }
         [Required] // TODO Add Regex check etc.
+        [DisplayLocalized("Email")]
         public string Email { get; set; }
+        [DisplayLocalized("Password")]
+        public string Password { get; set; }
         
         [Required]
+        [DisplayLocalized("UserType")]
         public UserTypeModel Type { get; set; }
 
         public IEnumerable<GroupModel> AssignedGroups 
@@ -47,6 +54,7 @@ namespace ELearning.Models.Data
             ID = data.ID;
             Name = data.Name;
             Email = data.Email;
+            Password = HIDDEN_PASSWORD;
 
             if (data.Type == null)
                 Type = new UserTypeModel();

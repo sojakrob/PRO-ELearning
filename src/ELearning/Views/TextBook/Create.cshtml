@@ -7,6 +7,7 @@
 
 <script src="@Url.Content("~/Scripts/TextBook/CreateEdit.js")" type="text/javascript"></script>
 
+<div class="createEditForm">
 @using (Html.BeginForm("Create", "TextBook", FormMethod.Post, new { id="TextBook" }))
 {
     @Html.ValidationSummary(true)
@@ -15,13 +16,9 @@
 
 		@Html.Partial("_CreateOrEdit", Model)
 
-        <p>
+        <p class="center">
             <input type="submit" class="Button" value="@Html.ResourceString("Save")" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink(ELearning.Localization.GetResourceString("Back"), "Index")
 </div>
-

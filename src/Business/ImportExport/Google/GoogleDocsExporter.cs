@@ -8,6 +8,7 @@ using System.IO;
 using System.Security.Authentication;
 using ELearning.Business.Reporting;
 using Google.GData.Client;
+using ELearning.Business.Interfaces;
 
 
 namespace ELearning.Business.ImportExport.Google
@@ -47,9 +48,16 @@ namespace ELearning.Business.ImportExport.Google
             return true;
         }
 
-        public static bool UploadReport(FormFillsDataReport report, string documentName, string username, string password, System.Web.HttpServerUtilityBase server)
+        public static bool UploadReport(
+            FormFillsDataReport report, 
+            string documentName, 
+            string username, 
+            string password, 
+            System.Web.HttpServerUtilityBase server, 
+            ILocalization localization
+            )
         {
-            string filename = FormFillsDataExport.ExportFormFillsReportToCsv(report, server);
+            string filename = FormFillsDataExport.ExportFormFillsReportToCsv(report, server, localization);
             if (filename == null)
                 return false;
 

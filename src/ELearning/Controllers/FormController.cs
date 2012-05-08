@@ -80,11 +80,12 @@ namespace ELearning.Controllers
         }
 
         [AuthorizeUserType(UserType = UserTypes.Lector)]
-        public ActionResult CreateEditQuestions(int id)
+        public ActionResult CreateEditQuestions(int id, int? addedQuestionID)
         {
             FormModel form = new FormModel(_formManager.GetForm(id));
 
             FillViewBag_CreateQuestionGroups(form);
+            ViewBag.AddedQuestionID = addedQuestionID;
 
             return View(form);
         }
@@ -95,10 +96,12 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                _questionManager.AddQuestionGroupWithQuestion(CurrentLoggedUserModel.Email, questionGroup.FormTemplateID, questionGroup.ToData());
+                bool added = _questionManager.AddQuestionGroupWithQuestion(CurrentLoggedUserModel.Email, questionGroup.FormTemplateID, questionGroup.ToData());
+                if (added)
+                    ViewBag.AddedQuestionID = _questionManager.GetLastAddedQuestionGroupOf(questionGroup.FormTemplateID).ID;
             }
 
-            return RedirectToCreateEditQuestions(questionGroup.FormTemplateID);
+            return RedirectToCreateEditQuestions(questionGroup.FormTemplateID, ViewBag.AddedQuestionID);
         }
 
         [AuthorizeUserType(UserType = UserTypes.Lector)]
@@ -264,14 +267,14 @@ namespace ELearning.Controllers
         }
 
         [AuthorizeUserType(UserType = UserTypes.Lector)]
-        public ActionResult ShowPreview(int? id)
+        public ActionResult ShowPreview(int? id, bool? print)
         {
             if (id == null)
                 return RedirectToHome();
 
             var previewInstance = _formManager.GenerateAndSaveNewFormInstancePreview(id.Value);
 
-            return RedirectToAction("ViewForm", "FormInstance", new { id = previewInstance.ID });
+            return RedirectToAction("ViewForm", "FormInstance", new { id = previewInstance.ID, print = print });
         }
 
         [AuthorizeUserType(UserType = UserTypes.Lector)]
@@ -289,7 +292,7 @@ namespace ELearning.Controllers
         {
             var report = FormFillsDataReportCreator.CreateReport(model.FormID, _formManager);
 
-            bool exported = GoogleDocsExporter.UploadReport(report, model.DocumentName, model.GEmail, model.GPassword, Server);
+            bool exported = GoogleDocsExporter.UploadReport(report, model.DocumentName, model.GEmail, model.GPassword, Server, new Localization());
             if (!exported)
                 return RedirectToAction("ExportToGoogleDocs", model);
 
@@ -314,9 +317,9 @@ namespace ELearning.Controllers
         }
 
 
-        private ActionResult RedirectToCreateEditQuestions(int formID)
+        private ActionResult RedirectToCreateEditQuestions(int formID, int? addedQuestionID = null)
         {
-            return RedirectToAction("CreateEditQuestions", new { id = formID });
+            return RedirectToAction("CreateEditQuestions", new { id = formID, addedQuestionID = addedQuestionID });
         }
     }
 }

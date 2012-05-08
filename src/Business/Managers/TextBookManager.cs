@@ -41,7 +41,7 @@ namespace ELearning.Business.Managers
                                    where t.VisibleToOthers
                                    select t;
             var usersTextBooks = Context.TextBook.Where(t => t.CreatedBy.ID == PermissionsProvider.UserID);
-            var textBooks = visibleTextBooks.Union(usersTextBooks);
+            var textBooks = visibleTextBooks.Union(usersTextBooks).OrderBy(t => t.Title);
 
             return textBooks;
         }

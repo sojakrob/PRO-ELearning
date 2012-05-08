@@ -1,26 +1,19 @@
+@using ELearning.Utils
 @model ELearning.Models.Data.UserModel
-
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = ELearning.Localization.GetResourceString("NewUser");
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>User</legend>
-
-		@Html.Partial("_CreateOrEdit", Model)
-
-        <p>
-            <input type="submit" class="Button" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="createEditForm" id="createEditUser">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>@Html.ResourceString("NewUser")</legend>
+            @Html.Partial("_CreateOrEdit", Model)
+            <p class="center">
+                <input type="submit" class="Button" value="@Html.ResourceString("Create")" />
+            </p>
+        </fieldset>
+    }
 </div>
-
-

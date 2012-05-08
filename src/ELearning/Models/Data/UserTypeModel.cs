@@ -11,6 +11,7 @@ namespace ELearning.Models.Data
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string DisplayName { get; private set; }
         public UserTypes Enum { get; set; }
 
 
@@ -28,6 +29,7 @@ namespace ELearning.Models.Data
         {
             ID = data.ID;
             Name = data.Name;
+            DisplayName = Localization.GetResourceString(Name);
             Enum = Shared.EnumUtility.EnumFromName<UserTypes>(Name);
         }
 

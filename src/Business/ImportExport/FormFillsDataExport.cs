@@ -7,6 +7,7 @@ using System.IO;
 using ELearning.Data;
 using ELearning.Business.Reporting;
 using ELearning.Business.Storages;
+using ELearning.Business.Interfaces;
 
 namespace ELearning.Business.ImportExport
 {
@@ -18,15 +19,18 @@ namespace ELearning.Business.ImportExport
         private string _filename;
         private FormFillsDataReport _report;
         private TextWriter _writer;
+
+        private ILocalization _localization;
         
 
 
         /// <summary>
         /// Initializes a new instance of the FormFillsDataExport class.
         /// </summary>
-        private FormFillsDataExport(FormFillsDataReport report, System.Web.HttpServerUtilityBase server)
+        private FormFillsDataExport(FormFillsDataReport report, System.Web.HttpServerUtilityBase server, ILocalization localization)
         {
             _report = report;
+            _localization = localization;
 
             string path = LocalStorage.GetExportPath(server);
             _filename = string.Format("{0}{1}{2}.csv", path, DateTime.Now.ToFileTimeUtc(), _report.Form.Name);
@@ -46,7 +50,13 @@ namespace ELearning.Business.ImportExport
 
         private void WriteCsvHeader()
         {
-            _writer.Write(string.Format("Solver{0}DateTime{0}", CSV_DELIMITER));
+            _writer.Write(
+                string.Format("{0}{1}{2}{1}", 
+                    _localization.GetString("Solver"), 
+                    CSV_DELIMITER, 
+                    _localization.GetString("DateTime")
+                    )
+                );
 
             foreach (FormFillQuestionGroup group in _report.Groups)
             {
@@ -56,7 +66,7 @@ namespace ELearning.Business.ImportExport
                 }
             }
 
-            WriteWithDelimiter("Mark");
+            WriteWithDelimiter(_localization.GetString("Mark"));
             _writer.WriteLine();
         }
         private void WriteCsvData()
@@ -71,7 +81,7 @@ namespace ELearning.Business.ImportExport
                     foreach (Question question in group.Questions)
                     {
                         var instance = fill.Questions.Where(q => q.QuestionID == question.ID).FirstOrDefault();
-                        if (instance != null)
+                        if (instance != null && instance.Answer != null)
                             Write(instance.Answer.ToString());
                         _writer.Write(CSV_DELIMITER);
                     }
@@ -94,9 +104,9 @@ namespace ELearning.Business.ImportExport
         }
 
 
-        public static string ExportFormFillsReportToCsv(FormFillsDataReport report, System.Web.HttpServerUtilityBase server)
+        public static string ExportFormFillsReportToCsv(FormFillsDataReport report, System.Web.HttpServerUtilityBase server, ILocalization localization)
         {
-            var exporter = new FormFillsDataExport(report, server);
+            var exporter = new FormFillsDataExport(report, server, localization);
             return exporter.ExportFormFillsReportToCsv();
         }
     }

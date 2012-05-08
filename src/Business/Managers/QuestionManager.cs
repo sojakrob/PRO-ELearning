@@ -44,6 +44,10 @@ namespace ELearning.Business.Managers
         {
             return GetSingle(q => q.ID == id);
         }
+        public QuestionGroup GetLastAddedQuestionGroupOf(int formID)
+        {
+            return _managers.Get<FormManager>().GetForm(formID).QuestionGroups.OrderByDescending(g => g.ID).FirstOrDefault();
+        }
 
         public QuestionGroup GetQuestionGroup(int questionGroupID)
         {

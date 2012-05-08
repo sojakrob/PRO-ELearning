@@ -43,7 +43,8 @@ namespace ELearning.Business.Reporting
                 fill.Solver = formInstance.Solver;
                 fill.Submited = formInstance.Submited;
                 fill.Questions = formInstance.Questions;
-                fill.Mark = formInstance.Evaluation.Mark.Name;
+                if (formInstance.Evaluation != null && formInstance.Evaluation.Mark != null)
+                    fill.Mark = formInstance.Evaluation.Mark.Name;
 
                 _report.Fills.Add(fill);
             }

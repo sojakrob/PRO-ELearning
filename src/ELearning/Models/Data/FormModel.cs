@@ -11,6 +11,7 @@ namespace ELearning.Models.Data
 {
     public class FormModel : DataModelBase<Form>
     {
+        private const int NAME_MAX_LENGTH = 25;
         private const int TEXT_MAX_LENGTH = 20;
 
 
@@ -18,20 +19,27 @@ namespace ELearning.Models.Data
         public int ID { get; set; }
 
         [Required]
+        [DisplayLocalized("Title")]
         public string Name { get; set; }
+        public string NameCropped
+        {
+            get { return Utils.Formatting.CropText(Name, NAME_MAX_LENGTH); }
+        }
 
+        [DisplayLocalized("Text")]
         public string Text { get; set; }
         public string TextCropped
         {
             get { return Utils.Formatting.CropText(Text, TEXT_MAX_LENGTH); }
         }
 
-        [Display(Name = "Shuffle Questions")]
+        [DisplayLocalized("ShuffleQuestions")]
         public bool Shuffle { get; set; }
 
         /// <summary>
         /// Time to fill in minutes
         /// </summary>
+        [DisplayLocalized("TimeToFill")]
         public int? TimeToFill { get; set; }
 
         public DateTime Created { get; set; }
@@ -39,6 +47,7 @@ namespace ELearning.Models.Data
         public FormTypeModel Type { get; set; }
         public FormStateModel State { get; set; }
 
+        [DisplayLocalized("MaxFills")]
         public int? MaxFills { get; set; }
 
         public UserModel Author { get; set; }

@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ELearning.Business.Interfaces;
 
 namespace ELearning
 {
-	public class Localization
+    public class Localization : ILocalization
 	{
+        public string GetString(string key)
+        {
+            return Localization.GetResourceString(key);
+        }
+
         public static string GetResourceString(string key)
         {
             string result = Resources.Strings.ResourceManager.GetString(key);

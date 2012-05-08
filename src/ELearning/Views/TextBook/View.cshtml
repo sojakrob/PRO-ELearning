@@ -1,6 +1,6 @@
 ﻿@model ELearning.Models.Data.TextBookModel
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = Model.Title;
     if (Model.CreatedBy.ID == ViewBag.CurrentUserModel.ID || ViewBag.CurrentUserModel.Permissions.TextBook_CreateEdit_All)
     {
         ViewBag.TopButtons = new[] 
@@ -10,11 +10,11 @@
                 "Edit", 
                 "TextBook",
                 new {id = Model.ID}, 
-                null) 
+                null)
         };
     }
 }
 
-<h2>@Model.Title</h2>
-
-@Html.Raw(Model.Html)
+<div id="TextBook">
+    @Html.Raw(Model.Html)
+</div>

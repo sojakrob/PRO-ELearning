@@ -1,41 +1,41 @@
 ﻿@using ELearning.Utils
 @model ELearning.Models.FormInstancesModel
-
 @{
-    ViewBag.Title = ELearning.Localization.GetResourceString("Form");
+    ViewBag.Title = Model.Form.Name;
 }
-
-<p>@Html.ResourceString(Model.Form.Type.Name)</p>
-
-<h2>@Model.Form.Name</h2>
-
-<p>@Model.Form.Text</p>
-
-@if (Model.Form.TimeToFill != null)
-{
-    <p>@Html.ResourceString("TimeToFill") : @Model.Form.TimeToFill</p>
-}
-
-<p>@Html.ResourceString("Questions") : @Model.Form.QuestionGroups.Count</p>
-
-@{
-    string filledTimes = Model.FormInstances.Count.ToString();
-    if (Model.Form.MaxFills != null)
-    {
-        filledTimes = string.Format("{0} / {1}", Model.FormInstances.Count, Model.Form.MaxFills.Value);
-    }
-}
-<p>@Html.ResourceString("Filled") : @filledTimes @Html.ResourceString("Times")</p>
-
-@if (Model.Form.MaxFills == null || Model.FormInstances.Count < Model.Form.MaxFills.Value)
-{ 
-    @Html.LocalizedButtonLink("Start", "StartForm", new { id = Model.Form.ID })
-}
-
+<div id="FormInstanceStarter">
+    <div class="header">
+        <h2>@Model.Form.Name</h2>
+    </div>
+    <div class="body">
+        <p>@Model.Form.Text</p>
+        <h3>@Html.ResourceString(Model.Form.Type.Name)</h3>
+        
+        @if (Model.Form.TimeToFill != null)
+        {
+            <p>@Html.ResourceString("TimeToFill") : @Model.Form.TimeToFill</p>
+        }
+        <p>@Html.ResourceString("Questions") : @Model.Form.QuestionGroups.Count</p>
+        @{
+            string filledTimes = Model.FormInstances.Count.ToString();
+            if (Model.Form.MaxFills != null)
+            {
+                filledTimes = string.Format("{0} / {1}", Model.FormInstances.Count, Model.Form.MaxFills.Value);
+            }
+        }
+        <p>@Html.ResourceString("Filled") : @filledTimes @Html.ResourceString("Times")</p>
+        <p class="center">
+            @if (Model.Form.MaxFills == null || Model.FormInstances.Count < Model.Form.MaxFills.Value)
+            { 
+                @Html.LocalizedButtonLink("Start", "StartForm", new { id = Model.Form.ID })
+            }
+        </p>
+    </div>
+</div>
 @*<input 
     class="Button" 
     type="button"
     title="Start"
     value="Start"
     onclick="@string.Format("window.open('../FillForm/{0}', '_blank', 'width=800, toolbar=0, resizable=1, scrollbars=1, menubar=0')", Model.Form.ID)"
-    />*@
+    />*@ 

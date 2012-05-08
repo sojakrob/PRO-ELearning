@@ -1,17 +1,29 @@
-﻿@model ELearning.Models.Data.GroupModel
+﻿@using ELearning.Utils
+@model ELearning.Models.Data.GroupModel
 
 @{
-    ViewBag.Title = "Import members from Google Group";
+    ViewBag.Title = ELearning.Localization.GetResourceString("ImportMembersFromGoogleGroup");
 }
 
 <h2>@Model.Name</h2>
 
 <form action="/Group/ImportGoogleGroupUpload" method="post" enctype="multipart/form-data">
-  
+  <fieldset>
   @Html.HiddenFor(id => Model.ID)
 
-  <label for="file">Google Group CSV file</label><br />
-  <input type="file" name="csvFile" id="csvFile" /><br />
+  <div class="editor-group">
+    <div class="editor-label">
+        <label for="csvFile">@Html.ResourceString("GoogleGroupCsvFile")</label>
+    </div>
+    <div class="clear"></div>
+    <div class="editor-field">
+        <input type="file" name="csvFile" id="csvFile" />
+    </div>
+    <div class="clear"></div>
+</div>
 
-  <input type="submit" value="Import members" />
+  <p class="center">
+  <input type="submit" class="Button" value="@Html.ResourceString("ImportMembers")" />
+  </p>
+  </fieldset>
 </form>

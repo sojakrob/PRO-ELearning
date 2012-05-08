@@ -14,12 +14,12 @@
 
 <div class="editor-group" id="FormTypeGroup">
     <div class="editor-label">
-        FormType
+        @Html.ResourceString("Type")
     </div>
     <div class="editor-field">
         @Html.DropDownListFor(
             model => model.Type.ID, 
-            new SelectList(((ICollection<ELearning.Models.Data.FormTypeModel>)ViewBag.FormTypes), "ID", "Name", Model == null || Model.Type == null ? ViewBag.DefaultFormType : Model.Type.ID)
+            new SelectList(((ICollection<ELearning.Models.Data.FormTypeModel>)ViewBag.FormTypes), "ID", "DisplayName", Model == null || Model.Type == null ? ViewBag.DefaultFormType : Model.Type.ID)
             )
         @Html.ValidationMessageFor(model => model.Type)
     </div>
@@ -45,19 +45,8 @@
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.TimeToFill)
-        minutes
+        @Html.ResourceString("minutes")
         @Html.ValidationMessageFor(model => model.TimeToFill)
-    </div>
-    <div class="clear"></div>
-</div>
-
-<div class="editor-group" id="MaxFillsGroup">
-    <div class="editor-label">
-        @Html.LabelFor(model => model.MaxFills)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.MaxFills)
-        @Html.ValidationMessageFor(model => model.MaxFills)
     </div>
     <div class="clear"></div>
 </div>
@@ -69,6 +58,17 @@
     <div class="editor-field">
         @Html.EditorFor(model => model.Shuffle)
         @Html.ValidationMessageFor(model => model.Shuffle)
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="editor-group" id="MaxFillsGroup">
+    <div class="editor-label">
+        @Html.LabelFor(model => model.MaxFills)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.MaxFills)
+        @Html.ValidationMessageFor(model => model.MaxFills)
     </div>
     <div class="clear"></div>
 </div>

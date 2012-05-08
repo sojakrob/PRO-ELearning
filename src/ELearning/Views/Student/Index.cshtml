@@ -1,12 +1,13 @@
-﻿@model IEnumerable<ELearning.Models.Data.UserModel>
+﻿@using ELearning.Utils
+@model IEnumerable<ELearning.Models.Data.UserModel>
 
 @{
-    ViewBag.Title = "Students";
+    ViewBag.Title = ELearning.Localization.GetResourceString("Students");
 }
 
 <table class="datagrid">
     <tr>
-        <th>Name</th>
+        <th>@Html.ResourceString("Name")</th>
     </tr>
 
     @foreach (var student in Model)
