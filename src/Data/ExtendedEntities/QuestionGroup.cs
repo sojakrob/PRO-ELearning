@@ -12,5 +12,11 @@ namespace ELearning.Data
         {
             get { return EnumUtility.EnumFromName<Enums.QuestionGroupTypes>(Type.Name); }
         }
+
+        public virtual void CopyPropertiesTo(QuestionGroup questionGroup)
+        {
+            questionGroup.IsRequired = this.IsRequired;
+            questionGroup.QuestionGroupTypeID = this.QuestionGroupTypeID;
+        }
     }
 }

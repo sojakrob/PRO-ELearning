@@ -4,11 +4,12 @@
   <Properties>
     <AlwaysCreateNewDatabase>True</AlwaysCreateNewDatabase>
     <BlockIncrementalDeploymentIfDataLoss>True</BlockIncrementalDeploymentIfDataLoss>
-    <DeployDatabaseProperties>True</DeployDatabaseProperties>
-    <DeploymentCollationPreference>UseSourceModelCollation</DeploymentCollationPreference>
+    <DeployDatabaseProperties>False</DeployDatabaseProperties>
+    <DeploymentCollationPreference>UseTargetModelCollation</DeploymentCollationPreference>
     <DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>False</DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>
     <GenerateDropsIfNotInProject>False</GenerateDropsIfNotInProject>
     <PerformDatabaseBackup>False</PerformDatabaseBackup>
+    <ScriptDatabaseCollation>True</ScriptDatabaseCollation>
     <SingleUserMode>False</SingleUserMode>
   </Properties>
 </DeploymentConfigurationSettings>

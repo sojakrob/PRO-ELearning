@@ -55,7 +55,6 @@ namespace ELearning.Controllers
             base.OnActionExecuting(filterContext);
         }
 
-
         protected RedirectToRouteResult RedirectToHome()
         {
             return RedirectToAction("Index", "Home");

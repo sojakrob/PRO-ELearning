@@ -580,6 +580,12 @@ div.Question div.Header div.clmnDeleteQuestion
 	display: inline-block;
 	float: right;
 }
+div.Question div.Header div.clmnDuplicateQuestion
+{
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+}
 div.Question div.Footer
 {
 	text-align: center;
@@ -994,4 +1000,61 @@ div#changePasswordForm
 div#changePasswordForm div#oldPassword
 {
 	margin-bottom: 20px;
+}
+
+/* Exceptions
+----------------------------------------------------------------------*/
+div#Exception
+{
+	width: 650px;
+	margin: 25px;
+	border: 2px solid #D77474;
+	padding: 0;
+	/*border-radius: 5px 5px 0 0;*/
+}
+div#Exception div#ExceptionHead
+{
+	background-color: #D77474;
+	padding: 8px;
+	color: White;
+}
+div#Exception div#ExceptionHead h2
+{
+	margin: 0 20px 0 20px;
+}
+div#Exception div#ExceptionBody
+{
+	padding: 20px;
+	display: none;
+}
+
+/* Error
+-------------------------------------------------------------------------*/
+div#Error
+{
+	width: 650px;
+	
+	border: 2px solid #D77474;
+	background-color: #D77474;
+	color: White;
+	text-align: center;
+	margin: 25px auto 25px auto;
+	padding: 25px;
+}
+div#Error h1, div#Error h2
+{
+	color: White;
+	float: none;
+}
+div#Error p
+{
+	text-align: justify;
+}
+div#WelcomeError
+{
+	background-color: #D77474;
+	color: White;
+	float: right;
+	width: 300px;
+	padding: 20px;
 }

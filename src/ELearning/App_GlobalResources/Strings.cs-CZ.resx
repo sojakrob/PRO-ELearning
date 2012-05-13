@@ -480,4 +480,22 @@
   <data name="LastChange" xml:space="preserve">
     <value>Poslední změna</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="ErrorOccuredText" xml:space="preserve">
+    <value>Omlouváme se, v aplikaci se vyskytla neočekáváná chyba.</value>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Neoprávněný přístup</value>
+  </data>
+  <data name="UnauthorizedAccessText" xml:space="preserve">
+    <value>Neoprávněný přístup - Pro přístup na tuto stránku nebo pro vykonání požadované akce nemáte oprávnění.</value>
+  </data>
+  <data name="DatabaseConnectionFailedText" xml:space="preserve">
+    <value>Omlouváme se, ale databázový server je dočasně mimo provoz.</value>
+  </data>
+  <data name="WelcomeText" xml:space="preserve">
+    <value>Vítejte v systému E-Learning.</value>
+  </data>
 </root>

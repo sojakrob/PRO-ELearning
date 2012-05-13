@@ -7,6 +7,7 @@ using ELearning.Models;
 using ELearning.Business.Managers;
 using ELearning.Data;
 using ELearning.Models.Data;
+using ELearning.Business.Storages;
 
 namespace ELearning.Controllers
 {
@@ -31,6 +32,8 @@ namespace ELearning.Controllers
             if (AuthenticationContext.IsUserLoggedIn)
                 return RedirectToAction("Home");
 
+            ViewBag.IsConnectionOK = WebStorage.Instance.IsDatabaseOnline();
+
             return View();
         }
 
@@ -40,8 +43,6 @@ namespace ELearning.Controllers
         {
             if (!AuthenticationContext.IsUserLoggedIn)
                 return RedirectToLogOn();
-
-
             
             var formFills = ModelsFromArray<Form, FormFillsModel>(_formManager.GetNotArchivedForms(), _formManager);
             var textBooks = ModelsFromArray<TextBook, TextBookModel>(_textBookManager.GetAll().OrderByDescending(t => t.Changed));

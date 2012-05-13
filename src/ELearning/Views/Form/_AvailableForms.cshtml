@@ -34,7 +34,7 @@
             <td>
                 @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator || ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Lector)
                 {
-                    @Html.ActionLink(item.NameCropped, "CreateEditQuestions", new { id = item.ID }, new { title = item.Name })
+                    @Html.ActionLink(item.NameCropped, "CreateEditQuestions", "Form", new { id = item.ID }, new { title = item.Name })
                 }
                 else
                 {
@@ -83,10 +83,10 @@
                     switch (item.State.Enum)
                     {
                         case ELearning.Data.Enums.FormStates.Active:
-                            @Html.LocalizedButtonLink("Deactivate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
+                            @Html.LocalizedButtonLink("Deactivate", "ChangeState", "Form", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
                             break;
                         case ELearning.Data.Enums.FormStates.Inactive:
-                            @Html.LocalizedButtonLink("Activate", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
+                            @Html.LocalizedButtonLink("Activate", "ChangeState", "Form", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
                             break;
                     }
                 }
@@ -95,7 +95,7 @@
                 @if (ViewBag.CurrentUserModel.Permissions.Form_Delete
                     || ViewBag.CurrentUserModel.ID == item.Author.ID)
                 {
-                    @Html.ButtonLink("X", "ChangeState", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Archived })
+                    @Html.ButtonLink("X", "ChangeState", "Form", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Archived })
                 }
             </td>
         </tr>

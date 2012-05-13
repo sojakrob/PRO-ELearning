@@ -1,33 +1,32 @@
 ﻿@using ELearning.Business.Exceptions
+@using ELearning.Utils
 @model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = ELearning.Localization.GetResourceString("Error");
 }
 
+<script src="@Url.Content("~/Scripts/Shared/Error.js")" type="text/javascript"></script>
 
+<div id="Exception">
+    <div id="ExceptionHead">
     @if (Model.Exception is PermissionException)
     {
-        ViewBag.Title = "Unauthorized Access";
+        ViewBag.Title = ELearning.Localization.GetResourceString("UnauthorizedAccess");
         
-        <p>
-            @Model.Exception.GetType()
-        </p>
-        <p>
-            @Model.Exception.Message
-        </p>
-        <p>
-            @Model.Exception.InnerException
-        </p>
-        <p>
-            @Model.Exception.StackTrace
-        </p>
+        <h2>
+            @Html.ResourceString("UnauthorizedAccessText")
+        </h2>
     }
     else
     {
-        <p>
-            Error occured. Sorry about that.
-        </p>
+        <h2>
+            @Html.ResourceString("ErrorOccuredText")
+        </h2>
+       
+    }
+    </div>
+    <div id="ExceptionBody">
         <p>
             @Model.Exception.GetType()
         </p>
@@ -40,4 +39,5 @@
         <p>
             @Model.Exception.StackTrace
         </p>
-    }
+    </div>
+</div>

@@ -96,7 +96,7 @@ namespace ELearning.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool added = _questionManager.AddQuestionGroupWithQuestion(CurrentLoggedUserModel.Email, questionGroup.FormTemplateID, questionGroup.ToData());
+                bool added = _questionManager.AddQuestionGroupWithQuestion(questionGroup.FormTemplateID, questionGroup.ToData());
                 if (added)
                     ViewBag.AddedQuestionID = _questionManager.GetLastAddedQuestionGroupOf(questionGroup.FormTemplateID).ID;
             }
@@ -222,7 +222,17 @@ namespace ELearning.Controllers
         [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult AddAlternativeQuestion(int formTemplateID, int questionGroupID, int questionTypeID)
         {
-            _questionManager.AddQuestion(CurrentLoggedUserModel.Email, questionGroupID, questionTypeID);
+            _questionManager.AddQuestion(questionGroupID, questionTypeID);
+
+            return RedirectToCreateEditQuestions(formTemplateID);
+        }
+
+        [AuthorizeUserType(UserType = UserTypes.Lector)]
+        public ActionResult DuplicateQuestionGroup(int formTemplateID, int questionGroupID)
+        {
+            bool added = _questionManager.DuplicateQuestionGroup(formTemplateID, questionGroupID);
+            if (added)
+                ViewBag.AddedQuestionID = _questionManager.GetLastAddedQuestionGroupOf(formTemplateID).ID;
 
             return RedirectToCreateEditQuestions(formTemplateID);
         }
@@ -230,7 +240,7 @@ namespace ELearning.Controllers
         [AuthorizeUserType(UserType = UserTypes.Lector)]
         public ActionResult AddChoiceItem(int formID, int questionInstanceID)
         {
-            _questionManager.AddChoiceItem(CurrentLoggedUserModel.Email, questionInstanceID, string.Empty);
+            _questionManager.AddChoiceItem(questionInstanceID, string.Empty);
 
             return RedirectToCreateEditQuestions(formID);
         }

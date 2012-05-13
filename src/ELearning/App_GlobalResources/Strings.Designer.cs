@@ -286,6 +286,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Database server is temporarily unavailable..
+        /// </summary>
+        internal static string DatabaseConnectionFailedText {
+            get {
+                return ResourceManager.GetString("DatabaseConnectionFailedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date &amp; Time.
         /// </summary>
         internal static string DateTime {
@@ -367,11 +376,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error Occured.
         /// </summary>
         internal static string ErrorOccured {
             get {
                 return ResourceManager.GetString("ErrorOccured", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected Error occured in the application. Sorry about that..
+        /// </summary>
+        internal static string ErrorOccuredText {
+            get {
+                return ResourceManager.GetString("ErrorOccuredText", resourceCulture);
             }
         }
         
@@ -1096,6 +1123,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unauthorized Access.
+        /// </summary>
+        internal static string UnauthorizedAccess {
+            get {
+                return ResourceManager.GetString("UnauthorizedAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unauthorized Access - You do not have sufficient permissions to access this page or to execute specified action..
+        /// </summary>
+        internal static string UnauthorizedAccessText {
+            get {
+                return ResourceManager.GetString("UnauthorizedAccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upper Bound.
         /// </summary>
         internal static string UpperBound {
@@ -1146,6 +1191,15 @@ namespace Resources {
         internal static string VisibleToOthers {
             get {
                 return ResourceManager.GetString("VisibleToOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome in E-Learning system..
+        /// </summary>
+        internal static string WelcomeText {
+            get {
+                return ResourceManager.GetString("WelcomeText", resourceCulture);
             }
         }
     }

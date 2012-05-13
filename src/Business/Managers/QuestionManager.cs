@@ -64,17 +64,17 @@ namespace ELearning.Business.Managers
         }
 
 
-        public bool AddQuestionGroupWithQuestion(string authorEmail, int formTemplateID, QuestionGroup questionGroup)
+        public bool AddQuestionGroupWithQuestion(int formTemplateID, QuestionGroup questionGroup)
         {
-            if (AddQuestionGroup(authorEmail, formTemplateID, questionGroup))
-                return AddQuestion(authorEmail, questionGroup.ID, questionGroup.Type.ID);
+            if (AddQuestionGroup(formTemplateID, questionGroup))
+                return AddQuestion(questionGroup.ID, questionGroup.Type.ID);
 
             return false;
         }
-        public bool AddQuestionGroup(string authorEmail, int formTemplateID, QuestionGroup questionGroup)
+        public bool AddQuestionGroup(int formTemplateID, QuestionGroup questionGroup)
         {
             Form form = _formManager.GetForm( formTemplateID);
-            User author = _userManager.GetUser(authorEmail);
+            User author = PermissionsProvider.User;
 
             CheckQuestionCreateEditPermission(form, author);
 
@@ -87,7 +87,7 @@ namespace ELearning.Business.Managers
             return true;
         }
 
-        public bool AddQuestion(string email, int questionGroupID, int questionTypeID)
+        public bool AddQuestion(int questionGroupID, int questionTypeID)
         {
             // TODO Permissions
             Question question = CreateNewTypedQuestion(questionGroupID, questionTypeID);
@@ -97,14 +97,14 @@ namespace ELearning.Business.Managers
 
             if (IsChoiceQuestionType(question.QuestionGroup.TypeEnum))
             {
-                AddChoiceItem(email, question.ID, string.Empty);
-                AddChoiceItem(email, question.ID, string.Empty);
+                AddChoiceItem(question.ID, string.Empty);
+                AddChoiceItem(question.ID, string.Empty);
             }
 
             return true;
         }
 
-        public bool AddChoiceItem(string email, int questionID, string text)
+        public bool AddChoiceItem(int questionID, string text)
         {
             // TODO Permissions
             ChoiceItem item = CreateNewChoiceItem(questionID, text);
@@ -254,6 +254,60 @@ namespace ELearning.Business.Managers
                 return false;
             }
             return true;
+        }
+
+        public bool DuplicateQuestionGroup(int formID, int questionGroupID)
+        {
+            var form = _formManager.GetForm(formID);
+            CheckQuestionCreateEditPermission(form, PermissionsProvider.User);
+
+            var questionGroup = GetQuestionGroup(questionGroupID);
+            if (!form.QuestionGroups.Contains(questionGroup))
+                throw new ApplicationException("QuestionGroup do not belongs to specified Form");
+
+            bool result = true;
+            var newQuestionGroup = new QuestionGroup();
+            questionGroup.CopyPropertiesTo(newQuestionGroup);
+
+            result &= AddQuestionGroup(formID, newQuestionGroup);
+
+            if (!result)
+                return false;
+
+            try
+            {
+                result &= DuplicateQuestions(questionGroup, newQuestionGroup);
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;   
+            }
+
+            return result;
+        }
+        private bool DuplicateQuestions(QuestionGroup from, QuestionGroup to)
+        {
+            bool result = true;
+            foreach (var question in from.Questions)
+            {
+                var newQuestion = CreateNewTypedQuestion(to.ID, to.Type.ID);
+                question.CopyPropertiesTo(newQuestion);
+
+                Context.Question.AddObject(newQuestion);
+
+                if (IsChoiceQuestionType(to.TypeEnum))
+                {
+                    var choiceQuestion = question as ChoiceQuestion;
+                    foreach (var item in choiceQuestion.ChoiceItems)
+                    {
+                        Context.SaveChanges();
+                        result &= AddChoiceItem(newQuestion.ID, item.Text);
+                    }
+                }
+            }
+            return result;
         }
 
         public static bool IsChoiceQuestionType(QuestionGroupTypes type)

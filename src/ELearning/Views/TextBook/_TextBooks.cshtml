@@ -22,7 +22,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "View", new { id = item.ID })
+            @Html.ActionLink(item.Title, "View", "TextBook", new { id = item.ID })
         </td>
         <td>
 			@(item.Changed)
@@ -33,13 +33,13 @@
         <td>
             @if (item.CreatedBy.ID == ViewBag.CurrentUserModel.ID || ViewBag.CurrentUserModel.Permissions.TextBook_CreateEdit_All)
             {
-                @Html.ButtonLink(ELearning.Localization.GetResourceString("Edit"), "Edit", new { id = item.ID })
+                @Html.ButtonLink(ELearning.Localization.GetResourceString("Edit"), "Edit", "TextBook", new { id = item.ID })
             }
         </td>
         <td>
             @if (item.CreatedBy.ID == ViewBag.CurrentUserModel.ID || ViewBag.CurrentUserModel.Permissions.TextBook_Delete)
             {
-                @Html.ButtonLink("X", "Delete", new { id = item.ID })
+                @Html.ButtonLink("X", "Delete", "TextBook", new { id = item.ID })
             }
         </td>
     </tr>

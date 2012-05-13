@@ -15,6 +15,9 @@
                 <div class="clmnDeleteQuestion">
                      @Html.ButtonLink("X", "DeleteQuestion", new { formID = item.FormTemplateID, questionID = @item.ID })
                 </div>
+                <div class="clmnDuplicateQuestion">
+                    @Html.LocalizedButtonLink("Duplicate", "DuplicateQuestionGroup", new { formTemplateID = item.FormTemplateID, questionGroupID = item.ID })
+                </div>
                 <div class="clear"></div>
             </div>
 

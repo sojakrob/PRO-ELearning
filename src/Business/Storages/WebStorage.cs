@@ -82,6 +82,23 @@ namespace ELearning.Business.Storages
                 CreateDataModelContainer();
         }
 
+        public bool IsDatabaseOnline()
+        {
+            var dataContext = GetDataContext();
+            if (dataContext.Connection.State == System.Data.ConnectionState.Open)
+                return true;
+
+            try
+            {
+                dataContext.Connection.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         private void CreateDataModelContainer()
         {
             if (string.IsNullOrEmpty(_connectionString))
@@ -96,7 +113,7 @@ namespace ELearning.Business.Storages
         {
             if (!IsDataModelContainerAssigned)
                 CreateDataModelContainer();
-
+            
             return DataModelContainer;
         }
 

@@ -480,4 +480,22 @@
   <data name="LastChange" xml:space="preserve">
     <value>Last Change</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorOccuredText" xml:space="preserve">
+    <value>Unexpected Error occured in the application. Sorry about that.</value>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Unauthorized Access</value>
+  </data>
+  <data name="UnauthorizedAccessText" xml:space="preserve">
+    <value>Unauthorized Access - You do not have sufficient permissions to access this page or to execute specified action.</value>
+  </data>
+  <data name="DatabaseConnectionFailedText" xml:space="preserve">
+    <value>Database server is temporarily unavailable.</value>
+  </data>
+  <data name="WelcomeText" xml:space="preserve">
+    <value>Welcome in E-Learning system.</value>
+  </data>
 </root>

@@ -22,7 +22,7 @@ namespace ELearning.Utils
         {
             return ButtonLink(helper, linkText, actionName, null, routeValues, null);
         }
-        public static IHtmlString ButtonLink(this HtmlHelper helper, string linkText, string actionName, string controllerName, object routeValues, string target)
+        public static IHtmlString ButtonLink(this HtmlHelper helper, string linkText, string actionName, string controllerName, object routeValues, string target = null)
         {
             UrlHelper url = new UrlHelper(helper.ViewContext.RequestContext);
 
@@ -65,7 +65,7 @@ namespace ELearning.Utils
         {
             return LocalizedButtonLink(helper, linkText, actionName, null, routeValues, null);
         }
-        public static IHtmlString LocalizedButtonLink(this HtmlHelper helper, string linkText, string actionName, string controllerName, object routeValues, string target)
+        public static IHtmlString LocalizedButtonLink(this HtmlHelper helper, string linkText, string actionName, string controllerName, object routeValues, string target = null)
         {
             return ButtonLink(helper, Localization.GetResourceString(linkText), actionName, controllerName, routeValues, target);
         }
