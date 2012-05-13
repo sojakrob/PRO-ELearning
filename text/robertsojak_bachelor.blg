@@ -1,17 +1,26 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: robertsojak_bachelor.aux
 The style file: csplainnat.bst
 Database file #1: reference.bib
-I was expecting a `,' or a `}'---line 15 of file reference.bib
+I was expecting a `,' or a `}'---line 26 of file reference.bib
  :  
- :  note = "\\ \verb|http://moodle.org/|"
+ :  url = "http://moodle.org/",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 22 of file reference.bib
+I was expecting a `,' or a `}'---line 34 of file reference.bib
  :  
- :  note = "\\ \verb|http://moodle.cz/|"
+ :  url = "http://moodle.cz/",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 45 of file reference.bib
+ :  
+ :  note = "stav z 22.4.2012"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--empty year in HowToUseUnityContainer
 Warning--empty year in GoogleDocuments
+Warning--empty year in GoogleGroups
+`address' is a missing field, not a string, for entry StudentovaBerlickaI
+while executing---line 1484 of file csplainnat.bst
 Warning--empty year in MoodleORG
-(There were 2 error messages)
+Warning--empty year in MoodleVycetTypuOtazek
+(There were 4 error messages)

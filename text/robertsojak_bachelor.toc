@@ -1,62 +1,69 @@
 \select@language {english}
 \select@language {czech}
 \contentsline {chapter}{\numberline {1}\'Uvod}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Popis probl\'emu, specifikace c\IeC {\'\i }le}{2}{chapter.2}
-\contentsline {section}{\numberline {2.1}C\IeC {\'\i }l projektu}{2}{section.2.1}
-\contentsline {section}{\numberline {2.2}Vyu\v zit\IeC {\'\i }}{2}{section.2.2}
-\contentsline {chapter}{\numberline {3}Anal\'yza}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}Po\v zadavky na syst\'em}{4}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Po\v zadavky zadavatele}{4}{subsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.1.1}Funk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.3.1.1.1}
-\contentsline {subsubsection}{\numberline {3.1.1.2}Nefunk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.3.1.1.2}
-\contentsline {subsection}{\numberline {3.1.2}Roz\v si\v ruj\IeC {\'\i }c\IeC {\'\i } po\v zadavky}{4}{subsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.2.1}Funk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.3.1.2.1}
-\contentsline {subsubsection}{\numberline {3.1.2.2}Nefunk\v cn\IeC {\'\i } po\v zadavky}{5}{subsubsection.3.1.2.2}
-\contentsline {section}{\numberline {3.2}Re\v ser\v se existuj\IeC {\'\i }c\IeC {\'\i }ch \v re\v sen\IeC {\'\i }}{5}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Google Formul\'a\v re}{5}{subsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.1.1}Tvorba formul\'a\v re}{5}{subsubsection.3.2.1.1}
-\contentsline {subsubsection}{\numberline {3.2.1.2}Typy ot\'azek}{6}{subsubsection.3.2.1.2}
-\contentsline {subsubsection}{\numberline {3.2.1.3}U\v zivatelsk\'e rozhran\IeC {\'\i }}{6}{subsubsection.3.2.1.3}
-\contentsline {subsection}{\numberline {3.2.2}Moodle}{7}{subsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.1}Ot\'azky do test\r u}{7}{subsubsection.3.2.2.1}
-\contentsline {subsection}{\numberline {3.2.3}Studentova berli\v cka}{8}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Edubase}{8}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Z\'av\v er}{8}{subsection.3.2.5}
-\contentsline {section}{\numberline {3.3}U\v zivatelsk\'e role}{8}{section.3.3}
-\contentsline {section}{\numberline {3.4}P\v r\IeC {\'\i }pady u\v zit\IeC {\'\i }}{8}{section.3.4}
-\contentsline {section}{\numberline {3.5}Formul\'a\v re}{8}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Typy formul\'a\v r\r u}{9}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Mo\v znosti nastaven\IeC {\'\i } formul\'a\v r\r u}{10}{subsection.3.5.2}
-\contentsline {section}{\numberline {3.6}Ot\'azky}{10}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Typy ot\'azek}{11}{subsection.3.6.1}
-\contentsline {chapter}{\numberline {4}N\'avrh}{12}{chapter.4}
-\contentsline {section}{\numberline {4.1}Architektura syst\'emu}{12}{section.4.1}
-\contentsline {section}{\numberline {4.2}Datov\'a vrstva}{12}{section.4.2}
-\contentsline {section}{\numberline {4.3}Business vrstva}{12}{section.4.3}
-\contentsline {section}{\numberline {4.4}Prezenta\v cn\IeC {\'\i } vrstva}{12}{section.4.4}
-\contentsline {chapter}{\numberline {5}Implementace}{14}{chapter.5}
-\contentsline {section}{\numberline {5.1}Datov\'a vrstva}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Pr\'ava u\v zivatel\r u}{16}{section.5.2}
-\contentsline {section}{\numberline {5.3}Bezpe\v cnost}{17}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Bezpe\v cnost p\v ren\'a\v sen\'ych dat}{17}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Bezpe\v cnost p\v ri pr\'aci v aplikaci}{17}{subsection.5.3.2}
-\contentsline {chapter}{\numberline {6}Testov\'an\IeC {\'\i }}{19}{chapter.6}
-\contentsline {section}{\numberline {6.1}Unit testy}{19}{section.6.1}
-\contentsline {section}{\numberline {6.2}Selenium testy}{19}{section.6.2}
-\contentsline {section}{\numberline {6.3}V\'ykonov\'e testy}{19}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Datab\'aze}{19}{subsection.6.3.1}
-\contentsline {section}{\numberline {6.4}Otestov\'an\IeC {\'\i } v praxi}{19}{section.6.4}
-\contentsline {chapter}{\numberline {7}Nasazen\IeC {\'\i }}{20}{chapter.7}
-\contentsline {chapter}{\numberline {8}Pou\v zit\'e technologie a frameworky}{21}{chapter.8}
-\contentsline {section}{\numberline {8.1}Entity Framework}{21}{section.8.1}
-\contentsline {section}{\numberline {8.2}Unity Application Block}{21}{section.8.2}
-\contentsline {section}{\numberline {8.3}Porovn\'an\IeC {\'\i } ASP.NET MVC a ASP.NET Web Forms}{21}{section.8.3}
-\contentsline {chapter}{\numberline {9}Z\'av\v er}{22}{chapter.9}
-\contentsline {section}{\numberline {9.1}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{22}{section.9.1}
-\contentsline {subsection}{\numberline {9.1.1}Ot\'azky}{22}{subsection.9.1.1}
-\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych pojm\r u}{24}{appendix.A}
-\contentsline {chapter}{\numberline {B}Seznam pou\v zit\'ych zkratek}{25}{appendix.B}
-\contentsline {chapter}{\numberline {C}UML diagramy}{26}{appendix.C}
-\contentsline {chapter}{\numberline {D}Instala\"A\v Tn\u A\discretionary {-}{}{} a u\'L\v livatelsk\u A\v {} p\'L\IeC {\texttrademark }\u A\discretionary {-}{}{}ru\"A\v Tka}{27}{appendix.D}
-\contentsline {chapter}{\numberline {E}Obsah p\'L\IeC {\texttrademark }ilo\'L\v len\u A\IeC {\copyright }ho CD}{28}{appendix.E}
-\contentsline {chapter}{\numberline {F}Obrazov\'a p\v r\IeC {\'\i }loha}{29}{appendix.F}
+\contentsline {section}{\numberline {1.1}C\IeC {\'\i }l projektu}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Vyu\v zit\IeC {\'\i }}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Obsah pr\'ace}{2}{section.1.3}
+\contentsline {chapter}{\numberline {2}Anal\'yza}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Popis probl\'emu}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Po\v zadavky na syst\'em}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Po\v zadavky zadavatele}{4}{subsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.1.1}Funk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.2.2.1.1}
+\contentsline {subsubsection}{\numberline {2.2.1.2}Nefunk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.2.2.1.2}
+\contentsline {subsection}{\numberline {2.2.2}Roz\v si\v ruj\IeC {\'\i }c\IeC {\'\i } po\v zadavky}{4}{subsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.2.1}Funk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.2.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2.2}Nefunk\v cn\IeC {\'\i } po\v zadavky}{4}{subsubsection.2.2.2.2}
+\contentsline {section}{\numberline {2.3}Re\v ser\v se existuj\IeC {\'\i }c\IeC {\'\i }ch \v re\v sen\IeC {\'\i }}{5}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Google Formul\'a\v re}{5}{subsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.1.1}Tvorba formul\'a\v re}{5}{subsubsection.2.3.1.1}
+\contentsline {subsubsection}{\numberline {2.3.1.2}Typy ot\'azek}{6}{subsubsection.2.3.1.2}
+\contentsline {subsubsection}{\numberline {2.3.1.3}U\v zivatelsk\'e rozhran\IeC {\'\i }}{7}{subsubsection.2.3.1.3}
+\contentsline {subsection}{\numberline {2.3.2}Moodle}{7}{subsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Ot\'azky do test\r u}{7}{subsubsection.2.3.2.1}
+\contentsline {subsection}{\numberline {2.3.3}Studentova berli\v cka}{8}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Z\'av\v er}{8}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}U\v zivatelsk\'e role}{8}{section.2.4}
+\contentsline {section}{\numberline {2.5}P\v r\IeC {\'\i }pady u\v zit\IeC {\'\i }}{9}{section.2.5}
+\contentsline {section}{\numberline {2.6}Formul\'a\v re}{10}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Typy formul\'a\v r\r u}{10}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Mo\v znosti nastaven\IeC {\'\i } formul\'a\v r\r u}{11}{subsection.2.6.2}
+\contentsline {section}{\numberline {2.7}Ot\'azky}{11}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Typy ot\'azek}{11}{subsection.2.7.1}
+\contentsline {section}{\numberline {2.8}Skripta}{12}{section.2.8}
+\contentsline {chapter}{\numberline {3}N\'avrh}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Architektura syst\'emu}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Datov\'a vrstva}{14}{section.3.2}
+\contentsline {section}{\numberline {3.3}Business vrstva}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}Prezenta\v cn\IeC {\'\i } vrstva}{14}{section.3.4}
+\contentsline {section}{\numberline {3.5}Technologie a frameworky}{14}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}C\texttt {\#}ASP.NET MVC 4.0}{14}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Entity Framework}{14}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Javascript, JQuery}{14}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Wiki modul}{14}{subsection.3.5.4}
+\contentsline {chapter}{\numberline {4}Implementace}{16}{chapter.4}
+\contentsline {section}{\numberline {4.1}Datov\'a vrstva}{16}{section.4.1}
+\contentsline {section}{\numberline {4.2}Pr\'ava u\v zivatel\r u}{18}{section.4.2}
+\contentsline {section}{\numberline {4.3}Bezpe\v cnost}{19}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Bezpe\v cnost p\v ren\'a\v sen\'ych dat}{19}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Bezpe\v cnost p\v ri pr\'aci v aplikaci}{19}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Testov\'an\IeC {\'\i }}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Unit testy}{21}{section.5.1}
+\contentsline {section}{\numberline {5.2}Selenium testy}{21}{section.5.2}
+\contentsline {section}{\numberline {5.3}V\'ykonov\'e testy}{21}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Datab\'aze}{21}{subsection.5.3.1}
+\contentsline {section}{\numberline {5.4}Pilotn\IeC {\'\i } provoz}{21}{section.5.4}
+\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{22}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\'av\v er}{23}{chapter.7}
+\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{23}{section.7.1}
+\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{23}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Ot\'azky}{23}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}E-mailov\'e notifikace}{23}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Porovn\'an\IeC {\'\i } ASP.NET MVC a ASP.NET Web Forms}{23}{section.7.3}
+\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{25}{appendix.A}
+\contentsline {chapter}{\numberline {B}UML}{26}{appendix.B}
+\contentsline {section}{\numberline {B.1}Slovn\IeC {\'\i } popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{26}{section.B.1}
+\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{29}{appendix.C}
+\contentsline {chapter}{\numberline {D}U\v zivatelsk\'a p\v r\IeC {\'\i }ru\v cka}{30}{appendix.D}
+\contentsline {chapter}{\numberline {E}Unity Application Block tutori\'al}{31}{appendix.E}
+\contentsline {chapter}{\numberline {F}Obrazov\'a p\v r\IeC {\'\i }loha}{32}{appendix.F}
+\contentsline {chapter}{\numberline {G}Obsah p\v rilo\v zen\'eho CD}{34}{appendix.G}
