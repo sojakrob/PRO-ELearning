@@ -59,7 +59,9 @@
                     @Html.ActionLink(
                         string.Format("{0} / {1}", @item.TimesFilled_Users, @item.TimesFilled_Total),
                         "FormFills",
-                        new { id = item.ID }
+                        "Form",
+                        new { id = item.ID },
+                        null
                         )
                 </td>
             }

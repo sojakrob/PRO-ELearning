@@ -1,0 +1,8 @@
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\Database.deploymanifest
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\Database.dbschema
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\obj\ElearningRobertsojakRelease\Database.dbschema
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\rsojak_elearning_Script.PreDeployment.sql
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\rsojak_elearning_Script.PostDeployment.sql
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\rsojak_elearning_Database.sqlsettings
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\rsojak_elearning_Database.sqldeployment
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\ElearningRobertsojakRelease\rsojak_elearning_Database.sqlcmdvars

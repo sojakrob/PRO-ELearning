@@ -24,3 +24,8 @@ S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Shared\bin\Debug\ELearning.Shar
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Shared\obj\Debug\ResolveAssemblyReference.cache
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Shared\obj\Debug\ELearning.Shared.dll
 S:\Predmety\A7B36PRO\ELearning\PRO-ELearning\src\Shared\obj\Debug\ELearning.Shared.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\bin\Debug\ELearning.Shared.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\bin\Debug\ELearning.Shared.pdb
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ResolveAssemblyReference.cache
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ELearning.Shared.dll
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ELearning.Shared.pdb

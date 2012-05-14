@@ -1,0 +1,8 @@
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\rsojak_egymcak_Script.PreDeployment.sql
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\rsojak_egymcak_Script.PostDeployment.sql
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\rsojak_egymcak_Database.sqlsettings
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\rsojak_egymcak_Database.sqldeployment
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\rsojak_egymcak_Database.sqlcmdvars
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\Database.deploymanifest
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\egymcak.robertsojak.cz\Database.dbschema
+D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\obj\egymcak.robertsojak.cz\Database.dbschema

@@ -608,6 +608,13 @@ public Form GetForm(int id)
 Ovìøení funkènosti hlavních tøíd a jejich metod je provedeno pomocí Unit testù.
 
 \section{Selenium testy}
+
+Pomocí testovacího systému Selenium\ref{} testuji aplikaci z pohledu uživatele. Selenium je systém, který ve spuštìném webovém prohlížeèi vyvolává pøedem definované akce, jako je klikání na tlaèítka a vkládání textù do pøíslušných polí. Lze také ovìøovat stavy jednotlivých html elementù a mnoho dalšího. Tento testovací systém tedy simuluje chování uživatele pøi užívání systému. Díky tìmto testùm je ovìøìn jak obsah uživatelského rozhraní (dostupné akce a údaje), tak i samotné výsledky vyvolaných akcí.
+
+Selenium mimo jiné umožòuje pøímou integraci do projektu vyvíjeného systému. Poskytuje totiž \CSharp knihovny, skrze které lze události v prohlížeèi vyvolávat. Já jsem testy zapojil do testù podporovaných Visual Studiem. To pøineslo obrovské výhody, protože testy staèí spustit stejnì jako Unit testy, èímž se vytvoøí instance prohlížeèe a zapoène simulace chování uživatele. Ihned je tvoøen report s úspìchy a neúspìchy jednotlivých dílèích testù.
+
+Samotné scénáøe Selenium testù není nutné psát celé ruènì v kódu. Základ lze velice jednoduše vygenerovat automaticky -- staèí zapnout nahrávání akcí ve webovém prohlížeèi a chovat se jako uživatel. Nahraný scénáø události se poté vyexportuje do jednoho z podporovaných jazykù, v mém pøípadì do \CSharp. Jediný malý nedostatek je, že kód je generován pro NUnit \ref{} testy, takže je ho tøeba naportovat pro testy integrované do VS.
+
 \section{Výkonové testy}
 \subsection{Databáze}
 %TODO Zminit se ze by bylo treba provest profiling pristupu do DB kvuli vyladeni volani a nastaveni EF
@@ -676,6 +683,7 @@ Možnost pøiøadit k textu otázky obrázek.
 \item[GPL] General Public License
 \item[MVC] Model View Controller
 \item[CRUD] Create Read Update Delete
+\item[VS] Visual Studio
 \end{description}
 \vdots
 

@@ -7,7 +7,7 @@ using ELearning.Data;
 
 namespace ELearning.Business.Storages
 {
-    public class WebStorage : IPersistentStorage
+    public sealed class WebStorage : IPersistentStorage
     {
         private const string HTTPCONTEXT_DATA_MODEL_CONTAINER = "DataModelContainer";
         private static readonly object _padlock = new object();

@@ -55,7 +55,7 @@
     <SuppressWarnings />
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>True</DeployToDatabase>
+    <DeployToDatabase>False</DeployToDatabase>
     <OutputPath>.\sql\ElearningRobertsojakRelease\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'egymcak.robertsojak.cz' ">
