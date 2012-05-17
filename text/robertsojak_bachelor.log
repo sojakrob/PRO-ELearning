@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.5)  14 MAY 2012 23:53
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.5)  17 MAY 2012 21:52
 entering extended mode
 **robertsojak_bachelor.tex
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.tex
@@ -389,29 +389,29 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count110
 )
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 59.
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
 ("D:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -429,7 +429,7 @@ LaTeX Font Info:    ... okay on input line 62.
 )
 \c@lstlisting=\count117
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 62.
+Package hyperref Info: Link coloring ON on input line 59.
  ("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -438,9 +438,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 62.
-LaTeX Info: Redefining \pageref on input line 62.
-LaTeX Info: Redefining \nameref on input line 62.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \nameref on input line 59.
 
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.out)
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.out)
@@ -452,15 +452,15 @@ Typ prace: Bakal\'a\v rsk\'a pr\'ace
 Studijni program: Softwarov\'e technologie a management, Bakal\'a\v rsk\'y
 Obor: Softwarov\'e in\v zen\'yrstv\IeC {\'\i }
 Jmeno: Robert Soj\'ak
-Nazev prace: E-learningov\'y syst\'em se zame\v ren\IeC {\'\i }m na testov\'an\
-IeC {\'\i }
+Nazev prace: E-learningov\'y syst\'em se zam\v e\v ren\IeC {\'\i }m na testov\'
+an\IeC {\'\i }
 Vedouci prace: Ing. Ond\v rej Macek
 ***************************************************
-<figures/LogoCVUT.pdf, id=271, 93.34875pt x 70.2625pt>
+<figures/LogoCVUT.pdf, id=279, 93.34875pt x 70.2625pt>
 File: figures/LogoCVUT.pdf Graphic file (type pdf)
 
 <use figures/LogoCVUT.pdf>
-Package pdftex.def Info: figures/LogoCVUT.pdf used on input line 85.
+Package pdftex.def Info: figures/LogoCVUT.pdf used on input line 82.
 (pdftex.def)             Requested size: 142.26378pt x 107.08527pt.
  [3
 
@@ -492,10 +492,14 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ))
 \tf@toc=\write4
  [8]
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.lof)
-\tf@lof=\write5
+(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.lof
 
-[9
+Package natbib Warning: Citation `MoodleVycetTypuOtazek' on page ix undefined o
+n input line 25.
+
+)
+\tf@lof=\write5
+ [9
 
 ]
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.lot)
@@ -512,9 +516,13 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ]
 Kapitola 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 139.
+(Font)              <9> on input line 136.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 139.
+(Font)              <5> on input line 136.
+
+Package natbib Warning: Citation `GoogleDocuments' on page 1 undefined on input
+ line 138.
+
 [1
 
 
@@ -525,19 +533,29 @@ Kapitola 2.
 ]
 \c@FPEnum=\count119
 \c@NPEnum=\count120
- [4] <figures/GoogleDocs.png, id=484, 1023.825pt x 459.7175pt>
+
+
+Package natbib Warning: Citation `GoogleGroups' on page 4 undefined on input li
+ne 219.
+
+[4]
+
+Package natbib Warning: Citation `GoogleDocuments' on page 5 undefined on input
+ line 238.
+
+<figures/GoogleDocs.png, id=489, 1023.825pt x 459.7175pt>
 File: figures/GoogleDocs.png Graphic file (type png)
 
 <use figures/GoogleDocs.png>
-Package pdftex.def Info: figures/GoogleDocs.png used on input line 246.
+Package pdftex.def Info: figures/GoogleDocs.png used on input line 244.
 (pdftex.def)             Requested size: 391.96095pt x 175.99919pt.
 
-<figures/GoogleFormsSampleForm.png, id=486, 1513.655pt x 825.0825pt>
+<figures/GoogleFormsSampleForm.png, id=491, 1513.655pt x 825.0825pt>
 File: figures/GoogleFormsSampleForm.png Graphic file (type png)
 
 <use figures/GoogleFormsSampleForm.png>
 Package pdftex.def Info: figures/GoogleFormsSampleForm.png used on input line 2
-54.
+52.
 (pdftex.def)             Requested size: 435.51514pt x 237.39192pt.
 
 
@@ -545,7 +563,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/GoogleDocs.png>]
 
-Overfull \hbox (2.55177pt too wide) in paragraph at lines 277--278
+Overfull \hbox (2.55177pt too wide) in paragraph at lines 275--276
 []\T1/cmr/m/n/10.95 Zobrazí uºi-va-teli combo box s vý£tem moº-ností. Vlastn¥ s
 tejná funk£-
  []
@@ -553,119 +571,144 @@ tejná funk£-
 [6 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/GoogleFormsSampl
 eForm.png>]
 
-Package natbib Warning: Citation `StudentovaBerlicka_ModulProGenerovaniTestu' o
-n page 7 undefined on input line 305.
+Package natbib Warning: Citation `MoodleORG' on page 7 undefined on input line 
+287.
 
-[7] [8] <figures/UseCaseDiagram.png, id=522, 754.82pt x 700.6175pt>
+
+Package natbib Warning: Citation `StudentovaBerlickaI' on page 7 undefined on i
+nput line 303.
+
+
+Package natbib Warning: Citation `StudentovaBerlicka_ModulProGenerovaniTestu' o
+n page 7 undefined on input line 303.
+
+[7] [8] <figures/UseCaseDiagram.png, id=524, 754.82pt x 700.6175pt>
 File: figures/UseCaseDiagram.png Graphic file (type png)
 
 <use figures/UseCaseDiagram.png>
-Package pdftex.def Info: figures/UseCaseDiagram.png used on input line 345.
+Package pdftex.def Info: figures/UseCaseDiagram.png used on input line 343.
 (pdftex.def)             Requested size: 391.96095pt x 363.81004pt.
- [9 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/UseCaseDiagram.
-png>]
-<figures/FormStateDiagram.png, id=529, 425.59pt x 336.25626pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/UseCaseDiagram.p
+ng>] <figures/FormStateDiagram.png, id=533, 425.59pt x 336.25626pt>
 File: figures/FormStateDiagram.png Graphic file (type png)
 
 <use figures/FormStateDiagram.png>
-Package pdftex.def Info: figures/FormStateDiagram.png used on input line 363.
+Package pdftex.def Info: figures/FormStateDiagram.png used on input line 389.
 (pdftex.def)             Requested size: 217.75757pt x 172.05281pt.
- [10 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/FormStateDiagr
-am.png>] [11] [12]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10] [11 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/FormStateD
+iagram.png>] [12]
 Kapitola 3.
-<figures/Architecture.png, id=552, 656.4525pt x 323.2075pt>
+<figures/Architecture.png, id=556, 656.4525pt x 323.2075pt>
 File: figures/Architecture.png Graphic file (type png)
 
 <use figures/Architecture.png>
-Package pdftex.def Info: figures/Architecture.png used on input line 440.
+Package pdftex.def Info: figures/Architecture.png used on input line 467.
 (pdftex.def)             Requested size: 348.41344pt x 171.54575pt.
  [13
 
  <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/Architecture.png>]
 
-<figures/MetaModel.png, id=563, 806.01125pt x 382.42876pt>
+<figures/MetaModel.png, id=567, 806.01125pt x 382.42876pt>
 File: figures/MetaModel.png Graphic file (type png)
 
 <use figures/MetaModel.png>
-Package pdftex.def Info: figures/MetaModel.png used on input line 459.
+Package pdftex.def Info: figures/MetaModel.png used on input line 485.
 (pdftex.def)             Requested size: 391.96095pt x 185.97372pt.
 
-<figures/DesignModel.png, id=564, 955.57pt x 726.715pt>
+<figures/DesignModel.png, id=568, 955.57pt x 726.715pt>
 File: figures/DesignModel.png Graphic file (type png)
 
 <use figures/DesignModel.png>
-Package pdftex.def Info: figures/DesignModel.png used on input line 467.
+Package pdftex.def Info: figures/DesignModel.png used on input line 493.
 (pdftex.def)             Requested size: 435.51514pt x 331.21027pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 479.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 505.
 [14 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/MetaModel.png>]
+
+LaTeX Warning: Reference `' on page 15 undefined on input line 516.
+
+
+Package natbib Warning: Citation `JQuery' on page 15 undefined on input line 52
+0.
+
+
+Package natbib Warning: Citation `jQueryCookiePlugin' on page 15 undefined on i
+nput line 520.
+
 [15 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/DesignModel.png
 >]
+
+Package natbib Warning: Citation `MarkItUp' on page 16 undefined on input line 
+524.
+
+
+Package natbib Warning: Citation `WikiNETParser' on page 16 undefined on input 
+line 526.
+
+
+Package natbib Warning: Citation `GoogleDataAPI' on page 16 undefined on input 
+line 530.
+
+[16]
 Kapitola 4.
-<figures/EntityDataModel.png, id=576, 890.5772pt x 1271.5003pt>
+<figures/EntityDataModel.png, id=594, 890.5772pt x 1271.5003pt>
 File: figures/EntityDataModel.png Graphic file (type png)
 
 <use figures/EntityDataModel.png>
-Package pdftex.def Info: figures/EntityDataModel.png used on input line 505.
+Package pdftex.def Info: figures/EntityDataModel.png used on input line 550.
 (pdftex.def)             Requested size: 435.51514pt x 621.79892pt.
 
 
-LaTeX Warning: Float too large for page by 33.92728pt on input line 509.
+LaTeX Warning: Float too large for page by 33.92728pt on input line 554.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16
+[17
 
-] [17 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/EntityDataMod
+] [18 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/EntityDataMod
 el.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 519.
- [18
+(Font)              <7> on input line 564.
+ [19
 
-] [19] [20]
+] [20] [21]
 Kapitola 5.
 
-LaTeX Warning: Reference `' on page 21 undefined on input line 612.
+LaTeX Warning: Reference `' on page 22 undefined on input line 658.
 
 
-LaTeX Warning: Reference `' on page 21 undefined on input line 616.
+LaTeX Warning: Reference `' on page 22 undefined on input line 662.
 
-[21
+[22
 
 ]
 Kapitola 6.
-<figures/DeploymentDiagram.png, id=657, 665.48625pt x 209.78375pt>
+<figures/DeploymentDiagram.png, id=675, 665.48625pt x 209.78375pt>
 File: figures/DeploymentDiagram.png Graphic file (type png)
 
 <use figures/DeploymentDiagram.png>
-Package pdftex.def Info: figures/DeploymentDiagram.png used on input line 634.
+Package pdftex.def Info: figures/DeploymentDiagram.png used on input line 680.
 (pdftex.def)             Requested size: 435.51514pt x 137.2893pt.
- [22
+ [23
 
  <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/DeploymentDiagram.
 png>]
 Kapitola 7.
-(d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.bbl
-[23
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 9--13
-[]\T1/cmr/m/n/10.95 FINK, G.  How To Use Unity Con-ta-i-ner In ASP.NET MVC Fra-
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--13
-\T1/cmr/m/n/10.95 mework.  Do-stupné z: <[][]$\T1/cmtt/m/n/10.95 http : / / www
- . codeproject . com / Articles / 99361 /
- []
-
-) [24
+No file robertsojak_bachelor.bbl.
+[24
 
 ]
 P\v {r}\'{\i }loha A.
@@ -674,39 +717,39 @@ P\v {r}\'{\i }loha A.
 ]
 P\v {r}\'{\i }loha B.
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 698--704
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 755--761
   []
  []
 
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 718--723
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 775--780
   []
  []
 
 [26
 
 ]
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 743--748
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 800--805
   []
  []
 
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 761--766
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 818--823
   []
  []
 
 [27]
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 794--799
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 851--856
   []
  []
 
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 814--816
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 871--873
   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 814--816
+Underfull \hbox (badness 10000) in paragraph at lines 871--873
 
  []
 
@@ -722,22 +765,30 @@ P\v {r}\'{\i }loha D.
 
 ]
 P\v {r}\'{\i }loha E.
+
+Package natbib Warning: Citation `HowToUseUnityContainer' on page 31 undefined 
+on input line 891.
+
 [31
 
 ]
 P\v {r}\'{\i }loha F.
-<figures/MoodleQuestionTypes.png, id=751, 792.9625pt x 473.77pt>
+<figures/MoodleQuestionTypes.png, id=753, 792.9625pt x 473.77pt>
 File: figures/MoodleQuestionTypes.png Graphic file (type png)
 
 <use figures/MoodleQuestionTypes.png>
-Package pdftex.def Info: figures/MoodleQuestionTypes.png used on input line 848
+Package pdftex.def Info: figures/MoodleQuestionTypes.png used on input line 905
 .
 (pdftex.def)             Requested size: 435.51514pt x 260.21284pt.
 
-<figures/MVC.png, id=753, 283.0575pt x 178.6675pt>
+
+Package natbib Warning: Citation `MoodleVycetTypuOtazek' on page 32 undefined o
+n input line 906.
+
+<figures/MVC.png, id=754, 283.0575pt x 178.6675pt>
 File: figures/MVC.png Graphic file (type png)
  <use figures/MVC.png>
-Package pdftex.def Info: figures/MVC.png used on input line 856.
+Package pdftex.def Info: figures/MVC.png used on input line 913.
 (pdftex.def)             Requested size: 217.75757pt x 137.45444pt.
 
 
@@ -752,27 +803,27 @@ P\v {r}\'{\i }loha G.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 867.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 924.
 [34
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 867.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 924.
 
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 867.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 867.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 924.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 924.
 Package rerunfilecheck Info: File `robertsojak_bachelor.out' has not changed.
-(rerunfilecheck)             Checksum: 78848F807BEF8F7021AED6568AC5EE55;9585.
+(rerunfilecheck)             Checksum: E1D88851B95F1377B43E71CB8F827D84;9941.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9851 strings out of 494045
- 137360 string characters out of 3148379
- 364623 words of memory out of 3000000
- 12748 multiletter control sequences out of 15000+200000
+ 9848 strings out of 494045
+ 137120 string characters out of 3148379
+ 364766 words of memory out of 3000000
+ 12749 multiletter control sequences out of 15000+200000
  22253 words of font info for 49 fonts, out of 3000000 for 9000
  719 hyphenation exceptions out of 8191
  31i,8n,42p,914b,1854s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -797,9 +848,9 @@ pen\ec\dpi600\ecrm1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk
 \2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Mr.Bobby\AppData
 \Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk><D:/Program Fi
 les/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on robertsojak_bachelor.pdf (43 pages, 1036630 bytes).
+Output written on robertsojak_bachelor.pdf (43 pages, 1038138 bytes).
 PDF statistics:
- 1533 PDF objects out of 1728 (max. 8388607)
- 250 named destinations out of 1000 (max. 500000)
- 597 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1527 PDF objects out of 1728 (max. 8388607)
+ 248 named destinations out of 1000 (max. 500000)
+ 613 words of extra memory for PDF output out of 10000 (max. 10000000)
 
