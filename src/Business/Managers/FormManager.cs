@@ -36,7 +36,7 @@ namespace ELearning.Business.Managers
             }
         }
 
-        private IPermissionsProvider _permissionsProvider;
+        private ELearning.Business.Interfaces.IIdentityProvider _permissionsProvider;
 
         private UserManager _userManager;
         private QuestionManager _questionManager;
@@ -51,7 +51,7 @@ namespace ELearning.Business.Managers
 
 
 
-        public FormManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+        public FormManager(IPersistentStorage persistentStorage, ManagersContainer container, ELearning.Business.Interfaces.IIdentityProvider permissionsProvider)
             : base(persistentStorage, container,  permissionsProvider)
         {
             _userManager = new UserManager(_persistentStorage, container, permissionsProvider);
@@ -68,7 +68,7 @@ namespace ELearning.Business.Managers
             if(Permissions.Form_List)
                 return base.GetAll();
 
-            var user = _userManager.GetUser(PermissionsProvider.UserID);
+            var user = _userManager.GetUser(IdentityProvider.UserID);
             var groups = _groupManager.GetUserGroups();
 
             var forms = from g in groups
@@ -109,7 +109,7 @@ namespace ELearning.Business.Managers
 
         public IQueryable<Form> GetOwnedForms()
         {
-            return Context.Form.Where(f => f.AuthorID == PermissionsProvider.UserID);
+            return Context.Form.Where(f => f.AuthorID == IdentityProvider.UserID);
         }
 
         public FormInstance GetFormInstance(int id)
@@ -118,15 +118,15 @@ namespace ELearning.Business.Managers
             if (result == null)
                 throw new ArgumentException("FormInstance not found");
 
-            if (result.IsPreview && result.SolverID != PermissionsProvider.UserID)
+            if (result.IsPreview && result.SolverID != IdentityProvider.UserID)
                 throw new PermissionException("", "Form_AllPreviews");
 
             if (!Permissions.Form_List
-                && result.SolverID != PermissionsProvider.UserID
+                && result.SolverID != IdentityProvider.UserID
                 )
             {
                  var groups = _managers.Get<GroupManager>().GetAll().ToList();
-                 if (PermissionsProvider.User.TypeEnum == UserTypes.Student || !result.FormTemplate.Groups.Any(g => groups.Contains(g)))
+                 if (IdentityProvider.User.TypeEnum == UserTypes.Student || !result.FormTemplate.Groups.Any(g => groups.Contains(g)))
                     throw new PermissionException("Form_List");
             }
 
@@ -134,7 +134,7 @@ namespace ELearning.Business.Managers
         }
         public List<FormInstance> GetFormInstances(int formID)
         {
-            return GetFormInstances(PermissionsProvider.User.Email, formID);
+            return GetFormInstances(IdentityProvider.User.Email, formID);
         }
         public List<FormInstance> GetFormInstances(string userEmail, int formID)
         {
@@ -153,6 +153,9 @@ namespace ELearning.Business.Managers
 
         public List<FormInstance> GetFormInstances(string userEmail)
         {
+            if (IdentityProvider.User.TypeEnum == UserTypes.Student && userEmail != IdentityProvider.User.Email)
+                throw new PermissionException("View FormInstances");
+
             // TODO Permissions
             int userID = _userManager.GetUser(userEmail).ID;
 
@@ -165,7 +168,7 @@ namespace ELearning.Business.Managers
             if (!Permissions.Form_CreateEdit)
                 throw new PermissionException("Form_CreateEdit");
 
-            form.AuthorID = PermissionsProvider.UserID;
+            form.AuthorID = IdentityProvider.UserID;
             form.Created = DateTime.Now;
 
             string stateString = FormStates.Inactive.ToString();
@@ -217,7 +220,7 @@ namespace ELearning.Business.Managers
             if (form == null)
                 throw new ArgumentException("Form not found");
 
-            if (form.AuthorID != PermissionsProvider.UserID && !Permissions.Form_CreateEdit_All)
+            if (form.AuthorID != IdentityProvider.UserID && !Permissions.Form_CreateEdit_All)
                 throw new PermissionException("Form_CreateEdit");
 
             string stateString = state.ToString();
@@ -285,7 +288,7 @@ namespace ELearning.Business.Managers
 
         public FormInstance GenerateNewFormInstanceAndStartFilling(int formID)
         {
-            User user = PermissionsProvider.User;
+            User user = IdentityProvider.User;
 
             var formInstance = GenerateAndSaveNewFormInstance(formID);
 
@@ -296,13 +299,13 @@ namespace ELearning.Business.Managers
         }
         public FormInstance GetUserFillingFormInstanceWhileCheckingTime()
         {
-            if (PermissionsProvider.User.FillingForm == null)
+            if (IdentityProvider.User.FillingForm == null)
                 return null;
 
-            var formInstance = GetFormInstance(PermissionsProvider.User.FillingForm.Value);
+            var formInstance = GetFormInstance(IdentityProvider.User.FillingForm.Value);
             if (IsFormInstanceCurrentlyOvertime(formInstance))
             {
-                EndFormInstanceFilling(PermissionsProvider.User.FillingForm.Value);
+                EndFormInstanceFilling(IdentityProvider.User.FillingForm.Value);
                 return null;
             }
 
@@ -310,7 +313,7 @@ namespace ELearning.Business.Managers
         }
         public void EndFormInstanceFilling(int formID)
         {
-            var user = PermissionsProvider.User;
+            var user = IdentityProvider.User;
             if (user.FillingForm == null || user.FillingForm.Value != formID)
                 throw new ApplicationException("Cannot end filling of form which has not been filling");
 
@@ -386,7 +389,7 @@ namespace ELearning.Business.Managers
             if (Permissions.Form_InfiniteInstances)
                 return true;
 
-            var instances = GetFormInstances(PermissionsProvider.User.Email, form.ID);
+            var instances = GetFormInstances(IdentityProvider.User.Email, form.ID);
             if (instances.Count >= form.MaxFills.Value)
                 return false;
 
@@ -400,7 +403,7 @@ namespace ELearning.Business.Managers
 
             CheckIfCanHaveNewInstanceOf(form);
 
-            FormInstance formInstance = CreateNewFormInstance(PermissionsProvider.UserID, formID);
+            FormInstance formInstance = CreateNewFormInstance(IdentityProvider.UserID, formID);
             formInstance.IsPreview = isPreview;
 
             Context.FormInstance.AddObject(formInstance);

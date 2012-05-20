@@ -1,7 +1,7 @@
 Test (Template)
  @ smazat otazku
  @ smazat alternativni otazku
- - tisk
+ @ tisk
  @ stavy - Neaktivni/Aktivni/Archivovan
  @ nahled
  @ vypsat skupiny pri editaci otazek
@@ -23,12 +23,10 @@ Google
 @Lokalizace
 Logovani
 
-Skripta
+@Skripta
 
 Napoveda
 
-
-Choice Question Items shuffling, 
 
 
 

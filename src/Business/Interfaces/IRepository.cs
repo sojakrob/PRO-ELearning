@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 
-namespace ELearning.Business.Repositories
+namespace ELearning.Business.Interfaces
 {
     public interface IRepository<T> where T : class
     {

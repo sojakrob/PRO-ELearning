@@ -43,6 +43,7 @@
         {
             int i = 1;
             ViewData.Add("Readonly", new Nullable<bool>(true));
+            ViewData.Add("FormInstance", Model);
             foreach (var question in Model.Questions)
             {
             <div class="Question">

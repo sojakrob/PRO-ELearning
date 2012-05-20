@@ -1,5 +1,5 @@
-\documentclass[11pt,oneside,a4paper]{book}
-%\documentclass[czech, 11pt, twoside, a4paper]{book}
+%\documentclass[11pt,oneside,a4paper]{book}
+\documentclass[czech, 11pt, twoside, a4paper]{book}
 
 \usepackage[czech, english]{babel}
 \usepackage[T1]{fontenc}
@@ -162,6 +162,7 @@ V této práci se dále vìnuji analıze vısledného systému, kde ukazuji svùj postup 
 
 %*****************************************************************************
 \chapter{Analıza}
+\label{chp:Analıza}
 
 Pøi analıze zde nejdøíve shromaïuji a popisuji poadavky na vıslednı systém. Poté se vìnuji rešerši ji existujících systémù, abych získal pøehled, co v souèasné dobì nabízejí a jak vypadají. To napomáhá k jasnìjšímu pohledu na moná øešení pro splnìní danıch poadavkù. Dále rozebírám konkrétní øešení mého systému.
 
@@ -179,6 +180,7 @@ Student by mìl mít vdy pøehled o dostupnıch testech, které jsou urèené pro kurz
 Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zadávající organizace (\ref{sec:Popis problému}) a rozšiøujících poadavkù. Rozšiøující poadavky byly sestaveny na základì obecnıch poadavkù na systém takového typu a inspirací zmínìnıch v rešerši v následující sekci~\ref{sec:Rešerše existujících øešení}. Díky tìmto rozšiøujícím poadavkùm by mìl vzniknout zmínìnı komplexnìjší univerzální e-learningovı systém.
 
 \subsection{Poadavky zadavatele}
+\label{subs:Poadavky zadavatele}
 
 \subsubsection{Funkèní poadavky}
 
@@ -317,8 +319,6 @@ Jak je ji z vıètu stavù zøejmé, proces tvorby je uzpùsoben pro kooperaci více u
 
 Aèkoli je tento postup tvorby otázek pro vysokou školu urèitì ádoucí, pro mnou vyvíjenı systém by byl nadbyteènı. V doménì uivatelù poèítám s jedním vedoucím skupiny, kterı testové otázky sám vytváøí. Z tohoto dùvodu také v systému neøeším moné kolize pøi editování více uivateli naráz, co v tomto modulu Studentovi berlièky øešeno je.
 
-%\subsection{Edubase}
-
 \subsection{Závìr}
 
 V této sekci jsem popsal nìkteré systémy, které jsem prostudoval za úèelem zjištìní nabízenıch slueb a zpùsobu jejich realizace. Hlavní inspirací pro základ e-learningového systému jsou pro mì Google Formuláøe. Obsahují všechny základní typy otázek potøebné pro vytváøení formuláøù a jsou jednoduše ovladatelné. Naproti tomu Moodle mi ukazuje portál, kterému bych se blíit nechtìl. Obsahuje velké mnoství rùznıch funkcí, kterıch by v mé cílové skupinì vyuilo moná procento uivatelù. Navíc je pro nì podle mì dosti sloitı na ovládání.
@@ -375,6 +375,7 @@ Pøídat lektora do systému & & \\ \bhline
 \end{table}
 
 \section{Formuláøe}
+\label{sec:Formuláøe}
 
 Formuláøe pøedstavují základní nástroj tohoto e-learningového portálu. Slouí jak lektorùm pro otestování znalostí jejich ákù, tak pro studenty samotné jako nástroj pro nauku a zpìtnou vazbu.
 
@@ -424,6 +425,7 @@ Monost vyplnit vícekrát & \tick & \tick & \cross \\ \bhline
 \end{table}
 
 \section{Otázky}
+\label{sec:Otázky}
 
 Otázky tvoøí náplò formuláøù. Kadá z otázek k sobì mùe vázat další, alternativní otázky. Kdy je pro studenta generován test, právì jedna alternativní otázka je vybrána. Jestlie tedy test obsahuje otázky s více alternativami, budou jednotlivé vygenerované testy rozdílné.
 
@@ -461,6 +463,7 @@ Skripta je moné formátovat do strukturované podoby, tzn. monost tvorby nadpisù
 \chapter{Návrh}
 
 \section{Architektura systému}
+\label{sec:Architektura systému}
 
 \begin{figure}[h]
 \begin{center}
@@ -480,6 +483,12 @@ Datová vrstva obsahuje celı datovı model systému a také komponenty potøebné pro 
 
 \section{Datová vrstva}
 
+Na Meta modelu (Obr.~\ref{fig:Meta model}) jsou vidìt základní entity modelovaného systému a vztahy mezi nimi. Za zmínku stojí \icode{FormTemplate} a \icode{QuestionGroup}. První jmenovaná entita zastupuje šablonu formuláøe, na jejím základì jsou generovány jednotlivé instance (neboli konkrétní sestavy) formuláøe, pøedstavující unikátní formuláø urèenı k jednomu vyplnìní studentem. \icode{FormTemplate} obsahuje kolekci druhé jmenované entity \icode{QuestionGroup}, co je skupina otázek (otázka a její alternativy, viz. \ref{sec:Otázky}). Do instance formuláøe se vybírá právì jedna otázka z této mnoiny.
+
+Návrhovı model na obrázku \ref{fig:Design model datové vrstvy} ukazuje podrobnìjší návrh objektù datové vrstvy. U jednotlivıch objektù jsou vypsány jejich základní vlastnosti, se kterımi by mìl systém umìt pracovat pro dosaení poadované funkcionality analyzované v kapitole \ref{chp:Analıza}.
+
+Mimo jiné bylo nutné pøidat vlastní objekt instance otázky (\icode{QuestionInstance}), kterı je tøeba pro zachycení pozice otázky ve formuláøi (jeliko je moné pøi generování instance testu nechat otázky promíchat). Další zanesenou entitou je \icode{Answer} zastupující odpovìï na otázku a \icode{FormInstanceEvaluation} tvoøící ohodnocení instance formuláøe. Pøibyl také objekt \icode{ChoiceItem}, co je poloka moné odpovìdi na otázku typu vıbìrová (\ref{item:Vıbìrová otázka}). 
+
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/MetaModel}
@@ -498,7 +507,45 @@ Datová vrstva obsahuje celı datovı model systému a také komponenty potøebné pro 
 
 \section{Business vrstva}
 
+Jak ji bylo øeèeno vıše, business vrstva obsahuje veškerou logiku tohoto e-learningového systému a operace pro práci s daty získané pomocí datové vrstvy. Jeliko obsahuje rùznorodé komponenty, je rozdìlena do nìkolika balíèkù, které jsou i se svım obsahem patrné z diagramu na obrázku \ref{fig:BusinessPackages}.
+
+\subsection{Rozpis balíèkù}
+
+\begin{description}
+\item[Managers] Balíèek obsahující tøídy, které nazıvám \uv{manaery}. Mají za úkol poskytovat funkcionalitu pro práci s jim svìøenou datovou entitou z datové vrstvy, napøíklad \icode{TextBookManager} obsahuje implementaci spojenou se skripty a \icode{GroupManager} se skupinami.
+\item[Permissions] Zde je místo pro práva-definující tøídy. O implementaci s nimi spojené je více popsáno v sekci \ref{sec:Práva uivatelù}.
+\item[Storages] V tomto balièku jsou umístìny tøídy tıkající se ukládacích prostorù. Lokální pro odkládání dat napø. pøi exportu a \icode{WebStorage} pro zapouzdøení pøístupu k datùm v databázi ve webovém prostøedí.
+\item[Reporting] Balíèek slouící k reportování vısledkù vyplnìnıch formuláøù.
+\item[ImportExport] V ImportExport balíèku se nacházejí tøídy pro import dat do systému a export ze systému. Vnoøenı balíèek Google se vìnuje pøedávání dat s Google slubami.
+\item[Interfaces] Obecnı balíèek pro rùzná rozhraní, která není nutné dìlit do vìtších kontextù.
+\item[Exceptions] Zde se nacházejí specifické vıjimky systému.
+\end{description}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/BusinessPackages}
+\caption{BusinessPackages}
+\label{fig:BusinessPackages}
+\end{center}
+\end{figure}
+
 \section{ASP.NET MVC vrstva}
+
+Tato vrstva staví na modelu MVC (na Obr. \ref{fig:Architektura MVC}) tvoøícím podstatu technologie ASP.NET MVC. Základem je zde tedy view, controller a model.
+
+Pohledy (views) jsou odpovìdné za tvorbu grafického rozhraní pro uivatele, které tvoøí na základì dat získanıch od controlleru. V ASP standartnì odpovídá jméno pohledu jménu metody controlleru, kterou je pohled vyvoláván. Vìtšina pohledù sestává z nìkolika parciálních (èásteènıch) pohledù, které jsou vyuívány na nìkolika místech.
+
+Controllery zde zastávají funkci prostøedníka mezi pohledy a business vrstvou. Obstarávají pro pohledy relevantní data a pøi vyvolání akce uivatelem tuto akci propagují do aplikaèní logiky.
+
+Model z MVC trojice v této vrstvì není zcela standartní, jak jsem ji pøiblíil ve \ref{sec:Architektura systému}. Podle MVC terminologie pod pojem model patøí má business i datová vrstva. Proto v této vrstvì mluvím spíše o Data modelu (co je vidìt na diagramu~\ref{fig:Architektura systému}), kterı obsahuje datové entity urèené k pøedávání mezi pohledem a controllerem. Jejich smyslem je mimo jiné odstínit závislost pohledù na konkrétních vlastnostech datovıch typù datové vrstvy a vytvoøit další vlastnosti plnìné aplikaèní logikou.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/MVC}
+\caption{Architektura MVC}
+\label{fig:Architektura MVC}
+\end{center}
+\end{figure}
 
 \section{Technologie a frameworky}
 
@@ -517,7 +564,7 @@ Jeliko je projekt webová aplikace, základ uivatelského rozhraní tvoøí HTML a C
 
 \subsection{Javascript, jQuery}
 
-Pro zajištìní dodateèné interaktivity a operací aplikace na stranì uivatele je vyuito Javascriptu a nadstavbového frameworku jQuery~\cite{JQuery}. Pro zjednodušení práce s Cookies (vyuité napø. pro uchování stavu srolovanıch otázek editovaného formuláøe) je vyuito pluginu Cookie~\cite{jQueryCookiePlugin}.
+Pro zajištìní dodateèné interaktivity a operací aplikace na stranì uivatele je vyuito Javascriptu a nadstavbového frameworku jQuery~\cite{JQuery}. Pro zjednodušení práce s Cookies (vyuité napø. pro uchování seznamu srolovanıch otázek pøi editaci formuláøe) je vyuito pluginu Cookie~\cite{jQueryCookiePlugin}.
 
 \subsection{MarkItUp a Wiki .NET Parser}
 
@@ -555,12 +602,13 @@ Ve své implementaci datové vrstvy nevyuívám monosti nastavit kaskádní mazání p
 
 \clearpage
 \section{Práva uivatelù}
+\label{sec:Práva uivatelù}
 
 Práva uivatelù se v tomto systému odvíjí od role, ve které se danı uivatel nachází. Není zde potøeba nastavovat kadému uivateli specifická práva, protoe role pøesnì definují jeho vztah k informacím v systému a operacím s nimi. To je rozdíl napøíklad od vnitrofiremních IS, kde je potøeba kadému uivateli mìnit práva pro pøístup k datùm a jednotlivım modulùm.
 
 Pøesto jsou ale práva implementována tak, aby v pøípadì budoucí potøeby (a zde také pro ukázkové akademické úèely) bylo velmi jednoduché pøiøadit kadému uivateli práva nezávisle na jeho systémové roli. Abych dále mohl uvést podrobnìjší detaily, uvádím zde ukázku implementace oprávnìní uivatele:
 
-\begin{lstlisting}[caption={Ukázka \icode{UserPermissions} a souvisejících tøíd -- ukazuje implementaci oprávnìní uivatelskıch rolí}, label={code:Ukázka UserPermissions}]
+\begin{lstlisting}[caption={[Ukázka \icode{UserPermissions} a souvisejících tøíd ]Ukázka \icode{UserPermissions} a souvisejících tøíd -- ukazuje implementaci oprávnìní uivatelskıch rolí}, label={code:Ukázka UserPermissions}]
 namespace ELearning.Business.Permissions
 {
 	public class U``serPermissions
@@ -650,7 +698,9 @@ public Form GetForm(int id)
 
 \section{Unit testy}
 
-Ovìøení funkènosti hlavních tøíd a jejich metod je provedeno pomocí Unit testù.
+Ovìøení funkènosti hlavních tøíd a jejich metod je provedeno pomocí Unit testù. Protoe se testují hlavnì metody pro práci s daty, je vytvoøena testovací databáze speciálnì pro tyto úèely, aby nedocházelo k monım nekonzistentním datùm a zásahùm do databáze ostré.
+
+Pro implementaci Unit testù vyuívám nástrojù integrovanıch ve Visual Studiu.
 
 \section{Selenium testy}
 \label{sec:Selenium testy}
@@ -662,12 +712,24 @@ Selenium mimo jiné umoòuje pøímou integraci do projektu vyvíjeného systému. Pos
 Samotné scénáøe Selenium testù není nutné psát celé ruènì v kódu. Základ lze velice jednoduše vygenerovat automaticky -- staèí zapnout nahrávání akcí ve webovém prohlíeèi a chovat se jako uivatel. Nahranı scénáø události se poté vyexportuje do jednoho z podporovanıch jazykù, v mém pøípadì do \CSharp. Jedinı malı nedostatek je, e kód je generován pro NUnit~\ref{} testy, take je ho tøeba naportovat pro testy integrované do VS.
 
 \section{Vıkonové testy}
+
+\subsection{Aplikace}
+
+V souèasné dobì vychází vıkonové testování aplikace pouze z pozorování a zpìtné odezvy od uivatelù pøi pilotním provozu, popsanım níe v~\ref{sec:Pilotní provoz}.
+%TODO Dopsat az budou vysledky
+
 \subsection{Databáze}
-%TODO Zminit se ze by bylo treba provest profiling pristupu do DB kvuli vyladeni volani a nastaveni EF
+
+Pro testování a nalezení neoptimalizovanıch a zbyteènıch dotazù do databáze je dobré vyuít SQL Server Profiler~\cite{SQLServerProfiler}, kterı je souèástí SQL Server Performance Tools. Pøi pouití Entity Frameworku se stává, e dotazy do databáze nejsou vdy zcela optimální. Je to z dùvodu, e EF neporozumí pøesnì zámìru programátora (co tøeba ani nemùe), a napøíklad namísto jednoho dotazu s JOIN pošle zvláš dotaz pro kadı záznam v tabulce. Díky profileru lze tyto dotazy jednoduše najít a odpovìdnı kód upravit.
+
+V tomto projektu jsem zatím SQL profileru nevyuil, ale je to jedna z vìcí, které se budu v brzké dobì vìnovat. V této chvíli není toti optimalizace dotazù do DB stìejní, na jednotlivıch stránkách aplikace teoreticky není nic, co by mohlo i v nejhorším pøípadì systém viditelnım zpùsobem zpomalit. Ovšem lepší je všechny dotazy optimalizovat ještì pøed tím, ne se bude systém dále rozrùstat a plnit velkım mnostvím dat.
+
 \section{Pilotní provoz}
+\label{sec:Pilotní provoz}
 
 %*****************************************************************************
 \chapter{Nasazení}
+\label{chp:Nasazení}
 
 Nasazení aplikace je patrné z obrázku~\ref{fig:Diagram nasazení}. Uivatel potøebuje internetovı prohlíeè se zapnutou podporou Javascriptu. Jeho pomocí se pøipojuje k serveru, na kterém je nasazena aplikace.
 
@@ -687,6 +749,7 @@ Popis postupu nasazení a instalace uvádím v instalaèní pøíruèce v pøíloze~\ref{a
 
 \chapter{Závìr}
 
+V této bakaláøské práci jsem vytvoøil funkèní základ e-learningového portálu s nìkterımi specifickımi poadavky zadavatele (\ref{subs:Poadavky zadavatele}).
 
 %V Internet Exploreru~\cite{} bohuel nevypadají zcela správnì, ale myslím e %optimalizace pro všechny prohlíeèe pøesahuje rozsah nynìjšího, dùleitìjšího %vıvoje, a plánuji vyuít
 
@@ -696,6 +759,10 @@ Popis postupu nasazení a instalace uvádím v instalaèní pøíruèce v pøíloze~\ref{a
 S dalším vıvojem systému poèítám metodou dog fooding\footnote{Programátoøi pouívají vyvíjenı software v roli koncového uivatele}. Bìhem uívání pøi vıuce se budou jistì stále rodit nové poadavky a moné zmìny stávající funkcionality.
 
 \section{Moná rozšíøení}
+
+\subsection{Formuláøe}
+
+Vygenerování formuláøe jen s urèitım poètem otázek
 
 \subsection{Otázky}
 \label{sec:Moná rozšíøení sub:Otázky}
@@ -710,10 +777,6 @@ Monost pøiøadit k textu otázky obrázek.
 
 \bibliographystyle{csplainnat}
 
-%bibliographystyle{plain}
-%\bibliographystyle{psc}
-
-% TODO Jak udelat sekci Odkazy? Nebo bezne odkazy na url patri take sem?
 \bibliography{reference}
 
 
@@ -741,7 +804,8 @@ Monost pøiøadit k textu otázky obrázek.
 \item[ORM] Object/Relational Mapping
 \item[SQL] Structured Query Language
 \item[HTML] HyperText Markup Language
-\item[CSS] Cascading Style Sheets
+\item[CSS] Cascading Style Sheets)
+\item[FTP] File Transfer Protocol
 \end{description}
 \vdots
 
@@ -875,6 +939,40 @@ Monost pøiøadit k textu otázky obrázek.
 \chapter{Instalaèní pøíruèka}
 \label{appendix:Instalaèní pøíruèka}
 
+Zde uvádím popis instalace (nasazení) aktuální verze aplikace asi nejjednodušším zpùsobem, a to za vyuití Visual Studia. Pro úspìšné nasazení je tøeba mít k dispozici aplikaèní a databázovı server, jak je uvedeno v kapitole~\ref{chp:Nasazení}.
+
+Nejdøíve je tøeba zvolit konfiguraci pro zveøejòování, tzn. Release nebo nìkterou z mnou pøedpøipravenıch. Na obrázku~\ref{fig:Volba konfigurace pro nasazení} je zachycena volba konfigurace pro nasazení na ukázkovı server projektu~(\ref{sec:}).
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figures/InstallGuide_Configuration}
+\caption{Volba konfigurace pro nasazení}
+\label{fig:Volba konfigurace pro nasazení}
+\end{center}
+\end{figure}
+
+Pro nasazení databáze je tøeba nejprve zkontrolovat nastavení databázového projektu. Akce pro Deployment by mìla bıt nastavena na vytvoøení skriptu a automatické vytvoøení databáze, jak je vidìt na obrázku~\ref{fig:Nastavení databázového projektu}. V poli \textit{Target connection} by mìly bıt vyplnìny údaje nutné k pøipojení k poadovanému DB serveru a v poli \textit{Target database name} jméno vytváøené databáze. Po kontrole údajù staèí jen vybrat v menu \textit{Build}~\textrightarrow~\textit{Deploy Database} a celá databáze i s poèáteèními daty bude automaticky nasazena.
+
+\clearpage
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/InstallGuide_DBSettings}
+\caption{Nastavení databázového projektu}
+\label{fig:Nastavení databázového projektu}
+\end{center}
+\end{figure}
+
+Nasazení samotného portálu je stejnì jednoduché. Po vybrání projektu \textit{ELearning} je v menu \textit{Build} zpøístupnìna akce \textit{Publish ELearning}. Vyvolané dialogové okno je vidìt na obrázku~\ref{fig:Diagram pro publikování aplikace}. K nasazení je vyuito metody \textit{FTP}, která nahrává aplikaèní soubory pøes FTP spojení na zadanou adresu. Po vyplnìní pøístupovıch údajù a stisku tlaèítka \textit{Publish} dojde k nasazení aplikace.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figures/InstallGuide_Publish}
+\caption{Diagram pro publikování aplikace}
+\label{fig:Diagram pro publikování aplikace}
+\end{center}
+\end{figure}
+
 %*****************************************************************************
 \chapter{Uivatelská pøíruèka}
 
@@ -905,14 +1003,6 @@ public interface IUnityContainerAccessor
 \includegraphics[width=1\textwidth]{figures/MoodleQuestionTypes}
 \caption{Typy otázek v systému Moodle~\cite{MoodleVycetTypuOtazek}}
 \label{fig:Typy otázek v systému Moodle}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{figures/MVC}
-\caption{Architektura MVC}
-\label{fig:Architektura MVC}
 \end{center}
 \end{figure}
 

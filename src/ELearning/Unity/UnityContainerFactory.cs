@@ -28,7 +28,7 @@ namespace ELearning.Unity
             UnityContainer result = new UnityContainer();
 
             IPersistentStorage storage = InitStorage();
-            IPermissionsProvider permissionProvider = new WebAuthenticationContext();
+            ELearning.Business.Interfaces.IIdentityProvider permissionProvider = new WebAuthenticationContext();
 
             ManagersContainer managersContainer = new ManagersContainer(storage, permissionProvider);
             var globalManagerConstructor = new InjectionConstructor(storage, managersContainer, new AnonymousPermissionsProvider());

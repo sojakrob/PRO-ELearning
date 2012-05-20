@@ -14,7 +14,7 @@
     @foreach (var group in Model.AssignedGroups)
     {
         <tr>
-            <td>@Html.ActionLink(group.Name, "Detail", "Groups", new { id = group.ID }, null)</td>
+            <td>@Html.ActionLink(group.Name, "Detail", "Group", new { id = group.ID }, null)</td>
         </tr>
     }
 </table>

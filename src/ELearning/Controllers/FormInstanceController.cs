@@ -96,6 +96,7 @@ namespace ELearning.Controllers
                         switch (question.QuestionTemplate.QuestionGroup.TypeEnum)
                         {
                             case QuestionGroupTypes.InlineText:
+                            case QuestionGroupTypes.MultilineText:
                                 answer = _formManager.CreateNewTextAnswer(GetTextQuestionAnswer(question));
                                 break;
 

@@ -15,7 +15,7 @@ namespace ELearning.Business.Managers
         private FormManager _formManager;
 
 
-        public GroupManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+        public GroupManager(IPersistentStorage persistentStorage, ManagersContainer container, ELearning.Business.Interfaces.IIdentityProvider permissionsProvider)
             : base(persistentStorage, container,  permissionsProvider)
         {
             _userManager = new UserManager(_persistentStorage, container, permissionsProvider);
@@ -51,8 +51,8 @@ namespace ELearning.Business.Managers
         {
             return Context.Group.Where(
                 g =>
-                    g.SupervisorID == PermissionsProvider.UserID
-                    || g.Members.Count(m => m.ID == PermissionsProvider.UserID) > 0
+                    g.SupervisorID == IdentityProvider.UserID
+                    || g.Members.Count(m => m.ID == IdentityProvider.UserID) > 0
                 );
         }
         public Group GetGroup(int id)
@@ -64,8 +64,8 @@ namespace ELearning.Business.Managers
             if (Permissions.Group_List_All)
                 return result;
 
-            if (result.SupervisorID != PermissionsProvider.UserID
-                && result.Members.Count(m => m.ID == PermissionsProvider.UserID) == 0)
+            if (result.SupervisorID != IdentityProvider.UserID
+                && result.Members.Count(m => m.ID == IdentityProvider.UserID) == 0)
             {
                 throw new PermissionException("Group_Get");
             }
@@ -159,7 +159,7 @@ namespace ELearning.Business.Managers
 
         public IEnumerable<Group> GetGroupsWhereIsMember(int userID)
         {
-            var groups = GetAll().Where(g => g.Members.Count(m => m.ID == PermissionsProvider.UserID) > 0);
+            var groups = GetAll().Where(g => g.Members.Count(m => m.ID == IdentityProvider.UserID) > 0);
             return groups;
         }
 

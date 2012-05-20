@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetConnectionString>Data Source=MBPC\SQLEXPRESS;Integrated Security=True;Pooling=False</TargetConnectionString>
     <TargetDatabase>rsojak_egymcak</TargetDatabase>
-    <DeployToDatabase>True</DeployToDatabase>
+    <DeployToDatabase>False</DeployToDatabase>
     <DeployToScript>True</DeployToScript>
     <SourceModel>Database.dbschema</SourceModel>
     <DeployScriptFileName>Database.sql</DeployScriptFileName>

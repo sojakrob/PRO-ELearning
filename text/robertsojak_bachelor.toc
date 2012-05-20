@@ -33,39 +33,42 @@
 \contentsline {chapter}{\numberline {3}N\'avrh}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Architektura syst\'emu}{13}{section.3.1}
 \contentsline {section}{\numberline {3.2}Datov\'a vrstva}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}Business vrstva}{14}{section.3.3}
-\contentsline {section}{\numberline {3.4}ASP.NET MVC vrstva}{14}{section.3.4}
-\contentsline {section}{\numberline {3.5}Technologie a frameworky}{14}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}C\texttt {\#}~ASP.NET MVC 4.0}{14}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}ADO.NET Entity Framework}{15}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}HTML, CSS}{15}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}Javascript, jQuery}{16}{subsection.3.5.4}
-\contentsline {subsection}{\numberline {3.5.5}MarkItUp a Wiki .NET Parser}{16}{subsection.3.5.5}
-\contentsline {subsection}{\numberline {3.5.6}Google Data API}{16}{subsection.3.5.6}
-\contentsline {chapter}{\numberline {4}Implementace}{17}{chapter.4}
-\contentsline {section}{\numberline {4.1}Datov\'a vrstva}{17}{section.4.1}
-\contentsline {section}{\numberline {4.2}Pr\'ava u\v zivatel\r u}{19}{section.4.2}
-\contentsline {section}{\numberline {4.3}Bezpe\v cnost}{20}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Bezpe\v cnost p\v ren\'a\v sen\'ych dat}{20}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Bezpe\v cnost p\v ri pr\'aci v aplikaci}{20}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Testov\'an\IeC {\'\i }}{22}{chapter.5}
-\contentsline {section}{\numberline {5.1}Unit testy}{22}{section.5.1}
-\contentsline {section}{\numberline {5.2}Selenium testy}{22}{section.5.2}
-\contentsline {section}{\numberline {5.3}V\'ykonov\'e testy}{22}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Datab\'aze}{22}{subsection.5.3.1}
-\contentsline {section}{\numberline {5.4}Pilotn\IeC {\'\i } provoz}{22}{section.5.4}
-\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{23}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\'av\v er}{24}{chapter.7}
-\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{24}{section.7.1}
-\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{24}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Ot\'azky}{24}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}E-mailov\'e notifikace}{24}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Porovn\'an\IeC {\'\i } ASP.NET MVC a ASP.NET Web Forms}{24}{section.7.3}
-\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{25}{appendix.A}
-\contentsline {chapter}{\numberline {B}UML}{26}{appendix.B}
-\contentsline {section}{\numberline {B.1}Popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{26}{section.B.1}
-\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{29}{appendix.C}
-\contentsline {chapter}{\numberline {D}U\v zivatelsk\'a p\v r\IeC {\'\i }ru\v cka}{30}{appendix.D}
-\contentsline {chapter}{\numberline {E}Unity Application Block tutori\'al}{31}{appendix.E}
-\contentsline {chapter}{\numberline {F}Obrazov\'a p\v r\IeC {\'\i }loha}{32}{appendix.F}
-\contentsline {chapter}{\numberline {G}Obsah p\v rilo\v zen\'eho CD}{34}{appendix.G}
+\contentsline {section}{\numberline {3.3}Business vrstva}{15}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Rozpis bal\IeC {\'\i }\v ck\r u}{15}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}ASP.NET MVC vrstva}{16}{section.3.4}
+\contentsline {section}{\numberline {3.5}Technologie a frameworky}{17}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}C\texttt {\#}~ASP.NET MVC 4.0}{17}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}ADO.NET Entity Framework}{17}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}HTML, CSS}{17}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Javascript, jQuery}{17}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}MarkItUp a Wiki .NET Parser}{18}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}Google Data API}{18}{subsection.3.5.6}
+\contentsline {chapter}{\numberline {4}Implementace}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Datov\'a vrstva}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Pr\'ava u\v zivatel\r u}{21}{section.4.2}
+\contentsline {section}{\numberline {4.3}Bezpe\v cnost}{22}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Bezpe\v cnost p\v ren\'a\v sen\'ych dat}{22}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Bezpe\v cnost p\v ri pr\'aci v aplikaci}{22}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Testov\'an\IeC {\'\i }}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}Unit testy}{25}{section.5.1}
+\contentsline {section}{\numberline {5.2}Selenium testy}{25}{section.5.2}
+\contentsline {section}{\numberline {5.3}V\'ykonov\'e testy}{26}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Aplikace}{26}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Datab\'aze}{26}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Pilotn\IeC {\'\i } provoz}{26}{section.5.4}
+\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{27}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\'av\v er}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{29}{section.7.1}
+\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{29}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Formul\'a\v re}{29}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Ot\'azky}{29}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}E-mailov\'e notifikace}{29}{subsection.7.2.3}
+\contentsline {section}{\numberline {7.3}Porovn\'an\IeC {\'\i } ASP.NET MVC a ASP.NET Web Forms}{29}{section.7.3}
+\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{33}{appendix.A}
+\contentsline {chapter}{\numberline {B}UML}{35}{appendix.B}
+\contentsline {section}{\numberline {B.1}Popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{35}{section.B.1}
+\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{39}{appendix.C}
+\contentsline {chapter}{\numberline {D}U\v zivatelsk\'a p\v r\IeC {\'\i }ru\v cka}{43}{appendix.D}
+\contentsline {chapter}{\numberline {E}Unity Application Block tutori\'al}{45}{appendix.E}
+\contentsline {chapter}{\numberline {F}Obrazov\'a p\v r\IeC {\'\i }loha}{47}{appendix.F}
+\contentsline {chapter}{\numberline {G}Obsah p\v rilo\v zen\'eho CD}{49}{appendix.G}

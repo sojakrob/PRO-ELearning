@@ -28,7 +28,7 @@ namespace ELearning.Business.Managers
         /// Initializes a new instance of the UserManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public UserManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+        public UserManager(IPersistentStorage persistentStorage, ManagersContainer container, ELearning.Business.Interfaces.IIdentityProvider permissionsProvider)
             : base(persistentStorage, container, permissionsProvider)
         {
             
@@ -146,7 +146,7 @@ namespace ELearning.Business.Managers
         }
         public bool ChangePassword(string oldPassword, string newPassword)
         {
-            return ChangePassword(oldPassword, newPassword, PermissionsProvider.User);
+            return ChangePassword(oldPassword, newPassword, IdentityProvider.User);
         }
         private bool ChangePassword(string oldPassword, string newPassword, User user)
         {

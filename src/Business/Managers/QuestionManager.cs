@@ -25,14 +25,14 @@ namespace ELearning.Business.Managers
         }
         private FormManager __formManager;
 
-        private IPermissionsProvider _permissionsProvider;
+        private ELearning.Business.Interfaces.IIdentityProvider _permissionsProvider;
 
 
         /// <summary>
         /// Initializes a new instance of the QuestionManager class.
         /// </summary>
         /// <param name="persistentStorage"></param>
-        public QuestionManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+        public QuestionManager(IPersistentStorage persistentStorage, ManagersContainer container, ELearning.Business.Interfaces.IIdentityProvider permissionsProvider)
             : base(persistentStorage, container,  permissionsProvider)
         {
             _permissionsProvider = permissionsProvider;
@@ -55,7 +55,7 @@ namespace ELearning.Business.Managers
             if (group == null)
                 throw new ArgumentException("Question Group not found");
 
-            User user = PermissionsProvider.User;
+            User user = IdentityProvider.User;
 
             //if(group.ParentForm.AuthorID != user.ID && _userManager.GetUserPermissions(authorEmail).
             // TODO Permissions
@@ -74,7 +74,7 @@ namespace ELearning.Business.Managers
         public bool AddQuestionGroup(int formTemplateID, QuestionGroup questionGroup)
         {
             Form form = _formManager.GetForm( formTemplateID);
-            User author = PermissionsProvider.User;
+            User author = IdentityProvider.User;
 
             CheckQuestionCreateEditPermission(form, author);
 
@@ -192,7 +192,7 @@ namespace ELearning.Business.Managers
         public bool DeleteQuestionGroup(int formID, int questionGroupID)
         {
             var form = _formManager.GetForm(formID);
-            CheckQuestionCreateEditPermission(form, PermissionsProvider.User);
+            CheckQuestionCreateEditPermission(form, IdentityProvider.User);
 
             var questionGroup = GetQuestionGroup(questionGroupID);
             if (!form.QuestionGroups.Contains(questionGroup))
@@ -218,7 +218,7 @@ namespace ELearning.Business.Managers
         public bool DeleteQuestion(int formID, int questionGroupID, int questionID)
         {
             var form = _formManager.GetForm(formID);
-            CheckQuestionCreateEditPermission(form, PermissionsProvider.User);
+            CheckQuestionCreateEditPermission(form, IdentityProvider.User);
 
             var questionGroup = GetQuestionGroup(questionGroupID);
             if (!form.QuestionGroups.Contains(questionGroup))
@@ -259,7 +259,7 @@ namespace ELearning.Business.Managers
         public bool DuplicateQuestionGroup(int formID, int questionGroupID)
         {
             var form = _formManager.GetForm(formID);
-            CheckQuestionCreateEditPermission(form, PermissionsProvider.User);
+            CheckQuestionCreateEditPermission(form, IdentityProvider.User);
 
             var questionGroup = GetQuestionGroup(questionGroupID);
             if (!form.QuestionGroups.Contains(questionGroup))

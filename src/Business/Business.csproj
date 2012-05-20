@@ -103,7 +103,7 @@
     <Compile Include="Managers\TextBookManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Permissions\AdministratorPermissions.cs" />
-    <Compile Include="Permissions\IPermissionsProvider.cs" />
+    <Compile Include="Interfaces\IIdentityProvider.cs" />
     <Compile Include="Permissions\LectorPermissions.cs" />
     <Compile Include="Permissions\StudentPermissions.cs" />
     <Compile Include="Permissions\UserPermissions.cs" />
@@ -112,7 +112,7 @@
     <Compile Include="Reporting\FormFillQuestionGroup.cs" />
     <Compile Include="Reporting\FormFillsDataReport.cs" />
     <Compile Include="Reporting\FormFillsDataReportCreator.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="Storages\IPersistentStorage.cs" />
     <Compile Include="Storages\LocalStorage.cs" />
@@ -127,9 +127,6 @@
       <Project>{B610B6F9-4DAE-4D6B-B43C-9201FFD9EB48}</Project>
       <Name>Shared</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,7 @@ using ELearning.Business.Permissions;
 
 namespace ELearning.Authentication
 {
-    public class AnonymousPermissionsProvider : IPermissionsProvider
+    public class AnonymousPermissionsProvider : ELearning.Business.Interfaces.IIdentityProvider
     {
         #region IPermissionsProvider Members
 

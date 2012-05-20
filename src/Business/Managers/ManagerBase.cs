@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ELearning.Business.Repositories;
+
 using ELearning.Business.Storages;
 using ELearning.Data;
 using System.Linq.Expressions;
@@ -11,7 +11,7 @@ using ELearning.Business.Exceptions;
 
 namespace ELearning.Business.Managers
 {
-    public abstract class ManagerBase<T> : IRepository<T> where T : class
+    public abstract class ManagerBase<T> : ELearning.Business.Interfaces.IRepository<T> where T : class
     {
         protected const int DEFAULT_ID = 0;
 
@@ -20,8 +20,8 @@ namespace ELearning.Business.Managers
 
         protected ManagersContainer _managers;
 
-        protected IPermissionsProvider PermissionsProvider { get; private set; }
-        protected UserPermissions Permissions { get; private set; }
+        protected ELearning.Business.Interfaces.IIdentityProvider IdentityProvider { get; private set; }
+        protected UserPermissions Permissions { get { return IdentityProvider.GetPermissions(); } }
 
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace ELearning.Business.Managers
 
         public ManagerBase(
             IPersistentStorage persistentStorage,
-            ManagersContainer container, 
-            IPermissionsProvider permissionsProvider
+            ManagersContainer container,
+            ELearning.Business.Interfaces.IIdentityProvider permissionsProvider
             )
         {
             _persistentStorage = persistentStorage;
@@ -44,14 +44,13 @@ namespace ELearning.Business.Managers
             _managers = container;
             _managers.Register(this);
 
-            PermissionsProvider = permissionsProvider;
-            Permissions = permissionsProvider.GetPermissions();
+            IdentityProvider = permissionsProvider;
         }
 
 
         protected void KickAnonymous()
         {
-            if (PermissionsProvider.User == null)
+            if (IdentityProvider.User == null)
                 throw new PermissionException("Access", "Not logged users cannot access specified page");
         }
 

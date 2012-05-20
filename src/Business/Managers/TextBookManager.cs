@@ -11,7 +11,7 @@ namespace ELearning.Business.Managers
 {
     public class TextBookManager : ManagerBase<TextBook>
     {
-        public TextBookManager(IPersistentStorage persistentStorage, ManagersContainer container, IPermissionsProvider permissionsProvider)
+        public TextBookManager(IPersistentStorage persistentStorage, ManagersContainer container, ELearning.Business.Interfaces.IIdentityProvider permissionsProvider)
             : base(persistentStorage, container, permissionsProvider)
         {
             
@@ -40,7 +40,7 @@ namespace ELearning.Business.Managers
                                    from t in g.TextBooks
                                    where t.VisibleToOthers
                                    select t;
-            var usersTextBooks = Context.TextBook.Where(t => t.CreatedBy.ID == PermissionsProvider.UserID);
+            var usersTextBooks = Context.TextBook.Where(t => t.CreatedBy.ID == IdentityProvider.UserID);
             var textBooks = visibleTextBooks.Union(usersTextBooks).OrderBy(t => t.Title);
 
             return textBooks;
@@ -54,9 +54,9 @@ namespace ELearning.Business.Managers
             if (!Permissions.TextBook_CreateEdit)
                 throw new PermissionException("TextBook_CreateEdit");
 
-            textBook.CreatedByID = PermissionsProvider.UserID;
+            textBook.CreatedByID = IdentityProvider.UserID;
             textBook.Created = DateTime.Now;
-            textBook.ChangedByID = PermissionsProvider.UserID;
+            textBook.ChangedByID = IdentityProvider.UserID;
             textBook.Changed = DateTime.Now;
             textBook.Html = BuildTextBookHtml(textBook.Text);
 
@@ -84,7 +84,7 @@ namespace ELearning.Business.Managers
             trueTextBook.Text = textBook.Text;
             trueTextBook.Html = BuildTextBookHtml(textBook.Text);
             trueTextBook.VisibleToOthers = textBook.VisibleToOthers;
-            trueTextBook.ChangedByID = PermissionsProvider.UserID;
+            trueTextBook.ChangedByID = IdentityProvider.UserID;
             trueTextBook.Changed = DateTime.Now;
 
             try

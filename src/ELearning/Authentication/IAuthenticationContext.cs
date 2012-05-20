@@ -7,7 +7,7 @@ using ELearning.Business.Permissions;
 
 namespace ELearning.Authentication
 {
-    public interface IAuthenticationContext : IPermissionsProvider
+    public interface IAuthenticationContext : ELearning.Business.Interfaces.IIdentityProvider
     {
         UserSession LoggedUserSession { get; }
         bool IsUserLoggedIn { get; }
