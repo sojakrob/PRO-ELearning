@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=latex 2012.1.4)  20 MAY 2012 20:13
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.1.5)  22 MAY 2012 21:34
 entering extended mode
 **robertsojak_bachelor.tex
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.tex
@@ -89,10 +89,18 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 ("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+("D:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count90
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
@@ -105,23 +113,23 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks17
 )
 ("D:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count90
+\lst@mode=\count91
 \lst@gtempboxa=\box26
 \lst@token=\toks18
-\lst@length=\count91
+\lst@length=\count92
 \lst@currlwidth=\dimen106
-\lst@column=\count92
-\lst@pos=\count93
+\lst@column=\count93
+\lst@pos=\count94
 \lst@lostspace=\dimen107
 \lst@width=\dimen108
-\lst@newlines=\count94
-\lst@lineno=\count95
+\lst@newlines=\count95
+\lst@lineno=\count96
 \lst@maxwidth=\dimen109
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count96
-\lst@skipnumbers=\count97
+\c@lstnumber=\count97
+\lst@skipnumbers=\count98
 \lst@framebox=\box27
 )
 ("D:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
@@ -153,7 +161,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
 \FN@temptoken=\toks20
 \footnotemargin=\dimen112
-\c@pp@next@reset=\count98
+\c@pp@next@reset=\count99
 Package footmisc Info: Declaring symbol style bringhurst on input line 855.
 Package footmisc Info: Declaring symbol style chicago on input line 863.
 Package footmisc Info: Declaring symbol style wiley on input line 872.
@@ -166,6 +174,21 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 ("D:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+("D:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2012/02/19 v3.2f Customizing captions (AR)
+
+("D:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
+\captionmargin=\dimen113
+\captionmargin@=\dimen114
+\captionwidth=\dimen115
+\caption@indent=\dimen116
+\caption@parindent=\dimen117
+\caption@hangindent=\dimen118
+)
+\c@ContinuedFloat=\count100
+Package caption Info: listings package is loaded.
 )
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\k336_thesis_macros.sty
 Two side layout redefined.
@@ -258,11 +281,8 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 ("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
 CSharp formatting defined
 )
 Bakalarska prace
@@ -275,15 +295,15 @@ Package: hobsub-hyperref 2011/04/23 v1.4 Bundle oberdiek, subset hyperref (HO)
 ("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2011/04/23 v1.4 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2011/04/23 v1.4 Subsetting bundle oberdiek (HO)
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
-Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
 Package ifvtex Info: VTeX not detected.
 Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is not detected.
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -295,7 +315,7 @@ Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package pdftexcmds Info: \pdfdraftmode found.
 Package: pdfescape 2011/04/04 v1.12 Provides string conversions (HO)
 Package: bigintcalc 2011/01/30 v1.2 Expandable big integer calculations (HO)
 Package: bitset 2011/01/30 v1.1 Data type bit set (HO)
@@ -316,14 +336,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ("D:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
 )
-\@linkdim=\dimen113
-\Hy@linkcounter=\count99
-\Hy@pagecounter=\count100
+\@linkdim=\dimen119
+\Hy@linkcounter=\count101
+\Hy@pagecounter=\count102
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2011/08/19 v6.82h Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count101
+\Hy@SavedSpaceFactor=\count103
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -343,11 +363,11 @@ Package hyperref Info: Plain pages OFF on input line 4068.
 Package hyperref Info: Backreferencing OFF on input line 4073.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4291.
-\c@Hy@tempcnt=\count102
+\c@Hy@tempcnt=\count104
 LaTeX Info: Redefining \url on input line 4644.
-\Fld@menulength=\count103
-\Field@Width=\dimen114
-\Fld@charsize=\dimen115
+\Fld@menulength=\count105
+\Field@Width=\dimen120
+\Fld@charsize=\dimen121
 Package hyperref Info: Hyper figures OFF on input line 5730.
 Package hyperref Info: Link nesting OFF on input line 5735.
 Package hyperref Info: Hyper index ON on input line 5738.
@@ -357,83 +377,88 @@ Package hyperref Info: Link coloring with OCG OFF on input line 5755.
 Package hyperref Info: PDF/A mode OFF on input line 5760.
 LaTeX Info: Redefining \ref on input line 5800.
 LaTeX Info: Redefining \pageref on input line 5804.
-\Hy@abspage=\count104
-\c@Item=\count105
-\c@Hfootnote=\count106
+\Hy@abspage=\count106
+\c@Item=\count107
+\c@Hfootnote=\count108
 )
 
-Package hyperref Message: Driver (default): hdvips.
+Package hyperref Message: Driver (autodetected): hpdftex.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hdvips.def"
-File: hdvips.def 2011/08/19 v6.82h Hyperref driver for dvips
+("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2011/08/19 v6.82h Hyperref driver for pdfTeX
+\Fld@listcount=\count109
+\c@bookmark@seq@number=\count110
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pdfmark.def"
-File: pdfmark.def 2011/08/19 v6.82h Hyperref definitions for pdfmark specials
-
-
-Package hyperref Warning: You have enabled option `breaklinks'.
-(hyperref)                But driver `hdvips.def' does not suppport this.
-(hyperref)                Expect trouble with the link areas of broken links.
-
-\pdf@docset=\toks21
-\pdf@box=\box28
-\pdf@toks=\toks22
-\pdf@defaulttoks=\toks23
-\Fld@listcount=\count107
-\c@bookmark@seq@number=\count108
 ("D:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip45
-))
+)
 ("D:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip46
 \bibsep=\skip47
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count109
+\c@NAT@ctr=\count111
 )
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 59.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 60.
 
 ("D:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-\c@lstlisting=\count110
-\AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 59.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+("D:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count112
+\scratchdimen=\dimen122
+\scratchbox=\box28
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen123
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
+\everyMPtoPDFconversion=\toks22
+)
+\c@lstlisting=\count118
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring ON on input line 60.
+ ("D:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 ("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count111
+\c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 59.
-LaTeX Info: Redefining \pageref on input line 59.
-LaTeX Info: Redefining \nameref on input line 59.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
 
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.out)
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.out)
@@ -449,11 +474,18 @@ Nazev prace: E-learningov\'y syst\'em se zam\v e\v ren\IeC {\'\i }m na testov\'
 an\IeC {\'\i }
 Vedouci prace: Ing. Ond\v rej Macek
 ***************************************************
-File: figures/LogoCVUT.eps Graphic file (type eps)
-<figures/LogoCVUT.eps> [3
+<figures/LogoCVUT.pdf, id=295, 93.34875pt x 70.2625pt>
+File: figures/LogoCVUT.pdf Graphic file (type pdf)
+
+<use figures/LogoCVUT.pdf>
+Package pdftex.def Info: figures/LogoCVUT.pdf used on input line 83.
+(pdftex.def)             Requested size: 142.26378pt x 107.08527pt.
+ [3
 
 
-] [4
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <d:/_mb/School/FEL/Predmet
+y/A7B36PRO/ELearning/text/figures/LogoCVUT.pdf>]
+[4
 
 ] [5] [6
 
@@ -502,9 +534,9 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ]
 Kapitola 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 136.
+(Font)              <9> on input line 139.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 136.
+(Font)              <5> on input line 139.
 [1
 
 ] [2]
@@ -512,265 +544,433 @@ Kapitola 2.
 [3
 
 ]
-\c@FPEnum=\count112
-\c@NPEnum=\count113
- [4]
-File: figures/GoogleDocs.eps Graphic file (type eps)
- <figures/GoogleDocs.eps>
-File: figures/GoogleFormsSampleForm.eps Graphic file (type eps)
- <figures/GoogleFormsSampleForm.eps>
+\c@FPEnum=\count120
+\c@NPEnum=\count121
+ [4] <figures/GoogleDocs.png, id=578, 1023.825pt x 459.7175pt>
+File: figures/GoogleDocs.png Graphic file (type png)
+
+<use figures/GoogleDocs.png>
+Package pdftex.def Info: figures/GoogleDocs.png used on input line 250.
+(pdftex.def)             Requested size: 391.96095pt x 175.99919pt.
+
+<figures/GoogleFormsSampleForm.png, id=580, 1513.655pt x 825.0825pt>
+File: figures/GoogleFormsSampleForm.png Graphic file (type png)
+
+<use figures/GoogleFormsSampleForm.png>
+Package pdftex.def Info: figures/GoogleFormsSampleForm.png used on input line 2
+58.
+(pdftex.def)             Requested size: 435.51514pt x 237.39192pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5]
-Overfull \hbox (2.55177pt too wide) in paragraph at lines 277--278
-[][]\T1/cmr/m/n/10.95 Zobrazí uºi-va-teli combo box s vý£tem moº-ností. Vlastn¥
- stejná funk£-
+[5 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/GoogleDocs.png>]
+
+Overfull \hbox (2.55177pt too wide) in paragraph at lines 281--282
+[]\T1/cmr/m/n/10.95 Zobrazí uºi-va-teli combo box s vý£tem moº-ností. Vlastn¥ s
+tejná funk£-
  []
 
-[6] [7] [8]
-File: figures/UseCaseDiagram.eps Graphic file (type eps)
- <figures/UseCaseDiagram.eps>
+[6 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/GoogleFormsSampl
+eForm.png>] [7] [8]
+<figures/UseCaseDiagram.png, id=620, 754.82pt x 700.6175pt>
+File: figures/UseCaseDiagram.png Graphic file (type png)
+
+<use figures/UseCaseDiagram.png>
+Package pdftex.def Info: figures/UseCaseDiagram.png used on input line 347.
+(pdftex.def)             Requested size: 391.96095pt x 363.81004pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9]
-File: figures/FormStateDiagram.eps Graphic file (type eps)
- <figures/FormStateDiagram.eps>
+[9 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/UseCaseDiagram.p
+ng>] <figures/FormStateDiagram.png, id=629, 425.59pt x 336.25626pt>
+File: figures/FormStateDiagram.png Graphic file (type png)
+
+<use figures/FormStateDiagram.png>
+Package pdftex.def Info: figures/FormStateDiagram.png used on input line 394.
+(pdftex.def)             Requested size: 217.75757pt x 172.05281pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10] [11] [12]
+
+Underfull \vbox (badness 6625) has occurred while \output is active []
+
+ [10]
+[11 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/FormStateDiagra
+m.png>] [12]
 Kapitola 3.
-File: figures/Architecture.eps Graphic file (type eps)
-<figures/Architecture.eps> [13
+<figures/Architecture.png, id=651, 656.4525pt x 323.2075pt>
+File: figures/Architecture.png Graphic file (type png)
 
-]
-File: figures/MetaModel.eps Graphic file (type eps)
- <figures/MetaModel.eps>
-File: figures/DesignModel.eps Graphic file (type eps)
+<use figures/Architecture.png>
+Package pdftex.def Info: figures/Architecture.png used on input line 480.
+(pdftex.def)             Requested size: 348.41344pt x 171.54575pt.
+ [13
 
-<figures/DesignModel.eps>
+ <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/Architecture.png>]
+
+<figures/MetaModel.png, id=668, 806.01125pt x 382.42876pt>
+File: figures/MetaModel.png Graphic file (type png)
+
+<use figures/MetaModel.png>
+Package pdftex.def Info: figures/MetaModel.png used on input line 504.
+(pdftex.def)             Requested size: 391.96095pt x 185.97372pt.
+
+<figures/DesignModel.png, id=669, 1165.35374pt x 926.46124pt>
+File: figures/DesignModel.png Graphic file (type png)
+
+<use figures/DesignModel.png>
+Package pdftex.def Info: figures/DesignModel.png used on input line 512.
+(pdftex.def)             Requested size: 435.51514pt x 346.23463pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14] [15]
-File: figures/BusinessPackages.eps Graphic file (type eps)
- <figures/BusinessPackages.eps>
-File: figures/MVC.eps Graphic file (type eps)
- <figures/MVC.eps>
+[14 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/MetaModel.png>]
+[15 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/DesignModel.png
+>] <figures/BusinessPackages.png, id=682, 685.56125pt x 248.93pt>
+File: figures/BusinessPackages.png Graphic file (type png)
+
+<use figures/BusinessPackages.png>
+Package pdftex.def Info: figures/BusinessPackages.png used on input line 536.
+(pdftex.def)             Requested size: 435.51514pt x 158.14095pt.
+
+<figures/MVC.png, id=686, 283.0575pt x 178.6675pt>
+File: figures/MVC.png Graphic file (type png)
+ <use figures/MVC.png>
+Package pdftex.def Info: figures/MVC.png used on input line 554.
+(pdftex.def)             Requested size: 217.75757pt x 137.45444pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 552.
-[16]
-
-LaTeX Warning: Reference `' on page 17 undefined on input line 563.
-
-[17] [18]
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 562.
+[16 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/BusinessPackage
+s.png>] [17 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/MVC.png
+>] [18]
 Kapitola 4.
-File: figures/EntityDataModel.eps Graphic file (type eps)
-<figures/EntityDataModel.eps>
+<figures/EntityDataModel.png, id=724, 890.5772pt x 1271.5003pt>
+File: figures/EntityDataModel.png Graphic file (type png)
 
-LaTeX Warning: Float too large for page by 34.22615pt on input line 601.
+<use figures/EntityDataModel.png>
+Package pdftex.def Info: figures/EntityDataModel.png used on input line 608.
+(pdftex.def)             Requested size: 435.51514pt x 621.79892pt.
+
+
+LaTeX Warning: Float too large for page by 45.39864pt on input line 612.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [19
 
-] [20]
+] [20 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/EntityDataMod
+el.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 612.
+(Font)              <7> on input line 623.
  [21
 
-] [22] [23] [24
+] [22]
+<figures/PermissionException.png, id=778, 1013.7875pt x 430.60875pt>
+File: figures/PermissionException.png Graphic file (type png)
 
-]
+<use figures/PermissionException.png>
+Package pdftex.def Info: figures/PermissionException.png used on input line 708
+.
+(pdftex.def)             Requested size: 435.51514pt x 184.98074pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[23] [24 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/Permission
+Exception.png>]
 Kapitola 5.
+[25
 
-LaTeX Warning: Reference `' on page 25 undefined on input line 708.
+] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 759--785
 
-
-LaTeX Warning: Reference `' on page 25 undefined on input line 712.
-
-
-LaTeX Warning: Reference `sec:Pilotn\IeC {\'\i } provoz' on page 25 undefined o
-n input line 718.
+ []
 
 
-Underfull \vbox (badness 1478) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 759--785
 
- [25]
-[26]
-Kapitola 6.
-File: figures/DeploymentDiagram.eps Graphic file (type eps)
-<figures/DeploymentDiagram.eps> [27
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--785
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--785
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--785
+
+ []
+
+[27
 
 ] [28
 
 ]
+Kapitola 6.
+<figures/DeploymentDiagram.png, id=832, 665.48625pt x 209.78375pt>
+File: figures/DeploymentDiagram.png Graphic file (type png)
+
+<use figures/DeploymentDiagram.png>
+Package pdftex.def Info: figures/DeploymentDiagram.png used on input line 808.
+(pdftex.def)             Requested size: 435.51514pt x 137.2893pt.
+ [29 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/DeploymentDiag
+ram.png>] [30
+
+]
 Kapitola 7.
+[31]
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.bbl
-[29] [30
-
-]
-Underfull \hbox (badness 1558) in paragraph at lines 9--12
-[][]\T1/cmr/m/n/10.95 Google Data API .NET Cli-ent Lib-rary -- .NET knihovna pr
-o vy-u-ºití Go-o-gle
+[32]
+Underfull \hbox (badness 1558) in paragraph at lines 25--28
+[]\T1/cmr/m/n/10.95 Google Data API .NET Cli-ent Lib-rary -- .NET knihovna pro 
+vy-u-ºití Go-o-gle
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 19--23
-[][]\T1/cmr/m/n/10.95 SQL Ser-ver Pro-fi-ler -- ná-stroj pro sle-do-vání do-taz
-· do da-ta-báze.  Do-stupné
+Underfull \hbox (badness 1226) in paragraph at lines 35--39
+\T1/cmtt/m/n/10.95 / / technet . microsoft . com / cs-[]cz / library / ms181091
+(v = sql . 100 ) .aspx$[][]\T1/cmr/m/n/10.95 >.  stav k
  []
 
 
-Overfull \hbox (131.92862pt too wide) in paragraph at lines 25--29
-\T1/cmr/m/n/10.95 <[][][]$\T1/cmtt/m/n/10.95 http : / / www . codeproject . com
- / Articles / 99361 / How-[]To-[]Use-[]Unity-[]Container-[]In-[]ASP-[]NET-[]MVC
--[]Framewor$[][][][]\T1/cmr/m/n/10.95 >. 
+Underfull \hbox (badness 10000) in paragraph at lines 46--50
+[]\T1/cmr/m/n/10.95 FINK, G.  How To Use Unity Con-ta-i-ner In ASP.NET MVC Fra-
+
  []
 
 
-Underfull \hbox (badness 3895) in paragraph at lines 31--35
-[][]\T1/cmr/m/n/10.95 Google Do-cu-ments.  Go-o-gle Do-ku-menty --- hlavní strá
-nka.  Do-stupné z:
+Underfull \hbox (badness 10000) in paragraph at lines 46--50
+\T1/cmr/m/n/10.95 mework.  Do-stupné z: <[][]$\T1/cmtt/m/n/10.95 http : / / www
+ . codeproject . com / Articles / 99361 /
  []
 
+[33
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--41
-[][]\T1/cmr/m/n/10.95 Google Groups.  Go-o-gle Sku-piny --- hlavní stránka.  Do
--stupné z:
- []
-
-
-Underfull \hbox (badness 2653) in paragraph at lines 43--47
-[][]\T1/cmr/m/n/10.95 HARTL, K.  Co-o-kie -- jQuery plu-gin pro práci s Co-o-ki
-es.  Do-stupné z:
- []
-
-
-Overfull \hbox (183.94118pt too wide) in paragraph at lines 80--84
-[][]\T1/cmr/m/n/10.95 Vý£et typ· otá-zek Mo-odle.  Do-stupné z: <[][][]$\T1/cmt
-t/m/n/10.95 http : / / docs . moodle . org / 22 / en / images _ en / 2 / 23 / M
-anage _ question _ types . png$[][][][]\T1/cmr/m/n/10.95 >.
- []
-
-) [31] [32
-
-]
+]) [34]
 P\v {r}\'{\i }loha A.
-[33] [34
+[35
+
+] [36
 
 ]
 P\v {r}\'{\i }loha B.
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 819--825
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 916--922
   []
  []
 
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 839--844
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 936--941
   []
  []
 
-[35]
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 864--869
-  []
- []
-
-
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 882--887
-  []
- []
-
-[36]
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 915--920
+[37]
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 961--966
   []
  []
 
 
-Overfull \hbox (2.42162pt too wide) in paragraph at lines 935--937
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 979--984
+  []
+ []
+
+[38]
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 1012--1017
   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 935--937
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 1032--1034
+  []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1032--1034
 
  []
 
-[37
+[39
 
-] [38
+] [40
 
 ]
 P\v {r}\'{\i }loha C.
+<figures/InstallGuide_Configuration.png, id=963, 373.395pt x 218.8175pt>
+File: figures/InstallGuide_Configuration.png Graphic file (type png)
 
-LaTeX Warning: Reference `sec:' on page 39 undefined on input line 944.
+<use figures/InstallGuide_Configuration.png>
+Package pdftex.def Info: figures/InstallGuide_Configuration.png used on input l
+ine 1045.
+(pdftex.def)             Requested size: 261.31174pt x 153.14114pt.
+ [41 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/InstallGuide_C
+onfiguration.png>]
+<figures/InstallGuide_DBSettings.png, id=970, 785.93625pt x 463.7325pt>
+File: figures/InstallGuide_DBSettings.png Graphic file (type png)
 
-File: figures/InstallGuide_Configuration.eps Graphic file (type eps)
-<figures/InstallGuide_Configuration.eps> [39]
-File: figures/InstallGuide_DBSettings.eps Graphic file (type eps)
+<use figures/InstallGuide_DBSettings.png>
+Package pdftex.def Info: figures/InstallGuide_DBSettings.png used on input line
+ 1057.
+(pdftex.def)             Requested size: 435.51514pt x 256.97832pt.
 
-<figures/InstallGuide_DBSettings.eps>
-File: figures/InstallGuide_Publish.eps Graphic file (type eps)
- <figures/InstallGuide_Publish.eps>
+<figures/InstallGuide_Publish.png, id=972, 424.58624pt x 557.08125pt>
+File: figures/InstallGuide_Publish.png Graphic file (type png)
+
+<use figures/InstallGuide_Publish.png>
+Package pdftex.def Info: figures/InstallGuide_Publish.png used on input line 10
+67.
+(pdftex.def)             Requested size: 261.31174pt x 342.8707pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[40
+[42
 
-] [41] [42
+ <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/InstallGuide_DBSet
+tings.png>] [43 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/Ins
+tallGuide_Publish.png>] [44
 
 ]
 P\v {r}\'{\i }loha D.
-[43] [44
+[45]
+Underfull \vbox (badness 1057) has occurred while \output is active []
+
+ [46]
+[47] [48
 
 ]
 P\v {r}\'{\i }loha E.
-[45] [46
+<figures/MoodleQuestionTypes.png, id=1078, 792.9625pt x 473.77pt>
+File: figures/MoodleQuestionTypes.png Graphic file (type png)
+
+<use figures/MoodleQuestionTypes.png>
+Package pdftex.def Info: figures/MoodleQuestionTypes.png used on input line 118
+3.
+(pdftex.def)             Requested size: 435.51514pt x 260.21284pt.
+
+<figures/Screenshot_StudentHome.png, id=1081, 1284.8pt x 505.89pt>
+File: figures/Screenshot_StudentHome.png Graphic file (type png)
+
+<use figures/Screenshot_StudentHome.png>
+Package pdftex.def Info: figures/Screenshot_StudentHome.png used on input line 
+1191.
+(pdftex.def)             Requested size: 435.51514pt x 171.48312pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/Screenshot_StudentTest.png, id=1082, 1284.8pt x 1027.84pt>
+File: figures/Screenshot_StudentTest.png Graphic file (type png)
+
+<use figures/Screenshot_StudentTest.png>
+Package pdftex.def Info: figures/Screenshot_StudentTest.png used on input line 
+1198.
+(pdftex.def)             Requested size: 435.51514pt x 348.41017pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/Screenshot_StudentLearningTest.png, id=1083, 1284.8pt x 1027.84pt>
+File: figures/Screenshot_StudentLearningTest.png Graphic file (type png)
+
+<use figures/Screenshot_StudentLearningTest.png>
+Package pdftex.def Info: figures/Screenshot_StudentLearningTest.png used on inp
+ut line 1205.
+(pdftex.def)             Requested size: 435.51514pt x 348.41017pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/Screenshot_LectorTestCreation.png, id=1084, 1284.8pt x 1008.76875pt>
+File: figures/Screenshot_LectorTestCreation.png Graphic file (type png)
+
+<use figures/Screenshot_LectorTestCreation.png>
+Package pdftex.def Info: figures/Screenshot_LectorTestCreation.png used on inpu
+t line 1212.
+(pdftex.def)             Requested size: 435.51514pt x 341.94554pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/PrintedTest.png, id=1085, 623.32875pt x 836.12375pt>
+File: figures/PrintedTest.png Graphic file (type png)
+
+<use figures/PrintedTest.png>
+Package pdftex.def Info: figures/PrintedTest.png used on input line 1219.
+(pdftex.def)             Requested size: 391.96095pt x 525.77837pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[49 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/MoodleQuestionT
+ypes.png>] [50 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/Scre
+enshot_StudentHome.png> <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/fig
+ures/Screenshot_StudentTest.png>] [51 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELea
+rning/text/figures/Screenshot_StudentLearningTest.png>] [52 <d:/_mb/School/FEL/
+Predmety/A7B36PRO/ELearning/text/figures/Screenshot_LectorTestCreation.png>]
+[53 <d:/_mb/School/FEL/Predmety/A7B36PRO/ELearning/text/figures/PrintedTest.png
+>] [54
 
 ]
 P\v {r}\'{\i }loha F.
-File: figures/MoodleQuestionTypes.eps Graphic file (type eps)
-<figures/MoodleQuestionTypes.eps> [47] [48
-
-]
-P\v {r}\'{\i }loha G.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1014.
-[49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1014.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1229.
+[55]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1229.
 
 (d:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\text\robertsojak_bachelor.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1014.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1014.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1229.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1229.
 
-
-
-Package rerunfilecheck Warning: File `robertsojak_bachelor.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `robertsojak_bachelor.out':
-(rerunfilecheck)             Before: 81B06D1C2F9BEB300BE8507862FB6965;10200
-(rerunfilecheck)             After:  EB0FE86E8166CC7DE8AD023A81CDC264;10303.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `robertsojak_bachelor.out' has not changed.
+(rerunfilecheck)             Checksum: 5D0B52EDBB8867622013273823B0194A;10341.
  ) 
 Here is how much of TeX's memory you used:
- 9389 strings out of 494046
- 132021 string characters out of 3148402
- 300124 words of memory out of 3000000
- 12539 multiletter control sequences out of 15000+200000
+ 11101 strings out of 494045
+ 160989 string characters out of 3148379
+ 384270 words of memory out of 3000000
+ 13850 multiletter control sequences out of 15000+200000
  22253 words of font info for 49 fonts, out of 3000000 for 9000
  719 hyphenation exceptions out of 8191
- 31i,9n,42p,914b,1846s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,10n,42p,1226b,1832s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
+00\ectt1000.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\ectt1200.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\tcrm1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Mr.Bobby\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\M
+r.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk
+> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecrm0800.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkna
+ppen\ec\dpi600\ectt1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecsl1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Mr.Bobby\AppDat
+a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\Mr
+.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk>
+ <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
+\ecbx2074.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
+pen\ec\dpi600\ecrm1095.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX\2.9\fonts\pk
+\ljfour\jknappen\ec\dpi600\ecti1440.pk> <C:\Users\Mr.Bobby\AppData\Local\MiKTeX
+\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Mr.Bobby\AppData
+\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk><D:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/f
+onts/type1/urw/zapfding/uzdr.pfb>
+Output written on robertsojak_bachelor.pdf (73 pages, 1639815 bytes).
+PDF statistics:
+ 1995 PDF objects out of 2073 (max. 8388607)
+ 382 named destinations out of 1000 (max. 500000)
+ 695 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on robertsojak_bachelor.dvi (67 pages, 296028 bytes).

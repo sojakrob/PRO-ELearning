@@ -20,12 +20,12 @@
 \contentsline {subsubsection}{\numberline {2.3.1.3}U\v zivatelsk\'e rozhran\IeC {\'\i }}{7}{subsubsection.2.3.1.3}
 \contentsline {subsection}{\numberline {2.3.2}Moodle}{7}{subsection.2.3.2}
 \contentsline {subsubsection}{\numberline {2.3.2.1}Ot\'azky do test\r u}{7}{subsubsection.2.3.2.1}
-\contentsline {subsection}{\numberline {2.3.3}Studentova berli\v cka}{8}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Studentova Berli\v cka}{8}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Z\'av\v er}{8}{subsection.2.3.4}
 \contentsline {section}{\numberline {2.4}U\v zivatelsk\'e role}{8}{section.2.4}
 \contentsline {section}{\numberline {2.5}P\v r\IeC {\'\i }pady u\v zit\IeC {\'\i }}{9}{section.2.5}
 \contentsline {section}{\numberline {2.6}Formul\'a\v re}{10}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Typy formul\'a\v r\r u}{10}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.1}Typy formul\'a\v r\r u}{11}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}Mo\v znosti nastaven\IeC {\'\i } formul\'a\v r\r u}{11}{subsection.2.6.2}
 \contentsline {section}{\numberline {2.7}Ot\'azky}{12}{section.2.7}
 \contentsline {subsection}{\numberline {2.7.1}Typy ot\'azek}{12}{subsection.2.7.1}
@@ -56,19 +56,20 @@
 \contentsline {subsection}{\numberline {5.3.1}Aplikace}{26}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Datab\'aze}{26}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Pilotn\IeC {\'\i } provoz}{26}{section.5.4}
-\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{27}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\'av\v er}{29}{chapter.7}
-\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{29}{section.7.1}
-\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{29}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Formul\'a\v re}{29}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Ot\'azky}{29}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}E-mailov\'e notifikace}{29}{subsection.7.2.3}
-\contentsline {section}{\numberline {7.3}Porovn\'an\IeC {\'\i } ASP.NET MVC a ASP.NET Web Forms}{29}{section.7.3}
-\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{33}{appendix.A}
-\contentsline {chapter}{\numberline {B}UML}{35}{appendix.B}
-\contentsline {section}{\numberline {B.1}Popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{35}{section.B.1}
-\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{39}{appendix.C}
-\contentsline {chapter}{\numberline {D}U\v zivatelsk\'a p\v r\IeC {\'\i }ru\v cka}{43}{appendix.D}
-\contentsline {chapter}{\numberline {E}Unity Application Block tutori\'al}{45}{appendix.E}
-\contentsline {chapter}{\numberline {F}Obrazov\'a p\v r\IeC {\'\i }loha}{47}{appendix.F}
-\contentsline {chapter}{\numberline {G}Obsah p\v rilo\v zen\'eho CD}{49}{appendix.G}
+\contentsline {subsection}{\numberline {5.4.1}Testovac\IeC {\'\i } port\'al}{27}{subsection.5.4.1}
+\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{29}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\'av\v er}{31}{chapter.7}
+\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{31}{section.7.1}
+\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{32}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Formul\'a\v re}{32}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Ot\'azky}{32}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Skripta}{32}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Reportov\'an\IeC {\'\i } v\'ysledk\r u formul\'a\v re}{32}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.5}E-mailov\'e notifikace}{32}{subsection.7.2.5}
+\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{35}{appendix.A}
+\contentsline {chapter}{\numberline {B}UML}{37}{appendix.B}
+\contentsline {section}{\numberline {B.1}Popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{37}{section.B.1}
+\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{41}{appendix.C}
+\contentsline {chapter}{\numberline {D}Unity Application Block tutori\'al}{45}{appendix.D}
+\contentsline {chapter}{\numberline {E}Obrazov\'a p\v r\IeC {\'\i }loha}{49}{appendix.E}
+\contentsline {chapter}{\numberline {F}Obsah p\v rilo\v zen\'eho CD}{55}{appendix.F}

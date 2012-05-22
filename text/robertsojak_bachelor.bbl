@@ -1,9 +1,25 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[AJA()]{AJAX}
+AJAX -- technologie pro vývoj interaktivních webových aplikací.
+\newblock Dostupn{\'{e}} z:
+  \url{http://en.wikipedia.org/wiki/Ajax_(programming)}.
+\newblock stav k 22.5.2012.
+
+\bibitem[ASP({\natexlab{a}})]{ASPNETOfficial}
+ASP.NET -- Oficiální stránky, {\natexlab{a}}.
+\newblock Dostupn{\'{e}} z: \url{http://www.asp.net/}.
+\newblock poslední návštìva 22.5.2012.
+
+\bibitem[ASP({\natexlab{b}})]{ASPNETOfficial3Approaches}
+ASP.NET -- Informace o možnostech vývoje, {\natexlab{b}}.
+\newblock Dostupn{\'{e}} z: \url{http://www.asp.net/get-started}.
+\newblock poslední návštìva 22.5.2012.
 
 \bibitem[Goo()]{GoogleDataAPI}
 Google Data API .NET Client Library -- .NET knihovna pro využití Google API.
@@ -20,6 +36,11 @@ SQL Server Profiler -- nástroj pro sledování dotazù do databáze.
 \newblock Dostupn{\'{e}} z:
   \url{http://technet.microsoft.com/cs-cz/library/ms181091(v=sql.100).aspx}.
 \newblock stav k 20.5.2012.
+
+\bibitem[Sel()]{Selenium}
+Selenium -- balík nástrojù pro automatizaci testù skrze webové prohlížeèe.
+\newblock Dostupn{\'{e}} z: \url{http://seleniumhq.org/}.
+\newblock poslední návštìva 15.5.2012.
 
 \bibitem[Fink()]{HowToUseUnityContainer}
 FINK, G.
@@ -75,6 +96,13 @@ SALVAT, J.
 \newblock MarkItUp! -- univerzální znaèkovací jQuery editor.
 \newblock Dostupn{\'{e}} z: \url{http://markitup.jaysalvat.com/home/}.
 \newblock stav k 17.5.2012.
+
+\bibitem[Tordeur()]{ASPNETMVCandUnity}
+TORDEUR, K.
+\newblock ASP.NET MVC and Unity.
+\newblock Dostupn{\'{e}} z:
+  \url{http://blogs.realdolmen.com/experts/2011/04/23/asp-net-mvc-and-unity/}.
+\newblock poslední návštìva 16.4.2012.
 
 \bibitem[Výèet typù otázek Moodle()]{MoodleVycetTypuOtazek}
 Výèet typù otázek Moodle.

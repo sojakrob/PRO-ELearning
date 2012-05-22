@@ -2,30 +2,35 @@
 \select@language {czech}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Hlavn\IeC {\'\i } str\'anka Google Dokument\r u}}{5}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Uk\'azka Google Formul\'a\v re: tvorba vlevo, v\'ysledek vpravo}}{6}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Diagram u\v zit\IeC {\'\i }}}{9}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Stavov\'y diagram formul\'a\v re}}{11}{figure.2.4}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Hlavn\IeC {\'\i } str\'anka Google Dokument\r u}}{5}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Uk\'azka Google Formul\'a\v re: tvorba vlevo, v\'ysledek vpravo}}{6}{figure.caption.7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Diagram u\v zit\IeC {\'\i }}}{9}{figure.caption.8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Stavov\'y diagram formul\'a\v re}}{11}{figure.caption.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Architektura syst\'emu}}{13}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Meta model}}{14}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces N\'avrhov\'y model datov\'e vrstvy}}{15}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces BusinessPackages}}{16}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Architektura MVC}}{17}{figure.3.5}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architektura syst\'emu}}{13}{figure.caption.12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Meta model}}{14}{figure.caption.13}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces N\'avrhov\'y model datov\'e vrstvy}}{15}{figure.caption.14}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Bal\IeC {\'\i }\v cky business vrstvy}}{16}{figure.caption.15}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Architektura MVC}}{17}{figure.caption.16}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Entity Data Model}}{20}{figure.4.1}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagram nasazen\IeC {\'\i }}}{27}{figure.6.1}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Entity Data Model}}{20}{figure.caption.17}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Uk\'azka neopr\'avn\v en\'eho p\v r\IeC {\'\i }stupu}}{24}{figure.caption.18}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Volba konfigurace pro nasazen\IeC {\'\i }}}{39}{figure.C.1}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Nastaven\IeC {\'\i } datab\'azov\'eho projektu}}{40}{figure.C.2}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Diagram pro publikov\'an\IeC {\'\i } aplikace}}{41}{figure.C.3}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagram nasazen\IeC {\'\i }}}{29}{figure.caption.19}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {F.1}{\ignorespaces Typy ot\'azek v syst\'emu Moodle~\cite {MoodleVycetTypuOtazek}}}{47}{figure.F.1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Volba konfigurace pro nasazen\IeC {\'\i }}}{41}{figure.caption.21}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Nastaven\IeC {\'\i } datab\'azov\'eho projektu}}{42}{figure.caption.22}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Dialog pro publikov\'an\IeC {\'\i } aplikace}}{43}{figure.caption.23}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Typy ot\'azek v syst\'emu Moodle}}{49}{figure.caption.24}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Screenshot aplikace -- Hlavn\IeC {\'\i } str\'anka studenta}}{50}{figure.caption.25}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Screenshot aplikace -- Vypl\v nov\'an\IeC {\'\i } testu}}{50}{figure.caption.26}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Screenshot aplikace -- Vypl\v nov\'an\IeC {\'\i } nau\v cn\'eho testu}}{51}{figure.caption.27}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Screenshot aplikace -- Tvorba formul\'a\v re lektorem}}{52}{figure.caption.28}
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Uk\'azka tisku pap\IeC {\'\i }rov\'e verze formul\'a\v re}}{53}{figure.caption.29}
 \addvspace {10\p@ }

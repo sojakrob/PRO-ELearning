@@ -13,6 +13,7 @@
 \usepackage{array}
 \usepackage{footmisc}
 \usepackage{url}
+\usepackage{caption}
 
 \usepackage{k336_thesis_macros}
 
@@ -22,7 +23,7 @@
 {
 language=CSharp,
 classoffset=2,
-morekeywords={ActionResult, UserTypes, AuthorizeUserType, PermissionException, UserPermissions, Form, ArgumentException, ArgumentNullException, UserPermissions, StudentPermissions, LectorPermissions, AdministratorPermissions, IUnityContainerAccessor, IUnityContainer}
+morekeywords={ActionResult, UserTypes, AuthorizeUserType, PermissionException, UserPermissions, Form, ArgumentException, ArgumentNullException, UserPermissions, StudentPermissions, LectorPermissions, AdministratorPermissions, IUnityContainerAccessor, IUnityContainer, MvcApplication, HttpApplication, UnityContainerFactory, ControllerBuilder, UnityControllerFactory, DefaultControllerFactory, IController, Type, RequestContext, IAuthenticationContext, WebAuthenticationContext, Dependency}
 }
 
 \newcommand\TypeOfWork{Bakaláøská práce}  \typeout{Bakalarska prace}
@@ -84,18 +85,19 @@ unicode=true,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%    Podekovani / Acknowledgements 
 
 \acknowledgements
-\noindent
 
+\noindent
+Na tomto místì bych chtìl podìkovat své rodinì za neustálou podporu pøi studiu. Dále dìkuji Ing. Ondøeji Mackovi za vedení práce, hlavnì za pravidelné podnìtné konzultace a poskytnutí zadání tohoto zajímavého projektu.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%   Prohlaseni / Declaration 
 
-\declaration{V~Praze dne }
+\declaration{V~Praze dne 24.\,5.\,2012}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%    Abstract 
  
 \abstractpage
 
-
+This thesis deals with the analysis, development and testing of e-learning system to support teaching. The emphasis is on creating and filling tests with a special type added, a learning test. The portal also cooperates with some Google services, such as Docs and Groups. Result of the work is a web application to be used for education by non-profit organization and for teaching in high school.
 
 \vglue60mm
 \noindent{\Huge \textbf{Abstrakt}}
@@ -103,6 +105,7 @@ unicode=true,
 
 \noindent
 
+Tato práce se zabıvá analızou, vıvojem a následnım testováním e-learningového systému pro podporu vıuky. Dùraz je kladen na tvorbu a vyplòování testù s pøidanım speciálním typem, nauènım testem. Portál také spolupracuje s nìkterımi Google slubami, jako jsou Dokumenty a Skupiny. Vısledkem práce je webová aplikace pro vyuití ve vzdìlávací neziskové organizaci a k vıuce na støední škole.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Obsah / Table of Contents 
 
@@ -135,49 +138,50 @@ unicode=true,
 
 Tento projekt e-learningového\footnote{Vzdìlávání za pomoci moderních elektronickıch informaèních a komunikaèních technologií} systému vznikl na základì poptávky neziskové organizace. Má slouit jako nástroj pro nauèné testování úèastníkù (dále \textit{studentù}) kurzù, které organizace poøádá.
 
-V souèasné dobì organizace vyuívá pro testování Google Formuláøù\footnote{Názvem Google Formuláø zde znaèím formuláø tabulkového procesoru z rodiny Google Dokumentù} \cite{GoogleDocuments} s testovımi otázkami, kde student vybírá právì jednu odpovìï z nìkolika monıch. Skrze automaticky generovanou tabulku odpovìdí jednotlivıch studentù je sice koordinátor kurzu (dále \textit{lektor}) schopen vyhodnotit správnost odpovìdí, ale to je vše, co mu aplikace Formuláøù umoòuje. Vısledky je nucen ruènì vyhodnotit a danému studentovi nastínit správné odpovìdi nebo alespoò odkázat na související kapitolu v uèebním materiálu (dále \textit{skripta}).
+V souèasné dobì organizace vyuívá pro testování Google Formuláøù\footnote{Názvem Google Formuláø zde znaèím formuláø tabulkového procesoru z rodiny Google Dokumentù} \cite{GoogleDocuments} s testovımi otázkami, kde student vybírá právì jednu odpovìï z nìkolika monıch. Skrze automaticky generovanou tabulku odpovìdí jednotlivıch studentù je sice koordinátor kurzu (dále \textit{lektor}) schopen vyhodnotit správnost odpovìdí, ale to je vše, co mu aplikace Formuláøù umoòuje. Vısledky je lektor nucen ruènì vyhodnotit a danému studentovi nastínit správné odpovìdi nebo ho alespoò odkázat na související kapitolu v uèebním materiálu (dále \textit{skripta}).
 
 Pro kategorizaci studentù a pøíslušnıch lektorù je v organizaci vyuito Google Skupin.
 
 \section{Cíl projektu}
 
-Cílem projektu je vyvinout portál pro podporu vıuky. Hlavní funkcionalitou by mìla bıt tvorba a vyplòování nauènıch testù urèenıch skupinám studentù. Systém by mìl také podporovat tvorbu a správu elektronickıch skript.
+Cílem projektu je vyvinout portál pro podporu vıuky. Jeho hlavní funkcí by mìla bıt tvorba a vyplòování nauènıch testù urèenıch skupinám studentù. Systém by mìl také podporovat tvorbu a správu elektronickıch skript.
 
-Jakoto bakaláøská práce by mìl projekt také ukázat mou schopnost samostatnì øešit danı problém. Chtìl bych pøedvést nabyté znalostí a schopnost vyuít moderní technologie pøi jeho realizaci.
+Jakoto bakaláøská práce by mìl projekt také ukázat mou schopnost samostatnì øešit danı problém a ukázát, jak umím uplatnit nabyté znalosti a vyuít moderních technologií pøi jeho realizaci.
 
 \section{Vyuití}
 
-Vıslednı systém by mìl bıt nasazen do zmínìné poptávající neziskové organizace.
+Vıslednı systém by mìl bıt vyuit ve zmínìné poptávající neziskové organizace.
 
 Má ale i širší vyuití, protoe dává za vznik univerzálnímu e-learningovému portálu. Systém nauènıch testù (rozebrán ve~\ref{sec:Popis problému} a~\ref{sec:Typy formuláøù}) je zde svım zpùsobem originální a odlišuje portál od ostatních aplikací tohoto typu.
 
 Já osobnì bych chtìl portál vyuít jako nástroj pro podporu vıuky studentù informatiky na gymnáziu, kde pùsobím jako uèitel. Oèekávám od nìj efektivní pomoc pøi tvorbì a známkování testù a sdílení studijních materiálù.
 
-Mùe bıt pøínosem i pro další pøedmìty jako jednoduše ovladatelnı nástroj pro tvorbu tištìnıch testù èi dotazníkù, které jsou povìtšinou tìkopádnì tvoøeny v textovém procesoru. Nastavil by se tím i jednotnı vzhled, kterı má kadı kantor odlišnı.
+Mùe bıt pøínosem i pro další pøedmìty jako jednoduše ovladatelnı nástroj pro tvorbu tištìnıch testù èi dotazníkù, které jsou vìtšinou tìkopádnì tvoøeny v textovém procesoru. Nastavil by se tím i jednotnı vzhled, kterı má kadı kantor odlišnı.
 
 \section{Obsah práce}
 
-V této práci se dále vìnuji analıze vısledného systému, kde ukazuji svùj postup pøi shromaïování poadavkù, rešerši podobnıch systémù a promıšlení celkové funkcionality. Poté zde pøedstavuji návrh architektury systému a potøebnıch entit. Na to navazuji popisem implementace, kde zmiòuji nìkteré postupy a konkrétní øešení nìkterıch èástí aplikace. Vìnuji se také testování a nasazení hotového portálu. Nakonec uvádím moná rozšíøení a celkové zhodnocení.
+V této práci se nejprve vìnuji analıze vısledného systému, kde ukazuji svùj postup pøi shromaïování poadavkù, rešerši podobnıch systémù a promıšlení celkové funkcionality. Poté zde pøedstavuji návrh architektury systému a potøebnıch entit. Na to navazuji popisem implementace, kde zmiòuji nìkteré postupy a konkrétní øešení nìkterıch èástí aplikace. Poté se vìnuji testování a nasazení hotového portálu. Nakonec uvádím moná rozšíøení a celkové zhodnocení.
  
 
 %*****************************************************************************
 \chapter{Analıza}
 \label{chp:Analıza}
 
-Pøi analıze zde nejdøíve shromaïuji a popisuji poadavky na vıslednı systém. Poté se vìnuji rešerši ji existujících systémù, abych získal pøehled, co v souèasné dobì nabízejí a jak vypadají. To napomáhá k jasnìjšímu pohledu na moná øešení pro splnìní danıch poadavkù. Dále rozebírám konkrétní øešení mého systému.
+V této kapitole nejdøíve shromaïuji a popisuji poadavky na vıslednı systém. Poté se vìnuji rešerši ji existujících systémù, abych získal pøedstavu, co v souèasné dobì nabízejí a jak vypadají. To napomùe k jasnìjšímu pohledu na moná øešení pro splnìní danıch poadavkù. Dále rozebírám konkrétní øešení mého systému.
 
 \section{Popis problému}
 \label{sec:Popis problému}
 
-Jak ji vyplıvá z úvodu, organizace potøebuje aplikaci pro tvorbu, vyplnìní, okamité vyhodnocení a okomentování testù. Ty zde znaèím jako \textit{nauèné testy}.
+Jak ji vyplynulo z úvodu, organizace potøebuje aplikaci pro tvorbu, vyplnìní, okamité vyhodnocení a okomentování testù. Ty zde znaèím jako \textit{nauèné testy}.
 
 Lektor kurzu vytvoøí šablonu testu s otázkami o nìkolika monıch odpovìdích. Ke kadé otázce by mìl mít monost napsat slovní komentáø, ve kterém mùe nastínit, proè je daná odpovìï správnì nebo špatnì a pøípadnì odkázat na studijní materiál, kterı danou problematiku vysvìtluje. Kadá otázka k sobì mùe vázat otázky alternativní, které test inovují pøi vyplòování stejného testu vícekrát.
 
-Student by mìl mít vdy pøehled o dostupnıch testech, které jsou urèené pro kurzy, do nich je zaøazen. Po konkrétním vıbìru se pro nìj test vygeneruje z dostupnıch otázek a jejich alternativ. Vdy, kdy testovanı oznaèí svou odpovìï, zobrazení se vysvìtlení správné odpovìdi a dojde k jejímu viditelnému zvıraznìní. Po vyplnìní celého testu èi pouze jeho èásti má student monost odeslat svùj vısledek nadøízenému lektorovi. Ten má ve vısledku pøehled, jak na tom jeho svìøenci se znalostmi jsou.
+Student by mìl mít vdy pøehled o dostupnıch testech, které jsou urèené pro kurzy, do nich je zaøazen. Po konkrétním vıbìru se pro nìho test vygeneruje z dostupnıch otázek a jejich alternativ. Vdy, kdy testovanı oznaèí svou odpovìï, zobrazení se vysvìtlení správné odpovìdi a dojde k jejímu viditelnému zvıraznìní. Po vyplnìní celého testu èi pouze jeho èásti má student monost odeslat svùj vısledek nadøízenému lektorovi. Ten má ve vısledku pøehled, jak na tom jeho svìøenci se znalostmi jsou.
 
 \section{Poadavky na systém}
+\label{sec:Poadavky na systém}
 
-Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zadávající organizace (\ref{sec:Popis problému}) a rozšiøujících poadavkù. Rozšiøující poadavky byly sestaveny na základì obecnıch poadavkù na systém takového typu a inspirací zmínìnıch v rešerši v následující sekci~\ref{sec:Rešerše existujících øešení}. Díky tìmto rozšiøujícím poadavkùm by mìl vzniknout zmínìnı komplexnìjší univerzální e-learningovı systém.
+Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zadávající organizace (\ref{sec:Popis problému}) a z rozšiøujících poadavkù. Rozšiøující poadavky byly sestaveny na základì obecnıch poadavkù na systém takového typu a z inspirací zmínìnıch v rešerši v následující sekci~\ref{sec:Rešerše existujících øešení}. Díky tìmto rozšiøujícím poadavkùm by mìl vzniknout zmínìnı komplexnìjší univerzální e-learningovı systém.
 
 \subsection{Poadavky zadavatele}
 \label{subs:Poadavky zadavatele}
@@ -187,9 +191,9 @@ Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zad
 \begin{enumerate}[FP1.] \setlength\itemindent{15pt}
 \item Tvorba testù s vıbìrovımi otázkami s právì jednou správnou odpovìdí
 \item Zobrazení vısledku testu a~monost jeho odeslání lektorovi kurzu
-\item Kadá otázka mùe sestávat z nìkolika variací
+\item Kadá otázka mùe sestávat z nìkolika variant
 \label{FP:Kadá otázka mùe sestávat z nìkolika variací}
-\item Náhodnı vıbìr variace otázky pøi generování testu
+\item Náhodnı vıbìr varianty otázky pøi generování testu
 \item Zobrazení komentáøe k~právì zodpovìzené otázce (cca odstavcovı)
 \label{FP:Zobrazení komentáøe k právì zodpovìzené otázce (cca odstavcovı)}
 \item Neomezenı poèet moností danı test opakovat dokud nebude zodpovìzen správnì
@@ -200,7 +204,7 @@ Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zad
 \subsubsection{Nefunkèní poadavky}
 
 \begin{enumerate}[NP1.] \setlength\itemindent{15pt}
-\item Jednoduché ovládání, pochopitelné pro bìného uivatele i bez zaškolení
+\item Jednoduché ovládání, zvládnutelné bìnım uivatelem i bez zaškolení
 \label{NP:Jednoduché ovládání, pochopitelné pro bìného uivatele i bez zaškolení}
 \newcounter{NPEnum} \setcounter{NPEnum}{\theenumi}
 \end{enumerate}
@@ -233,18 +237,18 @@ Poadavky na vıslednı e-learningovı systém sestávají ze základních poadavkù zad
 \section{Rešerše existujících øešení}
 \label{sec:Rešerše existujících øešení}
 
-Rešerši existujících øešení e-learningovıch a tvorbou formuláøù zabıvajících se aplikací jsem neprovádìl za úèelem nalezení kandidáta na rozšíøení o poadovanou funkcionalitu. Rešerši zde uvádím s cílem prozkoumat dostupná øešení, zjistit co poskytují za sluby a tøeba je vyuít pro inspiraci. Projekt byl ji od zaèátku zamıšlen pro vznik takøíkajíc na zelené louce. Jedním z dùvodù je funkcionalita speciálního nauèného testu (\ref{sec:Popis problému},~\ref{sec:Typy formuláøù}). Dalším dùvodem je poadavek na jednoduché ovládaní a zkušenost uivatelù ze zadávající spoleènosti s prostøedím Google Formuláøù. Hlavním dùvodem je ale myslím moje snaha zapojit do vıvoje znalosti softwarového inenırství a touha vytvoøit si systém vlastní. Nechtìl jsem jen vybrat z pøedpøipraveného øešení s hotovou architekturou a pøibalit k ní plugin pro práci s nauènımi testy.
+Rešerši existujících øešení e-learningovıch a tvorbou formuláøù zabıvajících se aplikací jsem neprovádìl za úèelem nalezení kandidáta na rozšíøení o poadovanou funkcionalitu. Rešerši zde uvádím s cílem prozkoumat dostupná øešení, zjistit co poskytují za sluby a pøípadnì je vyuít pro inspiraci. Projekt byl ji od zaèátku zamıšlen pro vznik \uv{na zelené louce}. Jedním z dùvodù je funkcionalita speciálního nauèného testu (\ref{sec:Popis problému},~\ref{sec:Typy formuláøù}). Dalším dùvodem je poadavek na jednoduché ovládaní a zkušenost uivatelù ze zadávající spoleènosti s prostøedím Google Formuláøù. Hlavním dùvodem je ale myslím moje snaha zapojit do vıvoje znalosti softwarového inenırství a touha vytvoøit si systém vlastní. Nechtìl jsem jen vybrat z pøedpøipraveného øešení s hotovou architekturou a pøibalit k ní plugin pro práci s nauènımi testy.
 
 \subsection{Google Formuláøe}
 
 Jako Google Formuláø v této bakaláøské práci znaèím formuláø tabulkového procesoru z balíku Google Dokumenty~\cite{GoogleDocuments} (na Obr.~\ref{fig:Hlavní stránka Google Dokumentù}). Pomocí poskytovaného nástroje je uivateli umonìno vytvoøit vlastní formuláø z nìkolika monıch formuláøovıch prvkù. Hotovı formuláø lze  poté zveøejnit (zcela nebo jen pro urèitı okruh uivatelù) a nechat jej vyplnit. Odpovìdi jsou automaticky zapisovány do tabulky, kde jsou spolu s dalšími informacemi (napø. datum a èas vyplnìní) pøipravené pro další analızu.
 
-Základní myšlenka tohoto projektu vychází právì z Google Formuláøù (lidé od zadavele jsou na nì zvyklí), proto zde jejich rozebrání vìnuji více prostoru.
+Základní myšlenka tohoto projektu vychází právì z Google Formuláøù (lidé od zadavele jsou na nì zvyklí), proto zde jejich rozboru vìnuji více prostoru.
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/GoogleDocs}
-\caption{Hlavní stránka Google Dokumentù}
+\caption[Hlavní stránka Google Dokumentù]{Hlavní stránka Google Dokumentù -- zde je vidìt pøehlednı layout a design stránek}
 \label{fig:Hlavní stránka Google Dokumentù}
 \end{center}
 \end{figure}
@@ -252,7 +256,7 @@ Základní myšlenka tohoto projektu vychází právì z Google Formuláøù (lidé od zada
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/GoogleFormsSampleForm}
-\caption{Ukázka Google Formuláøe: tvorba vlevo, vısledek vpravo}
+\caption[Ukázka Google Formuláøe: tvorba vlevo, vısledek vpravo]{Ukázka Google Formuláøe: tvorba formuláøe vlevo, vısledek je vidìt vpravo}
 \label{fig:Ukázka Google Formuláøe}
 \end{center}
 \end{figure}
@@ -270,10 +274,10 @@ Následuje vıèet otázek, které lze na Google Formuláø umístit, a pouitelnost dan
 %TODO dopsat pouzitelnost:
 
 \begin{description}
-\item[Text] Krátkı text, tázanı uivatel zapisuje odpovìï do krátkého pole input\footnote{Formuláøovı element HTML}, které u dále nemìní svou velikost.
-\item[Text odstavce] Pro tázaného zobrazen jako textarea, která se pøizpùsobuje délce zapisovaného textu.
+\item[Text] Krátkı text, kde tázanı uivatel zapisuje odpovìï do krátkého pole input\footnote{Formuláøovı element HTML}, které u dále nemìní svou velikost.
+\item[Text odstavce] Pro tázaného je zobrazen jako textarea, která se pøizpùsobuje délce zapisovaného textu.
 \item[Více moností] Jednoduchı vıèet pomocí radio buttonù pro vıbìr jedné odpovìdi.
-\item[Zaškrtávací políèka] Vıèet pomocí checkboxù, monost vybrat ádnou èi více odpovìdí.
+\item[Zaškrtávací políèka] Vıèet pomocí checkboxù, je moné vybrat ádnou èi více odpovìdí.
 \item[Vyberte ze seznamu] Zobrazí uivateli combo box s vıètem moností. Vlastnì stejná funkènost jako Více moností, ale zabírá ménì místa, jednotlivé odpovìdi nejsou stále vidìt.
 \item[Mìøítko] Umoòuje zvolení hodnoty ze zvoleného rozsahu, napøíklad 1--5. Tázanému je vıbìr umonìn pomocí radio buttonù.
 \item[Møíka] V podobì tabulky dává monost zvolit pro kadı øádek jednu hodnotu umístìnou ve sloupcích. Je zde ale omezení, sloupcù mùe bıt max. 5 a pro jeden øádek nelze umonit zvolení více hodnot najednou.
@@ -286,7 +290,7 @@ Protoe uivatelé zadavatele jsou ji zvyklí na rozhraní Google Dokumentù (na ob
 \subsection{Moodle}
 \label{sec:Moodle}
 
-Moodle~\cite{MoodleORG} je asi nejznámìjší a celosvìtovì rozšíøené prostøedí pro elektronickou podporu vıuky. Je to soubor mnoha modulù, které lze vyuít pro sestavení a nasazení vlastního vıukového portálu. K dispozici je jako open source pod GNU GPL\footnote{GNU General Public Licence, èesky všeobecná veøejná licence GNU} licencí.
+Moodle~\cite{MoodleORG} je asi nejznámìjší, celosvìtovì rozšíøené prostøedí pro elektronickou podporu vıuky. Je to soubor mnoha modulù, které lze vyuít pro sestavení a nasazení vlastního vıukového portálu. K dispozici je jako open source pod GNU GPL\footnote{GNU General Public Licence, èesky všeobecná veøejná licence GNU} licencí.
 
 Jeho moduly umí snad vše, co se od takového systému oèekává -- od distribuce studijních materiálù pøes tvorbu a vyhodnocování testù po diskuzní fóra. Jakékoli další moduly lze samozøejmì doprogramovat.
 
@@ -300,7 +304,7 @@ Ve vyvíjeném e-learningovém systému se mi ale takovı zpùsob nezdá bıt pøínosem. 
 
 Systém obsahuje velké mnoství typù otázek, které vlastnì rozšiøují základní bìnì pouívanou mnoinu o specifiètìjší (jako napø. spojování). Vıèet pøikládám v pøíloze \ref{fig:Typy otázek v systému Moodle}.
 
-\subsection{Studentova berlièka}
+\subsection{Studentova Berlièka}
 
 Studentova Berlièka je jeden z projektù studentù ÈVUT FEL. Jedná se o informaèní systém pro podporu vıuky na škole. Vıvoj zaèal bakaláøskou prací \cite{StudentovaBerlickaI} v roce 2007 a poté byl systém dále rozvíjen a obohacován o další funkcionalitu. Zamìøil jsem se na modul pro generování testù \cite{StudentovaBerlicka_ModulProGenerovaniTestu}.
 
@@ -317,18 +321,18 @@ Zajímavé je zde øešení postupu pøi tvorbì jednotlivıch otázek. Otázka se mùe na
 
 Jak je ji z vıètu stavù zøejmé, proces tvorby je uzpùsoben pro kooperaci více uivatelù, napøíklad cvièících a pøednášejícího. Cvièící pøipravují otázky, které následnì pøednášející schvaluje. 
 
-Aèkoli je tento postup tvorby otázek pro vysokou školu urèitì ádoucí, pro mnou vyvíjenı systém by byl nadbyteènı. V doménì uivatelù poèítám s jedním vedoucím skupiny, kterı testové otázky sám vytváøí. Z tohoto dùvodu také v systému neøeším moné kolize pøi editování více uivateli naráz, co v tomto modulu Studentovi berlièky øešeno je.
+Aèkoli je tento postup tvorby otázek pro vysokou školu urèitì ádoucí, pro mnou vyvíjenı systém by byl nadbyteènı. V doménì uivatelù poèítám s jedním vedoucím skupiny, kterı testové otázky sám vytváøí. Z tohoto dùvodu také v systému neøeším moné kolize pøi editování více uivateli naráz, co v tomto modulu Studentovy Berlièky øešeno je.
 
 \subsection{Závìr}
 
-V této sekci jsem popsal nìkteré systémy, které jsem prostudoval za úèelem zjištìní nabízenıch slueb a zpùsobu jejich realizace. Hlavní inspirací pro základ e-learningového systému jsou pro mì Google Formuláøe. Obsahují všechny základní typy otázek potøebné pro vytváøení formuláøù a jsou jednoduše ovladatelné. Naproti tomu Moodle mi ukazuje portál, kterému bych se blíit nechtìl. Obsahuje velké mnoství rùznıch funkcí, kterıch by v mé cílové skupinì vyuilo moná procento uivatelù. Navíc je pro nì podle mì dosti sloitı na ovládání.
+V této sekci jsem popsal nìkteré systémy, které jsem prostudoval za úèelem zjištìní nabízenıch slueb a zpùsobu jejich realizace. Hlavní inspirací pro základ e-learningového systému jsou pro mì Google Formuláøe. Obsahují všechny základní typy otázek potøebné pro vytváøení formuláøù a jsou jednoduše ovladatelné. Naproti tomu Moodle mi ukazuje portál, kterému bych se blíit nechtìl. Obsahuje velké mnoství rùznıch funkcí, kterıch by v mé cílové skupinì vyuilo moná procento uivatelù. Navíc je pro nì podle mne dosti sloitı na ovládání.
 
 \section{Uivatelské role}
 
 Uivatelské role potøebné v systému jasnì plynou ji ze zadání, jsou to tyto tøi role:
 
 \begin{description}
-\item[Student] Pøedstavuje úèastníka kurzu z domény zadavatele a obecnì studenta vyuívajícího e-learningového systému. Z hlediska práv v aplikaci je na nejniší úrovni, tzn. všechny jeho akce se vztahují pouze k nìmu samotnému. Mezi akce patøí napøíklad vyplòování testù dostupné pro jeho skupinu a prohlíení vısledkù svıch testù (více v sekci~\ref{sec:Pøípady uití}).
+\item[Student] Pøedstavuje úèastníka kurzu z domény zadavatele a obecnì studenta vyuívajícího e-learningového systému. Z hlediska práv v aplikaci je na nejniší úrovni, tzn. všechny jeho akce se vztahují pouze k nìmu samotnému. Mezi akce patøí napøíklad vyplòování testù dostupné pro jeho skupinu a prohlíení si vısledkù svıch testù (více v sekci~\ref{sec:Pøípady uití}).
 \item[Lektor] Lektorem je koordinátor kurzu z domény zadavatele, vedoucí jedné èi více skupin (neboli \textit{kurzù}). Obecnì se tedy jedná o uèitele studentù, kterı má na starost tvorbu testù pro jeho skupiny a jejich následné ohodnocení.
 \item[Administrátor] Uivatelská role známá asi ze všech systémù. Je to správce celého portálu a supervizor lektorù. Jako takovı má práva všech lektorù a k tomu dostupnou funkcionalitu pro administraci aplikace vèetnì pøidávání uivatelù a tvorby skupin.
 \end{description}
@@ -341,7 +345,7 @@ Na diagramu~\ref{fig:Diagram uití} jsou zachyceny základní operace provádìné u
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/UseCaseDiagram}
-\caption{Diagram uití}
+\caption[Diagram uití]{Diagram uití -- zachycuje základní operace provádìné aktéry v danıch rolích}
 \label{fig:Diagram uití}
 \end{center}
 \end{figure}
@@ -354,7 +358,7 @@ Pøihlásit se do systému & \cross & \cross \\
 Odhlásit se ze systému & & \cross \\
 Zobrazit formuláøe & & \cross \\
 Vytvoøit novı formuláø & \cross & \cross \\
-Upravit existující formuláø & & \\
+Upravit existující formuláø & & \cross \\
 Pøídat/zmìnit/smazat otázku & \cross & \\
 Pøiøadit formuláø skupinì & & \cross \\
 Exportovat vısledky formuláøe & \cross & \\
@@ -370,7 +374,7 @@ Vytvoøit skupinu & & \\
 Pøídat lektora do systému & & \\ \bhline
 \end{tabular}
 \end{center}
-\caption{Rozpis pouitıch definic pro jednotlivé pøípady uití}
+\caption[Rozpis pouitıch definic pro jednotlivé pøípady uití]{Rozpis pouitıch definic pro jednotlivé pøípady uití -- nìkteré pøípady jsou definovány textovım popisem, nìkteré scénáøi Selenium testù}
 \label{tab:TabulkaPøípadùUití}
 \end{table}
 
@@ -388,15 +392,21 @@ Mezi další monosti, které formuláøe obsahují, patøí napøíklad nastavení èasovéh
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{figures/FormStateDiagram}
-\caption{Stavovı diagram formuláøe}
+\caption[Stavovı diagram formuláøe]{Stavovı diagram formuláøe zobrazující jeho ivotní cyklus}
 \label{fig:Stavovı diagram formuláøe}
 \end{center}
 \end{figure}
 
+\pagebreak
+
 \subsection{Typy formuláøù}
 \label{sec:Typy formuláøù}
 
+\nopagebreak[0]
+
 Základní mnoinu formuláøù systému tvoøí tyto tøi typy:
+
+\nopagebreak[0]
 
 \begin{description}
 \item[Nauènı test] Je to netradièní typ testu vycházející z poadavkù zadavatele. Ke kadé otázce je moné pøidat vysvìtlení správné odpovìdi (FP\ref{FP:Zobrazení komentáøe k právì zodpovìzené otázce (cca odstavcovı)}), které je vyplòujícímu studentovi zobrazeno po oznaèení odpovìdi, kterou povauje za správnou. Test tedy plní dvì funkce, vypovídá o souèasnıch znalostech studenta a jeho pøipravenosti na monı zkouškovı test. Zároveò ho opravuje a smìruje správnou cestou. Test je moné vyplnit vícekrát. Díky alternativním otázkám (FP\ref{FP:Kadá otázka mùe sestávat z nìkolika variací}) není pokadé stejnı.
@@ -420,7 +430,7 @@ Vysvìtlení správné odpovìdi & \tick & \cross & \cross \\ \hline
 Monost vyplnit vícekrát & \tick & \tick & \cross \\ \bhline
 \end{tabular}
 \end{center}
-\caption{Monosti chování formuláøù}
+\caption[Monosti chování formuláøù]{Monosti nastavení chování formuláøù systému}
 \label{tab:Monosti chování formuláøù}
 \end{table}
 
@@ -435,7 +445,7 @@ Monost duplikace otázek je zavedena hlavnì kvùli vıbìrovım otázkám \ref{item:Vı
 
 \subsection{Typy otázek}
 
-Mnoina typù jednotlivıch otázek je sestavena z potøeby zadavatele, èím je otázka vıbìrová, a základních potøeb univerzálního e-learningového systému. Mnoina tedy obsahuje 5 typù otázek, z èeho 3 typy jsou základní. Moné další  otázky vhodné pro rozšíøení systému jsou nastínìny v sekci~\ref{sec:Moná rozšíøení sub:Otázky}.
+Mnoina typù jednotlivıch otázek je sestavena z potøeby zadavatele, tou je otázka vıbìrová, a ze základních potøeb univerzálního e-learningového systému. Mnoina tedy obsahuje 5 typù otázek, z èeho 3 typy jsou základní. Moné další  otázky vhodné pro rozšíøení systému jsou nastínìny v sekci~\ref{sec:Moná rozšíøení sub:Otázky}.
 
 \begin{description}
 
@@ -456,9 +466,9 @@ Mnoina typù jednotlivıch otázek je sestavena z potøeby zadavatele, èím je otáz
 \section{Skripta}
 \label{sec:Skripta}
 
-Skripta hrají v systému roli elektronickıch uèebních materiálù. Kategorizována jsou stejnì jako formuláøe, tzn. do skupin existujících v systému, take studenti mají k dispozici materiály vıhradnì k jim pøiøazenım kurzùm. Skripta by mìla bıt vytváøena pøevánì lektory pro studenty. Monost jejich tvorby ale není studentùm odepøena, mohou je vyuít napøíklad pro tvorbu osobních zápiskù z hodin. Mají také monost vytvoøená skripta zveøejnit pro ostatní èleny skupiny.
+Skripta hrají v systému roli elektronickıch uèebních materiálù. Kategorizována jsou stejnì jako formuláøe do skupin existujících v systému, take studenti mají k dispozici materiály vıhradnì k jim pøiøazenım kurzùm. Skripta by mìla bıt vytváøena pøevánì lektory pro studenty. Monost jejich tvorby ale není studentùm odepøena, mohou je vyuít napøíklad pro tvorbu osobních zápiskù z hodin. Mají také monost vytvoøená skripta zveøejnit pro ostatní èleny skupiny.
 
-Skripta je moné formátovat do strukturované podoby, tzn. monost tvorby nadpisù, odstavcù, odkazù, tabulek, monost volby stylu písma a další. K tomuto úèelu by mìl bıt k dispozici editor pouívající Wiki znaèkování\footnote{Syntaxe a klíèová slova vyuívaná k formátování textu na stránce}, která je snad pro vìtšinu uivatelù pochopitelná a lehce nauèitelná. S pomocí tlaèítek pro automatické formátování vybraného textu nemusí mít ani uivatel potøebu proèítat dokumentaci k pouívání daného Wiki znaèkování.
+Skripta je moné formátovat do strukturované podoby, tzn. monost tvorby nadpisù, odstavcù, odkazù, tabulek, monost volby stylu písma a dalšího. K tomuto úèelu by mìl bıt k dispozici editor pouívající Wiki znaèkování\footnote{Syntaxe a klíèová slova vyuívaná k formátování textu na stránce}, která je snad pro vìtšinu uivatelù pochopitelná a lehce nauèitelná. S pomocí tlaèítek pro automatické formátování vybraného textu nemusí mít ani uivatel potøebu proèítat dokumentaci k pouívání daného Wiki znaèkování.
 
 \chapter{Návrh}
 
@@ -468,12 +478,12 @@ Skripta je moné formátovat do strukturované podoby, tzn. monost tvorby nadpisù
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{figures/Architecture}
-\caption{Architektura systému}
+\caption[Architektura systému]{Architektura systému -- tøívrstvá architektura s vrstvou datovou, bussines a \uv{prezentaèní} vrstvou postavenou na MVC vzoru}
 \label{fig:Architektura systému}
 \end{center}
 \end{figure}
 
-Architektura systému (Obr.~\ref{fig:Architektura systému}) je spojením architektury tøívrstvé a MVC\footnote{Model View Controller} (Obr.~\ref{fig:Architektura MVC}). Pouití MVC jasnì vyplıvá ji z NP\ref{NP:Vıslednı systém je webová aplikace postavená na ASP.NET MVC}. Ovšem architektura MVC sama o sobì podle mì o celkové struktuøe systému nevypovídá mnoho. Pod pojem Model toti skrıvá nìkolik rùznorodıch komponent systému, konkrétnì napøíklad business logiku (její èást ale bıvá také v Controlleru) a datové uloištì. A protoe Model, View i Controller bıvají v praxi velmi provázané, je nemoné jednu z komponent vymìnit za jinou s rozdílnou implementací bez zásahu do ostatních.
+Architektura systému (Obr.~\ref{fig:Architektura systému}) je spojením architektury tøívrstvé a MVC\footnote{Model View Controller} (Obr.~\ref{fig:Architektura MVC}). Pouití MVC jasnì vyplıvá ji z NP\ref{NP:Vıslednı systém je webová aplikace postavená na ASP.NET MVC}. Ovšem architektura MVC sama o sobì podle mne o celkové struktuøe systému nevypovídá mnoho. Pod pojem Model toti skrıvá nìkolik rùznorodıch komponent systému, konkrétnì napøíklad business logiku (její èást ale bıvá také v Controlleru) a datové uloištì. A protoe Model, View i Controller bıvají v praxi velmi provázané, je nemoné jednu z komponent vymìnit za jinou s rozdílnou implementací bez zásahu do ostatních.
 
 Já tedy vyuívám MVC jako \uv{prezentaèní} vrstvu z pohledu tøívrstvé architektury. Mohu toti tuto vrstvu kdykoli vymìnit napøíklad za Windows Forms, èím vznikne desktopová aplikace vyuívající totonou business a datovou vrstvu.
 
@@ -492,7 +502,7 @@ Mimo jiné bylo nutné pøidat vlastní objekt instance otázky (\icode{QuestionInsta
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{figures/MetaModel}
-\caption{Meta model}
+\caption[Meta model]{Meta model zachycující základní entity modelovaného systému a vztahy mezi nimi}
 \label{fig:Meta model}
 \end{center}
 \end{figure}
@@ -500,7 +510,7 @@ Mimo jiné bylo nutné pøidat vlastní objekt instance otázky (\icode{QuestionInsta
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/DesignModel}
-\caption{Návrhovı model datové vrstvy}
+\caption[Návrhovı model datové vrstvy]{Návrhovı model datové vrstvy ukazující podrobnìjší návrh objektù datové vrstvy}
 \label{fig:Design model datové vrstvy}
 \end{center}
 \end{figure}
@@ -524,7 +534,7 @@ Jak ji bylo øeèeno vıše, business vrstva obsahuje veškerou logiku tohoto e-lear
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/BusinessPackages}
-\caption{BusinessPackages}
+\caption[Balíèky business vrstvy]{Balíèky business vrstvy obsahující rùznorodé komponenty pro obstarávání veškeré aplikaèní logiky}
 \label{fig:BusinessPackages}
 \end{center}
 \end{figure}
@@ -542,7 +552,7 @@ Model z MVC trojice v této vrstvì není zcela standartní, jak jsem ji pøiblíil 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{figures/MVC}
-\caption{Architektura MVC}
+\caption[Architektura MVC]{Architektura MVC -- View, Controller, Model a znázornìní komunikace mezi nimi}
 \label{fig:Architektura MVC}
 \end{center}
 \end{figure}
@@ -550,8 +560,9 @@ Model z MVC trojice v této vrstvì není zcela standartní, jak jsem ji pøiblíil 
 \section{Technologie a frameworky}
 
 \subsection{\CSharp~ASP.NET MVC 4.0}
+\label{subs:ASP.NET MVC 4.0}
 
-Tento projekt vyvíjím v jazyce \CSharp~ve vıvojovém prostøedí Visual Studio 2010. Protoe se jedná a webovì orientované øešení, je vyuito ASP.NET~\cite{}. Ze tøí\footnote{Jsou to pøístupy Web Pages, Web Forms a MVC. Více lze nalézt napøíklad na~\cite{}} pøístupù pro tvorbu s ASP.NET pouívám MVC verze 4.0. Subjektivní porovnání s Web Forms uvádím v sekci~\ref{Porovnání ASP.NET MVC a ASP.NET Web Forms}.
+Tento projekt vyvíjím v jazyce \CSharp~ve vıvojovém prostøedí Visual Studio 2010. Protoe se jedná a webovì orientované øešení, je vyuito ASP.NET~\cite{ASPNETOfficial}. Ze tøí\footnote{Jsou to pøístupy Web Pages, Web Forms a MVC. Více lze nalézt napøíklad na~\cite{ASPNETOfficial3Approaches}} pøístupù pro tvorbu s ASP.NET pouívám MVC verze 4.0.
 
 \subsection{ADO.NET Entity Framework}
 \label{sec:Entity Framework}
@@ -560,7 +571,7 @@ Entity Framework je ORM\footnote{Objektovì relaèní mapování, technika pro pøevod
 
 \subsection{HTML, CSS}
 
-Jeliko je projekt webová aplikace, základ uivatelského rozhraní tvoøí HTML a CSS. Kaskádové styly jsou optimalizovány pro prohlíeè Google Chrome, avšak kontrolovány byly i ve Firefoxu a Opeøe. Dodatek k nynìjšímu stavu viz. závìr~\ref{}.
+Jeliko je projekt webová aplikace, základ uivatelského rozhraní tvoøí HTML a CSS. Kaskádové styly jsou optimalizovány pro prohlíeè Google Chrome, avšak kontrolovány byly i ve Firefoxu a Opeøe. Dodatek k nynìjšímu stavu viz. závìr~\ref{sec:Další vıvoj}.
 
 \subsection{Javascript, jQuery}
 
@@ -582,20 +593,20 @@ K exportu vısledkù formuláøe do Google Formuláøù~(FP\ref{FP:Podpora exportu vısl
 \section{Datová vrstva}
 \label{sec:Implementace-Datová vrstva}
 
-Pro implementaci datové vrstvy aplikace jsem pouil Entity Framework (viz.~\ref{sec:Entity Framework}). Zvolil jsem pøístup Model First Development. Podle mì je to vıbornı kompromis mezi Code First a Database First øízeném vıvoji. Mám díky nìmu plnou kontrolu nad strukturou vytváøené databáze a zároveò nad generovanımi tøídami.
+Pro implementaci datové vrstvy aplikace jsem pouil Entity Framework (viz.~\ref{sec:Entity Framework}). Zvolil jsem pøístup Model First Development. Podle mne je to vıbornı kompromis mezi Code First a Database First øízeném vıvoji. Mám díky nìmu plnou kontrolu nad strukturou vytváøené databáze a zároveò nad generovanımi tøídami.
 
-Model First Development je jedním z postupù pøi vıvoji datové vrstvy. Zaplòuje mezeru mezi Code First a Database First vıvoji. Pøi Code First postupu se nejdøíve napíše kód všech datovıch entit a Entity Framework poté automaticky vygeneruje strukturu potøebné databáze. Naopak pøí Database First vıvoji se nejdøíve vytvoøí kompletní databáze, na jejím základì vygeneruje EF odpovídající tøídy v kódu. Pøi Model First se nevytváøí ani struktura DB, ani samotnı kód, ale vše se zakresluje do diagramu Entity Data Modelu~(\ref{fig:Entity Data Model}). Vıvojáø je tedy po celou dobu v roli architekta systému, protoe se vlastnì stále pohybuje v UML diagramu. Pøesto má díky mnoství nastavení ovlivòovat struktutu generované DB i generovaného kódu tøíd.
+Model First Development je jedním z postupù pøi vıvoji datové vrstvy. Zaplòuje mezeru mezi Code First a Database First vıvoji. Pøi Code First postupu se nejdøíve napíše kód všech datovıch entit a Entity Framework poté automaticky vygeneruje strukturu potøebné databáze. Naopak pøi Database First vıvoji se nejdøíve vytvoøí kompletní databáze, na jejím základì vygeneruje EF odpovídající tøídy v kódu. Pøi Model First se nevytváøí ani struktura DB, ani samotnı kód, ale vše se zakresluje do diagramu Entity Data Modelu~(\ref{fig:Entity Data Model}). Vıvojáø je tedy po celou dobu v roli architekta systému, protoe se vlastnì stále pohybuje v UML diagramu. Pøesto má monost, díky mnoství nastavení, ovlivòovat struktutu generované DB i generovaného kódu tøíd.
 
 Všechny moné nedostatky skriptu databáze lze vyøešit pøidáním databázového projektu a importem vygenerovaného skriptu do nìj. V takovém projektu lze mít další skripty napøíklad pro spuštìní pøed a po vyvolání hlavního skriptu. Post-deployment skriptu vyuívám také pro automatické vytvoøení základních záznamù (èíselníky, administrátor), èím mì kadé nasazení databáze stojí pouhé dvì kliknutí myší.
 
 Potøebné úpravy generovaného kódu tøíd lze jednoduše provést pomocí èásteènıch (partial) tøíd. Napøíklad u entit obsahujících hodnotu èíselníku toho vyuívám pro navázání enumerátoru v kódu, pøedstavujícího danı databázovı èíselník. Nikde jinde v kódu pak tedy nemusím øešit ádné èíselníkové objekty a identifikátory vztahující se k databázi.
 
-Ve své implementaci datové vrstvy nevyuívám monosti nastavit kaskádní mazání poloek v databázi, všechna taková mazání je tedy nutné provádìt \uv{ruènì} v business vrstvì. Je to hlavnì z dùvodu zamezení vzniku všelijakıch chyb z nepozornosti a neprostudování všech monıch relací pøed zásahem do kódu. Je tedy nutné mít v metodách pro mazání pár øádkù kódu navíc, ale tím jsou všechny vykonávané akce patrné a pøípadnì lze nìjaké další akce pøi mazání vyvolat.
+Ve své implementaci datové vrstvy nevyuívám monosti nastavit kaskádní mazání poloek v databázi. Všechna taková mazání je tedy nutné provádìt \uv{ruènì} v business vrstvì. Je to hlavnì z dùvodu zamezení vzniku rùznıch chyb z nepozornosti a neprostudování všech monıch relací pøed zásahem do kódu. Je tedy nutné mít v metodách pro mazání pár øádkù kódu navíc, ale tím jsou všechny vykonávané akce patrné a pøípadnì lze nìjaké další akce pøi mazání vyvolat.
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/EntityDataModel}
-\caption{Entity Data Model}
+\caption[Entity Data Model]{Entity Data Model -- diagram celé datové vrstvy vytvoøenı pomocí Entity Frameworku}
 \label{fig:Entity Data Model}
 \end{center}
 \end{figure}
@@ -608,7 +619,7 @@ Práva uivatelù se v tomto systému odvíjí od role, ve které se danı uivatel nac
 
 Pøesto jsou ale práva implementována tak, aby v pøípadì budoucí potøeby (a zde také pro ukázkové akademické úèely) bylo velmi jednoduché pøiøadit kadému uivateli práva nezávisle na jeho systémové roli. Abych dále mohl uvést podrobnìjší detaily, uvádím zde ukázku implementace oprávnìní uivatele:
 
-\begin{lstlisting}[caption={[Ukázka \icode{UserPermissions} a souvisejících tøíd ]Ukázka \icode{UserPermissions} a souvisejících tøíd -- ukazuje implementaci oprávnìní uivatelskıch rolí}, label={code:Ukázka UserPermissions}]
+\begin{lstlisting}[caption={[Ukázka \icode{UserPermissions} a souvisejících tøíd ]Ukázka \icode{UserPermissions} a souvisejících tøíd -- ukazuje implementaci oprávnìní uivatelskıch rolí v systému}, label={code:Ukázka UserPermissions}]
 namespace ELearning.Business.Permissions
 {
 	public class U``serPermissions
@@ -641,7 +652,7 @@ namespace ELearning.Business.Permissions
 	}
 \end{lstlisting}
 
-Jak je z kódu~\ref{code:Ukázka UserPermissions} patrné, všechny dílèí práva (v ukázce práva na operace s uivatelskımi skupinami) jsou umístìna do vlastní property. Vrácení správné hodnoty v závislosti na roli uivatele je øešené pomocí dìdiènosti. Pro úpravu práv, aby fungovala pro jednotlivé uivatele nezávisle na rolích, je potøeba jen pøidat vlastní tøídu pro vrácení hodnoty získané ne \uv{natvrdo}, ale z relevantního záznamu z databáze.
+Jak je z kódu~\ref{code:Ukázka UserPermissions} patrné, všechny dílèí práva (v ukázce práva na operace s uivatelskımi skupinami) jsou umístìna do vlastní property. Vrácení správné hodnoty v závislosti na roli uivatele je øešeno pomocí dìdiènosti. Pro úpravu práv, aby fungovala pro jednotlivé uivatele nezávisle na rolích, je potøeba jen pøidat vlastní tøídu pro vrácení hodnoty získané ne \uv{natvrdo}, ale z relevantního záznamu z databáze.
 
 
 \section{Bezpeènost}
@@ -662,9 +673,11 @@ Naštìstí se dá útokùm lehce zabránit, a to zavedením komunikace pøes HTTPS namís
 
 Zde se jedná o bezpeènost interakce uivatele s rozhraním aplikace, tzn. zobrazování informací, pøidávání a úprava dat, to vše podmínìné stupnìm oprávnìní uivatele a jeho pøiøazením do skupin.
 
-V aplikaci je implementováno \uv{dvoustupòové} zabezpeèení. Prvním stupnìm je kontrola oprávnìní uivatele na úrovni prezentaèní vrstvy. Pøístup na jednotlivé stránky je regulován pomocí zavedeného atributu \icode{AuthorizeUserType}, kterı jsem pøipojil ke všem metodám controllerù. Pøedáním parametru \icode{UserType} je urèen nejniší stupeò oprávnìní pro pøístup na danou url zastupovanou názvem metody. Pøi neoprávnìném pokusu o pøístup na url je atributem vyhozena vıjimka typu \icode{PermissionException}. Bìnì by se uivatel na takovouto url vùbec dostat nemìl, protoe stejná politika je implementována ve views, èím adresa takové url není uivateli dostupná.
+V aplikaci je implementováno \uv{dvoustupòové} zabezpeèení. Prvním stupnìm je kontrola oprávnìní uivatele na úrovni prezentaèní vrstvy. Pøístup na jednotlivé stránky je regulován pomocí zavedeného atributu \icode{AuthorizeUserType}, kterı jsem pøipojil ke všem metodám controllerù. Pøedáním parametru \icode{UserType} je urèen nejniší stupeò oprávnìní pro pøístup na danou url zastupovanou názvem metody. Pøi neoprávnìném pokusu o pøístup na url je atributem vyhozena vıjimka typu \icode{PermissionException}, která má za následek zobrazení varovného hlášení (Obr. \ref{fig:PermissionException}). Bìnì by se uivatel na takovouto url vùbec dostat nemìl, protoe stejná politika je implementována ve views, èím adresa takové url není uivateli dostupná.
 
-\begin{lstlisting}[caption={Pouití atributu \icode{AuthorizeUserType}}]
+\pagebreak
+
+\begin{lstlisting}[caption={[Pouití atributu \icode{AuthorizeUserType}]Pouití atributu \icode{AuthorizeUserType} na akci controlleru}]
 [AuthorizeUserType(UserType = UserTypes.Lector)]
 public ActionResult Create()
 {
@@ -672,11 +685,9 @@ public ActionResult Create()
 }
 \end{lstlisting}
 
-% TODO Pridat screenshot pri Permission Exception (po doladeni GUI)
+Druhım stupnìm je kontrola oprávnìní v samotné business vrstvì. Všechny operace nad daty zde obsahují ovìøení práva na vykonání pomocí \icode{UserPermissions}, testují jestli poadovanou poloku uivatel vytvoøil èi patøí do jeho skupiny atd. Pokud práva nemá, vznikne opìt vıjimka \icode{PermissionException}.
 
-Druhım stupnìm je kontrola oprávnìní v samotné business vrstvì. Všechny operace nad daty zde obsahují ovìøují práva na vykonání pomocí \icode{UserPermissions}, testují jestli poadovanou poloku uivatel vytvoøil èi patøí do jeho skupiny atd. Pokud práva nemá, vznikne opìt vıjimka \icode{PermissionException}.
-
-\begin{lstlisting}[caption={Ovìøování v business vrstvì}]
+\begin{lstlisting}[caption={[Ovìøování práv v business vrstvì]Ovìøování oprávnìní pøihlášeného uivatele v business vrstvì -- pøi neoprávnìném pøístupu je vyvolána chyba \icode{PermissionException}}]
 public Form GetForm(int id)
 {
 	var result = GetSingle(f => f.ID == id);
@@ -692,6 +703,14 @@ public Form GetForm(int id)
 }
 \end{lstlisting}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/PermissionException}
+\caption[Ukázka neoprávnìného pøístupu]{Ukázka neoprávnìného pøístupu -- takto vypadá sdìlení o neoprávnìném pøístupu na stránku èi provádìní neoprávnìné akce následované vznikem vıjimky \icode{PermissionException}}
+\label{fig:PermissionException}
+\end{center}
+\end{figure}
+
 %*****************************************************************************
 \chapter{Testování}
 
@@ -705,27 +724,74 @@ Pro implementaci Unit testù vyuívám nástrojù integrovanıch ve Visual Studiu.
 \section{Selenium testy}
 \label{sec:Selenium testy}
 
-Pomocí testovacího systému Selenium~\ref{} testuji aplikaci z pohledu uivatele. Selenium je systém, kterı ve spuštìném webovém prohlíeèi vyvolává pøedem definované akce, jako je klikání na tlaèítka a vkládání textù do pøíslušnıch polí. Lze také ovìøovat stavy jednotlivıch html elementù a mnoho dalšího. Tento testovací systém tedy simuluje chování uivatele pøi uívání systému. Díky tìmto testùm je ovìøìn jak obsah uivatelského rozhraní (dostupné akce a údaje), tak i samotné vısledky vyvolanıch akcí.
+Pomocí testovacího systému Selenium~\cite{Selenium} testuji aplikaci z pohledu uivatele. Selenium je systém, kterı ve spuštìném webovém prohlíeèi vyvolává pøedem definované akce, jako je klikání na tlaèítka a vkládání textù do pøíslušnıch polí. Lze také ovìøovat stavy jednotlivıch html elementù a mnoho dalšího. Tento testovací systém tedy simuluje chování uivatele pøi uívání systému. Díky tìmto testùm je ovìøìn jak obsah uivatelského rozhraní (dostupné akce a údaje), tak i samotné vısledky vyvolanıch akcí.
 
 Selenium mimo jiné umoòuje pøímou integraci do projektu vyvíjeného systému. Poskytuje toti \CSharp~knihovny, skrze které lze události v prohlíeèi vyvolávat. Já jsem testy zapojil do testù podporovanıch Visual Studiem. To pøineslo obrovské vıhody, protoe testy staèí spustit stejnì jako Unit testy, èím se vytvoøí instance prohlíeèe a zapoène simulace chování uivatele. Ihned je tvoøen report s úspìchy a neúspìchy jednotlivıch dílèích testù.
 
-Samotné scénáøe Selenium testù není nutné psát celé ruènì v kódu. Základ lze velice jednoduše vygenerovat automaticky -- staèí zapnout nahrávání akcí ve webovém prohlíeèi a chovat se jako uivatel. Nahranı scénáø události se poté vyexportuje do jednoho z podporovanıch jazykù, v mém pøípadì do \CSharp. Jedinı malı nedostatek je, e kód je generován pro NUnit~\ref{} testy, take je ho tøeba naportovat pro testy integrované do VS.
+Samotné scénáøe Selenium testù není nutné psát celé ruènì v kódu. Základ lze velice jednoduše vygenerovat automaticky -- staèí zapnout nahrávání akcí ve webovém prohlíeèi a chovat se jako uivatel. Nahranı scénáø události se poté vyexportuje do jednoho z podporovanıch jazykù, v mém pøípadì do \CSharp. Jedinı malı nedostatek je, e kód je generován pro NUnit\footnote{Open source framework pro testování v .NET} testy, take je ho tøeba naportovat pro testy integrované do VS.
 
 \section{Vıkonové testy}
 
 \subsection{Aplikace}
 
 V souèasné dobì vychází vıkonové testování aplikace pouze z pozorování a zpìtné odezvy od uivatelù pøi pilotním provozu, popsanım níe v~\ref{sec:Pilotní provoz}.
-%TODO Dopsat az budou vysledky
+
+Pøi pilotním provozu systém obsahoval 46 aktivních uivatelù, z toho bylo vdy cca 15 studentù online. Jejich aktivitou vzniklo 79 instancí formuláøù s 538 instancemi otázek a 518 odpovìïmi. Pøi takovémto nízkém poètu dat nelze oèekávat sníení vıkonu dotazy do databáze, ale lze pozorovat celkovou plynulost aplikace pøi dotazech na server a bìhu skriptù na klientském poèítaèi. Z mého pohledu nedocházelo k ádnım problémùm a potvrdili mi to i uivatelé, na škále 1-5 (jako známkování ve škole) je vıslednı prùmìr hodnocení roven 1,3.
+
 
 \subsection{Databáze}
 
 Pro testování a nalezení neoptimalizovanıch a zbyteènıch dotazù do databáze je dobré vyuít SQL Server Profiler~\cite{SQLServerProfiler}, kterı je souèástí SQL Server Performance Tools. Pøi pouití Entity Frameworku se stává, e dotazy do databáze nejsou vdy zcela optimální. Je to z dùvodu, e EF neporozumí pøesnì zámìru programátora (co tøeba ani nemùe), a napøíklad namísto jednoho dotazu s JOIN pošle zvláš dotaz pro kadı záznam v tabulce. Díky profileru lze tyto dotazy jednoduše najít a odpovìdnı kód upravit.
 
-V tomto projektu jsem zatím SQL profileru nevyuil, ale je to jedna z vìcí, které se budu v brzké dobì vìnovat. V této chvíli není toti optimalizace dotazù do DB stìejní, na jednotlivıch stránkách aplikace teoreticky není nic, co by mohlo i v nejhorším pøípadì systém viditelnım zpùsobem zpomalit. Ovšem lepší je všechny dotazy optimalizovat ještì pøed tím, ne se bude systém dále rozrùstat a plnit velkım mnostvím dat.
+V tomto projektu jsem zatím SQL profileru nevyuil, ale je to jedna z vìcí, které se budu v brzké dobì vìnovat. V této chvíli není toti optimalizace dotazù do DB stìejní. Na jednotlivıch stránkách aplikace teoreticky není nic, co by mohlo i v nejhorším pøípadì systém viditelnım zpùsobem zpomalit, co se potvrdilo pøi pilotním testování. Ovšem lepší je všechny dotazy optimalizovat ještì pøed tím, ne se bude systém dále rozrùstat a plnit velkım mnostvím dat.
 
 \section{Pilotní provoz}
 \label{sec:Pilotní provoz}
+
+Pilotní provoz probíhal za asistence mıch studentù gymnázia (vìk 16-18 let). Nìkteøí vyzkoušeli pøipravenı nauènı test s tématem Základy programování a nìkteøí vyplnili ostrı test ze základù poèítaèovıch sítí, kterı jim byl následnì oznámkován. Nakonec byli všichni poádáni o vyplnìní dotazníku ohlednì názoru na systém.
+
+Studentùm byly poskytnuty informace o adrese portálu a pøihlašovacích údajích. Poté byli studenti struènì instruováni aby vyplnili dostupnı test. Myslím, e se v systému bez problému zorientovali a dostali se ke spuštìní vyplòování formuláøe. Zde ale nastal menší problém, kterı vyadoval mou asistenci. Firefox toti blokoval otevírané okno s formuláøem, take bylo nutné øíci studentùm o nutnosti odblokovat otevírání oken a jak to skrze nenápadnou a podivnou nabídku provést. Samotné vyplòování formuláøù u bylo zcela bezproblémové.
+
+Po vyplnìní ostrého testu se studentùm líbilo, e si ihned mohli prohlédnout svùj vısledek (po zobrazení vyplnìného testu vidìli správné odpovìdi vyznaèené zelenì a špatné èervenì).
+
+\clearpage
+
+Vısledky dotazníku jsou myslím pro systém dobré. Z vısledkù vyplıvá, e je potøeba zapracovat na designu stránek, zatímco uivatelskou pøívìtivost (zde pro roli studenta) se myslím podaøilo splnit. Dotazník byl vyplnìn 37 studenty, otázky s jejich vısledky jsou zde:
+\\\\
+\noindent
+\textbf{Otázka:} Jak hodnotíte uivatelskou prívìtivost? Tzn. jak se v portálu vyznáte, jak jsou jasné názvy poloek menu, jednoduchost stránek, ...\\
+\textbf{Moné odpovìdi:} 1, 2, 3, 4, 5 (hodnocení jako ve škole)\\
+\textbf{Vısledek:} prùmìr 1,84
+\\\\
+\noindent
+\textbf{Otázka:} Jak hodnotíte design stránek a testù?\\
+\textbf{Moné odpovìdi:} 1, 2, 3, 4, 5 (hodnocení jako ve škole)\\
+\textbf{Vısledek:} prùmìr 2,4
+\\\\
+\noindent
+\textbf{Otázka:} Jak hodnotíte rychlost aplikace? Tzn. jak rychle se naèítají jednotlivé stránky, jak je plynulá celková práce s aplikací.\\
+\textbf{Moné odpovìdi:} 1, 2, 3, 4, 5 (hodnocení jako ve škole)\\
+\textbf{Vısledek:} prùmìr 1,38
+\\\\
+\noindent
+\textbf{Otázka:} Chtìl/a byste tento e-learningovı systém pouívat pøi vıuce?\\
+\textbf{Moné odpovìdi:} Ano, Nevím, Ne\\
+\textbf{Vısledek:} Ano 62\%, Nevím 35\%, Ne 3\%
+\\\\
+\noindent
+\textbf{Otázka:} Máte radši papírové nebo elektronické testy/písemky?\\
+\textbf{Moné odpovìdi:} Papírové, Elektronické\\
+\textbf{Vısledek:} Papírové 32\%, Elektronické 68\%
+
+\subsection{Testovací portál}
+\label{subs:Testovací portál}
+
+Testovací portál je dostupnı na adrese \textbf{http://elearning.robertsojak.cz/}, kde bude dostupnı nejménì do obhajoby této práce. Pøihlašovací údaje jsou následující:
+\begin{itemize}
+\item Administrátor -- E-mail \textbf{admin@admin.admin}, heslo \textbf{Pass123}
+\item Lektor -- E-mail \textbf{lector@lector.lector}, heslo \textbf{Pass123}
+\item Student ve skupinì lektora -- E-mail \textbf{studentL@studentL.studentL}, heslo \textbf{Pass123}
+\end{itemize}
 
 %*****************************************************************************
 \chapter{Nasazení}
@@ -740,7 +806,7 @@ Popis postupu nasazení a instalace uvádím v instalaèní pøíruèce v pøíloze~\ref{a
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/DeploymentDiagram}
-\caption{Diagram nasazení}
+\caption[Diagram nasazení]{Diagram nasazení -- klientské zaøízení s webovım prohlíeèem a server s .NET frameworkem a SQL databází}
 \label{fig:Diagram nasazení}
 \end{center}
 \end{figure}
@@ -749,29 +815,58 @@ Popis postupu nasazení a instalace uvádím v instalaèní pøíruèce v pøíloze~\ref{a
 
 \chapter{Závìr}
 
-V této bakaláøské práci jsem vytvoøil funkèní základ e-learningového portálu s nìkterımi specifickımi poadavky zadavatele (\ref{subs:Poadavky zadavatele}).
+V této bakaláøské práci jsem vytvoøil funkèní základ e-learningového portálu s nìkterımi specifickımi poadavky zadavatele (\ref{subs:Poadavky zadavatele}). Systém byl poté úspìšnì otestován v pilotním provozu (\ref{sec:Pilotní provoz}) , ve kterém byl shledán provozuschopnım.
 
-%V Internet Exploreru~\cite{} bohuel nevypadají zcela správnì, ale myslím e %optimalizace pro všechny prohlíeèe pøesahuje rozsah nynìjšího, dùleitìjšího %vıvoje, a plánuji vyuít
+Na základì pilotního provozu se domnívám, e systém splòuje specifikované poadavky (\ref{sec:Poadavky na systém}) a oèekávání. Jedním z hlavních poadavkù bylo jednoduché ovládání, ozn. jako NP\ref{NP:Jednoduché ovládání, pochopitelné pro bìného uivatele i bez zaškolení}. Jak vyplynulo z ohlasu uivatelù, byl splnìn na lepší dvojku (známkování jako ve škole). Osobnì si myslím, e hodnocení bylo negativnì ovlivnìno chováním otevíráného okna formuláøe v pouitém prohlíeèi (popsáno v sekci \ref{sec:Pilotní provoz}), protoe pro úspìšné vyplnìní dostupnıch formuláøù a prohlédnutí si vısledkù nebyly nutné ádnı další pokyny. Nepøíjemnost s otevíranımi okny se tedy pokusím vyøešit a poté u myslím nic nebrání dostat se na jednièku.
 
+Pøi práci na tomto projektu jsem se nauèil vyvíjet s pouitím technologie ASP.NET MVC (\ref{subs:ASP.NET MVC 4.0}), co pro mì byla zajímavá zmìna oproti ASP.NET Windows Forms. Také jsem si osvojil vyuívání Selenium testování (\ref{sec:Selenium testy}), které bude zcela jistì vıbornım pomocníkem ve všech mıch starıch i novıch webovì orientovanıch aplikacích.
 
 \section{Další vıvoj}
+\label{sec:Další vıvoj}
 
-S dalším vıvojem systému poèítám metodou dog fooding\footnote{Programátoøi pouívají vyvíjenı software v roli koncového uivatele}. Bìhem uívání pøi vıuce se budou jistì stále rodit nové poadavky a moné zmìny stávající funkcionality.
+S dalším vıvojem systému poèítám metodou dog fooding\footnote{Metoda vıvoje, kdy programátoøi pouívají vyvíjenı software v roli koncového uivatele}. Bìhem uívání pøi vıuce se budou jistì stále rodit nové poadavky a nápady, které se objevovaly ji i bìhem analızy a vıvoje. Také je pravdìpodobné, e pøi ostrém provozu nebudou nìkterá chování systému pøesnì odpovídat chování poadovanému, které pøi analıze bez testování v provozu na vìtším poètu uivatelù nelze nikdy pøedpovídat.
+
+Zcela urèitì bude ádoucí napøíklad vylepšení rozhraní pro vytváøení formuláøù technologií AJAX~\cite{AJAX} a dalšími klientskımi skripty, aby nebylo nutné pøi kadé úpravì otázky potvrzovat zmìnu stiskem tlaèítka. Také se chci vìnovat notifikacím pomocí e-mailu, které mohou bıt vyuity k informování o novém dostupném formuláøi èi udìlené známce.
+
+V implementaci systému v tuto chvíli chybí øádné logování vzniklıch chyb. To je dùleité pro kadou aplikaci, protoe a se programátoøi a testeøi snaí sebevíc, nikdy nebude zcela bez chyb. Jejich zaznamenávání alespoò vede k neustálému dohledu.
+
+V dalším vıvoji také poèítám s vylepšením celkového designu portálu a úpravou nìkterıch problematickıch míst v kaskádních stylech. Hlavnì v Internet Exploreru toti nìkteré stránky nevypadají zcela správnì. Optimalizace pro všechny prohlíeèe pøesahovala rozsah dosavadního vıvoje a je mnohem produktivnìjší svìøit kódovaní vzhledu stránek specializovanému vıvojáøi.
 
 \section{Moná rozšíøení}
 
+Zde uvádím vıèet monıch rozšíøení a nápadù, které by v budoucnu mohly systém vylepšit a rozšíøit na víceúèelovı e-learningovı portál.
+
 \subsection{Formuláøe}
 
-Vygenerování formuláøe jen s urèitım poètem otázek
+\begin{itemize}
+\item Pøidání vlastnosti Generovanı poèet otázek -- instance formuláøe bude vygenerována jen s urèitım poètem náhodnì zvolenıch otázek
+\item Monost zadání stupnice pro automatické známkování -- instance formuláøe by tak mohla bıt automaticky oznámkována ihned po vyplìní (napø. podle procentuální úspìšnosti)
+\item Monost nastavit rozsah platnosti formuláøe -- formuláø bude dostupnı pouze v zadaném èasovém rozsahu
+\item Umonìní vyplnìní formuláøe i neregistrovanému uivali -- tím by vznikla monost vyuít systém napøíklad pro vızkum pomocí anonymních dotazníkù
+\end{itemize}
 
 \subsection{Otázky}
 \label{sec:Moná rozšíøení sub:Otázky}
-Monost pøiøadit k textu otázky obrázek.
+
+\begin{itemize}
+\item Monost pøiøadit k textu otázky a vysvìtlení správné odpovìdi obrázek
+\item Nastavení bodového ohodnocení za správnou/špatnou odpovìï
+\end{itemize}
+
+\subsection{Skripta}
+
+\begin{itemize}
+    \item Monost nahrání obrázku nebo jiného materiálu, napø. prezentace
+\end{itemize}
+
+\subsection{Reportování vısledkù formuláøe}
+
+Reportování celkovıch vısledkù formuláøe je v souèasné dobì moné pomocí externích nástrojù po exportu do Google Dokumentù. Urèitì by bylo dobré generovat reporty také pøímo v aplikaci. Solidní základ je ji v implementaci pøipravenı, staèí jen na základì dostupnıch údajù report vygenerovat a zobrazit.
 
 \subsection{E-mailové notifikace}
 
-\section{Porovnání ASP.NET MVC a ASP.NET Web Forms}
-\label{Porovnání ASP.NET MVC a ASP.NET Web Forms}
+O e-mailovıch notifikacích jsem se ji zmínil vıše. Jistì by velkou mìrou pøispìly k efektivitì práce. Odpadla by studentovi nutnost neustále sledovat zmìny v dostupnıch testech, udìlelenıch známkách a další.
+
 
 %*****************************************************************************
 
@@ -804,8 +899,10 @@ Monost pøiøadit k textu otázky obrázek.
 \item[ORM] Object/Relational Mapping
 \item[SQL] Structured Query Language
 \item[HTML] HyperText Markup Language
-\item[CSS] Cascading Style Sheets)
+\item[CSS] Cascading Style Sheets
 \item[FTP] File Transfer Protocol
+\item[AJAX] Asynchronous JavaScript and XML
+\item[XML] Extensible Markup Language
 \end{description}
 \vdots
 
@@ -941,12 +1038,12 @@ Monost pøiøadit k textu otázky obrázek.
 
 Zde uvádím popis instalace (nasazení) aktuální verze aplikace asi nejjednodušším zpùsobem, a to za vyuití Visual Studia. Pro úspìšné nasazení je tøeba mít k dispozici aplikaèní a databázovı server, jak je uvedeno v kapitole~\ref{chp:Nasazení}.
 
-Nejdøíve je tøeba zvolit konfiguraci pro zveøejòování, tzn. Release nebo nìkterou z mnou pøedpøipravenıch. Na obrázku~\ref{fig:Volba konfigurace pro nasazení} je zachycena volba konfigurace pro nasazení na ukázkovı server projektu~(\ref{sec:}).
+Nejdøíve je tøeba zvolit konfiguraci pro zveøejòování, tzn. Release nebo nìkterou z mnou pøedpøipravenıch. Na obrázku~\ref{fig:Volba konfigurace pro nasazení} je zachycena volba konfigurace pro nasazení na ukázkovı server projektu~(\ref{subs:Testovací portál}).
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{figures/InstallGuide_Configuration}
-\caption{Volba konfigurace pro nasazení}
+\caption[Volba konfigurace pro nasazení]{Volba konfigurace pro nasazení na ukázkovı server v prostøedí Visual Studia}
 \label{fig:Volba konfigurace pro nasazení}
 \end{center}
 \end{figure}
@@ -958,7 +1055,7 @@ Pro nasazení databáze je tøeba nejprve zkontrolovat nastavení databázového proje
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/InstallGuide_DBSettings}
-\caption{Nastavení databázového projektu}
+\caption[Nastavení databázového projektu]{Stránka pro nastavení databázového projektu s vyznaèenım nastavením, které vyaduje pozornost}
 \label{fig:Nastavení databázového projektu}
 \end{center}
 \end{figure}
@@ -968,30 +1065,113 @@ Nasazení samotného portálu je stejnì jednoduché. Po vybrání projektu \textit{ELe
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{figures/InstallGuide_Publish}
-\caption{Diagram pro publikování aplikace}
+\caption[Dialog pro publikování aplikace]{Dialog pro publikování aplikace s vyznaèenou volbou metody publikace a pøístupovıch údajù}
 \label{fig:Diagram pro publikování aplikace}
 \end{center}
 \end{figure}
 
 %*****************************************************************************
-\chapter{Uivatelská pøíruèka}
-
-%*****************************************************************************
 
 \chapter{Unity Application Block tutoriál}
 
-Pro dependecy injection vyuívám NuGet balíèku Unity Application Block. Zde bych chtìl pøiblíit, jak jej zaèlenit do projektu.
+Pro dependency injection do controllerù vyuívám NuGet balíèku Unity Application Block. Zde bych chtìl pøiblíit, jak jej zaèlenit do projektu.
 
-Nejdøíve je nutné do projektu nainstalovat Unity NuGet balíèek (v menu Visual Studia zvolit Tools > Library Package Manager > Manage NuGet Packages..., v dialogovém oknì vyhledat Unity a potvrdit instalaci).
+Dependency injection je návrhovı vzor pro napojení závislostí tøídy zvenèí, co je opak k tomu, kdy své závislosti øeší tøída sama. K pøedávání tìchto závislostí se vyuívá specializované tøídy, co umoòuje pøi zámìnì konkrétní implementace provést vımìnu pouze na jednom místì. Konkrétní objekty se závislé tøídì vìtšinou pøedávají v konstruktoru nebo pomocí veøejnıch vlastností.
 
-
+Pro vyuití Unity Application Block je nejdøíve nutné nainstalovat do projektu Unity NuGet balíèek (v menu Visual Studia zvolit \textit{Tools}~\textrightarrow~\textit{Library Package Manager}~\textrightarrow~\textit{Manage NuGet Packages...}, v dialogovém oknì vyhledat \textit{Unity} a potvrdit instalaci).
 
 Pro pøístup k Unity definuji podobnì jako v~\cite{HowToUseUnityContainer} interface \icode{IUnityContainerAccessor} s následujícím pøedpisem:
 
-\begin{lstlisting}[caption={Pøedpis rozhraní \icode{IUnityContainerAccessor}}]
+\begin{lstlisting}[caption={[Pøedpis rozhraní \icode{IUnityContainerAccessor}]Pøedpis rozhraní \icode{IUnityContainerAccessor} slouící pro pøístup k Unity bloku}]
 public interface IUnityContainerAccessor
 {
 	IUnityContainer UnityContainer { get; }
+}
+\end{lstlisting}
+
+Vytvoøenı interface poté lze pøidat do implementace tøídy aplikace \icode{MvcApplication}, která je umístìna v souboru Global.asax.cz. Zpùsob implementace je patrnı z tohoto kódu:
+
+\begin{lstlisting}[caption={[Ukázka implementace \icode{IUnityContainerAccessor} ve tøídì \icode{MvcApplication}]Ukázka implementace \icode{IUnityContainerAccessor} ve tøídì \icode{MvcApplication} zajišuje globální dostupnost Unity bloku}]
+public class MvcApplication : System.Web.HttpApplication, IUnityContainerAccessor
+{
+	public static IUnityContainer UnityContainer
+	{
+		get { return _unityContainer; }
+	}
+	private static IUnityContainer _unityContainer;
+	...
+	protected void Application_Start()
+	{
+		...
+		InitUnity();
+	}
+	...
+	private static void InitUnity()
+	{
+		var unityContainerFactory = new UnityContainerFactory();
+		_unityContainer = unityContainerFactory.CreateContainer();
+		ControllerBuilder.Current.SetControllerFactory(typeof(UnityControllerFactory));
+	}
+	...
+	IUnityContainer IUnityContainerAccessor.UnityContainer
+	{
+		get { return _unityContainer; }
+	}
+}
+\end{lstlisting}
+
+Dále je tøeba vytvoøit potomka tøídy \icode{DefaultControllerFactory} s pøetíenou metodou \icode{CreateController} a \icode{GetControllerInstance}, kterı nahradí základní controller factory~\cite{ASPNETMVCandUnity}. Právì ten bude zajišovat dependency injection pro kadı controller aplikace. V metodì \icode{CreateController} je vyuito instance aplikace k získání instance \icode{UnityContainer}:
+
+\begin{lstlisting}[caption={[Tøída \icode{UnityControllerFactory}]Tøída \icode{UnityControllerFactory}, která nahradí vıchozí controller factory}]
+public class UnityControllerFactory : DefaultControllerFactory
+{
+	protected IUnityContainer _unityContainer;
+	...
+	public override IController CreateController(System.Web.Routing.RequestContext requestContext, string controllerName)
+	{
+		IUnityContainerAccessor accessor = requestContext.HttpContext.ApplicationInstance as IUnityContainerAccessor;
+		_unityContainer = accessor.UnityContainer;
+
+		return base.CreateController(requestContext, controllerName);
+	}
+
+	protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
+	{
+		if (controllerType == null)
+			return null;
+
+		return _unityContainer.Resolve(controllerType) as IController;
+	}
+}
+\end{lstlisting}
+
+Posledním krokem je vytvoøení samotné \icode{UnityContainerFactory}. V té je tøeba provést registraci jednotlivıch konkrétních implementací poadovanıch tøíd a rozhraní pro injekci. Následující kód ukazuje pøíklad takové registrace:
+
+\begin{lstlisting}[caption={[Pøíklad registrace rozhraní pro injekci v \icode{UnityContainerFactory}]Pøíklad registrace rozhraní pro injekci v \icode{UnityContainerFactory}, tøídy lze registrovat stejnım zpùsobem}]
+public class UnityContainerFactory
+{
+	...
+	public virtual IUnityContainer CreateContainer()
+	{
+		UnityContainer result = new UnityContainer();
+		// Registers injection of class WebAuthenticationContext in
+		//  place of interface IAuthenticationContext
+		result.RegisterType<IAuthenticationContext, WebAuthenticationContext>();
+
+		return result;
+	}
+	...
+}
+\end{lstlisting}
+
+Tím je celı Unity blok zanesen do aplikace a pøipraven k pouití. Pøíklad pouití v controlleru uvádím v následující ukázce:
+
+\begin{lstlisting}[caption={[Pøíklad pouití dependency injection v controlleru]Pøíklad pouití dependency injection v controlleru pro injekci implementace rozhraní \icode{IAuthenticationContext}}]
+public class BaseController : Controller
+{
+	[Dependency]
+	public IAuthenticationContext AuthenticationContext { get; set; }
+	...
 }
 \end{lstlisting}
 
@@ -1001,8 +1181,43 @@ public interface IUnityContainerAccessor
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/MoodleQuestionTypes}
-\caption{Typy otázek v systému Moodle~\cite{MoodleVycetTypuOtazek}}
+\caption[Typy otázek v systému Moodle]{Typy otázek v systému Moodle~\cite{MoodleVycetTypuOtazek}}
 \label{fig:Typy otázek v systému Moodle}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/Screenshot_StudentHome}
+\caption[Screenshot aplikace -- Hlavní stránka studenta]{Screenshot aplikace -- Hlavní stránka studenta}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/Screenshot_StudentTest}
+\caption[Screenshot aplikace -- Vyplòování testu]{Screenshot aplikace -- Vyplòování testu}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/Screenshot_StudentLearningTest}
+\caption[Screenshot aplikace -- Vyplòování nauèného testu]{Screenshot aplikace -- Vyplòování nauèného testu}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/Screenshot_LectorTestCreation}
+\caption[Screenshot aplikace -- Tvorba formuláøe lektorem]{Screenshot aplikace -- Tvorba formuláøe lektorem}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figures/PrintedTest}
+\caption[Ukázka tisku papírové verze formuláøe]{Ukázka tisku papírové verze formuláøe}
 \end{center}
 \end{figure}
 

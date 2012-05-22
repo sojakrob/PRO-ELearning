@@ -11,13 +11,20 @@ I was expecting a `,' or a `}'---line 45 of file reference.bib
  :  note = "stav z 22.4.2012"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for ""
+Warning--to sort, need author or key in ASPNETOfficial
+Warning--to sort, need author or key in ASPNETOfficial3Approaches
 Warning--to sort, need author or key in JQuery
 Warning--to sort, need author or key in GoogleDataAPI
+Warning--to sort, need author or key in Selenium
 Warning--to sort, need author or key in SQLServerProfiler
+Warning--to sort, need author or key in AJAX
+Warning--empty year in AJAX
+Warning--empty year in ASPNETOfficial
+Warning--empty year in ASPNETOfficial3Approaches
 Warning--empty year in GoogleDataAPI
 Warning--empty year in JQuery
 Warning--empty year in SQLServerProfiler
+Warning--empty year in Selenium
 Warning--empty year in HowToUseUnityContainer
 Warning--empty year in GoogleDocuments
 Warning--empty year in GoogleGroups
@@ -29,5 +36,6 @@ Warning--empty year in WikiNETParser
 while executing---line 1484 of file csplainnat.bst
 Warning--empty year in MoodleORG
 Warning--empty year in MarkItUp
+Warning--empty year in ASPNETMVCandUnity
 Warning--empty year in MoodleVycetTypuOtazek
 (There were 4 error messages)
