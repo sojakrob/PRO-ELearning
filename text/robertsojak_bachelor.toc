@@ -36,19 +36,19 @@
 \contentsline {section}{\numberline {3.3}Business vrstva}{15}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Rozpis bal\IeC {\'\i }\v ck\r u}{15}{subsection.3.3.1}
 \contentsline {section}{\numberline {3.4}ASP.NET MVC vrstva}{16}{section.3.4}
-\contentsline {section}{\numberline {3.5}Technologie a frameworky}{17}{section.3.5}
+\contentsline {section}{\numberline {3.5}Technologie a~frameworky}{17}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}C\texttt {\#}~ASP.NET MVC 4.0}{17}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}ADO.NET Entity Framework}{17}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}HTML, CSS}{17}{subsection.3.5.3}
 \contentsline {subsection}{\numberline {3.5.4}Javascript, jQuery}{17}{subsection.3.5.4}
-\contentsline {subsection}{\numberline {3.5.5}MarkItUp a Wiki .NET Parser}{18}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.5}MarkItUp a~Wiki .NET Parser}{18}{subsection.3.5.5}
 \contentsline {subsection}{\numberline {3.5.6}Google Data API}{18}{subsection.3.5.6}
 \contentsline {chapter}{\numberline {4}Implementace}{19}{chapter.4}
 \contentsline {section}{\numberline {4.1}Datov\'a vrstva}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Pr\'ava u\v zivatel\r u}{21}{section.4.2}
 \contentsline {section}{\numberline {4.3}Bezpe\v cnost}{22}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Bezpe\v cnost p\v ren\'a\v sen\'ych dat}{22}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Bezpe\v cnost p\v ri pr\'aci v aplikaci}{22}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.2}Bezpe\v cnost p\v ri pr\'aci v~aplikaci}{22}{subsection.4.3.2}
 \contentsline {chapter}{\numberline {5}Testov\'an\IeC {\'\i }}{25}{chapter.5}
 \contentsline {section}{\numberline {5.1}Unit testy}{25}{section.5.1}
 \contentsline {section}{\numberline {5.2}Selenium testy}{25}{section.5.2}

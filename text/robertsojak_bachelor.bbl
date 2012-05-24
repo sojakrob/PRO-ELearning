@@ -1,46 +1,9 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[AJA()]{AJAX}
-AJAX -- technologie pro vývoj interaktivních webových aplikací.
-\newblock Dostupn{\'{e}} z:
-  \url{http://en.wikipedia.org/wiki/Ajax_(programming)}.
-\newblock stav k 22.5.2012.
-
-\bibitem[ASP({\natexlab{a}})]{ASPNETOfficial}
-ASP.NET -- Oficiální stránky, {\natexlab{a}}.
-\newblock Dostupn{\'{e}} z: \url{http://www.asp.net/}.
-\newblock poslední návštìva 22.5.2012.
-
-\bibitem[ASP({\natexlab{b}})]{ASPNETOfficial3Approaches}
-ASP.NET -- Informace o možnostech vývoje, {\natexlab{b}}.
-\newblock Dostupn{\'{e}} z: \url{http://www.asp.net/get-started}.
-\newblock poslední návštìva 22.5.2012.
-
-\bibitem[Goo()]{GoogleDataAPI}
-Google Data API .NET Client Library -- .NET knihovna pro využití Google API.
-\newblock Dostupn{\'{e}} z: \url{http://code.google.com/p/google-gdata/}.
-\newblock poslední návštìva 17.5.2012.
-
-\bibitem[JQu()]{JQuery}
-jQuery -- JavaScript knihovna rapidnì rozšiøující jeho funkcionalitu.
-\newblock Dostupn{\'{e}} z: \url{http://jquery.com/}.
-\newblock stav k 12.4.2012.
-
-\bibitem[SQL()]{SQLServerProfiler}
-SQL Server Profiler -- nástroj pro sledování dotazù do databáze.
-\newblock Dostupn{\'{e}} z:
-  \url{http://technet.microsoft.com/cs-cz/library/ms181091(v=sql.100).aspx}.
-\newblock stav k 20.5.2012.
-
-\bibitem[Sel()]{Selenium}
-Selenium -- balík nástrojù pro automatizaci testù skrze webové prohlížeèe.
-\newblock Dostupn{\'{e}} z: \url{http://seleniumhq.org/}.
-\newblock poslední návštìva 15.5.2012.
 
 \bibitem[Fink()]{HowToUseUnityContainer}
 FINK, G.
@@ -48,21 +11,9 @@ FINK, G.
 \newblock Dostupn{\'{e}} z:
   \url{http://www.codeproject.com/Articles/99361/How-To-Use-Unity-Container-In-ASP-NET-MVC-Framewor}.
 
-\bibitem[Google Documents()]{GoogleDocuments}
-Google Documents.
-\newblock {G}oogle {D}okumenty --- hlavní stránka.
-\newblock Dostupn{\'{e}} z: \url{http://docs.google.com/}.
-\newblock poslední návštìva 14.5.2012.
-
-\bibitem[Google Groups()]{GoogleGroups}
-Google Groups.
-\newblock {G}oogle {S}kupiny --- hlavní stránka.
-\newblock Dostupn{\'{e}} z: \url{http://groups.google.com/}.
-\newblock poslední návštìva 14.5.2012.
-
 \bibitem[Hartl()]{jQueryCookiePlugin}
 HARTL, K.
-\newblock Cookie -- jQuery plugin pro práci s Cookies.
+\newblock Cookie --- jQuery plugin pro práci s Cookies.
 \newblock Dostupn{\'{e}} z: \url{https://github.com/carhartl/jquery-cookie}.
 \newblock stav k 4.5.2012.
 
@@ -74,26 +25,20 @@ HUNKA, J.
 
 \bibitem[Köhler()]{WikiNETParser}
 KöHLER, R.
-\newblock Wiki .NET Parser II -- pøevodník Wiki do HTML.
+\newblock Wiki .NET Parser II --- pøevodník Wiki do HTML.
 \newblock Dostupn{\'{e}} z:
   \url{http://www.codeproject.com/Articles/74160/Wiki-NET-Parser-C}.
 \newblock stav k 6.4.2012.
 
 \bibitem[Kraml(2010)]{StudentovaBerlicka_ModulProGenerovaniTestu}
 KRAML, F.
-\newblock \emph{Studentova berlièka III -- Generátor testù a písemek II}.
+\newblock \emph{Studentova berlièka III --- Generátor testù a písemek II}.
 \newblock ÈVUT FEL, 2010.
 \newblock Bakaláøská práce.
 
-\bibitem[Moodle org()]{MoodleORG}
-Moodle org.
-\newblock Portál vìnovaný systému Moodle.
-\newblock Dostupn{\'{e}} z: \url{http://moodle.org/}.
-\newblock poslední návštìva 14.5.2012.
-
 \bibitem[Salvat()]{MarkItUp}
 SALVAT, J.
-\newblock MarkItUp! -- univerzální znaèkovací jQuery editor.
+\newblock MarkItUp! --- univerzální znaèkovací jQuery editor.
 \newblock Dostupn{\'{e}} z: \url{http://markitup.jaysalvat.com/home/}.
 \newblock stav k 17.5.2012.
 
@@ -104,10 +49,82 @@ TORDEUR, K.
   \url{http://blogs.realdolmen.com/experts/2011/04/23/asp-net-mvc-and-unity/}.
 \newblock poslední návštìva 16.4.2012.
 
-\bibitem[Výèet typù otázek Moodle()]{MoodleVycetTypuOtazek}
-Výèet typù otázek Moodle.
+\bibitem[web:AJAX()]{AJAX}
+web:AJAX.
+\newblock AJAX --- technologie pro vývoj interaktivních webových aplikací.
+\newblock Dostupn{\'{e}} z:
+  \url{http://en.wikipedia.org/wiki/Ajax_(programming)}.
+\newblock stav k 22.5.2012.
+
+\bibitem[web:ASP()]{ASPNETOfficial}
+web:ASP.
+\newblock ASP.NET --- Oficiální stránky.
+\newblock Dostupn{\'{e}} z: \url{http://www.asp.net/}.
+\newblock poslední návštìva 22.5.2012.
+
+\bibitem[web:ASPInfo()]{ASPNETOfficial3Approaches}
+web:ASPInfo.
+\newblock ASP.NET --- Informace o možnostech vývoje.
+\newblock Dostupn{\'{e}} z: \url{http://www.asp.net/get-started}.
+\newblock poslední návštìva 22.5.2012.
+
+\bibitem[web:GoogleAPI()]{GoogleDataAPI}
+web:GoogleAPI.
+\newblock Google Data API .NET Client Library -- .NET knihovna pro využití
+  Google API.
+\newblock Dostupn{\'{e}} z: \url{http://code.google.com/p/google-gdata/}.
+\newblock poslední návštìva 17.5.2012.
+
+\bibitem[web:GoogleDocs()]{GoogleDocuments}
+web:GoogleDocs.
+\newblock Google Dokumenty --- hlavní stránka.
+\newblock Dostupn{\'{e}} z: \url{http://docs.google.com/}.
+\newblock poslední návštìva 14.5.2012.
+
+\bibitem[web:GoogleGroups()]{GoogleGroups}
+web:GoogleGroups.
+\newblock Google Skupiny --- hlavní stránka.
+\newblock Dostupn{\'{e}} z: \url{http://groups.google.com/}.
+\newblock poslední návštìva 14.5.2012.
+
+\bibitem[web:jQuery()]{JQuery}
+web:jQuery.
+\newblock jQuery --- JavaScript knihovna rapidnì rozšiøující jeho
+  funkcionalitu.
+\newblock Dostupn{\'{e}} z: \url{http://jquery.com/}.
+\newblock stav k 12.4.2012.
+
+\bibitem[web:Moodle()]{MoodleORG}
+web:Moodle.
+\newblock Portál vìnovaný systému Moodle.
+\newblock Dostupn{\'{e}} z: \url{http://moodle.org/}.
+\newblock poslední návštìva 14.5.2012.
+
+\bibitem[web:MoodleOtazky()]{MoodleVycetTypuOtazek}
+web:MoodleOtazky.
+\newblock Výèet typù otázek Moodle.
 \newblock Dostupn{\'{e}} z:
   \url{http://docs.moodle.org/22/en/images_en/2/23/Manage_question_types.png}.
 \newblock stav k 12.5.2012.
+
+\bibitem[web:NUnit()]{NUnit}
+web:NUnit.
+\newblock NUnit --- Open source framework pro testování v~.NET.
+\newblock Dostupn{\'{e}} z: \url{http://www.nunit.org/}.
+\newblock návštìva 23.5.2012.
+
+\bibitem[web:Selenium()]{Selenium}
+web:Selenium.
+\newblock Selenium --- balík nástrojù pro automatizaci testù skrze webové
+  prohlížeèe.
+\newblock Dostupn{\'{e}} z: \url{http://seleniumhq.org/}.
+\newblock poslední návštìva 15.5.2012.
+
+\bibitem[web:SQLProfiler()]{SQLServerProfiler}
+web:SQLProfiler.
+\newblock SQL Server Profiler --- nástroj pro sledování dotazù do databáze.
+\newblock Dostupn{\'{e}} z:
+  \url{http://technet.microsoft.com/cs-cz/library/ms181091(v=sql.100).aspx}.
+\newblock stav k 20.5.2012.
 
 \end{thebibliography}
