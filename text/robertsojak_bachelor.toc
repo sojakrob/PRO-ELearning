@@ -57,19 +57,19 @@
 \contentsline {subsection}{\numberline {5.3.2}Datab\'aze}{26}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Pilotn\IeC {\'\i } provoz}{26}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Testovac\IeC {\'\i } port\'al}{27}{subsection.5.4.1}
-\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{29}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\'av\v er}{31}{chapter.7}
-\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{31}{section.7.1}
-\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{32}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Formul\'a\v re}{32}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Ot\'azky}{32}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Skripta}{32}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Reportov\'an\IeC {\'\i } v\'ysledk\r u formul\'a\v re}{32}{subsection.7.2.4}
-\contentsline {subsection}{\numberline {7.2.5}E-mailov\'e notifikace}{32}{subsection.7.2.5}
-\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{35}{appendix.A}
-\contentsline {chapter}{\numberline {B}UML}{37}{appendix.B}
-\contentsline {section}{\numberline {B.1}Popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{37}{section.B.1}
-\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{41}{appendix.C}
-\contentsline {chapter}{\numberline {D}Unity Application Block tutori\'al}{45}{appendix.D}
-\contentsline {chapter}{\numberline {E}Obrazov\'a p\v r\IeC {\'\i }loha}{49}{appendix.E}
-\contentsline {chapter}{\numberline {F}Obsah p\v rilo\v zen\'eho CD}{55}{appendix.F}
+\contentsline {chapter}{\numberline {6}Nasazen\IeC {\'\i }}{28}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\'av\v er}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}Dal\v s\IeC {\'\i } v\'yvoj}{29}{section.7.1}
+\contentsline {section}{\numberline {7.2}Mo\v zn\'a roz\v s\IeC {\'\i }\v ren\IeC {\'\i }}{30}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Formul\'a\v re}{30}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Ot\'azky}{30}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Skripta}{30}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Reportov\'an\IeC {\'\i } v\'ysledk\r u formul\'a\v re}{30}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.5}E-mailov\'e notifikace}{30}{subsection.7.2.5}
+\contentsline {chapter}{\numberline {A}Seznam pou\v zit\'ych zkratek}{33}{appendix.A}
+\contentsline {chapter}{\numberline {B}UML}{34}{appendix.B}
+\contentsline {section}{\numberline {B.1}Popis p\v r\IeC {\'\i }pad\r u u\v zit\IeC {\'\i }}{34}{section.B.1}
+\contentsline {chapter}{\numberline {C}Instala\v cn\IeC {\'\i } p\v r\IeC {\'\i }ru\v cka}{37}{appendix.C}
+\contentsline {chapter}{\numberline {D}Unity Application Block tutori\'al}{40}{appendix.D}
+\contentsline {chapter}{\numberline {E}Obrazov\'a p\v r\IeC {\'\i }loha}{43}{appendix.E}
+\contentsline {chapter}{\numberline {F}Obsah p\v rilo\v zen\'eho CD}{48}{appendix.F}
