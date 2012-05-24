@@ -331,6 +331,15 @@ namespace SeleniumTests.ELearningResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duplicate.
+        /// </summary>
+        internal static string Duplicate {
+            get {
+                return ResourceManager.GetString("Duplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Edit {
@@ -480,6 +489,15 @@ namespace SeleniumTests.ELearningResources {
         internal static string FormFillingEnded {
             get {
                 return ResourceManager.GetString("FormFillingEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filling form.
+        /// </summary>
+        internal static string FormFillingWindowTitle {
+            get {
+                return ResourceManager.GetString("FormFillingWindowTitle", resourceCulture);
             }
         }
         

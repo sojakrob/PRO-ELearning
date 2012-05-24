@@ -39,7 +39,7 @@
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TargetConnectionString>Data Source=MBPC\SQLEXPRESS;Integrated Security=True;Pooling=False</TargetConnectionString>
-    <TargetDatabase>ELearning</TargetDatabase>
+    <TargetDatabase>ELearning_UnitTests</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>

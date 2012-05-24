@@ -498,4 +498,10 @@
   <data name="WelcomeText" xml:space="preserve">
     <value>Welcome in E-Learning system.</value>
   </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="FormFillingWindowTitle" xml:space="preserve">
+    <value>Filling form</value>
+  </data>
 </root>

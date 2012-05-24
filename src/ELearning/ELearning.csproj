@@ -257,6 +257,7 @@
     <Content Include="Scripts\FormInstance\FillForm_TrainingTest.js" />
     <Content Include="Scripts\FormInstance\FillingInProgress.js" />
     <Content Include="Scripts\FormInstance\ViewForm.js" />
+    <Content Include="Scripts\Form\CreateEdit.js" />
     <Content Include="Scripts\Form\CreateEditQuestions.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />

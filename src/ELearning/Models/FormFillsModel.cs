@@ -24,6 +24,14 @@ namespace ELearning.Models
         private IEnumerable<FormInstanceFillModel> _formInstances;
         private int _formID;
 
+        public bool IsEditable
+        {
+            get 
+            {
+                return FormInstances.Count() == 0;
+            }
+        }
+
 
         /// <summary>
         /// Initializes a new instance of the FormFillsModel class.

@@ -498,4 +498,10 @@
   <data name="WelcomeText" xml:space="preserve">
     <value>Vítejte v systému E-Learning.</value>
   </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplikovat</value>
+  </data>
+  <data name="FormFillingWindowTitle" xml:space="preserve">
+    <value>Vyplňování formuláře</value>
+  </data>
 </root>

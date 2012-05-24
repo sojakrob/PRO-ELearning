@@ -1,8 +1,0 @@
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\ELearning_Script.PreDeployment.sql
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\ELearning_Script.PostDeployment.sql
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\ELearning_Database.sqlsettings
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\ELearning_Database.sqldeployment
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\ELearning_Database.sqlcmdvars
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\Database.deploymanifest
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\sql\release\Database.dbschema
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Database\obj\Release\Database.dbschema

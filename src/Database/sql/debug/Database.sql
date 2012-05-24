@@ -1,5 +1,5 @@
 ﻿/*
-Deployment script for ELearning
+Deployment script for ELearning_UnitTests
 */
 
 GO
@@ -9,7 +9,7 @@ SET NUMERIC_ROUNDABORT OFF;
 
 
 GO
-:setvar DatabaseName "ELearning"
+:setvar DatabaseName "ELearning_UnitTests"
 :setvar DefaultDataPath "C:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\"
 :setvar DefaultLogPath "C:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\"
 
@@ -29,7 +29,7 @@ GO
 
 IF NOT EXISTS (SELECT 1 FROM [master].[dbo].[sysdatabases] WHERE [name] = N'$(DatabaseName)')
 BEGIN
-    RAISERROR(N'You cannot deploy this update script to target MBPC\SQLEXPRESS. The database for which this script was built, ELearning, does not exist on this server.', 16, 127) WITH NOWAIT
+    RAISERROR(N'You cannot deploy this update script to target MBPC\SQLEXPRESS. The database for which this script was built, ELearning_UnitTests, does not exist on this server.', 16, 127) WITH NOWAIT
     RETURN
 END
 

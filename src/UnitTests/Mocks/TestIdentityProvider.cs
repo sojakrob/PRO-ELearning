@@ -17,10 +17,16 @@ namespace UnitTests.Mocks
         private const int STUDENT_ID = 3;
 
 
+        public string AdminEmail { get { return _context.User.Single(u => u.ID == ADMIN_ID).Email; } }
+        public string Lectormail { get { return _context.User.Single(u => u.ID == LECTOR_ID).Email; } }
+        public string StudentEmail { get { return _context.User.Single(u => u.ID == STUDENT_ID).Email; } }
+
+
         private DataModelContainer _context;
 
         private UserTypes _currentUserType;
         private User _currentUser;
+
 
 
         /// <summary>

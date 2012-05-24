@@ -6,11 +6,3 @@ c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\bin\Releas
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Release\ResolveAssemblyReference.cache
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Release\ELearning.Data.dll
 c:\_mrbobby\School\FEL\Predmety\A7B36PRO\ELearning\PRO-ELearning\Data\obj\Release\ELearning.Data.pdb
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\bin\Release\ELearning.Data.dll.config
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\bin\Release\ELearning.Data.dll
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\bin\Release\ELearning.Data.pdb
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\bin\Release\ELearning.Shared.dll
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\bin\Release\ELearning.Shared.pdb
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\obj\Release\ResolveAssemblyReference.cache
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\obj\Release\ELearning.Data.dll
-D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\obj\Release\ELearning.Data.pdb

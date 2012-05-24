@@ -2,22 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TargetConnectionString>Data Source=MBPC\SQLEXPRESS;Integrated Security=True;Pooling=False</TargetConnectionString>
-    <TargetDatabase>ELearning</TargetDatabase>
+    <TargetDatabase>ELearning_UnitTests</TargetDatabase>
     <DeployToDatabase>False</DeployToDatabase>
     <DeployToScript>True</DeployToScript>
     <SourceModel>Database.dbschema</SourceModel>
     <DeployScriptFileName>Database.sql</DeployScriptFileName>
-    <DeploymentConfigurationFile>ELearning_Database.sqldeployment</DeploymentConfigurationFile>
+    <DeploymentConfigurationFile>ELearning_UnitTests_Database.sqldeployment</DeploymentConfigurationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SqlCommandVariablesFile>ELearning_Database.sqlcmdvars</SqlCommandVariablesFile>
+    <SqlCommandVariablesFile>ELearning_UnitTests_Database.sqlcmdvars</SqlCommandVariablesFile>
   </PropertyGroup>
   <ItemGroup>
-    <DeploymentExtensionConfiguration Include="ELearning_Script.PostDeployment.sql">
+    <DeploymentExtensionConfiguration Include="ELearning_UnitTests_Script.PostDeployment.sql">
       <__PostdeploymentMetadata>
       </__PostdeploymentMetadata>
     </DeploymentExtensionConfiguration>
-    <DeploymentExtensionConfiguration Include="ELearning_Script.PreDeployment.sql">
+    <DeploymentExtensionConfiguration Include="ELearning_UnitTests_Script.PreDeployment.sql">
       <__PredeploymentMetadata>
       </__PredeploymentMetadata>
     </DeploymentExtensionConfiguration>

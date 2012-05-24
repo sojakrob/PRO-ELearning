@@ -14,6 +14,8 @@ namespace ELearning.Business.Managers
 {
     public class UserManager : ManagerBase<User>
     {
+        public const string DEF_PASSWORD = "Pass123";
+
         public int DefaultUserTypeID
         {
             get
@@ -90,9 +92,9 @@ namespace ELearning.Business.Managers
         /// <param name="authorEmail"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public bool DeleteUser(string authorEmail, string email)
+        public bool DeleteUser(string email)
         {
-            UserPermissions perms = GetUserPermissions(authorEmail);
+            UserPermissions perms = Permissions;
             if (!perms.User_Delete)
                 throw new PermissionException("User_Delete");
 
@@ -133,11 +135,11 @@ namespace ELearning.Business.Managers
             return Context.User.Where(u => u.ID == userID).FirstOrDefault();
         }
 
-        public bool ChangePassword(string authorEmail, string email, string oldPassword, string newPassword)
+        public bool ChangePassword(string email, string oldPassword, string newPassword)
         {
-            bool isChangingOwnEmail = (authorEmail == email);
+            bool isChangingOwnEmail = (IdentityProvider.User.Email == email);
             if (!isChangingOwnEmail)
-                if (!GetUserPermissions(authorEmail).User_CreateEdit)
+                if (!Permissions.User_CreateEdit)
                     throw new PermissionException("User_CreateEdit");
 
             User user = GetUser(email);
@@ -157,6 +159,21 @@ namespace ELearning.Business.Managers
                 return false;
 
             user.Password = Security.GetPasswordHash(newPassword);
+
+            Context.SaveChanges();
+
+            return true;
+        }
+        public bool ResetPassword(int userID)
+        {
+            if (!Permissions.User_CreateEdit)
+                throw new PermissionException("User_CreateEdit");
+
+            var user = GetUser(userID);
+            if (user == null)
+                throw new ArgumentException("User not exists");
+
+            user.Password = Security.GetPasswordHash(DEF_PASSWORD);
 
             Context.SaveChanges();
 

@@ -270,6 +270,11 @@
               Looks up a localized string similar to Document name.
             </summary>
         </member>
+        <member name="P:Resources.Strings.Duplicate">
+            <summary>
+              Looks up a localized string similar to Duplicate.
+            </summary>
+        </member>
         <member name="P:Resources.Strings.Edit">
             <summary>
               Looks up a localized string similar to Edit.
@@ -353,6 +358,11 @@
         <member name="P:Resources.Strings.FormFillingEnded">
             <summary>
               Looks up a localized string similar to Form filling ended.
+            </summary>
+        </member>
+        <member name="P:Resources.Strings.FormFillingWindowTitle">
+            <summary>
+              Looks up a localized string similar to Filling form.
             </summary>
         </member>
         <member name="P:Resources.Strings.FormFills">

@@ -71,6 +71,8 @@
     <Compile Include="LoggingTest.cs" />
     <Compile Include="MenuTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextBooksTest.cs" />
+    <Compile Include="UsersTest.cs" />
     <Compile Include="WebDriverContainer.cs" />
   </ItemGroup>
   <ItemGroup>

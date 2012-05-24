@@ -115,10 +115,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModelBaseTest.cs" />
+    <Compile Include="FormManagerTest.cs" />
     <Compile Include="Mocks\TestIdentityProvider.cs" />
     <Compile Include="Mocks\TestStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestContextContainer.cs" />
     <Compile Include="TextBookManagerTest.cs" />
+    <Compile Include="UserManagerTest.cs" />
     <Compile Include="UserModelTest.cs" />
     <Compile Include="UserTest.cs" />
   </ItemGroup>

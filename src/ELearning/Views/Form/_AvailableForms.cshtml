@@ -69,11 +69,11 @@
             {
                 <td>
                 @{
-                    string filledTimes = item.FormInstances.Count().ToString();
-                    if (item.MaxFills != null)
-                    {
-                        filledTimes = string.Format("{0} / {1}", item.FormInstances.Count(), item.MaxFills.Value);
-                    }
+                string filledTimes = item.FormInstances.Count().ToString();
+                if (item.MaxFills != null)
+                {
+                    filledTimes = string.Format("{0} / {1}", item.FormInstances.Count(), item.MaxFills.Value);
+                }
                 }
                 @Html.Raw(filledTimes)
                 </td>
@@ -86,10 +86,10 @@
                     {
                         case ELearning.Data.Enums.FormStates.Active:
                             @Html.LocalizedButtonLink("Deactivate", "ChangeState", "Form", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Inactive })
-                            break;
+                       break;
                         case ELearning.Data.Enums.FormStates.Inactive:
                             @Html.LocalizedButtonLink("Activate", "ChangeState", "Form", new { id = item.ID, state = ELearning.Data.Enums.FormStates.Active })
-                            break;
+                       break;
                     }
                 }
             </td>

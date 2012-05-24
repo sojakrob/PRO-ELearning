@@ -1,6 +1,8 @@
 ﻿using ELearning.Business.Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using ELearning.Business.Storages;
 using ELearning.Business.Permissions;
 using ELearning.Data;
@@ -17,74 +19,48 @@ namespace UnitTests
     [TestClass()]
     public class TextBookManagerTest
     {
+        private string TITLE = "UnitTest TextBook";
+        private string TEXT = "|H1 UnitTest TextBook";
 
-        private TestContext testContextInstance;
 
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
+        /// A test for AddTextBook
         ///</summary>
-        public TestContext TestContext
+        [TestMethod]
+        public void AddTextBookAsLectorTest()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            var context = new TestContextContainer();
+            context.IdentityProvider.SetUser(ELearning.Data.Enums.UserTypes.Lector);
+
+            var textBookManager = new TextBookManager(context.Storage, context.Container, context.IdentityProvider);
+
+            int countBefore = textBookManager.GetAll().Count(t => t.Title == TITLE);
+            if (countBefore != 0)
+                Assert.Fail("Database is not clean");
+
+            textBookManager.AddTextBook(TextBookManager.CreateNewTextBook(TITLE, TEXT));
+
+            Assert.AreEqual(countBefore + 1, textBookManager.GetAll().Count(t => t.Title == TITLE));
         }
-
-        #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
-
-        /// <summary>
-        ///A test for AddTextBook
-        ///</summary>
-        [TestMethod()]
-        public void AddTextBookTest()
+        [TestMethod]
+        public void DeleteTextBookAsLectorTest()
         {
-            var storage = new TestStorage();
-            var identityProvider = new TestIdentityProvider(storage);
-            var container = new ManagersContainer(storage, identityProvider);
-            var textBookManager = new TextBookManager(storage, container, identityProvider);
+            var context = new TestContextContainer();
+            context.IdentityProvider.SetUser(ELearning.Data.Enums.UserTypes.Lector);
 
-            TextBook textBook = null; // TODO: Initialize to an appropriate value
-            int expected = 0; // TODO: Initialize to an appropriate value
-            int actual;
+            var textBookManager = new TextBookManager(context.Storage, context.Container, context.IdentityProvider);
 
-            //actual = target.AddTextBook(textBook);
-           // Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            int countBefore = textBookManager.GetAll().Count(t => t.Title == TITLE);
+            if (countBefore == 0)
+                Assert.Fail("TextBook is not present in DB");
+            if (countBefore > 1)
+                Assert.Fail("Database is not clean");
+
+            var textBook = textBookManager.GetSingle(t => t.Title == TITLE);
+
+            textBookManager.DeleteTextBook(textBook.ID);
+
+            Assert.AreEqual(countBefore - 1, textBookManager.GetAll().Count(t => t.Title == TITLE));
         }
     }
 }

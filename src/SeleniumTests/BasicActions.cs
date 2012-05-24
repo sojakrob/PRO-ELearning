@@ -21,7 +21,7 @@ namespace SeleniumTests
         {
             return LogIn(Config.Username_Student);
         }
-        private static bool LogIn(string username)
+        public static bool LogIn(string username, string password = Config.Password)
         {
             var driver = WebDriverContainer.Instance.WebDriver;
 
@@ -32,7 +32,7 @@ namespace SeleniumTests
             driver.FindElement(By.Id("Email")).Clear();
             driver.FindElement(By.Id("Email")).SendKeys(username);
             driver.FindElement(By.Id("Password")).Clear();
-            driver.FindElement(By.Id("Password")).SendKeys(Config.Password);
+            driver.FindElement(By.Id("Password")).SendKeys(password);
             driver.FindElement(By.CssSelector("input.Button")).Click();
 
             return driver.FindElement(By.TagName("h1")).Text.ToUpper() == ELearningResources.Strings.Home.ToUpper();

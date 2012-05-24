@@ -7,8 +7,8 @@ namespace ELearning.Data.Enums
 {
     public enum FormTypes
     {
-        Questionnaire,
-        Exam,
-        TrainingTest
+        Questionnaire = 1,
+        Exam = 2,
+        TrainingTest = 3
     }
 }

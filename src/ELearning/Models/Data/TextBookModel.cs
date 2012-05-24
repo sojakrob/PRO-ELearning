@@ -58,10 +58,14 @@ namespace ELearning.Models.Data
 
         public override TextBook ToData()
         {
+            if (Text == null)
+                Text = string.Empty;
+
             var result = TextBookManager.CreateNewTextBook(
                 Title,
                 Text
                 );
+
             result.ID = ID;
             result.Text = result.Text.Replace("&lt;", "<").Replace("&gt;", ">");
             result.VisibleToOthers = VisibleToOthers;

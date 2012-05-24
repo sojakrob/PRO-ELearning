@@ -94,5 +94,12 @@ namespace ELearning.Controllers
             return View(new TextBookModel(textBook));
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Student)]
+        public ActionResult Delete(int id)
+        {
+            _textBookManager.DeleteTextBook(id);
+
+            return RedirectToAction("Index");
+        }
     }
 }

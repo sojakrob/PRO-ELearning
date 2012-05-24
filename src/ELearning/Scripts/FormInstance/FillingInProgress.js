@@ -3,8 +3,12 @@
 }
 
 function refreshPageWithoutParams() {
-    var location = window.location;
-    window.location.replace(location.origin + location.pathname);
+    var href = window.location.href;
+    var getParamsStart = href.indexOf("?");
+    if (getParamsStart != -1)
+        href = href.substring(0, getParamsStart);
+
+    window.location.href = href;
 }
 
-setTimeout('refreshPageWithoutParams()', 5000);
+setTimeout('refreshPageWithoutParams()', 4000);

@@ -207,6 +207,9 @@
   <data name="DocumentName" xml:space="preserve">
     <value>Document name</value>
   </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="FormFillingEnded" xml:space="preserve">
     <value>Form filling ended</value>
+  </data>
+  <data name="FormFillingWindowTitle" xml:space="preserve">
+    <value>Filling form</value>
   </data>
   <data name="FormFills" xml:space="preserve">
     <value>Form Fills</value>

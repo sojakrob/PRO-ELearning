@@ -1080,6 +1080,11 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:ELearning.Data.TextBook.IsArchived">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="P:ELearning.Data.TextBook.CreatedBy">
             <summary>
             No Metadata Documentation available.

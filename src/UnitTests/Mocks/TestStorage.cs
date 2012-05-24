@@ -9,7 +9,7 @@ namespace UnitTests.Mocks
 {
     internal class TestStorage : IPersistentStorage
     {
-        private const string CONNECTION_STRING = "metadata=res://*/DataModel.csdl|res://*/DataModel.ssdl|res://*/DataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=MBPC\\SQLEXPRESS;Initial Catalog=ELearning_UnitTests;Integrated Security=True;MultipleActiveResultSets=True&quot;";
+        private const string CONNECTION_STRING = "metadata=res://*/DataModel.csdl|res://*/DataModel.ssdl|res://*/DataModel.msl;provider=System.Data.SqlClient;provider connection string='Data Source=MBPC\\SQLEXPRESS;Initial Catalog=ELearning_UnitTests;Integrated Security=True;MultipleActiveResultSets=True'";
 
         private DataModelContainer _container;
 

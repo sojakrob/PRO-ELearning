@@ -32,15 +32,15 @@ namespace ELearning.Business.Managers
             KickAnonymous();
 
             if (Permissions.TextBook_List)
-                return Context.TextBook;
+                return Context.TextBook.Where(t => !t.IsArchived);
 
             var groups = _managers.Get<GroupManager>().GetUserGroups();
 
             var visibleTextBooks = from g in groups
                                    from t in g.TextBooks
-                                   where t.VisibleToOthers
+                                   where t.VisibleToOthers && !t.IsArchived
                                    select t;
-            var usersTextBooks = Context.TextBook.Where(t => t.CreatedBy.ID == IdentityProvider.UserID);
+            var usersTextBooks = Context.TextBook.Where(t => t.CreatedBy.ID == IdentityProvider.UserID && !t.IsArchived);
             var textBooks = visibleTextBooks.Union(usersTextBooks).OrderBy(t => t.Title);
 
             return textBooks;
@@ -54,6 +54,7 @@ namespace ELearning.Business.Managers
             if (!Permissions.TextBook_CreateEdit)
                 throw new PermissionException("TextBook_CreateEdit");
 
+            
             textBook.CreatedByID = IdentityProvider.UserID;
             textBook.Created = DateTime.Now;
             textBook.ChangedByID = IdentityProvider.UserID;
@@ -119,6 +120,28 @@ namespace ELearning.Business.Managers
                 textBook.Groups.Add(_managers.Get<GroupManager>().GetGroup(groupID));
 
             Context.SaveChanges();
+        }
+
+        public bool DeleteTextBook(int textBookID)
+        {
+            var textBook = GetTextBook(textBookID);
+            if (textBook == null)
+                throw new ArgumentException("TextBook not found");
+
+            if (textBook.CreatedByID != IdentityProvider.UserID && !Permissions.TextBook_CreateEdit_All)
+                throw new PermissionException("TextBook_CreateEdit");
+
+            try
+            {
+                textBook.IsArchived = true;
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private string BuildTextBookHtml(string text)

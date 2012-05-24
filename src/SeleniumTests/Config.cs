@@ -11,7 +11,9 @@ namespace SeleniumTests
 
         public const string Username_Admin = "admin@admin.admin";
         public const string Username_Lector = "lector@lector.lector";
-        public const string Username_Student = "studentA@studentA.studentA";
+        public const string Username_Student = "studentL@studentL.studentL";
+
+        public const string DisplayName_Student = "studentL";
 
         public const string Password = "Pass123";
     }

@@ -74,6 +74,7 @@ namespace ELearning.Business.Managers
             var forms = from g in groups
                         from f in g.Forms                        
                         select f;
+            forms = forms.Distinct();
 
             if (Permissions.Form_CreateEdit)
             {
@@ -241,6 +242,10 @@ namespace ELearning.Business.Managers
                 result = false;
             }
 
+            return result && DeleteFormPreviews(id);
+        }
+        public bool DeleteFormPreviews(int id)
+        {
             try
             {
                 IEnumerable<FormInstance> previews = GetFormPreviews(id).ToArray();
@@ -254,10 +259,14 @@ namespace ELearning.Business.Managers
             catch (Exception ex)
             {
                 // TODO Log exception
-                result = false;
+                return false;
             }
+            return true;
+        }
 
-            return result;
+        public bool DeleteForm(int id)
+        {
+            return ChangeFormStateAndDeletePreviews(id, FormStates.Archived);
         }
 
         private IEnumerable<FormInstance> GetFormPreviews(int formID)

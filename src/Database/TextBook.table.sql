@@ -1,4 +1,5 @@
 ﻿-- Creating table 'TextBook'
+-- Creating table 'TextBook'
 CREATE TABLE [dbo].[TextBook] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Created] datetime  NOT NULL,
@@ -8,7 +9,11 @@ CREATE TABLE [dbo].[TextBook] (
     [CreatedByID] int  NOT NULL,
     [ChangedByID] int  NOT NULL,
     [VisibleToOthers] bit  NOT NULL,
-    [Html] nvarchar(max)  NOT NULL
+    [Html] nvarchar(max)  NOT NULL,
+    [IsArchived] bit  NOT NULL
 );
+
+
+
 
 

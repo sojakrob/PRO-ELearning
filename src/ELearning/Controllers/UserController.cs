@@ -85,7 +85,7 @@ namespace ELearning.Controllers
         [AuthorizeUserType(UserType = UserTypes.Administrator)]
         public ActionResult Delete(string email)
         {
-            if (_userManager.DeleteUser(AuthenticationContext.LoggedUserSession.Email, email))
+            if (_userManager.DeleteUser(email))
                 return RedirectToAction("Index");
 
             // TODO Confirm deletion
@@ -99,6 +99,13 @@ namespace ELearning.Controllers
             return RedirectToAction("Index");
         }
 
+        [AuthorizeUserType(UserType = UserTypes.Administrator)]
+        public ActionResult ResetPassword(int id)
+        {
+            _userManager.ResetPassword(id);
+
+            return RedirectToAction("Index");
+        }
 
         private void FillViewBag()
         {

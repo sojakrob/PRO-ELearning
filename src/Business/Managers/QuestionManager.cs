@@ -198,6 +198,8 @@ namespace ELearning.Business.Managers
             if (!form.QuestionGroups.Contains(questionGroup))
                 throw new ApplicationException("QuestionGroup do not belongs to specified Form");
 
+            _formManager.DeleteFormPreviews(formID);
+
             var questions = questionGroup.Questions.ToArray();
             try
             {

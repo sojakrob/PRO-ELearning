@@ -330,6 +330,7 @@
     <Property Name="ChangedByID" Type="int" Nullable="false" />
     <Property Name="VisibleToOthers" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="Html" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsArchived" Type="bit" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
@@ -1368,6 +1369,7 @@
           <NavigationProperty Name="Groups" Relationship="DataModel.TextBookGroup" FromRole="TextBook" ToRole="Group" />
           <Property Type="Boolean" Name="VisibleToOthers" Nullable="false" DefaultValue="False" />
           <Property Type="String" Name="Html" Nullable="false" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" DefaultValue="False" />
         </EntityType>
         <Association Name="TextBookUserCreator">
           <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
@@ -1615,6 +1617,7 @@
           <ScalarProperty Name="ChangedByID" ColumnName="ChangedByID" />
           <ScalarProperty Name="VisibleToOthers" ColumnName="VisibleToOthers" />
           <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1816,8 +1819,8 @@
           <ConnectorPoint PointX="2.6041666666666665" PointY="6.0475447005208318" />
           <ConnectorPoint PointX="2.4583333333333335" PointY="6.0475447005208309" />
           <ConnectorPoint PointX="2.2916666666666665" PointY="6.0475447005208318" />
-          <ConnectorPoint PointX="1.49414375" PointY="6.0475447005208318" />
-          <ConnectorPoint PointX="1.49414375" PointY="4.9898893229166665" />
+          <ConnectorPoint PointX="1.4985384375000002" PointY="6.0475447005208318" />
+          <ConnectorPoint PointX="1.4985384375000002" PointY="4.9898893229166665" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.FormState" Width="1.5" PointX="8" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.FormFormState">
@@ -1852,24 +1855,24 @@
           <ConnectorPoint PointX="11.9375" PointY="16.5" />
           <ConnectorPoint PointX="11.9375" PointY="14.739889322916666" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.TextBook" Width="1.5" PointX="0.5" PointY="7.25" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="DataModel.TextBook" Width="1.5" PointX="0.5" PointY="7.25" Height="3.5186979166666656" />
         <AssociationConnector Association="DataModel.TextBookUserCreator">
-          <ConnectorPoint PointX="2" PointY="7.275383615384615" />
+          <ConnectorPoint PointX="2" PointY="7.2753836153846168" />
           <ConnectorPoint PointX="2.6875" PointY="6.5878836153846159" />
           <ConnectorPoint PointX="2.6875" PointY="3.7257293701171879" />
           <ConnectorPoint PointX="3.375" PointY="3.7257293701171879" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.TextBookUserChanger">
-          <ConnectorPoint PointX="1.9757692307692309" PointY="7.25" />
-          <ConnectorPoint PointX="2.375" PointY="6.8507692307692309" />
+          <ConnectorPoint PointX="1.9757692307692327" PointY="7.25" />
+          <ConnectorPoint PointX="2.375" PointY="6.8507692307692327" />
           <ConnectorPoint PointX="2.375" PointY="4.7856510071614586" />
           <ConnectorPoint PointX="2.6041666666666665" PointY="4.7856510071614577" />
           <ConnectorPoint PointX="2.7708333333333335" PointY="4.7856510071614586" />
           <ConnectorPoint PointX="3.375" PointY="4.7856510071614586" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.TextBookGroup">
-          <ConnectorPoint PointX="0.934571875" PointY="7.25" />
-          <ConnectorPoint PointX="0.934571875" PointY="4.9898893229166665" />
+          <ConnectorPoint PointX="0.93676921875000008" PointY="7.25" />
+          <ConnectorPoint PointX="0.93676921875000008" PointY="4.9898893229166665" />
         </AssociationConnector>
         </Diagram>
     </edmx:Diagrams>

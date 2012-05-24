@@ -23,14 +23,12 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-			@item.Email
-        </td>
+        <td>@item.Email</td>
         <td>
 			@(item.Type.DisplayName)
         </td>
         <td>
-            @Html.LocalizedButtonLink("ResetPassword", string.Empty)
+            @Html.LocalizedButtonLink("ResetPassword", "ResetPassword", new { id = item.ID })
         </td>
         <td>
             @if (item.Email != Membership.GetUser().Email)
