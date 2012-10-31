@@ -127,6 +127,16 @@
       <End Role="TextBookLink" EntitySet="TextBookLink" />
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
     </AssociationSet>
+    <EntitySet Name="GradeSet" EntityType="DataModel.Grade" />
+    <EntitySet Name="GradeGroupSet" EntityType="DataModel.GradeGroup" />
+    <AssociationSet Name="GradeGradeGroup" Association="DataModel.GradeGradeGroup">
+      <End Role="Grade" EntitySet="GradeSet" />
+      <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="GradeGroupForm" Association="DataModel.GradeGroupForm">
+      <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+      <End Role="Form" EntitySet="Form" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Question">
     <Key>
@@ -266,6 +276,7 @@
     <NavigationProperty Name="State" Relationship="DataModel.FormFormState" FromRole="Form" ToRole="FormState" />
     <Property Type="Int32" Name="FormStateID" Nullable="false" />
     <Property Type="Int32" Name="MaxFills" Nullable="true" />
+    <NavigationProperty Name="GradeGroup" Relationship="DataModel.GradeGroupForm" FromRole="Form" ToRole="GradeGroup" />
   </EntityType>
   <EntityType Name="FormType">
     <Key>
@@ -623,5 +634,30 @@
   <Association Name="TextBookLinkQuestionGroup">
     <End Type="DataModel.TextBookLink" Role="TextBookLink" Multiplicity="*" />
     <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="1" />
+  </Association>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="GradeGroup" Relationship="DataModel.GradeGradeGroup" FromRole="Grade" ToRole="GradeGroup" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Value" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GradeGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Grade" Relationship="DataModel.GradeGradeGroup" FromRole="GradeGroup" ToRole="Grade" />
+    <NavigationProperty Name="Form" Relationship="DataModel.GradeGroupForm" FromRole="GradeGroup" ToRole="Form" />
+  </EntityType>
+  <Association Name="GradeGradeGroup">
+    <End Type="DataModel.Grade" Role="Grade" Multiplicity="*" />
+    <End Type="DataModel.GradeGroup" Role="GradeGroup" Multiplicity="1" />
+  </Association>
+  <Association Name="GradeGroupForm">
+    <End Type="DataModel.GradeGroup" Role="GradeGroup" Multiplicity="1" />
+    <End Type="DataModel.Form" Role="Form" Multiplicity="1" />
   </Association>
 </Schema>

@@ -24,6 +24,8 @@
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TextBook" EntityType="DataModel.Store.TextBook" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TextBookLink" EntityType="DataModel.Store.TextBookLink" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GradeSet" EntityType="DataModel.Store.GradeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GradeGroupSet" EntityType="DataModel.Store.GradeGroupSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
@@ -152,6 +154,14 @@
     <AssociationSet Name="TextBookLinkQuestionGroup" Association="DataModel.Store.TextBookLinkQuestionGroup">
       <End Role="TextBookLink" EntitySet="TextBookLink" />
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+    </AssociationSet>
+    <AssociationSet Name="GradeGradeGroup" Association="DataModel.Store.GradeGradeGroup">
+      <End Role="Grade" EntitySet="GradeSet" />
+      <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="GradeGroupForm" Association="DataModel.Store.GradeGroupForm">
+      <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+      <End Role="Form" EntitySet="Form" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -350,6 +360,22 @@
     <Property Name="TextBookID" Type="int" Nullable="false" />
     <Property Name="QuestionID" Type="int" Nullable="false" />
     <Property Name="QuestionGroup_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GradeSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GradeGroup_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GradeGroupSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Form_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
@@ -708,6 +734,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="GradeGradeGroup">
+    <End Role="Grade" Type="DataModel.Store.GradeSet" Multiplicity="*" />
+    <End Role="GradeGroup" Type="DataModel.Store.GradeGroupSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GradeGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="GradeGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradeGroupForm">
+    <End Role="GradeGroup" Type="DataModel.Store.GradeGroupSet" Multiplicity="*" />
+    <End Role="Form" Type="DataModel.Store.Form" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GradeGroup">
+        <PropertyRef Name="Form_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -995,6 +1045,16 @@
             <End Role="TextBookLink" EntitySet="TextBookLink" />
             <End Role="QuestionGroup" EntitySet="QuestionGroup" />
           </AssociationSet>
+          <EntitySet Name="GradeSet" EntityType="DataModel.Grade" />
+          <EntitySet Name="GradeGroupSet" EntityType="DataModel.GradeGroup" />
+          <AssociationSet Name="GradeGradeGroup" Association="DataModel.GradeGradeGroup">
+            <End Role="Grade" EntitySet="GradeSet" />
+            <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+          </AssociationSet>
+          <AssociationSet Name="GradeGroupForm" Association="DataModel.GradeGroupForm">
+            <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+            <End Role="Form" EntitySet="Form" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Question">
           <Key>
@@ -1134,6 +1194,7 @@
           <NavigationProperty Name="State" Relationship="DataModel.FormFormState" FromRole="Form" ToRole="FormState" />
           <Property Type="Int32" Name="FormStateID" Nullable="false" />
           <Property Type="Int32" Name="MaxFills" Nullable="true" />
+          <NavigationProperty Name="GradeGroup" Relationship="DataModel.GradeGroupForm" FromRole="Form" ToRole="GradeGroup" />
         </EntityType>
         <EntityType Name="FormType">
           <Key>
@@ -1492,6 +1553,31 @@
           <End Type="DataModel.TextBookLink" Role="TextBookLink" Multiplicity="*" />
           <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="1" />
         </Association>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="GradeGroup" Relationship="DataModel.GradeGradeGroup" FromRole="Grade" ToRole="GradeGroup" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Value" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GradeGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Grade" Relationship="DataModel.GradeGradeGroup" FromRole="GradeGroup" ToRole="Grade" />
+          <NavigationProperty Name="Form" Relationship="DataModel.GradeGroupForm" FromRole="GradeGroup" ToRole="Form" />
+        </EntityType>
+        <Association Name="GradeGradeGroup">
+          <End Type="DataModel.Grade" Role="Grade" Multiplicity="*" />
+          <End Type="DataModel.GradeGroup" Role="GradeGroup" Multiplicity="1" />
+        </Association>
+        <Association Name="GradeGroupForm">
+          <End Type="DataModel.GradeGroup" Role="GradeGroup" Multiplicity="1" />
+          <End Type="DataModel.Form" Role="Form" Multiplicity="1" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1724,6 +1810,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="GradeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Grade)">
+        <MappingFragment StoreEntitySet="GradeSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GradeGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.GradeGroup)">
+        <MappingFragment StoreEntitySet="GradeGroupSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
@@ -1781,6 +1883,22 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="GradeGradeGroup" TypeName="DataModel.GradeGradeGroup" StoreEntitySet="GradeSet">
+      <EndProperty Name="GradeGroup">
+        <ScalarProperty Name="ID" ColumnName="GradeGroup_ID" />
+      </EndProperty>
+      <EndProperty Name="Grade">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GradeGroupForm" TypeName="DataModel.GradeGroupForm" StoreEntitySet="GradeGroupSet">
+      <EndProperty Name="Form">
+        <ScalarProperty Name="ID" ColumnName="Form_ID" />
+      </EndProperty>
+      <EndProperty Name="GradeGroup">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1824,7 +1942,7 @@
           <ConnectorPoint PointX="2" PointY="3.1537223307291669" />
           <ConnectorPoint PointX="3.375" PointY="3.1537223307291669" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="DataModel.UserType" Width="1.5" PointX="3.375" PointY="0.5" Height="1.4033821614583333" />
+        <EntityTypeShape EntityType="DataModel.UserType" Width="1.5" PointX="4.375" PointY="0.5" Height="1.4033821614583333" />
         <AssociationConnector Association="DataModel.UserUserType">
           <ConnectorPoint PointX="4.125" PointY="2.625" />
           <ConnectorPoint PointX="4.125" PointY="1.9033821614583333" />
@@ -1971,8 +2089,7 @@
           <ConnectorPoint PointX="1.9757692307692309" PointY="7.25" />
           <ConnectorPoint PointX="2.375" PointY="6.8507692307692309" />
           <ConnectorPoint PointX="2.9985795214017932" PointY="6.8507692307692309" />
-          <ConnectorPoint PointX="2.9985795214017932" PointY="46.55573563056722" />
-          <ConnectorPoint PointX="3.375" PointY="5.3744921875" />
+          <ConnectorPoint PointX="3.375" PointY="3.921983948667088" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.TextBookUserChanger">
           <ConnectorPoint PointX="1.9757692307692327" PointY="7.25" />
@@ -1989,6 +2106,10 @@
         <EntityTypeShape EntityType="DataModel.TextBookLink" Width="1.5" PointX="0.5" PointY="11.375" />
         <AssociationConnector Association="DataModel.TextBookTextBookLink" />
         <AssociationConnector Association="DataModel.TextBookLinkQuestionGroup" />
+        <EntityTypeShape EntityType="DataModel.Grade" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.GradeGroup" Width="1.5" PointX="2.5" PointY="0.5" />
+        <AssociationConnector Association="DataModel.GradeGradeGroup" />
+        <AssociationConnector Association="DataModel.GradeGroupForm" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

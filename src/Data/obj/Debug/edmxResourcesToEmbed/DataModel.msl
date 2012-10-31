@@ -227,6 +227,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="GradeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Grade)">
+        <MappingFragment StoreEntitySet="GradeSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GradeGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.GradeGroup)">
+        <MappingFragment StoreEntitySet="GradeGroupSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
@@ -281,6 +297,22 @@
         <ScalarProperty Name="ID" ColumnName="QuestionGroup_ID" />
       </EndProperty>
       <EndProperty Name="TextBookLink">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GradeGradeGroup" TypeName="DataModel.GradeGradeGroup" StoreEntitySet="GradeSet">
+      <EndProperty Name="GradeGroup">
+        <ScalarProperty Name="ID" ColumnName="GradeGroup_ID" />
+      </EndProperty>
+      <EndProperty Name="Grade">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GradeGroupForm" TypeName="DataModel.GradeGroupForm" StoreEntitySet="GradeGroupSet">
+      <EndProperty Name="Form">
+        <ScalarProperty Name="ID" ColumnName="Form_ID" />
+      </EndProperty>
+      <EndProperty Name="GradeGroup">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>

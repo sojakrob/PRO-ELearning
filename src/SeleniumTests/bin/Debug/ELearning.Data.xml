@@ -4,6 +4,319 @@
         <name>ELearning.Data</name>
     </assembly>
     <members>
+        <member name="T:ELearning.Data.DataModelContainer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.#ctor">
+            <summary>
+            Initializes a new DataModelContainer object using the connection string found in the 'DataModelContainer' section of the application configuration file.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.#ctor(System.String)">
+            <summary>
+            Initialize a new DataModelContainer object.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.#ctor(System.Data.EntityClient.EntityConnection)">
+            <summary>
+            Initialize a new DataModelContainer object.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestion(ELearning.Data.Question)">
+            <summary>
+            Deprecated Method for adding a new object to the Question EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionGroup(ELearning.Data.QuestionGroup)">
+            <summary>
+            Deprecated Method for adding a new object to the QuestionGroup EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionGroupType(ELearning.Data.QuestionGroupType)">
+            <summary>
+            Deprecated Method for adding a new object to the QuestionGroupType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToUser(ELearning.Data.User)">
+            <summary>
+            Deprecated Method for adding a new object to the User EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToGroup(ELearning.Data.Group)">
+            <summary>
+            Deprecated Method for adding a new object to the Group EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToUserType(ELearning.Data.UserType)">
+            <summary>
+            Deprecated Method for adding a new object to the UserType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToForm(ELearning.Data.Form)">
+            <summary>
+            Deprecated Method for adding a new object to the Form EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormType(ELearning.Data.FormType)">
+            <summary>
+            Deprecated Method for adding a new object to the FormType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormInstance(ELearning.Data.FormInstance)">
+            <summary>
+            Deprecated Method for adding a new object to the FormInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionInstance(ELearning.Data.QuestionInstance)">
+            <summary>
+            Deprecated Method for adding a new object to the QuestionInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormInstanceEvaluation(ELearning.Data.FormInstanceEvaluation)">
+            <summary>
+            Deprecated Method for adding a new object to the FormInstanceEvaluation EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToAnswer(ELearning.Data.Answer)">
+            <summary>
+            Deprecated Method for adding a new object to the Answer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToChoiceItem(ELearning.Data.ChoiceItem)">
+            <summary>
+            Deprecated Method for adding a new object to the ChoiceItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToFormState(ELearning.Data.FormState)">
+            <summary>
+            Deprecated Method for adding a new object to the FormState EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToMarkValue(ELearning.Data.MarkValue)">
+            <summary>
+            Deprecated Method for adding a new object to the MarkValue EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToMultipleChoiceAnswerItem(ELearning.Data.MultipleChoiceAnswerItem)">
+            <summary>
+            Deprecated Method for adding a new object to the MultipleChoiceAnswerItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToTextBook(ELearning.Data.TextBook)">
+            <summary>
+            Deprecated Method for adding a new object to the TextBook EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToTextBookLink(ELearning.Data.TextBookLink)">
+            <summary>
+            Deprecated Method for adding a new object to the TextBookLink EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToGradeSet(ELearning.Data.Grade)">
+            <summary>
+            Deprecated Method for adding a new object to the GradeSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToGradeGroupSet(ELearning.Data.GradeGroup)">
+            <summary>
+            Deprecated Method for adding a new object to the GradeGroupSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Question">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.QuestionGroupType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Group">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.UserType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Form">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.QuestionInstance">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormInstanceEvaluation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.Answer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.ChoiceItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.FormState">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.MarkValue">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.MultipleChoiceAnswerItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.TextBook">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.TextBookLink">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.GradeSet">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.GradeGroupSet">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.Answer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Answer.CreateAnswer(System.Int32)">
+            <summary>
+            Create a new Answer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+        </member>
+        <member name="P:ELearning.Data.Answer.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceAnswer.CreateChoiceAnswer(System.Int32,System.Int32)">
+            <summary>
+            Create a new ChoiceAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="itemID">Initial value of the ItemID property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ItemID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplateReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceItem.CreateChoiceItem(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Create a new ChoiceItem object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="choiceQuestionID">Initial value of the ChoiceQuestionID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="isCorrect">Initial value of the IsCorrect property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ChoiceQuestionID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.IsCorrect">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Explanation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ImageUrl">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:ELearning.Data.ChoiceQuestion">
             <summary>
             No Metadata Documentation available.
@@ -192,315 +505,12 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="T:ELearning.Data.MultipleChoiceAnswer">
+        <member name="P:ELearning.Data.Form.GradeGroup">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="T:ELearning.Data.Answer">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.Answer.CreateAnswer(System.Int32)">
-            <summary>
-            Create a new Answer object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-        </member>
-        <member name="P:ELearning.Data.Answer.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.MultipleChoiceAnswer.CreateMultipleChoiceAnswer(System.Int32)">
-            <summary>
-            Create a new MultipleChoiceAnswer object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-        </member>
-        <member name="P:ELearning.Data.MultipleChoiceAnswer.Items">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.QuestionGroup">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Create a new QuestionGroup object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="index">Initial value of the Index property.</param>
-            <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
-            <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.Index">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.IsRequired">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.FormTemplateID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.Questions">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.Type">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.TypeReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.ParentForm">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.QuestionGroup.ParentFormReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.ChoiceAnswer">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.ChoiceAnswer.CreateChoiceAnswer(System.Int32,System.Int32)">
-            <summary>
-            Create a new ChoiceAnswer object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="itemID">Initial value of the ItemID property.</param>
-        </member>
-        <member name="P:ELearning.Data.ChoiceAnswer.ItemID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplate">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplateReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.DataModelContainer">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.#ctor">
-            <summary>
-            Initializes a new DataModelContainer object using the connection string found in the 'DataModelContainer' section of the application configuration file.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.#ctor(System.String)">
-            <summary>
-            Initialize a new DataModelContainer object.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.#ctor(System.Data.EntityClient.EntityConnection)">
-            <summary>
-            Initialize a new DataModelContainer object.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToQuestion(ELearning.Data.Question)">
-            <summary>
-            Deprecated Method for adding a new object to the Question EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionGroup(ELearning.Data.QuestionGroup)">
-            <summary>
-            Deprecated Method for adding a new object to the QuestionGroup EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionGroupType(ELearning.Data.QuestionGroupType)">
-            <summary>
-            Deprecated Method for adding a new object to the QuestionGroupType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToUser(ELearning.Data.User)">
-            <summary>
-            Deprecated Method for adding a new object to the User EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToGroup(ELearning.Data.Group)">
-            <summary>
-            Deprecated Method for adding a new object to the Group EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToUserType(ELearning.Data.UserType)">
-            <summary>
-            Deprecated Method for adding a new object to the UserType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToForm(ELearning.Data.Form)">
-            <summary>
-            Deprecated Method for adding a new object to the Form EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToFormType(ELearning.Data.FormType)">
-            <summary>
-            Deprecated Method for adding a new object to the FormType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToFormInstance(ELearning.Data.FormInstance)">
-            <summary>
-            Deprecated Method for adding a new object to the FormInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToQuestionInstance(ELearning.Data.QuestionInstance)">
-            <summary>
-            Deprecated Method for adding a new object to the QuestionInstance EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToFormInstanceEvaluation(ELearning.Data.FormInstanceEvaluation)">
-            <summary>
-            Deprecated Method for adding a new object to the FormInstanceEvaluation EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToAnswer(ELearning.Data.Answer)">
-            <summary>
-            Deprecated Method for adding a new object to the Answer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToChoiceItem(ELearning.Data.ChoiceItem)">
-            <summary>
-            Deprecated Method for adding a new object to the ChoiceItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToFormState(ELearning.Data.FormState)">
-            <summary>
-            Deprecated Method for adding a new object to the FormState EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToMarkValue(ELearning.Data.MarkValue)">
-            <summary>
-            Deprecated Method for adding a new object to the MarkValue EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToMultipleChoiceAnswerItem(ELearning.Data.MultipleChoiceAnswerItem)">
-            <summary>
-            Deprecated Method for adding a new object to the MultipleChoiceAnswerItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.DataModelContainer.AddToTextBook(ELearning.Data.TextBook)">
-            <summary>
-            Deprecated Method for adding a new object to the TextBook EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.Question">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.QuestionGroup">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.QuestionGroupType">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.User">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.Group">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.UserType">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.Form">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.FormType">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.FormInstance">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.QuestionInstance">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.FormInstanceEvaluation">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.Answer">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.ChoiceItem">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.FormState">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.MarkValue">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.MultipleChoiceAnswerItem">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.DataModelContainer.TextBook">
+        <member name="P:ELearning.Data.Form.GradeGroupReference">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -681,6 +691,75 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="T:ELearning.Data.Grade">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Grade.CreateGrade(System.Int32,System.String,System.String)">
+            <summary>
+            Create a new Grade object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+            <param name="value">Initial value of the Value property.</param>
+        </member>
+        <member name="P:ELearning.Data.Grade.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.Value">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.GradeGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.GradeGroupReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.GradeGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.GradeGroup.CreateGradeGroup(System.Int32)">
+            <summary>
+            Create a new GradeGroup object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.Grade">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.Form">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.FormReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:ELearning.Data.Group">
             <summary>
             No Metadata Documentation available.
@@ -734,56 +813,6 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="T:ELearning.Data.ChoiceItem">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.ChoiceItem.CreateChoiceItem(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
-            <summary>
-            Create a new ChoiceItem object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="choiceQuestionID">Initial value of the ChoiceQuestionID property.</param>
-            <param name="text">Initial value of the Text property.</param>
-            <param name="index">Initial value of the Index property.</param>
-            <param name="isCorrect">Initial value of the IsCorrect property.</param>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.ChoiceQuestionID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.Text">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.Index">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.IsCorrect">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.Explanation">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.ImageUrl">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
         <member name="T:ELearning.Data.MarkValue">
             <summary>
             No Metadata Documentation available.
@@ -802,6 +831,22 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.MarkValue.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.MultipleChoiceAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.MultipleChoiceAnswer.CreateMultipleChoiceAnswer(System.Int32)">
+            <summary>
+            Create a new MultipleChoiceAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+        </member>
+        <member name="P:ELearning.Data.MultipleChoiceAnswer.Items">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -850,6 +895,75 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.MultipleChoiceAnswerItem.ChoiceItemTemplateReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.QuestionGroup.CreateQuestionGroup(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create a new QuestionGroup object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="questionGroupTypeID">Initial value of the QuestionGroupTypeID property.</param>
+            <param name="formTemplateID">Initial value of the FormTemplateID property.</param>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.IsRequired">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.QuestionGroupTypeID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.FormTemplateID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.Questions">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.Type">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.TypeReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ParentForm">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.ParentFormReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.QuestionGroup.TextBookLink">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1106,6 +1220,65 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.TextBook.Groups">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBook.TextBookLink">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.TextBookLink">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.TextBookLink.CreateTextBookLink(System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Create a new TextBookLink object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="hName">Initial value of the HName property.</param>
+            <param name="textBookID">Initial value of the TextBookID property.</param>
+            <param name="questionID">Initial value of the QuestionID property.</param>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.HName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.TextBookID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.QuestionID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.TextBook">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.TextBookReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.TextBookLink.QuestionGroupReference">
             <summary>
             No Metadata Documentation available.
             </summary>

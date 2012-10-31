@@ -13,6 +13,7 @@ namespace ELearning.Models.Data
     {
         private const int NAME_MAX_LENGTH = 25;
         private const int TEXT_MAX_LENGTH = 20;
+        private const int GRADE_MAX_LENGTH = 20;
 
 
 
@@ -32,6 +33,28 @@ namespace ELearning.Models.Data
         {
             get { return Utils.Formatting.CropText(Text, TEXT_MAX_LENGTH); }
         }
+        /// <summary>
+        /// New implemented part for automatic rating
+        /// </summary>
+        [DisplayLocalized("Grades")]
+        public string Grade { get; set; }
+        public string GradeCropped
+        {
+            get { return "Example"; }
+        }
+
+        /// <summary>
+        /// Implementation for ratea
+        /// </summary>
+        /// 
+        [DisplayLocalized("Rates")]
+        public string Rate { get; set; }
+        public string RateCropped
+        {
+            get { return "Example"; }
+        }
+        private IEnumerable<GradeGroupModel> _assignedGrades = null;
+
 
         [DisplayLocalized("ShuffleQuestions")]
         public bool Shuffle { get; set; }
@@ -94,6 +117,7 @@ namespace ELearning.Models.Data
             ID = data.ID;
             Name = data.Name;
             Text = data.Text;
+            Grade = "1";
             Created = data.Created;
             Shuffle = data.Shuffle;
             MaxFills = data.MaxFills;
@@ -142,6 +166,7 @@ namespace ELearning.Models.Data
                 State == null ? 0 : State.ID
                 );
             result.Text = Text;
+            ///result.Grade = Grade;
             result.Shuffle = Shuffle;
             result.MaxFills = MaxFills;
 

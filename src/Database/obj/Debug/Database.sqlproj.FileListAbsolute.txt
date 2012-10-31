@@ -7,3 +7,8 @@ C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Dat
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\Debug\refactor.xml
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\Debug\postdeploy.sql
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\Debug\predeploy.sql
+C:\Users\Администратор\Desktop\Elearning\current\src\Database\sql\debug\Database.dacpac
+C:\Users\Администратор\Desktop\Elearning\current\src\Database\sql\debug\Database.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Database\sql\debug\Database.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Database\obj\Debug\Database.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Database\obj\Debug\Database.pdb

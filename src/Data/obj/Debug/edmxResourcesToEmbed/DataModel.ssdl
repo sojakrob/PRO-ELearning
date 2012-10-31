@@ -19,6 +19,8 @@
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TextBook" EntityType="DataModel.Store.TextBook" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TextBookLink" EntityType="DataModel.Store.TextBookLink" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GradeSet" EntityType="DataModel.Store.GradeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GradeGroupSet" EntityType="DataModel.Store.GradeGroupSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
@@ -147,6 +149,14 @@
     <AssociationSet Name="TextBookLinkQuestionGroup" Association="DataModel.Store.TextBookLinkQuestionGroup">
       <End Role="TextBookLink" EntitySet="TextBookLink" />
       <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+    </AssociationSet>
+    <AssociationSet Name="GradeGradeGroup" Association="DataModel.Store.GradeGradeGroup">
+      <End Role="Grade" EntitySet="GradeSet" />
+      <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="GradeGroupForm" Association="DataModel.Store.GradeGroupForm">
+      <End Role="GradeGroup" EntitySet="GradeGroupSet" />
+      <End Role="Form" EntitySet="Form" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -345,6 +355,22 @@
     <Property Name="TextBookID" Type="int" Nullable="false" />
     <Property Name="QuestionID" Type="int" Nullable="false" />
     <Property Name="QuestionGroup_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GradeSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GradeGroup_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GradeGroupSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Form_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
@@ -700,6 +726,30 @@
       </Principal>
       <Dependent Role="TextBookLink">
         <PropertyRef Name="QuestionGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradeGradeGroup">
+    <End Role="Grade" Type="DataModel.Store.GradeSet" Multiplicity="*" />
+    <End Role="GradeGroup" Type="DataModel.Store.GradeGroupSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GradeGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="GradeGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GradeGroupForm">
+    <End Role="GradeGroup" Type="DataModel.Store.GradeGroupSet" Multiplicity="*" />
+    <End Role="Form" Type="DataModel.Store.Form" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GradeGroup">
+        <PropertyRef Name="Form_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

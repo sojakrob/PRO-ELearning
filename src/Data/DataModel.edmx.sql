@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/31/2012 14:16:59
--- Generated from EDMX file: C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\DataModel.edmx
+-- Date Created: 10/31/2012 20:12:55
+-- Generated from EDMX file: C:\Users\Администратор\Desktop\Elearning\current\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -104,8 +104,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TextBookTextBookLink]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TextBookLink] DROP CONSTRAINT [FK_TextBookTextBookLink];
 GO
-IF OBJECT_ID(N'[dbo].[FK_QuestionTextBookLink]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TextBookLink] DROP CONSTRAINT [FK_QuestionTextBookLink];
+IF OBJECT_ID(N'[dbo].[FK_TextBookLinkQuestionGroup]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBookLink] DROP CONSTRAINT [FK_TextBookLinkQuestionGroup];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceQuestion_inherits_Question]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Question_ChoiceQuestion] DROP CONSTRAINT [FK_ChoiceQuestion_inherits_Question];
@@ -389,6 +389,22 @@ CREATE TABLE [dbo].[TextBookLink] (
 );
 GO
 
+-- Creating table 'GradeSet'
+CREATE TABLE [dbo].[GradeSet] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Value] nvarchar(max)  NOT NULL,
+    [GradeGroup_ID] int  NOT NULL
+);
+GO
+
+-- Creating table 'GradeGroupSet'
+CREATE TABLE [dbo].[GradeGroupSet] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Form_ID] int  NOT NULL
+);
+GO
+
 -- Creating table 'Question_ChoiceQuestion'
 CREATE TABLE [dbo].[Question_ChoiceQuestion] (
     [Shuffle] bit  NOT NULL,
@@ -564,6 +580,18 @@ GO
 -- Creating primary key on [ID] in table 'TextBookLink'
 ALTER TABLE [dbo].[TextBookLink]
 ADD CONSTRAINT [PK_TextBookLink]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'GradeSet'
+ALTER TABLE [dbo].[GradeSet]
+ADD CONSTRAINT [PK_GradeSet]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'GradeGroupSet'
+ALTER TABLE [dbo].[GradeGroupSet]
+ADD CONSTRAINT [PK_GradeGroupSet]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -1028,6 +1056,34 @@ ADD CONSTRAINT [FK_TextBookLinkQuestionGroup]
 CREATE INDEX [IX_FK_TextBookLinkQuestionGroup]
 ON [dbo].[TextBookLink]
     ([QuestionGroup_ID]);
+GO
+
+-- Creating foreign key on [GradeGroup_ID] in table 'GradeSet'
+ALTER TABLE [dbo].[GradeSet]
+ADD CONSTRAINT [FK_GradeGradeGroup]
+    FOREIGN KEY ([GradeGroup_ID])
+    REFERENCES [dbo].[GradeGroupSet]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GradeGradeGroup'
+CREATE INDEX [IX_FK_GradeGradeGroup]
+ON [dbo].[GradeSet]
+    ([GradeGroup_ID]);
+GO
+
+-- Creating foreign key on [Form_ID] in table 'GradeGroupSet'
+ALTER TABLE [dbo].[GradeGroupSet]
+ADD CONSTRAINT [FK_GradeGroupForm]
+    FOREIGN KEY ([Form_ID])
+    REFERENCES [dbo].[Form]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_GradeGroupForm'
+CREATE INDEX [IX_FK_GradeGroupForm]
+ON [dbo].[GradeGroupSet]
+    ([Form_ID]);
 GO
 
 -- Creating foreign key on [ID] in table 'Question_ChoiceQuestion'

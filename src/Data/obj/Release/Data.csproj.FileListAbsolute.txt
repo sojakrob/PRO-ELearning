@@ -14,3 +14,11 @@ C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Dat
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\Release\ELearning.Data.dll
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\Release\ELearning.Data.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Release\ELearning.Data.dll.config
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Release\ELearning.Data.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Release\ELearning.Data.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Release\ELearning.Shared.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Release\ELearning.Shared.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\obj\Release\ELearning.Data.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\obj\Release\ELearning.Data.pdb

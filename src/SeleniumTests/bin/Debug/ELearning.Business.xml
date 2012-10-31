@@ -4,31 +4,6 @@
         <name>ELearning.Business</name>
     </assembly>
     <members>
-        <member name="P:ELearning.Business.Managers.ManagerBase`1.Context">
-            <summary>
-            Gets current data context
-            </summary>
-        </member>
-        <member name="M:ELearning.Business.Reporting.FormFillsDataReport.#ctor">
-            <summary>
-            Initializes a new instance of the FormFillsDataReport class.
-            </summary>
-        </member>
-        <member name="P:ELearning.Business.Permissions.UserPermissions.User_CreateEdit">
-            <summary>
-            Can create User
-            </summary>
-        </member>
-        <member name="P:ELearning.Business.Permissions.UserPermissions.User_List">
-            <summary>
-            Can view list of Users
-            </summary>
-        </member>
-        <member name="P:ELearning.Business.Permissions.UserPermissions.Group_List_All">
-            <summary>
-            Can view list of Groups
-            </summary>
-        </member>
         <member name="M:ELearning.Business.ImportExport.FormFillsDataExport.#ctor(ELearning.Business.Reporting.FormFillsDataReport,System.Web.HttpServerUtilityBase,ELearning.Business.Interfaces.ILocalization)">
             <summary>
             Initializes a new instance of the FormFillsDataExport class.
@@ -39,16 +14,16 @@
             Initializes a new instance of the GoogleGroupsMembersImporter class.
             </summary>
         </member>
-        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
+        <member name="P:ELearning.Business.Managers.ManagerBase`1.Context">
             <summary>
-            Changes the database of DataModelContainer
+            Gets current data context
             </summary>
-            <param name="connectionString">Connection string for the connection</param>
         </member>
-        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
+        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.ManagersContainer,ELearning.Business.Interfaces.IIdentityProvider)">
             <summary>
-            Gets singleton instance
+            Initializes a new instance of the QuestionManager class.
             </summary>
+            <param name="persistentStorage"></param>
         </member>
         <member name="M:ELearning.Business.Managers.UserManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.ManagersContainer,ELearning.Business.Interfaces.IIdentityProvider)">
             <summary>
@@ -103,11 +78,36 @@
             <param name="user"></param>
             <returns></returns>
         </member>
-        <member name="M:ELearning.Business.Managers.QuestionManager.#ctor(ELearning.Business.Storages.IPersistentStorage,ELearning.Business.Managers.ManagersContainer,ELearning.Business.Interfaces.IIdentityProvider)">
+        <member name="P:ELearning.Business.Permissions.UserPermissions.User_CreateEdit">
             <summary>
-            Initializes a new instance of the QuestionManager class.
+            Can create User
             </summary>
-            <param name="persistentStorage"></param>
+        </member>
+        <member name="P:ELearning.Business.Permissions.UserPermissions.User_List">
+            <summary>
+            Can view list of Users
+            </summary>
+        </member>
+        <member name="P:ELearning.Business.Permissions.UserPermissions.Group_List_All">
+            <summary>
+            Can view list of Groups
+            </summary>
+        </member>
+        <member name="M:ELearning.Business.Reporting.FormFillsDataReport.#ctor">
+            <summary>
+            Initializes a new instance of the FormFillsDataReport class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Business.Storages.WebStorage.ChangeDatabase(System.String)">
+            <summary>
+            Changes the database of DataModelContainer
+            </summary>
+            <param name="connectionString">Connection string for the connection</param>
+        </member>
+        <member name="P:ELearning.Business.Storages.WebStorage.Instance">
+            <summary>
+            Gets singleton instance
+            </summary>
         </member>
     </members>
 </doc>

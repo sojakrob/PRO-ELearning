@@ -4,106 +4,6 @@
         <name>ELearning</name>
     </assembly>
     <members>
-        <member name="M:ELearning.Models.Data.UserModel.#ctor">
-            <summary>
-            Initializes a new instance of the UserModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Controllers.GroupController.#ctor(ELearning.Business.Managers.GroupManager,ELearning.Business.Managers.UserManager)">
-            <summary>
-            Initializes a new instance of the GroupController class.
-            </summary>
-            <param name="groupManager"></param>
-        </member>
-        <member name="M:ELearning.Models.Data.FormModel.#ctor">
-            <summary>
-            Initializes a new instance of the FormModel class.
-            </summary>
-            <param name="form"></param>
-        </member>
-        <member name="P:ELearning.Models.Data.FormModel.TimeToFill">
-            <summary>
-            Time to fill in minutes
-            </summary>
-        </member>
-        <member name="P:ELearning.Models.Data.FormModel.TimesFilled_Total">
-            <summary>
-            Gets number of times the form was filled
-            </summary>
-        </member>
-        <member name="P:ELearning.Models.Data.FormModel.TimesFilled_Users">
-            <summary>
-            Gets number of users that filled the form
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.ImportExport.ExportToGoogleDocsModel.#ctor">
-            <summary>
-            Initializes a new instance of the ExportToGoogleDocsModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Data.GroupModel.#ctor">
-            <summary>
-            Initializes a new instance of the GroupModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor">
-            <summary>
-            Initializes a new instance of the LoggedUserModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor(ELearning.Data.User,ELearning.Business.Permissions.UserPermissions)">
-            <summary>
-            Initializes a new instance of the LoggedUserModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Controllers.HomeController.#ctor(ELearning.Business.Managers.FormManager,ELearning.Business.Managers.TextBookManager)">
-            <summary>
-            Initializes a new instance of the HomeController class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.HomePageModel.#ctor(System.Collections.Generic.IEnumerable{ELearning.Models.FormFillsModel},System.Collections.Generic.IEnumerable{ELearning.Models.Data.TextBookModel})">
-            <summary>
-            Initializes a new instance of the HomePageModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Controllers.SettingsController.#ctor(ELearning.Business.Managers.UserManager)">
-            <summary>
-            Initializes a new instance of the SettingsController class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.FormInstancesModel.#ctor(ELearning.Models.Data.FormModel,System.Collections.Generic.ICollection{ELearning.Models.Data.FormInstanceModel})">
-            <summary>
-            Initializes a new instance of the FormInstancesModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.FormFillsModel.#ctor">
-            <summary>
-            Initializes a new instance of the FormFillsModel class.
-            </summary>
-            <param name="form"></param>
-        </member>
-        <member name="P:ELearning.MvcApplication.UnityContainer">
-            <summary>
-            Gets the Unity container of the current application
-            </summary>
-        </member>
-        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
-            <summary>
-            Gets the Unity container of the application
-            </summary>
-        </member>
-        <member name="M:ELearning.Controllers.UserController.#ctor(ELearning.Business.Managers.UserManager)">
-            <summary>
-            Initializes a new instance of the UserController class.
-            </summary>
-            <param name="userManager"></param>
-        </member>
-        <member name="M:ELearning.Controllers.StudentController.#ctor(ELearning.Business.Managers.UserManager,ELearning.Business.Managers.FormManager)">
-            <summary>
-            Initializes a new instance of the StudentController class.
-            </summary>
-            <param name="userManager"></param>
-        </member>
         <member name="T:Resources.Strings">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -765,24 +665,14 @@
               Looks up a localized string similar to Welcome in E-Learning system..
             </summary>
         </member>
-        <member name="M:ELearning.Models.FillQuestionModel.#ctor(ELearning.Data.Enums.QuestionGroupTypes,System.Int32,System.Boolean)">
-            <summary>
-            Initializes a new instance of the FillQuestionModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String)">
-            <summary>
-            Initializes a new instance of the TopButtonModel class.
-            </summary>
-        </member>
-        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String,System.Object,System.String)">
-            <summary>
-            Initializes a new instance of the TopButtonModel class.
-            </summary>
-        </member>
         <member name="M:ELearning.Authentication.UserSession.#ctor(ELearning.Data.User)">
             <summary>
             Initializes a new instance of the UserSession class.
+            </summary>
+        </member>
+        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
+            <summary>
+            Gets the logged user
             </summary>
         </member>
         <member name="M:ELearning.Controllers.FormInstanceController.#ctor(ELearning.Business.Managers.FormManager)">
@@ -791,11 +681,53 @@
             </summary>
             <param name="formManager"></param>
         </member>
-        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
+        <member name="M:ELearning.Controllers.GroupController.#ctor(ELearning.Business.Managers.GroupManager,ELearning.Business.Managers.UserManager)">
             <summary>
-            Initializes a new instance of the NewFormModel class.
+            Initializes a new instance of the GroupController class.
             </summary>
-            <param name="form"></param>
+            <param name="groupManager"></param>
+        </member>
+        <member name="M:ELearning.Controllers.HomeController.#ctor(ELearning.Business.Managers.FormManager,ELearning.Business.Managers.TextBookManager)">
+            <summary>
+            Initializes a new instance of the HomeController class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.SettingsController.#ctor(ELearning.Business.Managers.UserManager)">
+            <summary>
+            Initializes a new instance of the SettingsController class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Controllers.StudentController.#ctor(ELearning.Business.Managers.UserManager,ELearning.Business.Managers.FormManager)">
+            <summary>
+            Initializes a new instance of the StudentController class.
+            </summary>
+            <param name="userManager"></param>
+        </member>
+        <member name="M:ELearning.Controllers.UserController.#ctor(ELearning.Business.Managers.UserManager)">
+            <summary>
+            Initializes a new instance of the UserController class.
+            </summary>
+            <param name="userManager"></param>
+        </member>
+        <member name="P:ELearning.MvcApplication.UnityContainer">
+            <summary>
+            Gets the Unity container of the current application
+            </summary>
+        </member>
+        <member name="P:ELearning.MvcApplication.ELearning#Unity#IUnityContainerAccessor#UnityContainer">
+            <summary>
+            Gets the Unity container of the application
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor">
+            <summary>
+            Initializes a new instance of the LoggedUserModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Authentication.LoggedUserModel.#ctor(ELearning.Data.User,ELearning.Business.Permissions.UserPermissions)">
+            <summary>
+            Initializes a new instance of the LoggedUserModel class.
+            </summary>
         </member>
         <member name="M:ELearning.Models.Controls.UpDownControlModel.#ctor(System.String,System.Int32)">
             <summary>
@@ -807,9 +739,78 @@
             Initializes a new instance of the UpDownControlModel class.
             </summary>
         </member>
-        <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
+        <member name="M:ELearning.Models.Data.FormModel.#ctor">
             <summary>
-            Initializes a new instance of the UnityContainerBuilder class.
+            Initializes a new instance of the FormModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
+        <member name="P:ELearning.Models.Data.FormModel.Grade">
+            <summary>
+            New implemented part for automatic rating
+            </summary>
+        </member>
+        <member name="P:ELearning.Models.Data.FormModel.Rate">
+            <summary>
+            Implementation for ratea
+            </summary>
+            
+        </member>
+        <member name="P:ELearning.Models.Data.FormModel.TimeToFill">
+            <summary>
+            Time to fill in minutes
+            </summary>
+        </member>
+        <member name="P:ELearning.Models.Data.FormModel.TimesFilled_Total">
+            <summary>
+            Gets number of times the form was filled
+            </summary>
+        </member>
+        <member name="P:ELearning.Models.Data.FormModel.TimesFilled_Users">
+            <summary>
+            Gets number of users that filled the form
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Data.NewFormModel.#ctor">
+            <summary>
+            Initializes a new instance of the NewFormModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
+        <member name="M:ELearning.Models.Data.UserModel.#ctor">
+            <summary>
+            Initializes a new instance of the UserModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.Data.GroupModel.#ctor">
+            <summary>
+            Initializes a new instance of the GroupModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.HomePageModel.#ctor(System.Collections.Generic.IEnumerable{ELearning.Models.FormFillsModel},System.Collections.Generic.IEnumerable{ELearning.Models.Data.TextBookModel})">
+            <summary>
+            Initializes a new instance of the HomePageModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.ImportExport.ExportToGoogleDocsModel.#ctor">
+            <summary>
+            Initializes a new instance of the ExportToGoogleDocsModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.FillQuestionModel.#ctor(ELearning.Data.Enums.QuestionGroupTypes,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the FillQuestionModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.FormFillsModel.#ctor">
+            <summary>
+            Initializes a new instance of the FormFillsModel class.
+            </summary>
+            <param name="form"></param>
+        </member>
+        <member name="M:ELearning.Models.FormInstancesModel.#ctor(ELearning.Models.Data.FormModel,System.Collections.Generic.ICollection{ELearning.Models.Data.FormInstanceModel})">
+            <summary>
+            Initializes a new instance of the FormInstancesModel class.
             </summary>
         </member>
         <member name="M:ELearning.Models.Data.UserTypeModel.#ctor">
@@ -822,9 +823,19 @@
             Initializes a new instance of the UserTypeModel class.
             </summary>
         </member>
-        <member name="P:ELearning.Authentication.WebAuthenticationContext.LoggedUserSession">
+        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String)">
             <summary>
-            Gets the logged user
+            Initializes a new instance of the TopButtonModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Models.GeneralView.TopButtonModel.#ctor(System.String,System.String,System.String,System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the TopButtonModel class.
+            </summary>
+        </member>
+        <member name="M:ELearning.Unity.UnityContainerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the UnityContainerBuilder class.
             </summary>
         </member>
     </members>

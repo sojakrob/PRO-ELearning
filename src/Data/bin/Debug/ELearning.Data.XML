@@ -114,6 +114,16 @@
             Deprecated Method for adding a new object to the TextBookLink EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToGradeSet(ELearning.Data.Grade)">
+            <summary>
+            Deprecated Method for adding a new object to the GradeSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.DataModelContainer.AddToGradeGroupSet(ELearning.Data.GradeGroup)">
+            <summary>
+            Deprecated Method for adding a new object to the GradeGroupSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
         <member name="P:ELearning.Data.DataModelContainer.Question">
             <summary>
             No Metadata Documentation available.
@@ -204,6 +214,16 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:ELearning.Data.DataModelContainer.GradeSet">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.DataModelContainer.GradeGroupSet">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:ELearning.Data.Answer">
             <summary>
             No Metadata Documentation available.
@@ -216,6 +236,160 @@
             <param name="id">Initial value of the ID property.</param>
         </member>
         <member name="P:ELearning.Data.Answer.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceAnswer">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceAnswer.CreateChoiceAnswer(System.Int32,System.Int32)">
+            <summary>
+            Create a new ChoiceAnswer object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="itemID">Initial value of the ItemID property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ItemID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplateReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceItem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceItem.CreateChoiceItem(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Create a new ChoiceItem object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="choiceQuestionID">Initial value of the ChoiceQuestionID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="index">Initial value of the Index property.</param>
+            <param name="isCorrect">Initial value of the IsCorrect property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ChoiceQuestionID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Index">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.IsCorrect">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.Explanation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceItem.ImageUrl">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.ChoiceQuestion">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.Question">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Question.CreateQuestion(System.Int32,System.String,System.Int32)">
+            <summary>
+            Create a new Question object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+        </member>
+        <member name="P:ELearning.Data.Question.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.Text">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.HelpText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.ImageUrl">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.Explanation">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.QuestionGroupID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.QuestionGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Question.QuestionGroupReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.ChoiceQuestion.CreateChoiceQuestion(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Create a new ChoiceQuestion object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="text">Initial value of the Text property.</param>
+            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
+            <param name="shuffle">Initial value of the Shuffle property.</param>
+        </member>
+        <member name="P:ELearning.Data.ChoiceQuestion.Shuffle">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.ChoiceQuestion.ChoiceItems">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -327,6 +501,16 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.Form.StateReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.GradeGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Form.GradeGroupReference">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -507,6 +691,75 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="T:ELearning.Data.Grade">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.Grade.CreateGrade(System.Int32,System.String,System.String)">
+            <summary>
+            Create a new Grade object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+            <param name="name">Initial value of the Name property.</param>
+            <param name="value">Initial value of the Value property.</param>
+        </member>
+        <member name="P:ELearning.Data.Grade.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.Value">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.GradeGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.Grade.GradeGroupReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:ELearning.Data.GradeGroup">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:ELearning.Data.GradeGroup.CreateGradeGroup(System.Int32)">
+            <summary>
+            Create a new GradeGroup object.
+            </summary>
+            <param name="id">Initial value of the ID property.</param>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.ID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.Grade">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.Form">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:ELearning.Data.GradeGroup.FormReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:ELearning.Data.Group">
             <summary>
             No Metadata Documentation available.
@@ -556,160 +809,6 @@
             </summary>
         </member>
         <member name="P:ELearning.Data.Group.TextBooks">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.ChoiceAnswer">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.ChoiceAnswer.CreateChoiceAnswer(System.Int32,System.Int32)">
-            <summary>
-            Create a new ChoiceAnswer object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="itemID">Initial value of the ItemID property.</param>
-        </member>
-        <member name="P:ELearning.Data.ChoiceAnswer.ItemID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplate">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceAnswer.ChoiceItemTemplateReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.ChoiceItem">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.ChoiceItem.CreateChoiceItem(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
-            <summary>
-            Create a new ChoiceItem object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="choiceQuestionID">Initial value of the ChoiceQuestionID property.</param>
-            <param name="text">Initial value of the Text property.</param>
-            <param name="index">Initial value of the Index property.</param>
-            <param name="isCorrect">Initial value of the IsCorrect property.</param>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.ChoiceQuestionID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.Text">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.Index">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.IsCorrect">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.Explanation">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceItem.ImageUrl">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.ChoiceQuestion">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="T:ELearning.Data.Question">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.Question.CreateQuestion(System.Int32,System.String,System.Int32)">
-            <summary>
-            Create a new Question object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="text">Initial value of the Text property.</param>
-            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
-        </member>
-        <member name="P:ELearning.Data.Question.ID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.Text">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.HelpText">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.ImageUrl">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.Explanation">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.QuestionGroupID">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.QuestionGroup">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.Question.QuestionGroupReference">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="M:ELearning.Data.ChoiceQuestion.CreateChoiceQuestion(System.Int32,System.String,System.Int32,System.Boolean)">
-            <summary>
-            Create a new ChoiceQuestion object.
-            </summary>
-            <param name="id">Initial value of the ID property.</param>
-            <param name="text">Initial value of the Text property.</param>
-            <param name="questionGroupID">Initial value of the QuestionGroupID property.</param>
-            <param name="shuffle">Initial value of the Shuffle property.</param>
-        </member>
-        <member name="P:ELearning.Data.ChoiceQuestion.Shuffle">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:ELearning.Data.ChoiceQuestion.ChoiceItems">
             <summary>
             No Metadata Documentation available.
             </summary>

@@ -396,6 +396,41 @@ div#CreateOrEditForm div#FormNameGroup
 	width: 450px;
 	float: left;
 }
+
+div#CreateOrEditForm div#FormGradeGroup
+{ 
+	width: 300px;
+	float: left;
+}
+
+div#CreateOrEditForm div#FormGradeGroup div.editor-label
+{
+	width: 140px;
+}
+
+div#CreateOrEditForm div#FormGradeGroup div.editor-field
+{
+	float: left;
+}
+
+div#CreateOrEditForm div#FormGradeGroup div.editor-field > input
+{
+	width: 150px;
+}
+
+div#CreateOrEditForm div#FormRateGroup
+{ 
+	width: 300px;
+	float: left;
+}
+div#CreateOrEditForm div#FormRateButtonGroup 
+{
+	float: right;
+    width:50px;
+	margin-left:auto
+}
+
+
 div#CreateOrEditForm div#FormNameGroup div.editor-label
 {
 	width: 140px;

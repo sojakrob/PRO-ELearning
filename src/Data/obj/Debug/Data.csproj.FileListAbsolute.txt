@@ -63,3 +63,13 @@ C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Dat
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\Debug\ELearning.Data.dll
 C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\Debug\ELearning.Data.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Data.dll.config
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Data.XML
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Data.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Data.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Shared.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Shared.pdb
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\bin\Debug\ELearning.Shared.xml
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\obj\Debug\ELearning.Data.dll
+C:\Users\Администратор\Desktop\Elearning\current\src\Data\obj\Debug\ELearning.Data.pdb

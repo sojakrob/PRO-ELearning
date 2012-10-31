@@ -156,6 +156,8 @@
     <Compile Include="Models\Data\ChoiceQuestionAnswerInstanceModel.cs" />
     <Compile Include="Models\Data\ChoiceQuestionInstanceModel.cs" />
     <Compile Include="Models\Data\ChoiceQuestionModel.cs" />
+    <Compile Include="Models\Data\GradeGroupModel.cs" />
+    <Compile Include="Models\Data\GradeModel.cs" />
     <Compile Include="Models\Data\TextBookLinkModel.cs" />
     <Compile Include="Models\Data\DataModelBase.cs" />
     <Compile Include="Models\Data\FormInstanceEvaluationModel.cs" />

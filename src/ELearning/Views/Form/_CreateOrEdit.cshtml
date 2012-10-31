@@ -40,6 +40,38 @@
     <div class="clear"></div>
 </div>
 
+
+<div class="editor-group" id="FormGradeGroup">
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Grade)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Grade)
+        @Html.ValidationMessageFor(model => model.Grade)
+    </div>
+</div>
+
+<div class="editor-group" id="FormRateGroup">
+
+    <div class="editor-field">
+        @Html.LabelFor(model => model.Rate)
+        @Html.EditorFor(model=>model.Rate)
+        @Html.ValidationMessageFor(model => model.Rate)
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+<div class="editor-group" id="FormRateButtonGroup">
+<div class="editor-label">
+   <input type="submit" class="Button" value="@Html.ResourceString("+")" />
+    </div>
+   <div class="clear" ></div>
+</div>
+
+<div class="clear"></div>
+
+
 <div class="editor-group" id="TimeToFillGroup">
     <div class="editor-label">
         @Html.LabelFor(model => model.TimeToFill)
