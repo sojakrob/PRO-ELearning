@@ -1,4 +1,7 @@
-﻿INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('InlineText')
+﻿GO
+USE [ELearning];
+GO
+INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('InlineText')
 INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('MultilineText')
 INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('Choice')
 INSERT INTO [dbo].[QuestionGroupType] ([Name]) VALUES ('MultipleChoice')

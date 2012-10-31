@@ -1,0 +1,17 @@
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ELearning.Business.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ELearning.Business.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\Antlr3.Runtime.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ELearning.Data.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ELearning.Shared.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\Google.GData.Client.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\Google.GData.Documents.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ProjectBase.Tools.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\Newtonsoft.Json.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\Google.GData.Extensions.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\Google.GData.AccessControl.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ELearning.Data.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ELearning.Shared.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\bin\ElearningRobertsojakRelease\ProjectBase.Tools.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\obj\ElearningRobertsojakRelease\Business.csprojResolveAssemblyReference.cache
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\obj\ElearningRobertsojakRelease\ELearning.Business.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Business\obj\ElearningRobertsojakRelease\ELearning.Business.pdb

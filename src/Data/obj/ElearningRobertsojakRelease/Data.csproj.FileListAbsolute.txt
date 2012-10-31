@@ -1,0 +1,8 @@
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\bin\ElearningRobertsojakRelease\ELearning.Data.dll.config
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\bin\ElearningRobertsojakRelease\ELearning.Data.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\bin\ElearningRobertsojakRelease\ELearning.Data.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\bin\ElearningRobertsojakRelease\ELearning.Shared.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\bin\ElearningRobertsojakRelease\ELearning.Shared.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\ElearningRobertsojakRelease\Data.csprojResolveAssemblyReference.cache
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\ElearningRobertsojakRelease\ELearning.Data.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\obj\ElearningRobertsojakRelease\ELearning.Data.pdb

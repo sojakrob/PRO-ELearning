@@ -1,0 +1,9 @@
+﻿@using ELearning.Utils
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("Settings");
+}
+
+<h2>@Html.ResourceString("AccountSettings")</h2>
+
+@Html.LocalizedButtonLink("ChangePassword", "ChangePassword")

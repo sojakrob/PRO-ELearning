@@ -1,0 +1,23 @@
+@model ELearning.Models.Data.NewFormModel
+@using ELearning.Utils
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("NewForm");
+}
+
+<div id="CreateOrEditForm" class="createEditForm">
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@Html.ResourceString("Form")</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p class="center">
+            <input type="submit" class="Button" value="@Html.ResourceString("Create")" />
+        </p>
+    </fieldset>
+}
+</div>
+
+

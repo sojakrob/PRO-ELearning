@@ -1,0 +1,1060 @@
+
+/* Colors
+-----------
+FeatherLight: #91C0E8
+Light: #3F8FD2
+Normal: #0B5FA5
+Dark: #043C6B
+Gray: #255547B
+ */
+
+body
+{
+	font-size: 0.9em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #222222;
+    background-color: #FFFFFF;
+    padding: 0;
+	margin: 0;
+}
+
+h1
+{
+	padding: 10px 30px;
+	color: #0B5FA5;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	margin: 0;
+	margin-right: 50px;
+	font-weight: normal;
+	display: inline-block;
+	float: left;
+	min-width: 170px;
+}
+h2
+{
+	
+}
+
+a
+{
+	text-decoration: none;
+	color: #0B5FA5;
+}
+
+input[type=button].Button, input.Button, Button
+{
+	color: #FFFFFF;
+	border: none;
+	background-color: #0B5FA5;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px 15px;
+	height: 28px;
+}
+
+div.leftFloat
+{
+	float: left;
+}
+div.rightFloat
+{
+	float: right;
+}
+div.clear
+{
+	clear: both;
+}
+
+.hidden
+{
+	display: none;
+}
+
+p.right
+{
+	text-align: right;
+}
+p.center
+{
+	text-align: center;
+}
+
+.printOnly
+{
+	display: none;
+}
+
+/* Main layout
+-----------------------------------------------------------*/
+div#top
+{
+}
+div#top div#header
+{
+	background-color: #91C0E8;
+	height: 80px;
+	border-bottom: 1px solid #3F8FD2;
+}
+div#top div#header div#logo
+{
+	font-size: 30px;
+	float: left;
+	height: 60px;
+	padding-top: 20px;
+	padding-left: 30px;
+}
+div#top div#header div#logo a
+{
+	color: Black;
+}
+div#top div#header div#rightHeader
+{
+	float: right;
+	height: 50px;
+}
+div#top div#header div#rightHeader div#language
+{
+	padding-top: 18px;
+	float:right;
+}
+div#top div#header div#rightHeader div#language img
+{
+	width: auto;
+	height: 12px;
+	margin-top: 5px;
+	margin-right: 3px;	
+}
+div#top div#header div#rightHeader div#authentication
+{
+	padding-top: 30px;
+	float: left;
+	text-align: center;
+}
+div#top div#titleBar
+{
+	border-bottom: 1px solid #3F8FD2;
+}
+div#top div#titleBar div.column
+{
+	float: left;
+	padding-top: 15px;
+}
+
+div#mainMenuControl
+{
+	width: 200px;
+	float: left;
+}
+div#mainMenuControl ul
+{
+	list-style: none;	
+}
+div#mainMenuControl div
+{
+	
+}
+
+div#frame
+{
+	float: left;	
+}
+div#footer
+{
+	clear: both;
+}
+
+/* Not Logged Layout
+-----------------------------------------------------------*/
+body.index h1
+{
+	border: none;
+	padding: 0;
+}
+body.index div#frameWrapper
+{
+	width: 100%;
+	margin-top: 30px;
+}
+body.index div#frame
+{
+	margin: auto;
+	float: none;
+	width: 700px;
+}
+body.index div#frameContent
+{
+}
+body.index div#logOnWrapper
+{
+	float: right;
+}
+body.index div#welcome
+{
+	float: left;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #3F8FD2;
+    padding:0 20px 5px 20px;
+    margin:0 0 20px 0;
+}
+fieldset h2
+{
+	font-weight: normal;
+	font-size: 1.2em;
+}
+fieldset p
+{
+	margin: 0;
+}
+
+fieldset input[type=button].Button, fieldset input.Button, fieldset button
+{
+	margin: 5px;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+    display: none;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+div.editor-group
+{
+	clear: both;
+	margin: 5px 10px 0 10px;
+	padding: 5px 0;
+}
+
+div.editor-label 
+{
+    float: left;
+}
+
+div.editor-field 
+{
+    float:right;
+}
+
+p.buttons
+{
+	text-align: center;
+	margin-bottom: 0;
+}
+
+div.createEditForm
+{
+	margin: 25px;
+	min-width: 700px;
+}
+
+div.form
+{
+	border: 1px solid #3F8FD2;
+	margin: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Data grid
+----------------------------------------------------------*/
+table.datagrid
+{
+	margin: 10px 10px;
+	border-collapse: collapse;
+	min-width: 600px;
+}
+table caption
+{
+	color: #0B5FA5;
+	text-transform: uppercase;
+	font-size: 1.3em;
+	text-align: left;
+	margin: 10px 0 10px 5px;
+}
+table.nocaption caption
+{
+	display: none;
+}
+div.showCaption table caption
+{
+	display: block !important;
+}
+table.datagrid th
+{
+	text-transform: uppercase;
+	border-bottom: 2px solid #3F8FD2;
+	font-weight: normal;
+}
+table.datagrid tr
+{
+	border-bottom: 1px solid #3F8FD2;
+}
+table.datagrid td
+{
+	padding: 5px 20px 5px 20px;
+}
+table.datagrid a.button
+{
+	padding: 2px 6px;
+	border: 1px solid #3F8FD2;
+	background-color: #FFFFFF;
+	color: #0B5FA5;
+}
+
+/* Html extender
+----------------------------------------------------------*/
+a.button
+{
+	color: #FFFFFF;
+	background-color: #0B5FA5;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px 15px;
+}
+
+input[type=button].LinkButton, input.LinkButton, LinkButton
+{
+	color: #FFFFFF;
+	background-color: transparent;
+	border-radius: 5px 5px 5px 5px;
+	padding: 0px 15px 0px 15px;
+	display: inline;
+	border: 1px solid white;
+	height: 20px;
+	cursor: pointer;
+}
+
+/* LogOn Control
+------------------------------------------------------------*/
+div#logOnControl
+{
+	width: 300px;
+}
+
+/* Logged User Control
+------------------------------------------------------------*/
+div#loggedUserControl
+{
+	padding: 0 30px;
+}
+div#loggedUserControl span
+{
+	margin: 0 10px;
+}
+
+/* Create or Edit User form
+------------------------------------------------------------*/
+div#CreateOrEditForm
+{
+	
+}
+div#CreateOrEditForm div.editor-group
+{
+	clear: none;
+}
+div#CreateOrEditForm div#FormNameGroup
+{
+	width: 450px;
+	float: left;
+}
+div#CreateOrEditForm div#FormNameGroup div.editor-label
+{
+	width: 140px;
+}
+div#CreateOrEditForm div#FormNameGroup div.editor-field
+{
+	float: left;
+}
+div#CreateOrEditForm div#FormNameGroup div.editor-field > input
+{
+	width: 300px;
+}
+div#CreateOrEditForm div#FormTypeGroup
+{
+	float: right;
+	width: 150px;
+}
+div#CreateOrEditForm div#TextGroup textarea
+{
+	width: 490px;
+}
+div#CreateOrEditForm div#TimeToFillGroup
+{
+	float: left;
+	width: 300px;
+}
+div#CreateOrEditForm div#TimeToFillGroup div.editor-label
+{
+	width: 140px;
+}
+div#CreateOrEditForm div#TimeToFillGroup div.editor-field
+{
+	float: left;
+}
+div#CreateOrEditForm div#TimeToFillGroup div.editor-field > input
+{
+	width: 100px;
+}
+div#CreateOrEditForm div#ShuffleGroup
+{
+	float: right;
+	width: 200px;
+}
+div#CreateOrEditForm div#MaxFillsGroup
+{
+	width: 400px;
+}
+div#CreateOrEditForm div#MaxFillsGroup div.editor-label
+{
+	width: 140px;
+}
+div#CreateOrEditForm div#MaxFillsGroup div.editor-field
+{
+	float: left;
+}
+div#CreateOrEditForm div#MaxFillsGroup div.editor-field > input
+{
+	width: 100px;
+}
+
+
+/* Create Edit Questions
+------------------------------------------------------------*/
+div#CreateEditQuestions
+{
+	border: 2px solid #3F8FD2;
+	border-radius: 5px 5px 0 0;
+	margin: 10px 20px 10px 20px;
+	min-width: 700px;
+}
+
+div#CreateEditQuestionsHeader
+{
+	color: White;
+	padding-left: 20px;
+	border-bottom: 1px solid #3F8FD2;
+	margin-bottom: 10px;
+	background-color: #3F8FD2;
+}
+div#CreateEditQuestionsHeader h2
+{
+	display: inline-block;
+	margin: 20px 20px 0 0;
+}
+div#CreateEditQuestionsHeader div.info
+{
+	display: inline-block;
+	height: 32px;
+	vertical-align: middle;
+}
+div#CreateEditQuestionsHeader div.info div.column
+{
+	text-align: right;
+	margin: 0 20px;
+	display: inline-block;
+	height: inherit;
+	vertical-align: middle;
+	padding-top: 5px;
+}
+div#CreateEditQuestionsHeader div.info div.column#clmnPreview
+{
+	padding-top: 0px;
+}
+div#CreateEditQuestionsHeader div.info div.column#clmnPrint
+{
+	padding-top: 0px;
+}
+div#CreateEditQuestionsHeader div.info div#clmnQuestionCount
+{
+	background: url('icons/questionCount.png') no-repeat;
+	width: 60px;
+}
+div#CreateEditQuestionsHeader div.info div#clmnTimeToFill
+{
+	background: url('icons/clock.png') no-repeat;
+	width: 60px;
+}
+div#CreateEditQuestionsHeader div.rightButtons
+{
+	margin-right: 20px;
+	padding-top: 5px;
+	float: right;
+}
+div#CreateEditQuestionsHeader span
+{
+	padding: 20px;
+	margin: 10px;
+}
+div#CreateEditQuestionsHeader p
+{
+	font-size: 0.9em;
+	font-style: italic;
+	margin-left: 20px;
+	margin-top: 5px;
+}
+
+div.Question
+{
+	margin-bottom: 10px;
+}
+div.Question > fieldset
+{
+	margin: 0 20px 0 20px;
+	padding: 0;
+}
+div.Question > fieldset fieldset
+{
+	margin: 0;
+	border: none;
+	border-bottom: 1px dashed #3F8FD2;
+}
+div.Question div.Header
+{
+	background-color: #3F8FD2;
+	color: White;
+	cursor: pointer;
+}
+div.Question div.Header a.button
+{
+	border-color: white;
+	color: white;
+	background-color: transparent;
+}
+div.Question div.Header div.clmnQuestionType
+{
+	width: 120px;
+	margin: 0 20px;
+	display: inline-block;
+}
+div.Question div.Header div.clmnQuestionText
+{
+	margin: 0 20px;
+	display: inline-block;
+	max-width: 700px;
+	max-height: 1.2em;
+	overflow: hidden;
+	vertical-align: middle;
+	padding: 0;
+}
+div.Question div.Header div.clmnDeleteQuestion
+{
+	display: inline-block;
+	float: right;
+}
+div.Question div.Header div.clmnDuplicateQuestion
+{
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+}
+div.Question div.Footer
+{
+	text-align: center;
+}
+div.Question h3
+{
+	display: inline-block;
+	margin: 0;
+	padding: 0 20px 0 20px;
+}
+div.Question a.button
+{
+	padding: 0px 8px;
+	margin: 2px;
+	font-size: 0.8em;
+	border: 1px solid #3F8FD2;
+	background-color: #FFFFFF;
+	color: #0B5FA5;
+	display: inline-block;
+}
+
+div#CreateNewQuestion
+{
+	margin: 0 20px 0 20px;
+}
+div#CreateNewQuestion fieldset
+{
+	padding-bottom : 0px;
+}
+div#CreateNewQuestion fieldset > *
+{
+	float: left;
+	clear: none;
+}
+div#CreateNewQuestion h3
+{
+	display: inline-block;
+	padding: 10px;
+	margin:0;
+}
+div#CreateNewQuestion div
+{
+	
+}
+
+/* Test templates editing
+------------------------------------------------------------*/
+div#CreateEditQuestions div.Question
+{
+	width: 1000px;
+}
+div.QuestionForm legend
+{
+	display: block;
+}
+div.QuestionForm div.BottomButtons div.leftFloat
+{
+	padding-top: 8px;
+	padding-left: 5px;
+}
+div.QuestionForm div.editor-label
+{
+	width: 150px;
+}
+div.QuestionForm div.editor-field
+{
+	
+}
+div.QuestionForm  div.editor-field input, div.QuestionForm  div.editor-field textarea
+{
+	width: 700px !important;
+	height: 1.2em;
+	min-height: 1.2px;
+}
+div.QuestionForm li div.editor-field
+{
+	display: inline-block;
+	float: none;
+}
+div.QuestionForm div.editor-group
+{
+	padding: 0px;
+}
+/*		 Choice question
+------------------------------------------------------------*/
+div.QuestionForm div#Choices
+{
+	border: 1px solid #91C0E8;
+	margin-top: 10px;
+}
+div.QuestionForm div#Choices div#ChoicesHeader
+{
+	border-bottom: 1px solid #91C0E8;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 1px 25px;	
+}
+div.QuestionForm div#Choices div#ChoicesHeader h4
+{
+	display: inline-block;
+	width: 100px;
+	margin: 0;
+	font-size: 1.05em;
+	font-weight: normal;
+}
+div.QuestionForm div#Choices div#ChoicesHeader div.column
+{
+	display: inline-block;
+	width: 100px;
+	margin: 0 20px;
+}
+div.QuestionForm div#Choices div#ChoicesHeader div#clmnAddChoiceItem
+{
+	width: 150px;
+	float: right;
+	text-align: right;
+	margin-right: 0;
+}
+div.QuestionForm div#Choices div#ChoicesHeader div#clmnAddChoiceItem > a
+{
+	margin: 0;
+}
+div.QuestionForm div#Choices ol, div.QuestionForm div#Choices ul
+{
+	margin: 10px 0;
+}
+div.QuestionForm div#Choices ol > li input, div.QuestionForm div#Choices ul > li input
+{
+	width: 800px !important;
+}
+div.QuestionForm div#Choices ol > li div.Check input, div.QuestionForm div#Choices ul > li div.Check input
+{
+	width: 40px !important;
+}
+
+
+/* Scale quesition
+------------------------------------------------------------*/
+div.scaleQuestionUpDowns
+{
+	margin: 10px;
+}
+div.scaleQuestionUpDowns > div
+{
+	float:left;
+	width: 30%;
+}
+
+
+/* Form filling
+------------------------------------------------------------*/
+div#FormFill
+{
+	border: 2px solid #3F8FD2;
+	border-radius: 5px 5px 0 0;
+	margin: 10px 20px 10px 20px;
+	min-width: 700px;
+}
+div#FormFill div#FormFillHeader
+{
+	color: White;
+	padding-left: 20px;
+	border-bottom: 1px solid #3F8FD2;
+	margin-bottom: 10px;
+	background-color: #3F8FD2;
+}
+div#FormFill div#FormFillHeader h2
+{
+	display: inline-block;
+	margin: 20px 20px 0 0;
+}
+div#FormFill div#FormFillHeader div#print
+{
+	display: inline-block;
+	float: right;
+	margin: 10px;
+}
+
+div#FormFill div.Question div.Content div.QuestionText
+{
+	margin: 5px 20px;
+}
+div#FormFill div.Question div.Content div.QuestionAnswer
+{
+	margin: 5px 20px;
+}
+div#FormFill div.Question div.Content div.QuestionAnswer input[type=text]
+{
+	min-width: 700px;
+}
+div#FormFill div.Question div.Content div.QuestionAnswer textarea
+{
+	min-width: 700px;
+}
+
+div#FormFill div#FormFillFooter
+{
+	text-align: center;
+}
+
+div#FormFill li.correct
+{
+	background-color: #3FD277;
+}
+div#FormFill li.wrong
+{
+	background-color: #D77474;
+}
+
+div#FormFill div#WindowHeader
+{
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+}
+div#FormFill div#WindowHeader div#TimeCounter
+{
+	width: 150px;
+	height: 35px;
+	float:right;
+	margin-right: 50px;
+	background-color: #0B5FA5;
+	color: white;
+	border: 2px solid #91C0E8;
+	border-top: none;
+	text-align: center;
+}
+div#FormFill div#WindowHeader div#TimeCounter div#Time
+{
+	display: inline-block;
+	font-size: 25px;
+	margin: auto;
+}
+div#FormFill div#WindowHeader div#TimeCounter.warning
+{
+	background-color: #D77474;
+}
+
+/* Controls
+------------------------------------------------------------*/
+div.upDownControl
+{
+}
+div.upDownControl div.label
+{
+	float: left;
+	margin-right: 20px;
+}
+div.upDownControl div.textbox
+{
+	float: left;
+	
+}
+div.upDownControl div.textbox input
+{
+	width: 50px !important;
+	text-align: right;
+}
+div.upDownControl div.buttons
+{
+	float: left;
+}
+div.upDownControl div.buttons > input
+{
+	color: #3F8FD2;
+	border-color: #3F8FD2;
+	display: block;
+	height: 0.9em;
+	/*height: 0.8em;*/
+	font-size: 1.1em;
+	line-height: 0.7em;
+	padding: 0px 4px;
+	margin: 0px 0px 1px 2px;
+	width: 20px;
+}
+
+/* Assigned groups editor
+------------------------------------------------------------*/
+fieldset.assignedGroupsEditor
+{
+	margin-top: 25px;
+	padding-bottom: 20px;
+}
+
+/* Create edit Group
+------------------------------------------------------------*/
+div#createEditGroup
+{
+	width: 300px;
+	min-width: 300px;
+}
+div#createEditGroup fieldset div input
+{
+	width: 146px;
+}
+div#createEditGroup fieldset div select
+{
+	width: 150px;
+}
+div#createEditGroup p
+{
+	text-align: center;
+}
+
+/* TextBook
+-------------------------------------------------------------*/
+form#TextBook fieldset.assignedGroupsEditor
+{
+	width: 660px;
+}
+form#TextBook div.editor-group
+{
+	clear: none;
+}
+form#TextBook div#TextBookTitle
+{
+	width: 450px;
+	float: left;
+}
+form#TextBook div#TextBookTitle input
+{
+	width: 370px;
+}
+form#TextBook div#TextBookVisibleToOthers
+{
+	width: 200px;
+	float: left;
+}
+form#TextBook div#Text
+{
+	padding: 0;
+	margin: 0;
+}
+form#TextBook div#Text div.editor-field
+{
+	float: none;
+}
+
+div#TextBook
+{
+	width: 800px;
+	margin: 20px;
+	padding: 25px 35px 35px 35px;
+	border: 1px solid #3F8FD2;
+	border-radius: 5px 5px 0 0;
+}
+div#TextBook h1
+{
+	float: none;
+	font-size: 2em;
+	padding: 0;
+	padding-left: 15px;
+	color: #0B5FA5;
+}
+div#TextBook h2, div#TextBook h3, div#TextBook h4, div#TextBook h5
+{
+	color: #0B5FA5;
+	padding-left: 15px;
+}
+div#TextBook p
+{
+	text-align: justify;
+}
+
+/* Form Instance
+--------------------------------------------------------------------*/
+div#FormInstanceStarter
+{
+	width: 300px;	
+	padding: 0;
+	margin: 20px;
+}
+div#FormInstanceStarter div.header
+{
+	background-color: #3F8FD2;
+	border-radius: 5px 5px 0 0;
+}
+div#FormInstanceStarter h2
+{
+	text-align: center;
+	color: White;
+	margin: 0;
+	padding: 5px;
+}
+div#FormInstanceStarter div.body
+{
+	border: 1px solid #3F8FD2;
+	padding: 0 20px 0 20px;
+}
+
+/* User
+---------------------------------------------------------------------*/
+div#createEditUser
+{
+	width: 380px;
+	min-width: 380px;
+}
+div#createEditUser div.editor-field input, div#createEditUser select
+{
+	width: 200px;
+}
+
+/* Change password
+---------------------------------------------------------------------*/
+div#changePasswordForm
+{
+	width: 400px;
+	min-width: 400px;
+}
+
+div#changePasswordForm div#oldPassword
+{
+	margin-bottom: 20px;
+}
+
+/* Exceptions
+----------------------------------------------------------------------*/
+div#Exception
+{
+	width: 650px;
+	margin: 25px;
+	border: 2px solid #D77474;
+	padding: 0;
+	/*border-radius: 5px 5px 0 0;*/
+}
+div#Exception div#ExceptionHead
+{
+	background-color: #D77474;
+	padding: 8px;
+	color: White;
+}
+div#Exception div#ExceptionHead h2
+{
+	margin: 0 20px 0 20px;
+}
+div#Exception div#ExceptionBody
+{
+	padding: 20px;
+	display: none;
+}
+
+/* Error
+-------------------------------------------------------------------------*/
+div#Error
+{
+	width: 650px;
+	
+	border: 2px solid #D77474;
+	background-color: #D77474;
+	color: White;
+	text-align: center;
+	margin: 25px auto 25px auto;
+	padding: 25px;
+}
+div#Error h1, div#Error h2
+{
+	color: White;
+	float: none;
+}
+div#Error p
+{
+	text-align: justify;
+}
+div#WelcomeError
+{
+	background-color: #D77474;
+	color: White;
+	float: right;
+	width: 300px;
+	padding: 20px;
+}

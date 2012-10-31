@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>Aktivní</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Archivovaný</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="AvailableForms" xml:space="preserve">
+    <value>Dostupné formuláře</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="CloseWindow" xml:space="preserve">
+    <value>Zavřít okno</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Vytvořeno</value>
+  </data>
+  <data name="CreateForm" xml:space="preserve">
+    <value>Vytvořit formulář</value>
+  </data>
+  <data name="Czech" xml:space="preserve">
+    <value>česky</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ErrorOccured" xml:space="preserve">
+    <value>Nastala chyba</value>
+  </data>
+  <data name="Exam" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="Filled" xml:space="preserve">
+    <value>Vyplněno</value>
+  </data>
+  <data name="FilledForms" xml:space="preserve">
+    <value>Vyplněné formuláře</value>
+  </data>
+  <data name="FillingInProgress" xml:space="preserve">
+    <value>Probíhá vyplňování</value>
+  </data>
+  <data name="Form" xml:space="preserve">
+    <value>Formulář</value>
+  </data>
+  <data name="FormFillingEnded" xml:space="preserve">
+    <value>Vyplňování ukončeno</value>
+  </data>
+  <data name="Forms" xml:space="preserve">
+    <value>Formuláře</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Skupiny</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hlavní stránka</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Neaktivní</value>
+  </data>
+  <data name="KeepMeSignedIn" xml:space="preserve">
+    <value>Zůstat přihlášen/a</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Odhlásit se</value>
+  </data>
+  <data name="LogOn" xml:space="preserve">
+    <value>Přihlásit se</value>
+  </data>
+  <data name="NamePerson" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="NameThing" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="NewGroup" xml:space="preserve">
+    <value>Nová skupina</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>Nový uživatel</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Otázka</value>
+  </data>
+  <data name="Questionnaire" xml:space="preserve">
+    <value>Dotazník</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Otázky</value>
+  </data>
+  <data name="ReopenFormWindow" xml:space="preserve">
+    <value>Otevřít okno formuláře</value>
+  </data>
+  <data name="ReopenWindow" xml:space="preserve">
+    <value>Otevřít okno</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Studenti</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Odeslat</value>
+  </data>
+  <data name="SuccessfulySubmited" xml:space="preserve">
+    <value>Úspěšně odesláno</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Times" xml:space="preserve">
+    <value>krát</value>
+  </data>
+  <data name="TrainingTest" xml:space="preserve">
+    <value>Naučný test</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="UserGroups" xml:space="preserve">
+    <value>Uživatelské skupiny</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Uživatelé</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Aktivovat</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Deaktivovat</value>
+  </data>
+  <data name="Solver" xml:space="preserve">
+    <value>Řešitel</value>
+  </data>
+  <data name="TimesFilled" xml:space="preserve">
+    <value>Počet vyplnění</value>
+  </data>
+  <data name="ExportToGoogleDocs" xml:space="preserve">
+    <value>Exportovat do Google Dokumentů</value>
+  </data>
+  <data name="FormFills" xml:space="preserve">
+    <value>Vyplnění formuláře</value>
+  </data>
+  <data name="ImportFromGoogleGroup" xml:space="preserve">
+    <value>Importovat z Google Skupiny</value>
+  </data>
+  <data name="DocumentName" xml:space="preserve">
+    <value>Název dokumentu</value>
+  </data>
+  <data name="GoogleAccountEmail" xml:space="preserve">
+    <value>Email Google účtu</value>
+  </data>
+  <data name="GoogleAccountPassword" xml:space="preserve">
+    <value>Heslo Google účtu</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exportovat</value>
+  </data>
+  <data name="CreateTextBook" xml:space="preserve">
+    <value>Vytvořit skripta</value>
+  </data>
+  <data name="TextBooks" xml:space="preserve">
+    <value>Skripta</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Vytvořil</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="NewForm" xml:space="preserve">
+    <value>Nový formulář</value>
+  </data>
+  <data name="TimeToFill" xml:space="preserve">
+    <value>Čas na vyplnění</value>
+  </data>
+  <data name="EditForm" xml:space="preserve">
+    <value>Úprava formuláře</value>
+  </data>
+  <data name="MaxFills" xml:space="preserve">
+    <value>Max. počet vyplnění</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minut</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="ShuffleQuestions" xml:space="preserve">
+    <value>Zamíchat otázky</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Náhled</value>
+  </data>
+  <data name="NewQuestion" xml:space="preserve">
+    <value>Nová otázka</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Volba</value>
+  </data>
+  <data name="InlineText" xml:space="preserve">
+    <value>Krátký text</value>
+  </data>
+  <data name="MultilineText" xml:space="preserve">
+    <value>Dlouhý text</value>
+  </data>
+  <data name="MultipleChoice" xml:space="preserve">
+    <value>Vícenásobná volba</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Měřítko</value>
+  </data>
+  <data name="AddAlternativeQuestion" xml:space="preserve">
+    <value>Přídat alternativní otázku</value>
+  </data>
+  <data name="CloseAllQuestions" xml:space="preserve">
+    <value>Sbalit všechny otázky</value>
+  </data>
+  <data name="OpenAllQuestions" xml:space="preserve">
+    <value>Rozbalit všechny otázky</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Vysvětlení</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="DeleteAlternativeQuestion" xml:space="preserve">
+    <value>Smazat alt. otázku</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Uložit změny</value>
+  </data>
+  <data name="AddChoiceItem" xml:space="preserve">
+    <value>Přidat položku</value>
+  </data>
+  <data name="Choices" xml:space="preserve">
+    <value>Volby</value>
+  </data>
+  <data name="Shuffle" xml:space="preserve">
+    <value>Zamíchat</value>
+  </data>
+  <data name="LowerBound" xml:space="preserve">
+    <value>Spodní hranice</value>
+  </data>
+  <data name="StepSize" xml:space="preserve">
+    <value>Velikost kroku</value>
+  </data>
+  <data name="UpperBound" xml:space="preserve">
+    <value>Horní hranice</value>
+  </data>
+  <data name="EditTextBook" xml:space="preserve">
+    <value>Úprava skript</value>
+  </data>
+  <data name="StudentDetail_format" xml:space="preserve">
+    <value>{0} - detail studenta</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Známka</value>
+  </data>
+  <data name="Supervisor" xml:space="preserve">
+    <value>Vedoucí</value>
+  </data>
+  <data name="ImportMembersFromGoogleGroup" xml:space="preserve">
+    <value>Načíst členy z Google Skupiny</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Členové</value>
+  </data>
+  <data name="PossibleMembers" xml:space="preserve">
+    <value>Možní členové</value>
+  </data>
+  <data name="GoogleGroupCsvFile" xml:space="preserve">
+    <value>CSV soubor Google Skupiny</value>
+  </data>
+  <data name="ImportMembers" xml:space="preserve">
+    <value>Načíst členy</value>
+  </data>
+  <data name="VisibleToOthers" xml:space="preserve">
+    <value>Viditelné pro ostatní</value>
+  </data>
+  <data name="FullWikiSyntax" xml:space="preserve">
+    <value>Podrobná Wiki syntaxe</value>
+  </data>
+  <data name="NewTextBook" xml:space="preserve">
+    <value>Nová skripta</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Tisk</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrátor</value>
+  </data>
+  <data name="Lector" xml:space="preserve">
+    <value>Lektor</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Resetovat heslo</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Nastavení uživatelského účtu</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Změna hesla</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nové heslo</value>
+  </data>
+  <data name="NewPasswordAgain" xml:space="preserve">
+    <value>Nové heslo znovu</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Stávající heslo</value>
+  </data>
+  <data name="DateTime" xml:space="preserve">
+    <value>Datum a čas</value>
+  </data>
+  <data name="AvailableTests" xml:space="preserve">
+    <value>Dostupné testy</value>
+  </data>
+  <data name="LastChange" xml:space="preserve">
+    <value>Poslední změna</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="ErrorOccuredText" xml:space="preserve">
+    <value>Omlouváme se, v aplikaci se vyskytla neočekáváná chyba.</value>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Neoprávněný přístup</value>
+  </data>
+  <data name="UnauthorizedAccessText" xml:space="preserve">
+    <value>Neoprávněný přístup - Pro přístup na tuto stránku nebo pro vykonání požadované akce nemáte oprávnění.</value>
+  </data>
+  <data name="DatabaseConnectionFailedText" xml:space="preserve">
+    <value>Omlouváme se, ale databázový server je dočasně mimo provoz.</value>
+  </data>
+  <data name="WelcomeText" xml:space="preserve">
+    <value>Vítejte v systému E-Learning.</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplikovat</value>
+  </data>
+  <data name="FormFillingWindowTitle" xml:space="preserve">
+    <value>Vyplňování formuláře</value>
+  </data>
+</root>

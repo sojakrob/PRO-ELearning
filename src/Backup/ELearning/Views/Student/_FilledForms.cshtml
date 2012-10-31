@@ -1,0 +1,63 @@
+﻿@using ELearning.Utils
+@using ELearning.Models.GeneralView
+@model IEnumerable<ELearning.Models.Data.FormInstanceModel>
+
+<script type="text/javascript">
+    function openFormInstanceWindow(url) {
+        window.open(url, '_blank', 'width=800, toolbar=0, resizable=1, scrollbars=1, menubar=0');
+    }
+</script>
+
+<table class="datagrid">
+    <caption>@Html.ResourceString("FilledForms")</caption>
+    <tr>
+        <th>
+            @Html.ResourceString("Name")
+        </th>
+        <th>
+            @Html.ResourceString("Text")
+        </th>
+        <th>
+            @Html.ResourceString("Type")
+        </th>
+        <th>
+            @Html.ResourceString("Author")
+        </th>
+        <th>
+            @Html.ResourceString("Filled")
+        </th>
+        <th>
+            @Html.ResourceString("Mark")
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    UrlHelper url = new UrlHelper(ViewContext.RequestContext);
+                    string action = url.Action("ViewForm", "FormInstance", new { id = item.ID });
+                }
+                <a href="#" onclick="@string.Format("openFormInstanceWindow('{0}')", action)">@item.FormTemplate.Name</a>
+            </td>
+            <td title="@item.FormTemplate.Text">
+                @item.FormTemplate.TextCropped
+            </td>
+            <td>
+                @item.FormTemplate.Type.Name
+            </td>
+            <td>
+                @item.FormTemplate.Author.Name
+            </td>
+            <td>
+                @item.Submited
+            </td>
+            <td>
+                @if(item.Evaluation != null && item.Evaluation.Mark != null)
+                {
+                    <span title="@item.Evaluation.Note">@item.Evaluation.Mark.Name</span>
+                }
+            </td>
+        </tr>
+    }
+</table>

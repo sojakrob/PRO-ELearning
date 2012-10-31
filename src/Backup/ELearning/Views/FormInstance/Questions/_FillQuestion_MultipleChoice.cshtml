@@ -1,0 +1,42 @@
+﻿@model ELearning.Models.Data.MultipleChoiceQuestionAnswerInstanceModel
+@using ELearning.Utils           
+
+<ol>
+
+    @*@if (Model.AnswerItems == null && Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
+    {
+       <script type="text/javascript">@string.Format("addChoiceQuestion({0}, {1});", Model.ID, Model.ChoiceItems.Where(ch => ch.IsCorrect).Single().ID)</script>
+    }*@
+    
+    @foreach (var item in Model.ChoiceItems)
+    {
+        IDictionary<string, object> htmlValues = new Dictionary<string, object>();
+
+        if (Model.AnswerItems != null || (ViewData["Readonly"] != null && ((Nullable<bool>)ViewData["Readonly"]).Value))
+        {
+            htmlValues.Add("disabled", "disabled");
+        }
+        if (Model.AnswerItems != null && Model.AnswerItems.Contains(item.ID))
+        {
+            htmlValues.Add("checked", "checked");
+        }
+
+        //if (Model.AnswerItems == null && Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
+        //{
+        //    htmlValues.Add("onclick", string.Format("evaluateChoiceAnswer({0}, {1})", Model.ID, item.ID));
+        //    htmlValues.Add("class", string.Format("Q{0}", Model.ID));
+        //}
+        
+        <li>
+            @Html.CheckBox(string.Format("Q{0}CH{1}", Model.ID, item.ID), string.Format("Q{0}", Model.ID), item.ID.ToString(), htmlValues)
+            <label for="@string.Format("Q{0}CH{1}", Model.ID, item.ID)" title="@item.Text">@item.Text</label>
+        </li>
+    }
+
+    
+</ol>
+
+@if (Model.AnswerItems == null && Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
+{
+    <p id="@string.Format("Explanation{0}", Model.ID)" class="hidden">@Model.Explanation</p>
+}

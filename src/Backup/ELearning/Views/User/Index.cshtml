@@ -1,0 +1,44 @@
+@using ELearning.Utils
+@using ELearning.Models.GeneralView
+@model IEnumerable<ELearning.Models.Data.UserModel>
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("Users");
+    ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "User") };
+}
+
+<table class="datagrid">
+    <tr>
+        <th>
+            @Html.ResourceString("Email")
+        </th>
+        <th>
+            @Html.ResourceString("UserType")
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Email</td>
+        <td>
+			@(item.Type.DisplayName)
+        </td>
+        <td>
+            @Html.LocalizedButtonLink("ResetPassword", "ResetPassword", new { id = item.ID })
+        </td>
+        <td>
+            @if (item.Email != Membership.GetUser().Email)
+            {
+                @Html.ButtonLink("X", "Delete", new { email = item.Email })
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+

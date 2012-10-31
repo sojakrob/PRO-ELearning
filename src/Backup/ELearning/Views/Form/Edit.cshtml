@@ -1,0 +1,23 @@
+@model ELearning.Models.Data.NewFormModel
+@using ELearning.Utils
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("EditForm");
+}
+
+<div id="CreateOrEditForm" class="createEditForm">
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@Html.ResourceString("EditForm")</legend>
+
+        @Html.HiddenFor(model => model.ID)
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p class="center">
+            <input type="submit" class="Button" value="@Html.ResourceString("Save")" />
+            @Html.LocalizedButtonLink("Back", "CreateEditQuestions", new { id = Model.ID })
+        </p>
+    </fieldset>
+}
+</div>

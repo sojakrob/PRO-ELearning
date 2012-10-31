@@ -1,4 +1,7 @@
-﻿INSERT INTO [dbo].[UserType] ([Name]) VALUES ('Administrator')
+﻿GO
+USE [ELearning];
+GO
+INSERT INTO [dbo].[UserType] ([Name]) VALUES ('Administrator')
 INSERT INTO [dbo].[UserType] ([Name]) VALUES ('Lector')
 INSERT INTO [dbo].[UserType] ([Name]) VALUES ('Student')
 GO

@@ -1,0 +1,18 @@
+﻿@using ELearning.Utils
+@model ELearning.Models.Data.NewGroupModel
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("NewGroup");
+}
+<div id="createEditGroup" class="createEditForm">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>@Html.ResourceString("NewGroup")</legend>
+            @Html.Partial("_CreateOrEdit", Model)
+            <p>
+                <input type="submit" class="Button" value="@Html.ResourceString("Create")" />
+            </p>
+        </fieldset>
+    }
+</div>

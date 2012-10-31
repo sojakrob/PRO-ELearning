@@ -1,0 +1,51 @@
+﻿@model ELearning.Models.Authentication.UserLogOnModel
+
+<div id="logOnControl">
+    @using (Html.BeginForm("LogOn", "Authentication"))
+    {
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>@ELearning.Localization.GetResourceString("LogOn")</legend>
+
+            <h2>@ELearning.Localization.GetResourceString("LogOn")</h2>
+
+            <div class="editor-group">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Email)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="editor-group">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Password)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="editor-group">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.KeepSignedIn)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.KeepSignedIn)
+                    @Html.ValidationMessageFor(model => model.KeepSignedIn)
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <p class="buttons">
+                <input type="submit" class="Button" value="@ELearning.Localization.GetResourceString("LogOn")" />
+            </p>
+        </fieldset>
+    }
+</div>

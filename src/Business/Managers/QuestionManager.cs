@@ -130,6 +130,7 @@ namespace ELearning.Business.Managers
 
             return true;
         }
+        
         public bool EditChoiceQuestion(string authorEmail, ChoiceQuestion question)
         {
             if (!EditQuestion(authorEmail, question))

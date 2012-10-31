@@ -1,0 +1,7 @@
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\sql\ElearningRobertsojakRelease\Database.dacpac
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\sql\ElearningRobertsojakRelease\Database.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\ElearningRobertsojakRelease\Database.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\ElearningRobertsojakRelease\Model.xml
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\ElearningRobertsojakRelease\refactor.xml
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\ElearningRobertsojakRelease\postdeploy.sql
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Database\obj\ElearningRobertsojakRelease\predeploy.sql

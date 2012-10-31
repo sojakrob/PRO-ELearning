@@ -1,0 +1,3 @@
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\SeleniumTests\obj\Release\SeleniumTests.csprojResolveAssemblyReference.cache
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\SeleniumTests\obj\Release\SeleniumTests.ELearningResources.Strings.resources
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\SeleniumTests\obj\Release\SeleniumTests.csproj.GenerateResource.Cache

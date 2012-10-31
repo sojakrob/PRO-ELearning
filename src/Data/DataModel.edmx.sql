@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2012 14:09:53
--- Generated from EDMX file: D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Data\DataModel.edmx
+-- Date Created: 10/31/2012 14:16:59
+-- Generated from EDMX file: C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Data\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -101,6 +101,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TextBookGroup_Group]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TextBookGroup] DROP CONSTRAINT [FK_TextBookGroup_Group];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TextBookTextBookLink]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBookLink] DROP CONSTRAINT [FK_TextBookTextBookLink];
+GO
+IF OBJECT_ID(N'[dbo].[FK_QuestionTextBookLink]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TextBookLink] DROP CONSTRAINT [FK_QuestionTextBookLink];
+GO
 IF OBJECT_ID(N'[dbo].[FK_ChoiceQuestion_inherits_Question]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Question_ChoiceQuestion] DROP CONSTRAINT [FK_ChoiceQuestion_inherits_Question];
 GO
@@ -174,6 +180,9 @@ IF OBJECT_ID(N'[dbo].[MultipleChoiceAnswerItem]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TextBook]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TextBook];
+GO
+IF OBJECT_ID(N'[dbo].[TextBookLink]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TextBookLink];
 GO
 IF OBJECT_ID(N'[dbo].[Question_ChoiceQuestion]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Question_ChoiceQuestion];
@@ -370,6 +379,16 @@ CREATE TABLE [dbo].[TextBook] (
 );
 GO
 
+-- Creating table 'TextBookLink'
+CREATE TABLE [dbo].[TextBookLink] (
+    [ID] int  NOT NULL,
+    [HName] nvarchar(max)  NOT NULL,
+    [TextBookID] int  NOT NULL,
+    [QuestionID] int  NOT NULL,
+    [QuestionGroup_ID] int  NOT NULL
+);
+GO
+
 -- Creating table 'Question_ChoiceQuestion'
 CREATE TABLE [dbo].[Question_ChoiceQuestion] (
     [Shuffle] bit  NOT NULL,
@@ -539,6 +558,12 @@ GO
 -- Creating primary key on [ID] in table 'TextBook'
 ALTER TABLE [dbo].[TextBook]
 ADD CONSTRAINT [PK_TextBook]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'TextBookLink'
+ALTER TABLE [dbo].[TextBookLink]
+ADD CONSTRAINT [PK_TextBookLink]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -977,13 +1002,41 @@ ON [dbo].[TextBookGroup]
     ([Groups_ID]);
 GO
 
+-- Creating foreign key on [TextBookID] in table 'TextBookLink'
+ALTER TABLE [dbo].[TextBookLink]
+ADD CONSTRAINT [FK_TextBookTextBookLink]
+    FOREIGN KEY ([TextBookID])
+    REFERENCES [dbo].[TextBook]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TextBookTextBookLink'
+CREATE INDEX [IX_FK_TextBookTextBookLink]
+ON [dbo].[TextBookLink]
+    ([TextBookID]);
+GO
+
+-- Creating foreign key on [QuestionGroup_ID] in table 'TextBookLink'
+ALTER TABLE [dbo].[TextBookLink]
+ADD CONSTRAINT [FK_TextBookLinkQuestionGroup]
+    FOREIGN KEY ([QuestionGroup_ID])
+    REFERENCES [dbo].[QuestionGroup]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TextBookLinkQuestionGroup'
+CREATE INDEX [IX_FK_TextBookLinkQuestionGroup]
+ON [dbo].[TextBookLink]
+    ([QuestionGroup_ID]);
+GO
+
 -- Creating foreign key on [ID] in table 'Question_ChoiceQuestion'
 ALTER TABLE [dbo].[Question_ChoiceQuestion]
 ADD CONSTRAINT [FK_ChoiceQuestion_inherits_Question]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Question]
         ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating foreign key on [ID] in table 'Answer_MultipleChoiceAnswer'
@@ -992,7 +1045,7 @@ ADD CONSTRAINT [FK_MultipleChoiceAnswer_inherits_Answer]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Answer]
         ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating foreign key on [ID] in table 'Answer_ChoiceAnswer'
@@ -1001,7 +1054,7 @@ ADD CONSTRAINT [FK_ChoiceAnswer_inherits_Answer]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Answer]
         ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating foreign key on [ID] in table 'Answer_TextAnswer'
@@ -1010,7 +1063,7 @@ ADD CONSTRAINT [FK_TextAnswer_inherits_Answer]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Answer]
         ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating foreign key on [ID] in table 'Answer_ScaleAnswer'
@@ -1019,7 +1072,7 @@ ADD CONSTRAINT [FK_ScaleAnswer_inherits_Answer]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Answer]
         ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating foreign key on [ID] in table 'Question_ScaleQuestion'
@@ -1028,7 +1081,7 @@ ADD CONSTRAINT [FK_ScaleQuestion_inherits_Question]
     FOREIGN KEY ([ID])
     REFERENCES [dbo].[Question]
         ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- --------------------------------------------------

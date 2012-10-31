@@ -1,0 +1,87 @@
+﻿@model ELearning.Models.Data.EditGroupModel
+@using ELearning.Utils
+@using ELearning.Models.GeneralView
+@{
+    ViewBag.Title = Model.Name;
+
+    if (ViewBag.CurrentUserModel.Permissions.Group_CreateEdit)
+    {
+        ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("ImportMembersFromGoogleGroup"), "ImportGoogleGroup", "Group", new { groupID = Model.ID }, null) };
+    }
+}
+@using (Html.BeginForm("Edit", "Group"))
+{
+    @Html.Hidden("groupID", Model.ID);
+    
+    <table class="datagrid">
+        <caption>@Html.ResourceString("Members")</caption>
+        <tr>
+            <th>
+            </th>
+            <th>
+                @Html.ResourceString("Name")
+            </th>
+        </tr>
+        @{
+            IDictionary<string, object> htmlValues = new Dictionary<string, object>();
+            htmlValues.Add("checked", "checked");
+        }
+        @foreach (var member in Model.Members)
+        {
+            <tr>
+                <td>
+                    @if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator)
+                    {
+                        @Html.CheckBox(string.Format("assignedMembersMID{0}", member.ID), "assignedMemberIDs", member.ID.ToString(), htmlValues);
+                    }
+                </td>
+                @if (member.Type.Enum == ELearning.Data.Enums.UserTypes.Student)
+                {
+                    <td>@Html.ActionLink(member.Name, "Detail", "Student", new { id = member.ID }, null)
+                    </td>
+                }
+                else
+                {
+                    <td>@member.Name
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+
+    if (ViewBag.CurrentUserModel.Type == ELearning.Data.Enums.UserTypes.Administrator)
+    {
+        <table class="datagrid">
+            <caption>
+                @Html.ResourceString("PossibleMembers")</caption>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    @Html.ResourceString("Name")
+                </th>
+            </tr>
+            @foreach (var member in Model.PossibleMembers)
+            {
+                <tr>
+                    <td>
+                        @Html.CheckBox(string.Format("assignedMembersMID{0}", member.ID), "assignedMemberIDs", member.ID.ToString(), null)
+                    </td>
+                    @if (member.Type.Enum == ELearning.Data.Enums.UserTypes.Student)
+                    {
+                        <td>@Html.ActionLink(member.Name, "Detail", "Student", new { id = member.ID }, null)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@member.Name
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+        <p class="center">
+            <input type="submit" class="Button" value="@Html.ResourceString("SaveChanges")" />
+        </p>
+    }
+}

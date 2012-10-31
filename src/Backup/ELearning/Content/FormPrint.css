@@ -1,0 +1,42 @@
+﻿* 
+{
+	color: Black !important;
+	background-color: White !important;
+	border-color: Black !important;	
+	border-width: 1px !important;
+}
+
+.printOnly
+{
+	display: inline-block !important;
+}
+
+div#FormFill
+{
+	/*width: 780px;*/
+}
+div#FormFillHeader div.fields
+{
+	display: inline-block;
+	float: right;
+	margin: 10px;
+}
+div#FormFillHeader div.fields input
+{
+	width: 200px;
+}
+
+div.Question
+{
+	page-break-inside:avoid;
+}
+div.Question div.Header
+{
+	border-bottom: 1px solid Black;
+}
+
+
+input[type=button].Button, input.Button, button
+{
+	display: none;
+}

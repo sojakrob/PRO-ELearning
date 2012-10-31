@@ -1,0 +1,32 @@
+﻿@using ELearning.Models.Data
+@using ELearning.Utils
+@model QuestionGroupModel
+
+
+@foreach (QuestionModel question in Model.Questions)
+{
+    <div class="QuestionForm">
+        @using (Html.BeginForm(string.Format("EditQuestion_{0}", Model.Type.Name), "Form", new { formID = Model.FormTemplateID, questionGroupID = Model.ID, questionID = question.ID } ))
+        {
+            <fieldset>
+                @Html.ValidationSummary(true)
+
+                @Html.Partial("Questions\\_EditQuestion", question)
+                @Html.Partial(string.Format("Questions\\_EditQuestion_{0}", Model.Type.Name), question)
+    
+                <div class="BottomButtons">
+                    <div class="leftFloat">
+                        @if (Model.Questions.Count > 1)
+                        {
+                            @Html.LocalizedActionLink("DeleteAlternativeQuestion", "DeleteAlternativeQuestion", new { formID = Model.FormTemplateID, questionID = Model.ID, alternativeQuestionID = question.ID }, new { @class = "button" })
+                        }
+                    </div>
+                    <div class="rightFloat">
+                        <input type="submit" class="Button" value="@Html.ResourceString("SaveChanges")" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </fieldset>
+        }
+    </div>
+}

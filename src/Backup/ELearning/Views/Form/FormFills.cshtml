@@ -1,0 +1,39 @@
+﻿@model ELearning.Models.FormFillsModel
+@using ELearning.Models.GeneralView
+@using ELearning.Utils
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("FormFills");
+    ViewBag.TopButtons = new[] 
+    { 
+        new TopButtonModel(
+            ELearning.Localization.GetResourceString("ExportToGoogleDocs"), 
+            "ExportToGoogleDocs", 
+            "Form", 
+            new { id = Model.ID },
+            null
+            ) 
+    };
+}
+
+<h2>@Model.Name</h2>
+
+
+
+<table class="datagrid">
+
+    <tr>
+        <th>@Html.ResourceString("Solver")</th>
+        <th>@Html.ResourceString("TimesFilled")</th>
+    </tr>
+
+    @foreach (var forms in Model.FormInstances.GroupBy(i => i.Solver.ID).ToList())
+    {
+        <tr>
+            <td>@Html.ActionLink(forms.First().Solver.Name, "Detail", "Student", new { id = forms.First().Solver.ID }, null)</td>
+            <td>@forms.Count()</td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,72 @@
+﻿@model ELearning.Models.Data.ChoiceQuestionAnswerInstanceModel
+@using ELearning.Utils           
+
+<ol>
+
+    @if (Model.Answer == null && Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
+    {
+        var correctChoice = Model.ChoiceItems.Where(ch => ch.IsCorrect).SingleOrDefault();
+        if (correctChoice != null)
+        {
+            <script type="text/javascript">@string.Format("addChoiceQuestion({0}, {1});", Model.ID, correctChoice.ID)</script>
+        }
+    }
+    
+    @foreach (var item in Model.ChoiceItems)
+    {
+        IDictionary<string, object> htmlValues = new Dictionary<string, object>();
+        string liClass = string.Empty;
+
+        if (Model.Answer != null || (ViewData["Readonly"] != null && ((Nullable<bool>)ViewData["Readonly"]).Value))
+        {
+            htmlValues.Add("disabled", "disabled");
+        }
+        if (Model.Answer != null && Model.Answer == item.ID)
+        {
+            htmlValues.Add("checked", "checked");
+        }
+
+        if (Model.Answer == null && Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
+        {
+            htmlValues.Add("onclick", string.Format("evaluateChoiceAnswer({0}, {1})", Model.ID, item.ID));
+            htmlValues.Add("class", string.Format("Q{0}", Model.ID));
+        }
+        else if(Model.Answer != null)
+        {
+            ELearning.Models.Data.FormInstanceModel formInstance = ViewData["FormInstance"] as ELearning.Models.Data.FormInstanceModel;
+            if (formInstance != null)
+            {
+                if (!formInstance.IsPreview && (formInstance.FormTemplate.State.Enum != ELearning.Data.Enums.FormStates.Active || ViewBag.CurrentUserModel.Type != ELearning.Data.Enums.UserTypes.Student) || formInstance.FormTemplate.Type.Enum == ELearning.Data.Enums.FormTypes.TrainingTest)
+                {
+                    if (item.IsCorrect)
+                    {
+                        liClass = "correct";
+                    }
+                    else if (Model.Answer == item.ID && formInstance.FormTemplate.Type.Enum != ELearning.Data.Enums.FormTypes.Questionnaire)
+                    {
+                        liClass = "wrong";
+                    }
+                }
+            }
+        }
+        
+        <li class="@liClass">
+            @Html.Radio(string.Format("Q{0}CH{1}", Model.ID, item.ID), string.Format("Q{0}", Model.ID), item.ID.ToString(), htmlValues)
+            <label for="@string.Format("Q{0}CH{1}", Model.ID, item.ID)" title="@item.Text">@item.Text</label>
+        </li>
+    }
+
+    
+</ol>
+
+@if (Model.FormType == ELearning.Data.Enums.FormTypes.TrainingTest)
+{
+    if (Model.Answer == null)
+    {
+        <p id="@string.Format("Explanation{0}", Model.ID)" class="hidden">@Model.Explanation</p>
+    }
+    else
+    {
+        <p id="@string.Format("Explanation{0}", Model.ID)" class="">@Model.Explanation</p>
+    }
+}

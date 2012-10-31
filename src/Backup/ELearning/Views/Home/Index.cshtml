@@ -1,0 +1,32 @@
+﻿@using ELearning.Utils
+
+@{
+    Layout = "~/Views/Shared/_NotLoggedLayout.cshtml";
+    ViewBag.Title = "E-Learning";
+}
+<div id="frameContent">
+    <div id="welcome">
+        <h1>
+            E-Learning</h1>
+        <p>
+            @Html.ResourceString("WelcomeText")
+            
+        </p>
+    </div>
+    @if (ViewBag.IsConnectionOK)
+    {
+    <div id="logOnWrapper">
+        @{
+        Html.RenderAction("LogOnControl", "Authentication");
+        }
+    </div>
+    }
+    else
+    {
+        <div id="WelcomeError">
+            @Html.ResourceString("DatabaseConnectionFailedText")
+        </div>
+    }
+    <div class="clear">
+    </div>
+</div>

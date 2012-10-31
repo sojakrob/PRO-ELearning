@@ -1,4 +1,6 @@
-﻿
+﻿GO
+USE [ELearning];
+GO
 -- Form Types
 INSERT INTO [dbo].[FormType] ([Name]) VALUES ('Questionnaire')
 INSERT INTO [dbo].[FormType] ([Name]) VALUES ('Exam')

@@ -1,0 +1,9 @@
+﻿@using ELearning.Utils
+@model IEnumerable<ELearning.Models.Data.TextBookModel>
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("TextBooks");
+    ViewBag.TopButtons = new[] { new ELearning.Models.GeneralView.TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "TextBook") };
+}
+
+@Html.Partial("_TextBooks", Model)

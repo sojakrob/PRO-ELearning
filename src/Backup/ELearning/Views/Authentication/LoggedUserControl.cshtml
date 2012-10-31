@@ -1,0 +1,19 @@
+﻿
+@using ELearning.Utils
+@model ELearning.Models.Authentication.LoggedUserModel
+           
+<div id="loggedUserControl">
+    @if (Model == null)
+    {
+        @Html.ButtonLink(ELearning.Localization.GetResourceString("LogOn"), "LogOn", "Authentication");
+    }
+    else
+    { 
+        <span>
+            @Html.Encode(Model.Email)
+        </span>
+        <span>
+            @Html.ButtonLink(ELearning.Localization.GetResourceString("LogOff"), "LogOff", "Authentication")
+        </span>
+    }
+</div>

@@ -23,6 +23,7 @@
     <EntitySet Name="MarkValue" EntityType="DataModel.Store.MarkValue" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MultipleChoiceAnswerItem" EntityType="DataModel.Store.MultipleChoiceAnswerItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TextBook" EntityType="DataModel.Store.TextBook" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TextBookLink" EntityType="DataModel.Store.TextBookLink" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Question_ChoiceQuestion" EntityType="DataModel.Store.Question_ChoiceQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_MultipleChoiceAnswer" EntityType="DataModel.Store.Answer_MultipleChoiceAnswer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Answer_ChoiceAnswer" EntityType="DataModel.Store.Answer_ChoiceAnswer" store:Type="Tables" Schema="dbo" />
@@ -143,6 +144,14 @@
     <AssociationSet Name="FK_TextBookGroup_Group" Association="DataModel.Store.FK_TextBookGroup_Group">
       <End Role="Group" EntitySet="Group" />
       <End Role="TextBookGroup" EntitySet="TextBookGroup" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookTextBookLink" Association="DataModel.Store.TextBookTextBookLink">
+      <End Role="TextBook" EntitySet="TextBook" />
+      <End Role="TextBookLink" EntitySet="TextBookLink" />
+    </AssociationSet>
+    <AssociationSet Name="TextBookLinkQuestionGroup" Association="DataModel.Store.TextBookLinkQuestionGroup">
+      <End Role="TextBookLink" EntitySet="TextBookLink" />
+      <End Role="QuestionGroup" EntitySet="QuestionGroup" />
     </AssociationSet>
     <AssociationSet Name="FK_ChoiceQuestion_inherits_Question" Association="DataModel.Store.FK_ChoiceQuestion_inherits_Question">
       <End Role="Question" EntitySet="Question" />
@@ -331,6 +340,16 @@
     <Property Name="VisibleToOthers" Type="bit" Nullable="false" DefaultValue="false" />
     <Property Name="Html" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IsArchived" Type="bit" Nullable="false" DefaultValue="false" />
+  </EntityType>
+  <EntityType Name="TextBookLink">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="HName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TextBookID" Type="int" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="QuestionGroup_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Question_ChoiceQuestion">
     <Key>
@@ -665,6 +684,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="TextBookTextBookLink">
+    <End Role="TextBook" Type="DataModel.Store.TextBook" Multiplicity="1" />
+    <End Role="TextBookLink" Type="DataModel.Store.TextBookLink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TextBook">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBookLink">
+        <PropertyRef Name="TextBookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TextBookLinkQuestionGroup">
+    <End Role="TextBookLink" Type="DataModel.Store.TextBookLink" Multiplicity="*" />
+    <End Role="QuestionGroup" Type="DataModel.Store.QuestionGroup" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TextBookLink">
+        <PropertyRef Name="QuestionGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GroupMembers_Group">
     <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
     <End Role="GroupMembers" Type="DataModel.Store.GroupMembers" Multiplicity="*" />
@@ -738,7 +781,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ChoiceQuestion_inherits_Question">
-    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1" />
+    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ChoiceQuestion" Type="DataModel.Store.Question_ChoiceQuestion" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Question">
@@ -750,7 +795,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MultipleChoiceAnswer_inherits_Answer">
-    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MultipleChoiceAnswer" Type="DataModel.Store.Answer_MultipleChoiceAnswer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Answer">
@@ -762,7 +809,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ChoiceAnswer_inherits_Answer">
-    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ChoiceAnswer" Type="DataModel.Store.Answer_ChoiceAnswer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Answer">
@@ -774,7 +823,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TextAnswer_inherits_Answer">
-    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TextAnswer" Type="DataModel.Store.Answer_TextAnswer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Answer">
@@ -786,7 +837,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ScaleAnswer_inherits_Answer">
-    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1" />
+    <End Role="Answer" Type="DataModel.Store.Answer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ScaleAnswer" Type="DataModel.Store.Answer_ScaleAnswer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Answer">
@@ -798,7 +851,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ScaleQuestion_inherits_Question">
-    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1" />
+    <End Role="Question" Type="DataModel.Store.Question" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ScaleQuestion" Type="DataModel.Store.Question_ScaleQuestion" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Question">
@@ -931,6 +986,15 @@
             <End Role="TextBook" EntitySet="TextBook" />
             <End Role="Group" EntitySet="Group" />
           </AssociationSet>
+          <EntitySet Name="TextBookLink" EntityType="DataModel.TextBookLink" />
+          <AssociationSet Name="TextBookTextBookLink" Association="DataModel.TextBookTextBookLink">
+            <End Role="TextBook" EntitySet="TextBook" />
+            <End Role="TextBookLink" EntitySet="TextBookLink" />
+          </AssociationSet>
+          <AssociationSet Name="TextBookLinkQuestionGroup" Association="DataModel.TextBookLinkQuestionGroup">
+            <End Role="TextBookLink" EntitySet="TextBookLink" />
+            <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Question">
           <Key>
@@ -956,6 +1020,7 @@
           <Property Type="Int32" Name="QuestionGroupTypeID" Nullable="false" />
           <NavigationProperty Name="ParentForm" Relationship="DataModel.QuestionGroupFormTemplate" FromRole="QuestionGroup" ToRole="FormTemplate" />
           <Property Type="Int32" Name="FormTemplateID" Nullable="false" />
+          <NavigationProperty Name="TextBookLink" Relationship="DataModel.TextBookLinkQuestionGroup" FromRole="QuestionGroup" ToRole="TextBookLink" />
         </EntityType>
         <Association Name="QuestionGroupQuestion">
           <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="1" />
@@ -1370,6 +1435,7 @@
           <Property Type="Boolean" Name="VisibleToOthers" Nullable="false" DefaultValue="False" />
           <Property Type="String" Name="Html" Nullable="false" />
           <Property Type="Boolean" Name="IsArchived" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="TextBookLink" Relationship="DataModel.TextBookTextBookLink" FromRole="TextBook" ToRole="TextBookLink" />
         </EntityType>
         <Association Name="TextBookUserCreator">
           <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
@@ -1398,6 +1464,33 @@
         <Association Name="TextBookGroup">
           <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="*" />
           <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+        </Association>
+        <EntityType Name="TextBookLink" >
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="HName" Nullable="false" />
+          <NavigationProperty Name="TextBook" Relationship="DataModel.TextBookTextBookLink" FromRole="TextBookLink" ToRole="TextBook" />
+          <Property Type="Int32" Name="TextBookID" Nullable="false" />
+          <Property Type="Int32" Name="QuestionID" Nullable="false" />
+          <NavigationProperty Name="QuestionGroup" Relationship="DataModel.TextBookLinkQuestionGroup" FromRole="TextBookLink" ToRole="QuestionGroup" />
+        </EntityType>
+        <Association Name="TextBookTextBookLink">
+          <End Type="DataModel.TextBook" Role="TextBook" Multiplicity="1" />
+          <End Type="DataModel.TextBookLink" Role="TextBookLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TextBook">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TextBookLink">
+              <PropertyRef Name="TextBookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TextBookLinkQuestionGroup">
+          <End Type="DataModel.TextBookLink" Role="TextBookLink" Multiplicity="*" />
+          <End Type="DataModel.QuestionGroup" Role="QuestionGroup" Multiplicity="1" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1621,6 +1714,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TextBookLink">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TextBookLink)">
+        <MappingFragment StoreEntitySet="TextBookLink">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HName" ColumnName="HName" />
+          <ScalarProperty Name="TextBookID" ColumnName="TextBookID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GroupMembers" TypeName="DataModel.GroupMembers" StoreEntitySet="GroupMembers">
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
@@ -1668,6 +1771,14 @@
       </EndProperty>
       <EndProperty Name="Group">
         <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TextBookLinkQuestionGroup" TypeName="DataModel.TextBookLinkQuestionGroup" StoreEntitySet="TextBookLink">
+      <EndProperty Name="QuestionGroup">
+        <ScalarProperty Name="ID" ColumnName="QuestionGroup_ID" />
+      </EndProperty>
+      <EndProperty Name="TextBookLink">
+        <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
@@ -1856,11 +1967,12 @@
           <ConnectorPoint PointX="11.9375" PointY="14.739889322916666" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DataModel.TextBook" Width="1.5" PointX="0.5" PointY="7.25" Height="3.5186979166666656" />
-        <AssociationConnector Association="DataModel.TextBookUserCreator">
-          <ConnectorPoint PointX="2" PointY="7.2753836153846168" />
-          <ConnectorPoint PointX="2.6875" PointY="6.5878836153846159" />
-          <ConnectorPoint PointX="2.6875" PointY="3.7257293701171879" />
-          <ConnectorPoint PointX="3.375" PointY="3.7257293701171879" />
+        <AssociationConnector Association="DataModel.TextBookUserCreator" ManuallyRouted="true">
+          <ConnectorPoint PointX="1.9757692307692309" PointY="7.25" />
+          <ConnectorPoint PointX="2.375" PointY="6.8507692307692309" />
+          <ConnectorPoint PointX="2.9985795214017932" PointY="6.8507692307692309" />
+          <ConnectorPoint PointX="2.9985795214017932" PointY="46.55573563056722" />
+          <ConnectorPoint PointX="3.375" PointY="5.3744921875" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.TextBookUserChanger">
           <ConnectorPoint PointX="1.9757692307692327" PointY="7.25" />
@@ -1874,6 +1986,9 @@
           <ConnectorPoint PointX="0.93676921875000008" PointY="7.25" />
           <ConnectorPoint PointX="0.93676921875000008" PointY="4.9898893229166665" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="DataModel.TextBookLink" Width="1.5" PointX="0.5" PointY="11.375" />
+        <AssociationConnector Association="DataModel.TextBookTextBookLink" />
+        <AssociationConnector Association="DataModel.TextBookLinkQuestionGroup" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

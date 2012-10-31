@@ -1,0 +1,13 @@
+@using ELearning.Utils
+@using ELearning.Models.GeneralView
+@model IEnumerable<ELearning.Models.FormFillsModel>
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("AvailableForms");
+    
+    if (ViewBag.CurrentUserModel.Permissions.Form_CreateEdit)
+    {
+        ViewBag.TopButtons = new[] { new TopButtonModel(ELearning.Localization.GetResourceString("CreateNew"), "Create", "Form") };
+    }
+}
+
+@Html.Partial("_AvailableForms", Model)

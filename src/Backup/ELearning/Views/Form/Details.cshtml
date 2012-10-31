@@ -1,0 +1,47 @@
+@model ELearning.Data.Form
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Form</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Text</div>
+    <div class="display-field">@Model.Text</div>
+
+    <div class="display-label">TimeToFill</div>
+    <div class="display-field">@String.Format("{0:g}", Model.TimeToFill)</div>
+
+    <div class="display-label">Shuffle</div>
+    <div class="display-field">@Model.Shuffle</div>
+
+    <div class="display-label">Created</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Created)</div>
+
+    <div class="display-label">Type</div>
+    <div class="display-field">@(Model.Type == null ? "None" : Model.Type.Name)</div>
+
+    <div class="display-label">TypeReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TypeReference).ToString()</div>
+
+    <div class="display-label">Author</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Author).ToString()</div>
+
+    <div class="display-label">AuthorReference</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.AuthorReference).ToString()</div>
+
+    <div class="display-label">QuestionGroups</div>
+    <div class="display-field">@(Model.QuestionGroups == null ? "None" : Model.QuestionGroups.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

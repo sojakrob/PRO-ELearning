@@ -100,6 +100,7 @@
     <Compile Include="Managers\ManagerBase.cs" />
     <Compile Include="Managers\ManagersContainer.cs" />
     <Compile Include="Managers\QuestionManager.cs" />
+    <Compile Include="Managers\TextBookLinkManager.cs" />
     <Compile Include="Managers\TextBookManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Permissions\AdministratorPermissions.cs" />
@@ -127,6 +128,9 @@
       <Project>{B610B6F9-4DAE-4D6B-B43C-9201FFD9EB48}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -29,3 +29,8 @@ D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\bin\Debug\ELearning.Sha
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ResolveAssemblyReference.cache
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ELearning.Shared.dll
 D:\_mb\School\FEL\Predmety\A7B36PRO\ELearning\src\Shared\obj\Debug\ELearning.Shared.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\bin\Debug\ELearning.Shared.XML
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\bin\Debug\ELearning.Shared.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\bin\Debug\ELearning.Shared.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\obj\Debug\ELearning.Shared.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\obj\Debug\ELearning.Shared.pdb

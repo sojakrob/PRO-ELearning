@@ -37,10 +37,25 @@ namespace ELearning.Models.Data
         private IEnumerable<GroupModel> _assignedGroups = null;
         private IEnumerable<Group> _assignedGroupsData;
 
+        public IEnumerable<TextBookLinkModel> TextBookLinks { 
+            get
+            {
+                if (_assignedTextBookLinks == null)
+                    _assignedTextBookLinks = TextBookLinkModel.CreateFromArray<TextBookLinkModel>(_assignedTextBookLinksData);
+                return _assignedTextBookLinks;
+            } 
+            set
+            {
+                _assignedTextBookLinks = value;
+            } 
+        }
+        private IEnumerable<TextBookLinkModel> _assignedTextBookLinks = null;
+        private IEnumerable<TextBookLink> _assignedTextBookLinksData;
 
         public TextBookModel()
         {
             _assignedGroups = new List<GroupModel>();
+            _assignedTextBookLinks = new List<TextBookLinkModel>();
         }
         public TextBookModel(TextBook data)
             : base(data)
@@ -53,6 +68,7 @@ namespace ELearning.Models.Data
             Changed = data.Changed;
             CreatedBy = new UserModel(data.CreatedBy);
             _assignedGroupsData = data.Groups;
+            _assignedTextBookLinksData = data.TextBookLink;
         }
 
 

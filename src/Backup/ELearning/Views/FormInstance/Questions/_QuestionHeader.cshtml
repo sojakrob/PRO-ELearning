@@ -1,0 +1,9 @@
+﻿@model ELearning.Models.Data.QuestionInstanceModel
+
+<p>@Model.Text</p>
+
+@if (!string.IsNullOrEmpty(Model.HelpText))
+{
+    <p><i>@Model.HelpText</i></p>
+}
+

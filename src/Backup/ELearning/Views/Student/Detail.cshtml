@@ -1,0 +1,22 @@
+﻿@using ELearning.Utils
+@model ELearning.Models.Data.StudentFormsModel
+@{
+    ViewBag.Title = string.Format(ELearning.Localization.GetResourceString("StudentDetail_format"), Model.Name);
+}
+
+<table class="datagrid">
+    <caption>@Html.ResourceString("Groups")</caption>
+    <tr>
+        <th>
+            @Html.ResourceString("Name")
+        </th>
+    </tr>
+    @foreach (var group in Model.AssignedGroups)
+    {
+        <tr>
+            <td>@Html.ActionLink(group.Name, "Detail", "Group", new { id = group.ID }, null)</td>
+        </tr>
+    }
+</table>
+
+@Html.Partial("_FilledForms", Model.FilledForms)

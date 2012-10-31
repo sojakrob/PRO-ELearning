@@ -1,0 +1,64 @@
+﻿@using ELearning.Utils;
+@model ELearning.Models.Data.FormModel
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<script src="@Url.Content("~/Scripts/Form/CreateEditQuestions.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Controls/UpDownControl.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    @Html.Raw(string.Format("formID = {0}", Model.ID));
+    @if(ViewBag.AddedQuestionID != null)
+    {
+        @Html.Raw(string.Format("addedQuestionID = 'Q{0}';", ViewBag.AddedQuestionID))
+    }
+</script>
+
+<div id="CreateEditQuestions">
+    <div id="CreateEditQuestionsHeader">
+        <h2>@Model.NameCropped</h2>
+        <div class="info">
+            <div class="column">@Html.ResourceString(Model.Type.Name)</div>
+            <div class="column" id="clmnQuestionCount">@Model.QuestionGroups.Count</div>
+            @if (Model.TimeToFill != null)
+            {
+                <div class="column" id="clmnTimeToFill">@Model.TimeToFill</div>
+            }
+            <div class="column">@Html.LocalizedButtonLink("Edit", "Edit", new { id = Model.ID })</div>
+            <div class="column" id="clmnPreview">
+                @Html.ButtonJSClick("Show Preview", ELearning.Localization.GetResourceString("Preview"), string.Format("showPreview({0}, false);", Model.ID))
+            </div>
+            <div class="column" id="clmnPrint">
+                @Html.ButtonJSClick("Print", ELearning.Localization.GetResourceString("Print"), string.Format("showPreview({0}, true);", Model.ID))
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="info">
+            <div class="column">
+                    @{
+                        int i = 0;
+                    }
+                    @foreach (var group in Model.AssignedGroups)
+                    {
+                        if (i > 0)
+                        {
+                            @Html.Raw(", ")
+                        }
+
+                        @Html.Raw(group.Name)
+                        i++;
+                    }
+            </div>
+        </div>
+        <div class="info rightButtons">
+            @Html.ButtonJSClick(ELearning.Localization.GetResourceString("OpenAllQuestions"), ELearning.Localization.GetResourceString("OpenAllQuestions"), "toggleShowAllQuestionContent();", new { @class = "LinkButton" })
+            @Html.ButtonJSClick(ELearning.Localization.GetResourceString("CloseAllQuestions"), ELearning.Localization.GetResourceString("CloseAllQuestions"), "toggleHideAllQuestionContent();", new { @class = "LinkButton" })
+        </div>
+    </div>
+
+    @Html.Partial("_CreateOrEditQuestions", Model.QuestionGroups)
+
+</div>

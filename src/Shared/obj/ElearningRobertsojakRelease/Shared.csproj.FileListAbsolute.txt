@@ -1,0 +1,5 @@
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\bin\ElearningRobertsojakRelease\ELearning.Shared.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\bin\ElearningRobertsojakRelease\ELearning.Shared.pdb
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\obj\ElearningRobertsojakRelease\Shared.csprojResolveAssemblyReference.cache
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\obj\ElearningRobertsojakRelease\ELearning.Shared.dll
+C:\Users\Petr\Documents\ELEARNING\project\sojakrob-PRO-ELearning-ec8870e\src\Shared\obj\ElearningRobertsojakRelease\ELearning.Shared.pdb

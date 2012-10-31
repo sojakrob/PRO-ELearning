@@ -1,0 +1,20 @@
+﻿@using ELearning.Utils
+@model IEnumerable<ELearning.Models.Data.UserModel>
+
+@{
+    ViewBag.Title = ELearning.Localization.GetResourceString("Students");
+}
+
+<table class="datagrid">
+    <tr>
+        <th>@Html.ResourceString("Name")</th>
+    </tr>
+
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(student.Name, "Detail", new { id = student.ID })</td>
+        </tr>
+    }
+
+</table>

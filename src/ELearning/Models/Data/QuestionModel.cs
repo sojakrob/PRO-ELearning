@@ -35,10 +35,8 @@ namespace ELearning.Models.Data
         public int QuestionGroupID { get; set; }
         public int FormID { get; private set; }
 
-
         public QuestionModel()
         {
-
         }
         public QuestionModel(Question data)
             : base(data)

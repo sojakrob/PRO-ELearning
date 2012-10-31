@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -43,6 +44,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DataModel", "TextBookUserCreator", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBook), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "TextBookUserChanger", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBook), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.User), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "TextBookGroup", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBook), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.Group))]
+[assembly: EdmRelationshipAttribute("DataModel", "TextBookTextBookLink", "TextBook", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.TextBook), "TextBookLink", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBookLink), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "TextBookLinkQuestionGroup", "TextBookLink", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ELearning.Data.TextBookLink), "QuestionGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ELearning.Data.QuestionGroup))]
 
 #endregion
 
@@ -365,8 +368,25 @@ namespace ELearning.Data
             }
         }
         private ObjectSet<TextBook> _TextBook;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TextBookLink> TextBookLink
+        {
+            get
+            {
+                if ((_TextBookLink == null))
+                {
+                    _TextBookLink = base.CreateObjectSet<TextBookLink>("TextBookLink");
+                }
+                return _TextBookLink;
+            }
+        }
+        private ObjectSet<TextBookLink> _TextBookLink;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -504,13 +524,21 @@ namespace ELearning.Data
         {
             base.AddObject("TextBook", textBook);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TextBookLink EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTextBookLink(TextBookLink textBookLink)
+        {
+            base.AddObject("TextBookLink", textBookLink);
+        }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -539,6 +567,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -569,6 +598,7 @@ namespace ELearning.Data
         partial void OnIDChanged();
 
         #endregion
+
     
     }
     
@@ -604,6 +634,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -850,6 +881,7 @@ namespace ELearning.Data
         partial void OnMaxFillsChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1034,6 +1066,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1066,6 +1099,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1240,6 +1274,7 @@ namespace ELearning.Data
         partial void OnIsPreviewChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1380,6 +1415,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1406,6 +1442,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1484,6 +1521,7 @@ namespace ELearning.Data
         partial void OnMarkValueIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1564,6 +1602,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1590,6 +1629,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1644,6 +1684,7 @@ namespace ELearning.Data
         partial void OnNameChanged();
 
         #endregion
+
     
     }
     
@@ -1671,6 +1712,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1725,6 +1767,7 @@ namespace ELearning.Data
         partial void OnNameChanged();
 
         #endregion
+
     
     }
     
@@ -1754,6 +1797,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1832,6 +1876,7 @@ namespace ELearning.Data
         partial void OnSupervisorIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1940,6 +1985,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1966,6 +2012,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1993,6 +2040,7 @@ namespace ELearning.Data
         partial void OnItemIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2035,6 +2083,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2067,6 +2116,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2241,6 +2291,7 @@ namespace ELearning.Data
         partial void OnImageUrlChanged();
 
         #endregion
+
     
     }
     
@@ -2272,6 +2323,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2299,6 +2351,7 @@ namespace ELearning.Data
         partial void OnShuffleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2325,6 +2378,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2351,6 +2405,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2405,6 +2460,7 @@ namespace ELearning.Data
         partial void OnNameChanged();
 
         #endregion
+
     
     }
     
@@ -2430,6 +2486,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2456,6 +2513,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2484,6 +2542,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2562,6 +2621,7 @@ namespace ELearning.Data
         partial void OnChoiceItemIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2642,6 +2702,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2672,6 +2733,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2822,6 +2884,7 @@ namespace ELearning.Data
         partial void OnQuestionGroupIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2864,6 +2927,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2894,6 +2958,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3020,6 +3085,7 @@ namespace ELearning.Data
         partial void OnFormTemplateIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3120,8 +3186,31 @@ namespace ELearning.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookLinkQuestionGroup", "TextBookLink")]
+        public EntityCollection<TextBookLink> TextBookLink
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TextBookLink>("DataModel.TextBookLinkQuestionGroup", "TextBookLink");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TextBookLink>("DataModel.TextBookLinkQuestionGroup", "TextBookLink", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3148,6 +3237,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3202,6 +3292,7 @@ namespace ELearning.Data
         partial void OnNameChanged();
 
         #endregion
+
     
     }
     
@@ -3233,6 +3324,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3335,6 +3427,7 @@ namespace ELearning.Data
         partial void OnFormInstanceIDChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3453,6 +3546,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3479,6 +3573,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3506,6 +3601,7 @@ namespace ELearning.Data
         partial void OnValueChanged();
 
         #endregion
+
     
     }
     
@@ -3545,6 +3641,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3668,6 +3765,7 @@ namespace ELearning.Data
         partial void OnIncrementChanged();
 
         #endregion
+
     
     }
     
@@ -3695,6 +3793,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3722,6 +3821,7 @@ namespace ELearning.Data
         partial void OnTextChanged();
 
         #endregion
+
     
     }
     
@@ -3761,6 +3861,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4007,6 +4108,7 @@ namespace ELearning.Data
         partial void OnIsArchivedChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4107,8 +4209,246 @@ namespace ELearning.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookTextBookLink", "TextBookLink")]
+        public EntityCollection<TextBookLink> TextBookLink
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TextBookLink>("DataModel.TextBookTextBookLink", "TextBookLink");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TextBookLink>("DataModel.TextBookTextBookLink", "TextBookLink", value);
+                }
+            }
+        }
 
         #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="TextBookLink")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TextBookLink : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TextBookLink object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="hName">Initial value of the HName property.</param>
+        /// <param name="textBookID">Initial value of the TextBookID property.</param>
+        /// <param name="questionID">Initial value of the QuestionID property.</param>
+        public static TextBookLink CreateTextBookLink(global::System.Int32 id, global::System.String hName, global::System.Int32 textBookID, global::System.Int32 questionID)
+        {
+            TextBookLink textBookLink = new TextBookLink();
+            textBookLink.ID = id;
+            textBookLink.HName = hName;
+            textBookLink.TextBookID = textBookID;
+            textBookLink.QuestionID = questionID;
+            return textBookLink;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HName
+        {
+            get
+            {
+                return _HName;
+            }
+            set
+            {
+                OnHNameChanging(value);
+                ReportPropertyChanging("HName");
+                _HName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("HName");
+                OnHNameChanged();
+            }
+        }
+        private global::System.String _HName;
+        partial void OnHNameChanging(global::System.String value);
+        partial void OnHNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TextBookID
+        {
+            get
+            {
+                return _TextBookID;
+            }
+            set
+            {
+                OnTextBookIDChanging(value);
+                ReportPropertyChanging("TextBookID");
+                _TextBookID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TextBookID");
+                OnTextBookIDChanged();
+            }
+        }
+        private global::System.Int32 _TextBookID;
+        partial void OnTextBookIDChanging(global::System.Int32 value);
+        partial void OnTextBookIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 QuestionID
+        {
+            get
+            {
+                return _QuestionID;
+            }
+            set
+            {
+                OnQuestionIDChanging(value);
+                ReportPropertyChanging("QuestionID");
+                _QuestionID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("QuestionID");
+                OnQuestionIDChanged();
+            }
+        }
+        private global::System.Int32 _QuestionID;
+        partial void OnQuestionIDChanging(global::System.Int32 value);
+        partial void OnQuestionIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookTextBookLink", "TextBook")]
+        public TextBook TextBook
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TextBook>("DataModel.TextBookTextBookLink", "TextBook").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TextBook>("DataModel.TextBookTextBookLink", "TextBook").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TextBook> TextBookReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TextBook>("DataModel.TextBookTextBookLink", "TextBook");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TextBook>("DataModel.TextBookTextBookLink", "TextBook", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "TextBookLinkQuestionGroup", "QuestionGroup")]
+        public QuestionGroup QuestionGroup
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<QuestionGroup>("DataModel.TextBookLinkQuestionGroup", "QuestionGroup").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<QuestionGroup>("DataModel.TextBookLinkQuestionGroup", "QuestionGroup").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<QuestionGroup> QuestionGroupReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<QuestionGroup>("DataModel.TextBookLinkQuestionGroup", "QuestionGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<QuestionGroup>("DataModel.TextBookLinkQuestionGroup", "QuestionGroup", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -4139,6 +4479,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4289,6 +4630,7 @@ namespace ELearning.Data
         partial void OnFillingFormChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4375,6 +4717,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4401,6 +4744,7 @@ namespace ELearning.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4455,9 +4799,11 @@ namespace ELearning.Data
         partial void OnNameChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }
